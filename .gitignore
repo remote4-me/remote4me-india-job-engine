@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+credentials.json
+service-account*.json
+data/runtime_state.json
+data/companies_runtime.json
