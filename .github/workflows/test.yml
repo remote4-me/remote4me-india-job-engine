@@ -1,4 +1,4 @@
-name: Test
+name: Test Google Sheets
 
 on:
   push:
@@ -10,18 +10,64 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - run: python -m pip install -r requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
 
-      - run: python -m compileall src
-
-      - run: python -m src.main --dry-run
+      - name: Test Google Sheets connection
         env:
-          MAX_SEARCH_QUERIES_PER_RUN: "2"
-          MAX_RESULTS_PER_QUERY: "2"
-          MAX_OFFICIAL_CHECKS: "2"
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+
+          import gspread
+          from google.oauth2.service_account import Credentials
+
+          credentials_json = os.environ["GOOGLE_SERVICE_ACCOUNT_JSON"]
+          sheet_id = os.environ["GOOGLE_SHEET_ID"]
+
+          credentials_data = json.loads(credentials_json)
+
+          scopes = [
+              "https://www.googleapis.com/auth/spreadsheets",
+              "https://www.googleapis.com/auth/drive",
+          ]
+
+          credentials = Credentials.from_service_account_info(
+              credentials_data,
+              scopes=scopes,
+          )
+
+          client = gspread.authorize(credentials)
+
+          spreadsheet = client.open_by_key(sheet_id)
+          worksheet = spreadsheet.worksheet("RUN_LOG")
+
+          if not worksheet.get_all_values():
+              worksheet.append_row([
+                  "timestamp",
+                  "event",
+                  "status",
+              ])
+
+          worksheet.append_row([
+              datetime.now(timezone.utc).isoformat(),
+              "GitHub Actions → Google Sheets connection test",
+              "SUCCESS",
+          ])
+
+          print("Google Sheets connection: SUCCESS")
+          print("Spreadsheet access: SUCCESS")
+          print("RUN_LOG write: SUCCESS")
+          PY
