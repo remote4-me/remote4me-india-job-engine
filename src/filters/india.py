@@ -7,32 +7,35 @@ CITIES = [x.strip().lower() for x in (BASE/"config/india_cities.txt").read_text(
 
 INDIA_PATTERNS = [
     r"\bindia\b", r"\bindian\b", r"\bremote\s*[-–—]?\s*india\b",
-    r"\bwork\s+from\s+home\s+[-–—]?\s*india\b", r"\bwfh\s+india\b"
+    r"\bindia\s*[-–—]?\s*remote\b", r"\bwork\s+from\s+home\s*[-–—]?\s*india\b",
+    r"\bwork\s+from\s+india\b", r"\bwfh\s+india\b", r"\bpan\s*india\b",
 ]
 
-FOREIGN_PATTERNS = [
-    r"\bunited states\b", r"\busa\b", r"\bcanada\b", r"\buk\b", r"\bunited kingdom\b",
-    r"\baustralia\b", r"\bsingapore\b", r"\bphilippines\b", r"\beurope\b", r"\bgermany\b",
-    r"\bfrance\b", r"\bnetherlands\b", r"\bireland\b", r"\bnew zealand\b"
+FOREIGN_ONLY_PATTERNS = [
+    r"\bunited states\s+only\b", r"\busa\s+only\b", r"\bcanada\s+only\b",
+    r"\buk\s+only\b", r"\bunited kingdom\s+only\b", r"\baustralia\s+only\b",
+    r"\bsingapore\s+only\b", r"\beurope\s+only\b", r"\beu\s+only\b",
+    r"\bnorth america\s+only\b",
 ]
 
-def india_score(text):
+
+def india_score(text, country_code=""):
     t = norm_text(text)
+    if norm_text(country_code) == "in":
+        return 10
     score = 0
-    if any(re.search(p,t) for p in INDIA_PATTERNS): score += 5
+    if any(re.search(p, t) for p in INDIA_PATTERNS):
+        score += 5
     for c in CITIES:
-        if re.search(r"(?<![a-z])"+re.escape(c)+r"(?![a-z])", t):
+        if re.search(r"(?<![a-z])" + re.escape(c) + r"(?![a-z])", t):
             score += 2
-            if score >= 7: break
+            if score >= 7:
+                break
+    if any(re.search(p, t) for p in FOREIGN_ONLY_PATTERNS) and score == 0:
+        return 0
     return score
 
-def foreign_only(text):
-    t = norm_text(text)
-    foreign = any(re.search(p,t) for p in FOREIGN_PATTERNS)
-    india = india_score(t) > 0
-    return foreign and not india
 
-def is_india_job(title, location, description=""):
+def is_india_job(title, location, description="", country_code=""):
     combined = " ".join([title or "", location or "", description or ""])
-    if foreign_only(combined): return False
-    return india_score(combined) > 0
+    return india_score(combined, country_code) > 0
