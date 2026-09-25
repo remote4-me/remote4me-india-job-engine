@@ -1,12 +1,13 @@
-name: Remote4.me India Job Engine
+name: Remote4.me India Job Engine v4
 
 on:
   workflow_dispatch:
   schedule:
+    # 4 runs/day. Public feeds are polled no more than needed.
     - cron: "17 2,8,14,20 * * *"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: remote4me-india-job-engine
@@ -37,16 +38,22 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
 
-          MAX_SEARCH_QUERIES_PER_RUN: "120"
+          # Optional search layer. The keyless sources below work without these.
+          MAX_SEARCH_QUERIES_PER_RUN: "80"
           MAX_RESULTS_PER_QUERY: "20"
-          MAX_OFFICIAL_CHECKS: "250"
+
+          # Official-source resolution is the expensive part, so cap it.
+          MAX_OFFICIAL_CHECKS: "350"
+
+          # Public feed controls.
+          ONJOB_MAX_PAGES: "20"
           WAYBACK_MAX_URLS_PER_QUERY: "100"
-          CRAWL_DELAY: "0.8"
-          REQUEST_TIMEOUT: "15"
+          CRAWL_DELAY: "0.5"
+          REQUEST_TIMEOUT: "20"
 
         run: python -m src.main
 
-      - name: Upload run logs
+      - name: Upload run logs if present
         if: always()
         uses: actions/upload-artifact@v4
         with:
