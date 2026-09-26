@@ -42,18 +42,25 @@ def search(query, count=20):
     return serper(query,count)
 
 def build_queries(keywords, cities, targets):
-    queries=[]
-    # Broad India queries.
-    for k in keywords[:24]:
-        queries.append(f'"{k}" India jobs')
+    queries = []
+    core = keywords[:40]
+
+    # Broad India + remote searches.
+    for k in core:
         queries.append(f'"{k}" "remote" India jobs')
-    # City expansion, but capped so one run remains lightweight.
-    for city in cities:
-        if city.lower() in {"india","remote india","remote - india"}: continue
-        for k in keywords[:10]:
-            queries.append(f'"{k}" "{city}" jobs')
-    # Search targeted portals and ATS.
+        queries.append(f'"{k}" "work from home" India jobs')
+
+    # City expansion. The workflow caps total queries, so a large city file
+    # increases geographic coverage across runs without creating an unbounded run.
+    city_list = [c for c in cities if c.lower() not in {"india", "remote india", "remote - india", "work from home india"}]
+    city_keywords = keywords[:12]
+    for city in city_list:
+        for k in city_keywords:
+            queries.append(f'"{k}" "{city}" remote jobs')
+
+    # Targeted portal/ATS searches.
     for host in targets:
-        for k in keywords[:8]:
-            queries.append(f'site:{host} "{k}" India')
+        for k in keywords[:12]:
+            queries.append(f'site:{host} "{k}" India remote')
+
     return list(dict.fromkeys(queries))
