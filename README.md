@@ -1,3 +1,15 @@
+# Remote4.me India Job Engine v5
+
+Multi-source discovery engine for India-eligible remote customer-support and customer-success roles.
+
+## v5 changes
+- Expanded India city/location dictionary with 300+ additional aliases and tier-2/tier-3 cities.
+- Remote filter recognizes Indian city + remote combinations.
+- Broader support/customer-success/technical-support vocabulary.
+- Search query builder expands city coverage while remaining capped by workflow limits.
+- No paid search/API key is required for the keyless discovery sources.
+
+See `SETUP.md` for GitHub Actions configuration.
 # Remote4.me India Remote Support Job Engine v4
 
 A multi-source, high-recall discovery engine for **India-only remote customer support, customer success, technical support, product support, onboarding, implementation and related roles**.
