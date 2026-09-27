@@ -1,6 +1,7 @@
 import os
 import json
 import gspread
+from urllib.parse import urlparse
 from google.oauth2.service_account import Credentials
 
 SCOPES = [
@@ -91,6 +92,14 @@ def read_companies(limit=250):
         board = str(r.get("ATS Board URL", "")).strip()
         key = "|".join([company.lower(), domain_url.lower(), career.lower(), ats, board.lower()])
         if key in seen or not (company or domain_url or career or board):
+            continue
+        # Do not recycle obvious bad resolver results such as policy/about/help pages.
+        board_low = board.lower()
+        career_low = career.lower()
+        bad_path = any(x in career_low for x in ("/privacy", "/policy", "/policies", "/terms", "/about", "/addons", "/blog", "/help", "/contact", "/legal"))
+        ats_host = any(x in board_low for x in ("greenhouse", "lever.co", "ashbyhq", "workable", "workday", "smartrecruiters", "icims", "successfactors", "oraclecloud", "jobvite", "teamtailor", "bamboohr", "recruitee", "jazz.co", "breezy", "pinpoint", "personio"))
+        career_hint = any(x in career_low for x in ("/career", "/careers", "/jobs", "/join-us", "/joinus", "/work-with-us", "/opportunities", "/job-openings", "/open-positions", "/vacancies", "/apply"))
+        if bad_path or not (ats_host or career_hint):
             continue
         seen.add(key)
         out.append({"company": company, "domain": domain_url, "career_url": career, "ats": ats, "board": board})
