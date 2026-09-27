@@ -1,90 +1,65 @@
-# Remote4.me India Job Engine v5
+# Remote4.me India Direct Employer / ATS Job Engine
 
-Multi-source discovery engine for India-eligible remote customer-support and customer-success roles.
+This is the next-stage backend for remote4.me: a discovery + direct employer/ATS crawler for **India-only remote customer support and customer-success roles**.
 
-## v5 changes
-- Expanded India city/location dictionary with 300+ additional aliases and tier-2/tier-3 cities.
-- Remote filter recognizes Indian city + remote combinations.
-- Broader support/customer-success/technical-support vocabulary.
-- Search query builder expands city coverage while remaining capped by workflow limits.
-- No paid search/API key is required for the keyless discovery sources.
-
-See `SETUP.md` for GitHub Actions configuration.
-# Remote4.me India Remote Support Job Engine v4
-
-A multi-source, high-recall discovery engine for **India-only remote customer support, customer success, technical support, product support, onboarding, implementation and related roles**.
-
-## Core goal
-
-Discover broadly, then filter hard:
+## Architecture
 
 ```text
-Public APIs / feeds / ATS discovery
-        ↓
-Normalize
-        ↓
-India eligibility
-        ↓
-Remote eligibility
-        ↓
-Support-role relevance
-        ↓
-Deduplicate
-        ↓
-Official employer / ATS URL resolution
-        ↓
-Google Sheets
+Public feeds / permitted discovery / Wayback
+                    ↓
+              Normalize + dedupe
+                    ↓
+            India + remote eligibility
+                    ↓
+          Support-role relevance
+                    ↓
+        Resolve employer / ATS source
+                    ↓
+          Persistent COMPANIES index
+                    ↓
+      Greenhouse / Lever / Ashby / Workable
+                    ↓
+          Crawl current live jobs
+                    ↓
+       Strict India + remote + support
+                    ↓
+         Official application URL
+                    ↓
+              Google Sheets
+                    ↓
+          Manual WordPress review
 ```
 
-## Keyless sources included
+The important difference from a simple aggregator is that a feed result is treated as a **discovery signal**. Once the employer/ATS is identified, the engine stores that source in `COMPANIES` and crawls the public employer/ATS source on later runs.
 
-- OnJob public JSON feed
-- Jobicy public remote-jobs API
-- Dev Global Jobs public API
-- RemoteJobs.org public API
-- YubHub support/customer-service/customer-success feeds
-- We Work Remotely customer-support RSS + all-other RSS
-- Existing Wayback discovery layer
-- Existing optional search-engine layer
+## Current direct ATS adapters
 
-These sources have different attribution/usage requirements. Keep source attribution where a source requires it, and do not present a third-party listing as if it were originally posted by Remote4.me.
+- Greenhouse
+- Lever
+- Ashby
+- Workable
 
-## Direct employer / ATS links
+The crawler only uses publicly accessible pages/endpoints and does not bypass CAPTCHA, login walls, paywalls, robots restrictions, IP blocks, or anti-bot protections.
 
-The engine tries to resolve discovery URLs to an employer career page or ATS application URL. It only requests public pages and does not bypass CAPTCHA, login walls, paywalls, robots restrictions, IP blocks or anti-bot systems.
+## Quality rules
 
-A source may only expose its own listing URL. In that case the job is placed in `NEEDS_REVIEW` rather than inventing an employer URL.
+- India eligibility is based primarily on structured location/country data and explicit India eligibility.
+- A foreign-only structured location is rejected even if the description contains incidental India text.
+- Direct ATS jobs require a support/customer-success style signal in the title.
+- Obvious sales, software-engineering, developer, recruiting, marketing, and other unrelated titles are rejected unless they have a genuine support title signal.
+- Resolver results such as `/policies`, `/privacy`, `/about`, `/addons`, `/blog`, etc. are not treated as official job sources.
+- Direct ATS application URLs are trusted only when they come from the detected public ATS source.
 
-## Search-engine layer
+## Google Sheets
 
-`BRAVE_SEARCH_API_KEY` and `SERPER_API_KEY` are optional. If neither exists, the engine skips search-engine queries and uses the keyless sources.
+- `VERIFIED_JOBS` — jobs with an official employer/ATS application URL
+- `DISCOVERED_JOBS` — filtered discovery candidates and their verification status
+- `NEEDS_REVIEW` — candidates that still need source verification
+- `COMPANIES` — persistent employer/ATS crawl queue
+- `RUN_LOG` — run statistics
 
-If a permitted search provider is later added, the engine can discover public Indeed/LinkedIn/Naukri/etc. result pages and then attempt official-source resolution. Those sites are discovery targets, not anti-bot scraping targets.
+## Scaling model
 
-## Google Sheets tabs
+The crawler is intentionally incremental. Each successful employer/ATS discovery is persisted in `COMPANIES`. Later runs revisit those sources instead of rediscovering them from scratch. Increase `MAX_ATS_COMPANIES` only after result quality is clean.
 
-- `VERIFIED_JOBS` — official employer/ATS URL resolved
-- `DISCOVERED_JOBS` — every filtered India-remote-support candidate found; queued/verified/review status
-- `NEEDS_REVIEW` — candidate found but official URL not resolved
-- `COMPANIES` — employer/ATS domains discovered
-- `RUN_LOG` — per-run counts
-
-The storage layer now uses stable job URLs rather than the run timestamp as the deduplication key, so the same job is not appended on every run.
-
-## GitHub Actions
-
-The main workflow runs four times per day and can also be started manually.
-
-Keyless sources require no new GitHub secrets. Existing Google Sheets secrets remain:
-
-- `GOOGLE_SERVICE_ACCOUNT_JSON`
-- `GOOGLE_SHEET_ID`
-
-Optional:
-
-- `BRAVE_SEARCH_API_KEY`
-- `SERPER_API_KEY`
-
-## Important limitation
-
-No job engine can guarantee every job on the internet. Counts shown by job boards such as Indeed are search-result counts, not necessarily unique, current, India-eligible remote support jobs. Remote4.me therefore uses multiple sources and a verification layer rather than copying a displayed result count.
+This is the same general sourcing pattern publicly described by remote-job platforms: employer career pages and ATS sources, normalized/filtered, deduplicated, checked for a usable application destination, and refreshed over time. It does not reproduce any proprietary implementation.
