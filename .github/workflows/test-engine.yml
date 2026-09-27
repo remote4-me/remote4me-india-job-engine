@@ -31,4 +31,9 @@ jobs:
           MAX_SEARCH_QUERIES_PER_RUN: "0"
           REQUEST_TIMEOUT: "20"
           CRAWL_DELAY: "0.3"
+          MAX_ATS_COMPANIES: "30"
+          MAX_COMPANY_DISCOVERY_CHECKS: "20"
+          COMMON_CRAWL_DISCOVERY: "1"
+          COMMON_CRAWL_MAX_BOARDS: "20"
+          COMMON_CRAWL_DELAY: "2.0"
         run: python -m src.main --dry-run

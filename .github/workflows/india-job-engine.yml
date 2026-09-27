@@ -46,7 +46,15 @@ jobs:
           MAX_OFFICIAL_CHECKS: "350"
 
           # Direct employer/ATS crawler. Companies are persisted in COMPANIES and revisited.
-          MAX_ATS_COMPANIES: "150"
+          MAX_ATS_COMPANIES: "250"
+
+          # Build the employer index from broad feed results as well as ATS URLs.
+          MAX_COMPANY_DISCOVERY_CHECKS: "180"
+
+          # Free Common Crawl URL index: discovers public ATS boards; live jobs are fetched from ATS.
+          COMMON_CRAWL_DISCOVERY: "1"
+          COMMON_CRAWL_MAX_BOARDS: "250"
+          COMMON_CRAWL_DELAY: "2.0"
 
           # Public feed controls.
           ONJOB_MAX_PAGES: "20"
