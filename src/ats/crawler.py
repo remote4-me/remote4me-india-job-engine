@@ -257,7 +257,8 @@ def discover_and_crawl(company, domain_url, career_url="", ats="", board=""):
     # COMPANIES stores the reusable ATS board URL. Normalize it back to a board
     # slug before calling the public ATS endpoint on the next run.
     if board and str(board).startswith(("http://", "https://")):
-        detected_ats, detected_board, detected_url = _ats_from_url(board)
+        detected_ats, detected_board = _ats_from_url(board)
+        detected_url = board
         if detected_ats:
             ats, board = detected_ats, detected_board
             career_url = career_url or detected_url
