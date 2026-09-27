@@ -2,11 +2,11 @@ import json
 import re
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
-from src.utils import clean_url, domain, root_domain
+from src.utils import clean_url, root_domain
 
-UA = "remote4me-india-job-engine/4.0 (+https://remote4.me)"
+UA = "remote4me-india-job-engine/6.0 (+https://remote4.me)"
 CAREER_HINTS = (
     "career", "careers", "jobs", "join-us", "joinus", "work-with-us",
     "opportunities", "vacancies", "job-openings", "open-positions", "apply",
@@ -23,16 +23,22 @@ DISCOVERY_DOMAINS = {
     "remotive.com", "himalayas.app", "jobvetta.com", "glassdoor.co.in", "glassdoor.com",
     "ziprecruiter.com", "simplyhired.com", "jooble.org", "talent.com", "adzuna.com",
 }
+ATS_DOMAINS = {
+    "boards.greenhouse.io", "job-boards.greenhouse.io", "jobs.lever.co", "jobs.ashbyhq.com",
+    "apply.workable.com", "jobs.workable.com", "myworkdayjobs.com", "smartrecruiters.com",
+    "icims.com", "successfactors.com", "oraclecloud.com", "jobvite.com", "teamtailor.com",
+    "bamboohr.com", "recruitee.com", "jazz.co", "breezy.hr", "pinpointhq.com", "personio.com",
+}
+BAD_PATHS = (
+    "/privacy", "/privacy-policy", "/terms", "/terms-of-service", "/policy", "/policies",
+    "/about", "/blog", "/news", "/press", "/addons", "/extensions", "/help", "/support",
+    "/contact", "/legal", "/cookies", "/security", "/docs",
+)
 
 
 def fetch(url, timeout=20):
     try:
-        r = requests.get(
-            url,
-            headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml"},
-            timeout=timeout,
-            allow_redirects=True,
-        )
+        r = requests.get(url, headers={"User-Agent": UA, "Accept": "text/html,application/xhtml+xml"}, timeout=timeout, allow_redirects=True)
         if r.status_code >= 400:
             return None
         return r
@@ -41,114 +47,91 @@ def fetch(url, timeout=20):
 
 
 def _is_discovery_domain(url):
+    return root_domain(url) in DISCOVERY_DOMAINS
+
+
+def _is_ats_domain(url):
     d = root_domain(url)
-    return d in DISCOVERY_DOMAINS
+    return d in ATS_DOMAINS or any(d.endswith("." + x) for x in ATS_DOMAINS)
+
+
+def _career_like(url):
+    low = clean_url(url).lower()
+    if not low:
+        return False
+    path = urlparse(low).path
+    if any(path.startswith(x) for x in BAD_PATHS):
+        return False
+    return _is_ats_domain(low) or any(x in path for x in CAREER_HINTS)
 
 
 def _candidate_score(href, text="", source_domain=""):
-    href_low = href.lower()
-    text_low = text.lower()
-    score = 0
-    if any(x in text_low for x in ("apply", "apply now", "view job", "job details")):
-        score += 8
-    if any(x in href_low for x in CAREER_HINTS):
-        score += 5
-    if any(x in href_low for x in ATS_HINTS):
-        score += 6
-    if source_domain and root_domain(href) != source_domain:
-        score += 4
-    if _is_discovery_domain(href):
-        score -= 20
-    if href_low.startswith("mailto:") or href_low.startswith("javascript:"):
-        score -= 50
+    href_low = href.lower(); text_low = text.lower(); score = 0
+    if any(x in text_low for x in ("apply", "apply now", "view job", "job details")): score += 8
+    if any(x in href_low for x in CAREER_HINTS): score += 5
+    if any(x in href_low for x in ATS_HINTS): score += 6
+    if source_domain and root_domain(href) != source_domain: score += 4
+    if _is_discovery_domain(href): score -= 20
+    if not _career_like(href): score -= 5
+    if href_low.startswith(("mailto:", "javascript:")): score -= 50
     return score
 
 
 def _jsonld_urls(soup):
-    urls = []
+    urls=[]
     for tag in soup.find_all("script", type="application/ld+json"):
-        raw = tag.string or tag.get_text()
-        try:
-            data = json.loads(raw)
-        except Exception:
-            continue
-        stack = data if isinstance(data, list) else [data]
+        try: data=json.loads(tag.string or tag.get_text())
+        except Exception: continue
+        stack=data if isinstance(data,list) else [data]
         for item in stack:
-            if not isinstance(item, dict):
-                continue
-            if item.get("@type") == "JobPosting" and item.get("url"):
-                urls.append(item["url"])
-            if item.get("mainEntity") and isinstance(item["mainEntity"], dict):
-                u = item["mainEntity"].get("url")
-                if u:
-                    urls.append(u)
+            if not isinstance(item,dict): continue
+            if item.get("@type")=="JobPosting" and item.get("url"): urls.append(item["url"])
+            me=item.get("mainEntity")
+            if isinstance(me,dict) and me.get("url"): urls.append(me["url"])
     return urls
 
 
 def links_from_page(url, html):
-    soup = BeautifulSoup(html, "html.parser")
-    source_domain = root_domain(url)
-    candidates = []
-
+    soup=BeautifulSoup(html,"html.parser"); source_domain=root_domain(url); candidates=[]
     for raw in _jsonld_urls(soup):
-        href = clean_url(urljoin(url, raw))
-        if href and not _is_discovery_domain(href):
-            candidates.append((12, href))
-
-    for a in soup.find_all("a", href=True):
-        href = clean_url(urljoin(url, a.get("href")))
-        if not href:
-            continue
-        text = " ".join(a.stripped_strings)
-        score = _candidate_score(href, text, source_domain)
-        if score > 0:
-            candidates.append((score, href))
-
-    candidates.sort(key=lambda x: x[0], reverse=True)
-    return list(dict.fromkeys(href for _, href in candidates))[:60]
+        href=clean_url(urljoin(url,raw))
+        if href and not _is_discovery_domain(href) and _career_like(href): candidates.append((12,href))
+    for a in soup.find_all("a",href=True):
+        href=clean_url(urljoin(url,a.get("href")))
+        if not href: continue
+        text=" ".join(a.stripped_strings)
+        score=_candidate_score(href,text,source_domain)
+        if score>0: candidates.append((score,href))
+    candidates.sort(key=lambda x:x[0],reverse=True)
+    return list(dict.fromkeys(href for _,href in candidates))[:60]
 
 
-def likely_official(url):
-    d = root_domain(url)
-    return bool(d) and d not in DISCOVERY_DOMAINS
+def likely_official(url, expected_domain=""):
+    if not url: return False
+    d=root_domain(url)
+    if not d or d in DISCOVERY_DOMAINS: return False
+    if _is_ats_domain(url): return True
+    if expected_domain and d != root_domain(expected_domain): return False
+    return _career_like(url)
 
 
 def resolve(discovery_url, company="", company_website=""):
-    """Resolve a discovered listing to a current employer/ATS URL when possible.
-
-    This only requests public pages and does not bypass login, CAPTCHA, robots blocks,
-    paywalls, or anti-bot protections.
-    """
-    if not discovery_url:
-        return None
-
-    discovery_url = clean_url(discovery_url)
-    if not discovery_url:
-        return None
-
-    # Already on an employer/ATS domain.
-    if likely_official(discovery_url) and any(
-        h in discovery_url.lower() for h in CAREER_HINTS + ATS_HINTS
-    ):
-        r = fetch(discovery_url)
-        if r and r.url and likely_official(r.url):
-            return clean_url(r.url)
-
-    # Inspect the discovered job page for an external employer/ATS application link.
-    r = fetch(discovery_url)
+    if not discovery_url: return None
+    discovery_url=clean_url(discovery_url)
+    if not discovery_url: return None
+    expected=root_domain(company_website) if company_website else ""
+    if likely_official(discovery_url, expected):
+        r=fetch(discovery_url)
+        if r and likely_official(r.url, expected): return clean_url(r.url)
+    r=fetch(discovery_url)
     if r:
-        candidates = links_from_page(r.url, r.text)
-        if candidates:
-            return candidates[0]
-
-    # If a structured company website was supplied by a source, inspect it for careers.
+        for candidate in links_from_page(r.url,r.text):
+            if likely_official(candidate, expected): return candidate
     if company_website:
-        site = clean_url(company_website)
-        if site and likely_official(site):
-            rr = fetch(site)
+        site=clean_url(company_website)
+        if site and root_domain(site) not in DISCOVERY_DOMAINS:
+            rr=fetch(site)
             if rr:
-                candidates = links_from_page(rr.url, rr.text)
-                if candidates:
-                    return candidates[0]
-
+                for candidate in links_from_page(rr.url,rr.text):
+                    if likely_official(candidate, root_domain(site)): return candidate
     return None
