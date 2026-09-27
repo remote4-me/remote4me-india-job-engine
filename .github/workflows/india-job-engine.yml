@@ -1,4 +1,4 @@
-name: Remote4.me India Job Engine v4
+name: Remote4.me India Job Engine
 
 on:
   workflow_dispatch:
@@ -44,6 +44,9 @@ jobs:
 
           # Official-source resolution is the expensive part, so cap it.
           MAX_OFFICIAL_CHECKS: "350"
+
+          # Direct employer/ATS crawler. Companies are persisted in COMPANIES and revisited.
+          MAX_ATS_COMPANIES: "150"
 
           # Public feed controls.
           ONJOB_MAX_PAGES: "20"
