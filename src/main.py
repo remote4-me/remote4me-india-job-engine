@@ -18,7 +18,7 @@ from src.filters.support import relevance
 from src.filters.direct import direct_support_job, direct_india_remote
 from src.resolver.official import resolve
 from src.storage.sheets import write, read_companies
-from src.ats.crawler import discover_and_crawl
+from src.ats.crawler import discover_and_crawl, detect_ats
 from src.utils import clean_url, domain, root_domain, fingerprint, safe_int
 
 BASE = Path(__file__).resolve().parents[1]
@@ -53,13 +53,22 @@ def normalize(raw):
         "company": company, "location": location, "country_code": country_code,
         "remote": remote, "work_model": work_model, "posted": raw.get("posted", "") or "",
         "employment_type": raw.get("employment_type", "") or "", "salary": raw.get("salary", "") or "",
-        "company_website": raw.get("company_website", "") or "", "source": raw.get("source", "unknown"),
-        "source_url": clean_url(raw.get("source_url", "") or url), "apply_url": clean_url(raw.get("apply_url", "") or url),
+        "company_website": clean_url(raw.get("company_website", "") or ""),
+        "source": raw.get("source", "unknown"),
+        "source_url": clean_url(raw.get("source_url", "") or url),
+        "apply_url": clean_url(raw.get("apply_url", "") or url),
     }
 
 
 def company_row(company, domain_url, career_url, ats, board, source, now):
     return [company, root_domain(domain_url or career_url or board), career_url or board, ats, board, "India", source, now]
+
+
+def company_row_from_official(p, official, now):
+    ats, board, ats_url = detect_ats(official)
+    if ats:
+        return company_row(p.get("company", ""), p.get("company_website", "") or official, official, ats, ats_url or official, p.get("source", ""), now)
+    return company_row(p.get("company", ""), p.get("company_website", "") or official, official, "", "", p.get("source", ""), now)
 
 
 def main():
@@ -70,7 +79,7 @@ def main():
     maxverify = safe_int("MAX_OFFICIAL_CHECKS", 250)
     max_search_queries = safe_int("MAX_SEARCH_QUERIES_PER_RUN", 80)
     max_results_per_query = safe_int("MAX_RESULTS_PER_QUERY", 20)
-    max_ats_companies = safe_int("MAX_ATS_COMPANIES", 120)
+    max_ats_companies = safe_int("MAX_ATS_COMPANIES", 150)
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     raw, errors, source_counts = [], 0, {}
@@ -132,40 +141,51 @@ def main():
     seen_official, seen_discovery = set(), set()
 
     for p in support:
-        if p["url"] in seen_discovery: continue
+        if p["url"] in seen_discovery:
+            continue
         seen_discovery.add(p["url"])
         discovered.append([now, p["title"], p["company"], p["location"], p["posted"], p["url"], "", p["source"], "queued_for_verification"])
 
+    # Resolve source listings to employer/ATS destinations. This is also the company
+    # discovery mechanism: every valid official destination becomes a reusable source.
     for p in support[:maxverify]:
         official = None
-        try: official = resolve(p["url"], p["company"], p.get("company_website", ""))
-        except Exception as e: errors += 1; print("resolver error", p["url"], e)
+        try:
+            official = resolve(p["url"], p["company"], p.get("company_website", ""))
+        except Exception as e:
+            errors += 1; print("resolver error", p["url"], e)
         for row in discovered:
             if row[5] == p["url"]:
-                row[6] = official or ""; row[8] = "verified" if official else "needs_review"; break
+                row[6] = official or ""
+                row[8] = "verified" if official else "needs_review"
+                break
         if official:
             key = official.rstrip("/").lower()
             if key not in seen_official:
                 seen_official.add(key)
                 verified.append([now, p["title"], p["company"], p["location"] or "India", "Remote", p["posted"], official, p["source"], ", ".join(p.get("hits", []))])
-                companies.append(company_row(p["company"], official, official, "", "", p["source"], now))
+                companies.append(company_row_from_official(p, official, now))
         else:
             review.append([now, p["title"], p["company"], p["location"], p["url"], "Remote India support job found; official employer/ATS URL not resolved yet", p["source"]])
 
-    # DIRECT ATS LAYER: crawl persistent companies plus companies discovered in this run.
+    # DIRECT ATS LAYER: crawl the persistent company queue plus newly discovered
+    # employer/ATS destinations. This turns feed discovery into a reusable company
+    # index instead of relying on a feed URL forever.
     persistent = [] if args.dry_run else read_companies(limit=max_ats_companies * 2)
     queue, qseen = [], set()
-    for c in persistent:
-        key = "|".join(str(c.get(k, "")).lower() for k in ("company", "domain", "career_url", "ats", "board"))
-        if key not in qseen:
-            qseen.add(key); queue.append(c)
-    for row in companies:
-        c = {"company": row[0], "domain": row[1], "career_url": row[2], "ats": row[3], "board": row[4]}
-        key = "|".join(str(c.get(k, "")).lower() for k in ("company", "domain", "career_url", "ats", "board"))
-        if key not in qseen:
+
+    def add_company(c):
+        key = "|".join(str(c.get(k, "")).strip().lower() for k in ("company", "domain", "career_url", "ats", "board"))
+        if key not in qseen and any(c.get(k) for k in ("domain", "career_url", "board")):
             qseen.add(key); queue.append(c)
 
+    for c in persistent:
+        add_company(c)
+    for row in companies:
+        add_company({"company": row[0], "domain": row[1], "career_url": row[2], "ats": row[3], "board": row[4]})
+
     direct_jobs, direct_companies, direct_stats = [], [], {"companies_checked": 0, "ats_detected": 0, "jobs_found": 0, "india_remote_support": 0}
+    direct_seen = set()
     for c in queue[:max_ats_companies]:
         direct_stats["companies_checked"] += 1
         try:
@@ -182,10 +202,13 @@ def main():
                 if not ok:
                     continue
                 direct_stats["india_remote_support"] += 1
-                apply_url = job.get("apply_url") or job.get("url")
-                if not apply_url or apply_url.lower() in seen_official:
+                apply_url = clean_url(job.get("apply_url") or job.get("url"))
+                if not apply_url:
                     continue
-                seen_official.add(apply_url.lower())
+                key = apply_url.lower()
+                if key in direct_seen:
+                    continue
+                direct_seen.add(key)
                 direct_jobs.append([now, job["title"], job["company"], job["location"] or "India", "Remote", job["posted"], apply_url, job["source"], ", ".join(hits)])
         except Exception as e:
             errors += 1
