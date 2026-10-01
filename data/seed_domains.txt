@@ -1,4 +1,0 @@
-# Add company domains here over time, one per line.
-# These are used only for Wayback career/ATS discovery.
-# Example:
-# example.com
