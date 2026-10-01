@@ -1,0 +1,157 @@
+[
+  {
+    "name": "Greenhouse",
+    "hosts": [
+      "boards.greenhouse.io",
+      "job-boards.greenhouse.io"
+    ],
+    "type": "greenhouse"
+  },
+  {
+    "name": "Lever",
+    "hosts": [
+      "jobs.lever.co"
+    ],
+    "type": "lever"
+  },
+  {
+    "name": "Ashby",
+    "hosts": [
+      "jobs.ashbyhq.com"
+    ],
+    "type": "ashby"
+  },
+  {
+    "name": "Workable",
+    "hosts": [
+      "apply.workable.com"
+    ],
+    "type": "workable"
+  },
+  {
+    "name": "SmartRecruiters",
+    "hosts": [
+      "jobs.smartrecruiters.com"
+    ],
+    "type": "smartrecruiters"
+  },
+  {
+    "name": "Recruitee",
+    "hosts": [
+      "recruitee.com"
+    ],
+    "type": "recruitee"
+  },
+  {
+    "name": "Breezy HR",
+    "hosts": [
+      "breezy.hr"
+    ],
+    "type": "breezy"
+  },
+  {
+    "name": "Teamtailor",
+    "hosts": [
+      "teamtailor.com"
+    ],
+    "type": "teamtailor"
+  },
+  {
+    "name": "Personio",
+    "hosts": [
+      "personio.com"
+    ],
+    "type": "personio"
+  },
+  {
+    "name": "BambooHR",
+    "hosts": [
+      "bamboohr.com"
+    ],
+    "type": "bamboohr"
+  },
+  {
+    "name": "Jobvite",
+    "hosts": [
+      "jobs.jobvite.com"
+    ],
+    "type": "jobvite"
+  },
+  {
+    "name": "Pinpoint",
+    "hosts": [
+      "pinpointhq.com"
+    ],
+    "type": "pinpoint"
+  },
+  {
+    "name": "iCIMS",
+    "hosts": [
+      "icims.com"
+    ],
+    "type": "icims"
+  },
+  {
+    "name": "Workday",
+    "hosts": [
+      "myworkdayjobs.com"
+    ],
+    "type": "workday"
+  },
+  {
+    "name": "SAP SuccessFactors",
+    "hosts": [
+      "successfactors.com"
+    ],
+    "type": "successfactors"
+  },
+  {
+    "name": "Oracle Recruiting",
+    "hosts": [
+      "oraclecloud.com"
+    ],
+    "type": "oracle"
+  },
+  {
+    "name": "UKG",
+    "hosts": [
+      "ukg.com"
+    ],
+    "type": "ukg"
+  },
+  {
+    "name": "JazzHR",
+    "hosts": [
+      "applytojob.com"
+    ],
+    "type": "jazzhr"
+  },
+  {
+    "name": "Comeet",
+    "hosts": [
+      "comeet.com"
+    ],
+    "type": "comeet"
+  },
+  {
+    "name": "ClearCompany",
+    "hosts": [
+      "clearcompany.com"
+    ],
+    "type": "clearcompany"
+  },
+  {
+    "name": "Manatal",
+    "hosts": [
+      "manatal.com"
+    ],
+    "type": "manatal"
+  },
+  {
+    "name": "Zoho Recruit",
+    "hosts": [
+      "zohorecruit.com"
+    ],
+    "type": "zoho"
+  }
+]
