@@ -1,77 +1,102 @@
-# Remote4.me India Remote Job Engine
+# Remote4.me India Remote / Hybrid Job Engine v4
 
-Lightweight GitHub Actions crawler for **India + Remote OR Hybrid** customer support, customer success, technical support, product support and related roles.
+A lightweight GitHub Actions crawler that does **not require Brave, Serper, Google Custom Search, or another paid search API**.
 
-## Data sources
+## What it does
 
-Free/public sources currently wired in:
+1. Uses free public job feeds: Himalayas, Jobicy and Remote OK.
+2. Automatically discovers public ATS company boards from the Internet Archive (Wayback Machine), with Common Crawl as a fallback.
+3. Validates discovered ATS board slugs against live public ATS endpoints.
+4. Crawls the live ATS directly for fresh jobs.
+5. Filters for India + Remote OR Hybrid + support/success/technical-support related roles.
+6. Writes new jobs to the existing Google Sheet.
+7. Caches discovered ATS boards in `data/boards.json` so later runs don't rediscover everything.
+8. Refreshes ATS discovery every 7 days by default.
 
-- Himalayas public JSON API
-- Jobicy public API
-- Remote OK public JSON feed
-- Optional JobsPipe API (API key + quota)
-- Brave Search discovery
-- Serper discovery
-- ATS discovery for Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Teamtailor and more
+## ATS platforms
 
-## Important attribution
+The initial registry includes public-board endpoints for:
 
-If you publish data from a source, follow that source's terms and attribution requirements. Himalayas requires a visible link back to Himalayas and source mention; Jobicy asks users of its public API to keep the Jobicy listing URL unless using its paid direct-application API; Remotive requires attribution/linking and has restrictions on third-party redistribution. Remote OK asks aggregators to credit Remote OK and link to the original job post. See each source's current terms before publishing.
+- Greenhouse
+- Lever
+- Ashby
+- SmartRecruiters
+- Recruitee
+- Breezy HR
+- Teamtailor
+- Workable
+
+The primary three (Greenhouse, Lever, Ashby) are especially valuable because their published job APIs are public and keyless. Greenhouse documents unauthenticated GET job-board access; Lever documents its public postings endpoint; Ashby documents its public job-posting endpoint.
+
+## No paid search API
+
+The workflow does NOT use:
+
+- Brave Search API
+- Serper API
+- Google Custom Search API
+- JobsPipe
+- Remotive
+
+It uses the Internet Archive's public CDX index for ATS-board discovery and Common Crawl only as a fallback.
 
 ## GitHub secrets
 
-Create these repository secrets:
+Only these are required for the Google Sheets output:
 
 - `GOOGLE_SERVICE_ACCOUNT_JSON`
 - `GOOGLE_SHEET_ID`
-- `BRAVE_SEARCH_API_KEY`
-- `SERPER_API_KEY`
-- `JOBSPIPE_API_KEY` (optional)
 
-The crawler works without JobsPipe. It is included because it can add another normalized source with 30+ underlying sources, but its free quota is limited.
+No search API key is required.
 
 ## Google Sheet
 
-Share your Google Sheet with the service-account email contained in your JSON.
+The crawler uses the existing `JOBS` sheet if it exists. It does not need a new spreadsheet.
 
-The crawler creates:
+Columns:
 
-### JOBS
-Added, Job Title, Company, Location, Work Type, Posted, Job URL, Source, Score, Matched Keywords
+`Added | Job Title | Company | Location | Work Type | Posted | Job URL | Source | Score | Matched Keywords`
 
-### COMPANIES
-Company, Domain, Career/ATS URL, ATS, Last Checked, Jobs Found, Status
+## Filters
 
-## Filtering
+Accepted:
 
-A job must normally satisfy:
+- India
+- Remote
+- Hybrid
+- customer support / customer service
+- customer success
+- customer experience
+- customer operations
+- customer onboarding / implementation
+- customer adoption / retention / enablement
+- technical support
+- product support
+- application / software / SaaS support
+- IT support / helpdesk / service desk
+- L1 / L2 support
+- chat / email / phone support
+- client / member / user support or success
+- support operations / quality / training / knowledge
+- technical account / customer solutions where the role is support-oriented
 
-- India eligibility detected
-- Remote OR Hybrid eligibility detected
-- No strong office/on-site-only signal
-- Fresh within 7 days
-- Support/success-related score >= 35
+Rejected:
 
-The role dictionary is deliberately broad and can be expanded in `config/keywords.json`.
+- USA-only / other-country-only jobs
+- office-only / on-site-only jobs
+- old jobs outside the 7-day window when a usable posting date exists
+- unrelated roles that only mention a support keyword incidentally
 
-## Run locally
+## ATS discovery cache
 
-```bash
-pip install -r requirements.txt
-python crawler.py
-```
+`data/boards.json` is committed back to the repository by GitHub Actions. This is deliberate: it lets the next run reuse thousands of discovered company board slugs instead of starting over.
 
-For a safe test:
+A scheduled run refreshes discovery every 7 days. You can force a refresh from GitHub Actions → Run workflow → `force_ats_refresh = true`.
 
-```bash
-DRY_RUN=true python crawler.py
-```
+## Important limitation
 
-## Notes
+ATS vendors generally expose a public API **per company board**, not a universal "all companies" endpoint. The discovery layer therefore uses public web-archive indexes to find company board slugs and then validates them against the live ATS API. This can miss a brand-new company until its board appears in an archive. That is why the board cache and periodic refresh are important.
 
-This project intentionally prefers public APIs/feeds and search-discovered career/ATS URLs rather than scraping login-protected sites. Search discovery is a supplement; direct ATS/API data is preferred when available.
+## Source/attribution rules
 
-
-## ATS discovery diagnostic
-
-The crawler prints `ATS URLs discovered: N` and `ATS FOUND:` lines. If it says no search API key is configured, add `BRAVE_SEARCH_API_KEY` and/or `SERPER_API_KEY` to GitHub Actions secrets. API feeds and ATS discovery are separate pipelines.
+Before publishing third-party feed results on Remote4.me, follow each source's current terms and attribution requirements. For direct ATS results, the `Job URL` is the employer's own ATS/application page.
