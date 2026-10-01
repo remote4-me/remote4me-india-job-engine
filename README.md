@@ -1,102 +1,45 @@
-# Remote4.me India Remote / Hybrid Job Engine v4
+# Remote4.me Job Crawler V5
 
-A lightweight GitHub Actions crawler that does **not require Brave, Serper, Google Custom Search, or another paid search API**.
+India-first crawler for Customer Support, Customer Success, Technical Support, Product Support, Customer Experience, onboarding, implementation and related roles.
 
 ## What it does
 
-1. Uses free public job feeds: Himalayas, Jobicy and Remote OK.
-2. Automatically discovers public ATS company boards from the Internet Archive (Wayback Machine), with Common Crawl as a fallback.
-3. Validates discovered ATS board slugs against live public ATS endpoints.
-4. Crawls the live ATS directly for fresh jobs.
-5. Filters for India + Remote OR Hybrid + support/success/technical-support related roles.
-6. Writes new jobs to the existing Google Sheet.
-7. Caches discovered ATS boards in `data/boards.json` so later runs don't rediscover everything.
-8. Refreshes ATS discovery every 7 days by default.
-
-## ATS platforms
-
-The initial registry includes public-board endpoints for:
-
-- Greenhouse
-- Lever
-- Ashby
-- SmartRecruiters
-- Recruitee
-- Breezy HR
-- Teamtailor
-- Workable
-
-The primary three (Greenhouse, Lever, Ashby) are especially valuable because their published job APIs are public and keyless. Greenhouse documents unauthenticated GET job-board access; Lever documents its public postings endpoint; Ashby documents its public job-posting endpoint.
-
-## No paid search API
-
-The workflow does NOT use:
-
-- Brave Search API
-- Serper API
-- Google Custom Search API
-- JobsPipe
-- Remotive
-
-It uses the Internet Archive's public CDX index for ATS-board discovery and Common Crawl only as a fallback.
+- India only
+- Remote + Hybrid
+- Direct ATS/career links where available
+- Jobicy + Remote OK public feeds
+- Wellfound and Cutshort public India pages as discovery seeds
+- Internet Archive + Common Crawl ATS discovery
+- Direct ATS feeds for Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR and Personio
+- Company website -> Careers -> ATS discovery
+- Persistent company registry in the `COMPANIES` Google Sheet
+- Deduplicated jobs in `JOBS`
+- Runs daily at 7:00 PM IST
 
 ## GitHub secrets
 
-Only these are required for the Google Sheets output:
+Keep the existing secrets:
 
-- `GOOGLE_SERVICE_ACCOUNT_JSON`
-- `GOOGLE_SHEET_ID`
+- `GOOGLE_CREDENTIALS`
+- `SPREADSHEET_ID`
 
-No search API key is required.
+No Brave, Serper or JobsPipe key is required.
 
-## Google Sheet
+## Important source note
 
-The crawler uses the existing `JOBS` sheet if it exists. It does not need a new spreadsheet.
+The crawler intentionally does not log into or directly scrape LinkedIn/Indeed. Public ATS/career pages are preferred because they are closer to the employer's source of truth. Archive indexes can be used for discovery.
 
-Columns:
+Use each source according to its current terms and attribution requirements. In particular, some public job APIs have restrictions on redistribution/aggregation; the crawler currently uses Jobicy and Remote OK as public feed sources and does not wire the Himalayas API into this V5 aggregation pipeline.
 
-`Added | Job Title | Company | Location | Work Type | Posted | Job URL | Source | Score | Matched Keywords`
 
-## Filters
+## Startup Jobs API
 
-Accepted:
+This version optionally uses the public Startup Jobs REST API for additional India Remote + Hybrid support jobs. The API key is **not stored in the repository**. Add a GitHub Actions secret named `STARTUP_JOBS_API_KEY`.
 
-- India
-- Remote
-- Hybrid
-- customer support / customer service
-- customer success
-- customer experience
-- customer operations
-- customer onboarding / implementation
-- customer adoption / retention / enablement
-- technical support
-- product support
-- application / software / SaaS support
-- IT support / helpdesk / service desk
-- L1 / L2 support
-- chat / email / phone support
-- client / member / user support or success
-- support operations / quality / training / knowledge
-- technical account / customer solutions where the role is support-oriented
+The free API documents a 20 requests/minute limit and a 14-day listing window. The crawler paginates the India Remote and India Hybrid streams and then applies the crawler's stricter 7-day freshness and support-role filters. Startup Jobs also requires attribution and a dofollow link back to its job URL; the crawler keeps the Startup Jobs listing URL for these records.
 
-Rejected:
+Because the API key was pasted into chat, regenerate/revoke that key and store the replacement only in GitHub Secrets.
 
-- USA-only / other-country-only jobs
-- office-only / on-site-only jobs
-- old jobs outside the 7-day window when a usable posting date exists
-- unrelated roles that only mention a support keyword incidentally
+## India location coverage
 
-## ATS discovery cache
-
-`data/boards.json` is committed back to the repository by GitHub Actions. This is deliberate: it lets the next run reuse thousands of discovered company board slugs instead of starting over.
-
-A scheduled run refreshes discovery every 7 days. You can force a refresh from GitHub Actions → Run workflow → `force_ats_refresh = true`.
-
-## Important limitation
-
-ATS vendors generally expose a public API **per company board**, not a universal "all companies" endpoint. The discovery layer therefore uses public web-archive indexes to find company board slugs and then validates them against the live ATS API. This can miss a brand-new company until its board appears in an archive. That is why the board cache and periodic refresh are important.
-
-## Source/attribution rules
-
-Before publishing third-party feed results on Remote4.me, follow each source's current terms and attribution requirements. For direct ATS results, the `Job URL` is the employer's own ATS/application page.
+The India location dictionary has been expanded substantially with state/UT names, major metros, tier-2/tier-3 cities, district headquarters and common city aliases. This improves India detection on ATS feeds where the source gives only a city/state string.
