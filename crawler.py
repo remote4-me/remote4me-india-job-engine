@@ -61,6 +61,20 @@ def india_status(text):
     t = norm(text)
     return any(x in t for x in KW["india_terms"])
 
+def india_location_status(location, title="", description=""):
+    # Prefer the structured location field. Do not treat a random "India" mention
+    # buried in a description as proof that a job is India-eligible.
+    loc = norm(location)
+    if loc:
+        if any(x in loc for x in KW["india_terms"]):
+            return True
+        # Explicit worldwide/anywhere language is not India-specific unless India is also named.
+        if any(x in loc for x in ["worldwide","anywhere","global","international"]):
+            return any(x in norm(" ".join([title, description[:3000]])) for x in KW["india_terms"])
+        return False
+    # If the source has no location, require an explicit India signal in title/description.
+    return india_status(" ".join([title, description[:5000]]))
+
 def role_score(title, description=""):
     t = norm(title)
     d = norm(description)[:15000]
@@ -87,7 +101,7 @@ def role_score(title, description=""):
 def accept_job(title, location="", description="", url="", date_text=""):
     text = " ".join([title, location, description])
     score, matched = role_score(title, description)
-    india = india_status(text)
+    india = india_location_status(location, title, description)
     remote = remote_status(text)
     fresh = age_ok(date_text)
     # Worldwide jobs are not automatically India eligible unless explicitly stated.
@@ -153,7 +167,7 @@ def api_remoteok():
         title=j.get("position") or j.get("title")
         desc=j.get("description","")
         loc=j.get("location") or ""
-        tags=" ".join(j.get("tags") or [])
+        tags=" ".join(str(x) for x in (j.get("tags") or []) if x)
         rr=row(title,j.get("company"),loc,j.get("date"),j.get("url"),"Remote OK",desc+" "+tags)
         if rr: out.append(rr)
     return out
@@ -269,42 +283,89 @@ def discover_ats():
         time.sleep(.1)
     return boards
 
-def parse_generic_ats_page(url, source):
-    # Lightweight fallback for ATS pages discovered by search.
-    r=get(url)
-    if not r: return []
-    soup=BeautifulSoup(r.text,"html.parser")
-    text=clean(soup.get_text(" ",strip=True))
-    title=clean(soup.title.get_text()) if soup.title else ""
-    # Search-page parsing is intentionally conservative: only emit if the page itself
-    # looks like a single job and has an apply/job link.
-    links=[]
-    for a in soup.find_all("a",href=True):
-        href=a["href"]
-        if href.startswith("/"):
-            href=urlparse(url)._replace(path=href,query="",fragment="").geturl()
-        if href.startswith("http"):
-            links.append((clean(a.get_text(" ",strip=True)),href))
-    candidates=[]
-    for anchor,href in links:
-        if any(k in norm(anchor) for k in ["apply","apply now","view job","job details"]):
-            candidates.append(href)
-    if not candidates:
-        candidates=[url]
-    for u in candidates[:5]:
-        # Use page text as evidence; title fallback comes from page title.
-        rr=row(title.split("|")[0], "", text[:400], "", u, source, text[:12000])
-        if rr: return [rr]
-    return []
+def company_from_ats_url(url):
+    p=urlparse(url)
+    host=norm(p.netloc)
+    parts=[x for x in p.path.split("/") if x]
+    # Common ATS URL shapes:
+    # greenhouse: /company/jobs/123/title
+    # lever: /company/jobid/title
+    # ashby: /company/jobid/title
+    # workable: /company/j/123/title
+    # smartrecruiters: /Company/job/123-title
+    if "greenhouse" in host and parts:
+        return parts[0].replace("-"," ").title()
+    if host.endswith("jobs.lever.co") and parts:
+        return parts[0].replace("-"," ").title()
+    if host.endswith("jobs.ashbyhq.com") and parts:
+        return parts[0].replace("-"," ").title()
+    if "apply.workable.com" in host and parts:
+        return parts[0].replace("-"," ").title()
+    if "jobs.smartrecruiters.com" in host and parts:
+        return parts[0].replace("-"," ").title()
+    if "teamtailor" in host:
+        sub=host.split(".")[0]
+        return sub.replace("-"," ").title()
+    if "recruitee" in host:
+        sub=host.split(".")[0]
+        return sub.replace("-"," ").title()
+    return ""
+
+def title_from_search_result(title, url):
+    t=clean(title)
+    # Remove common ATS suffixes.
+    t=re.sub(r"\s*[\|\-]\s*(Greenhouse|Lever|Ashby|Workable|SmartRecruiters).*$","",t,flags=re.I)
+    return t[:220]
+
+def ats_result_to_job(result, ats_name, ats_type, query):
+    url=clean(result.get("url"))
+    if not url: return None
+    title=title_from_search_result(result.get("title",""),url)
+    snippet=clean(result.get("description",""))
+    company=company_from_ats_url(url)
+
+    # Search query is discovery evidence, not location evidence by itself.
+    evidence=" ".join([title,snippet])
+    if not any(x in norm(evidence) for x in KW["india_terms"]):
+        # Search engines often omit location from snippets. Because this was an
+        # ATS-specific India query, allow the result only when the query itself
+        # explicitly targeted India + remote/hybrid.
+        q=norm(query)
+        targeted=("india" in q and ("remote" in q or "hybrid" in q))
+        if not targeted:
+            return None
+
+    # Use a neutral India/remote marker only for scoring; actual source URL is preserved.
+    location="India"
+    rr=row(title, company, location, "", url, ats_name, snippet)
+    if rr:
+        return rr
+    return None
 
 def discover_from_search():
+    if not os.getenv("BRAVE_SEARCH_API_KEY","").strip() and not os.getenv("SERPER_API_KEY","").strip():
+        print("ATS discovery: no BRAVE_SEARCH_API_KEY or SERPER_API_KEY configured")
+        return []
     out=[]
-    boards=discover_ats()
-    for url,(name,typ,_) in boards.items():
-        # We intentionally don't aggressively crawl unknown ATS pages.
-        # Known direct job URLs discovered by search are still checked.
-        if any(k in url for k in ["greenhouse","lever","ashby","workable","smartrecruiters","recruitee","teamtailor"]):
-            out.extend(parse_generic_ats_page(url,name))
+    boards={}
+    queries=discovery_queries()
+    for q in queries:
+        results=search_brave(q)+search_serper(q)
+        for x in results:
+            u=clean(x.get("url",""))
+            name,typ=detect_ats(u)
+            if not typ:
+                continue
+            boards[u]=(name,typ,q,x)
+            rr=ats_result_to_job(x,name,typ,q)
+            if rr:
+                out.append(rr)
+        time.sleep(.05)
+
+    # Keep a compact diagnostic in logs.
+    print(f"ATS URLs discovered: {len(boards)}")
+    for u,(name,typ,_,_) in list(boards.items())[:20]:
+        print(f"ATS FOUND: {name} -> {u}")
     return out
 
 def sheet_client():

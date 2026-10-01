@@ -70,3 +70,8 @@ DRY_RUN=true python crawler.py
 ## Notes
 
 This project intentionally prefers public APIs/feeds and search-discovered career/ATS URLs rather than scraping login-protected sites. Search discovery is a supplement; direct ATS/API data is preferred when available.
+
+
+## ATS discovery diagnostic
+
+The crawler prints `ATS URLs discovered: N` and `ATS FOUND:` lines. If it says no search API key is configured, add `BRAVE_SEARCH_API_KEY` and/or `SERPER_API_KEY` to GitHub Actions secrets. API feeds and ATS discovery are separate pipelines.
