@@ -2,31 +2,36 @@ name: Remote4.me India Remote Job Engine
 
 on:
   workflow_dispatch:
+    inputs:
+      force_ats_refresh:
+        description: 'Refresh ATS company/board discovery now'
+        required: false
+        default: 'false'
   schedule:
-    # 7:00 PM IST = 13:30 UTC
-    - cron: "30 13 * * *"
+    - cron: "30 13 * * *"  # 7:00 PM IST
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: remote4me-india-remote-engine
+  group: remote4me-india-job-engine
   cancel-in-progress: false
 
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
+          cache: pip
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -35,11 +40,18 @@ jobs:
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
-          JOBSPIPE_API_KEY: ${{ secrets.JOBSPIPE_API_KEY }}
           JOB_MAX_AGE_DAYS: "7"
-          MAX_DISCOVERY_QUERIES: "120"
-          MAX_SEARCH_RESULTS: "10"
-          DRY_RUN: "false"
+          ATS_REFRESH_DAYS: "7"
+          ATS_WORKERS: "8"
+          WAYBACK_LIMIT: "50000"
+          MAX_VALIDATION_PER_PLATFORM: "6000"
+          FORCE_ATS_REFRESH: ${{ github.event.inputs.force_ats_refresh || 'false' }}
         run: python crawler.py
+
+      - name: Persist ATS board cache
+        run: |
+          git config user.name "remote4me-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/boards.json data/boards_meta.json
+          git diff --cached --quiet || git commit -m "Update ATS board cache"
+          git push || true
