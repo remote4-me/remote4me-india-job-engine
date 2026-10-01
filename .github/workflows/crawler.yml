@@ -1,57 +1,49 @@
-name: Remote4.me India Remote Job Engine
+name: Remote4.me India Job Crawler
 
 on:
   workflow_dispatch:
-    inputs:
-      force_ats_refresh:
-        description: 'Refresh ATS company/board discovery now'
-        required: false
-        default: 'false'
+
   schedule:
-    - cron: "30 13 * * *"  # 7:00 PM IST
+    # 7:00 PM India Standard Time (IST)
+    # 19:00 IST = 13:30 UTC
+    - cron: "30 13 * * *"
 
 permissions:
-  contents: write
-
-concurrency:
-  group: remote4me-india-job-engine
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  discover:
+  crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
+    timeout-minutes: 45
 
-      - name: Setup Python
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
+          cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run crawler
-        env:
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          JOB_MAX_AGE_DAYS: "7"
-          ATS_REFRESH_DAYS: "7"
-          ATS_WORKERS: "8"
-          WAYBACK_LIMIT: "50000"
-          MAX_VALIDATION_PER_PLATFORM: "6000"
-          FORCE_ATS_REFRESH: ${{ github.event.inputs.force_ats_refresh || 'false' }}
-        run: python crawler.py
-
-      - name: Persist ATS board cache
         run: |
-          git config user.name "remote4me-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/boards.json data/boards_meta.json
-          git diff --cached --quiet || git commit -m "Update ATS board cache"
-          git push || true
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Remote4.me crawler
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
+          JOB_MAX_AGE_DAYS: "7"
+          ATS_WORKERS: "18"
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python crawler.py
+
+      - name: Show completion message
+        if: success()
+        run: |
+          echo "Remote4.me crawler completed successfully."
+          echo "Scheduled time: 7:00 PM IST."
