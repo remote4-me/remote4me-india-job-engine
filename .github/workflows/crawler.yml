@@ -1,0 +1,45 @@
+name: Remote4.me India Remote Job Engine
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 7:00 PM IST = 13:30 UTC
+    - cron: "30 13 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: remote4me-india-remote-engine
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run crawler
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          JOBSPIPE_API_KEY: ${{ secrets.JOBSPIPE_API_KEY }}
+          JOB_MAX_AGE_DAYS: "7"
+          MAX_DISCOVERY_QUERIES: "120"
+          MAX_SEARCH_RESULTS: "10"
+          DRY_RUN: "false"
+        run: python crawler.py
