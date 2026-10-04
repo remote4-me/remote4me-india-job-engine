@@ -1,4 +1,4 @@
-# Remote4.me India Job Crawler V7
+# Remote4.me India Job Crawler V8
 
 India-first public job discovery crawler for Remote4.me. It keeps only Customer Support, Customer Success, Technical Support, Product Support and closely related roles that are explicitly India + Remote/Hybrid, with a 7-day freshness window.
 

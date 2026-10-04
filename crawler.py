@@ -76,7 +76,7 @@ MAX_CUTSHORT_PAGES_PER_ROLE = 5
 MAX_EXTERNAL_JOB_PAGES = 180
 
 USER_AGENT = (
-    "Remote4.me Job Crawler/7.0 "
+    "Remote4.me Job Crawler/8.0 "
     "(public job discovery; contact via remote4.me)"
 )
 
@@ -1770,7 +1770,7 @@ def discover_archive_urls(pattern, limit=ARCHIVE_CANDIDATE_CAP):
 
 
 def discover_ats_boards_from_archives():
-    candidates = {ats: set() for ats in FETCHERS}
+    candidates = {ats: set() for ats in ARCHIVE_DOMAINS}
     for ats, domains in ARCHIVE_DOMAINS.items():
         for domain in domains:
             pattern = domain
@@ -1788,7 +1788,7 @@ def discover_ats_boards_from_archives():
                 slug = extract_ats_slug(ats, u)
                 if slug:
                     candidates[ats].add(slug)
-            print(f"ARCHIVE {ats}: {len(candidates[ats])} candidates")
+            print(f"ARCHIVE {ats}: {len(candidates.get(ats, set()))} candidates")
     return candidates
 
 
@@ -2160,6 +2160,12 @@ def validate_archive_candidates(candidates):
 
     tasks = []
     for ats, slugs in candidates.items():
+        # Some archive-only ATS domains (e.g. Workday/iCIMS/Taleo) do not
+        # have a normalized public fetcher yet. Discover them for visibility,
+        # but do not send them into the normalized ATS validator. They are
+        # handled through company career-page discovery instead.
+        if ats not in FETCHERS:
+            continue
         for slug in sorted(slugs, key=str.lower)[:MAX_NEW_VALIDATIONS_PER_ATS]:
             tasks.append((ats, slug))
 
@@ -2374,7 +2380,7 @@ def get_ws(spreadsheet, name, rows=2000, cols=12):
 def ensure_headers(ws, headers):
     current = ws.row_values(1)
     if current[:len(headers)] != headers:
-        ws.update("A1", [headers])
+        ws.update([headers], "A1")
 
 
 def load_job_keys(ws):
@@ -2486,7 +2492,7 @@ def upsert_companies(ws, records):
             additions.append(values)
 
     for rownum, values in updates.items():
-        ws.update(f"A{rownum}", [values])
+        ws.update([values], f"A{rownum}")
 
     if additions:
         ws.append_rows(additions, value_input_option="RAW")
@@ -2585,7 +2591,7 @@ def collect_direct_external_jobs(urls, source_name):
 def main():
     started = datetime.now(timezone.utc)
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V7 — INDIA FIRST")
+    print("REMOTE4.ME JOB CRAWLER V8 — INDIA FIRST")
     print("================================================")
     print(f"Started UTC: {started.isoformat()}")
     print("No Brave / Serper / JobsPipe required")
