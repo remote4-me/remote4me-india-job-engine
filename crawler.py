@@ -5,6 +5,7 @@ import time
 import hashlib
 import argparse
 import threading
+import warnings
 from pathlib import Path
 from collections import Counter, defaultdict
 from urllib import robotparser
@@ -12,15 +13,22 @@ from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse, urljoin, quote, unquote
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 import requests
 import gspread
 from google.oauth2.service_account import Credentials
 from bs4 import BeautifulSoup
+try:
+    from bs4 import XMLParsedAsHTMLWarning
+    warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+except Exception:
+    pass
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V11
+# REMOTE4.ME JOB CRAWLER V13.7
 # INDIA-FIRST / NO PAID SEARCH API
 # ============================================================
 #
@@ -98,9 +106,6 @@ GOOGLE_JOBS_USAGE_FILE = os.environ.get("GOOGLE_JOBS_USAGE_FILE", "data/google_j
 _GOOGLE_JOBS_USAGE_LOCK = threading.Lock()
 EXTERNAL_FETCH_FALLBACK_ENABLED = os.environ.get("EXTERNAL_FETCH_FALLBACK_ENABLED", "1").lower() not in {"0", "false", "no"}
 EXTERNAL_FETCH_MAX_CALLS = max(0, int(os.environ.get("EXTERNAL_FETCH_MAX_CALLS", "12")))
-# Per-provider safety caps. These apply only to paid/credit-based fallback
-# fetchers and prevent one bad batch of career pages from consuming a full
-# monthly allowance. Format: Provider=count,Provider=count
 _EXTERNAL_PROVIDER_CAPS_RAW = os.environ.get(
     "EXTERNAL_FETCH_PROVIDER_CAPS",
     "Jina=2,ScrapingAnt=2,BrightData=1,Firecrawl=2,ScraperAPI=1,Diffbot=1",
@@ -133,7 +138,7 @@ CAREER_BROWSER_MAX_CALLS = max(0, int(os.environ.get("CAREER_BROWSER_MAX_CALLS",
 CAREER_PREFLIGHT_ENABLED = os.environ.get("CAREER_PREFLIGHT_ENABLED", "1").lower() not in {"0", "false", "no"}
 CAREER_PREFLIGHT_WORKERS = max(4, int(os.environ.get("CAREER_PREFLIGHT_WORKERS", "36")))
 
-MAX_JOB_AGE_DAYS = int(os.environ.get("JOB_MAX_AGE_DAYS", "7"))
+MAX_JOB_AGE_DAYS = int(os.environ.get("JOB_MAX_AGE_DAYS", "30"))
 CONCURRENCY = int(os.environ.get("ATS_WORKERS", "18"))
 REQUEST_TIMEOUT = 18
 HTML_TIMEOUT = 18
@@ -3376,21 +3381,13 @@ INDIA_REGEX = re.compile(
 # an unlisted small town is not silently rejected.
 
 def v11_classify_india(location="", country_code="", address_country="", description="", workplace=""):
-    vals = [clean_text(location), clean_text(country_code), clean_text(address_country)]
-    if any(re.search(r"^(?:in|ind|india)$", x, re.I) for x in vals if x):
-        return True
-    if any(INDIA_REGEX.search(x) for x in vals if x):
-        return True
-    text = clean_text(description)[:50000]
-    if INDIA_COUNTRY_RE.search(text) and workplace in {"Remote", "Hybrid"}:
-        return True
-    return bool(INDIA_REGEX.search(text)) and workplace in {"Remote", "Hybrid"}
-
+    return bool(v11_india_eligibility(location, country_code, address_country, description, workplace))
 
 def v11_allowed_india(location="", country_code="", address_country="", description="", workplace=""):
-    return workplace in {"Remote", "Hybrid"} and v11_classify_india(location, country_code, address_country, description, workplace)
+    ok, eligibility = v11_accepts_location(location, country_code, address_country, description, workplace)
+    return ok and eligibility in {"India-specific", "India-inferred"}
 
-# Override only the location decision; retain the tested workplace classifier.
+# These names are compatibility aliases. The canonical policy is defined below.
 classify_india = v11_classify_india
 allowed_india = v11_allowed_india
 
@@ -4374,13 +4371,10 @@ def should_run_v11_archive():
 
 
 # ============================================================
-# REMOTE4.ME V11 — SHARDED HIGH-COVERAGE ORCHESTRATOR
+# REMOTE4.ME V13.7 — SHARDED HIGH-COVERAGE ORCHESTRATOR
 # ============================================================
 
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-
-V11_VERSION = "13.6"
+V11_VERSION = "13.7-final"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -4609,18 +4603,35 @@ WORLDWIDE_RE = re.compile(
     r"\b(?:worldwide|world[- ]wide|anywhere|work from anywhere|remote anywhere|"
     r"all countries|international remote)\b", re.I
 )
-
-# Description evidence is deliberately weak. It can produce India-inferred,
-# but never India-specific. This prevents text such as "our team is in India"
-# from turning a US-only job into an Indian job.
+NON_INDIA_LOCATION_RE = re.compile(
+    r"\b(?:united states|u\.s\.a?\.?|usa|canada|mexico|united kingdom|uk|"
+    r"england|scotland|wales|ireland|australia|new zealand|singapore|germany|france|"
+    r"netherlands|spain|italy|switzerland|sweden|norway|denmark|finland|poland|"
+    r"austria|belgium|portugal|romania|brazil|argentina|chile|colombia|peru|"
+    r"japan|south korea|china|hong kong|taiwan|malaysia|thailand|vietnam|philippines|"
+    r"indonesia|israel|uae|united arab emirates|saudi arabia|qatar|south africa|"
+    r"egypt|kenya|nigeria|dallas|phoenix|scottsdale|new york|san francisco|seattle|"
+    r"austin|chicago|boston|denver|atlanta|houston|miami|los angeles|san diego|"
+    r"washington dc|washington,?\s*d\.?c\.?|toronto|vancouver|london|manchester|"
+    r"sydney|melbourne|berlin|paris)\b",
+    re.I,
+)
+STRONG_INDIA_TEXT_RE = re.compile(
+    r"(?:\bremote(?:ly)?\s+(?:from|in)\s+india\b|"
+    r"\bindia[- ]based\b|\bbased\s+in\s+india\b|"
+    r"\bindia[- ]only\b|\bonly\s+(?:in|for)\s+india\b|"
+    r"\bopen\s+to\s+(?:candidates\s+)?in\s+india\b|"
+    r"\bcandidates\s+(?:must|should)\s+be\s+(?:based\s+)?in\s+india\b|"
+    r"\beligible\s+to\s+work\s+in\s+india\b|"
+    r"\bwork\s+from\s+india\b|"
+    r"\bindia\s*[-–—,:()]?\s*(?:remote|hybrid)\b|"
+    r"\bremote\s*[-–—,:()]?\s*india\b)",
+    re.I,
+)
 DESC_INDIA = re.compile(
     r"(?:open to|hiring (?:in|from)|based in|located in|residing in|"
     r"candidates (?:in|from)|eligible (?:in|to work in)|remote (?:in|within|from))"
     r"\s+(?:\w+\s+){0,3}?india\b", re.I
-)
-NON_INDIA_LOCATION_RE = re.compile(
-    r"\b(?:united states|u\.s\.a?\.?|usa|canada|mexico|united kingdom|uk|england|scotland|wales|ireland|australia|new zealand|singapore|germany|france|netherlands|spain|italy|switzerland|sweden|dallas|phoenix|scottsdale|new york|san francisco|seattle|austin|chicago|boston|denver|atlanta|houston|miami|los angeles|san diego|washington dc|washington,?\s*d\.c\.|toronto|vancouver|london|manchester|sydney|melbourne|berlin|paris)\b",
-    re.I,
 )
 DESC_RESTRICT = re.compile(
     r"\b(?:us|u\.s\.|usa|united states|uk|canada|eu|europe)\s*"
@@ -4629,90 +4640,90 @@ DESC_RESTRICT = re.compile(
     r"(?:us|united states|uk|canada|eu)\b", re.I
 )
 
-INDIA_ELIGIBILITY_COLUMNS = ["India Eligibility"]
+
+def _workplace_allowed(workplace):
+    return clean_text(workplace).strip().lower() in {"remote", "hybrid"}
+
+
+def _explicit_india_field(*values):
+    for value in values:
+        v = clean_text(value)
+        if not v:
+            continue
+        if re.fullmatch(r"(?:in|ind|india)", v, re.I):
+            return True
+        if INDIA_COUNTRY_RE.search(v):
+            return True
+        # A concrete foreign country/location in the same field is not India evidence.
+        if NON_INDIA_LOCATION_RE.search(v) and not re.search(r"\bindia\b", v, re.I):
+            continue
+        if re.search(r"\bindia\b", v, re.I) or INDIA_STATE_REGEX.search(v):
+            return True
+        city_match = INDIA_CITY_REGEX.search(v)
+        if city_match:
+            city = city_match.group(0).lower()
+            if city not in AMBIGUOUS_INDIA_CITY_TERMS:
+                return True
+            if INDIA_STATE_REGEX.search(v) or re.search(r"\bindia\b", v, re.I):
+                return True
+    return False
 
 
 def v11_india_eligibility(location="", country_code="", address_country="", description="", workplace=""):
-    """Return a conservative eligibility tier for an India-focused job.
-
-    Structured country evidence wins. Location text is next. Description text is
-    only allowed to create India-inferred. APAC/worldwide is evaluated against
-    the LOCATION field only, never the full description.
-    """
-    if workplace not in {"Remote", "Hybrid"}:
+    """Canonical India-only eligibility policy. APAC is accepted only when India is explicitly tied to the job."""
+    if not _workplace_allowed(workplace):
         return ""
 
-    code = clean_text(country_code).lower()
-    addr_country = clean_text(address_country).lower()
+    code = clean_text(country_code)
+    addr = clean_text(address_country)
     loc = clean_text(location)
     desc = clean_text(description)[:30000]
 
-    # 1) Structured country fields are strongest.
-    if code in {"in", "ind", "india"} or addr_country in {"in", "ind", "india"}:
+    # Structured country evidence is strongest.
+    if re.fullmatch(r"(?:in|ind|india)", code, re.I) or re.fullmatch(r"(?:in|ind|india)", addr, re.I):
         return "India-specific"
 
-    # 2) Explicit India in the location is strong evidence.
-    if re.search(r"\bindia\b", loc, re.I) or re.search(r"\bindian\b", loc, re.I):
+    # Explicit India/state/city in actual location or address fields.
+    if _explicit_india_field(loc, addr):
         return "India-specific"
 
-    # 3) Full Indian state names in location are strong evidence.
-    if INDIA_STATE_REGEX.search(loc):
+    # APAC alone is never enough. APAC + explicit India is accepted.
+    if APAC_RE.search(loc) and (re.search(r"\bindia\b", loc, re.I) or INDIA_STATE_REGEX.search(loc)):
+        return "India-specific"
+    if APAC_RE.search(loc) and STRONG_INDIA_TEXT_RE.search(desc):
         return "India-specific"
 
-    # 4) City evidence. Ambiguous city names require India/state context.
-    city_match = INDIA_CITY_REGEX.search(loc)
-    if city_match:
-        city = city_match.group(0).lower()
-        if city not in AMBIGUOUS_INDIA_CITY_TERMS:
-            return "India-specific"
-        if re.search(r"\bindia\b", loc, re.I) or INDIA_STATE_REGEX.search(loc):
-            return "India-specific"
-
-    # 5) Explicit India remote wording in location.
-    if INDIA_REMOTE_CONTEXT_RE.search(loc):
-        return "India-specific"
-
-    # A concrete foreign location must beat weak description text such as
-    # "our teams are in India". This blocks US-only jobs from being mislabeled
-    # India-inferred.
-    if NON_INDIA_LOCATION_RE.search(loc) and not (re.search(r"\bindia\b", loc, re.I) or INDIA_STATE_REGEX.search(loc)):
-        return ""
-
-    # 6) Description is weak evidence and never India-specific.
+    # Explicit India-remote wording in the description is useful but weaker.
     if DESC_RESTRICT.search(desc):
         return ""
-    if DESC_INDIA.search(desc):
+    if STRONG_INDIA_TEXT_RE.search(desc) or DESC_INDIA.search(desc):
         return "India-inferred"
 
-    # 7) Broader remote tiers use location only.
-    if workplace == "Remote" and APAC_RE.search(loc):
-        return "APAC"
-    if workplace == "Remote" and WORLDWIDE_RE.search(loc):
-        return "Worldwide remote"
+    # Never turn generic worldwide/global/APAC into India.
     return ""
 
 
 def v11_accepts_location(location="", country_code="", address_country="", description="", workplace=""):
-    eligibility = v11_india_eligibility(location, country_code, address_country, description, workplace)
-    if not eligibility:
+    if not _workplace_allowed(workplace):
         return False, ""
-    # Discovery can keep APAC/worldwide in the shard, but publication is kept
-    # India-safe by merge_direct_jobs unless explicitly enabled.
-    return True, eligibility
+
+    loc = clean_text(location)
+    # A concrete foreign location beats weak/description India wording.
+    if NON_INDIA_LOCATION_RE.search(loc) and not re.search(r"\bindia\b", loc, re.I) and not INDIA_STATE_REGEX.search(loc):
+        return False, ""
+    # Worldwide/global/anywhere is rejected unless the same location explicitly names India.
+    if WORLDWIDE_RE.search(loc) and not re.search(r"\bindia\b", loc, re.I):
+        return False, ""
+
+    eligibility = v11_india_eligibility(location, country_code, address_country, description, workplace)
+    return bool(eligibility), eligibility
 
 
 def v11_allowed_india(location="", country_code="", address_country="", description="", workplace=""):
     ok, eligibility = v11_accepts_location(location, country_code, address_country, description, workplace)
-    if not ok:
-        return False
-    if eligibility == "India-specific":
-        return True
-    if eligibility == "India-inferred":
-        return os.environ.get("ALLOW_INDIA_INFERRED", "1").lower() not in {"0", "false", "no"}
-    return os.environ.get("ALLOW_APAC_WORLDWIDE", "0").lower() not in {"0", "false", "no"}
+    return ok and eligibility in {"India-specific", "India-inferred"}
 
-# The older code calls these generic helpers. Point them to the single safe
-# implementation so there is only one eligibility policy in the crawler.
+# One canonical policy is used by every parser/fetcher.
 classify_india = v11_classify_india = lambda location="", country_code="", address_country="", description="", workplace="": bool(v11_india_eligibility(location, country_code, address_country, description, workplace))
 allowed_india = v11_allowed_india
 
@@ -4797,17 +4808,18 @@ def _host_semaphore(url):
     return None
 
 
-def get_json_status(url, params=None, method="GET", json_body=None, timeout=REQUEST_TIMEOUT):
+def get_json_status(url, params=None, method="GET", json_body=None, timeout=REQUEST_TIMEOUT, headers=None):
     """Status-aware JSON request used by board discovery/liveness and Workday."""
     last_status = "error"
+    extra_headers = headers or {}
     for attempt in range(4):
         sem = _host_semaphore(url)
         try:
             if sem: sem.acquire()
             if method.upper() == "POST":
-                r = SESSION.post(url, params=params, json=json_body, timeout=timeout)
+                r = SESSION.post(url, params=params, json=json_body, timeout=timeout, headers=extra_headers)
             else:
-                r = SESSION.get(url, params=params, timeout=timeout)
+                r = SESSION.get(url, params=params, timeout=timeout, headers=extra_headers)
             status = r.status_code
             if status == 200:
                 try:
@@ -4816,6 +4828,8 @@ def get_json_status(url, params=None, method="GET", json_body=None, timeout=REQU
                     return None, "bad_json", status
             if status == 404:
                 return None, "not_found", status
+            if status in {401, 403}:
+                return None, "forbidden", status
             if status == 429:
                 wait = min(12, float(r.headers.get("Retry-After", "2") or 2))
                 last_status = "rate_limited"
@@ -4916,59 +4930,148 @@ def workday_job_url(board, external_path):
 def fetch_workday_board(board, company_hint=""):
     if isinstance(board, str):
         parts = board.split("|", 2)
-        if len(parts) != 3: return []
+        if len(parts) != 3:
+            return []
         tenant, shard, site = parts
-        info = {"tenant":tenant,"shard":shard,"site":site,"locale":"","url":f"https://{tenant}.{shard}.myworkdayjobs.com/{site}"}
+        info = {
+            "tenant": tenant, "shard": shard, "site": site, "locale": "",
+            "url": f"https://{tenant}.{shard}.myworkdayjobs.com/{site}",
+            "key": f"{tenant}|{shard}|{site}",
+        }
     else:
-        info = board
+        info = dict(board)
+        info.setdefault("key", f"{info.get('tenant','')}|{info.get('shard','')}|{info.get('site','')}")
+
     api = f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/wday/cxs/{info['tenant']}/{info['site']}/jobs"
+    referer = info.get("url") or f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/{info['site']}"
+    headers = {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "Referer": referer,
+        "Origin": f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com",
+    }
+
     out, seen = [], set()
+    status_counts = Counter()
+    detail_failures = 0
+    api_ok = False
+    detail_calls = 0
+    max_detail_calls = max(20, int(os.environ.get("WORKDAY_MAX_DETAIL_CALLS_PER_BOARD", "80")))
+
     for kw in WD_KEYWORDS:
         offset = 0
-        for _ in range(V11_WORKDAY_MAX_PAGES_PER_KEYWORD):
-            data, status, _code = get_json_status(api, method="POST", timeout=25, json_body={
-                "appliedFacets": {}, "limit": 20, "offset": offset, "searchText": kw
-            })
-            if not isinstance(data, dict): break
+        for _ in range(max(1, V11_WORKDAY_MAX_PAGES_PER_KEYWORD)):
+            data, status, _code = get_json_status(
+                api, method="POST", timeout=25, headers=headers,
+                json_body={"appliedFacets": {}, "limit": 20, "offset": offset, "searchText": kw},
+            )
+            status_counts[status] += 1
+            if status == "ok":
+                api_ok = True
+            if not isinstance(data, dict):
+                break
+
             posts = data.get("jobPostings") or []
-            if not posts: break
-            for p in posts:
-                path = clean_text(p.get("externalPath"))
-                title = clean_text(p.get("title"))
+            if not posts:
+                break
+
+            for posting in posts:
+                if not isinstance(posting, dict):
+                    continue
+                path = _workday_text(posting.get("externalPath"))
+                title = _workday_text(posting.get("title"))
                 if not path or path in seen or not title_relevant(title):
                     continue
                 seen.add(path)
-                loc = clean_text(p.get("locationsText"))
+
+                loc = _workday_text(
+                    posting.get("locationsText") or posting.get("location") or posting.get("locations")
+                )
+                desc = _workday_text(posting.get("jobDescription"))
+                country_text = _workday_text(posting.get("country"))
+                workplace = _workday_text(posting.get("remoteType") or posting.get("workplaceType") or posting.get("workArrangement"))
                 detail = {}
-                if ("location" in loc.lower() and not INDIA_REGEX.search(loc)) or not loc:
+
+                # Workday list responses are often ambiguous. Spend detail calls only
+                # where they can improve India/workplace classification.
+                needs_detail = (
+                    not loc or not workplace or
+                    "location" in loc.lower() or "multiple" in loc.lower() or "various" in loc.lower()
+                )
+                if needs_detail and detail_calls < max_detail_calls:
+                    detail_calls += 1
                     detail_url = f"{api[:-5]}{path}"
-                    d, ds, _ = get_json_status(detail_url, timeout=25)
+                    d, ds, _ = get_json_status(
+                        detail_url, timeout=25,
+                        headers={"Accept": "application/json, text/plain, */*", "Referer": referer},
+                    )
                     if isinstance(d, dict):
                         detail = d.get("jobPostingInfo") or d
-                        loc = clean_text(detail.get("location") or loc)
-                desc = clean_text(detail.get("jobDescription") or p.get("jobDescription") or "")
-                country = detail.get("country") if isinstance(detail.get("country"), dict) else {}
-                country_text = clean_text(country.get("descriptor") if isinstance(country, dict) else country)
-                workplace = clean_text(detail.get("remoteType"))
-                workplace = "Remote" if workplace.lower() in {"remote","fully remote"} else ("Hybrid" if workplace.lower() == "hybrid" else workplace)
-                if workplace not in {"Remote", "Hybrid"}:
+                        loc = _workday_text(detail.get("location") or detail.get("locationsText") or detail.get("locations") or loc)
+                        country_text = _workday_text(detail.get("country") or country_text)
+                        desc = _workday_text(detail.get("jobDescription") or desc)
+                        workplace = _workday_text(
+                            detail.get("remoteType") or detail.get("workplaceType") or detail.get("workArrangement") or workplace
+                        )
+                    else:
+                        detail_failures += 1
+                elif needs_detail:
+                    detail_failures += 1
+
+                workplace_norm = workplace.lower().replace("_", " ").strip()
+                if workplace_norm in {"remote", "fully remote", "100% remote", "work from home"}:
+                    workplace = "Remote"
+                elif workplace_norm in {"hybrid", "partially remote", "remote hybrid"}:
+                    workplace = "Hybrid"
+                else:
                     workplace = classify_workplace(loc, structured=detail, description=desc)
+
                 ok, elig = v11_accepts_location(loc, "", country_text, desc, workplace)
-                if not ok: continue
-                posted = parse_date(detail.get("startDate") or p.get("startDate"))
+                if not ok:
+                    continue
+
+                posted = parse_date(_workday_text(detail.get("startDate") or posting.get("startDate")))
                 job_url = workday_job_url(info, path)
+                if not is_exact_job_url(job_url):
+                    continue
+
                 sc, matched = score_job(title, desc, loc)
                 out.append(_v11_add_meta({
-                    "title":title, "company":company_hint or humanize_slug(info["tenant"]), "location":loc or "India / Remote",
-                    "workplace":workplace, "posted_date":posted, "job_url":job_url,
-                    "source":"Workday", "score":sc, "matched":matched,
-                    "eligibility":elig, "board_key":info.get("key", "")
+                    "title": title,
+                    "company": company_hint or humanize_slug(info["tenant"]),
+                    "location": loc or "India / Remote",
+                    "workplace": workplace,
+                    "posted_date": posted,
+                    "job_url": job_url,
+                    "source": "Workday",
+                    "score": sc,
+                    "matched": matched,
+                    "eligibility": elig,
+                    "board_key": info.get("key", ""),
                 }))
-                if len(out) >= V11_WORKDAY_MAX_RESULTS_PER_BOARD: return out
+                if len(out) >= V11_WORKDAY_MAX_RESULTS_PER_BOARD:
+                    print(f"WORKDAY BOARD {info['key']}: accepted={len(out)} api_ok={api_ok} statuses={dict(status_counts)} detail_failures={detail_failures}")
+                    return out
+
             offset += 20
+
+    # Some Workday tenants reject CXS while the public page still exposes jobs.
+    # Fall back to the existing public career parser without spending paid credits.
+    if not out:
+        try:
+            fallback_jobs, _links = crawl_career_url_v10(
+                company_hint or humanize_slug(info["tenant"]),
+                info.get("url") or f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/{info['site']}",
+                source="Workday->Direct",
+                max_job_pages=max(2, V11_CAREER_PAGE_LIMIT),
+            )
+            out.extend(fallback_jobs)
+        except Exception as exc:
+            print(f"WORKDAY HTML FALLBACK {info['key']}: {type(exc).__name__}: {exc}")
+
+    print(f"WORKDAY BOARD {info['key']}: accepted={len(out)} api_ok={api_ok} statuses={dict(status_counts)} detail_failures={detail_failures}")
     return out
-
-
 
 
 def fetch_remotejobs_org():
@@ -6165,59 +6268,95 @@ def daily_crawl_careers():
 
 
 def feed_direct_only():
-    """Fetch public feeds quickly. Aggregators are discovery-only.
+    """Fetch public feeds quickly and split them into direct vs discovery queues.
 
-    Job Opportunities API is the exception because it exposes employer/ATS
-    apply URLs directly. Other aggregator URLs are written to DISCOVERY for
-    manual review instead of spending time trying to resolve hundreds of
-    aggregator pages during every run.
+    Aggregator URLs are intentionally NOT resolved here. Resolving hundreds of
+    aggregator pages is the slowest part of the old pipeline and caused good
+    discovery leads to disappear when an aggregator's page was JS-heavy.
+    Instead, those candidates go to the private DISCOVERY sheet for manual
+    review. Employer/ATS-direct sources continue straight to JOBS.
     """
-    feeds=[
-        ("Himalayas",fetch_himalayas),
-        ("Arbeitnow",fetch_arbeitnow),
-        ("Working Nomads",fetch_working_nomads),
-        ("We Work Remotely",fetch_wwr_rss),
-        ("Jobicy",fetch_jobicy),
-        ("Remote OK",fetch_remoteok),
-        ("Startup Jobs",fetch_startup_jobs),
-        ("Job Opportunities API",fetch_jobopportunitiesapi),
-        ("RemoteJobs.org",fetch_remotejobs_org),
-        ("Remote Landers",fetch_remote_landers),
-        ("Adzuna",fetch_adzuna),
-        ("Jooble",fetch_jooble),
+    feeds = [
+        ("Himalayas", fetch_himalayas),
+        ("Arbeitnow", fetch_arbeitnow),
+        ("Working Nomads", fetch_working_nomads),
+        ("We Work Remotely", fetch_wwr_rss),
+        ("Jobicy", fetch_jobicy),
+        ("Remote OK", fetch_remoteok),
+        ("Startup Jobs", fetch_startup_jobs),
+        ("Job Opportunities API", fetch_jobopportunitiesapi),
+        ("Remote Landers", fetch_remote_landers),
+        ("RemoteJobs.org", fetch_remotejobs_org),
+        ("Adzuna", fetch_adzuna),
+        ("Jooble", fetch_jooble),
     ]
-    direct=[]; discovery=[]; stats=[]
-    aggregator_sources={
-        "Himalayas","Arbeitnow","Working Nomads","We Work Remotely","Jobicy",
-        "Remote OK","Startup Jobs","RemoteJobs.org","Remote Landers","Adzuna","Jooble"
-    }
-    for name,fn in feeds:
-        if name in {"Adzuna","Jooble"} and ((name=="Adzuna" and not (ADZUNA_APP_ID and ADZUNA_APP_KEY)) or (name=="Jooble" and not JOOBLE_API_KEY)):
+    usable = []
+    for name, fn in feeds:
+        if name in {"Adzuna", "Jooble"} and (
+            (name == "Adzuna" and not (ADZUNA_APP_ID and ADZUNA_APP_KEY)) or
+            (name == "Jooble" and not JOOBLE_API_KEY)
+        ):
             continue
+        usable.append((name, fn))
+
+    raw = []
+    stats = []
+    # Public feeds are independent, so run them concurrently to keep the
+    # feeds shard fast. Startup Jobs rate-limits itself internally.
+    def run_one(item):
+        name, fn = item
+        started = time.monotonic()
         try:
-            rows=fn() or []
-            if name == "Job Opportunities API":
-                direct.extend(rows)
-            else:
-                for j in rows:
-                    x=dict(j)
-                    x["discovery_url"]=x.get("job_url","")
-                    x["seed_type"]="Aggregator Job"
-                    x["crawl_seed"]="No"
-                    discovery.append(x)
-            stats.append({"source":name,"accepted_raw":len(rows),"direct":len(rows) if name=="Job Opportunities API" else 0,"discovery":len(rows) if name!="Job Opportunities API" else 0,"error":""})
-            print(f"FEED {name}: raw={len(rows)} direct={len(rows) if name=="Job Opportunities API" else 0} discovery={len(rows) if name in aggregator_sources else 0}")
+            found = fn() or []
+            return name, found, round(time.monotonic() - started, 2), ""
         except Exception as exc:
-            stats.append({"source":name,"accepted_raw":0,"direct":0,"discovery":0,"error":f"{type(exc).__name__}: {exc}"})
-            print(f"FEED {name}: ERROR {type(exc).__name__}: {exc}")
-    # Bound the discovery sheet so a noisy feed never creates an enormous write.
-    discovery=sorted(
-        discovery,
-        key=lambda x:(x.get("score",0),x.get("posted_date","")),
+            return name, [], round(time.monotonic() - started, 2), f"{type(exc).__name__}: {exc}"
+
+    with ThreadPoolExecutor(max_workers=min(8, max(1, len(usable)))) as ex:
+        futures = [ex.submit(run_one, item) for item in usable]
+        results = [f.result() for f in futures]
+
+    for name, found, elapsed, error in sorted(results, key=lambda x: x[0].lower()):
+        stats.append({"source": name, "accepted_raw": len(found), "seconds": elapsed, "error": error})
+        raw.extend(found)
+        if error:
+            print(f"FEED {name}: ERROR {error}")
+        else:
+            print(f"FEED {name}: {len(found)} candidates in {elapsed}s")
+
+    direct = []
+    discovery = []
+    for j in raw:
+        u = normalize_url(j.get("job_url", ""))
+        if not u:
+            continue
+        host = urlparse(u).netloc.lower()
+        if j.get("direct") or (host and not is_aggregator_host(host)):
+            x = dict(j)
+            x["job_url"] = u
+            x["direct"] = True
+            direct.append(x)
+        else:
+            x = dict(j)
+            x["discovery_url"] = u
+            discovery.append(x)
+
+    # Keep the discovery queue broad but bounded so a single noisy source
+    # cannot dominate the sheet. Higher-score, newer, and direct-company-rich
+    # records win the front of the queue.
+    discovery.sort(
+        key=lambda j: (
+            j.get("score", 0),
+            bool(j.get("company_website")),
+            j.get("posted_date", "") or "",
+        ),
         reverse=True,
-    )[:FEED_DISCOVERY_MAX_ROWS]
-    print(f"FEEDS: direct={len(direct)} discovery={len(discovery)}")
-    return direct,discovery,stats
+    )
+    discovery = discovery[:FEED_DISCOVERY_MAX_ROWS]
+
+    print(f"FEEDS DIRECT CANDIDATES: {len(direct)}")
+    print(f"FEEDS DISCOVERY CANDIDATES: {len(discovery)}")
+    return direct, discovery, stats
 
 
 # --------------------------
@@ -6331,9 +6470,9 @@ def merge_direct_jobs(jobs):
         if workplace not in {"Remote","Hybrid"}:
             continue
         elig=j.get("eligibility") or v11_india_eligibility(j.get("location",""),"",j.get("location",""),j.get("description",""),workplace)
-        # Remote4.me is India-first. APAC/worldwide can be collected only when
-        # explicitly enabled for publication; otherwise they stay out of JOBS.
-        if elig not in {"India-specific","India-inferred"} and os.environ.get("PUBLISH_APAC_WORLDWIDE","0").lower() not in {"1","true","yes"}:
+        # Hard publication gate: Remote4.me JOBS is India-only.
+        # APAC/worldwide records may remain in discovery data, but never enter JOBS.
+        if elig not in {"India-specific", "India-inferred"}:
             rejected_location += 1
             continue
         if is_suspicious_job(j):
@@ -6516,13 +6655,12 @@ def append_discovery_v11(ws, jobs):
             "Company Website": j.get("company_website",""), "Review Status": "Pending",
             "First Seen": today, "Last Seen": today,
             "Seed Type": j.get("seed_type", ""), "Crawl Seed": j.get("crawl_seed", "No"),
-            "Seed Type": j.get("seed_type", ""), "Crawl Seed": j.get("crawl_seed", "No"),
         }
         if u in existing:
             rno=existing[u]
             # Preserve any manual review status and manual edits. Only refresh
             # metadata fields that the crawler owns.
-            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen","Seed Type","Crawl Seed"]:
+            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen"]:
                 if h not in idx: continue
                 col=idx[h]+1
                 updates.append({"range":f"{__import__('gspread').utils.rowcol_to_a1(rno,col)}","values":[[values[h]]]})
@@ -6744,7 +6882,7 @@ def main_v11():
     print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
     print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
     print("External fallbacks: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none")
-    print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run | provider caps={_EXTERNAL_PROVIDER_CAPS}")
+    print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
     print("Search discovery: " + ", ".join([x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]) or "none")
     print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
     if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
