@@ -4,6 +4,7 @@ import json
 import time
 import hashlib
 from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse, urljoin, quote, unquote
 
@@ -23,7 +24,7 @@ from bs4 import BeautifulSoup
 #   Customer Success, Technical Support and closely related jobs.
 #
 # Discovery strategy:
-#   1) Public job APIs (Jobicy + Remote OK)
+#   1) Public job APIs/feeds (Himalayas + Remotive + Arbeitnow + Working Nomads + Jobicy + Remote OK + Startup Jobs + WWR RSS)
 #   2) Wellfound public India role pages -> company/job seeds
 #   3) Cutshort public India role pages -> company/job seeds
 #   4) Internet Archive + Common Crawl -> ATS board discovery
@@ -56,6 +57,8 @@ SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID", "")
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS", "")
 STARTUP_JOBS_API_KEY = os.environ.get("STARTUP_JOBS_API_KEY", "").strip()
 STARTUP_JOBS_MAX_PAGES = int(os.environ.get("STARTUP_JOBS_MAX_PAGES", "9"))
+HIMALAYAS_MAX_PAGES = int(os.environ.get("HIMALAYAS_MAX_PAGES", "3"))
+ARBEITNOW_MAX_PAGES = int(os.environ.get("ARBEITNOW_MAX_PAGES", "5"))
 
 MAX_JOB_AGE_DAYS = int(os.environ.get("JOB_MAX_AGE_DAYS", "7"))
 CONCURRENCY = int(os.environ.get("ATS_WORKERS", "18"))
@@ -73,7 +76,7 @@ MAX_CUTSHORT_PAGES_PER_ROLE = 5
 MAX_EXTERNAL_JOB_PAGES = 180
 
 USER_AGENT = (
-    "Remote4.me Job Crawler/5.0 "
+    "Remote4.me Job Crawler/7.0 "
     "(public job discovery; contact via remote4.me)"
 )
 
@@ -524,13 +527,31 @@ def humanize_slug(slug):
 
 
 def parse_date(value):
-    if not value:
+    if value is None or value == "":
         return ""
+
+    # Unix seconds / milliseconds (used by some public job APIs).
+    if isinstance(value, (int, float)):
+        try:
+            ts = float(value)
+            if ts > 10_000_000_000:
+                ts /= 1000.0
+            return datetime.fromtimestamp(ts, tz=timezone.utc).date().isoformat()
+        except Exception:
+            pass
+
     s = str(value).strip()
     try:
         return datetime.fromisoformat(s.replace("Z", "+00:00")).date().isoformat()
     except Exception:
         pass
+
+    # RSS feeds commonly use RFC 2822 dates, e.g. Wed, 01 Oct 2026 12:00:00 GMT.
+    try:
+        return parsedate_to_datetime(s).date().isoformat()
+    except Exception:
+        pass
+
     m = re.search(r"(20\d{2}-\d{2}-\d{2})", s)
     return m.group(1) if m else ""
 
@@ -758,6 +779,239 @@ def fetch_remoteok():
             "score": score,
             "matched": matched,
         })
+    return jobs
+
+
+def _append_public_job(jobs, title, company, location, workplace, posted, link, source, description=""):
+    """Shared validation/normalization for public feed/API records."""
+    title = clean_text(title)
+    if not title_relevant(title):
+        return
+    desc = clean_text(description)
+    loc = clean_text(location)
+    workplace = clean_text(workplace) or "Remote"
+    if workplace.lower() == "remote":
+        workplace = "Remote"
+    elif workplace.lower() == "hybrid":
+        workplace = "Hybrid"
+    else:
+        workplace = workplace.title()
+    if not allowed_india(loc, "", "", desc, workplace):
+        return
+    posted = parse_date(posted)
+    if not recent_enough(posted):
+        return
+    link = clean_text(link)
+    if not link:
+        return
+    score, matched = score_job(title, desc, loc)
+    jobs.append({
+        "added": datetime.now(timezone.utc).date().isoformat(),
+        "title": title,
+        "company": clean_text(company),
+        "location": loc or "India / Remote",
+        "workplace": workplace,
+        "posted_date": posted,
+        "job_url": link,
+        "source": source,
+        "score": score,
+        "matched": matched,
+    })
+
+
+def fetch_himalayas():
+    """Use Himalayas' public search API as a discovery source.
+
+    We query India + support-related terms rather than walking the entire
+    100k+ global feed. Results remain subject to Remote4.me's 7-day and role
+    filters. The original Himalayas URL is retained for review; publishing
+    decisions remain manual.
+    """
+    jobs = []
+    seen = set()
+    terms = [
+        "customer support",
+        "customer success",
+        "technical support",
+        "product support",
+    ]
+    total_requests = 0
+    for term in terms:
+        for page in range(1, HIMALAYAS_MAX_PAGES + 1):
+            params = {
+                "q": term,
+                "country": "IN",
+                "sort": "recent",
+                "page": page,
+            }
+            data = get_json("https://himalayas.app/jobs/api/search", params=params, timeout=25)
+            total_requests += 1
+            if not isinstance(data, dict):
+                break
+            items = data.get("jobs") or []
+            if not items:
+                break
+            for j in items:
+                if not isinstance(j, dict):
+                    continue
+                jid = clean_text(j.get("guid") or j.get("applicationLink"))
+                if jid and jid in seen:
+                    continue
+                if jid:
+                    seen.add(jid)
+                restrictions = j.get("locationRestrictions") or []
+                names = []
+                for r in restrictions:
+                    if isinstance(r, dict):
+                        names.extend([clean_text(r.get("alpha2")), clean_text(r.get("name"))])
+                loc = ", ".join([x for x in names if x]) or "India / Remote"
+                desc = clean_text(j.get("description") or j.get("excerpt"))
+                link = clean_text(j.get("applicationLink"))
+                _append_public_job(
+                    jobs,
+                    j.get("title"),
+                    j.get("companyName"),
+                    loc,
+                    "Remote",
+                    j.get("pubDate"),
+                    link,
+                    "Himalayas",
+                    desc,
+                )
+    print(f"Himalayas: {len(jobs)} accepted from {total_requests} API request(s)")
+    return jobs
+
+
+def fetch_remotive():
+    jobs = []
+    data = get_json("https://remotive.com/api/remote-jobs", params={"limit": 100})
+    if not isinstance(data, dict):
+        print("Remotive: no JSON response")
+        return jobs
+    for j in data.get("jobs") or []:
+        if not isinstance(j, dict):
+            continue
+        loc = clean_text(j.get("candidate_required_location") or j.get("location"))
+        desc = clean_text(j.get("description") or j.get("job_description"))
+        # Remotive feed is remote by definition; India eligibility must still
+        # be explicit in candidate-required location or description.
+        if not classify_india(loc, "", "", desc, "Remote"):
+            continue
+        _append_public_job(
+            jobs,
+            j.get("title"),
+            j.get("company_name") or j.get("company"),
+            loc or "India / Remote",
+            "Remote",
+            j.get("publication_date") or j.get("date"),
+            j.get("url") or j.get("job_url"),
+            "Remotive",
+            desc,
+        )
+    return jobs
+
+
+def fetch_arbeitnow():
+    jobs = []
+    seen = set()
+    for page in range(1, ARBEITNOW_MAX_PAGES + 1):
+        data = get_json("https://www.arbeitnow.com/api/job-board-api", params={"page": page})
+        if not isinstance(data, dict):
+            break
+        items = data.get("data") or []
+        if not items:
+            break
+        for j in items:
+            if not isinstance(j, dict):
+                continue
+            link = clean_text(j.get("url"))
+            if link in seen:
+                continue
+            seen.add(link)
+            loc = clean_text(j.get("location"))
+            desc = clean_text(j.get("description"))
+            remote = j.get("remote")
+            workplace = "Remote" if remote is True else classify_workplace(loc, "", remote, j, desc)
+            _append_public_job(
+                jobs,
+                j.get("title"),
+                j.get("company_name") or j.get("company"),
+                loc,
+                workplace,
+                j.get("created_at") or j.get("date"),
+                link,
+                "Arbeitnow",
+                desc,
+            )
+    return jobs
+
+
+def fetch_working_nomads():
+    jobs = []
+    data = get_json("https://www.workingnomads.com/api/exposed_jobs/", timeout=25)
+    if not isinstance(data, list):
+        print("Working Nomads: unexpected API response")
+        return jobs
+    for j in data:
+        if not isinstance(j, dict):
+            continue
+        loc = clean_text(j.get("location"))
+        desc = clean_text(j.get("description"))
+        # Public feed is remote-only. India must be explicit.
+        if not classify_india(loc, "", "", desc, "Remote"):
+            continue
+        _append_public_job(
+            jobs,
+            j.get("title"),
+            j.get("company_name"),
+            loc,
+            "Remote",
+            j.get("pub_date"),
+            j.get("url"),
+            "Working Nomads",
+            desc,
+        )
+    return jobs
+
+
+def fetch_wwr_rss():
+    """Parse WWR's public RSS feed without scraping its search UI."""
+    jobs = []
+    try:
+        r = SESSION.get(
+            "https://weworkremotely.com/remote-jobs.rss",
+            timeout=25,
+            headers={"Accept": "application/rss+xml,application/xml,text/xml,*/*"},
+        )
+        if r.status_code != 200:
+            print(f"We Work Remotely RSS: HTTP {r.status_code}")
+            return jobs
+        soup = BeautifulSoup(r.text, "xml")
+        for item in soup.find_all("item"):
+            title = clean_text(item.find("title").get_text(" ", strip=True) if item.find("title") else "")
+            desc = clean_text(item.find("description").get_text(" ", strip=True) if item.find("description") else "")
+            link = clean_text(item.find("link").get_text(" ", strip=True) if item.find("link") else "")
+            pub = clean_text(item.find("pubDate").get_text(" ", strip=True) if item.find("pubDate") else "")
+            # RSS title is commonly "Role: Company".
+            company = ""
+            if ":" in title:
+                title, company = [clean_text(x) for x in title.split(":", 1)]
+            combined = " ".join([desc, title, company])
+            if not re.search(r"\bindia\b|\bindian\b", combined, re.I):
+                continue
+            _append_public_job(
+                jobs,
+                title,
+                company,
+                "India / Remote",
+                "Remote",
+                pub,
+                link,
+                "We Work Remotely",
+                desc,
+            )
+    except requests.RequestException as exc:
+        print(f"We Work Remotely RSS: {exc}")
     return jobs
 
 
@@ -2331,7 +2585,7 @@ def collect_direct_external_jobs(urls, source_name):
 def main():
     started = datetime.now(timezone.utc)
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V5 — INDIA FIRST")
+    print("REMOTE4.ME JOB CRAWLER V7 — INDIA FIRST")
     print("================================================")
     print(f"Started UTC: {started.isoformat()}")
     print("No Brave / Serper / JobsPipe required")
@@ -2351,6 +2605,11 @@ def main():
     all_jobs = []
 
     for name, fn in [
+        ("Himalayas", fetch_himalayas),
+        ("Remotive", fetch_remotive),
+        ("Arbeitnow", fetch_arbeitnow),
+        ("Working Nomads", fetch_working_nomads),
+        ("We Work Remotely", fetch_wwr_rss),
         ("Jobicy", fetch_jobicy),
         ("Remote OK", fetch_remoteok),
         ("Startup Jobs", fetch_startup_jobs),

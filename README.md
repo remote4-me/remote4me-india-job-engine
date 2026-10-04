@@ -1,45 +1,58 @@
-# Remote4.me Job Crawler V5
+# Remote4.me India Job Crawler V7
 
-India-first crawler for Customer Support, Customer Success, Technical Support, Product Support, Customer Experience, onboarding, implementation and related roles.
+India-first public job discovery crawler for Remote4.me. It keeps only Customer Support, Customer Success, Technical Support, Product Support and closely related roles that are explicitly India + Remote/Hybrid, with a 7-day freshness window.
 
-## What it does
+## Sources
 
-- India only
-- Remote + Hybrid
-- Direct ATS/career links where available
-- Jobicy + Remote OK public feeds
-- Wellfound and Cutshort public India pages as discovery seeds
+### Public APIs / feeds
+- Himalayas public JSON search API (India + support queries)
+- Remotive public API
+- Arbeitnow public API
+- Working Nomads public JSON feed
+- We Work Remotely public RSS feed
+- Jobicy public API
+- Remote OK public JSON feed
+- Startup Jobs API (free key)
+
+### Discovery
+- Wellfound India role pages
+- Cutshort India role pages
+- Company website -> Careers/Jobs -> ATS discovery
 - Internet Archive + Common Crawl ATS discovery
-- Direct ATS feeds for Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR and Personio
-- Company website -> Careers -> ATS discovery
-- Persistent company registry in the `COMPANIES` Google Sheet
-- Deduplicated jobs in `JOBS`
-- Runs daily at 7:00 PM IST
+
+### Direct ATS/career crawling
+- Greenhouse
+- Lever
+- Ashby
+- Workable
+- SmartRecruiters
+- Recruitee
+- Breezy
+- Teamtailor
+- BambooHR
+- Personio
+- Generic public career-page fallback
 
 ## GitHub secrets
 
-Keep the existing secrets:
+Use these repository secrets:
 
-- `GOOGLE_CREDENTIALS`
-- `SPREADSHEET_ID`
+```text
+GOOGLE_SERVICE_ACCOUNT_JSON
+GOOGLE_SHEET_ID
+STARTUP_JOBS_API_KEY
+```
 
-No Brave, Serper or JobsPipe key is required.
+The workflow maps the first two into the environment names expected by the crawler.
 
-## Important source note
+## Schedule
 
-The crawler intentionally does not log into or directly scrape LinkedIn/Indeed. Public ATS/career pages are preferred because they are closer to the employer's source of truth. Archive indexes can be used for discovery.
+Daily at 7:00 PM IST (`30 13 * * *`).
 
-Use each source according to its current terms and attribution requirements. In particular, some public job APIs have restrictions on redistribution/aggregation; the crawler currently uses Jobicy and Remote OK as public feed sources and does not wire the Himalayas API into this V5 aggregation pipeline.
+## Important source handling
 
+Aggregator/API records are discovery/review inputs. Remote4.me's workflow is manual review; use the employer's own public career/ATS URL for the final job post whenever it can be verified. Some public feeds have attribution or redistribution conditions, so review the applicable source terms before publishing any sourced listing.
 
-## Startup Jobs API
+## No paid search APIs
 
-This version optionally uses the public Startup Jobs REST API for additional India Remote + Hybrid support jobs. The API key is **not stored in the repository**. Add a GitHub Actions secret named `STARTUP_JOBS_API_KEY`.
-
-The free API documents a 20 requests/minute limit and a 14-day listing window. The crawler paginates the India Remote and India Hybrid streams and then applies the crawler's stricter 7-day freshness and support-role filters. Startup Jobs also requires attribution and a dofollow link back to its job URL; the crawler keeps the Startup Jobs listing URL for these records.
-
-Because the API key was pasted into chat, regenerate/revoke that key and store the replacement only in GitHub Secrets.
-
-## India location coverage
-
-The India location dictionary has been expanded substantially with state/UT names, major metros, tier-2/tier-3 cities, district headquarters and common city aliases. This improves India detection on ATS feeds where the source gives only a city/state string.
+No Brave, Serper, JobsPipe or other paid search API is required.
