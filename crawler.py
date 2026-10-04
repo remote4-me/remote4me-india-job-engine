@@ -62,10 +62,35 @@ SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID", "")
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS", "")
 STARTUP_JOBS_API_KEY = os.environ.get("STARTUP_JOBS_API_KEY", "").strip()
 JOB_OPPORTUNITIES_API_KEY = os.environ.get("JOB_OPPORTUNITIES_API_KEY", "").strip()
+# Search/discovery APIs. Keys are supplied only through GitHub Actions Secrets.
+SERPER_API_KEY = os.environ.get("SERPER_API_KEY", "").strip()
+TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "").strip()
+SERPAPI_API_KEY = os.environ.get("SERPAPI_API_KEY", "").strip()
+YOU_API_KEY = os.environ.get("YOU_API_KEY", "").strip()
+EXA_API_KEY = os.environ.get("EXA_API_KEY", "").strip()
+FIRECRAWL_API_KEY = os.environ.get("FIRECRAWL_API_KEY", "").strip()
+SCRAPERAPI_API_KEY = os.environ.get("SCRAPERAPI_API_KEY", "").strip()
+DIFFBOT_API_KEY = os.environ.get("DIFFBOT_API_KEY", "").strip()
+BRIGHTDATA_API_KEY = os.environ.get("BRIGHTDATA_API_KEY", "").strip()
+BRIGHTDATA_ZONE = os.environ.get("BRIGHTDATA_ZONE", "unblocker").strip() or "unblocker"
+SCRAPINGANT_API_KEY = os.environ.get("SCRAPINGANT_API_KEY", "").strip()
+JINA_API_KEY = os.environ.get("JINA_API_KEY", "").strip()
+SEARCH1_API_KEY = os.environ.get("SEARCH1_API_KEY", "").strip()
+SEARLO_API_KEY = os.environ.get("SEARLO_API_KEY", "").strip()
+SEARCH_DISCOVERY_ENABLED = os.environ.get("SEARCH_DISCOVERY_ENABLED", "1").lower() not in {"0", "false", "no"}
+SEARCH_QUERIES_PER_PROVIDER = int(os.environ.get("SEARCH_QUERIES_PER_PROVIDER", "3"))
+SEARCH_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("SEARCH_RESULTS_PER_QUERY", "10"))))
+SEARCH_DISCOVERY_ROTATION_DAYS = max(1, int(os.environ.get("SEARCH_DISCOVERY_ROTATION_DAYS", "10")))
+SEARCH_DISCOVERY_MAX_URLS = int(os.environ.get("SEARCH_DISCOVERY_MAX_URLS", "1200"))
+EXTERNAL_FETCH_FALLBACK_ENABLED = os.environ.get("EXTERNAL_FETCH_FALLBACK_ENABLED", "1").lower() not in {"0", "false", "no"}
+EXTERNAL_FETCH_MAX_CALLS = max(0, int(os.environ.get("EXTERNAL_FETCH_MAX_CALLS", "200")))
+_EXTERNAL_FETCH_LOCK = threading.Lock()
+_EXTERNAL_FETCH_CALLS = 0
+ARCHIVE_DISCOVERY_INTERVAL_DAYS = max(1, int(os.environ.get("ARCHIVE_DISCOVERY_INTERVAL_DAYS", "7")))
 STARTUP_JOBS_MAX_PAGES = int(os.environ.get("STARTUP_JOBS_MAX_PAGES", "9"))
 HIMALAYAS_MAX_PAGES = int(os.environ.get("HIMALAYAS_MAX_PAGES", "3"))
 ARBEITNOW_MAX_PAGES = int(os.environ.get("ARBEITNOW_MAX_PAGES", "5"))
-JOA_DAILY_RECORD_BUDGET = int(os.environ.get("JOA_DAILY_RECORD_BUDGET", "30"))
+JOA_DAILY_RECORD_BUDGET = int(os.environ.get("JOA_DAILY_RECORD_BUDGET", "28"))
 JOA_PAGE_SIZE = min(25, max(5, int(os.environ.get("JOA_PAGE_SIZE", "10"))))
 PLAYWRIGHT_ENABLED = os.environ.get("PLAYWRIGHT_ENABLED", "1").lower() not in {"0","false","no"}
 PLAYWRIGHT_TIMEOUT_MS = int(os.environ.get("PLAYWRIGHT_TIMEOUT_MS", "25000"))
@@ -571,6 +596,121 @@ def get_json(url, params=None, method="GET", json_body=None, timeout=REQUEST_TIM
             else:
                 return None
     return None
+
+
+def _external_fetch_slot(provider):
+    """Global safety cap so fallback services cannot consume unlimited credits."""
+    global _EXTERNAL_FETCH_CALLS
+    if EXTERNAL_FETCH_MAX_CALLS <= 0:
+        return False
+    with _EXTERNAL_FETCH_LOCK:
+        if _EXTERNAL_FETCH_CALLS >= EXTERNAL_FETCH_MAX_CALLS:
+            return False
+        _EXTERNAL_FETCH_CALLS += 1
+        n = _EXTERNAL_FETCH_CALLS
+    if n <= 10 or n % 25 == 0:
+        print(f"External fallback call {n}/{EXTERNAL_FETCH_MAX_CALLS}: {provider}")
+    return True
+
+
+def _jina_markdown_to_html(markdown, base_url):
+    """Small dependency-free Markdown -> HTML bridge for Jina Reader output.
+    The existing parser expects HTML, while Jina Reader returns clean Markdown.
+    Preserve Markdown links so exact job URLs remain discoverable."""
+    text = markdown or ""
+    text = re.sub(r"```.*?```", " ", text, flags=re.S)
+    text = re.sub(r"`([^`]+)`", r"\1", text)
+    text = re.sub(r"!\[([^]]*)\]\((https?://[^)]+)\)", r"<img alt=\"\1\" src=\"\2\">", text)
+    text = re.sub(r"\[([^]]+)\]\((https?://[^)]+)\)", r'<a href="\2">\1</a>', text)
+    text = re.sub(r"^#{1,6}\s+(.+)$", r"<h2>\1</h2>", text, flags=re.M)
+    text = re.sub(r"^[-*+]\s+(.+)$", r"<li>\1</li>", text, flags=re.M)
+    text = re.sub(r"\n{2,}", "</p><p>", text)
+    text = re.sub(r"\n", "<br>", text)
+    return f'<html><head><base href="{base_url}"></head><body><p>{text}</p></body></html>'
+
+
+def get_html_external_fallback(url, timeout=HTML_TIMEOUT):
+    """Last-resort page fetchers. Only called after normal HTTP extraction fails.
+
+    Order is intentionally conservative: Jina first, then ScrapingAnt/Bright Data,
+    then the existing Firecrawl/ScraperAPI/Diffbot fallbacks. A global call cap
+    prevents a bad run from consuming unlimited external credits."""
+    if JINA_API_KEY and _external_fetch_slot("Jina"):
+        try:
+            r=SESSION.get(
+                "https://r.jina.ai/" + url,
+                headers={"Authorization":f"Bearer {JINA_API_KEY}","Accept":"application/json"},
+                timeout=max(timeout,30),
+            )
+            if r.status_code==200:
+                try:
+                    d=r.json()
+                    content=d.get("data",{}).get("content") if isinstance(d,dict) else ""
+                    final_url=d.get("data",{}).get("url") if isinstance(d,dict) else ""
+                    title=d.get("data",{}).get("title") if isinstance(d,dict) else ""
+                    if content:
+                        prefix=f"# {title}\n\n" if title else ""
+                        return _jina_markdown_to_html(prefix+content, final_url or url), final_url or url, "Jina"
+                except ValueError:
+                    if r.text.strip():
+                        return _jina_markdown_to_html(r.text, url), url, "Jina"
+        except Exception:
+            pass
+
+    if SCRAPINGANT_API_KEY and _external_fetch_slot("ScrapingAnt"):
+        try:
+            r=SESSION.get(
+                "https://api.scrapingant.com/v2/general",
+                params={"url":url,"x-api-key":SCRAPINGANT_API_KEY,"browser":"true","timeout":"45"},
+                timeout=max(timeout,55),
+            )
+            if r.status_code==200 and r.text:
+                return r.text, url, "ScrapingAnt"
+        except Exception:
+            pass
+
+    if BRIGHTDATA_API_KEY and _external_fetch_slot("BrightData"):
+        try:
+            r=SESSION.post(
+                "https://api.brightdata.com/request",
+                headers={"Authorization":f"Bearer {BRIGHTDATA_API_KEY}","Content-Type":"application/json"},
+                json={"zone":BRIGHTDATA_ZONE,"url":url,"format":"raw"},
+                timeout=max(timeout,45),
+            )
+            if r.status_code==200 and r.text:
+                return r.text, url, "BrightData"
+        except Exception:
+            pass
+
+    if FIRECRAWL_API_KEY and _external_fetch_slot("Firecrawl"):
+        for endpoint in ("https://api.firecrawl.dev/v2/scrape","https://api.firecrawl.dev/v1/scrape"):
+            try:
+                r=SESSION.post(endpoint,headers={"Authorization":f"Bearer {FIRECRAWL_API_KEY}","Content-Type":"application/json"},json={"url":url,"formats":["html"]},timeout=max(timeout,30))
+                if r.status_code==200:
+                    d=r.json(); data=d.get("data") or d
+                    html=data.get("html") if isinstance(data,dict) else ""
+                    if html: return html,url,"Firecrawl"
+            except Exception:
+                continue
+
+    if SCRAPERAPI_API_KEY and _external_fetch_slot("ScraperAPI"):
+        try:
+            r=SESSION.get("https://api.scraperapi.com/",params={"api_key":SCRAPERAPI_API_KEY,"url":url,"render":"false"},timeout=max(timeout,25))
+            if r.status_code==200 and r.text:
+                return r.text,r.url,"ScraperAPI"
+        except Exception:
+            pass
+
+    if DIFFBOT_API_KEY and _external_fetch_slot("Diffbot"):
+        try:
+            r=SESSION.get("https://api.diffbot.com/v3/article",params={"token":DIFFBOT_API_KEY,"url":url},timeout=max(timeout,30))
+            if r.status_code==200:
+                d=r.json(); obj=(d.get("objects") or [{}])[0]
+                html=obj.get("html") or obj.get("html5") or ""
+                if html: return html,url,"Diffbot"
+        except Exception:
+            pass
+    return "",url,""
 
 
 def get_html(url, timeout=HTML_TIMEOUT):
@@ -1142,9 +1282,21 @@ def fetch_jobopportunitiesapi():
         return jobs
 
     terms = [
-        "support", "customer", "success", "service", "technical",
-        "implementation", "onboarding", "help desk", "product support",
-        "customer experience", "account manager", "client",
+        # Broad discovery terms are rotated; the final title/location/direct
+        # filters keep the accepted set narrow.
+        "customer support", "customer service", "customer success",
+        "technical support", "support engineer", "support specialist",
+        "product support", "application support", "platform support",
+        "software support", "IT support", "help desk", "service desk",
+        "customer care", "customer experience", "client support",
+        "user support", "member support", "merchant support",
+        "partner support", "seller support", "developer support",
+        "API support", "integration support", "technical account",
+        "customer onboarding", "implementation", "customer operations",
+        "customer retention", "customer adoption", "customer enablement",
+        "escalation support", "payments support", "trust and safety",
+        "chat support", "email support", "voice process", "non voice",
+        "contact center", "call center", "customer relations",
     ]
     # Rotate three terms per day so the free 1,000-record allowance is
     # distributed across the niche instead of repeatedly buying the same rows.
@@ -3957,7 +4109,7 @@ def should_run_v11_archive():
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-V11_VERSION = "12.0"
+V11_VERSION = "13.0"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -3983,6 +4135,53 @@ V11_ATS_DAILY_CAP = int(os.environ.get("ATS_DAILY_CAP", "0"))  # 0 = all live bo
 ADZUNA_APP_ID = os.environ.get("ADZUNA_APP_ID", "").strip()
 ADZUNA_APP_KEY = os.environ.get("ADZUNA_APP_KEY", "").strip()
 JOOBLE_API_KEY = os.environ.get("JOOBLE_API_KEY", "").strip()
+
+# V13 support-role expansion: common Indian BPO/contact-centre and SaaS support
+# titles that are still customer-facing/support work. Keep these as phrase patterns,
+# not standalone words, to avoid unrelated operations/engineering noise.
+V13_EXTRA_TITLE_PATTERNS = [
+    r"\bcustomer care executive\b", r"\bcustomer care officer\b", r"\bcustomer care associate\b",
+    r"\bclient care (?:executive|associate|specialist|representative)\b",
+    r"\bcustomer relationship (?:executive|associate|manager|specialist)\b",
+    r"\brelationship manager\b.*\bcustomer\b", r"\bclient relationship (?:manager|specialist|executive)\b",
+    r"\bcontact center (?:agent|associate|executive|representative|specialist|supervisor)\b",
+    r"\bcontact centre (?:agent|associate|executive|representative|specialist|supervisor)\b",
+    r"\bcall center (?:agent|associate|executive|representative|specialist|supervisor)\b",
+    r"\bcall centre (?:agent|associate|executive|representative|specialist|supervisor)\b",
+    r"\bvoice process (?:associate|executive|agent|representative|specialist)\b",
+    r"\bnon[- ]?voice (?:associate|executive|agent|representative|specialist)\b",
+    r"\bchat (?:support|process|agent|associate|executive|specialist)\b",
+    r"\blive chat (?:support|agent|associate|executive|specialist)\b",
+    r"\bemail (?:support|process|agent|associate|executive|specialist)\b",
+    r"\bback office (?:support|associate|executive|specialist)\b",
+    r"\bservice (?:advisor|associate|executive|representative|specialist)\b",
+    r"\btechnical customer (?:support|service|care)\b",
+    r"\bcustomer support (?:engineer|developer|technician|consultant|analyst)\b",
+    r"\bsupport (?:engineer|engineering|technician|technical specialist|desk engineer)\b",
+    r"\bproduction support (?:engineer|analyst|specialist)\b",
+    r"\bapplication support (?:engineer|analyst|specialist|technician)\b",
+    r"\bproduction support\b", r"\bL1 support\b", r"\bL2 support\b", r"\bL1/L2 support\b",
+    r"\bservice desk (?:engineer|analyst|specialist|technician)\b",
+    r"\bhelpdesk (?:engineer|analyst|specialist|technician)\b",
+    r"\bIT service desk (?:analyst|specialist|technician|engineer)\b",
+    r"\btechnical account (?:manager|specialist|executive|associate|engineer)\b",
+    r"\bcustomer success (?:engineer|operations|enablement|onboarding|implementation)\b",
+    r"\bcustomer onboarding (?:specialist|consultant|coordinator|executive|manager)\b",
+    r"\bimplementation (?:specialist|consultant|coordinator|analyst|engineer)\b",
+    r"\bcustomer adoption (?:specialist|manager|consultant)\b",
+    r"\bcustomer retention (?:specialist|associate|executive|manager)\b",
+    r"\bcustomer experience (?:associate|executive|specialist|representative)\b",
+    r"\buser experience support\b", r"\buser success\b", r"\bmember experience\b",
+    r"\bmerchant success\b", r"\bmerchant support\b", r"\bpartner success\b", r"\bpartner support\b",
+    r"\bvendor support\b", r"\bseller support\b", r"\bprovider support\b",
+    r"\bpayments support\b", r"\bfintech support\b", r"\bsaas support\b",
+    r"\bsoftware support\b", r"\bcloud support\b", r"\bdata support\b",
+    r"\bapi support\b", r"\bintegration support\b", r"\bdeveloper support\b",
+    r"\btechnical operations support\b", r"\bsupport operations\b",
+]
+for _p in V13_EXTRA_TITLE_PATTERNS:
+    if _p not in TARGET_TITLE_PATTERNS:
+        TARGET_TITLE_PATTERNS.append(_p)
 
 # Large Indian role vocabulary. Title patterns remain the hard quality gate;
 # context terms rescue specialized support titles.
@@ -4389,6 +4588,12 @@ def get_html(url, timeout=HTML_TIMEOUT):
                 if sem: sem.release()
             except Exception:
                 pass
+    # Only spend external extraction credits after the normal HTTP path failed
+    # and the caller explicitly enabled the fallback.
+    if EXTERNAL_FETCH_FALLBACK_ENABLED:
+        html, final_url, source = get_html_external_fallback(url, timeout=timeout)
+        if html:
+            return html, final_url
     return "", url
 
 
@@ -4535,6 +4740,286 @@ def fetch_jooble():
     return jobs
 
 
+
+# ============================================================
+# SEARCH-ENGINE ATS / CAREER DISCOVERY
+# ============================================================
+# Search APIs are used ONLY to discover company/ATS URLs. We do not trust a
+# search-result snippet as proof that a job is India + Remote/Hybrid. The
+# discovered URL is subsequently fetched through the ATS/career crawler and
+# must pass the normal structured location/direct-link quality gates.
+#
+# The query bank rotates, so the same query is not repeatedly charged. A small
+# number of queries across several independent indexes gives much broader ATS
+# discovery while keeping free credits low.
+
+SEARCH_ATS_QUERY_BANK = [
+    'site:jobs.ashbyhq.com India remote "customer support"',
+    'site:jobs.ashbyhq.com India remote "customer success"',
+    'site:jobs.ashbyhq.com India remote "technical support"',
+    'site:job-boards.greenhouse.io India remote "customer support"',
+    'site:job-boards.greenhouse.io India remote "customer success"',
+    'site:boards.greenhouse.io India remote "technical support"',
+    'site:jobs.lever.co India remote "customer support"',
+    'site:jobs.lever.co India remote "customer success"',
+    'site:jobs.lever.co India remote "technical support"',
+    'site:jobs.eu.lever.co India remote support',
+    'site:myworkdayjobs.com India remote "customer support"',
+    'site:myworkdayjobs.com India remote "technical support"',
+    'site:myworkdayjobs.com India remote "customer success"',
+    'site:careers.smartrecruiters.com India remote support',
+    'site:apply.workable.com India remote support',
+    'site:*.recruitee.com India remote support',
+    'site:*.teamtailor.com India remote support',
+    'site:*.breezy.hr India remote support',
+    'site:*.bamboohr.com India remote support',
+    'site:*.jobs.personio.de India remote support',
+    'site:*.pinpointhq.com India remote support',
+    'site:*.rippling.com India remote support careers',
+    'site:*.darwinbox.in India customer support careers',
+    'site:*.darwinbox.com India technical support careers',
+    'site:*.keka.com India customer support careers',
+    'site:*.freshteam.com India customer support',
+    'site:*.zohorecruit.com India customer support',
+    'site:*.zwayam.com India customer support',
+    'site:*.peoplestrong.com India customer support',
+    'site:*.hrone.cloud India customer support',
+    'site:*.phenom.com India customer support careers',
+    'site:*.eightfold.ai India customer support careers',
+    'site:*.jobvite.com India customer support',
+    'site:*.jazz.co India customer support',
+    'site:*.fountain.com India customer support jobs',
+    'site:*.successfactors.com India customer support',
+    'site:*.icims.com India customer support',
+    'site:*.taleo.net India customer support',
+    'site:*.oraclecloud.com India customer support careers',
+    'site:*.workforcenow.adp.com India customer support',
+    'site:*.ukg.com India customer support careers',
+    'site:*.paylocity.com India customer support careers',
+    'site:*.comeet.com India customer support',
+    'site:*.manatal.com India customer support',
+    'site:*.talentlyft.com India customer support',
+    'site:*.recruiterflow.com India customer support',
+    'site:*.ismartrecruit.com India customer support',
+    'site:*.inhire.io India customer support',
+    'site:*.jobylon.com India customer support',
+    'site:*.crelate.com India customer support',
+    'site:*.join.com India customer support careers',
+    '"India" "remote" "support engineer" careers',
+    '"India" "remote" "technical support engineer" careers',
+    '"India" "remote" "product support engineer" careers',
+    '"India" "remote" "customer support engineer" careers',
+    '"India" "remote" "customer success manager" careers',
+    '"India" "remote" "customer service representative" careers',
+    '"India" "remote" "non voice" customer support jobs',
+    '"India" "remote" "voice process" customer support jobs',
+    '"India" "remote" "chat support" jobs careers',
+    '"India" "remote" "email support" jobs careers',
+    '"India" "remote" "help desk" careers',
+    '"India" "remote" "service desk" careers',
+    '"India" "remote" "application support" careers',
+    '"India" "remote" "platform support" careers',
+    '"India" "remote" "implementation specialist" careers',
+    '"India" "remote" "onboarding specialist" careers',
+    '"India" "remote" "technical account manager" careers',
+]
+
+SEARCH_PROVIDER_NAMES = [
+    "serper", "you", "exa", "tavily", "searlo", "search1", "serpapi",
+]
+
+
+def _search_result_url(item):
+    if not isinstance(item, dict):
+        return ""
+    return clean_text(item.get("link") or item.get("url") or item.get("href"))
+
+
+def _search_result_title(item):
+    if not isinstance(item, dict):
+        return ""
+    return clean_text(item.get("title") or item.get("name"))
+
+
+def _search_result_snippet(item):
+    if not isinstance(item, dict):
+        return ""
+    return clean_text(item.get("snippet") or item.get("description") or item.get("content"))
+
+
+def _parse_search_urls(items):
+    urls=[]
+    seen=set()
+    for item in items or []:
+        if not isinstance(item, dict):
+            continue
+        u=_search_result_url(item)
+        if not u.startswith(("http://","https://")):
+            continue
+        u=normalize_url(u)
+        if not u or u in seen:
+            continue
+        seen.add(u)
+        urls.append({"url":u,"title":_search_result_title(item),"snippet":_search_result_snippet(item)})
+    return urls
+
+
+def _search_serper(query):
+    if not SERPER_API_KEY: return []
+    try:
+        r=SESSION.post("https://google.serper.dev/search",headers={"X-API-KEY":SERPER_API_KEY,"Content-Type":"application/json"},json={"q":query,"num":SEARCH_RESULTS_PER_QUERY,"gl":"in","hl":"en"},timeout=25)
+        if r.status_code!=200: print(f"SEARCH serper HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("organic",[]))
+    except Exception as exc:
+        print(f"SEARCH serper error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_tavily(query):
+    if not TAVILY_API_KEY: return []
+    try:
+        r=SESSION.post("https://api.tavily.com/search",json={"api_key":TAVILY_API_KEY,"query":query,"max_results":SEARCH_RESULTS_PER_QUERY,"search_depth":"basic","include_answer":False},timeout=25)
+        if r.status_code!=200: print(f"SEARCH tavily HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("results",[]))
+    except Exception as exc:
+        print(f"SEARCH tavily error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_serpapi(query):
+    if not SERPAPI_API_KEY: return []
+    try:
+        r=SESSION.get("https://serpapi.com/search.json",params={"engine":"google","q":query,"api_key":SERPAPI_API_KEY,"num":SEARCH_RESULTS_PER_QUERY,"gl":"in","hl":"en"},timeout=25)
+        if r.status_code!=200: print(f"SEARCH serpapi HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("organic_results",[]))
+    except Exception as exc:
+        print(f"SEARCH serpapi error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_you(query):
+    if not YOU_API_KEY: return []
+    try:
+        r=SESSION.get("https://ydc-index.io/v1/search",params={"query":query,"count":SEARCH_RESULTS_PER_QUERY},headers={"X-API-Key":YOU_API_KEY},timeout=25)
+        if r.status_code!=200: print(f"SEARCH you HTTP {r.status_code}"); return []
+        data=r.json()
+        web=data.get("results") or data.get("hits") or data.get("web",{}).get("results",[])
+        return _parse_search_urls(web)
+    except Exception as exc:
+        print(f"SEARCH you error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_exa(query):
+    if not EXA_API_KEY: return []
+    try:
+        r=SESSION.post("https://api.exa.ai/search",headers={"x-api-key":EXA_API_KEY,"Content-Type":"application/json"},json={"query":query,"numResults":SEARCH_RESULTS_PER_QUERY,"type":"auto"},timeout=25)
+        if r.status_code!=200: print(f"SEARCH exa HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("results",[]))
+    except Exception as exc:
+        print(f"SEARCH exa error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_search1(query):
+    if not SEARCH1_API_KEY: return []
+    try:
+        r=SESSION.post("https://api.search1api.com/search",headers={"Authorization":f"Bearer {SEARCH1_API_KEY}","Content-Type":"application/json"},json={"query":query,"search_service":"google","max_results":SEARCH_RESULTS_PER_QUERY},timeout=25)
+        if r.status_code!=200: print(f"SEARCH search1 HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("results",[]))
+    except Exception as exc:
+        print(f"SEARCH search1 error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_searlo(query):
+    if not SEARLO_API_KEY: return []
+    try:
+        r=SESSION.get("https://api.searlo.tech/api/v1/search/web",params={"q":query,"limit":SEARCH_RESULTS_PER_QUERY,"gl":"in","hl":"en"},headers={"x-api-key":SEARLO_API_KEY},timeout=25)
+        if r.status_code!=200: print(f"SEARCH searlo HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("organic",[]) or r.json().get("items",[]))
+    except Exception as exc:
+        print(f"SEARCH searlo error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_provider(name, query):
+    return {
+        "serper": _search_serper,
+        "you": _search_you,
+        "exa": _search_exa,
+        "tavily": _search_tavily,
+        "searlo": _search_searlo,
+        "search1": _search_search1,
+        "serpapi": _search_serpapi,
+    }.get(name, lambda _q: [])(query)
+
+
+def discover_search_engine_urls():
+    """Harvest ATS boards and career pages from several independent search indexes.
+
+    This is intentionally low-credit: only a few queries per provider per run,
+    with a rotating query bank. Results are seeds, never trusted job listings.
+    """
+    if not SEARCH_DISCOVERY_ENABLED:
+        return []
+    configured=[p for p in SEARCH_PROVIDER_NAMES if {
+        "serper":SERPER_API_KEY,"you":YOU_API_KEY,"exa":EXA_API_KEY,
+        "tavily":TAVILY_API_KEY,"searlo":SEARLO_API_KEY,
+        "search1":SEARCH1_API_KEY,"serpapi":SERPAPI_API_KEY,
+    }.get(p)]
+    if not configured:
+        print("SEARCH DISCOVERY: no search API keys configured")
+        return []
+    day=datetime.now(timezone.utc).date().toordinal()
+    rotation=(day//SEARCH_DISCOVERY_ROTATION_DAYS) % len(SEARCH_ATS_QUERY_BANK)
+    count=max(1,SEARCH_QUERIES_PER_PROVIDER)
+    queries=[SEARCH_ATS_QUERY_BANK[(rotation+i)%len(SEARCH_ATS_QUERY_BANK)] for i in range(count)]
+    all_results=[]
+    seen=set()
+    print(f"SEARCH DISCOVERY: providers={','.join(configured)} queries/provider={len(queries)}")
+    for provider in configured:
+        for q in queries:
+            results=_search_provider(provider,q)
+            for item in results:
+                u=item.get("url","")
+                if u and u not in seen:
+                    seen.add(u); item["provider"]=provider; item["query"]=q; all_results.append(item)
+            time.sleep(0.15)
+    all_results=all_results[:SEARCH_DISCOVERY_MAX_URLS]
+    print(f"SEARCH DISCOVERY: unique URLs={len(all_results)}")
+    return all_results
+
+
+def add_search_discovery_to_maps(search_results, board_map, career_map):
+    added_boards=0; added_careers=0
+    for item in search_results or []:
+        u=clean_text(item.get("url"))
+        if not u.startswith(("http://","https://")): continue
+        ats=canonical_ats_name(ats_from_url(u))
+        title=clean_text(item.get("title")); snippet=clean_text(item.get("snippet"))
+        company=""
+        if ats:
+            key=board_key_from_url(ats,u)
+            if key:
+                if ats in FETCHERS or ats=="Workday":
+                    rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Search API"})
+                    if rec.get("url") in {"",None}: rec["url"]=u
+                    added_boards+=1
+                else:
+                    # New/Indian ATS are crawled through the Nonstandard browser/HTML route.
+                    rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Search API"})
+                    added_boards+=1
+                continue
+        path=urlparse(u).path.lower()
+        host=urlparse(u).netloc.lower()
+        # Only retain plausible career/job pages for generic sites. Search snippets
+        # are not enough to publish a job, but they are excellent crawl seeds.
+        if any(x in path for x in ("/careers","/career","/jobs","/job","/join-us","/work-with-us","/hiring")):
+            if any(bad in host for bad in ("linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com")):
+                continue
+            company=clean_text(title.split(" - ")[0] if title else host.split(".")[0])
+            key=normalize_url(u)
+            if key not in career_map:
+                career_map[key]={"company":company or humanize_slug(host.split(".")[0]),"url":key,"source":f"Search API->{item.get('provider','search')}" ,"ats":"Company Career"}
+                added_careers+=1
+    print(f"SEARCH DISCOVERY ADDED: boards={added_boards} career_seeds={added_careers}")
+    return added_boards,added_careers
+
+
 # --------------------------
 # COMPANY / ATS DISCOVERY MANIFEST
 # --------------------------
@@ -4604,6 +5089,13 @@ def discover_company_manifest():
 
     board_map=defaultdict(dict)
     career_map={}
+    # Search engines are used as a board/career discovery layer. We do not
+    # publish their result URLs directly; they are validated/crawled below.
+    try:
+        search_results=discover_search_engine_urls()
+        add_search_discovery_to_maps(search_results,board_map,career_map)
+    except Exception as exc:
+        print(f"DISCOVERY search API ERROR: {type(exc).__name__}: {exc}")
     # The India-specific career-ops directory is an exact ATS map rather than a name guesser.
     for ats_raw, url in india_ats:
         ats=canonical_ats_name(ats_raw)
@@ -4635,13 +5127,19 @@ def discover_company_manifest():
             if x:
                 board_map["Workday"].setdefault(x["key"],{"key":x["key"],"url":url,"company":company or humanize_slug(x["tenant"]),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":item.get("source","Directory")})
 
-    # Add a large but controlled archive/Common Crawl discovery pass for all known public ATS hosts.
-    print("DISCOVERY: archive/common-crawl ATS harvesting")
-    try:
-        archive_candidates=discover_ats_boards_from_archives()
-    except Exception as exc:
-        print(f"DISCOVERY archive ERROR: {exc}")
-        archive_candidates={}
+    # Archive/Common Crawl is powerful but much heavier than search APIs, so run
+    # it on a rotating cadence rather than paying the cost every day. Existing
+    # validated boards are always preserved in the manifest.
+    archive_candidates={}
+    archive_due=(datetime.now(timezone.utc).date().toordinal() % ARCHIVE_DISCOVERY_INTERVAL_DAYS)==0
+    if archive_due:
+        print("DISCOVERY: archive/common-crawl ATS harvesting (scheduled pass)")
+        try:
+            archive_candidates=discover_ats_boards_from_archives()
+        except Exception as exc:
+            print(f"DISCOVERY archive ERROR: {exc}")
+    else:
+        print(f"DISCOVERY: archive/common-crawl skipped today; cadence={ARCHIVE_DISCOVERY_INTERVAL_DAYS} days")
     for ats,slugs in archive_candidates.items():
         ats=canonical_ats_name(ats)
         if ats not in FETCHERS and ats != "Workday":
@@ -5331,6 +5829,9 @@ def main_v11():
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
     print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
     print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
+    print("External fallbacks: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none")
+    print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
+    print("Search discovery: " + ", ".join([x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]) or "none")
     print(f"Playwright JS career fallback: {'enabled' if PLAYWRIGHT_ENABLED else 'disabled'}")
     print(f"Job window: {V11_JOB_MAX_AGE_DAYS} days / open-posting lifecycle")
     print(f"APAC/Worldwide remote tier: {'enabled' if V11_ALLOW_APAC_WORLDWIDE else 'disabled'}")
