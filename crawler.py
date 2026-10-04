@@ -82,19 +82,56 @@ SEARCH_QUERIES_PER_PROVIDER = int(os.environ.get("SEARCH_QUERIES_PER_PROVIDER", 
 SEARCH_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("SEARCH_RESULTS_PER_QUERY", "10"))))
 SEARCH_DISCOVERY_ROTATION_DAYS = max(1, int(os.environ.get("SEARCH_DISCOVERY_ROTATION_DAYS", "10")))
 SEARCH_DISCOVERY_MAX_URLS = int(os.environ.get("SEARCH_DISCOVERY_MAX_URLS", "1200"))
+GOOGLE_DISCOVERY_ENABLED = os.environ.get("GOOGLE_DISCOVERY_ENABLED", "1").lower() not in {"0", "false", "no"}
+GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER = max(1, int(os.environ.get("GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER", "6")))
+GOOGLE_DISCOVERY_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("GOOGLE_DISCOVERY_RESULTS_PER_QUERY", "10"))))
+GOOGLE_DISCOVERY_ROTATION_DAYS = max(1, int(os.environ.get("GOOGLE_DISCOVERY_ROTATION_DAYS", "1")))
+GOOGLE_DISCOVERY_WORKERS = max(2, int(os.environ.get("GOOGLE_DISCOVERY_WORKERS", "12")))
+GOOGLE_JOBS_ENABLED = os.environ.get("GOOGLE_JOBS_ENABLED", "1").lower() not in {"0", "false", "no"}
+GOOGLE_JOBS_MAX_QUERIES_PER_DAY = max(1, int(os.environ.get("GOOGLE_JOBS_MAX_QUERIES_PER_DAY", "2")))
+GOOGLE_JOBS_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("GOOGLE_JOBS_RESULTS_PER_QUERY", "10"))))
+GOOGLE_JOBS_ROTATION_DAYS = max(1, int(os.environ.get("GOOGLE_JOBS_ROTATION_DAYS", "1")))
+# SerpApi has a finite search quota. Use it for Google Jobs by default and
+# avoid spending additional SerpApi searches on ordinary Google web results.
+SERPAPI_ORGANIC_DISCOVERY_ENABLED = os.environ.get("SERPAPI_ORGANIC_DISCOVERY_ENABLED", "0").lower() not in {"0", "false", "no"}
+GOOGLE_JOBS_USAGE_FILE = os.environ.get("GOOGLE_JOBS_USAGE_FILE", "data/google_jobs_usage.json")
+_GOOGLE_JOBS_USAGE_LOCK = threading.Lock()
 EXTERNAL_FETCH_FALLBACK_ENABLED = os.environ.get("EXTERNAL_FETCH_FALLBACK_ENABLED", "1").lower() not in {"0", "false", "no"}
-EXTERNAL_FETCH_MAX_CALLS = max(0, int(os.environ.get("EXTERNAL_FETCH_MAX_CALLS", "200")))
+EXTERNAL_FETCH_MAX_CALLS = max(0, int(os.environ.get("EXTERNAL_FETCH_MAX_CALLS", "12")))
+# Per-provider safety caps. These apply only to paid/credit-based fallback
+# fetchers and prevent one bad batch of career pages from consuming a full
+# monthly allowance. Format: Provider=count,Provider=count
+_EXTERNAL_PROVIDER_CAPS_RAW = os.environ.get(
+    "EXTERNAL_FETCH_PROVIDER_CAPS",
+    "Jina=2,ScrapingAnt=2,BrightData=1,Firecrawl=2,ScraperAPI=1,Diffbot=1",
+)
+_EXTERNAL_PROVIDER_CAPS = {}
+for _part in _EXTERNAL_PROVIDER_CAPS_RAW.split(","):
+    try:
+        _name, _cap = _part.split("=", 1)
+        _EXTERNAL_PROVIDER_CAPS[_name.strip()] = max(0, int(_cap.strip()))
+    except Exception:
+        pass
 _EXTERNAL_FETCH_LOCK = threading.Lock()
 _EXTERNAL_FETCH_CALLS = 0
+_EXTERNAL_PROVIDER_CALLS = defaultdict(int)
 ARCHIVE_DISCOVERY_INTERVAL_DAYS = max(1, int(os.environ.get("ARCHIVE_DISCOVERY_INTERVAL_DAYS", "7")))
 STARTUP_JOBS_MAX_PAGES = int(os.environ.get("STARTUP_JOBS_MAX_PAGES", "9"))
 HIMALAYAS_MAX_PAGES = int(os.environ.get("HIMALAYAS_MAX_PAGES", "3"))
 ARBEITNOW_MAX_PAGES = int(os.environ.get("ARBEITNOW_MAX_PAGES", "5"))
 JOA_DAILY_RECORD_BUDGET = int(os.environ.get("JOA_DAILY_RECORD_BUDGET", "28"))
 JOA_PAGE_SIZE = min(25, max(5, int(os.environ.get("JOA_PAGE_SIZE", "10"))))
+REMOTE_LANDERS_MAX_PAGES = max(1, int(os.environ.get("REMOTE_LANDERS_MAX_PAGES", "2")))
+REMOTEJOBS_MAX_PAGES = max(1, int(os.environ.get("REMOTEJOBS_MAX_PAGES", "2")))
+JOBICY_MAX_PAGES = max(1, int(os.environ.get("JOBICY_MAX_PAGES", "2")))
+FEED_MAX_JOB_AGE_DAYS = max(1, int(os.environ.get("FEED_MAX_JOB_AGE_DAYS", "14")))
+FEED_DISCOVERY_MAX_ROWS = max(100, int(os.environ.get("FEED_DISCOVERY_MAX_ROWS", "1200")))
 PLAYWRIGHT_ENABLED = os.environ.get("PLAYWRIGHT_ENABLED", "1").lower() not in {"0","false","no"}
 PLAYWRIGHT_TIMEOUT_MS = int(os.environ.get("PLAYWRIGHT_TIMEOUT_MS", "25000"))
 PLAYWRIGHT_MAX_PAGES = int(os.environ.get("PLAYWRIGHT_MAX_PAGES", "3"))
+CAREER_BROWSER_MAX_CALLS = max(0, int(os.environ.get("CAREER_BROWSER_MAX_CALLS", "180")))
+CAREER_PREFLIGHT_ENABLED = os.environ.get("CAREER_PREFLIGHT_ENABLED", "1").lower() not in {"0", "false", "no"}
+CAREER_PREFLIGHT_WORKERS = max(4, int(os.environ.get("CAREER_PREFLIGHT_WORKERS", "36")))
 
 MAX_JOB_AGE_DAYS = int(os.environ.get("JOB_MAX_AGE_DAYS", "7"))
 CONCURRENCY = int(os.environ.get("ATS_WORKERS", "18"))
@@ -104,8 +141,8 @@ HTML_TIMEOUT = 18
 # Archive discovery is deliberately capped. The persistent Companies sheet
 # keeps validated boards between runs, so we don't need to rediscover
 # everything from zero every day.
-ARCHIVE_CANDIDATE_CAP = 3000
-MAX_NEW_VALIDATIONS_PER_ATS = 900
+ARCHIVE_CANDIDATE_CAP = 800
+MAX_NEW_VALIDATIONS_PER_ATS = 350
 MAX_COMPANY_SEEDS = 500
 MAX_WELLFOUND_PAGES_PER_ROLE = 6
 MAX_CUTSHORT_PAGES_PER_ROLE = 5
@@ -599,17 +636,24 @@ def get_json(url, params=None, method="GET", json_body=None, timeout=REQUEST_TIM
 
 
 def _external_fetch_slot(provider):
-    """Global safety cap so fallback services cannot consume unlimited credits."""
+    """Global + per-provider safety caps for credit-based fallback services."""
     global _EXTERNAL_FETCH_CALLS
     if EXTERNAL_FETCH_MAX_CALLS <= 0:
+        return False
+    cap = _EXTERNAL_PROVIDER_CAPS.get(provider, 0)
+    if cap <= 0:
         return False
     with _EXTERNAL_FETCH_LOCK:
         if _EXTERNAL_FETCH_CALLS >= EXTERNAL_FETCH_MAX_CALLS:
             return False
+        if _EXTERNAL_PROVIDER_CALLS[provider] >= cap:
+            return False
         _EXTERNAL_FETCH_CALLS += 1
+        _EXTERNAL_PROVIDER_CALLS[provider] += 1
         n = _EXTERNAL_FETCH_CALLS
-    if n <= 10 or n % 25 == 0:
-        print(f"External fallback call {n}/{EXTERNAL_FETCH_MAX_CALLS}: {provider}")
+        pn = _EXTERNAL_PROVIDER_CALLS[provider]
+    if n <= 10 or n % 10 == 0:
+        print(f"External fallback call {n}/{EXTERNAL_FETCH_MAX_CALLS}: {provider} {pn}/{cap}")
     return True
 
 
@@ -947,49 +991,106 @@ def job_key(job):
 
 
 # ============================================================
+# PUBLIC FEED DISCOVERY HELPERS
+# ============================================================
+
+AGGREGATOR_HOSTS = {
+    "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com",
+    "remotejobs.org", "weworkremotely.com", "remotive.com",
+    "arbeitnow.com", "workingnomads.com", "jobopportunitiesapi.org",
+}
+
+def is_aggregator_host(host):
+    host = (host or "").lower().split(":", 1)[0].lstrip("www.")
+    return host in AGGREGATOR_HOSTS or any(host.endswith("." + h) for h in AGGREGATOR_HOSTS)
+
+
+def is_feed_discovery_url(url):
+    host = urlparse(normalize_url(url) or url).netloc.lower()
+    return is_aggregator_host(host)
+
+
+def feed_recent_enough(posted):
+    if not posted:
+        return True
+    try:
+        d = datetime.strptime(posted, "%Y-%m-%d").date()
+        return d >= datetime.now(timezone.utc).date() - timedelta(days=FEED_MAX_JOB_AGE_DAYS)
+    except Exception:
+        return True
+
+
+# ============================================================
 # PUBLIC API SOURCES
 # ============================================================
 
 def fetch_jobicy():
+    """Broad Jobicy discovery feed. No key is required.
+
+    Jobicy's public API is discovery-only here: the listing URL is kept as the
+    discovery URL and is never written to the direct JOBS sheet.
+    """
     jobs = []
-    data = get_json("https://jobicy.com/api/v2/remote-jobs", params={"count": 200})
-    if not isinstance(data, dict):
-        return jobs
-    items = data.get("jobs") or data.get("data") or []
-    for j in items:
-        title = clean_text(j.get("jobTitle") or j.get("title"))
-        if not title_relevant(title):
-            continue
-        loc = clean_text(j.get("jobGeo") or j.get("location") or j.get("geo"))
-        desc = clean_text(j.get("jobDescription") or j.get("description"))
-        workplace = classify_workplace(
-            loc,
-            j.get("workplaceType") or j.get("jobGeo"),
-            j.get("isRemote", False),
-            j,
-            desc,
-        )
-        if not allowed_india(loc, j.get("country"), "", desc, workplace):
-            continue
-        posted = parse_date(j.get("pubDate") or j.get("datePosted") or j.get("publishedAt"))
-        if not recent_enough(posted):
-            continue
-        link = clean_text(j.get("url") or j.get("jobUrl") or j.get("applyUrl"))
-        if not link:
-            continue
-        score, matched = score_job(title, desc, loc)
-        jobs.append({
-            "added": datetime.now(timezone.utc).date().isoformat(),
-            "title": title,
-            "company": clean_text(j.get("companyName") or j.get("company")),
-            "location": loc or "India",
-            "workplace": workplace,
-            "posted_date": posted,
-            "job_url": link,
-            "source": "Jobicy",
-            "score": score,
-            "matched": matched,
-        })
+    seen_ids = set()
+    cursor = None
+    for page in range(JOBICY_MAX_PAGES):
+        params = {"count": 200}
+        if cursor:
+            params["cursor"] = cursor
+        data = get_json("https://jobicy.com/api/v2/remote-jobs", params=params, timeout=25)
+        if not isinstance(data, dict):
+            break
+        items = data.get("jobs") or data.get("data") or []
+        if not items:
+            break
+        for j in items:
+            if not isinstance(j, dict):
+                continue
+            jid = clean_text(j.get("id") or j.get("jobId") or j.get("slug") or j.get("url"))
+            if jid and jid in seen_ids:
+                continue
+            if jid:
+                seen_ids.add(jid)
+
+            title = clean_text(j.get("jobTitle") or j.get("title"))
+            desc = clean_text(j.get("jobDescription") or j.get("description"))
+            if not title_relevant(title):
+                continue
+            loc = clean_text(j.get("jobGeo") or j.get("location") or j.get("geo"))
+            workplace = classify_workplace(
+                loc, j.get("workplaceType") or j.get("jobGeo"),
+                j.get("isRemote", False), j, desc,
+            ) or "Remote"
+            if not allowed_india(loc, j.get("country"), "", desc, workplace):
+                continue
+            posted = parse_date(j.get("pubDate") or j.get("datePosted") or j.get("publishedAt"))
+            if not feed_recent_enough(posted):
+                continue
+            link = clean_text(j.get("url") or j.get("jobUrl") or j.get("applyUrl"))
+            if not link:
+                continue
+            company_obj = j.get("company") if isinstance(j.get("company"), dict) else {}
+            company = clean_text(
+                j.get("companyName") or
+                (company_obj.get("name") if isinstance(company_obj, dict) else j.get("company"))
+            )
+            company_website = clean_text(
+                j.get("companyWebsite") or j.get("companyUrl") or j.get("company_url") or
+                (company_obj.get("website") if isinstance(company_obj, dict) else "")
+            )
+            score, matched = score_job(title, desc, loc)
+            jobs.append({
+                "added": datetime.now(timezone.utc).date().isoformat(),
+                "title": title, "company": company, "location": loc or "India / Remote",
+                "workplace": workplace, "posted_date": posted, "job_url": link,
+                "source": "Jobicy", "score": score, "matched": matched,
+                "company_website": company_website, "direct": False,
+                "discovery_url": link,
+            })
+        cursor = data.get("nextCursor") or data.get("next_cursor")
+        if not cursor or len(items) < 200:
+            break
+    print(f"Jobicy: {len(jobs)} discovery candidates")
     return jobs
 
 
@@ -1051,7 +1152,7 @@ def _append_public_job(jobs, title, company, location, workplace, posted, link, 
     if not allowed_india(loc, "", "", desc, workplace):
         return
     posted = parse_date(posted)
-    if not recent_enough(posted):
+    if not feed_recent_enough(posted):
         return
     link = clean_text(link)
     if not link:
@@ -1072,31 +1173,29 @@ def _append_public_job(jobs, title, company, location, workplace, posted, link, 
 
 
 def fetch_himalayas():
-    """Use Himalayas' public search API as a discovery source.
+    """Broad Himalayas discovery using the public filtered search API.
 
-    We query India + support-related terms rather than walking the entire
-    100k+ global feed. Results remain subject to Remote4.me's 7-day and role
-    filters. The original Himalayas URL is retained for review; publishing
-    decisions remain manual.
+    We deliberately keep Himalayas links in the private discovery queue.
+    The later manual review step decides the employer/ATS application link.
     """
     jobs = []
     seen = set()
     terms = [
-        "customer support",
-        "customer success",
-        "technical support",
-        "product support",
+        "customer support", "customer service", "customer success",
+        "technical support", "product support", "support engineer",
+        "support specialist", "customer experience",
     ]
     total_requests = 0
     for term in terms:
         for page in range(1, HIMALAYAS_MAX_PAGES + 1):
             params = {
-                "q": term,
-                "country": "IN",
-                "sort": "recent",
-                "page": page,
+                "q": term, "country": "IN", "exclude_worldwide": "true",
+                "sort": "recent", "page": page,
             }
-            data = get_json("https://himalayas.app/jobs/api/search", params=params, timeout=25)
+            data = get_json(
+                "https://himalayas.app/jobs/api/search",
+                params=params, timeout=20,
+            )
             total_requests += 1
             if not isinstance(data, dict):
                 break
@@ -1118,19 +1217,26 @@ def fetch_himalayas():
                         names.extend([clean_text(r.get("alpha2")), clean_text(r.get("name"))])
                 loc = ", ".join([x for x in names if x]) or "India / Remote"
                 desc = clean_text(j.get("description") or j.get("excerpt"))
+                title = clean_text(j.get("title"))
+                if not title_relevant(title):
+                    continue
                 link = clean_text(j.get("applicationLink"))
-                _append_public_job(
-                    jobs,
-                    j.get("title"),
-                    j.get("companyName"),
-                    loc,
-                    "Remote",
-                    j.get("pubDate"),
-                    link,
-                    "Himalayas",
-                    desc,
-                )
-    print(f"Himalayas: {len(jobs)} accepted from {total_requests} API request(s)")
+                posted = parse_date(j.get("pubDate"))
+                if not link or not feed_recent_enough(posted):
+                    continue
+                if not allowed_india(loc, "IN", "IN", desc, "Remote"):
+                    continue
+                score, matched = score_job(title, desc, loc)
+                jobs.append({
+                    "added": datetime.now(timezone.utc).date().isoformat(),
+                    "title": title, "company": clean_text(j.get("companyName")),
+                    "location": loc, "workplace": "Remote",
+                    "posted_date": posted, "job_url": link,
+                    "source": "Himalayas", "score": score, "matched": matched,
+                    "direct": False, "discovery_url": link,
+                    "company_website": "",
+                })
+    print(f"Himalayas: {len(jobs)} discovery candidates from {total_requests} request(s)")
     return jobs
 
 
@@ -1268,13 +1374,13 @@ def fetch_wwr_rss():
 
 
 def fetch_jobopportunitiesapi():
-    """Fetch a small rotating slice from Job Opportunities API.
+    """Fetch a small rotating, title-targeted slice from Job Opportunities API.
 
-    The Explore plan is metered by records, so this crawler deliberately
-    stays at a safe ~30 records/day (900/month at a 30-day cadence). The API
-    itself is employer-direct: ATS and company-career provenance can be
-    selected with source_type=ats,career_site. We use the returned apply_url
-    directly and never publish the aggregator URL.
+    JOA is already employer/ATS-direct. Its title filter is the cheap/narrow
+    full-text filter, so we rotate three support-family terms each day instead
+    of downloading unrelated India vacancies and filtering them afterward.
+    Keyset pagination is used when the API returns next_cursor; pages are never
+    repeated. The total records consumed stay inside JOA_DAILY_RECORD_BUDGET.
     """
     jobs = []
     if not JOB_OPPORTUNITIES_API_KEY:
@@ -1282,8 +1388,6 @@ def fetch_jobopportunitiesapi():
         return jobs
 
     terms = [
-        # Broad discovery terms are rotated; the final title/location/direct
-        # filters keep the accepted set narrow.
         "customer support", "customer service", "customer success",
         "technical support", "support engineer", "support specialist",
         "product support", "application support", "platform support",
@@ -1295,14 +1399,13 @@ def fetch_jobopportunitiesapi():
         "customer onboarding", "implementation", "customer operations",
         "customer retention", "customer adoption", "customer enablement",
         "escalation support", "payments support", "trust and safety",
-        "chat support", "email support", "voice process", "non voice",
-        "contact center", "call center", "customer relations",
+        "chat support", "email support", "contact center", "call center",
+        "customer relations", "customer engagement",
     ]
-    # Rotate three terms per day so the free 1,000-record allowance is
-    # distributed across the niche instead of repeatedly buying the same rows.
     day = datetime.now(timezone.utc).date().toordinal()
     start = (day * 3) % len(terms)
     selected = [terms[(start + i) % len(terms)] for i in range(3)]
+
     remaining = max(0, JOA_DAILY_RECORD_BUDGET)
     seen = set()
     request_count = 0
@@ -1310,99 +1413,108 @@ def fetch_jobopportunitiesapi():
     for term in selected:
         if remaining <= 0:
             break
-        limit = min(JOA_PAGE_SIZE, remaining)
-        params = {
-            "country": "IN",
-            "remote": "remote,hybrid",
-            "source_type": "ats,career_site",
-            "status": "live",
-            "has_description": "true",
-            "title": term,
-            "limit": limit,
-        }
-        try:
-            r = SESSION.get(
-                "https://api.jobopportunitiesapi.org/v1/jobs",
-                params=params,
-                headers={"Authorization": f"Bearer {JOB_OPPORTUNITIES_API_KEY}"},
-                timeout=25,
-            )
-            request_count += 1
-        except requests.RequestException as exc:
-            print(f"Job Opportunities API {term}: request error: {exc}")
-            continue
+        cursor = None
+        while remaining > 0:
+            limit = min(JOA_PAGE_SIZE, remaining)
+            params = {
+                "country": "IN",
+                "remote": "remote,hybrid",
+                "source_type": "ats,career_site",
+                "has_description": "true",
+                "title": term,
+                "limit": limit,
+            }
+            if cursor:
+                params["cursor"] = cursor
+            try:
+                r = SESSION.get(
+                    "https://api.jobopportunitiesapi.org/v1/jobs",
+                    params=params,
+                    headers={"Authorization": f"Bearer {JOB_OPPORTUNITIES_API_KEY}"},
+                    timeout=20,
+                )
+                request_count += 1
+            except requests.RequestException as exc:
+                print(f"Job Opportunities API [{term}]: request error: {exc}")
+                break
 
-        if r.status_code == 402:
-            print("Job Opportunities API: monthly record allowance exhausted; stopping")
-            break
-        if r.status_code == 429:
-            print("Job Opportunities API: rate limited; stopping")
-            break
-        if r.status_code == 401:
-            print("Job Opportunities API: 401 — check JOB_OPPORTUNITIES_API_KEY")
-            break
-        if r.status_code != 200:
-            print(f"Job Opportunities API {term}: HTTP {r.status_code}: {clean_text(r.text)[:180]}")
-            continue
-        try:
-            payload = r.json()
-        except ValueError:
-            continue
+            if r.status_code == 402:
+                print("Job Opportunities API: monthly record allowance exhausted; stopping")
+                remaining = 0
+                break
+            if r.status_code == 429:
+                print("Job Opportunities API: rate limited; stopping")
+                break
+            if r.status_code == 401:
+                print("Job Opportunities API: 401 — check JOB_OPPORTUNITIES_API_KEY")
+                break
+            if r.status_code != 200:
+                print(f"Job Opportunities API [{term}]: HTTP {r.status_code}: {clean_text(r.text)[:180]}")
+                break
+            try:
+                payload = r.json()
+            except ValueError:
+                print(f"Job Opportunities API [{term}]: invalid JSON")
+                break
 
-        items = payload.get("data") or []
-        for j in items:
-            if not isinstance(j, dict):
-                continue
-            jid = clean_text(j.get("id") or j.get("slug") or j.get("apply_url"))
-            if jid and jid in seen:
-                continue
-            if jid:
-                seen.add(jid)
-            title = clean_text(j.get("title"))
-            link = clean_text(j.get("apply_url"))
-            if not title or not link or not title_relevant(title):
-                continue
-            # JOA is already employer-direct, but keep our own India/workplace
-            # gate as the final authority.
-            loc = clean_text(j.get("location"))
-            city = clean_text(j.get("city"))
-            country = clean_text(j.get("country"))
-            if city and city.lower() not in loc.lower():
-                loc = ", ".join(x for x in [city, loc] if x)
-            desc = clean_text(j.get("description"))
-            remote = clean_text(j.get("remote")).lower()
-            workplace = "Remote" if remote == "remote" else ("Hybrid" if remote == "hybrid" else "")
-            if not workplace:
-                continue
-            if not classify_india(loc, country, country, desc, workplace):
-                continue
-            posted = parse_date(j.get("posted_at") or j.get("first_seen_at"))
-            if not recent_enough(posted):
-                continue
-            score, matched = score_job(title, desc, loc)
-            source_name = clean_text(j.get("source") or j.get("provider_type") or "Job Opportunities API")
-            source_type = clean_text(j.get("source_type"))
-            jobs.append({
-                "added": datetime.now(timezone.utc).date().isoformat(),
-                "title": title,
-                "company": clean_text(j.get("company")),
-                "location": loc or "India",
-                "workplace": workplace,
-                "posted_date": posted,
-                "job_url": link,
-                "source": f"Job Opportunities API->{source_name}",
-                "score": score + 12,
-                "matched": matched,
-                "direct": True,
-                "eligibility": "India-specific",
-                "job_id": jid,
-                "route_type": "ats_api" if source_type == "ats" else "jsonld_or_company",
-            })
-        remaining -= len(items)
-        if remaining > 0:
-            time.sleep(0.4)
+            items = payload.get("data") or []
+            for j in items:
+                if not isinstance(j, dict):
+                    continue
+                jid = clean_text(j.get("id") or j.get("slug") or j.get("apply_url"))
+                if jid and jid in seen:
+                    continue
+                if jid:
+                    seen.add(jid)
+                title = clean_text(j.get("title"))
+                link = clean_text(j.get("apply_url"))
+                if not title or not link or not title_relevant(title):
+                    continue
+                loc = clean_text(j.get("location"))
+                city = clean_text(j.get("city"))
+                country = clean_text(j.get("country"))
+                if city and city.lower() not in loc.lower():
+                    loc = ", ".join(x for x in [city, loc] if x)
+                desc = clean_text(j.get("description"))
+                remote = clean_text(j.get("remote")).lower()
+                workplace = "Remote" if remote == "remote" else ("Hybrid" if remote == "hybrid" else "")
+                if not workplace:
+                    continue
+                if not classify_india(loc, country, country, desc, workplace):
+                    continue
+                posted = parse_date(j.get("posted_at") or j.get("first_seen_at"))
+                if not feed_recent_enough(posted):
+                    continue
+                score, matched = score_job(title, desc, loc)
+                source_name = clean_text(j.get("source") or j.get("provider_type") or "Job Opportunities API")
+                source_type = clean_text(j.get("source_type"))
+                jobs.append({
+                    "added": datetime.now(timezone.utc).date().isoformat(),
+                    "title": title,
+                    "company": clean_text(j.get("company")),
+                    "location": loc or "India",
+                    "workplace": workplace,
+                    "posted_date": posted,
+                    "job_url": link,
+                    "source": f"Job Opportunities API->{source_name}",
+                    "score": score + 12,
+                    "matched": matched,
+                    "direct": True,
+                    "eligibility": "India-specific",
+                    "job_id": jid,
+                    "route_type": "ats_api" if source_type == "ats" else "jsonld_or_company",
+                })
 
-    print(f"Job Opportunities API: {len(jobs)} accepted from {request_count} request(s); budget={JOA_DAILY_RECORD_BUDGET}")
+            remaining -= len(items)
+            if not items or len(items) < limit or remaining <= 0:
+                break
+            next_cursor = payload.get("next_cursor") or payload.get("nextCursor") or payload.get("cursor_next")
+            if not next_cursor or next_cursor == cursor:
+                break
+            cursor = next_cursor
+            time.sleep(0.15)
+
+    print(f"Job Opportunities API: {len(jobs)} accepted from {request_count} request(s); terms={', '.join(selected)}; budget={JOA_DAILY_RECORD_BUDGET}")
     return jobs
 
 
@@ -2175,6 +2287,8 @@ def discover_ats_boards_from_archives():
             for u in urls:
                 found_ats = ats_from_url(u)
                 if found_ats != ats:
+                    continue
+                if _BAD_CAREER_PATH_RE.search(urlparse(u).path) or _BAD_CAREER_FILE_RE.search(urlparse(u).path):
                     continue
                 slug = extract_ats_slug(ats, u)
                 if slug:
@@ -3341,6 +3455,153 @@ def _structured_workplace(item, body=""):
     return ""
 
 
+_BROWSER_CALLS = 0
+_BROWSER_CALL_LOCK = threading.Lock()
+
+
+def _browser_slot():
+    global _BROWSER_CALLS
+    if CAREER_BROWSER_MAX_CALLS <= 0:
+        return False
+    with _BROWSER_CALL_LOCK:
+        if _BROWSER_CALLS >= CAREER_BROWSER_MAX_CALLS:
+            return False
+        _BROWSER_CALLS += 1
+        n = _BROWSER_CALLS
+    if n <= 10 or n % 25 == 0:
+        print(f"Career browser fallback {n}/{CAREER_BROWSER_MAX_CALLS}")
+    return True
+
+
+_BAD_CAREER_PATH_RE = re.compile(
+    r"(?:/login(?:/|$)|/sign[-_]?in(?:/|$)|/dashboard(?:/|$)|/my[-_]?profile(?:/|$)|"
+    r"/embed(?:/|$)|/api(?:/|$)|/graphql(?:/|$)|/static(?:/|$)|/assets?(?:/|$)|"
+    r"/cdn(?:/|$)|/js(?:/|$)|/css(?:/|$)|/scripts?(?:/|$))", re.I
+)
+_BAD_CAREER_FILE_RE = re.compile(r"\.(?:js|css|map|xml|json|png|jpg|jpeg|gif|svg|woff2?|ttf)(?:$|\?)", re.I)
+_GENERIC_CAREER_PATH_RE = re.compile(
+    r"^/(?:careers?|jobs?|join[-_ ]?us|work[-_ ]?with[-_ ]?us|hiring|open[-_ ]?positions?|opportunities?|vacancies?|search)(?:/?)$",
+    re.I,
+)
+
+
+def is_plausible_career_seed(url):
+    """Allow only URLs that look like an employer career/jobs entry point.
+    This prevents product/support/about pages from becoming career crawl seeds."""
+    try:
+        p = urlparse(url)
+        host = p.netloc.lower().split(":")[0]
+        path = p.path or "/"
+    except Exception:
+        return False
+    if p.scheme not in {"http", "https"} or not host:
+        return False
+    if _BAD_CAREER_PATH_RE.search(path) or _BAD_CAREER_FILE_RE.search(path):
+        return False
+    # A direct employer/ATS job page discovered through Google Jobs can also
+    # be a useful persistent seed for the targeted career crawler.
+    if is_exact_job_url(url):
+        return True
+    if ats_from_url(url):
+        return True
+    if re.search(r"(?:^|\.)careers?\.", host) or re.search(r"(?:^|\.)jobs?\.", host):
+        return True
+    return bool(re.search(
+        r"/(?:careers?|jobs?|join[-_ ]?us|work[-_ ]?with[-_ ]?us|hiring|open[-_ ]?positions?|opportunities?|vacancies?)(?:/|$)",
+        path, re.I,
+    ))
+
+
+def is_exact_job_url(url, base_url=""):
+    """True only for a job-detail/application URL, never a generic career landing page."""
+    try:
+        p = urlparse(url)
+        host = p.netloc.lower().split(":")[0]
+        path = p.path.rstrip("/")
+        q = p.query.lower()
+    except Exception:
+        return False
+    if p.scheme not in {"http", "https"} or not host:
+        return False
+    if _BAD_CAREER_PATH_RE.search(path) or _BAD_CAREER_FILE_RE.search(path):
+        return False
+    if re.search(r"(?:jobid|job_id|requisitionid|requisition_id|gh_jid|postingid|posting_id|openingid|opening_id)=", q, re.I):
+        return True
+    ats = ats_from_url(url)
+    if ats:
+        parts = [unquote(x) for x in path.split("/") if x]
+        low = [x.lower() for x in parts]
+        if ats == "Greenhouse":
+            return len(parts) >= 3 and low[1] == "jobs" and bool(re.search(r"\d", parts[2]))
+        if ats == "Lever":
+            return len(parts) >= 2 and bool(re.fullmatch(r"[0-9a-f]{8}-[0-9a-f-]{20,}", parts[-1], re.I))
+        if ats == "Workable":
+            return len(parts) >= 3 and low[1] == "j" and len(parts[2]) >= 6
+        if ats == "Ashby":
+            return len(parts) >= 2 and len(parts[-1]) >= 12 and bool(re.search(r"[0-9a-f]{8}-[0-9a-f-]{20,}", parts[-1], re.I))
+        if ats == "SmartRecruiters":
+            return len(parts) >= 3 and "job" in low and bool(re.search(r"\d", parts[-1]))
+        if ats == "Teamtailor":
+            return "jobs" in low and len(parts) >= 2 and low[-1] not in {"jobs", "job"}
+        if ats in {"BambooHR", "Personio", "Recruitee", "Breezy", "Pinpoint", "Phenom", "Eightfold", "Jobvite", "Freshteam", "Keka", "Darwinbox", "Zoho Recruit", "SuccessFactors", "iCIMS", "Taleo", "ADP", "Rippling", "UKG", "Paylocity", "PeopleStrong", "HROne", "Manatal", "Fountain", "Jobylon", "TalentLyft", "Recruiterflow", "iSmartRecruit", "Comeet", "InHire", "Crelate", "Join.com", "Oracle Recruiting"}:
+            return len(parts) >= 2 and low[-1] not in {"jobs", "careers", "career", "search", "login", "signin", "sign-in", "dashboard"} and not _GENERIC_CAREER_PATH_RE.match(path)
+    if _GENERIC_CAREER_PATH_RE.match(path):
+        return False
+    if re.search(r"/(?:job|jobs|job-detail|job-details|position|positions|opening|openings|vacancy|vacancies|requisition|opportunity|opportunities|career/job|careers/job)(?:/|[-_])[^/]+$", path, re.I):
+        return True
+    if re.search(r"/(?:job|jobs|position|opening|vacancy|requisition)/[^/]+/[^/]+", path, re.I):
+        return True
+    return False
+
+
+def preflight_career_seed(url, timeout=8):
+    if not is_plausible_career_seed(url):
+        return False
+    try:
+        r=SESSION.get(url, timeout=timeout, allow_redirects=True, stream=False)
+        if r.status_code != 200:
+            return False
+        final=r.url or url
+        ctype=(r.headers.get("content-type") or "").lower()
+        if ctype and not any(x in ctype for x in ("text/html", "application/xhtml+xml", "text/plain")):
+            return False
+        if not is_plausible_career_seed(final):
+            return False
+        return True
+    except requests.RequestException:
+        return False
+
+
+def preflight_career_seeds(records):
+    if not CAREER_PREFLIGHT_ENABLED or not records:
+        return records
+    kept=[]
+    with ThreadPoolExecutor(max_workers=CAREER_PREFLIGHT_WORKERS) as ex:
+        futures={ex.submit(preflight_career_seed,r.get("url","")):r for r in records}
+        for f in as_completed(futures):
+            try:
+                if f.result(): kept.append(futures[f])
+            except Exception:
+                pass
+    print(f"CAREER PREFLIGHT: input={len(records)} live_plausible={len(kept)} rejected={len(records)-len(kept)}")
+    return kept
+
+
+def career_html_needs_browser(html, url):
+    if not html:
+        return True
+    try:
+        soup=BeautifulSoup(html,"html.parser")
+        text=clean_text(soup.get_text(" ",strip=True))
+        anchors=soup.find_all("a",href=True)
+        if any(is_exact_job_url(urljoin(url,a.get("href","")),url) for a in anchors[:250]):
+            return False
+        scripts=len(soup.find_all("script"))
+        # JS shell / almost-empty page: browser is useful here.
+        return len(text) < 1800 and scripts >= 3
+    except Exception:
+        return False
+
 def parse_structured_jobpostings(html, base_url, company_hint="", source="Company Career"):
     soup = BeautifulSoup(html, "html.parser")
     out = []
@@ -3374,6 +3635,10 @@ def parse_structured_jobpostings(html, base_url, company_hint="", source="Compan
         if not job_url:
             job_url = base_url
         job_url = urljoin(base_url, job_url)
+        # A JobPosting schema embedded on a company landing page is not enough.
+        # The final URL must resolve to the actual job detail/application page.
+        if not is_exact_job_url(job_url, base_url):
+            continue
         org = item.get("hiringOrganization") or {}
         company = company_hint or clean_text(org.get("name") if isinstance(org, dict) else "")
         score, matched = score_job(title, body, location)
@@ -3506,7 +3771,7 @@ def _browser_extract_job_candidates(page_html, base_url, company, source):
         if href in seen:
             continue
         path = urlparse(href).path.lower()
-        if not re.search(r"/(?:job|jobs|career|careers|opening|openings|position|vacanc|requisition|apply)/", path) and not ats_from_url(href):
+        if not is_plausible_career_seed(href) and not is_exact_job_url(href, base_url):
             continue
         anchors.append((href, text))
     for href, text in anchors[:PLAYWRIGHT_MAX_PAGES * 8]:
@@ -3527,6 +3792,8 @@ def _browser_extract_job_candidates(page_html, base_url, company, source):
                 workplace = _structured_workplace(item, body)
                 if workplace:
                     break
+        if not is_exact_job_url(page_final, base_url):
+            continue
         if not v11_allowed_india(body, "", "", body, workplace):
             continue
         score, matched = score_job(text, body, "India")
@@ -3705,6 +3972,10 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
                 title = clean_text(ps.title.get_text(" "))
             if not title_relevant(title):
                 continue
+            if not is_exact_job_url(page_final, final_url):
+                # This can still be a job-listing page; it is useful for link
+                # discovery, but it must never become a published job row.
+                continue
             body = clean_text(ps.get_text(" ", strip=True))[:50000]
             workplace = "Hybrid" if HYBRID_RE.search(body) else ("Remote" if REMOTE_RE.search(body) else "")
             # Use structured job JSON buried in the page whenever possible.
@@ -3733,7 +4004,7 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
 
     # JavaScript fallback for career sites whose job inventory is rendered only
     # after load. Never launch a browser when normal HTML/JSON-LD already found jobs.
-    if not jobs and PLAYWRIGHT_ENABLED and not ats_from_url(final_url):
+    if not jobs and PLAYWRIGHT_ENABLED and not ats_from_url(final_url) and career_html_needs_browser(html, final_url) and _browser_slot():
         browser_jobs, browser_links = crawl_career_page_with_browser(company, final_url, source=source)
         jobs.extend(browser_jobs)
         career_links.extend(browser_links)
@@ -4109,7 +4380,7 @@ def should_run_v11_archive():
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-V11_VERSION = "13.0"
+V11_VERSION = "13.6"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -4347,6 +4618,10 @@ DESC_INDIA = re.compile(
     r"candidates (?:in|from)|eligible (?:in|to work in)|remote (?:in|within|from))"
     r"\s+(?:\w+\s+){0,3}?india\b", re.I
 )
+NON_INDIA_LOCATION_RE = re.compile(
+    r"\b(?:united states|u\.s\.a?\.?|usa|canada|mexico|united kingdom|uk|england|scotland|wales|ireland|australia|new zealand|singapore|germany|france|netherlands|spain|italy|switzerland|sweden|dallas|phoenix|scottsdale|new york|san francisco|seattle|austin|chicago|boston|denver|atlanta|houston|miami|los angeles|san diego|washington dc|washington,?\s*d\.c\.|toronto|vancouver|london|manchester|sydney|melbourne|berlin|paris)\b",
+    re.I,
+)
 DESC_RESTRICT = re.compile(
     r"\b(?:us|u\.s\.|usa|united states|uk|canada|eu|europe)\s*"
     r"(?:only|residents?|based|citizens?)\b|"
@@ -4396,6 +4671,12 @@ def v11_india_eligibility(location="", country_code="", address_country="", desc
     # 5) Explicit India remote wording in location.
     if INDIA_REMOTE_CONTEXT_RE.search(loc):
         return "India-specific"
+
+    # A concrete foreign location must beat weak description text such as
+    # "our teams are in India". This blocks US-only jobs from being mislabeled
+    # India-inferred.
+    if NON_INDIA_LOCATION_RE.search(loc) and not (re.search(r"\bindia\b", loc, re.I) or INDIA_STATE_REGEX.search(loc)):
+        return ""
 
     # 6) Description is weak evidence and never India-specific.
     if DESC_RESTRICT.search(desc):
@@ -4691,21 +4972,114 @@ def fetch_workday_board(board, company_hint=""):
 
 
 def fetch_remotejobs_org():
-    jobs=[]
-    for offset in range(0,300,50):
-        data,status,_=get_json_status("https://remotejobs.org/api/v1/jobs",params={"category":"customer-support","limit":50,"offset":offset},timeout=25)
-        if not isinstance(data,dict): break
-        items=data.get("data") or data.get("jobs") or []
-        if not items: break
-        for j in items:
-            if not isinstance(j,dict): continue
-            title=clean_text(j.get("title")); desc=clean_text(j.get("description"))
-            company=clean_text((j.get("company") or {}).get("name") if isinstance(j.get("company"),dict) else j.get("company"))
-            loc=clean_text(j.get("location")); posted=parse_date(j.get("posted_at") or j.get("created_at"))
-            link=clean_text(j.get("url") or j.get("apply_url"))
-            _append_public_job(jobs,title,company,loc,"Remote" if REMOTE_RE.search(loc) else "Hybrid" if HYBRID_RE.search(loc) else "",posted,link,"RemoteJobs.org",desc)
-        if len(items)<50: break
+    """Discovery-only feed. Query the support category with a few India terms.
+
+    This avoids crawling hundreds of generic remote rows and does not spend
+    HTTP calls resolving aggregator pages to employer pages.
+    """
+    jobs = []
+    seen = set()
+    queries = ["india customer support", "india customer success", "india technical support"]
+    for q in queries:
+        for page in range(REMOTEJOBS_MAX_PAGES):
+            offset = page * 50
+            data, status, _ = get_json_status(
+                "https://remotejobs.org/api/v1/jobs",
+                params={"category": "customer-support", "q": q, "limit": 50, "offset": offset},
+                timeout=20,
+            )
+            if not isinstance(data, dict):
+                break
+            items = data.get("data") or data.get("jobs") or []
+            if not items:
+                break
+            for j in items:
+                if not isinstance(j, dict):
+                    continue
+                jid = clean_text(j.get("id") or j.get("url"))
+                if jid and jid in seen:
+                    continue
+                if jid:
+                    seen.add(jid)
+                company_obj = j.get("company") if isinstance(j.get("company"), dict) else {}
+                company = clean_text((company_obj or {}).get("name") or j.get("company"))
+                website = clean_text((company_obj or {}).get("website"))
+                title = clean_text(j.get("title"))
+                desc = clean_text(j.get("description"))
+                loc = clean_text(j.get("location"))
+                posted = parse_date(j.get("posted_at") or j.get("created_at"))
+                link = clean_text(j.get("url") or j.get("apply_url"))
+                if not title_relevant(title) or not link or not feed_recent_enough(posted):
+                    continue
+                if not re.search(r"\bindia\b|\bindian\b", " ".join([loc, desc]), re.I):
+                    continue
+                _append_public_job(
+                    jobs, title, company, loc or "India / Remote",
+                    "Remote", posted, link, "RemoteJobs.org", desc,
+                )
+                if jobs:
+                    jobs[-1]["company_website"] = website
+                    jobs[-1]["direct"] = False
+                    jobs[-1]["discovery_url"] = link
+            if len(items) < 50:
+                break
+    print(f"RemoteJobs.org: {len(jobs)} discovery candidates")
     return jobs
+
+
+def fetch_remote_landers():
+    """High-quality free source: listings are ATS-direct by design."""
+    jobs = []
+    seen = set()
+    for page in range(1, REMOTE_LANDERS_MAX_PAGES + 1):
+        data, status, _ = get_json_status(
+            "https://remotelanders.com/api/jobs",
+            params={"category": "Support", "location": "India", "limit": 100, "page": page},
+            timeout=20,
+        )
+        if not isinstance(data, dict):
+            break
+        items = data.get("jobs") or data.get("data") or []
+        if not items:
+            break
+        for j in items:
+            if not isinstance(j, dict):
+                continue
+            jid = clean_text(j.get("slug") or j.get("applyUrl") or j.get("url"))
+            if jid and jid in seen:
+                continue
+            if jid:
+                seen.add(jid)
+            title = clean_text(j.get("title"))
+            if not title_relevant(title):
+                continue
+            loc = clean_text(j.get("location"))
+            desc = clean_text(j.get("description") or "")
+            posted = parse_date(j.get("postedDate"))
+            apply = clean_text(j.get("applyUrl"))
+            if not apply or is_aggregator_host(urlparse(apply).netloc):
+                continue
+            if not feed_recent_enough(posted):
+                continue
+            if not re.search(r"\bindia\b", loc, re.I):
+                continue
+            score, matched = score_job(title, desc, loc)
+            jobs.append({
+                "added": datetime.now(timezone.utc).date().isoformat(),
+                "title": title, "company": clean_text(j.get("company")),
+                "location": loc or "India", "workplace": "Remote",
+                "posted_date": posted, "job_url": normalize_url(apply) or apply,
+                "source": "Remote Landers", "score": score + 10,
+                "matched": matched, "direct": True,
+                "eligibility": "India-specific", "route_type": "ats_api",
+                "link_verified": "Unchecked",
+                "company_website": clean_text(j.get("companyWebsite")),
+            })
+        if len(items) < 100:
+            break
+    print(f"Remote Landers: {len(jobs)} ATS-direct India candidates")
+    return jobs
+
 
 # --------------------------
 # OPTIONAL AGGREGATOR DISCOVERY SOURCES
@@ -4752,6 +5126,87 @@ def fetch_jooble():
 # The query bank rotates, so the same query is not repeatedly charged. A small
 # number of queries across several independent indexes gives much broader ATS
 # discovery while keeping free credits low.
+
+# Dedicated Google Jobs queries. These are deliberately broad and rotated so
+# only a small, predictable number of SerpApi Google Jobs calls are made daily.
+# Two calls/day = about 60 searches in a 30-day month, leaving ample headroom
+# on SerpApi's current 250-search free plan.
+GOOGLE_JOBS_QUERY_BANK = [
+    'customer support customer service customer success India remote',
+    'technical support support engineer product support India remote',
+    'implementation onboarding customer experience India remote',
+    'technical account customer adoption customer enablement India remote',
+    'help desk service desk application support platform support India remote',
+    'trust and safety chat support email support India remote',
+    'customer operations client support client success India remote',
+    'support specialist support analyst customer relations India remote',
+    'customer support customer success India hybrid',
+    'technical support support engineer India hybrid',
+    'implementation onboarding India hybrid customer',
+    'technical account manager customer success India hybrid',
+]
+
+SEARCH_GOOGLE_QUERY_BANK = [
+    'site:boards.greenhouse.io India (remote OR hybrid) ("customer support" OR "customer success")',
+    'site:job-boards.greenhouse.io India (remote OR hybrid) ("technical support" OR "product support")',
+    'site:jobs.lever.co India (remote OR hybrid) ("customer support" OR "customer success")',
+    'site:jobs.ashbyhq.com India (remote OR hybrid) ("customer support" OR "customer success")',
+    'site:apply.workable.com India (remote OR hybrid) (support OR success OR onboarding)',
+    'site:careers.smartrecruiters.com India (remote OR hybrid) support',
+    'site:myworkdayjobs.com India (remote OR hybrid) (support OR success OR service)',
+    'site:teamtailor.com India (remote OR hybrid) (support OR success)',
+    'site:recruitee.com India (remote OR hybrid) (support OR success)',
+    'site:breezy.hr India (remote OR hybrid) (support OR success)',
+    'site:personio.com India (remote OR hybrid) (support OR success)',
+    'site:jobs.personio.de India (remote OR hybrid) (support OR success)',
+    'site:pinpointhq.com India (remote OR hybrid) (support OR success)',
+    'site:darwinbox.com India (remote OR hybrid) (customer support OR customer success)',
+    'site:darwinbox.in India (remote OR hybrid) (customer support OR technical support)',
+    'site:keka.com India (remote OR hybrid) (customer support OR customer success)',
+    'site:jobs.jobvite.com India (remote OR hybrid) support',
+    'site:jobs.jazz.co India (remote OR hybrid) support',
+    'site:icims.com India (remote OR hybrid) (customer support OR technical support)',
+    'site:taleo.net India (remote OR hybrid) (customer support OR customer success)',
+    'site:successfactors.com India (remote OR hybrid) support',
+    'site:oraclecloud.com India (remote OR hybrid) (customer support OR customer success)',
+    'site:phenom.com India (remote OR hybrid) (customer support OR customer success)',
+    'site:eightfold.ai India (remote OR hybrid) (support OR success)',
+    'site:jobs.personio.de India "customer support"',
+    'site:*.bamboohr.com India "customer support"',
+    'site:*.freshteam.com India "customer support"',
+    'site:*.zohorecruit.com India "customer support"',
+    'site:*.zwayam.com India "customer support"',
+    'site:*.peoplestrong.com India "customer support"',
+    'site:*.hrone.cloud India "customer support"',
+    'site:*.recruiterflow.com India "customer support"',
+    'site:*.talentlyft.com India "customer support"',
+    'site:*.ismartrecruit.com India "customer support"',
+    'site:*.join.com India "customer support"',
+    'site:*.comeet.com India "customer support"',
+    'site:*.jobylon.com India "customer support"',
+    'site:*.ceipal.com India "customer support"',
+    'site:*.vincere.io India "customer support"',
+    '"customer support" India "remote" careers -linkedin -indeed -glassdoor',
+    '"customer success" India "remote" careers -linkedin -indeed -glassdoor',
+    '"technical support" India "remote" careers -linkedin -indeed -glassdoor',
+    '"product support" India "remote" careers -linkedin -indeed -glassdoor',
+    '"support engineer" India "remote" careers -linkedin -indeed -glassdoor',
+    '"customer support specialist" India "remote" jobs -linkedin -indeed',
+    '"customer success manager" India "remote" jobs -linkedin -indeed',
+    '"customer service representative" India "remote" jobs -linkedin -indeed',
+    '"implementation specialist" India "remote" careers -linkedin -indeed',
+    '"onboarding specialist" India "remote" careers -linkedin -indeed',
+    '"technical account manager" India "remote" careers -linkedin -indeed',
+    '"help desk" India "remote" careers -linkedin -indeed',
+    '"service desk" India "remote" careers -linkedin -indeed',
+    '"application support" India "remote" careers -linkedin -indeed',
+    '"customer experience" India "remote" careers -linkedin -indeed',
+    '"trust and safety" India "remote" support careers -linkedin -indeed',
+    '"chat support" India "remote" careers -linkedin -indeed',
+    '"email support" India "remote" careers -linkedin -indeed',
+    '"non voice" India remote customer support careers -linkedin -indeed',
+    '"voice process" India remote customer support careers -linkedin -indeed',
+]
 
 SEARCH_ATS_QUERY_BANK = [
     'site:jobs.ashbyhq.com India remote "customer support"',
@@ -4936,6 +5391,128 @@ def _search_searlo(query):
         print(f"SEARCH searlo error: {type(exc).__name__}: {exc}"); return []
 
 
+def _load_google_jobs_usage():
+    """Load persistent same-day Google Jobs call usage.
+
+    This protects the SerpApi quota even when workflow_dispatch is clicked
+    more than once on the same day. The file is committed by daily.yml.
+    """
+    path=Path(GOOGLE_JOBS_USAGE_FILE)
+    try:
+        payload=json.loads(path.read_text(encoding="utf-8"))
+        if payload.get("date") == datetime.now(timezone.utc).date().isoformat():
+            return payload
+    except Exception:
+        pass
+    return {"date":datetime.now(timezone.utc).date().isoformat(),"calls":0}
+
+
+def _claim_google_jobs_slot():
+    if not GOOGLE_JOBS_ENABLED or not SERPAPI_API_KEY:
+        return False
+    with _GOOGLE_JOBS_USAGE_LOCK:
+        usage=_load_google_jobs_usage()
+        calls=int(usage.get("calls",0) or 0)
+        if calls >= GOOGLE_JOBS_MAX_QUERIES_PER_DAY:
+            return False
+        usage={"date":datetime.now(timezone.utc).date().isoformat(),"calls":calls+1}
+        path=Path(GOOGLE_JOBS_USAGE_FILE)
+        path.parent.mkdir(parents=True,exist_ok=True)
+        path.write_text(json.dumps(usage,ensure_ascii=False,indent=2),encoding="utf-8")
+        return True
+
+
+def _google_jobs_calls_used_today():
+    with _GOOGLE_JOBS_USAGE_LOCK:
+        return int(_load_google_jobs_usage().get("calls",0) or 0)
+
+
+def _search_serpapi_google_jobs(query):
+    """Search Google's dedicated Jobs vertical through SerpApi.
+
+    This is discovery-only. We keep the Google Jobs result plus any external
+    employer/ATS apply options so those URLs can become crawl seeds. We do not
+    publish Google/Indeed/LinkedIn URLs as direct Remote4.me jobs.
+    """
+    if not SERPAPI_API_KEY or not GOOGLE_JOBS_ENABLED:
+        return []
+    if not _claim_google_jobs_slot():
+        print(f"GOOGLE JOBS: daily SerpApi budget exhausted; skipping query={query!r}")
+        return []
+    try:
+        r=SESSION.get(
+            "https://serpapi.com/search.json",
+            params={
+                "engine":"google_jobs",
+                "q":query,
+                "location":"India",
+                "api_key":SERPAPI_API_KEY,
+                "hl":"en",
+                "gl":"in",
+                "no_cache":"false",
+            },
+            timeout=30,
+        )
+        if r.status_code!=200:
+            print(f"GOOGLE JOBS SerpApi HTTP {r.status_code}")
+            return []
+        data=r.json()
+    except Exception as exc:
+        print(f"GOOGLE JOBS SerpApi error: {type(exc).__name__}: {exc}")
+        return []
+
+    blocked={
+        "linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com",
+        "monster.com","talent.com","simplyhired.com","dice.com",
+        "jooble.org","jobicy.com","himalayas.app","startup.jobs",
+        "remoteok.com","remotejobs.org","weworkremotely.com","arbeitnow.com",
+    }
+    out=[]
+    for j in data.get("jobs_results") or []:
+        if not isinstance(j,dict):
+            continue
+        title=clean_text(j.get("title"))
+        company=clean_text(j.get("company_name") or j.get("company"))
+        location=clean_text(j.get("location"))
+        description=clean_text(j.get("description"))
+        via=clean_text(j.get("via"))
+        job_id=clean_text(j.get("job_id"))
+        share_url=clean_text(j.get("share_link") or j.get("shareLink"))
+        options=[]
+        for a in j.get("apply_options") or []:
+            if not isinstance(a,dict):
+                continue
+            u=clean_text(a.get("link") or a.get("url"))
+            if not u.startswith(("http://","https://")):
+                continue
+            host=urlparse(u).netloc.lower().split(":",1)[0].lstrip("www.")
+            if host in blocked or any(host.endswith("."+b) for b in blocked):
+                continue
+            options.append({"url":normalize_url(u) or u,"title":clean_text(a.get("title") or a.get("name"))})
+        # Prefer an external employer/ATS apply option. The Google Jobs share
+        # link remains separately stored for manual review when needed.
+        primary=options[0]["url"] if options else share_url
+        if not title or not primary:
+            continue
+        snippets=[]
+        for x in [company,location,via,description[:600]]:
+            if x: snippets.append(x)
+        out.append({
+            "url":primary,
+            "title":title,
+            "snippet":" | ".join(snippets),
+            "company":company,
+            "location":location,
+            "job_id":job_id,
+            "google_jobs_url":share_url,
+            "apply_urls":[x["url"] for x in options],
+            "apply_titles":[x["title"] for x in options],
+            "via":via,
+        })
+    print(f"GOOGLE JOBS query={query!r}: {len(out)} results")
+    return out
+
+
 def _search_provider(name, query):
     return {
         "serper": _search_serper,
@@ -4945,79 +5522,244 @@ def _search_provider(name, query):
         "searlo": _search_searlo,
         "search1": _search_search1,
         "serpapi": _search_serpapi,
+        "serpapi_google_jobs": _search_serpapi_google_jobs,
     }.get(name, lambda _q: [])(query)
 
 
 def discover_search_engine_urls():
-    """Harvest ATS boards and career pages from several independent search indexes.
+    """Discover ATS boards, career pages, and individual job URLs.
 
-    This is intentionally low-credit: only a few queries per provider per run,
-    with a rotating query bank. Results are seeds, never trusted job listings.
+    Serper and SerpAPI are Google-result providers. We use Google's public
+    index through those APIs rather than scraping google.com HTML directly.
+    Dedicated site:/inurl:/phrase queries find both ATS boards and individual
+    company job pages. Calls are parallelized so broader discovery does not
+    materially slow the prepare job.
     """
     if not SEARCH_DISCOVERY_ENABLED:
         return []
-    configured=[p for p in SEARCH_PROVIDER_NAMES if {
+    configured_map={
         "serper":SERPER_API_KEY,"you":YOU_API_KEY,"exa":EXA_API_KEY,
         "tavily":TAVILY_API_KEY,"searlo":SEARLO_API_KEY,
         "search1":SEARCH1_API_KEY,"serpapi":SERPAPI_API_KEY,
-    }.get(p)]
-    if not configured:
+    }
+    configured=[
+        p for p in SEARCH_PROVIDER_NAMES
+        if configured_map.get(p) and (p != "serpapi" or SERPAPI_ORGANIC_DISCOVERY_ENABLED)
+    ]
+    google_jobs_configured=bool(SERPAPI_API_KEY and GOOGLE_JOBS_ENABLED)
+    if not configured and not google_jobs_configured:
         print("SEARCH DISCOVERY: no search API keys configured")
         return []
+
     day=datetime.now(timezone.utc).date().toordinal()
-    rotation=(day//SEARCH_DISCOVERY_ROTATION_DAYS) % len(SEARCH_ATS_QUERY_BANK)
-    count=max(1,SEARCH_QUERIES_PER_PROVIDER)
-    queries=[SEARCH_ATS_QUERY_BANK[(rotation+i)%len(SEARCH_ATS_QUERY_BANK)] for i in range(count)]
+    regular_rotation=(day//SEARCH_DISCOVERY_ROTATION_DAYS) % len(SEARCH_ATS_QUERY_BANK)
+    regular_queries=[SEARCH_ATS_QUERY_BANK[(regular_rotation+i)%len(SEARCH_ATS_QUERY_BANK)] for i in range(max(1,SEARCH_QUERIES_PER_PROVIDER))]
+    google_rotation=(day//GOOGLE_DISCOVERY_ROTATION_DAYS) % len(SEARCH_GOOGLE_QUERY_BANK)
+    google_queries=[SEARCH_GOOGLE_QUERY_BANK[(google_rotation+i)%len(SEARCH_GOOGLE_QUERY_BANK)] for i in range(GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER)] if GOOGLE_DISCOVERY_ENABLED else []
+    jobs_rotation=(day//GOOGLE_JOBS_ROTATION_DAYS) % len(GOOGLE_JOBS_QUERY_BANK)
+    jobs_remaining=max(0,GOOGLE_JOBS_MAX_QUERIES_PER_DAY-_google_jobs_calls_used_today())
+    google_jobs_queries=[GOOGLE_JOBS_QUERY_BANK[(jobs_rotation+i)%len(GOOGLE_JOBS_QUERY_BANK)] for i in range(min(GOOGLE_JOBS_MAX_QUERIES_PER_DAY,jobs_remaining))] if google_jobs_configured else []
+
+    tasks=[]
+    for provider in configured:
+        # Serper is the default Google-web provider. SerpApi organic Google is
+        # disabled by default so its quota can be reserved for Google Jobs.
+        qs = google_queries if provider == "serper" and GOOGLE_DISCOVERY_ENABLED else regular_queries
+        for q in qs:
+            tasks.append((provider,q))
+    for q in google_jobs_queries:
+        tasks.append(("serpapi_google_jobs",q))
+
+    print(
+        f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} "
+        f"google_queries={len(google_queries) if GOOGLE_DISCOVERY_ENABLED else 0} "
+        f"google_jobs_queries={len(google_jobs_queries)} "
+        f"regular_queries={len(regular_queries)} tasks={len(tasks)} "
+        f"serpapi_organic={'on' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'off'}"
+    )
+    if google_jobs_configured:
+        print(f"GOOGLE JOBS: SerpApi budget remaining today={len(google_jobs_queries)}; configured daily cap={GOOGLE_JOBS_MAX_QUERIES_PER_DAY} (~{GOOGLE_JOBS_MAX_QUERIES_PER_DAY*30}/30-day month)")
+
     all_results=[]
     seen=set()
-    print(f"SEARCH DISCOVERY: providers={','.join(configured)} queries/provider={len(queries)}")
-    for provider in configured:
-        for q in queries:
-            results=_search_provider(provider,q)
-            for item in results:
+    def one(task):
+        provider,q=task
+        return provider,q,_search_provider(provider,q)
+    with ThreadPoolExecutor(max_workers=min(GOOGLE_DISCOVERY_WORKERS,max(1,len(tasks)))) as ex:
+        futures=[ex.submit(one,t) for t in tasks]
+        for f in as_completed(futures):
+            try:
+                provider,q,results=f.result()
+            except Exception:
+                continue
+            for item in results or []:
                 u=item.get("url","")
                 if u and u not in seen:
-                    seen.add(u); item["provider"]=provider; item["query"]=q; all_results.append(item)
-            time.sleep(0.15)
+                    seen.add(u)
+                    item["provider"]=provider
+                    item["query"]=q
+                    all_results.append(item)
+
     all_results=all_results[:SEARCH_DISCOVERY_MAX_URLS]
     print(f"SEARCH DISCOVERY: unique URLs={len(all_results)}")
     return all_results
 
 
 def add_search_discovery_to_maps(search_results, board_map, career_map):
-    added_boards=0; added_careers=0
+    """Promote useful Google/search results into both the DISCOVERY sheet and
+    the persistent career crawl queue.
+
+    Google is a discovery engine here. A result is never published just because
+    it appears in search. But a plausible employer career page OR an individual
+    employer job page becomes a future crawl seed, so a good Google hit can keep
+    generating jobs after the initial discovery run.
+    """
+    added_boards=0; added_careers=0; discovery=[]
+    blocked_hosts={"linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com"}
+    role_re = re.compile(
+        r"customer\s+(?:support|service|success|experience|care)|"
+        r"technical\s+support|technical\s+account|product\s+support|support\s+engineer|"
+        r"help\s*desk|service\s+desk|application\s+support|platform\s+support|"
+        r"implementation|onboarding|customer\s+operations|client\s+services?|"
+        r"trust\s*(?:and|&)\s*safety|customer\s+relations", re.I
+    )
     for item in search_results or []:
-        u=clean_text(item.get("url"))
+        u=normalize_url(item.get("url",""))
         if not u.startswith(("http://","https://")): continue
+        parsed=urlparse(u)
+        host=parsed.netloc.lower().split(":",1)[0].lstrip("www.")
+        if host in blocked_hosts or any(host.endswith("."+x) for x in blocked_hosts):
+            continue
+
+        provider=clean_text(item.get("provider"))
         ats=canonical_ats_name(ats_from_url(u))
-        title=clean_text(item.get("title")); snippet=clean_text(item.get("snippet"))
-        company=""
+        title=clean_text(item.get("title")); snippet=clean_text(item.get("snippet")); query=clean_text(item.get("query"))
+
+        # Dedicated Google Jobs results: keep the Google Jobs record for manual
+        # review, and promote every non-aggregator employer/ATS apply option to
+        # the persistent crawl queue.
+        if provider == "serpapi_google_jobs":
+            share=normalize_url(item.get("google_jobs_url") or "")
+            apply_urls=[]
+            for raw_url in item.get("apply_urls") or []:
+                x=normalize_url(raw_url)
+                if x and x not in apply_urls:
+                    apply_urls.append(x)
+            if apply_urls:
+                for apply_url in apply_urls[:5]:
+                    ahost=urlparse(apply_url).netloc.lower().split(":",1)[0].lstrip("www.")
+                    if ahost in blocked_hosts or any(ahost.endswith("."+x) for x in blocked_hosts):
+                        continue
+                    a_ats=canonical_ats_name(ats_from_url(apply_url))
+                    if a_ats:
+                        akey=board_key_from_url(a_ats,apply_url)
+                        if akey and is_valid_board_seed(a_ats,apply_url):
+                            board_map[a_ats].setdefault(akey,{"key":akey,"url":apply_url,"company":clean_text(item.get("company")) or humanize_slug(akey),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Google Jobs"})
+                            added_boards+=1
+                    elif is_plausible_career_seed(apply_url):
+                        rec_key=apply_url
+                        if rec_key not in career_map:
+                            career_map[rec_key]={
+                                "company":clean_text(item.get("company")),"url":rec_key,
+                                "source":"Google Jobs","ats":"Company Career",
+                            }
+                            added_careers+=1
+                    discovery.append({
+                        "discovery_url":apply_url,"title":title,"snippet":snippet,
+                        "source":"Google Jobs/SerpApi","query":query,
+                        "score":100,"company":clean_text(item.get("company")),
+                        "seed_type":"Google Jobs Apply URL","crawl_seed":"Yes",
+                    })
+            # Preserve the Google Jobs result/share link separately when present.
+            if share and share not in {x.get("discovery_url") for x in discovery}:
+                discovery.append({
+                    "discovery_url":share,"title":title,"snippet":snippet,
+                    "source":"Google Jobs/SerpApi","query":query,
+                    "score":90,"company":clean_text(item.get("company")),
+                    "seed_type":"Google Jobs Result","crawl_seed":"No",
+                })
+            continue
+
+        # 1) Exact ATS result -> persistent ATS board queue.
         if ats:
             key=board_key_from_url(ats,u)
-            if key:
-                if ats in FETCHERS or ats=="Workday":
-                    rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Search API"})
-                    if rec.get("url") in {"",None}: rec["url"]=u
-                    added_boards+=1
-                else:
-                    # New/Indian ATS are crawled through the Nonstandard browser/HTML route.
-                    rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Search API"})
-                    added_boards+=1
+            if key and is_valid_board_seed(ats,u):
+                rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Search API"})
+                if rec.get("url") in {"",None}: rec["url"]=u
+                added_boards+=1
+                # ATS result is also useful for manual review, but it remains a
+                # discovery seed rather than a published JOBS row.
+                discovery.append({
+                    "discovery_url":u,"title":title,"snippet":snippet,
+                    "source":f"Google/{provider or 'search'}","query":query,
+                    "score":100 if role_re.search(f"{query} {title} {snippet}") else 75,
+                    "company":clean_text(title.split(" - ")[0]) if title else humanize_slug(key),
+                    "seed_type":"ATS Board Seed","crawl_seed":"Yes",
+                })
                 continue
-        path=urlparse(u).path.lower()
-        host=urlparse(u).netloc.lower()
-        # Only retain plausible career/job pages for generic sites. Search snippets
-        # are not enough to publish a job, but they are excellent crawl seeds.
-        if any(x in path for x in ("/careers","/career","/jobs","/job","/join-us","/work-with-us","/hiring")):
-            if any(bad in host for bad in ("linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com")):
-                continue
-            company=clean_text(title.split(" - ")[0] if title else host.split(".")[0])
-            key=normalize_url(u)
-            if key not in career_map:
-                career_map[key]={"company":company or humanize_slug(host.split(".")[0]),"url":key,"source":f"Search API->{item.get('provider','search')}" ,"ats":"Company Career"}
+
+        combined=f"{query} {title} {snippet}"
+        role_hit=bool(role_re.search(combined))
+        india_hint=bool(re.search(
+            r"\bindia\b|\bIN\b|bangalore|bengaluru|hyderabad|pune|chennai|delhi|gurugram|noida|mumbai|kolkata|ahmedabad|jaipur|kochi|remote|hybrid",
+            combined, re.I
+        ))
+        careerish=is_plausible_career_seed(u)
+        jobish=is_exact_job_url(u) or bool(re.search(
+            r"/(?:job|jobs|job-detail|job-details|position|positions|opening|openings|vacancy|vacancies|requisition|role|roles)(?:/|[-_])",
+            parsed.path, re.I
+        ))
+
+        # Query terms themselves count as role evidence. This matters when a
+        # company career page has a generic title such as "Careers" but Google
+        # found it because the query was support-related.
+        company=clean_text(title.split(" - ")[0] if title else host.split(".")[0])
+        seed_type="Google Career Page" if careerish else "Google Job Page" if jobish else ""
+
+        # 2) Employer career page / employer job page -> persistent career queue.
+        # Job pages are deliberately accepted as crawl seeds even when their path
+        # is not a conventional /jobs/ URL; the career parser will validate them.
+        if (careerish or jobish) and role_hit and india_hint:
+            key=u
+            existing=career_map.get(key)
+            rec={
+                "company":company or humanize_slug(host.split(".")[0]),
+                "url":key,
+                "source":f"Google/{provider or 'search'}",
+                "ats":"Company Career",
+                "crawl_priority":0,
+                "seed_type":seed_type,
+                "query":query,
+                "last_discovered":datetime.now(timezone.utc).date().isoformat(),
+            }
+            if existing:
+                existing.update({k:v for k,v in rec.items() if k in {"source","crawl_priority","seed_type","query","last_discovered"} and v})
+            else:
+                career_map[key]=rec
                 added_careers+=1
-    print(f"SEARCH DISCOVERY ADDED: boards={added_boards} career_seeds={added_careers}")
-    return added_boards,added_careers
+
+            discovery.append({
+                "discovery_url":u,"title":title,"snippet":snippet,
+                "source":f"Google/{provider or 'search'}","query":query,
+                "score":95 if jobish and role_hit else 85 if careerish and role_hit else 70,
+                "company":company,
+                "seed_type":seed_type,"crawl_seed":"Yes",
+            })
+        elif (jobish or careerish) and (role_hit or india_hint):
+            # Keep weaker-but-interesting search hits for manual review. They do
+            # not enter the crawl queue unless both role and India evidence exist.
+            discovery.append({
+                "discovery_url":u,"title":title,"snippet":snippet,
+                "source":f"Google/{provider or 'search'}","query":query,
+                "score":65 if role_hit else 55,"company":company,
+                "seed_type":seed_type or "Google Lead","crawl_seed":"No",
+            })
+
+    # Dedupe Google leads before saving the artifact.
+    dd={normalize_url(x.get("discovery_url","")):x for x in discovery if x.get("discovery_url")}
+    discovery=sorted(dd.values(), key=lambda x:(x.get("score",0),x.get("title","")), reverse=True)
+    print(f"SEARCH DISCOVERY ADDED: boards={added_boards} career_seeds={added_careers} job/career_leads={len(discovery)}")
+    return added_boards,added_careers,discovery
 
 
 # --------------------------
@@ -5041,6 +5783,30 @@ def _save_json(path, obj):
     with open(tmp,"w",encoding="utf-8") as f:
         json.dump(obj,f,ensure_ascii=False,indent=2)
     os.replace(tmp,path)
+
+
+def is_valid_board_seed(ats, url):
+    """Reject archive/static/login URLs masquerading as ATS boards."""
+    if not url or not isinstance(url, str):
+        return False
+    try:
+        p=urlparse(url)
+        path=p.path.lower()
+    except Exception:
+        return False
+    if _BAD_CAREER_PATH_RE.search(path) or _BAD_CAREER_FILE_RE.search(path):
+        return False
+    if ats == "Workday":
+        return bool(parse_workday_board_url(url))
+    slug=extract_ats_slug(ats,url)
+    if not slug:
+        return False
+    # Archive noise often produces JavaScript/JSON blobs as the apparent slug.
+    if len(slug) > 100 or any(ch in slug for ch in '{}[]"<>'):
+        return False
+    if re.search(r"(?:jquery|webpack|runtime|vendor|globalplatform|ph-basic|job_board|embed)", slug, re.I):
+        return False
+    return True
 
 
 def board_key_from_url(ats, url):
@@ -5091,9 +5857,10 @@ def discover_company_manifest():
     career_map={}
     # Search engines are used as a board/career discovery layer. We do not
     # publish their result URLs directly; they are validated/crawled below.
+    search_discovery=[]
     try:
         search_results=discover_search_engine_urls()
-        add_search_discovery_to_maps(search_results,board_map,career_map)
+        _,_,search_discovery=add_search_discovery_to_maps(search_results,board_map,career_map)
     except Exception as exc:
         print(f"DISCOVERY search API ERROR: {type(exc).__name__}: {exc}")
     # The India-specific career-ops directory is an exact ATS map rather than a name guesser.
@@ -5111,12 +5878,12 @@ def discover_company_manifest():
             ats=canonical_ats_name(ats_from_url(url))
             if ats:
                 key=board_key_from_url(ats,url)
-                if key:
+                if key and is_valid_board_seed(ats, url):
                     rec=board_map[ats].setdefault(key,{"key":key,"url":url,"company":company,"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":item.get("source","Directory")})
                     if company and not rec.get("company"): rec["company"]=company
             else:
                 u=normalize_url(url)
-                if u and u not in career_map:
+                if u and is_plausible_career_seed(u) and u not in career_map:
                     career_map[u]={"company":company,"url":u,"source":item.get("source","Directory"),"ats":"Company Career"}
     # Exact Workday URLs can also be embedded in any discovered ATS links or website fields.
     for item in companies:
@@ -5149,8 +5916,13 @@ def discover_company_manifest():
             if ats=="Workday":
                 # Archive extractor generally yields a tenant/site slug. If it is not a URL, skip rather than guess.
                 continue
-            if not url: continue
+            if not url or not is_valid_board_seed(ats, url): continue
             board_map[ats].setdefault(slug,{"key":slug,"url":url,"company":humanize_slug(slug),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Wayback/Common Crawl"})
+
+    # Remove dead/non-career URLs before they ever reach the expensive browser job.
+    career_records=list(career_map.values())
+    career_records=preflight_career_seeds(career_records)
+    career_map={r.get("url"):r for r in career_records if r.get("url")}
 
     # Save company universe separately so daily career crawling can rotate through it.
     _save_json(COMPANIES_FILE, companies)
@@ -5191,9 +5963,17 @@ def discover_company_manifest():
                         valid.append(nr)
         # Also preserve old manifest boards that weren't in this discovery slice.
         old=_load_json(BOARDS_FILE,{})
+        old_version=str(old.get("version","")) if isinstance(old,dict) else ""
         for oldr in (old.get("boards",{}).get(ats,[]) if isinstance(old,dict) else []):
-            if oldr.get("active") and oldr.get("key") not in {x.get("key") for x in valid}:
-                valid.append(oldr)
+            if not oldr.get("active") or oldr.get("key") in {x.get("key") for x in valid}:
+                continue
+            old_url=oldr.get("url") or public_ats_board_url(ats,oldr.get("key",""))
+            # On the 13.1 migration, drop legacy archive/static pollution and
+            # let the stricter discovery/validation rebuild those boards.
+            if old_version != V11_VERSION and (oldr.get("source") == "Wayback/Common Crawl" or not is_valid_board_seed(ats, old_url)):
+                continue
+            if is_valid_board_seed(ats, old_url):
+                oldr=dict(oldr); oldr["url"]=old_url; valid.append(oldr)
         # dedupe
         d={r["key"]:r for r in valid if r.get("key")}
         boards_out[ats]=sorted(d.values(),key=lambda x:(not x.get("active",True),x.get("company","").lower(),x.get("key","")))
@@ -5207,6 +5987,7 @@ def discover_company_manifest():
         "board_count":sum(len(v) for v in boards_out.values()),
     }
     _save_json(BOARDS_FILE,manifest)
+    _save_json(os.path.join(DATA_DIR,"search_discovery.json"),search_discovery)
     elapsed=(datetime.now(timezone.utc)-started).total_seconds()
     print(f"DISCOVERY COMPLETE: companies={len(companies)} boards={manifest['board_count']} careers={len(manifest['careers'])} runtime={int(elapsed)}s")
     return manifest
@@ -5222,7 +6003,10 @@ def validate_board_record(rec):
             return False,0,"error"
         api=f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/wday/cxs/{info['tenant']}/{info['site']}/jobs"
         data,status,code=get_json_status(api, method="POST", timeout=20, json_body={"appliedFacets":{},"limit":20,"offset":0,"searchText":""})
-        return isinstance(data,dict) and isinstance(data.get("jobPostings"),list), len((data or {}).get("jobPostings") or []) if isinstance(data,dict) else 0, status
+        count=len((data or {}).get("jobPostings") or []) if isinstance(data,dict) else 0
+        if status != "ok": return False,count,status
+        if count == 0 and rec.get("source") in {"Wayback/Common Crawl", "Search API"}: return False,count,"empty"
+        return True,count,status
     url=rec.get("url") or public_ats_board_url(ats,key)
     if not url: return False,0,"error"
     # Probe using the public board/career URL rather than a filtered job fetch. Zero matching jobs
@@ -5237,7 +6021,14 @@ def validate_board_record(rec):
         count=0
         if isinstance(data,dict): count=len(data.get("jobs") or data.get("content") or data.get("postings") or [])
         elif isinstance(data,list): count=len(data)
-        return status=="ok",count,status
+        # New archive/search seeds must have a currently reachable board with at
+        # least one live posting. Existing previously-live boards may survive a
+        # zero-posting day through the normal fail-count retention logic.
+        if status != "ok":
+            return False,count,status
+        if count == 0 and rec.get("source") in {"Wayback/Common Crawl", "Search API"}:
+            return False,count,"empty"
+        return True,count,status
     html,final=get_html(url,timeout=20)
     return bool(html), 0, "ok" if html else "error"
 
@@ -5339,8 +6130,19 @@ def daily_crawl_ats(ats):
 
 def daily_crawl_careers():
     manifest=load_manifest()
-    records=rotate_records(manifest.get("careers",[]) or [],V11_CAREER_DAILY_BUDGET,"careers")
-    print(f"CAREER PAGES: {len(records)}")
+    all_records=list(manifest.get("careers",[]) or [])
+    # Reserve part of the daily career budget for fresh Google-discovered
+    # employer/job pages. This ensures a good search hit is not merely stored
+    # and then lost in the larger rotating career universe.
+    google_records=[r for r in all_records if str(r.get("crawl_priority", "")) == "0" or str(r.get("source", "")).startswith("Google/")]
+    other_records=[r for r in all_records if r not in google_records]
+    google_budget=min(len(google_records), max(50, min(200, V11_CAREER_DAILY_BUDGET//4)))
+    other_budget=max(0, V11_CAREER_DAILY_BUDGET-google_budget)
+    records=rotate_records(google_records,google_budget,"google-careers") + rotate_records(other_records,other_budget,"careers")
+    # De-duplicate after combining the priority queues.
+    ded={normalize_url(r.get("url","")):r for r in records if r.get("url")}
+    records=list(ded.values())[:V11_CAREER_DAILY_BUDGET]
+    print(f"CAREER PAGES: {len(records)} (google-priority={min(len(google_records),google_budget)}, other={len(records)-min(len(google_records),google_budget)})")
     out=[]; discovered=[]
     def one(rec):
         company=clean_text(rec.get("company")); url=rec.get("url")
@@ -5363,9 +6165,15 @@ def daily_crawl_careers():
 
 
 def feed_direct_only():
+    """Fetch public feeds quickly. Aggregators are discovery-only.
+
+    Job Opportunities API is the exception because it exposes employer/ATS
+    apply URLs directly. Other aggregator URLs are written to DISCOVERY for
+    manual review instead of spending time trying to resolve hundreds of
+    aggregator pages during every run.
+    """
     feeds=[
         ("Himalayas",fetch_himalayas),
-        ("Remotive",fetch_remotive),
         ("Arbeitnow",fetch_arbeitnow),
         ("Working Nomads",fetch_working_nomads),
         ("We Work Remotely",fetch_wwr_rss),
@@ -5374,21 +6182,42 @@ def feed_direct_only():
         ("Startup Jobs",fetch_startup_jobs),
         ("Job Opportunities API",fetch_jobopportunitiesapi),
         ("RemoteJobs.org",fetch_remotejobs_org),
+        ("Remote Landers",fetch_remote_landers),
         ("Adzuna",fetch_adzuna),
         ("Jooble",fetch_jooble),
     ]
-    raw=[]; stats=[]
+    direct=[]; discovery=[]; stats=[]
+    aggregator_sources={
+        "Himalayas","Arbeitnow","Working Nomads","We Work Remotely","Jobicy",
+        "Remote OK","Startup Jobs","RemoteJobs.org","Remote Landers","Adzuna","Jooble"
+    }
     for name,fn in feeds:
         if name in {"Adzuna","Jooble"} and ((name=="Adzuna" and not (ADZUNA_APP_ID and ADZUNA_APP_KEY)) or (name=="Jooble" and not JOOBLE_API_KEY)):
             continue
         try:
-            j=fn(); stats.append({"source":name,"accepted_raw":len(j),"error":""}); raw.extend(j); print(f"FEED {name}: {len(j)} raw")
+            rows=fn() or []
+            if name == "Job Opportunities API":
+                direct.extend(rows)
+            else:
+                for j in rows:
+                    x=dict(j)
+                    x["discovery_url"]=x.get("job_url","")
+                    x["seed_type"]="Aggregator Job"
+                    x["crawl_seed"]="No"
+                    discovery.append(x)
+            stats.append({"source":name,"accepted_raw":len(rows),"direct":len(rows) if name=="Job Opportunities API" else 0,"discovery":len(rows) if name!="Job Opportunities API" else 0,"error":""})
+            print(f"FEED {name}: raw={len(rows)} direct={len(rows) if name=="Job Opportunities API" else 0} discovery={len(rows) if name in aggregator_sources else 0}")
         except Exception as exc:
-            stats.append({"source":name,"accepted_raw":0,"error":f"{type(exc).__name__}: {exc}"}); print(f"FEED {name}: ERROR {type(exc).__name__}: {exc}")
-    # Existing feed-to-direct resolver is retained, but the candidate budget is much larger.
-    direct=resolve_public_feed_jobs_to_direct(raw,budget=min(len(raw),V11_FEED_DIRECT_BUDGET))
-    print(f"FEEDS DIRECT RESOLVED: {len(direct)}")
-    return direct,stats
+            stats.append({"source":name,"accepted_raw":0,"direct":0,"discovery":0,"error":f"{type(exc).__name__}: {exc}"})
+            print(f"FEED {name}: ERROR {type(exc).__name__}: {exc}")
+    # Bound the discovery sheet so a noisy feed never creates an enormous write.
+    discovery=sorted(
+        discovery,
+        key=lambda x:(x.get("score",0),x.get("posted_date","")),
+        reverse=True,
+    )[:FEED_DISCOVERY_MAX_ROWS]
+    print(f"FEEDS: direct={len(direct)} discovery={len(discovery)}")
+    return direct,discovery,stats
 
 
 # --------------------------
@@ -5510,6 +6339,8 @@ def merge_direct_jobs(jobs):
         if is_suspicious_job(j):
             rejected_scam += 1
             continue
+        if j.get("source", "").startswith("Company Career") and not is_exact_job_url(u):
+            continue
         j["job_url"]=u; j["eligibility"]=elig; j["direct"]=True
         j["route_type"] = "ats_api" if ats_from_url(u) else "jsonld_or_company"
         ukey=("url",u)
@@ -5546,6 +6377,11 @@ V11_COMPANY_HEADERS = [
     "Company","Domain","Career/ATS URL","ATS","Last Checked","Jobs Found","Status","Last OK","Fail Count","Discovery Source",
 ]
 STATS_HEADERS=["Run Date","Run ID","Mode","Source","Raw/Boards","Accepted","New Rows","Errors","Runtime Seconds","Notes"]
+DISCOVERY_HEADERS=[
+    "Added","Job Title","Company","Location","Work Type","Posted","Discovery URL",
+    "Source","Score","Matched Keywords","Company Website","Review Status","First Seen","Last Seen",
+    "Seed Type","Crawl Seed",
+]
 
 
 def ensure_headers_v11(ws, headers):
@@ -5652,6 +6488,60 @@ def upsert_companies_v11(ws,records):
     return len(additions)+len(updates)
 
 
+def append_discovery_v11(ws, jobs):
+    """Upsert private aggregator leads for manual company/ATS review."""
+    headers = ws.row_values(1)
+    if not headers:
+        ws.update([DISCOVERY_HEADERS], "A1")
+        headers = DISCOVERY_HEADERS
+    idx = sheet_col_index(headers)
+    rows = ws.get_all_values()
+    existing = {}
+    for rno, row in enumerate(rows[1:], start=2):
+        if "Discovery URL" in idx and len(row) > idx["Discovery URL"]:
+            u = normalize_url(row[idx["Discovery URL"]])
+            if u:
+                existing[u] = rno
+    today = datetime.now(timezone.utc).date().isoformat()
+    additions=[]
+    updates=[]
+    for j in jobs:
+        u=normalize_url(j.get("discovery_url") or j.get("job_url") or "")
+        if not u: continue
+        values={
+            "Added": today, "Job Title": j.get("title",""), "Company": j.get("company",""),
+            "Location": j.get("location",""), "Work Type": j.get("workplace",""),
+            "Posted": j.get("posted_date",""), "Discovery URL": u, "Source": j.get("source",""),
+            "Score": j.get("score",0), "Matched Keywords": j.get("matched",""),
+            "Company Website": j.get("company_website",""), "Review Status": "Pending",
+            "First Seen": today, "Last Seen": today,
+            "Seed Type": j.get("seed_type", ""), "Crawl Seed": j.get("crawl_seed", "No"),
+            "Seed Type": j.get("seed_type", ""), "Crawl Seed": j.get("crawl_seed", "No"),
+        }
+        if u in existing:
+            rno=existing[u]
+            # Preserve any manual review status and manual edits. Only refresh
+            # metadata fields that the crawler owns.
+            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen","Seed Type","Crawl Seed"]:
+                if h not in idx: continue
+                col=idx[h]+1
+                updates.append({"range":f"{__import__('gspread').utils.rowcol_to_a1(rno,col)}","values":[[values[h]]]})
+            for h in ["Seed Type","Crawl Seed"]:
+                if h in idx:
+                    col=idx[h]+1
+                    updates.append({"range":f"{__import__('gspread').utils.rowcol_to_a1(rno,col)}","values":[[values[h]]]})
+        else:
+            row=[""]*len(headers)
+            for h,v in values.items():
+                if h in idx: row[idx[h]]=v
+            additions.append(row)
+    for i in range(0,len(updates),400):
+        ws.batch_update(updates[i:i+400],value_input_option="RAW")
+    for i in range(0,len(additions),1000):
+        ws.append_rows(additions[i:i+1000],value_input_option="RAW")
+    return len(additions), len(updates)
+
+
 def write_stats(ws,run_id,mode,stats,runtime,notes=""):
     headers=ws.row_values(1)
     if not headers: ws.update([STATS_HEADERS],"A1"); headers=STATS_HEADERS
@@ -5751,12 +6641,16 @@ def run_careers_cli(out_path):
 
 
 def run_feeds_cli(out_path):
-    jobs,stats=feed_direct_only(); jobs=merge_direct_jobs(jobs)
+    jobs,discovery,stats=feed_direct_only(); jobs=merge_direct_jobs(jobs)
     os.makedirs(os.path.dirname(out_path),exist_ok=True)
     with open(out_path,"w",encoding="utf-8") as f:
         for j in jobs:f.write(json.dumps(j,ensure_ascii=False)+"\n")
-    with open(os.path.splitext(out_path)[0]+".stats.json","w",encoding="utf-8") as f:json.dump(stats,f,ensure_ascii=False,indent=2)
-    print(f"FEEDS: DIRECT JOBS {len(jobs)}")
+    discovery_path=os.path.join(os.path.dirname(out_path),"discovery.json")
+    with open(discovery_path,"w",encoding="utf-8") as f:
+        json.dump(discovery,f,ensure_ascii=False,indent=2)
+    with open(os.path.splitext(out_path)[0]+".stats.json","w",encoding="utf-8") as f:
+        json.dump(stats,f,ensure_ascii=False,indent=2)
+    print(f"FEEDS: DIRECT JOBS {len(jobs)} | DISCOVERY LEADS {len(discovery)}")
 
 
 def run_merge(out_dir,write_sheet=False):
@@ -5767,6 +6661,22 @@ def run_merge(out_dir,write_sheet=False):
             for line in f:
                 try: jobs.append(json.loads(line))
                 except Exception: pass
+    discovery=[]
+    discovery_path=Path(out_dir)/"discovery.json"
+    if discovery_path.exists():
+        try:
+            payload=json.loads(discovery_path.read_text(encoding="utf-8"))
+            if isinstance(payload,list): discovery.extend(payload)
+        except Exception: pass
+    search_path=Path(out_dir)/"search_discovery.json"
+    if search_path.exists():
+        try:
+            payload=json.loads(search_path.read_text(encoding="utf-8"))
+            if isinstance(payload,list): discovery.extend(payload)
+        except Exception: pass
+    # Dedupe discovery leads across feed + Google search layers.
+    ded={normalize_url(x.get("discovery_url") or x.get("job_url") or ""):x for x in discovery if isinstance(x,dict) and normalize_url(x.get("discovery_url") or x.get("job_url") or "")}
+    discovery=list(ded.values())
     final=merge_direct_jobs(jobs)
     final=verify_jobs_before_publish(final)
     final=merge_direct_jobs(final)
@@ -5780,10 +6690,14 @@ def run_merge(out_dir,write_sheet=False):
     jobs_ws=get_ws(spreadsheet,"JOBS",rows=10000,cols=20)
     companies_ws=get_ws(spreadsheet,"COMPANIES",rows=30000,cols=12)
     stats_ws=get_ws(spreadsheet,"STATS",rows=5000,cols=len(STATS_HEADERS))
+    discovery_ws=get_ws(spreadsheet,"DISCOVERY",rows=30000,cols=len(DISCOVERY_HEADERS))
     ensure_headers_v11(jobs_ws,V11_JOBS_HEADERS)
     ensure_headers_v11(companies_ws,V11_COMPANY_HEADERS)
     ensure_headers_v11(stats_ws,STATS_HEADERS)
+    ensure_headers_v11(discovery_ws,DISCOVERY_HEADERS)
     new_rows=append_jobs_v11(jobs_ws,final)
+    discovery_added, discovery_updated = append_discovery_v11(discovery_ws, discovery)
+    print(f"DISCOVERY SHEET: added={discovery_added} updated={discovery_updated}")
     # Merge board statuses from all artifacts.
     statuses=[]; career_links=[]
     for p in sorted(Path(out_dir).glob("*.status.json")):
@@ -5823,15 +6737,18 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V12 — DIRECT JOB + INDIA ATS + JS CAREER")
+    print("REMOTE4.ME JOB CRAWLER V13.5 — DIRECT JOB + INDIA ATS + GOOGLE JOBS + GOOGLE SEEDS")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
     print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
     print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
     print("External fallbacks: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none")
-    print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
+    print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run | provider caps={_EXTERNAL_PROVIDER_CAPS}")
     print("Search discovery: " + ", ".join([x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]) or "none")
+    print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
+    if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
+        print(f"Google Jobs daily budget: {GOOGLE_JOBS_MAX_QUERIES_PER_DAY} search call(s) (~{GOOGLE_JOBS_MAX_QUERIES_PER_DAY*30}/30-day month)")
     print(f"Playwright JS career fallback: {'enabled' if PLAYWRIGHT_ENABLED else 'disabled'}")
     print(f"Job window: {V11_JOB_MAX_AGE_DAYS} days / open-posting lifecycle")
     print(f"APAC/Worldwide remote tier: {'enabled' if V11_ALLOW_APAC_WORLDWIDE else 'disabled'}")
