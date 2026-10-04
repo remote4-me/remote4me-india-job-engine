@@ -3,6 +3,11 @@ import re
 import json
 import time
 import hashlib
+import argparse
+import threading
+from pathlib import Path
+from collections import Counter, defaultdict
+from urllib import robotparser
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -2409,10 +2414,7 @@ def get_spreadsheet():
     info = json.loads(GOOGLE_CREDENTIALS)
     creds = Credentials.from_service_account_info(
         info,
-        scopes=[
-            "https://www.googleapis.com/auth/spreadsheets",
-            "https://www.googleapis.com/auth/drive",
-        ],
+        scopes=["https://www.googleapis.com/auth/spreadsheets"],
     )
     return gspread.authorize(creds).open_by_key(SPREADSHEET_ID)
 
@@ -3007,7 +3009,8 @@ def parse_structured_jobpostings(html, base_url, company_hint="", source="Compan
             "added": datetime.now(timezone.utc).date().isoformat(),
             "title": title, "company": company, "location": location or "India",
             "workplace": workplace, "posted_date": posted, "job_url": normalize_url(job_url) or job_url,
-            "source": source, "score": score, "matched": matched,
+            "source": source, "score": score, "matched": matched, "description": body,
+            "job_id": clean_text(item.get("identifier") or item.get("jobId") or item.get("id")),
         })
     return out
 
@@ -3037,15 +3040,107 @@ def _extract_job_links(soup, base_url):
     return list(dict.fromkeys(candidates))
 
 
+_ROBOTS_CACHE = {}
+_ROBOTS_LOCK = threading.Lock()
+
+
+def robots_allowed(url, user_agent=USER_AGENT):
+    """Respect robots.txt for non-API HTML routes.
+
+    A missing robots.txt is treated as allowed. A successfully retrieved robots.txt
+    is authoritative for the requested URL. Network failures fail open only when
+    the file cannot be fetched at all, so a temporary robots outage does not turn
+    the entire daily crawl into zero results.
+    """
+    p = urlparse(url)
+    if not p.netloc:
+        return False
+    root = f"{p.scheme or 'https'}://{p.netloc}"
+    key = root.lower()
+    with _ROBOTS_LOCK:
+        cached = _ROBOTS_CACHE.get(key)
+    if cached is not None:
+        return cached.can_fetch(user_agent, url)
+    rp = robotparser.RobotFileParser()
+    try:
+        r = SESSION.get(root + "/robots.txt", timeout=8)
+        if r.status_code == 404:
+            rp.parse([])
+        elif r.status_code >= 400:
+            # Conservative for explicit denial; fail open for transient server errors.
+            if r.status_code in {401,403}:
+                rp.parse(["User-agent: *", "Disallow: /"])
+            else:
+                rp.parse([])
+        else:
+            rp.parse(r.text.splitlines())
+    except requests.RequestException:
+        rp.parse([])
+    with _ROBOTS_LOCK:
+        _ROBOTS_CACHE[key] = rp
+    return rp.can_fetch(user_agent, url)
+
+
+def sitemap_job_urls(site_root, cap=8):
+    """Find a small set of likely job URLs from public sitemap files."""
+    p = urlparse(site_root)
+    if not p.netloc:
+        return []
+    root = f"{p.scheme or 'https'}://{p.netloc}"
+    candidates = [root + "/sitemap.xml"]
+    try:
+        r = SESSION.get(root + "/robots.txt", timeout=8)
+        if r.status_code == 200:
+            candidates = re.findall(r"(?im)^sitemap:\s*(\S+)", r.text) or candidates
+    except requests.RequestException:
+        pass
+    seen_smaps=set(); urls=[]
+    while candidates and len(urls) < cap:
+        sm=candidates.pop(0)
+        sm=sm.strip().strip('"\'')
+        if not sm or sm in seen_smaps: continue
+        seen_smaps.add(sm)
+        try:
+            r=SESSION.get(sm, timeout=10)
+            if r.status_code != 200: continue
+            text=r.text
+        except requests.RequestException:
+            continue
+        for loc in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", text, re.I):
+            loc=unquote(loc).strip()
+            if loc.lower().endswith(".xml") or "sitemap" in loc.lower():
+                if len(seen_smaps) < 20: candidates.append(loc)
+                continue
+            if re.search(r"/(?:job|jobs|career|careers|opening|openings|position|positions|vacanc|requisition)(?:/|[-_]|$)", urlparse(loc).path, re.I):
+                urls.append(loc)
+                if len(urls) >= cap: break
+    return list(dict.fromkeys(urls))[:cap]
+
+
 def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8):
     """Fetch a public employer career page and return direct job records plus ATS links."""
     if not url:
+        return [], []
+    # API-backed ATS boards have their own public fetchers; robots.txt is for
+    # the remaining public HTML career routes.
+    if not ats_from_url(url) and not robots_allowed(url):
         return [], []
     html, final_url = get_html(url, timeout=V11_HTML_TIMEOUT)
     if not html:
         return [], []
     soup = BeautifulSoup(html, "html.parser")
     jobs = parse_structured_jobpostings(html, final_url, company, source)
+    # If the landing page exposes little/no structured data, use the site's public
+    # sitemap as a cheap second extraction tier. This is especially useful for
+    # custom Indian career sites where the visible page is only a JS shell.
+    if not jobs and not ats_from_url(final_url):
+        for sitemap_url in sitemap_job_urls(final_url, cap=min(8, max_job_pages * 2)):
+            if len(jobs) >= max_job_pages:
+                break
+            page_html, page_final = get_html(sitemap_url, timeout=V11_HTML_TIMEOUT)
+            if not page_html:
+                continue
+            jobs.extend(parse_structured_jobpostings(page_html, page_final, company, source))
     career_links = []
     seen = set()
 
@@ -3127,6 +3222,12 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
             })
 
     return jobs, career_links
+
+
+# V11 uses the hardened career parser everywhere. Keep one explicit name so
+# missing-function errors cannot be silently swallowed by compatibility aliases.
+def crawl_career_url_v11(company, url, source="Company Career", max_job_pages=8):
+    return crawl_career_url_v10(company, url, source=source, max_job_pages=max_job_pages)
 
 
 def crawl_nonstandard_ats_url(company, url, ats):
@@ -3489,12 +3590,10 @@ def should_run_v11_archive():
 # REMOTE4.ME V11 — SHARDED HIGH-COVERAGE ORCHESTRATOR
 # ============================================================
 
-import argparse
-from collections import Counter, defaultdict
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-V11_VERSION = "11.0"
+V11_VERSION = "11.1"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -3644,37 +3743,134 @@ for _x in V11_EXTRA_INDIA_TERMS:
         pass
 
 # Recompiled regex with the larger city dictionary.
-INDIA_CITY_REGEX = re.compile(r"(?:\b(?:" + "|".join(re.escape(x) for x in sorted(set(INDIA_CITIES), key=len, reverse=True)) + r")\b)", re.I)
+# IMPORTANT: never treat 1-2 letter state/country abbreviations as Indian city
+# evidence. They collide with US states and other countries (GA, OR, UK, etc.).
+_SAFE_CITY_TERMS = {
+    x for x in INDIA_CITIES
+    if len(clean_text(x)) >= 3 and clean_text(x).lower() not in {
+        "ap","ts","tn","ka","kl","mh","gj","rj","up","uk","wb","od","or",
+        "mp","cg","jh","br","pb","hr","hp","ga","as"
+    }
+}
+INDIA_CITY_REGEX = re.compile(
+    r"(?:\b(?:" + "|".join(re.escape(x) for x in sorted(_SAFE_CITY_TERMS, key=len, reverse=True)) + r")\b)",
+    re.I,
+)
+INDIA_STATE_REGEX = re.compile(
+    r"\b(?:" + "|".join(re.escape(x) for x in sorted(set(INDIA_STATES), key=len, reverse=True)) + r")\b",
+    re.I,
+)
 
-# Eligibility tiers: strict India, plus remote APAC/worldwide discovery. The latter are
-# clearly marked so Remote4.me can choose the publishing policy later.
-APAC_RE = re.compile(r"\b(?:apac|asia[- ]pacific|asia pacific|south asia|asia)\b", re.I)
-WORLDWIDE_RE = re.compile(r"\b(?:worldwide|world[- ]wide|global|anywhere|work from anywhere|remote anywhere|all countries|international remote)\b", re.I)
+# City names that exist outside India too. They are only accepted when the same
+# location also contains India / an Indian state, or when a structured country
+# field explicitly says India.
+AMBIGUOUS_INDIA_CITY_TERMS = {
+    "salem", "anand", "mandi", "puri", "sagar", "rewa", "pali", "una", "ara",
+    "kota", "ponda", "leh", "gaya", "hamirpur", "bilaspur", "durg", "delhi",
+    "kochi", "jammu", "gurdaspur", "sangli", "satara", "aurangabad", "portland",
+}
+
+APAC_RE = re.compile(r"\b(?:apac|asia[- ]pacific|asia pacific|south asia)\b", re.I)
+WORLDWIDE_RE = re.compile(
+    r"\b(?:worldwide|world[- ]wide|anywhere|work from anywhere|remote anywhere|"
+    r"all countries|international remote)\b", re.I
+)
+
+# Description evidence is deliberately weak. It can produce India-inferred,
+# but never India-specific. This prevents text such as "our team is in India"
+# from turning a US-only job into an Indian job.
+DESC_INDIA = re.compile(
+    r"(?:open to|hiring (?:in|from)|based in|located in|residing in|"
+    r"candidates (?:in|from)|eligible (?:in|to work in)|remote (?:in|within|from))"
+    r"\s+(?:\w+\s+){0,3}?india\b", re.I
+)
+DESC_RESTRICT = re.compile(
+    r"\b(?:us|u\.s\.|usa|united states|uk|canada|eu|europe)\s*"
+    r"(?:only|residents?|based|citizens?)\b|"
+    r"must (?:reside|be located|be based) in (?:the )?"
+    r"(?:us|united states|uk|canada|eu)\b", re.I
+)
+
 INDIA_ELIGIBILITY_COLUMNS = ["India Eligibility"]
 
 
 def v11_india_eligibility(location="", country_code="", address_country="", description="", workplace=""):
-    hay = " ".join([clean_text(location), clean_text(country_code), clean_text(address_country), clean_text(description)[:30000]])
-    if re.search(r"\b(?:india|indian|in)\b", clean_text(country_code).lower()) or re.search(r"\bindia\b", hay, re.I) or INDIA_CITY_REGEX.search(clean_text(location)):
+    """Return a conservative eligibility tier for an India-focused job.
+
+    Structured country evidence wins. Location text is next. Description text is
+    only allowed to create India-inferred. APAC/worldwide is evaluated against
+    the LOCATION field only, never the full description.
+    """
+    if workplace not in {"Remote", "Hybrid"}:
+        return ""
+
+    code = clean_text(country_code).lower()
+    addr_country = clean_text(address_country).lower()
+    loc = clean_text(location)
+    desc = clean_text(description)[:30000]
+
+    # 1) Structured country fields are strongest.
+    if code in {"in", "ind", "india"} or addr_country in {"in", "ind", "india"}:
         return "India-specific"
-    if workplace == "Remote" and APAC_RE.search(hay):
+
+    # 2) Explicit India in the location is strong evidence.
+    if re.search(r"\bindia\b", loc, re.I) or re.search(r"\bindian\b", loc, re.I):
+        return "India-specific"
+
+    # 3) Full Indian state names in location are strong evidence.
+    if INDIA_STATE_REGEX.search(loc):
+        return "India-specific"
+
+    # 4) City evidence. Ambiguous city names require India/state context.
+    city_match = INDIA_CITY_REGEX.search(loc)
+    if city_match:
+        city = city_match.group(0).lower()
+        if city not in AMBIGUOUS_INDIA_CITY_TERMS:
+            return "India-specific"
+        if re.search(r"\bindia\b", loc, re.I) or INDIA_STATE_REGEX.search(loc):
+            return "India-specific"
+
+    # 5) Explicit India remote wording in location.
+    if INDIA_REMOTE_CONTEXT_RE.search(loc):
+        return "India-specific"
+
+    # 6) Description is weak evidence and never India-specific.
+    if DESC_RESTRICT.search(desc):
+        return ""
+    if DESC_INDIA.search(desc):
+        return "India-inferred"
+
+    # 7) Broader remote tiers use location only.
+    if workplace == "Remote" and APAC_RE.search(loc):
         return "APAC"
-    if workplace == "Remote" and WORLDWIDE_RE.search(hay):
+    if workplace == "Remote" and WORLDWIDE_RE.search(loc):
         return "Worldwide remote"
     return ""
 
 
 def v11_accepts_location(location="", country_code="", address_country="", description="", workplace=""):
-    if workplace not in {"Remote", "Hybrid"}:
-        return False, ""
     eligibility = v11_india_eligibility(location, country_code, address_country, description, workplace)
-    return bool(eligibility and (eligibility == "India-specific" or V11_ALLOW_APAC_WORLDWIDE)), eligibility
+    if not eligibility:
+        return False, ""
+    # Discovery can keep APAC/worldwide in the shard, but publication is kept
+    # India-safe by merge_direct_jobs unless explicitly enabled.
+    return True, eligibility
 
 
 def v11_allowed_india(location="", country_code="", address_country="", description="", workplace=""):
-    ok, _eligibility = v11_accepts_location(location, country_code, address_country, description, workplace)
-    return ok
+    ok, eligibility = v11_accepts_location(location, country_code, address_country, description, workplace)
+    if not ok:
+        return False
+    if eligibility == "India-specific":
+        return True
+    if eligibility == "India-inferred":
+        return os.environ.get("ALLOW_INDIA_INFERRED", "1").lower() not in {"0", "false", "no"}
+    return os.environ.get("ALLOW_APAC_WORLDWIDE", "0").lower() not in {"0", "false", "no"}
 
+# The older code calls these generic helpers. Point them to the single safe
+# implementation so there is only one eligibility policy in the crawler.
+classify_india = v11_classify_india = lambda location="", country_code="", address_country="", description="", workplace="": bool(v11_india_eligibility(location, country_code, address_country, description, workplace))
+allowed_india = v11_allowed_india
 
 # Hook V11 title/context/location logic over the stable helpers.
 def title_relevant(title):
@@ -3906,7 +4102,7 @@ def fetch_workday_board(board, company_hint=""):
                 workplace = clean_text(detail.get("remoteType"))
                 workplace = "Remote" if workplace.lower() in {"remote","fully remote"} else ("Hybrid" if workplace.lower() == "hybrid" else workplace)
                 if workplace not in {"Remote", "Hybrid"}:
-                    workplace = classify_workplace(loc, structured_data=detail, description=desc)
+                    workplace = classify_workplace(loc, structured=detail, description=desc)
                 ok, elig = v11_accepts_location(loc, "", country_text, desc, workplace)
                 if not ok: continue
                 posted = parse_date(detail.get("startDate") or p.get("startDate"))
@@ -4287,7 +4483,7 @@ def daily_crawl_careers():
     def one(rec):
         company=clean_text(rec.get("company")); url=rec.get("url")
         if not url:return [],[]
-        return crawl_career_url_v10(company,url,source="Company Career",max_job_pages=V11_CAREER_PAGE_LIMIT)
+        return crawl_career_url_v11(company,url,source="Company Career",max_job_pages=V11_CAREER_PAGE_LIMIT)
     with ThreadPoolExecutor(max_workers=V11_CRAWL_WORKERS) as ex:
         futs={ex.submit(one,r):r for r in records}
         done=0
@@ -4335,6 +4531,93 @@ def feed_direct_only():
 # --------------------------
 # DIRECT-ONLY CLEANING / DEDUPE
 # --------------------------
+SCAM_JOB_RE = re.compile(
+    r"(?:registration\s+fee|application\s+fee|training\s+fee|joining\s+fee|"
+    r"pay\s+(?:a|the)\s+fee|earn\s+(?:up\s+to\s+)?\$?\d+[\s,]*(?:per|/)?\s*day|"
+    r"earn\s+daily\s+income|investment\s+required|deposit\s+required)", re.I
+)
+SCAM_CONTACT_RE = re.compile(
+    r"(?:apply|contact|send\s+(?:your|cv|resume))\s+(?:only\s+)?(?:via|on|through)\s+"
+    r"(?:telegram|whatsapp)\b", re.I
+)
+SOFT_404_RE = re.compile(
+    r"(?:job\s+(?:not\s+found|no\s+longer\s+(?:available|accepting|exists))|"
+    r"position\s+(?:has\s+been\s+filled|no\s+longer\s+available)|"
+    r"requisition\s+(?:not\s+found|closed)|page\s+not\s+found|404\s+not\s+found)", re.I
+)
+
+
+def is_suspicious_job(job):
+    text = " ".join([
+        clean_text(job.get("title", "")),
+        clean_text(job.get("description", ""))[:30000],
+    ])
+    return bool(SCAM_JOB_RE.search(text) or SCAM_CONTACT_RE.search(text))
+
+
+def verify_direct_job_url(url):
+    """Lightweight live-link check. Returns (ok, final_url, reason)."""
+    if not url:
+        return False, "", "missing-url"
+    try:
+        r = SESSION.get(url, timeout=int(os.environ.get("LINK_CHECK_TIMEOUT", "10")), allow_redirects=True)
+        if r.status_code >= 400:
+            return False, r.url, f"http-{r.status_code}"
+        body = clean_text(r.text[:120000])
+        if SOFT_404_RE.search(body):
+            return False, r.url, "soft-404"
+        final_path = urlparse(r.url).path.rstrip("/").lower()
+        original_path = urlparse(url).path.rstrip("/").lower()
+        # A job URL that redirects all the way to the site's generic root/careers
+        # page is not a valid direct application URL.
+        if original_path and original_path != final_path and final_path in {"", "/careers", "/career", "/jobs", "/job"}:
+            return False, r.url, "generic-careers-redirect"
+        return True, r.url, "ok"
+    except requests.RequestException as exc:
+        return False, url, f"request-{type(exc).__name__}"
+
+
+def verify_jobs_before_publish(jobs):
+    if os.environ.get("VERIFY_DIRECT_LINKS", "1").lower() in {"0", "false", "no"}:
+        return jobs
+    budget = int(os.environ.get("LINK_CHECK_BUDGET", "600"))
+    workers = int(os.environ.get("LINK_CHECK_WORKERS", "12"))
+    if len(jobs) > budget:
+        # Verify the highest-quality rows first. Do not silently throw away the
+        # remainder; mark those rows unverified and let the manual review decide.
+        ordered = sorted(jobs, key=lambda j: (1 if ats_from_url(j.get("job_url", "")) else 0, j.get("score", 0)), reverse=True)
+        to_check = ordered[:budget]
+        unchecked = ordered[budget:]
+    else:
+        to_check, unchecked = list(jobs), []
+
+    def one(j):
+        ok, final_url, reason = verify_direct_job_url(j.get("job_url", ""))
+        x = dict(j)
+        x["link_verified"] = "Yes" if ok else "No"
+        x["link_check_reason"] = reason
+        if ok and final_url:
+            x["job_url"] = normalize_url(final_url) or final_url
+        return x
+
+    verified = []
+    with ThreadPoolExecutor(max_workers=min(workers, max(1, len(to_check)))) as ex:
+        futures = [ex.submit(one, j) for j in to_check]
+        for f in as_completed(futures):
+            try:
+                x = f.result()
+                if x.get("link_verified") == "Yes":
+                    verified.append(x)
+            except Exception:
+                pass
+    for j in unchecked:
+        x = dict(j)
+        x["link_verified"] = "Unchecked"
+        x["link_check_reason"] = "budget"
+        verified.append(x)
+    print(f"LINK CHECK: checked={len(to_check)} live={sum(1 for j in verified if j.get('link_verified')=='Yes')} unchecked={len(unchecked)}")
+    return verified
+
 def normalize_identity(j):
     company=re.sub(r"[^a-z0-9]+","",clean_text(j.get("company","")).lower())
     title=re.sub(r"[^a-z0-9]+","",clean_text(j.get("title","")).lower())
@@ -4345,28 +4628,48 @@ def normalize_identity(j):
 def merge_direct_jobs(jobs):
     blocked={"himalayas.app","startup.jobs","jobicy.com","remoteok.com","remotejobs.org","wellfound.com","cutshort.io","weworkremotely.com","remotive.com","arbeitnow.com","workingnomads.com"}
     unique={}
-    for j in jobs:
+    rejected_scam=0
+    rejected_location=0
+    for raw in jobs:
+        j=dict(raw)
         u=normalize_url(j.get("job_url","")); host=urlparse(u).netloc.lower()
-        if not u or host in blocked or not title_relevant(j.get("title","")): continue
+        if not u or host in blocked or not title_relevant(j.get("title","")):
+            continue
         workplace=j.get("workplace","")
-        if workplace not in {"Remote","Hybrid"}: continue
+        if workplace not in {"Remote","Hybrid"}:
+            continue
         elig=j.get("eligibility") or v11_india_eligibility(j.get("location",""),"",j.get("location",""),j.get("description",""),workplace)
-        if not elig or (elig != "India-specific" and not V11_ALLOW_APAC_WORLDWIDE): continue
-        j=dict(j); j["job_url"]=u; j["eligibility"]=elig; j["direct"]=True
+        # Remote4.me is India-first. APAC/worldwide can be collected only when
+        # explicitly enabled for publication; otherwise they stay out of JOBS.
+        if elig not in {"India-specific","India-inferred"} and os.environ.get("PUBLISH_APAC_WORLDWIDE","0").lower() not in {"1","true","yes"}:
+            rejected_location += 1
+            continue
+        if is_suspicious_job(j):
+            rejected_scam += 1
+            continue
+        j["job_url"]=u; j["eligibility"]=elig; j["direct"]=True
+        j["route_type"] = "ats_api" if ats_from_url(u) else "jsonld_or_company"
         ukey=("url",u)
-        ident=normalize_identity(j)
-        # Prefer ATS/company URLs over generic career URLs, and newer dates.
-        rank=(1 if ats_from_url(u) else 0, j.get("score",0), j.get("posted_date","") or "")
         existing=unique.get(ukey)
+        rank=(1 if ats_from_url(u) else 0, 1 if j.get("link_verified")=="Yes" else 0, j.get("score",0), j.get("posted_date","") or "")
         if not existing or rank>existing[0]: unique[ukey]=(rank,j)
-    # Cross-source identity dedupe, but prefer direct ATS first.
+
+    # Cross-source identity dedupe. If an ATS supplies a stable job ID, keep it
+    # in the identity so two distinct requisitions with the same title/location
+    # are not collapsed together.
     byid={}
     for _k,(_rank,j) in unique.items():
-        ident=normalize_identity(j)
+        company=re.sub(r"[^a-z0-9]+","",clean_text(j.get("company","")).lower())
+        title=re.sub(r"[^a-z0-9]+","",clean_text(j.get("title","")).lower())
+        loc=re.sub(r"[^a-z0-9]+","",clean_text(j.get("location","")).lower())
+        job_id=clean_text(j.get("job_id") or j.get("id") or "")
+        ident=(company,title,loc,job_id) if job_id else (company,title,loc)
         old=byid.get(ident)
-        rank=(1 if ats_from_url(j.get("job_url","")) else 0, j.get("score",0), j.get("posted_date","") or "")
+        rank=(1 if ats_from_url(j.get("job_url","")) else 0, 1 if j.get("link_verified")=="Yes" else 0, j.get("score",0), j.get("posted_date","") or "")
         if not old or rank>old[0]: byid[ident]=(rank,j)
-    return sorted([x[1] for x in byid.values()],key=lambda j:(j.get("score",0),j.get("posted_date","") or ""),reverse=True)
+    final=sorted([x[1] for x in byid.values()],key=lambda j:(j.get("score",0),j.get("posted_date","") or ""),reverse=True)
+    print(f"QUALITY FILTER: final={len(final)} scam_rejected={rejected_scam} location_rejected={rejected_location}")
+    return final
 
 
 # --------------------------
@@ -4374,7 +4677,7 @@ def merge_direct_jobs(jobs):
 # --------------------------
 V11_JOBS_HEADERS = [
     "Added","Job Title","Company","Location","Work Type","Posted","Job URL","Source","Score","Matched Keywords",
-    "India Eligibility","Direct","First Seen","Last Seen","Status","Missed Runs",
+    "India Eligibility","Direct","Route Type","Link Verified","First Seen","Last Seen","Status","Missed Runs",
 ]
 V11_COMPANY_HEADERS = [
     "Company","Domain","Career/ATS URL","ATS","Last Checked","Jobs Found","Status","Last OK","Fail Count","Discovery Source",
@@ -4411,8 +4714,12 @@ def append_jobs_v11(ws,jobs):
             if u: existing[u]=rno
     today=datetime.now(timezone.utc).date().isoformat()
     updates=[]; additions=[]; seen_urls=set()
-    # First, increment missed runs for currently-open direct jobs. This is batched.
-    if "Missed Runs" in idx and "Status" in idx:
+    # Never age jobs during partial/rotated runs unless the workflow explicitly
+    # opts in. This prevents a failed shard or a 10-day rotation from closing
+    # a perfectly live job after three runs.
+    age_enabled = os.environ.get("AGE_OPEN_JOBS", "0").lower() in {"1", "true", "yes"}
+    skip_aging = os.environ.get("SKIP_AGING", "0").lower() in {"1", "true", "yes"}
+    if age_enabled and not skip_aging and "Missed Runs" in idx and "Status" in idx:
         for rno,row in enumerate(rows[1:],start=2):
             status=clean_text(row[idx["Status"]]) if len(row)>idx["Status"] else ""
             if status.lower()=="open" and len(row)>idx.get("Job URL",0):
@@ -4428,6 +4735,7 @@ def append_jobs_v11(ws,jobs):
             rno=existing[u]
             vals={
                 "Last Seen":today,"Status":"Open","Missed Runs":"0",
+                "Route Type":j.get("route_type",""),"Link Verified":j.get("link_verified","Unchecked"),
             }
             if "India Eligibility" in idx: vals["India Eligibility"]=j.get("eligibility","")
             for h,v in vals.items():
@@ -4435,7 +4743,7 @@ def append_jobs_v11(ws,jobs):
                 updates.append({"range":f"{__import__('gspread').utils.rowcol_to_a1(rno,col)}","values":[[v]]})
             continue
         row=[""]*len(headers)
-        mapping={"Added":today,"Job Title":j.get("title",""),"Company":j.get("company",""),"Location":j.get("location",""),"Work Type":j.get("workplace",""),"Posted":j.get("posted_date",""),"Job URL":u,"Source":j.get("source",""),"Score":j.get("score",0),"Matched Keywords":j.get("matched",""),"India Eligibility":j.get("eligibility",""),"Direct":"Yes","First Seen":today,"Last Seen":today,"Status":"Open","Missed Runs":"0"}
+        mapping={"Added":today,"Job Title":j.get("title",""),"Company":j.get("company",""),"Location":j.get("location",""),"Work Type":j.get("workplace",""),"Posted":j.get("posted_date",""),"Job URL":u,"Source":j.get("source",""),"Score":j.get("score",0),"Matched Keywords":j.get("matched",""),"India Eligibility":j.get("eligibility",""),"Direct":"Yes","Route Type":j.get("route_type",""),"Link Verified":j.get("link_verified","Unchecked"),"First Seen":today,"Last Seen":today,"Status":"Open","Missed Runs":"0"}
         for h,v in mapping.items():
             if h in idx: row[idx[h]]=v
         additions.append(row)
@@ -4497,18 +4805,44 @@ def get_spreadsheet_v11():
 
 
 def build_registry_records(manifest, statuses, career_discovered):
-    bykey={(canonical_ats_name(s.get("ats")),s.get("key")):s for s in statuses}
+    bykey={(canonical_ats_name(s.get("ats")),s.get("key")):s for s in statuses if s.get("key")}
     records=[]
+    today=datetime.now(timezone.utc).date().isoformat()
     for ats,rows in (manifest.get("boards",{}) or {}).items():
         for r in rows:
-            if not r.get("active",True): continue
-            s=bykey.get((canonical_ats_name(ats),r.get("key")),{})
+            if not r.get("active",True):
+                continue
+            key=r.get("key","")
+            s=bykey.get((canonical_ats_name(ats),key))
             rec=dict(r)
-            rec["ats"]=canonical_ats_name(ats); rec["company"]=r.get("company") or humanize_slug(r.get("key","")); rec["url"]=r.get("url") or public_ats_board_url(rec["ats"],r.get("key","")); rec["jobs_found"]=s.get("jobs_found",r.get("jobs_found_last",0)); rec["ok"]=s.get("ok",False); rec["last_ok"]=datetime.now(timezone.utc).date().isoformat() if s.get("ok") else r.get("last_ok",""); rec["fail_count"]=0 if s.get("ok") else int(r.get("fail_count",0))+1; rec["status"]="ACTIVE" if rec.get("active",True) and rec.get("fail_count",0)<V11_BOARD_MAX_FAILS else "INACTIVE"; rec["source"]=r.get("source","")
+            rec["ats"]=canonical_ats_name(ats)
+            rec["company"]=r.get("company") or humanize_slug(key)
+            rec["url"]=r.get("url") or public_ats_board_url(rec["ats"],key)
+            if s is None:
+                # This board was not touched in this run (for example because a
+                # shard was capped/rotated). Preserve its previous liveness.
+                rec["jobs_found"]=r.get("jobs_found_last",0)
+                rec["status"]="ACTIVE" if r.get("active",True) else "INACTIVE"
+                rec["last_ok"]=r.get("last_ok","")
+                rec["fail_count"]=int(r.get("fail_count",0) or 0)
+            elif s.get("ok"):
+                rec["jobs_found"]=s.get("jobs_found",0)
+                rec["ok"]=True
+                rec["last_ok"]=today
+                rec["fail_count"]=0
+                rec["status"]="ACTIVE"
+            else:
+                fail=int(r.get("fail_count",0) or 0)+1
+                rec["jobs_found"]=0
+                rec["ok"]=False
+                rec["last_ok"]=r.get("last_ok","")
+                rec["fail_count"]=fail
+                rec["status"]="INACTIVE" if fail>=V11_BOARD_MAX_FAILS else "ACTIVE"
+            rec["source"]=r.get("source","")
             records.append(rec)
     for r in career_discovered:
         if isinstance(r, dict):
-            records.append({"company":r.get("company",""),"url":r.get("url","") or r.get("ats_url",""),"ats":r.get("ats","Company Career"),"jobs_found":0,"status":"ACTIVE","source":r.get("source","Company Career")})
+            records.append({"company":r.get("company",""),"url":r.get("url","") or r.get("ats_url",""),"ats":r.get("ats","Company Career"),"jobs_found":r.get("jobs_found",0),"status":"ACTIVE","source":r.get("source","Company Career")})
         elif isinstance(r, (list, tuple)) and len(r) >= 2:
             records.append({"company":"","url":r[1],"ats":r[0],"jobs_found":0,"status":"ACTIVE","source":"Company Career"})
     return records
@@ -4571,6 +4905,8 @@ def run_merge(out_dir,write_sheet=False):
                 try: jobs.append(json.loads(line))
                 except Exception: pass
     final=merge_direct_jobs(jobs)
+    final=verify_jobs_before_publish(final)
+    final=merge_direct_jobs(final)
     print(f"MERGE: raw direct rows={len(jobs)} final unique={len(final)}")
     if not write_sheet:
         path=Path(out_dir)/"merged.jsonl"
@@ -4646,16 +4982,6 @@ def main_v11():
     run_careers_cli(os.path.join(tmp,"careers.jsonl"))
     run_merge(tmp,True)
 
-
-# Compatibility aliases for the renamed expansion helpers.
-try:
-    crawl_career_url_v10 = crawl_career_url_v11
-except NameError:
-    pass
-try:
-    v10_allowed_india = v11_allowed_india
-except NameError:
-    pass
 
 if __name__ == "__main__":
     main_v11()
