@@ -12946,13 +12946,6 @@
     "source": "Company,Career Directory"
   },
   {
-    "company": "Lyros Technologies",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Marvin",
     "website": "",
     "career_links": [],
@@ -12967,7 +12960,7 @@
     "source": "Company"
   },
   {
-    "company": "nunify",
+    "company": "Lyros Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -12995,7 +12988,7 @@
     "source": "Company"
   },
   {
-    "company": "C3 AI",
+    "company": "nunify",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13009,7 +13002,28 @@
     "source": "Company"
   },
   {
+    "company": "C3 AI",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "BookLeaf Publishing",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Cloverbridge Technologies",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "KSKT Agromart",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13044,21 +13058,7 @@
     "source": "Company"
   },
   {
-    "company": "KSKT Agromart",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "BB Virtuals Pvt.ltd",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Cloverbridge Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13073,6 +13073,13 @@
   },
   {
     "company": "Inboxkit",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "FlatX",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13128,14 +13135,14 @@
     "source": "Company"
   },
   {
-    "company": "Heads Up For Tails",
+    "company": "VdoCipher",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "VdoCipher",
+    "company": "Heads Up For Tails",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13149,13 +13156,6 @@
     "source": "Company"
   },
   {
-    "company": "Virtukart Technology",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "concentric.ai",
     "website": "",
     "career_links": [],
@@ -13163,7 +13163,21 @@
     "source": "Company"
   },
   {
+    "company": "Virtukart Technology",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Twenty5",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "FarmRobo Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13198,13 +13212,6 @@
     "source": "Company"
   },
   {
-    "company": "Ethos",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Antino Labs",
     "website": "",
     "career_links": [],
@@ -13219,14 +13226,14 @@
     "source": "Company"
   },
   {
-    "company": "Felicity",
+    "company": "Ethos",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Bitwarden",
+    "company": "Felicity",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13240,14 +13247,14 @@
     "source": "Company"
   },
   {
-    "company": "talentxo",
+    "company": "Bitwarden",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Vahak (Epictus Logistics Pte. Ltd.)",
+    "company": "talentxo",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13261,7 +13268,7 @@
     "source": "Company"
   },
   {
-    "company": "GoPhygital.work",
+    "company": "Vahak (Epictus Logistics Pte. Ltd.)",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13269,6 +13276,13 @@
   },
   {
     "company": "Care Infotech",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "GoPhygital.work",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13296,28 +13310,7 @@
     "source": "Company"
   },
   {
-    "company": "Eshal AI",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "KOKO Networks",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Amura",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "eGlu Smart Homes",
+    "company": "StepSecurity",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13331,6 +13324,34 @@
     "source": "Company"
   },
   {
+    "company": "Amura",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "KOKO Networks",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Eshal AI",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "eGlu Smart Homes",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Outdoo AI",
     "website": "",
     "career_links": [],
@@ -13338,14 +13359,14 @@
     "source": "Company"
   },
   {
-    "company": "StepSecurity",
+    "company": "AptEdge.io",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "AptEdge.io",
+    "company": "BlueSapling - Intelligence Served",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13366,7 +13387,7 @@
     "source": "Company"
   },
   {
-    "company": "BlueSapling - Intelligence Served",
+    "company": "Adroks IT Solutions",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13380,21 +13401,7 @@
     "source": "Company"
   },
   {
-    "company": "Adroks IT Solutions",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Together Light",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "HuskyVoice.AI by AppEQ",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13408,28 +13415,14 @@
     "source": "Company"
   },
   {
+    "company": "HuskyVoice.AI by AppEQ",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "MongoDB",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Nucleous",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "AuxoAI",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Carpl.ai",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13443,7 +13436,7 @@
     "source": "Company"
   },
   {
-    "company": "SciSpace",
+    "company": "Carpl.ai",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13457,14 +13450,7 @@
     "source": "Company"
   },
   {
-    "company": "PadosiPro",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Entrupy",
+    "company": "SciSpace",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13478,35 +13464,35 @@
     "source": "Company"
   },
   {
+    "company": "AuxoAI",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Nucleous",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Entrupy",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "PadosiPro",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Steps AI",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "NoScrubs",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Businessonbot (Y Combinator W21)",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "RedBlackTree",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Alchi Design Studio",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13520,14 +13506,21 @@
     "source": "Company"
   },
   {
-    "company": "Alpha Nodus",
+    "company": "Businessonbot (Y Combinator W21)",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Shipthis Inc",
+    "company": "Kovans Ventures",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Alpha Nodus",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13541,21 +13534,14 @@
     "source": "Company"
   },
   {
-    "company": "FactWise",
+    "company": "Alchi Design Studio",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "timepay.ai",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "HUGGED",
+    "company": "Shipthis Inc",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13569,13 +13555,6 @@
     "source": "Company"
   },
   {
-    "company": "Metaforms",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Vraify",
     "website": "",
     "career_links": [],
@@ -13583,7 +13562,7 @@
     "source": "Company"
   },
   {
-    "company": "Infocusp Innovations",
+    "company": "FactWise",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13591,6 +13570,34 @@
   },
   {
     "company": "Get My Parking",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "HUGGED",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "timepay.ai",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Metaforms",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Infocusp Innovations",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13611,14 +13618,14 @@
     "source": "Company"
   },
   {
-    "company": "Black Panda Enterprises",
+    "company": "Certa",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Certa",
+    "company": "Black Panda Enterprises",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13639,7 +13646,14 @@
     "source": "Company"
   },
   {
-    "company": "Sciative - We Price Right",
+    "company": "Townhall.co",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Aventior",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13653,13 +13667,6 @@
     "source": "Company"
   },
   {
-    "company": "Townhall.co",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Legistify.com",
     "website": "",
     "career_links": [],
@@ -13667,7 +13674,7 @@
     "source": "Company"
   },
   {
-    "company": "Aventior",
+    "company": "Sciative - We Price Right",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13688,7 +13695,7 @@
     "source": "Company"
   },
   {
-    "company": "Finifi",
+    "company": "Vizmo",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13702,14 +13709,14 @@
     "source": "Company"
   },
   {
-    "company": "Smirmatec",
+    "company": "Finifi",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Vizmo",
+    "company": "Smirmatec",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13723,13 +13730,6 @@
     "source": "Company"
   },
   {
-    "company": "TrueFoundry",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Corvee",
     "website": "",
     "career_links": [],
@@ -13737,7 +13737,21 @@
     "source": "Company"
   },
   {
+    "company": "TrueFoundry",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Algoworks",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "RedBlackTree",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13759,13 +13773,6 @@
   },
   {
     "company": "RSG Research",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "FarmRobo Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13807,6 +13814,13 @@
     "source": "Company"
   },
   {
+    "company": "Noviga Automations",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Hypotenuse Analytics",
     "website": "",
     "career_links": [],
@@ -13815,13 +13829,6 @@
   },
   {
     "company": "Taxmann",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Noviga Automations",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13877,7 +13884,7 @@
     "source": "Company"
   },
   {
-    "company": "Tricog Health",
+    "company": "Codal",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13891,7 +13898,14 @@
     "source": "Company"
   },
   {
-    "company": "Codal",
+    "company": "Tricog Health",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "DeepRunner",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13912,13 +13926,6 @@
     "source": "Company"
   },
   {
-    "company": "DeepRunner",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "ZenLockGroup",
     "website": "",
     "career_links": [],
@@ -13933,7 +13940,7 @@
     "source": "Company"
   },
   {
-    "company": "Elementskill",
+    "company": "senzcraft technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13975,14 +13982,14 @@
     "source": "Company"
   },
   {
-    "company": "Deepgram",
+    "company": "Matrix One",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Flux Auto",
+    "company": "Deepgram",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -13996,14 +14003,7 @@
     "source": "Company"
   },
   {
-    "company": "Matrix One",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "FutureStrive",
+    "company": "Elementskill",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14017,6 +14017,27 @@
     "source": "Company"
   },
   {
+    "company": "Assistara Global Services",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "FutureStrive",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Flux Auto",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Tracxn",
     "website": "",
     "career_links": [],
@@ -14024,14 +14045,14 @@
     "source": "Company"
   },
   {
-    "company": "Barsys",
+    "company": "Eitacies-Inc",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Assistara Global Services",
+    "company": "Xohani Solutions",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14046,27 +14067,6 @@
   },
   {
     "company": "NICDC Logistics Data Services",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Xohani Solutions",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Eitacies-Inc",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "demandcurvemarketing.com",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14115,13 +14115,6 @@
     "source": "Company"
   },
   {
-    "company": "Sosuv Consulting",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Monsoon CreditTech",
     "website": "",
     "career_links": [],
@@ -14136,7 +14129,21 @@
     "source": "Company"
   },
   {
+    "company": "Sosuv Consulting",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "CubeInnovators Technologies",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "MonkSpaces.Ai",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14157,7 +14164,21 @@
     "source": "Company"
   },
   {
-    "company": "MonkSpaces.Ai",
+    "company": "Aarush Impact",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "DataBrain",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "openigloo",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14206,21 +14227,7 @@
     "source": "Company"
   },
   {
-    "company": "openigloo",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Airveda",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Koreon AI",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14409,14 +14416,14 @@
     "source": "Company"
   },
   {
-    "company": "Storyleads",
+    "company": "kings Digital",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "kings Digital",
+    "company": "Storyleads",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14480,13 +14487,6 @@
   },
   {
     "company": "Moshi Moshi",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Nector",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14563,14 +14563,14 @@
     "source": "Company"
   },
   {
-    "company": "cargo-partner",
+    "company": "Artikate Studio",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Artikate Studio",
+    "company": "cargo-partner",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14661,14 +14661,14 @@
     "source": "Company"
   },
   {
-    "company": "SwitchOn",
+    "company": "ApplyPilot",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "ApplyPilot",
+    "company": "SwitchOn",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14690,6 +14690,13 @@
   },
   {
     "company": "Ezeiatech Systems",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "OneStack",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14724,14 +14731,14 @@
     "source": "Company"
   },
   {
-    "company": "Kutumb",
+    "company": "Forma.ai",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Forma.ai",
+    "company": "Kutumb",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -14829,35 +14836,14 @@
     "source": "Company"
   },
   {
-    "company": "Growing Stars Consulting Private Limited",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Tap Invest",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "vaaragonenterprisescom",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Aura Gold",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Careerbloccoin",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Growing Stars Consulting Private Limited",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -15102,6 +15088,27 @@
     "source": "Company"
   },
   {
+    "company": "InstaWeb Labs Pvt Ltd",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "whitewhale software solution",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Optiontown",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Follow Cutshort",
     "website": "",
     "career_links": [],
@@ -15152,6 +15159,27 @@
   },
   {
     "company": "NeoGenCode Technologies Pvt Ltd",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Aura Gold",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Tap Invest",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "vaaragonenterprisescom",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -15236,13 +15264,6 @@
   },
   {
     "company": "Honeybee Digital",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Optiontown",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16320,49 +16341,42 @@
     "source": "Company"
   },
   {
+    "company": "NoScrubs",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Barsys",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "demandcurvemarketing.com",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Koreon AI",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Nector",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "SBS HR",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "FlatX",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Kovans Ventures",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "senzcraft technologies",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Aarush Impact",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "DataBrain",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "OneStack",
     "website": "",
     "career_links": [],
     "ats_links": [],
