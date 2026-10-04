@@ -11,6 +11,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://boards.greenhouse.io/samsara/jobs/7386896",
+    "title": "Work at Samsara: Apply to open roles today",
+    "snippet": "#### Staff Software Engineer #### Staff Software Engineer #### Staff Software Engineer #### Staff Software Engineer #### Staff Software Engineer, DevEx #### Staff Software Engineer, DevEx #### Staff Software Engineer, Maps Services #### Staff Software Engineer - Platform and Infrastructure #### Tech Lead Applied Scientist #### Technical Program Manager - Enterprise Security #### Technical Program Manager - Enterprise Security #### Technical Program Manager - Enterprise Security [...] #### Sr. Software Engineer II / Tech lead, Agentic Platform (Poland, Remote, B2B) #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Machine Learning Engineer - Edge AI #### Staff Machine Learning Engineer - Edge AI #### Staff or Senior Firmware Engineer [...] #### Senior Software Engineer, Agentic Customer Platform (Poland, Remote, B2B) #### Senior Software Engineer - Commercial Navigation #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II, DevEx #### Senior Software Engineer I/II - Infrastructure #### Senior Software Engineer I/II - Infrastructure #### Senior Software Engineer II - Platform",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Work at Samsara: Apply to open roles today",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
     "title": "Wing Assistant - Technical Support Representative (India)",
     "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Technical Support Representative (Remote) [...] • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. [...] Wing is on the exciting mission of redefining the future of work for companies worldwide! We are looking to be the one-stop shop for companies that are looking to build world-class teams & place their operations on autopilot. And we’re looking for a Technical Support Representative to start immediately! Duties and Responsibilities include but are not limited to: 1. Troubleshoot IT issues (e.g., how do I log in, reset password, remote access trackers not working, etc.)",
@@ -26,6 +37,17 @@
     "title": "Wing Assistant - Lever",
     "snippet": "Customer Support Representative. Remote — Full TimeNairobi · Apply · Head of Post ... General Virtual Assistant (India). Remote — New Delhi, India · Apply ...",
     "source": "Google/searlo",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp/bb76b70e-66d2-49bb-9c42-c5edc70548e0",
+    "title": "Wing Assistant - General Virtual Assistant (India)",
+    "snippet": "10. Convey information to incoming calls & make calls for appointments or conduct informational inquiries. 11. Reply to emails, follow up on correspondence, organize inbox as per client preferences, and notify clients about important emails. 12. Ad hoc tasks Qualifications: • At least 6 months to 1 year of experience as a Virtual Assistant • At least 18 years of age and completed Senior High School • Excellent phone, email, and instant messaging communication skills [...] Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India General Virtual Assistant (Remote) [...] Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: Up to INR 32,000 Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. • We have other vacancies that might interest your friends & colleagues. They can check us out at our Jobs Website. • You may also refer your friends using our Affiliate Marketing Program and earn up to INR 2,000 if your referral is hired. ₹10,000 - ₹32,000 a month",
+    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Wing Assistant",
@@ -55,17 +77,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/tracelinkinc/jobs/4404204007",
-    "title": "TraceLink Open Positions | Career",
-    "snippet": "Contact Technical Support→. Contact Us Today. Transform your supply chain operations with a human-agent workforce. Contact Us →. Stay Up-to-Date. Subscribe to&nbsp;...",
-    "source": "Google/search1",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "TraceLink Open Positions | Career",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://boards.greenhouse.io/ardentmc/jobs/8186204",
     "title": "Tier 2/3 Support Specialist at Ardentmc",
     "snippet": "",
@@ -77,35 +88,57 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/Sprinto",
-    "title": "Sprinto",
-    "snippet": "Sprinto logo ##### Account Manager (SMB) India APAC ##### Account Manager (SMB) North America ##### Associate Technical Account Manager ##### Customer Success Manager ##### Project Manager – Enterprise Customer Onboarding ##### Technical Account Manager ##### Lead SDET ##### Senior Full-stack Engineer - Remote ##### Senior Staff Engineer ##### Assistant Manager Tax (Finance) ##### Finance Intern - Remote ##### Senior Executive, Finance Operations [...] ##### Senior Partnerships Manager - India ##### Senior Partnerships Manager - US ##### Talent Acquisition Intern ##### Director, Professional Services & Audit Delivery Partnerships ##### Enterprise Solution Engineer ##### MRE Intern ##### Revenue & Operations Intern ##### Revenue Operations Analyst - Customer Experience & Partner Operations ##### RevOps Analyst Sprinto Home Page",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "discovery_url": "https://boards.greenhouse.io/easyship/jobs/4650127006",
+    "title": "Technical Support Specialist at Easyship",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Sprinto",
+    "company": "Technical Support Specialist at Easyship",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/slice",
-    "title": "Slice Careers — Open for Talent",
-    "snippet": "#### Wellness Tools and days-off to promote mental health #### Flexible workplace Generous paid time-off and WFH policies #### Referral bonuses Compensation for each referred hire #### Fun Fun Fun Regular social and charitable events ### ENJOY ADDITIONAL BENEFITS UNIQUE TO OUR WORKFORCE REGIONS. ## Career Opportunities If you’re ambitious, interested in taking your career to new heights, and hungry to join one of the most mission-focused companies in tech, we may have a role for you. [...] ## WIN TOGETHER. From our cosmopolitan offices to home workspaces, you’ll find coworkers who embrace collective goals, welcome diverse viewpoints, and rally around each other. We see each big, juicy challenge as an opportunity to innovate, learn, and grow. And every win as a cause to celebrate. #### Ilir R. Sales How supportive are the teams at Slice? #### Jules G. Engineering What’s your team currently working on? #### Julia Z. Go-to-Market Does Slice support community initiatives? [...] #### Nessa B. Post Sales What’s it like working with such a global team? #### Aankit M. Business Development What do you think sets Slice apart? #### Marion R. Data Strategy and Governance Does Slice support women in technology? ### HEAR MORE ABOUT LIFE AT SLICE ### ADD TO A VIBRANT CULTURE Our hackathons are popular events for Slicers to explore experimental projects. Build a few bonds with your fellow coworkers during work or after.",
+    "discovery_url": "https://boards.greenhouse.io/formlabs/jobs/8210827",
+    "title": "Technical Support Engineer, Field - UK Remote | Formlabs",
+    "snippet": "As the dedicated Field Technical Support Engineer for Formlabs, you will be the primary technical point of contact and face of our company across the UK&Ireland region. This is a role where you will be traveling 80% or more of the time. [...] Formlabs ##### Careers ## Technical Support Engineer, Field - UK Remote Department: Global Services Location: London, England, United Kingdom Do you want to change how the world creates? [...] You will be responsible for the full lifecycle of the customer's on-site experience: from the initial installation and commissioning of equipment to delivering comprehensive user training and performing critical repairs. You are not just fixing machines; you are empowering customers to use them. We’re a team of hands-on builders, engineers, and innovators reinventing how the world makes physical things. If you’re ready to shape the future of fabrication, come build it with us. The Challenge:",
     "source": "Google/tavily",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Slice Careers — Open for Talent",
+    "company": "Technical Support Engineer, Field",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/toast/jobs/8242950",
-    "title": "Senior Product Designer, Toast Support Experiences - Remote, United States",
-    "snippet": "Our Total Rewards Philosophy We strive to provide competitive compensation and benefits programs that help to attract, retain, and motivate the best and brightest people in our industry. Our total rewards package goes beyond great earnings potential and provides the means to a healthy lifestyle with the flexibility to meet Toasters’ changing needs. Learn more about our benefits at . #LI-REMOTE [...] At Toast, one of our company values is that we're hungry to build and learn. We believe learning new AI tools empowers us to build for our customers faster, more independently, and with higher quality. We provide these tools across all disciplines, from Engineering and Product to Sales and Support, and are inspired by how our Toasters are already driving real value with them. The people who thrive here are those who embrace changes that let us build more for our customers; it’s a core part of [...] it’s a core part of our culture.",
+    "discovery_url": "https://boards.greenhouse.io/formlabs/jobs/8210832",
+    "title": "Technical Support Engineer, Field - Remote | Formlabs",
+    "snippet": "As the dedicated Field Technical Support Engineer for Formlabs, you will be the primary technical point of contact and face of our company across the DACH region and beyond. This is a role where you will be traveling 80% or more of the time. [...] You will be responsible for the full lifecycle of the customer's on-site experience: from the initial installation and commissioning of equipment to delivering comprehensive user training and performing critical repairs. You are not just fixing machines; you are empowering customers to use them. We’re a team of hands-on builders, engineers, and innovators reinventing how the world makes physical things. If you’re ready to shape the future of fabrication, come build it with us. The Challenge: [...] Formlabs ##### Careers ## Technical Support Engineer, Field - Remote Department: Global Services Location: Munich, Germany \\\\Please apply with an English resumé!\\\\ Do you want to change how the world creates?",
     "source": "Google/tavily",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Senior Product Designer, Toast Support Experiences",
+    "company": "Technical Support Engineer, Field",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8555518002",
+    "title": "Service Desk Engineer, Technology at Point72",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Service Desk Engineer, Technology at Point72",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8445684002",
+    "title": "Service Desk Engineer, Technology at Point72",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Service Desk Engineer, Technology at Point72",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -132,13 +165,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jumpcloud",
-    "title": "JumpCloud - Lever",
-    "snippet": "Senior Vice President of Global Customer Success & Support - United States Remote — Full Time Atlanta, GA - Remote / Austin, TX - Remote / Denver, CO - Remote / San Francisco, CA - Remote / New York City, NY - Remote",
+    "discovery_url": "https://jobs.lever.co/mashgin/4beb7212-bb9e-4c23-8a43-fb8d2dc35f1f/apply",
+    "title": "Mashgin - Remote Technical Support",
+    "snippet": "Remote Technical Support. Remote. Operations – Customer Support & Field Support /. Full-time /. Remote. Submit your application. Resume/CV ✱. ATTACH RESUME/CV.",
     "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "JumpCloud",
+    "company": "Mashgin",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -165,24 +198,79 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/verifone/jobs/6020690003",
-    "title": "Jobs at Verifone",
-    "snippet": "Job Customer Service Team Lead, Denmark Ballerup, Capital, Denmark Level 1 Technical Support with German Bucharest Level 2 Technical Support, Portugal Lisbon, Portugal North America Enterprise Success Manager New Clearwater, Florida, United States Operational Manager, Cloud Services DevOps London, England, United Kingdom Senior Processing Manager Warszawa, Masovian Voivodeship, Poland Sustaining Software Engineer (Android) Bengaluru, Karnataka, India Technical Project Manager [...] | Customer Service Team Lead, Denmark Ballerup, Capital, Denmark | | Level 1 Technical Support with German Bucharest | | Level 2 Technical Support, Portugal Lisbon, Portugal | | North America Enterprise Success Manager New Clearwater, Florida, United States | | Operational Manager, Cloud Services DevOps London, England, United Kingdom | | Senior Processing Manager Warszawa, Masovian Voivodeship, Poland | | Sustaining Software Engineer (Android) Bengaluru, Karnataka, India | [...] Atlanta, Georgia, United States; London, England, United Kingdom Product Manager – Horizontal Platform Poseidon Bad Hersfeld, Hesse, Germany; München, Bavaria, Germany Product Manager - Payment Solutions Lead Atlanta, Georgia, United States Senior Director, Product Management London, England, United Kingdom Senior Product Manager - Hardware London, England, United Kingdom ### Global Tech Ops & Cybersecurity | Job | | Data Platform Engineer Bengaluru, Karnataka, India | Job",
-    "source": "Google/tavily",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "discovery_url": "https://jobs.lever.co/jumpcloud",
+    "title": "JumpCloud",
+    "snippet": "Customer Support Engineer, Tier 1 (MacOS and MDM) - India (Fri-Tues 19:30-04:30 IST) · Bangalore, India - Remote ; Customer Support Engineer, Tier 1 (MacOS and ...",
+    "source": "Google/search1",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "Jobs at Verifone",
+    "company": "JumpCloud",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether",
-    "title": "Jobgether jobs - jobs.lever.co",
-    "snippet": "Senior Account Manager (Project Operations & Client Relationships) Remote — Full-time India Apply",
-    "source": "Google/search1",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "discovery_url": "https://boards.greenhouse.io/perfectserve/jobs/5984654004",
+    "title": "Jobs at PerfectServe",
+    "snippet": "Remote Mobile Developer I - US Remote Remote Staff Data Engineer - US Remote Remote ### Support Center | Job | | Technical Support Specialist - Tier 1 - US Remote Remote | Job Technical Support Specialist - Tier 1 - US Remote Remote Powered by [...] Create a Job Alert Level-up your career by having opportunities at PerfectServe sent directly to your inbox. ## 12 jobs ### Customer Success | Job | | Technical Lead - US Remote Remote | Job Technical Lead - US Remote Remote ### General Corporate | Job | | Analyst, Corporate Development & Strategic PartnershipsNew Remote | Job Analyst, Corporate Development & Strategic PartnershipsNew Remote ### Marketing | Job | | Customer & Field Marketing Manager - US Remote Remote | [...] | Job | | Clinical Integration Analyst - US Remote Remote | | Practice Consultant I - US Remote Remote | Job Clinical Integration Analyst - US Remote Remote Practice Consultant I - US Remote Remote ### R&D | Job | | Data Engineer - US Remote Remote | | Junior QA Engineer - US Remote Remote | | Mobile Developer I - US Remote Remote | | Staff Data Engineer - US Remote Remote | Job Data Engineer - US Remote Remote Junior QA Engineer - US Remote Remote",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Jobgether jobs",
+    "company": "Jobs at PerfectServe",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/gomotive/jobs/6056603002",
+    "title": "Jobs at Motive",
+    "snippet": "| Job | | Head of Procure-to-Pay United States - Remote | | Lead AccountantNew India - Remote | | Senior Accountant India - Remote | | Senior Director, Technical & Operational Revenue Hybrid - San Francisco, California | | Senior Payroll Analyst Mexico - Remote | Job Head of Procure-to-Pay United States - Remote Lead AccountantNew India - Remote Senior Accountant India - Remote Senior Director, Technical & Operational Revenue Hybrid - San Francisco, California [...] | Job | | Senior AI Platform Engineer ( Enterprise Systems) India - Remote | | Senior Salesforce Developer - CPQ India - Remote | Job Senior AI Platform Engineer ( Enterprise Systems) India - Remote Senior Salesforce Developer - CPQ India - Remote G&A ### Finance | Job | | Lead FP&A Analyst United States - Remote | Job Lead FP&A Analyst United States - Remote G&A ### Financial Products G&A | Job | [...] | Job | | Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore | | Senior Technical Support Engineer - Spanish Pakistan - Remote | | Technical Account Manager - Enterprise Pakistan - Remote | | Technical Account Manager - Strategic Pakistan - Remote | | Technical Lead EngineerNew Pakistan - Remote | | Technology Program Analyst II - Support AI Pakistan - Remote; Remote - Islamabad; Remote - Lahore | Job Senior Manager, Technical Support Engineering",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Jobs at Motive",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/gomotive/jobs/7468969002",
+    "title": "Jobs at Motive",
+    "snippet": "| Job | | Head of Procure-to-Pay United States - Remote | | Lead Accountanttags.new India - Remote | | Senior Accountant India - Remote | | Senior Director, Technical & Operational Revenue Hybrid - San Francisco, California | | Senior Payroll Analyst Mexico - Remote | Job Head of Procure-to-Pay United States - Remote Lead Accountanttags.new India - Remote Senior Accountant India - Remote Senior Director, Technical & Operational Revenue Hybrid - San Francisco, California [...] | Job | | Senior AI Platform Engineer ( Enterprise Systems) India - Remote | | Senior Salesforce Developer - CPQ India - Remote | Job Senior AI Platform Engineer ( Enterprise Systems) India - Remote Senior Salesforce Developer - CPQ India - Remote G&A ### Finance | Job | | Lead FP&A Analyst United States - Remote | Job Lead FP&A Analyst United States - Remote G&A ### Financial Products G&A | Job | [...] | Job | | Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore | | Senior Technical Support Engineer - Spanish Pakistan - Remote | | Technical Account Manager - Enterprise Pakistan - Remote | | Technical Account Manager - Strategic Pakistan - Remote | | Technology Program Analyst II - Support AI Pakistan - Remote; Remote - Islamabad; Remote - Lahore | Job Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Jobs at Motive",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/gomotive/jobs/8394651002",
+    "title": "Jobs at Motive",
+    "snippet": "Job Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore Senior Technical Support Engineer - Spanish Pakistan - Remote Technical Account Manager - Enterprise Pakistan - Remote Technical Account Manager - Strategic Pakistan - Remote Technical Lead EngineerNew Pakistan - Remote Technical Support Engineer Pakistan - Islamabad; Pakistan - Karachi; Pakistan - Lahore; Pakistan - Remote; Remote - Islamabad; Remote - Lahore Technology Program Analyst II - Support AI [...] Billing Specialist Hybrid - Islamabad & Lahore G&A ### Enterprise Systems | Job | | Senior AI Platform Engineer ( Enterprise Systems) India - Remote | | Senior Salesforce Developer - CPQ India - Remote | Job Senior AI Platform Engineer ( Enterprise Systems) India - Remote Senior Salesforce Developer - CPQ India - Remote G&A ### Finance | Job | | Lead FP&A Analyst United States - Remote | Job Lead FP&A Analyst United States - Remote G&A ### Financial Products G&A | Job | [...] | Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore | | Senior Technical Support Engineer - Spanish Pakistan - Remote | | Technical Account Manager - Enterprise Pakistan - Remote | | Technical Account Manager - Strategic Pakistan - Remote | | Technical Lead EngineerNew Pakistan - Remote | | Technical Support Engineer Pakistan - Islamabad; Pakistan - Karachi; Pakistan - Lahore; Pakistan - Remote; Remote - Islamabad; Remote - Lahore |",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Jobs at Motive",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/gomotive/jobs/8373093002",
+    "title": "Jobs at Motive",
+    "snippet": "Job Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore Senior Technical Support Engineer - Spanish Pakistan - Remote Technical Account Manager - Enterprise Pakistan - Remote Technical Account Manager - Strategic Pakistan - Remote Technical Lead EngineerNew Pakistan - Remote Technical Support Engineer Pakistan - Islamabad; Pakistan - Karachi; Pakistan - Lahore; Pakistan - Remote; Remote - Islamabad; Remote - Lahore Technology Program Analyst II - Support AI [...] Billing Specialist Hybrid - Islamabad & Lahore G&A ### Enterprise Systems | Job | | Senior AI Platform Engineer ( Enterprise Systems) India - Remote | | Senior Salesforce Developer - CPQ India - Remote | Job Senior AI Platform Engineer ( Enterprise Systems) India - Remote Senior Salesforce Developer - CPQ India - Remote G&A ### Finance | Job | | Lead FP&A Analyst United States - Remote | Job Lead FP&A Analyst United States - Remote G&A ### Financial Products G&A | Job | [...] | Senior Manager, Technical Support Engineering Remote - Islamabad & Lahore | | Senior Technical Support Engineer - Spanish Pakistan - Remote | | Technical Account Manager - Enterprise Pakistan - Remote | | Technical Account Manager - Strategic Pakistan - Remote | | Technical Lead EngineerNew Pakistan - Remote | | Technical Support Engineer Pakistan - Islamabad; Pakistan - Karachi; Pakistan - Lahore; Pakistan - Remote; Remote - Islamabad; Remote - Lahore |",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Jobs at Motive",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/encoura/jobs/4300132009",
+    "title": "Jobs at Encoura",
+    "snippet": "| Job | | Remote Customer Service Associate, Temporary Remote - US, Alabama, Arkansas, Georgia, Idaho, Indiana, Iowa, Kansas, Kentucky, Louisiana, Mississippi, Montana, Nevada, New Hampshire, North Carolina, Ohio, Oklahoma, Pennsylvania, South Carolina, South Dakota, Tennessee, Texas, Utah, West Virginia, Wisconsin | Job Remote Customer Service Associate, Temporary [...] Remote - US, Alabama, Arkansas, Georgia, Idaho, Indiana, Iowa, Kansas, Kentucky, Louisiana, Mississippi, Montana, Nevada, New Hampshire, North Carolina, Ohio, Oklahoma, Pennsylvania, South Carolina, South Dakota, Tennessee, Texas, Utah, West Virginia, Wisconsin Powered by",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Jobs at Encoura",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -209,8 +297,8 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether/8ebc4462-55ff-4dfb-9570-9555c54a4722",
-    "title": "Jobgether - English customer support role",
+    "discovery_url": "https://jobs.lever.co/jobgether/7e9e7147-ad17-48b8-bc9f-1ee603fdba4e",
+    "title": "Jobgether - Senior Technical Customer Support Engineer",
     "snippet": "",
     "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
@@ -242,6 +330,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/jobgether/33367ed2-587b-4d95-9906-fd2a4454c1d3",
+    "title": "Jobgether - Customer Support Operations Manager",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/jobgether/37607e05-688f-42a6-81e2-cb8644569f0f",
     "title": "Jobgether - Business Support Virtual Assistant - Lever",
     "snippet": "This remote contractor role ... Previous experience in administration, executive assistance, customer support, or general business support is preferred.",
@@ -249,6 +348,61 @@
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jobgether",
+    "title": "Jobgether",
+    "snippet": "Account Director. Remote — ContractIndia · Apply · Account Director. Remote ... Customer Support Team Lead (Spanish Speaker - Night Shift). Remote — Full ...",
+    "source": "Google/search1",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/twilio/jobs/8204407",
+    "title": "Job Application for Technical Support Engineer at Twilio",
+    "snippet": "We are looking for our next Technical Support Engineer 3 to join our Global Customer Support team in India, who will be dedicated to understanding and resolving complex customer requests via phone/email/chat/side channel/live support or any other support/communication channel, identify adoption and upsell opportunities for customers and make the appropriate connections. Develops knowledge on multiple specialty areas. Identifies and responds to customer escalations and thoroughly document every [...] Our dedication to remote-first work, and strong culture of connection and global inclusion means that no matter your location, you’re part of a vibrant team with diverse experiences making a global impact each day. As we continue to revolutionize how the world interacts, we’re acquiring new skills and experiences that make work feel truly rewarding. Your career at Twilio is in your hands. . Hiring and how we work [...] We use Artificial Intelligence (AI) to help make our hiring process efficient. That said, every hiring decision is made by real Twilions! Also, while we are a remote-first company, you may be asked to report in person on an ad-hoc basis for team gatherings, functional off-sites or customer meetings. . Who we are",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Job Application for Technical Support Engineer at Twilio",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8236937002",
+    "title": "It Operations Engineer, Application Support at Point72",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "It Operations Engineer, Application Support at Point72",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/andurilindustries/jobs/5234138007",
+    "title": "IT Support Specialist, APAC at Andurilindustries",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "IT Support Specialist, APAC at Andurilindustries",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8244769002",
+    "title": "IT Operations Engineer, Application Support at Point72",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "IT Operations Engineer, Application Support at Point72",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -275,13 +429,35 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/neo4j/jobs/4706206006",
-    "title": "Graph database jobs | Career opportunities at Neo4j",
-    "snippet": "At Neo4j, we prioritize action over talk. When we commit to a project, deliverable, deadline, customer, or relationship, we follow through. If circumstances change, we take ownership and present a new plan to honor our original commitment. `(we)-[:DELIVER_ON]->(ourCommitments)` ## What we offer At Neo4j, we prioritize your well-being – physical, financial, and emotional. Our global benefits philosophy ensures a consistent, inclusive experience for our diverse team worldwide. We offer: [...] \"Neo4j is a problem-solver's paradise. Every day brings new challenges and opportunities for creativity. The work is never repetitive, and the passion of our team is contagious. With great autonomy and real-world impact, it's the ideal place for innovation.\" Tselmeg Basaan Software Engineer, Cluster team Kay Nair headshot [...] ## Grow your way At Neo4j, your growth is in your hands. Dive into challenging projects and embrace exciting initiatives. Our global team offers endless opportunities to expand your skills, whether coding cutting-edge features, strategizing with Fortune 500 customers, or speaking at international tech conferences. Here, your ideas matter, your impact is real, and your career path is limitless. Global Talent team offsite in Boston. ## Recognized for relationships",
-    "source": "Google/tavily",
+    "discovery_url": "https://jobs.lever.co/gohighlevel/80dabfb3-fd38-4500-919e-b6bcc8d44bdf",
+    "title": "HighLevel - Customer Support Representative",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "HighLevel",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/ivalua/jobs/8190406",
+    "title": "Helpdesk Configurator Analyst (L2 Support) at Ivalua",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Graph database jobs | Career opportunities at Neo4j",
+    "company": "Helpdesk Configurator Analyst (L2 Support) at Ivalua",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8555522002",
+    "title": "Global Technology Services Engineer at Point72",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Global Technology Services Engineer at Point72",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -341,6 +517,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/spinai/3810c47a-517e-414c-a37a-0e369c68f41c",
+    "title": "Customer Support Specialist (Pune, India) at Spinai",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Customer Support Specialist (Pune, India) at Spinai",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/jumpcloud/7345760d-62e4-4ce3-8079-487110204b7c",
     "title": "Customer Support Engineer, Tier 1 (MacOS and MDM) - India (Fri-Tues 19:30-04:30 IST) at Jumpcloud",
     "snippet": "",
@@ -363,24 +550,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/castaigroupinc/jobs/4034682009",
-    "title": "Cast AI Careers: Join Our Team – Cast AI",
-    "snippet": "Tel Aviv Menachem Begin 144, Tel Aviv, Israel London 2 Eastbourne TerraceLondon W2 6LG, United Kingdom Dallas 7700 Windrose, Plano, TX 75024, United States Bengaluru Roshini Tech Hub, PFS Club House, Marathahalli Rd, Bengaluru, India 4.8/5 50+ reviews ### Ready to apply? Cast AI is the leading APA® (Application Performance Automation) platform, enabling customers to cut cloud costs, improve performance, and boost productivity. ###### Solutions ## Resources ## Company [...] Cast AI AWS logo GCP logo Azure logo Oracle Cloud logo Application Performance Automation Automotive icon Software & IT icon AI & ML icon Transform your cloud-native operations and maximize Kubernetes cost savings Community illustration Join the community Book a demo # Build the future of cloud with us Working at Cast AI means pushing your limits, learning fast, and seeing your impact. We’re building the future of cloud – and investing in yours. Values ## Our core values",
-    "source": "Google/tavily",
+    "discovery_url": "https://boards.greenhouse.io/ivalua/jobs/8078679",
+    "title": "Customer Application Engineer at Ivalua",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Cast AI Careers: Join Our Team – Cast AI",
+    "company": "Customer Application Engineer at Ivalua",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/udemy/jobs/640973",
-    "title": "Careers | About Udemy",
-    "snippet": "Udemy is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, pregnancy, sexual orientation, gender identity, national origin, age, protected veteran status, or disability status. If you require a reasonable accommodation to apply for a Udemy position, please email (/cdn-cgi/l/email-protection#92e0f7f1e0e7fbe6fbfcf5f3f1f1fdfffffdf6f3e6fbfdfce1d2e7f6f7ffebbcf1fdff). [...] We have a global parental leave policy that applies to all new parents, inclusive of gender, family structure, or path to parenthood. Additionally, we provide extended bereavement leave, including support for pregnancy loss. ## Our Awards Builtin 2025 Best Places to Work Award Builtin 2025 Best Places to Work Award TIME - World's Top EdTech Companies 2024 TIME - World's Top EdTech Companies 2024 ## Our Locations Mumbai Mumbai Chennai Chennai ## Our Current Opportunities [...] We will not consider applications sent to this email address. Know Your Rights | Pay Transparency Nondiscrimination E-Verify Logo E-Verify Logo ### Connect with us LinkedIn Button LinkedIn Button Facebook Button Facebook Button Twitter Button Twitter Button Instagram Button Instagram Button ## Choose a Language Udemy Udemy",
-    "source": "Google/tavily",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "discovery_url": "https://jobs.lever.co/binance",
+    "title": "Binance jobs - Customer Support",
+    "snippet": "India, Bangalore ... Asia / South East Asia / Japan, Tokyo. Customer Support. Apply · Customer Service Representative (Spanish and Portuguese speaker). Remote — ...",
+    "source": "Google/search1",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "Careers | About Udemy",
+    "company": "Binance jobs",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -414,17 +601,6 @@
     "query": "site:*.comeet.com India \"customer support\"",
     "score": 95,
     "company": "Sales Operations Assistant at Ship4wd",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.remoterocketship.com/country/india/jobs/support-consultant",
-    "title": "Remote Support Consultant Jobs in India",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 95,
-    "company": "Remote Support Consultant Jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -473,13 +649,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/infinidat/D6.003",
-    "title": "Jobs at INFINIDAT - Comeet",
-    "snippet": "Customer Support Engineering · Customer Support Operations Specialist. Herzliya; Junior; Hourly · Support Operations Specialist. Waltham, MA; Junior; Full-time ...",
+    "discovery_url": "https://www.comeet.com/jobs/dealhub/86.005",
+    "title": "Jobs at DealHub - Comeet",
+    "snippet": "Senior Customer Support Specialist. Manila, Philippines; Intermediate; Full-time · Senior Customer Support Specialist. Holon, Israel; Intermediate; Full-time.",
     "source": "Google/serper",
     "query": "site:*.comeet.com India \"customer support\"",
     "score": 95,
-    "company": "Jobs at INFINIDAT",
+    "company": "Jobs at DealHub",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -656,72 +832,6 @@
     "query": "site:*.jobylon.com India \"customer support\"",
     "score": 95,
     "company": "Basware",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://cutshort.io/jobs/remote-support-jobs",
-    "title": "9+ Remote support Jobs in India",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 95,
-    "company": "9+ Remote support Jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/customer-service-remote-jobs-SRCH_KO0,23.htm",
-    "title": "6348 Customer service remote jobs in India",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 95,
-    "company": "6348 Customer service remote jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/customer-support-agent-remote-jobs-SRCH_KO0,29.htm",
-    "title": "606 Customer support agent remote jobs in India",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 95,
-    "company": "606 Customer support agent remote jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/pune-remote-office-technical-support-jobs-SRCH_IL.0,4_IC2856202_KO5,36.htm",
-    "title": "234 Remote office technical support jobs in Pune - Glassdoor",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 95,
-    "company": "234 Remote office technical support jobs in Pune",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/work-from-home-canada-technical-support-jobs-SRCH_FW0,14_IL.15,21_KO22,39.htm",
-    "title": "115 Technical support jobs in India - Work from home",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 95,
-    "company": "115 Technical support jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.ie/Job/india-remote-desktop-jobs-SRCH_IL.0,5_IN115_KW6,20.htm",
-    "title": "1,277 India jobs - Work from home - Glassdoor",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 95,
-    "company": "1,277 India jobs",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
