@@ -61,9 +61,15 @@ from bs4 import BeautifulSoup
 SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID", "")
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS", "")
 STARTUP_JOBS_API_KEY = os.environ.get("STARTUP_JOBS_API_KEY", "").strip()
+JOB_OPPORTUNITIES_API_KEY = os.environ.get("JOB_OPPORTUNITIES_API_KEY", "").strip()
 STARTUP_JOBS_MAX_PAGES = int(os.environ.get("STARTUP_JOBS_MAX_PAGES", "9"))
 HIMALAYAS_MAX_PAGES = int(os.environ.get("HIMALAYAS_MAX_PAGES", "3"))
 ARBEITNOW_MAX_PAGES = int(os.environ.get("ARBEITNOW_MAX_PAGES", "5"))
+JOA_DAILY_RECORD_BUDGET = int(os.environ.get("JOA_DAILY_RECORD_BUDGET", "30"))
+JOA_PAGE_SIZE = min(25, max(5, int(os.environ.get("JOA_PAGE_SIZE", "10"))))
+PLAYWRIGHT_ENABLED = os.environ.get("PLAYWRIGHT_ENABLED", "1").lower() not in {"0","false","no"}
+PLAYWRIGHT_TIMEOUT_MS = int(os.environ.get("PLAYWRIGHT_TIMEOUT_MS", "25000"))
+PLAYWRIGHT_MAX_PAGES = int(os.environ.get("PLAYWRIGHT_MAX_PAGES", "3"))
 
 MAX_JOB_AGE_DAYS = int(os.environ.get("JOB_MAX_AGE_DAYS", "7"))
 CONCURRENCY = int(os.environ.get("ATS_WORKERS", "18"))
@@ -420,6 +426,96 @@ ATS_DOMAINS = {
     ],
     "SuccessFactors": [
         "successfactors.com",
+    ],
+    # High-value Indian / enterprise ATS and career platforms.
+    # These are intentionally handled through the generic/direct career
+    # crawler when a stable public API is not verified.
+    "Darwinbox": [
+        "darwinbox.in", "darwinbox.com", "darwinbox.ai",
+    ],
+    "Keka": [
+        "keka.com", "keka.hr",
+    ],
+    "Zoho": [
+        "zohorecruit.com", "zoho.com",
+    ],
+    "Freshteam": [
+        "freshteam.com",
+    ],
+    "Oracle": [
+        "oraclecloud.com", "oracle.com",
+    ],
+    "Rippling": [
+        "rippling.com",
+    ],
+    "Pinpoint": [
+        "pinpointhq.com",
+    ],
+    "Phenom": [
+        "phenom.com",
+    ],
+    "Eightfold": [
+        "eightfold.ai",
+    ],
+    "Avature": [
+        "avature.net",
+    ],
+    "Jobvite": [
+        "jobvite.com",
+    ],
+    "JazzHR": [
+        "applytojob.com", "jazz.co",
+    ],
+    "Bullhorn": [
+        "bullhorn.com",
+    ],
+    "CEIPAL": [
+        "ceipal.com",
+    ],
+    "Vincere": [
+        "vincere.io",
+    ],
+    "UKG": [
+        "ukg.com", "ultipro.com",
+    ],
+    "Zwayam": [
+        "zwayam.com",
+    ],
+    "PeopleStrong": [
+        "peoplestrong.com",
+    ],
+    "HROne": [
+        "hrone.cloud", "hrone.com",
+    ],
+    "Manatal": [
+        "manatal.com",
+    ],
+    "Fountain": [
+        "fountain.com",
+    ],
+    "Jobylon": [
+        "jobylon.com",
+    ],
+    "TalentLyft": [
+        "talentlyft.com",
+    ],
+    "Recruiterflow": [
+        "recruiterflow.com",
+    ],
+    "iSmartRecruit": [
+        "ismartrecruit.com",
+    ],
+    "Comeet": [
+        "comeet.com",
+    ],
+    "InHire": [
+        "inhire.io",
+    ],
+    "Paylocity": [
+        "paylocity.com",
+    ],
+    "Crelate": [
+        "crelate.com",
     ],
 }
 
@@ -1028,6 +1124,133 @@ def fetch_wwr_rss():
             )
     except requests.RequestException as exc:
         print(f"We Work Remotely RSS: {exc}")
+    return jobs
+
+
+def fetch_jobopportunitiesapi():
+    """Fetch a small rotating slice from Job Opportunities API.
+
+    The Explore plan is metered by records, so this crawler deliberately
+    stays at a safe ~30 records/day (900/month at a 30-day cadence). The API
+    itself is employer-direct: ATS and company-career provenance can be
+    selected with source_type=ats,career_site. We use the returned apply_url
+    directly and never publish the aggregator URL.
+    """
+    jobs = []
+    if not JOB_OPPORTUNITIES_API_KEY:
+        print("Job Opportunities API: JOB_OPPORTUNITIES_API_KEY not configured; skipping")
+        return jobs
+
+    terms = [
+        "support", "customer", "success", "service", "technical",
+        "implementation", "onboarding", "help desk", "product support",
+        "customer experience", "account manager", "client",
+    ]
+    # Rotate three terms per day so the free 1,000-record allowance is
+    # distributed across the niche instead of repeatedly buying the same rows.
+    day = datetime.now(timezone.utc).date().toordinal()
+    start = (day * 3) % len(terms)
+    selected = [terms[(start + i) % len(terms)] for i in range(3)]
+    remaining = max(0, JOA_DAILY_RECORD_BUDGET)
+    seen = set()
+    request_count = 0
+
+    for term in selected:
+        if remaining <= 0:
+            break
+        limit = min(JOA_PAGE_SIZE, remaining)
+        params = {
+            "country": "IN",
+            "remote": "remote,hybrid",
+            "source_type": "ats,career_site",
+            "status": "live",
+            "has_description": "true",
+            "title": term,
+            "limit": limit,
+        }
+        try:
+            r = SESSION.get(
+                "https://api.jobopportunitiesapi.org/v1/jobs",
+                params=params,
+                headers={"Authorization": f"Bearer {JOB_OPPORTUNITIES_API_KEY}"},
+                timeout=25,
+            )
+            request_count += 1
+        except requests.RequestException as exc:
+            print(f"Job Opportunities API {term}: request error: {exc}")
+            continue
+
+        if r.status_code == 402:
+            print("Job Opportunities API: monthly record allowance exhausted; stopping")
+            break
+        if r.status_code == 429:
+            print("Job Opportunities API: rate limited; stopping")
+            break
+        if r.status_code == 401:
+            print("Job Opportunities API: 401 — check JOB_OPPORTUNITIES_API_KEY")
+            break
+        if r.status_code != 200:
+            print(f"Job Opportunities API {term}: HTTP {r.status_code}: {clean_text(r.text)[:180]}")
+            continue
+        try:
+            payload = r.json()
+        except ValueError:
+            continue
+
+        items = payload.get("data") or []
+        for j in items:
+            if not isinstance(j, dict):
+                continue
+            jid = clean_text(j.get("id") or j.get("slug") or j.get("apply_url"))
+            if jid and jid in seen:
+                continue
+            if jid:
+                seen.add(jid)
+            title = clean_text(j.get("title"))
+            link = clean_text(j.get("apply_url"))
+            if not title or not link or not title_relevant(title):
+                continue
+            # JOA is already employer-direct, but keep our own India/workplace
+            # gate as the final authority.
+            loc = clean_text(j.get("location"))
+            city = clean_text(j.get("city"))
+            country = clean_text(j.get("country"))
+            if city and city.lower() not in loc.lower():
+                loc = ", ".join(x for x in [city, loc] if x)
+            desc = clean_text(j.get("description"))
+            remote = clean_text(j.get("remote")).lower()
+            workplace = "Remote" if remote == "remote" else ("Hybrid" if remote == "hybrid" else "")
+            if not workplace:
+                continue
+            if not classify_india(loc, country, country, desc, workplace):
+                continue
+            posted = parse_date(j.get("posted_at") or j.get("first_seen_at"))
+            if not recent_enough(posted):
+                continue
+            score, matched = score_job(title, desc, loc)
+            source_name = clean_text(j.get("source") or j.get("provider_type") or "Job Opportunities API")
+            source_type = clean_text(j.get("source_type"))
+            jobs.append({
+                "added": datetime.now(timezone.utc).date().isoformat(),
+                "title": title,
+                "company": clean_text(j.get("company")),
+                "location": loc or "India",
+                "workplace": workplace,
+                "posted_date": posted,
+                "job_url": link,
+                "source": f"Job Opportunities API->{source_name}",
+                "score": score + 12,
+                "matched": matched,
+                "direct": True,
+                "eligibility": "India-specific",
+                "job_id": jid,
+                "route_type": "ats_api" if source_type == "ats" else "jsonld_or_company",
+            })
+        remaining -= len(items)
+        if remaining > 0:
+            time.sleep(0.4)
+
+    print(f"Job Opportunities API: {len(jobs)} accepted from {request_count} request(s); budget={JOA_DAILY_RECORD_BUDGET}")
     return jobs
 
 
@@ -3117,6 +3340,141 @@ def sitemap_job_urls(site_root, cap=8):
     return list(dict.fromkeys(urls))[:cap]
 
 
+def _browser_extract_job_candidates(page_html, base_url, company, source):
+    """Parse a rendered Playwright page for exact job links/JSON-LD."""
+    jobs = parse_structured_jobpostings(page_html, base_url, company, source)
+    soup = BeautifulSoup(page_html, "html.parser")
+    seen = {normalize_url(j.get("job_url", "")) for j in jobs if j.get("job_url")}
+    anchors = []
+    for a in soup.find_all("a", href=True):
+        href = normalize_url(urljoin(base_url, a.get("href", "")))
+        text = clean_text(a.get_text(" ", strip=True))
+        if not href or not text or not title_relevant(text):
+            continue
+        if href in seen:
+            continue
+        path = urlparse(href).path.lower()
+        if not re.search(r"/(?:job|jobs|career|careers|opening|openings|position|vacanc|requisition|apply)/", path) and not ats_from_url(href):
+            continue
+        anchors.append((href, text))
+    for href, text in anchors[:PLAYWRIGHT_MAX_PAGES * 8]:
+        page_html2, page_final = get_html(href, timeout=V11_HTML_TIMEOUT)
+        if not page_html2:
+            continue
+        parsed = parse_structured_jobpostings(page_html2, page_final, company, source)
+        if parsed:
+            jobs.extend(parsed)
+            continue
+        ps = BeautifulSoup(page_html2, "html.parser")
+        body = clean_text(ps.get_text(" ", strip=True))[:50000]
+        if not title_relevant(text):
+            continue
+        workplace = "Hybrid" if HYBRID_RE.search(body) else ("Remote" if REMOTE_RE.search(body) else "")
+        if not workplace:
+            for item in _iter_jsonld_objects(ps):
+                workplace = _structured_workplace(item, body)
+                if workplace:
+                    break
+        if not v11_allowed_india(body, "", "", body, workplace):
+            continue
+        score, matched = score_job(text, body, "India")
+        jobs.append({
+            "added": datetime.now(timezone.utc).date().isoformat(),
+            "title": text, "company": company, "location": "India",
+            "workplace": workplace, "posted_date": "",
+            "job_url": normalize_url(page_final) or page_final,
+            "source": source, "score": score + 10, "matched": matched,
+            "direct": True, "eligibility": "India-inferred",
+        })
+    return jobs
+
+
+def crawl_career_page_with_browser(company, url, source="Company Career"):
+    """Targeted JS fallback. It is only called when requests/HTML extraction found no jobs."""
+    if not PLAYWRIGHT_ENABLED:
+        return [], []
+    try:
+        from playwright.sync_api import sync_playwright
+    except Exception as exc:
+        print(f"PLAYWRIGHT unavailable: {type(exc).__name__}: {exc}")
+        return [], []
+    jobs = []
+    discovered = []
+    responses = []
+    try:
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
+            page = browser.new_page(user_agent=USER_AGENT)
+            def on_response(resp):
+                u = resp.url.lower()
+                ct = (resp.headers.get("content-type") or "").lower()
+                if ("json" in ct or any(k in u for k in ["/api/", "/jobs", "/job/", "graphql", "requisition", "opening"])) and len(responses) < 80:
+                    try:
+                        responses.append((resp.url, resp.json()))
+                    except Exception:
+                        pass
+            page.on("response", on_response)
+            page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
+            try:
+                page.wait_for_load_state("networkidle", timeout=min(10000, PLAYWRIGHT_TIMEOUT_MS))
+            except Exception:
+                pass
+            page.wait_for_timeout(1200)
+            html = page.content()
+            final_url = page.url
+            jobs.extend(_browser_extract_job_candidates(html, final_url, company, source))
+            # Extract obvious job URLs from captured JSON objects.
+            def walk(obj, depth=0):
+                if depth > 5 or len(discovered) >= 100:
+                    return
+                if isinstance(obj, dict):
+                    title = clean_text(obj.get("title") or obj.get("jobTitle") or obj.get("name"))
+                    href = clean_text(obj.get("apply_url") or obj.get("applyUrl") or obj.get("jobUrl") or obj.get("job_url") or obj.get("url") or obj.get("absoluteUrl") or obj.get("jobDetailUrl") or obj.get("externalPath"))
+                    if title and href and re.match(r"^https?://", href) and title_relevant(title):
+                        discovered.append((title, href, obj))
+                    for v in obj.values():
+                        walk(v, depth + 1)
+                elif isinstance(obj, list):
+                    for v in obj[:100]:
+                        walk(v, depth + 1)
+            for _, payload in responses:
+                walk(payload)
+            browser.close()
+    except Exception as exc:
+        print(f"PLAYWRIGHT {company}: {type(exc).__name__}: {exc}")
+        return jobs, []
+
+    seen = {normalize_url(j.get("job_url", "")) for j in jobs if j.get("job_url")}
+    for title, href, obj in discovered:
+        href = normalize_url(href)
+        if not href or href in seen:
+            continue
+        loc = clean_text(obj.get("location") or obj.get("locations") or obj.get("locationName") or "")
+        desc = clean_text(obj.get("description") or obj.get("jobDescription") or "")
+        remote = clean_text(obj.get("remote") or obj.get("workplaceType") or obj.get("workplace_type") or "").lower()
+        workplace = "Remote" if remote in {"remote", "fully remote"} else ("Hybrid" if remote == "hybrid" else "")
+        if not workplace:
+            combined = " ".join([loc, desc])
+            workplace = "Hybrid" if HYBRID_RE.search(combined) else ("Remote" if REMOTE_RE.search(combined) else "")
+        if workplace not in {"Remote", "Hybrid"}:
+            continue
+        if not classify_india(loc, clean_text(obj.get("country")), clean_text(obj.get("addressCountry")), desc, workplace):
+            continue
+        posted = parse_date(obj.get("posted_at") or obj.get("postedAt") or obj.get("datePosted") or obj.get("published_at"))
+        if not recent_enough(posted):
+            continue
+        score, matched = score_job(title, desc, loc)
+        jobs.append({
+            "added": datetime.now(timezone.utc).date().isoformat(),
+            "title": title, "company": company, "location": loc or "India",
+            "workplace": workplace, "posted_date": posted, "job_url": href,
+            "source": source, "score": score + 15, "matched": matched,
+            "direct": True, "eligibility": "India-specific",
+        })
+        seen.add(href)
+    return jobs, []
+
+
 def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8):
     """Fetch a public employer career page and return direct job records plus ATS links."""
     if not url:
@@ -3221,6 +3579,12 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
                 "source": source, "score": score, "matched": matched,
             })
 
+    # JavaScript fallback for career sites whose job inventory is rendered only
+    # after load. Never launch a browser when normal HTML/JSON-LD already found jobs.
+    if not jobs and PLAYWRIGHT_ENABLED and not ats_from_url(final_url):
+        browser_jobs, browser_links = crawl_career_page_with_browser(company, final_url, source=source)
+        jobs.extend(browser_jobs)
+        career_links.extend(browser_links)
     return jobs, career_links
 
 
@@ -3418,7 +3782,7 @@ def resolve_public_feed_jobs_to_direct(jobs, budget=140):
         if not direct:
             return None
         if ats_from_url(direct) or urlparse(direct).netloc.lower() not in {
-            "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org", "wellfound.com", "cutshort.io", "weworkremotely.com"
+            "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org", "wellfound.com", "cutshort.io", "weworkremotely.com","jobopportunitiesapi.org"
         }:
             x = dict(j)
             x["job_url"] = normalize_url(direct) or direct
@@ -3593,7 +3957,7 @@ def should_run_v11_archive():
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-V11_VERSION = "11.1"
+V11_VERSION = "12.0"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -4510,6 +4874,7 @@ def feed_direct_only():
         ("Jobicy",fetch_jobicy),
         ("Remote OK",fetch_remoteok),
         ("Startup Jobs",fetch_startup_jobs),
+        ("Job Opportunities API",fetch_jobopportunitiesapi),
         ("RemoteJobs.org",fetch_remotejobs_org),
         ("Adzuna",fetch_adzuna),
         ("Jooble",fetch_jooble),
@@ -4626,7 +4991,7 @@ def normalize_identity(j):
 
 
 def merge_direct_jobs(jobs):
-    blocked={"himalayas.app","startup.jobs","jobicy.com","remoteok.com","remotejobs.org","wellfound.com","cutshort.io","weworkremotely.com","remotive.com","arbeitnow.com","workingnomads.com"}
+    blocked={"himalayas.app","startup.jobs","jobicy.com","remoteok.com","remotejobs.org","wellfound.com","cutshort.io","weworkremotely.com","remotive.com","arbeitnow.com","workingnomads.com","jobopportunitiesapi.org"}
     unique={}
     rejected_scam=0
     rejected_location=0
@@ -4960,11 +5325,13 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V11 — INDIA FIRST / HIGH COVERAGE")
+    print("REMOTE4.ME JOB CRAWLER V12 — DIRECT JOB + INDIA ATS + JS CAREER")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
     print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
+    print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
+    print(f"Playwright JS career fallback: {'enabled' if PLAYWRIGHT_ENABLED else 'disabled'}")
     print(f"Job window: {V11_JOB_MAX_AGE_DAYS} days / open-posting lifecycle")
     print(f"APAC/Worldwide remote tier: {'enabled' if V11_ALLOW_APAC_WORLDWIDE else 'disabled'}")
     if args.discover: return run_discover()
