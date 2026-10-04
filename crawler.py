@@ -3608,7 +3608,7 @@ def parse_structured_jobpostings(html, base_url, company_hint="", source="Compan
         if not any(str(x).lower() == "jobposting" for x in types):
             continue
         title = clean_text(item.get("title") or item.get("name"))
-        if not title_relevant(title):
+        if not title_relevant(title) or has_foreign_location_in_title(title):
             continue
         body = clean_text(item.get("description"))
         location = _job_location_text(item)
@@ -3763,7 +3763,7 @@ def _browser_extract_job_candidates(page_html, base_url, company, source):
     for a in soup.find_all("a", href=True):
         href = normalize_url(urljoin(base_url, a.get("href", "")))
         text = clean_text(a.get_text(" ", strip=True))
-        if not href or not text or not title_relevant(text):
+        if not href or not text or not title_relevant(text) or has_foreign_location_in_title(text):
             continue
         if href in seen:
             continue
@@ -3864,6 +3864,8 @@ def crawl_career_page_with_browser(company, url, source="Company Career"):
     for title, href, obj in discovered:
         href = normalize_url(href)
         if not href or href in seen:
+            continue
+        if has_foreign_location_in_title(title):
             continue
         loc = clean_text(obj.get("location") or obj.get("locations") or obj.get("locationName") or "")
         desc = clean_text(obj.get("description") or obj.get("jobDescription") or "")
@@ -4351,7 +4353,11 @@ def v11_clean_direct_jobs(jobs):
         host = urlparse(u).netloc.lower()
         if not u or host in blocked:
             continue
-        if not title_relevant(j.get("title", "")):
+        title = clean_text(j.get("title", ""))
+        if not title_relevant(title):
+            continue
+        if has_foreign_location_in_title(title):
+            rejected_location += 1
             continue
         if j.get("workplace") not in {"Remote", "Hybrid"}:
             continue
@@ -4371,10 +4377,10 @@ def should_run_v11_archive():
 
 
 # ============================================================
-# REMOTE4.ME V13.7 — SHARDED HIGH-COVERAGE ORCHESTRATOR
+# REMOTE4.ME V13.8 — SHARDED HIGH-COVERAGE + STRICT JOB QUALITY
 # ============================================================
 
-V11_VERSION = "13.7-final"
+V11_VERSION = "13.8-final-quality"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -4616,6 +4622,18 @@ NON_INDIA_LOCATION_RE = re.compile(
     r"sydney|melbourne|berlin|paris)\b",
     re.I,
 )
+# Reject a concrete foreign location embedded in the job title itself.
+# This is a final safety net against an upstream parser incorrectly labeling
+# a US/foreign requisition as India because its parent career page was India-seeded.
+def has_foreign_location_in_title(title):
+    t = clean_text(title)
+    if not t:
+        return False
+    if re.search(r"\bindia\b", t, re.I) or INDIA_STATE_REGEX.search(t):
+        return False
+    return bool(NON_INDIA_LOCATION_RE.search(t))
+
+
 STRONG_INDIA_TEXT_RE = re.compile(
     r"(?:\bremote(?:ly)?\s+(?:from|in)\s+india\b|"
     r"\bindia[- ]based\b|\bbased\s+in\s+india\b|"
@@ -6478,7 +6496,9 @@ def merge_direct_jobs(jobs):
         if is_suspicious_job(j):
             rejected_scam += 1
             continue
-        if j.get("source", "").startswith("Company Career") and not is_exact_job_url(u):
+        # Every published row must have a job-detail/application URL. This
+        # blocks generic career/team/support pages from ever reaching JOBS.
+        if not is_exact_job_url(u):
             continue
         j["job_url"]=u; j["eligibility"]=elig; j["direct"]=True
         j["route_type"] = "ats_api" if ats_from_url(u) else "jsonld_or_company"
