@@ -1,58 +1,43 @@
-# Remote4.me India Job Crawler V8
+# Remote4.me Job Crawler V11
 
-India-first public job discovery crawler for Remote4.me. It keeps only Customer Support, Customer Success, Technical Support, Product Support and closely related roles that are explicitly India + Remote/Hybrid, with a 7-day freshness window.
+India-first, high-coverage, direct-link job discovery for Customer Support, Customer Success, Technical Support and adjacent roles.
+
+## Architecture
+
+- Weekly discovery: OpenJobs + India ATS directory + career-page directory + Wellfound + Cutshort + Common Crawl/Wayback. Saves `data/companies.json` and `data/boards.json`.
+- Daily crawl: GitHub Actions matrix, one ATS per job, plus a company-careers shard and a feed/direct-resolution job.
+- Publish: only direct employer/ATS URLs are written to `JOBS`; public feeds are used for discovery and direct-link resolution.
+- `STATS` records per-source counts, errors, runtime and registry updates.
+- Company/ATS registry is batch-updated and retains boards that are alive even when zero jobs match the support filter. Boards are retired only after repeated failures.
 
 ## Sources
 
-### Public APIs / feeds
-- Himalayas public JSON search API (India + support queries)
-- Remotive public API
-- Arbeitnow public API
-- Working Nomads public JSON feed
-- We Work Remotely public RSS feed
-- Jobicy public API
-- Remote OK public JSON feed
-- Startup Jobs API (free key)
+Public feeds supported: Himalayas, Remotive, Arbeitnow, Working Nomads, We Work Remotely RSS, Jobicy, Remote OK, Startup Jobs, RemoteJobs.org; optional Adzuna/Jooble keys can be provided.
 
-### Discovery
-- Wellfound India role pages
-- Cutshort India role pages
-- Company website -> Careers/Jobs -> ATS discovery
-- Internet Archive + Common Crawl ATS discovery
+Direct ATS adapters: Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR, Personio, Workday.
 
-### Direct ATS/career crawling
-- Greenhouse
-- Lever
-- Ashby
-- Workable
-- SmartRecruiters
-- Recruitee
-- Breezy
-- Teamtailor
-- BambooHR
-- Personio
-- Generic public career-page fallback
+Nonstandard Indian ATS/career systems are discovered by exact company career routes and parsed with JSON-LD / public HTML where a documented unauthenticated feed is not available. Oracle Recruiting, Darwinbox, Keka and similar systems are not treated as authenticated APIs.
 
-## GitHub secrets
+## Workday
 
-Use these repository secrets:
+Uses the public Workday CXS endpoint used by public career sites: `POST /wday/cxs/{tenant}/{site}/jobs` with a hard page size of 20. Boards are discovered from exact ATS URLs and public indexes, not guessed.
 
-```text
-GOOGLE_SERVICE_ACCOUNT_JSON
-GOOGLE_SHEET_ID
-STARTUP_JOBS_API_KEY
-```
+## Google Sheets
 
-The workflow maps the first two into the environment names expected by the crawler.
+Required secrets:
+- `GOOGLE_SERVICE_ACCOUNT_JSON`
+- `GOOGLE_SHEET_ID`
+- `STARTUP_JOBS_API_KEY`
 
-## Schedule
+Optional:
+- `ADZUNA_APP_ID`
+- `ADZUNA_APP_KEY`
+- `JOOBLE_API_KEY`
 
-Daily at 7:00 PM IST (`30 13 * * *`).
+The first 10 JOBS columns are kept compatible with the existing sheet. Extra columns track India Eligibility, Direct, First Seen, Last Seen, Status and Missed Runs.
 
-## Important source handling
+## GitHub Actions
 
-Aggregator/API records are discovery/review inputs. Remote4.me's workflow is manual review; use the employer's own public career/ATS URL for the final job post whenever it can be verified. Some public feeds have attribution or redistribution conditions, so review the applicable source terms before publishing any sourced listing.
+`discover.yml` runs weekly and commits updated `data/*.json`. `daily.yml` runs at 19:00 IST and uses a matrix for each ATS plus careers/feeds. Only the publish job writes to Sheets.
 
-## No paid search APIs
-
-No Brave, Serper, JobsPipe or other paid search API is required.
+Run `discover.yml` once before the first daily run; the daily workflow also bootstraps discovery automatically if the manifest is empty.
