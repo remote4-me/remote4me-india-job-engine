@@ -1,4 +1,4 @@
-name: Remote4.me V13 Daily High-Coverage Crawler
+name: Remote4.me V13.6 Daily High-Coverage Crawler
 
 on:
   workflow_dispatch:
@@ -37,10 +37,21 @@ jobs:
           SEARLO_API_KEY: ${{ secrets.SEARLO_API_KEY }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           SEARCH_DISCOVERY_ENABLED: "1"
-          SEARCH_QUERIES_PER_PROVIDER: "3"
+          SEARCH_QUERIES_PER_PROVIDER: "2"
           SEARCH_RESULTS_PER_QUERY: "10"
           SEARCH_DISCOVERY_ROTATION_DAYS: "10"
-          SEARCH_DISCOVERY_MAX_URLS: "1200"
+          SEARCH_DISCOVERY_MAX_URLS: "1600"
+          GOOGLE_DISCOVERY_ENABLED: "1"
+          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "4"
+          GOOGLE_DISCOVERY_RESULTS_PER_QUERY: "10"
+          GOOGLE_DISCOVERY_ROTATION_DAYS: "1"
+          GOOGLE_DISCOVERY_WORKERS: "12"
+          GOOGLE_JOBS_ENABLED: "1"
+          GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "2"
+          GOOGLE_JOBS_RESULTS_PER_QUERY: "10"
+          GOOGLE_JOBS_ROTATION_DAYS: "1"
+          SERPAPI_ORGANIC_DISCOVERY_ENABLED: "0"
+          GOOGLE_JOBS_USAGE_FILE: "data/google_jobs_usage.json"
           ARCHIVE_DISCOVERY_INTERVAL_DAYS: "7"
           COMPANY_DISCOVERY_LIMIT: "15000"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
@@ -50,10 +61,12 @@ jobs:
         run: python crawler.py --discover
       - name: Commit refreshed manifests
         run: |
+          mkdir -p data
+          if [ ! -f data/google_jobs_usage.json ]; then echo '{"date":"","calls":0}' > data/google_jobs_usage.json; fi
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/boards.json data/companies.json
-          git diff --cached --quiet || (git commit -m "Refresh V13 ATS discovery manifests" && git push)
+          git add data/boards.json data/companies.json data/google_jobs_usage.json
+          git diff --cached --quiet || (git commit -m "Refresh V13.5 ATS and Google Jobs discovery manifests" && git push)
 
   # ----------------------------------------------------------
   # DIRECT ATS SHARDS
@@ -86,7 +99,7 @@ jobs:
           HOST_CONCURRENCY: "6"
           ALLOW_APAC_WORLDWIDE: "1"
           JOB_MAX_AGE_DAYS: "30"
-          ATS_DAILY_CAP: "0"
+          ATS_DAILY_CAP: "350"
           EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
         run: python crawler.py --ats "${{ matrix.ats }}" --out "out/${{ matrix.ats }}.jsonl"
       - uses: actions/upload-artifact@v4
@@ -118,13 +131,17 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          CAREER_DAILY_BUDGET: "1400"
-          CAREER_PAGE_LIMIT: "4"
+          CAREER_DAILY_BUDGET: "500"
+          CAREER_PAGE_LIMIT: "3"
+          CAREER_PREFLIGHT_ENABLED: "1"
+          CAREER_PREFLIGHT_WORKERS: "36"
+          CAREER_BROWSER_MAX_CALLS: "120"
           PLAYWRIGHT_ENABLED: "1"
-          PLAYWRIGHT_MAX_PAGES: "3"
+          PLAYWRIGHT_MAX_PAGES: "2"
           PLAYWRIGHT_TIMEOUT_MS: "25000"
           EXTERNAL_FETCH_FALLBACK_ENABLED: "1"
-          EXTERNAL_FETCH_MAX_CALLS: "200"
+          EXTERNAL_FETCH_MAX_CALLS: "12"
+          EXTERNAL_FETCH_PROVIDER_CAPS: "Jina=2,ScrapingAnt=2,BrightData=1,Firecrawl=2,ScraperAPI=1,Diffbot=1"
           JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
           SCRAPINGANT_API_KEY: ${{ secrets.SCRAPINGANT_API_KEY }}
           BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
@@ -154,7 +171,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Fetch public feeds and resolve direct employer links
+      - name: Fetch public feeds and build direct + discovery queues
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
@@ -162,6 +179,14 @@ jobs:
           JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
           JOA_DAILY_RECORD_BUDGET: "28"
           JOA_PAGE_SIZE: "10"
+          HIMALAYAS_MAX_PAGES: "3"
+          JOBICY_MAX_PAGES: "2"
+          REMOTE_LANDERS_MAX_PAGES: "2"
+          REMOTEJOBS_MAX_PAGES: "2"
+          ARBEITNOW_MAX_PAGES: "5"
+          STARTUP_JOBS_MAX_PAGES: "5"
+          FEED_MAX_JOB_AGE_DAYS: "14"
+          FEED_DISCOVERY_MAX_ROWS: "1200"
           FEED_DIRECT_BUDGET: "350"
           JOB_MAX_AGE_DAYS: "30"
           PYTHONUNBUFFERED: "1"
@@ -192,6 +217,9 @@ jobs:
           path: out
           pattern: jobs-*
           merge-multiple: true
+      - name: Bring Google discovery leads into merge
+        run: |
+          if [ -f data/search_discovery.json ]; then cp data/search_discovery.json out/search_discovery.json; fi
       - name: Merge and write Google Sheets
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
@@ -200,4 +228,4 @@ jobs:
         run: python crawler.py --merge out --write-sheet
       - name: Completion
         if: success()
-        run: echo "Remote4.me V13 daily crawl and publish completed."
+        run: echo "Remote4.me V13.6 daily crawl and publish completed."
