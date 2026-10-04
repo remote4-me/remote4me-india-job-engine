@@ -1,4 +1,4 @@
-name: Remote4.me V12 Daily Crawler
+name: Remote4.me V13 Daily High-Coverage Crawler
 
 on:
   workflow_dispatch:
@@ -8,12 +8,17 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: remote4me-v13-daily
+  cancel-in-progress: false
+
 jobs:
+  # ----------------------------------------------------------
+  # DISCOVERY: search engines + directories + ATS archives
+  # ----------------------------------------------------------
   prepare:
     runs-on: ubuntu-latest
     timeout-minutes: 120
-    outputs:
-      ready: ${{ steps.check.outputs.ready }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,24 +26,38 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - id: check
+      - name: Refresh discovery manifests
         env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+          YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          SEARCH1_API_KEY: ${{ secrets.SEARCH1_API_KEY }}
+          SEARLO_API_KEY: ${{ secrets.SEARLO_API_KEY }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
-          JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          SEARCH_DISCOVERY_ENABLED: "1"
+          SEARCH_QUERIES_PER_PROVIDER: "3"
+          SEARCH_RESULTS_PER_QUERY: "10"
+          SEARCH_DISCOVERY_ROTATION_DAYS: "10"
+          SEARCH_DISCOVERY_MAX_URLS: "1200"
+          ARCHIVE_DISCOVERY_INTERVAL_DAYS: "7"
+          COMPANY_DISCOVERY_LIMIT: "15000"
+          DISCOVERY_CANDIDATE_LIMIT: "6000"
+          DISCOVERY_VALIDATE_PER_ATS: "1800"
+          DISCOVERY_WORKERS: "36"
+          PYTHONUNBUFFERED: "1"
+        run: python crawler.py --discover
+      - name: Commit refreshed manifests
         run: |
-          if [ -s data/boards.json ] && grep -q '"boards"' data/boards.json && ! grep -q '"board_count": 0' data/boards.json; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          python crawler.py --discover
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json
-          git diff --cached --quiet || (git commit -m "Refresh V12 discovery manifests" && git push)
-          echo "ready=true" >> "$GITHUB_OUTPUT"
+          git diff --cached --quiet || (git commit -m "Refresh V13 ATS discovery manifests" && git push)
 
+  # ----------------------------------------------------------
+  # DIRECT ATS SHARDS
+  # ----------------------------------------------------------
   ats:
     needs: prepare
     strategy:
@@ -48,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
-      group: remote4me-${{ matrix.ats }}
+      group: remote4me-v13-${{ matrix.ats }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
@@ -62,12 +81,13 @@ jobs:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
-          JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
           PYTHONUNBUFFERED: "1"
           CRAWL_WORKERS: "32"
           HOST_CONCURRENCY: "6"
           ALLOW_APAC_WORLDWIDE: "1"
           JOB_MAX_AGE_DAYS: "30"
+          ATS_DAILY_CAP: "0"
+          EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
         run: python crawler.py --ats "${{ matrix.ats }}" --out "out/${{ matrix.ats }}.jsonl"
       - uses: actions/upload-artifact@v4
         with:
@@ -75,12 +95,15 @@ jobs:
           path: out/
           if-no-files-found: error
 
+  # ----------------------------------------------------------
+  # CUSTOM CAREER / JS CRAWLER
+  # ----------------------------------------------------------
   careers:
     needs: prepare
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
-      group: remote4me-careers
+      group: remote4me-v13-careers
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
@@ -89,17 +112,26 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Install Chromium for JS career fallback
+      - name: Install Chromium for JS career pages
         run: python -m playwright install --with-deps chromium
       - name: Crawl direct company career pages
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
-          PLAYWRIGHT_ENABLED: "1"
-          PLAYWRIGHT_MAX_PAGES: "3"
           CAREER_DAILY_BUDGET: "1400"
           CAREER_PAGE_LIMIT: "4"
+          PLAYWRIGHT_ENABLED: "1"
+          PLAYWRIGHT_MAX_PAGES: "3"
+          PLAYWRIGHT_TIMEOUT_MS: "25000"
+          EXTERNAL_FETCH_FALLBACK_ENABLED: "1"
+          EXTERNAL_FETCH_MAX_CALLS: "200"
+          JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
+          SCRAPINGANT_API_KEY: ${{ secrets.SCRAPINGANT_API_KEY }}
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          BRIGHTDATA_ZONE: "unblocker"
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          SCRAPERAPI_API_KEY: ${{ secrets.SCRAPERAPI_API_KEY }}
+          DIFFBOT_API_KEY: ${{ secrets.DIFFBOT_API_KEY }}
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --careers --out out/careers.jsonl
       - uses: actions/upload-artifact@v4
@@ -108,10 +140,13 @@ jobs:
           path: out/
           if-no-files-found: error
 
+  # ----------------------------------------------------------
+  # PUBLIC JOB FEEDS / DISCOVERY SOURCES
+  # ----------------------------------------------------------
   feeds:
     needs: prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -125,7 +160,10 @@ jobs:
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
+          JOA_DAILY_RECORD_BUDGET: "28"
+          JOA_PAGE_SIZE: "10"
           FEED_DIRECT_BUDGET: "350"
+          JOB_MAX_AGE_DAYS: "30"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --feeds --out out/feeds.jsonl
       - uses: actions/upload-artifact@v4
@@ -134,6 +172,9 @@ jobs:
           path: out/
           if-no-files-found: error
 
+  # ----------------------------------------------------------
+  # PUBLISH ONCE
+  # ----------------------------------------------------------
   publish:
     needs: [ats, careers, feeds]
     if: always()
@@ -159,4 +200,4 @@ jobs:
         run: python crawler.py --merge out --write-sheet
       - name: Completion
         if: success()
-        run: echo "Remote4.me V12 daily crawl and publish completed."
+        run: echo "Remote4.me V13 daily crawl and publish completed."
