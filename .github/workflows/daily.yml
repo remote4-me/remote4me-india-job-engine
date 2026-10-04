@@ -1,4 +1,4 @@
-name: Remote4.me V13.6 Daily High-Coverage Crawler
+name: Remote4.me V13.7 Final India High-Coverage Crawler
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: "30 13 * * *"  # 19:00 IST
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: remote4me-v13-daily
@@ -40,14 +40,16 @@ jobs:
           SEARCH_QUERIES_PER_PROVIDER: "2"
           SEARCH_RESULTS_PER_QUERY: "10"
           SEARCH_DISCOVERY_ROTATION_DAYS: "10"
-          SEARCH_DISCOVERY_MAX_URLS: "1600"
+          SEARCH_DISCOVERY_MAX_URLS: "2000"
           GOOGLE_DISCOVERY_ENABLED: "1"
-          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "4"
+          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "6"
           GOOGLE_DISCOVERY_RESULTS_PER_QUERY: "10"
           GOOGLE_DISCOVERY_ROTATION_DAYS: "1"
           GOOGLE_DISCOVERY_WORKERS: "12"
           GOOGLE_JOBS_ENABLED: "1"
           GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "2"
+          ALLOW_APAC_WORLDWIDE: "0"
+          PUBLISH_APAC_WORLDWIDE: "0"
           GOOGLE_JOBS_RESULTS_PER_QUERY: "10"
           GOOGLE_JOBS_ROTATION_DAYS: "1"
           SERPAPI_ORGANIC_DISCOVERY_ENABLED: "0"
@@ -59,14 +61,23 @@ jobs:
           DISCOVERY_WORKERS: "36"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --discover
-      - name: Commit refreshed manifests
+      - name: Package same-run discovery manifests
         run: |
           mkdir -p data
           if [ ! -f data/google_jobs_usage.json ]; then echo '{"date":"","calls":0}' > data/google_jobs_usage.json; fi
-          git config user.name "Remote4.me Bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add data/boards.json data/companies.json data/google_jobs_usage.json
-          git diff --cached --quiet || (git commit -m "Refresh V13.5 ATS and Google Jobs discovery manifests" && git push)
+          test -s data/boards.json
+          test -s data/companies.json
+          test -s data/search_discovery.json
+          tar -czf discovery-manifests.tgz \
+            data/boards.json \
+            data/companies.json \
+            data/search_discovery.json \
+            data/google_jobs_usage.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: discovery-manifests
+          path: discovery-manifests.tgz
+          if-no-files-found: error
 
   # ----------------------------------------------------------
   # DIRECT ATS SHARDS
@@ -89,6 +100,13 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Restore same-run discovery manifests
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-manifests
+          path: .
+      - name: Extract same-run discovery manifests
+        run: tar -xzf discovery-manifests.tgz
       - name: Crawl ${{ matrix.ats }}
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
@@ -97,9 +115,14 @@ jobs:
           PYTHONUNBUFFERED: "1"
           CRAWL_WORKERS: "32"
           HOST_CONCURRENCY: "6"
-          ALLOW_APAC_WORLDWIDE: "1"
           JOB_MAX_AGE_DAYS: "30"
-          ATS_DAILY_CAP: "350"
+          ATS_DAILY_CAP: "500"
+          CRAWL_WORKERS: "32"
+          WORKDAY_MAX_PAGES_PER_KEYWORD: "1"
+          WORKDAY_MAX_RESULTS_PER_BOARD: "120"
+          WORKDAY_MAX_DETAIL_CALLS_PER_BOARD: "80"
+          ALLOW_APAC_WORLDWIDE: "0"
+          PUBLISH_APAC_WORLDWIDE: "0"
           EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
         run: python crawler.py --ats "${{ matrix.ats }}" --out "out/${{ matrix.ats }}.jsonl"
       - uses: actions/upload-artifact@v4
@@ -125,17 +148,28 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Restore same-run discovery manifests
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-manifests
+          path: .
+      - name: Extract same-run discovery manifests
+        run: tar -xzf discovery-manifests.tgz
       - name: Install Chromium for JS career pages
         run: python -m playwright install --with-deps chromium
       - name: Crawl direct company career pages
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          CAREER_DAILY_BUDGET: "500"
-          CAREER_PAGE_LIMIT: "3"
+          CAREER_DAILY_BUDGET: "1000"
+          CAREER_PAGE_LIMIT: "4"
+          CRAWL_WORKERS: "32"
+          JOB_MAX_AGE_DAYS: "30"
+          ALLOW_APAC_WORLDWIDE: "0"
+          PUBLISH_APAC_WORLDWIDE: "0"
           CAREER_PREFLIGHT_ENABLED: "1"
           CAREER_PREFLIGHT_WORKERS: "36"
-          CAREER_BROWSER_MAX_CALLS: "120"
+          CAREER_BROWSER_MAX_CALLS: "160"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_MAX_PAGES: "2"
           PLAYWRIGHT_TIMEOUT_MS: "25000"
@@ -171,6 +205,13 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Restore same-run discovery manifests
+        uses: actions/download-artifact@v4
+        with:
+          name: discovery-manifests
+          path: .
+      - name: Extract same-run discovery manifests
+        run: tar -xzf discovery-manifests.tgz
       - name: Fetch public feeds and build direct + discovery queues
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
@@ -187,8 +228,10 @@ jobs:
           STARTUP_JOBS_MAX_PAGES: "5"
           FEED_MAX_JOB_AGE_DAYS: "14"
           FEED_DISCOVERY_MAX_ROWS: "1200"
-          FEED_DIRECT_BUDGET: "350"
+          FEED_DIRECT_BUDGET: "400"
           JOB_MAX_AGE_DAYS: "30"
+          ALLOW_APAC_WORLDWIDE: "0"
+          PUBLISH_APAC_WORLDWIDE: "0"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --feeds --out out/feeds.jsonl
       - uses: actions/upload-artifact@v4
@@ -202,7 +245,9 @@ jobs:
   # ----------------------------------------------------------
   publish:
     needs: [ats, careers, feeds]
-    if: always()
+    if: ${{ !cancelled() }}
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -214,18 +259,33 @@ jobs:
       - run: pip install -r requirements.txt
       - uses: actions/download-artifact@v4
         with:
+          name: discovery-manifests
+          path: .
+      - name: Extract same-run discovery manifests
+        run: tar -xzf discovery-manifests.tgz
+      - uses: actions/download-artifact@v4
+        with:
           path: out
           pattern: jobs-*
           merge-multiple: true
-      - name: Bring Google discovery leads into merge
+      - name: Bring fresh Google discovery leads into merge
         run: |
-          if [ -f data/search_discovery.json ]; then cp data/search_discovery.json out/search_discovery.json; fi
+          mkdir -p out
+          cp data/search_discovery.json out/search_discovery.json
       - name: Merge and write Google Sheets
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --merge out --write-sheet
+      - name: Persist fresh discovery manifests
+        if: success()
+        run: |
+          git config user.name "Remote4.me Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
+          git diff --cached --quiet || git commit -m "Refresh V13.7 discovery manifests"
+          git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me V13.6 daily crawl and publish completed."
+        run: echo "Remote4.me V13.7 daily crawl and publish completed."
