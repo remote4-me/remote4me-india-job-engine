@@ -1,16 +1,5 @@
 [
   {
-    "discovery_url": "https://jobs.lever.co/zimperium/8c50666e-76d4-425b-aed2-4cbdf6cbd099",
-    "title": "Zimperium - Technical Product Support Engineer - Endpoint/MTD ...",
-    "snippet": "Technical Product Support Engineer - Endpoint/MTD (Device) & Cybersecurity. India (Remote). Customer Success – Customer Support /. Full time /. Remote. apply&nbsp;...",
-    "source": "Google/search1",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Zimperium",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://boards.greenhouse.io/samsara/jobs/7386896",
     "title": "Work at Samsara: Apply to open roles today",
     "snippet": "#### Staff Software Engineer #### Staff Software Engineer #### Staff Software Engineer #### Staff Software Engineer #### Staff Software Engineer, DevEx #### Staff Software Engineer, DevEx #### Staff Software Engineer, Maps Services #### Staff Software Engineer - Platform and Infrastructure #### Tech Lead Applied Scientist #### Technical Program Manager - Enterprise Security #### Technical Program Manager - Enterprise Security #### Technical Program Manager - Enterprise Security [...] #### Sr. Software Engineer II / Tech lead, Agentic Platform (Poland, Remote, B2B) #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Application Security Engineer #### Staff Machine Learning Engineer - Edge AI #### Staff Machine Learning Engineer - Edge AI #### Staff or Senior Firmware Engineer [...] #### Senior Software Engineer, Agentic Customer Platform (Poland, Remote, B2B) #### Senior Software Engineer - Commercial Navigation #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II #### Senior Software Engineer II, DevEx #### Senior Software Engineer I/II - Infrastructure #### Senior Software Engineer I/II - Infrastructure #### Senior Software Engineer II - Platform",
@@ -22,10 +11,43 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
+    "title": "Wing Assistant - Technical Support Representative (India)",
+    "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Technical Support Representative (Remote) [...] • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. [...] Wing is on the exciting mission of redefining the future of work for companies worldwide! We are looking to be the one-stop shop for companies that are looking to build world-class teams & place their operations on autopilot. And we’re looking for a Technical Support Representative to start immediately! Duties and Responsibilities include but are not limited to: 1. Troubleshoot IT issues (e.g., how do I log in, reset password, remote access trackers not working, etc.)",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2",
+    "title": "Wing Assistant - Customer Service Representative (India)",
+    "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Customer Service Representative (Remote) [...] • Backup Internet Service Speed: at least 10 Mbps Benefits: • Performance Incentives • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: [...] Wing Assistant logo ## Customer Service Representative (India) New Delhi, India IND – IND / apply for this job Please whitelist the domains \"lever.co\" and \"hire.lever.co\" with your email provider to make sure you get our emails.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2/apply",
+    "title": "Wing Assistant - Customer Service Representative (India)",
+    "snippet": "We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. [...] Lever logo [...] Wing Assistant logo ## Customer Service Representative (India) #### Submit your application Authorize sharing of selected LinkedIn profile details to auto-complete this form. Learn more File exceeds the maximum upload size of 100MB. Please try a smaller size. #### Links #### Salary #### Application Questions #### Internet & Computer Specs Wing Assistant Home Page",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/getwingapp",
-    "title": "Wing Assistant - Lever",
-    "snippet": "Customer Support Representative. Remote — Full TimeNairobi &middot; Apply &middot; Head of Post ... General Virtual Assistant (India). Remote — New Delhi, India &middot; Apply&nbsp;...",
-    "source": "Google/search1",
+    "title": "Wing Assistant",
+    "snippet": "Wing Assistant logo ##### Bookkeeper (India) ##### Content Writer (India) ##### Customer Service Representative (India) ##### Digital Marketing Specialist (India) ##### E-Commerce Specialist (India) ##### Executive Assistant (India) ##### Full Stack Developer ##### General Virtual Assistant (India) ##### Graphic Designer (India) ##### Lead Generation Specialist (India) ##### Personal Assistant (India) ##### Senior Software Engineer ##### Social Media Assistant (India) [...] ##### Technical Support Representative (India) Wing Assistant Home Page [...] We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",
+    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Wing Assistant",
@@ -40,17 +62,6 @@
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
     "company": "Tier 2/3 Support Specialist at Ardentmc",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/easyship/jobs/4650127006",
-    "title": "Technical Support Specialist at Easyship",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Technical Support Specialist at Easyship",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -77,24 +88,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8555518002",
-    "title": "Service Desk Engineer, Technology at Point72",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "discovery_url": "https://jobs.lever.co/Sprinto/9246976f-5d9c-4065-842d-476a093a588a",
+    "title": "Sprinto - Project Manager – Enterprise Customer Onboarding",
+    "snippet": "We are organized around problems, not job titles. Sprinters take ownership beyond their role, solve hard problems, and care deeply about the impact they create. If something can be improved, fixed, or built, we don't wait for permission; we step in. Being remote means we rely less on proximity and more on trust. We write things down, communicate openly, and move quickly because great teams aren't built by sitting together, they're built by pulling in the same direction.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "Service Desk Engineer, Technology at Point72",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8445684002",
-    "title": "Service Desk Engineer, Technology at Point72",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Service Desk Engineer, Technology at Point72",
+    "company": "Sprinto",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -106,6 +106,17 @@
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Product Success Specialist (Remote)",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/parcelvision/23bcdc94-6fc8-4473-b542-7d6a9b4de0a1",
+    "title": "ParcelHero - Customer service manager (IN)",
+    "snippet": "You will be responsible for driving cross-department collaboration between the customer service, customer experience, and QA teams - working closely with them to optimise processes and continuously improve the customer experience as we scale. ### Responsibilities Team Leadership: Manage and develop a team of team leaders overseeing a 50-strong remote customer service team, setting clear performance expectations and fostering high performance under pressure. [...] Are you passionate about improving the customer experience? Does coordinating across teams, countries, and time zones excite you? Parcelhero is looking for an experienced Customer Service Manager to lead our team leaders and 50-strong remote team, drive quality of service, and elevate the experience for both our consumer and business customers as we expand internationally. [...] We're a highly innovative company, deeply focused on optimisation, automation, and continuous process improvement. Joining now means being part of the journey - helping shape our technology, our processes, and our approach as we scale globally. We're also a remote-first business: no commute, no office politics, just great work with talented colleagues around the world.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "ParcelHero",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -210,9 +221,9 @@
   },
   {
     "discovery_url": "https://jobs.lever.co/jobgether/f0441706-68f7-4b4e-b825-ee49cb173e09",
-    "title": "Jobgether - Social Media Customer Support Team Lead - Lever",
-    "snippet": "Social Media Customer Support Team Lead. India. Customer Success – Support /. Full-time /. Remote. apply for this job.",
-    "source": "Google/searlo",
+    "title": "Jobgether - Social Media Customer Support Team Lead",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -231,10 +242,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether",
-    "title": "Jobgether - Lever",
-    "snippet": "Account Director. Remote — ContractIndia &middot; Apply &middot; Account Director. Remote ... Customer Support Analyst. Remote — Full-timeIndia &middot; Apply &middot; Customer Support Team&nbsp;...",
-    "source": "Google/search1",
+    "discovery_url": "https://jobs.lever.co/jobgether/8ebc4462-55ff-4dfb-9570-9555c54a4722",
+    "title": "Jobgether - English customer support role",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -243,9 +254,20 @@
   },
   {
     "discovery_url": "https://jobs.lever.co/jobgether/939d924d-df61-4b3d-aeb1-1b94eba52f9b",
-    "title": "Jobgether - Email Customer Support Team Lead - Lever",
-    "snippet": "Email Customer Support Team Lead. India. Customer Success – Support /. Full-time /. Remote. apply for this job. This position is listed on behalf of a partner ...",
-    "source": "Google/searlo",
+    "title": "Jobgether - Email Customer Support Team Lead",
+    "snippet": "You will help team members strengthen their written communication, judgment, and ability to resolve complex customer concerns. By using performance data and customer insights, you will identify recurring issues and opportunities to improve workflows and efficiency. This is a full-time remote role suited to an organized, proactive leader who can balance operational targets with empathy and service quality. [...] Jobgether logo ## Email Customer Support Team Lead This position is listed on behalf of a partner company, who manages all applications and next steps. Our partner is looking for a Email Customer Support Team Lead based in India. [...] This role offers the opportunity to lead the day-to-day operations and performance of a customer support team focused on email and ticket-based service. You will oversee coverage, ticket distribution, response times, service levels, quality, and overall team productivity while maintaining a consistently positive customer experience. The position combines hands-on customer support leadership with coaching, quality assurance, escalation management, reporting, and process improvement. You will",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jobgether/9ee9ca47-b873-46c1-aefb-b216f314454f",
+    "title": "Jobgether - Customer Support Representative I",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -265,9 +287,9 @@
   },
   {
     "discovery_url": "https://jobs.lever.co/jobgether/8d263e58-50e0-475b-9952-d53efb1f88c3",
-    "title": "Jobgether - Customer Support Analyst - Lever",
-    "snippet": "Customer Support Analyst. India. Customer Success – Support /. Full-time /. Remote. apply for this job. This position is listed on behalf of a partner company ...",
-    "source": "Google/searlo",
+    "title": "Jobgether - Customer Support Analyst",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -286,10 +308,32 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/jobgether/6e987382-be4f-475b-9dcd-c66cf695f768",
+    "title": "Jobgether - Client Success Associate - Lever",
+    "snippet": "At least 1 year of experience in client success, customer support, account ... Remote working opportunity based in India. Health insurance coverage for&nbsp;...",
+    "source": "Google/search1",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/jobgether/37607e05-688f-42a6-81e2-cb8644569f0f",
     "title": "Jobgether - Business Support Virtual Assistant - Lever",
     "snippet": "This remote contractor role ... Previous experience in administration, executive assistance, customer support, or general business support is preferred.",
     "source": "Google/searlo",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jobgether",
+    "title": "Jobgether",
+    "snippet": "Apply ##### Customer Success Manager, MM/ENT Remote — Full-timeUS Apply ##### Customer Support Analyst Remote — Full-timeIndia Apply ##### Customer Support Team Lead (Spanish Speaker - Night Shift) Remote — Full-timeBrazil Apply ##### Delivery Manager - Professional Services Remote — Full-timeBrazil Apply ##### Endpoint Engineer / DHS Desktop Support Services Remote — Full-timeUS Apply ##### Enterprise Customer Success Manager Remote — Full-timeCanada Apply [...] Apply ##### Associate Client Service Manager Remote — Full-timeIndia Apply ##### Associate Director, Patient Support Services Remote — Full-timeUS Apply ##### Asst Dir-Customer Success Manager Remote — Full-timeUS Apply ##### Bilingual Customer Experience Representative Remote — Full-timeCanada Apply ##### Bilingual CX Specialist (French) Remote — Full-timeUS Apply ##### Case Intake Coordinator III Remote — Full-timeBrazil Apply [...] Apply ##### Community Support Associate Remote — Full-timeIndia Apply ##### Compliance Support Senior Expert Remote — Full-timeUS Apply ##### Control-M Support & Maintenance Engineer (L2/L3) Remote — Full-timeUS Apply ##### Customer Success - Strategic - EMEA Remote — Full-timeGermany Apply ##### Customer Success - Strategic - EMEA Remote — Full-timeUK Apply ##### Customer Success - Strategic - EMEA Remote — Full-timeSpain Apply ##### Customer Success - Strategic - EMEA",
+    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -308,28 +352,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8236937002",
-    "title": "It Operations Engineer, Application Support at Point72",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "It Operations Engineer, Application Support at Point72",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8244769002",
-    "title": "IT Operations Engineer, Application Support at Point72",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "IT Operations Engineer, Application Support at Point72",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/gohighlevel/43c29f75-9d60-46cd-bd00-e43aa77516bc",
     "title": "HighLevel - Sr. Customer Support Specialist",
     "snippet": "",
@@ -337,28 +359,6 @@
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "HighLevel",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/gohighlevel",
-    "title": "HighLevel - Lever",
-    "snippet": "Director, Customer Growth & Activation. Remote — Employee IndiaIndia ... Customer Support. Apply &middot; Manager, Customer Escalations. Remote — EE Full-Time&nbsp;...",
-    "source": "Google/search1",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "HighLevel",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/ivalua/jobs/8190406",
-    "title": "Helpdesk Configurator Analyst (L2 Support) at Ivalua",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Helpdesk Configurator Analyst (L2 Support) at Ivalua",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -418,50 +418,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/brevo/521db96a-9518-4ca9-ba81-b7ea4cfe52ff",
-    "title": "Customer Experience Associate EN - Ecommerce at Brevo",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Customer Experience Associate EN",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/ivalua/jobs/8078679",
-    "title": "Customer Application Engineer at Ivalua",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Customer Application Engineer at Ivalua",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/cloudflare/jobs/8233344",
-    "title": "Cloudflare Careers",
-    "snippet": "Technical Support Engineer - Developer Platform. (opens in a new tab). Customer Support·, Lisbon, Portugal. 2 days agoDate posted: October 2, 2026 · See all 405 ...",
-    "source": "Google/searlo",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Cloudflare Careers",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/binance",
-    "title": "Binance jobs - Customer Support - Lever",
-    "snippet": "India, Bangalore ... Asia / South East Asia / Japan, Tokyo. Customer Support. Apply &middot; Customer Service Representative (Arabic & English). Remote — Full-time:&nbsp;...",
-    "source": "Google/search1",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Binance jobs",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://boards.greenhouse.io/dominodatalab/jobs/2385331",
     "title": "AI jobs | Solve the world's most important problems - Domino Data Lab",
     "snippet": "Remote India; Remote India, Remote EU, Remote South America; Remote United Kingdom; Remote ... Technical Support Engineer. Support | Remote United Kingdom. Apply ...",
@@ -484,25 +440,14 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/ship4wd/29.00B/sales-operations-assistant/0D.077",
-    "title": "Sales Operations Assistant at Ship4wd - Comeet",
-    "snippet": "Collaborate with global teams to deliver excellent customer support. Why Join Ship4wd? International and growing technology company. Global working ...",
+    "discovery_url": "https://www.crossover.com/jobs/customer-support/in",
+    "title": "Remote Customer Support & Success Jobs in India",
+    "snippet": "Graham currently serves as a remote VP of Customer Success at IgniteTech — one of the Business Units of ESW Capital. ... More remote jobs in India by category.",
     "source": "Google/serper",
-    "query": "site:*.comeet.com India \"customer support\"",
+    "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
     "score": 95,
-    "company": "Sales Operations Assistant at Ship4wd",
+    "company": "Remote Customer Support & Success Jobs in India",
     "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.placementindia.com/job-search/remote-support-jobs.htm",
-    "title": "Remote Support Job",
-    "snippet": "Remote Support Jobs in India ... English English Language Communication Customer Care Customer Relationship Remote Support Email Support Customer Support ...",
-    "source": "Google/serper",
-    "query": "\"customer support\" India \"remote\" careers -linkedin -indeed -glassdoor",
-    "score": 95,
-    "company": "Remote Support Job",
-    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
@@ -535,6 +480,17 @@
     "query": "site:*.jobylon.com India \"customer support\"",
     "score": 95,
     "company": "Manager, Customer Support",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/ship4wd/29.00B/junior-sales-operations-assistant/0D.077",
+    "title": "Junior Sales Operations Assistant at Ship4wd - Comeet",
+    "snippet": "Collaborate with global teams to deliver excellent customer support. Why Join Ship4wd? International and growing technology company. Global working ...",
+    "source": "Google/serper",
+    "query": "site:*.comeet.com India \"customer support\"",
+    "score": 95,
+    "company": "Junior Sales Operations Assistant at Ship4wd",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -693,6 +649,39 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://wellfound.com/role/l/customer-success-specialist/bangalore",
+    "title": "Customer Success Specialist Jobs in Bengaluru, India - 2027",
+    "snippet": "Find the best Customer Success Specialist jobs in Bengaluru, India in 2027 ... Remote only • India+1. 1 year of exp. 3 weeks ago. 3 weeks ago. Save.",
+    "source": "Google/serper",
+    "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "score": 95,
+    "company": "Customer Success Specialist Jobs in Bengaluru, India",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://flexremote.in/jobs_by_category/Customer%20Success",
+    "title": "Customer Success Remote Jobs",
+    "snippet": "Customer Success Remote Jobs. Browse verified remote Customer Success opportunities from top companies worldwide. Work from anywhere. 12,400+Remote Jobs.",
+    "source": "Google/serper",
+    "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "score": 95,
+    "company": "Customer Success Remote Jobs",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://builtin.com/job/customer-success-manager-global-remote-saas/9650254",
+    "title": "Customer Success Manager (Global Remote | SaaS)",
+    "snippet": "Passion.io is hiring for a Remote Customer Success Manager (Global Remote | SaaS) in Toronto, ON, CAN. Find more details about the job and how to apply at Built",
+    "source": "Google/serper",
+    "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "score": 95,
+    "company": "Customer Success Manager (Global Remote | SaaS)",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://emp.jobylon.com/jobs/302210-basware-apprentice-basware-apprentice-elevate-program-under-nats",
     "title": "Basware Apprentice Elevate Program (Under NATS)",
     "snippet": "\"Absolutely the best colleagues and line managers in the world!\" Jaakko Jutila - VP, Customer Support. Jaakko Jutila. VP, Customer Support. \"At Basware you ...",
@@ -726,35 +715,57 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/gurgaon-haryana-remote-customer-service-jobs-SRCH_IL.0,15_IC2921225_KO16,39.htm",
-    "title": "863 Remote customer service jobs in Gurgaon, Haryana",
-    "snippet": "863 Remote customer service jobs in Gurgaon, Haryana ; InWeave. Customer Service Executive · ₹23,000 - ₹28,000 (Employer provided). Easy Apply · 8d ; Genpact.",
-    "source": "Google/serper",
-    "query": "\"customer support\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "discovery_url": "https://cutshort.io/jobs/remote-support-jobs",
+    "title": "9+ Remote support Jobs in India",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 95,
-    "company": "863 Remote customer service jobs in Gurgaon, Haryana",
+    "company": "9+ Remote support Jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/pune-remote-customer-service-jobs-SRCH_IL.0,4_IC2856202_KO5,28.htm",
-    "title": "483 remote customer service jobs in Pune, August 2026",
-    "snippet": "Product Specialist - India (Remote). India. You should have a maximum of two ... Customer Support Executive (CSE). India. ₹12,000 - ₹15,000 (Employer ...",
-    "source": "Google/serper",
-    "query": "\"customer support\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "discovery_url": "https://www.glassdoor.co.in/Job/india-remote-it-support-weekends-jobs-SRCH_IL.0,5_IN115_KO6,32.htm",
+    "title": "246 Remote it support weekends jobs in India - Glassdoor",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 95,
-    "company": "483 remote customer service jobs in Pune, August 2026",
+    "company": "246 Remote it support weekends jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/entry-level-customer-service-remote-jobs-India-SRCH_KO0,40_IL.41,46_IN115.htm",
-    "title": "145 Entry level customer service remote jobs in India",
-    "snippet": "Our Customer Support Representative will provide remote technical customer support for Outseer Fraud Manager and Outseer 3D-Secure products.",
-    "source": "Google/serper",
-    "query": "\"customer support\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "discovery_url": "https://www.glassdoor.co.in/Job/pune-remote-office-technical-support-jobs-SRCH_IL.0,4_IC2856202_KO5,36.htm",
+    "title": "234 Remote office technical support jobs in Pune - Glassdoor",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 95,
-    "company": "145 Entry level customer service remote jobs in India",
+    "company": "234 Remote office technical support jobs in Pune",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.glassdoor.co.in/Job/remote-technical-support-%E2%80%93-level-1-jobs-SRCH_IL.0,6_IS12563_KO7,34.htm",
+    "title": "112 technical support – level 1 jobs in Remote, August 2026",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 95,
+    "company": "112 technical support – level 1 jobs in Remote, August 2026",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.glassdoor.ie/Job/india-remote-desktop-jobs-SRCH_IL.0,5_IN115_KW6,20.htm",
+    "title": "1,277 India jobs - Work from home - Glassdoor",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 95,
+    "company": "1,277 India jobs",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -777,6 +788,17 @@
     "query": "site:*.ceipal.com India \"customer support\"",
     "score": 85,
     "company": "Master Subscription Agreement",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://careers.recruitcrm.io/17712190853810129269dFC",
+    "title": "Customer Success Associate -2026 (India) - Jobs - Recruit CRM",
+    "snippet": "Customer Success Associate -2026 (India) · Fully remote (You can work from anywhere) · Sponsored Learning and Development Program · Annual company-wide ...",
+    "source": "Google/serper",
+    "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "score": 85,
+    "company": "Customer Success Associate -2026 (India)",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
