@@ -1,6 +1,6 @@
 {
   "version": "13.8-final-quality",
-  "generated_at": "2026-10-06T19:01:49.025308+00:00",
+  "generated_at": "2026-10-07T19:30:18.552029+00:00",
   "boards": {
     "Greenhouse": [
       {
@@ -124,6 +124,16 @@
         "source": "Wayback/Common Crawl"
       },
       {
+        "key": "6sense",
+        "url": "https://boards.greenhouse.io/6sense/jobs/8139159",
+        "company": "6sense",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
         "key": "8thlightrebuild",
         "url": "https://job-boards.greenhouse.io/8thlightrebuild",
         "company": "8thlightrebuild",
@@ -178,7 +188,7 @@
         "url": "https://boards.greenhouse.io/addepar1",
         "company": "Addepar",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -218,7 +228,7 @@
         "url": "https://boards.greenhouse.io/Adyen",
         "company": "Adyen",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -288,7 +298,7 @@
         "url": "https://boards.greenhouse.io/agoda",
         "company": "Agoda",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -398,7 +408,7 @@
         "url": "https://boards.greenhouse.io/alphasense?t=8a5751f62us",
         "company": "Alpha Sense",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -488,7 +498,7 @@
         "url": "https://boards.greenhouse.io/andurilindustries/jobs/5234138007",
         "company": "Andurilindustries",
         "active": true,
-        "last_ok": "2026-10-05",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -498,7 +508,7 @@
         "url": "https://boards.greenhouse.io/anthropic",
         "company": "Anthropic",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -508,7 +518,7 @@
         "url": "https://boards.greenhouse.io/anydesk",
         "company": "Any Desk",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -588,7 +598,7 @@
         "url": "https://boards.greenhouse.io/onarchipelago",
         "company": "Archipelago",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -608,7 +618,7 @@
         "url": "https://boards.greenhouse.io/ardentmc/jobs/8186204",
         "company": "Ardentmc",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -618,7 +628,7 @@
         "url": "https://boards.greenhouse.io/arkoselabs/",
         "company": "Arkose Labs",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -628,7 +638,7 @@
         "url": "https://boards.greenhouse.io/armada",
         "company": "Armada",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -648,7 +658,7 @@
         "url": "https://job-boards.greenhouse.io/atariinc",
         "company": "Atari",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -678,7 +688,7 @@
         "url": "https://boards.greenhouse.io/aurosglobal/",
         "company": "Auros Global",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -698,7 +708,7 @@
         "url": "https://job-boards.greenhouse.io/axicorpfinancialservicesptyltd",
         "company": "Axi",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -788,7 +798,7 @@
         "url": "https://boards.greenhouse.io/banyansoftware/",
         "company": "Banyan Software",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -928,7 +938,7 @@
         "url": "https://boards.greenhouse.io/blenheimchalcotindia",
         "company": "Blenheim Chalcot India",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -938,7 +948,7 @@
         "url": "https://boards.greenhouse.io/blinkhealth",
         "company": "Blinkhealth",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -948,7 +958,7 @@
         "url": "https://job-boards.greenhouse.io/bluevineindia",
         "company": "Bluevine India",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -968,7 +978,7 @@
         "url": "https://boards.greenhouse.io/bold",
         "company": "BOLD",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1028,7 +1038,7 @@
         "url": "https://boards.greenhouse.io/britive",
         "company": "Britive",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1118,7 +1128,7 @@
         "url": "https://boards.greenhouse.io/canonical",
         "company": "Canonical",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1128,7 +1138,7 @@
         "url": "https://boards.greenhouse.io/capco/",
         "company": "Capco",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1258,7 +1268,7 @@
         "url": "https://boards.greenhouse.io/chainguard",
         "company": "ChainGuard",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1305,13 +1315,13 @@
       },
       {
         "key": "chime",
-        "url": "https://job-boards.greenhouse.io/chime",
+        "url": "https://boards.greenhouse.io/chime/jobs/8512628002",
         "company": "Chime",
         "active": true,
         "last_ok": "",
         "fail_count": 1,
         "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
+        "source": "Search API"
       },
       {
         "key": "citytherapeutics",
@@ -1428,7 +1438,7 @@
         "url": "https://job-boards.greenhouse.io/commerceiq",
         "company": "CommerceIQ",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1448,7 +1458,7 @@
         "url": "https://job-boards.greenhouse.io/conga",
         "company": "conga",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1462,6 +1472,16 @@
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "corelight",
+        "url": "https://boards.greenhouse.io/corelight/jobs/8069136",
+        "company": "Corelight",
+        "active": true,
+        "last_ok": "2026-10-07",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
       },
       {
         "key": "cortica",
@@ -1568,7 +1588,7 @@
         "url": "https://boards.greenhouse.io/crunchyroll",
         "company": "Crunchyroll",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1628,7 +1648,7 @@
         "url": "https://boards.greenhouse.io/databricks",
         "company": "Databricks",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -1698,7 +1718,7 @@
         "url": "https://boards.greenhouse.io/definitivehcindia",
         "company": "Definitive Healthcare",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1738,7 +1758,7 @@
         "url": "https://boards.greenhouse.io/devrev",
         "company": "DevRev",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1758,7 +1778,7 @@
         "url": "https://job-boards.greenhouse.io/dialpad",
         "company": "Dialpad AI",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1768,7 +1788,7 @@
         "url": "https://boards.greenhouse.io/diligentcorporation",
         "company": "Diligent Corporation",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -1818,7 +1838,7 @@
         "url": "https://boards.greenhouse.io/dominodatalab/jobs/2385331",
         "company": "Dominodatalab",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -1885,13 +1905,13 @@
       },
       {
         "key": "easyship",
-        "url": "https://boards.greenhouse.io/easyship",
+        "url": "https://boards.greenhouse.io/easyship/jobs/4650127006",
         "company": "Easyship",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
+        "source": "Search API"
       },
       {
         "key": "echodynecorp",
@@ -2048,7 +2068,7 @@
         "url": "https://job-boards.greenhouse.io/ethernovia",
         "company": "Ethernovia",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2058,7 +2078,7 @@
         "url": "https://boards.greenhouse.io/ethoslife",
         "company": "Ethos Life",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2078,7 +2098,7 @@
         "url": "https://boards.greenhouse.io/eventbriteinc",
         "company": "Eventbrite",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2138,7 +2158,7 @@
         "url": "https://boards.greenhouse.io/falconx?t=4b6a4dfe5us",
         "company": "FalconX",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2178,7 +2198,7 @@
         "url": "https://boards.greenhouse.io/fictiv/jobs/7121003002?gh_src=a0ed43272us&source=LinkedIn&utm_source=outscal.com&utm_campaign=outscal_jobs&utm_medium=outscal_job_portal&utm_content=outscal_job_apply&utm_term=outscal_jobs",
         "company": "Fictiv",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2188,7 +2208,7 @@
         "url": "https://boards.greenhouse.io/figma",
         "company": "Figma",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2208,7 +2228,7 @@
         "url": "https://boards.greenhouse.io/five9",
         "company": "Five9",
         "active": true,
-        "last_ok": "2026-10-04",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -2268,7 +2288,7 @@
         "url": "https://job-boards.greenhouse.io/fluxon",
         "company": "Fluxon",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2358,7 +2378,7 @@
         "url": "https://boards.greenhouse.io/gatherai/",
         "company": "Gather AI",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2378,7 +2398,7 @@
         "url": "https://boards.greenhouse.io/globalhealthcareexchangeinc",
         "company": "GHX",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2408,7 +2428,7 @@
         "url": "https://boards.greenhouse.io/gitlab",
         "company": "gitlab",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -2428,7 +2448,7 @@
         "url": "https://boards.greenhouse.io/glance",
         "company": "Glance",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2438,7 +2458,7 @@
         "url": "https://boards.greenhouse.io/gleanwork",
         "company": "Glean",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2448,7 +2468,7 @@
         "url": "https://boards.greenhouse.io/globalizationpartners",
         "company": "Globalization Partners",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2468,7 +2488,7 @@
         "url": "https://boards.greenhouse.io/goguardian",
         "company": "Go guardian",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2478,7 +2498,7 @@
         "url": "https://boards.greenhouse.io/godaddy/",
         "company": "GoDaddy",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -2495,13 +2515,13 @@
       },
       {
         "key": "gomotive",
-        "url": "https://boards.greenhouse.io/gomotive/jobs/6056603002",
-        "company": "Gomotive",
+        "url": "https://boards.greenhouse.io/gomotive",
+        "company": "GoMotive",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
-        "source": "Search API"
+        "source": "Company,OpenJobs"
       },
       {
         "key": "gongio",
@@ -2608,7 +2628,7 @@
         "url": "https://boards.greenhouse.io/groupon",
         "company": "Groupon",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -2648,7 +2668,7 @@
         "url": "https://boards.greenhouse.io/hackerrank",
         "company": "HackerRank",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -2678,7 +2698,7 @@
         "url": "https://boards.greenhouse.io/hasbro",
         "company": "Hasbro",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2698,7 +2718,7 @@
         "url": "https://boards.greenhouse.io/headoutlinkedin/",
         "company": "Headout",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2708,7 +2728,7 @@
         "url": "https://boards.greenhouse.io/headoutreferrals",
         "company": "Headout",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2828,7 +2848,7 @@
         "url": "https://boards.greenhouse.io/hudl",
         "company": "Hudl",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2938,7 +2958,7 @@
         "url": "https://boards.greenhouse.io/inmobi",
         "company": "InMobi",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -2948,7 +2968,7 @@
         "url": "https://boards.greenhouse.io/innophaseiot",
         "company": "InnoPhase IoT",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -2978,7 +2998,7 @@
         "url": "https://boards.greenhouse.io/instawork",
         "company": "Instawork",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3095,10 +3115,10 @@
       },
       {
         "key": "ivalua",
-        "url": "https://boards.greenhouse.io/ivalua/jobs/8190406",
+        "url": "https://boards.greenhouse.io/ivalua/jobs/8078679",
         "company": "Ivalua",
         "active": true,
-        "last_ok": "2026-10-05",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -3108,7 +3128,7 @@
         "url": "https://boards.greenhouse.io/janestreet",
         "company": "Jane Street",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3168,10 +3188,20 @@
         "url": "https://boards.greenhouse.io/jumio/",
         "company": "Jumio",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
+      },
+      {
+        "key": "justworks",
+        "url": "https://boards.greenhouse.io/justworks/jobs/8080320",
+        "company": "Justworks",
+        "active": true,
+        "last_ok": "2026-10-07",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
       },
       {
         "key": "juullabs",
@@ -3298,7 +3328,7 @@
         "url": "https://boards.greenhouse.io/kraftonindia",
         "company": "Krafton India",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3308,7 +3338,7 @@
         "url": "https://job-boards.greenhouse.io/kulficollective",
         "company": "Kulfi Collective",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3318,7 +3348,7 @@
         "url": "https://boards.greenhouse.io/landor?t=a496293e1us",
         "company": "Landor",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3348,7 +3378,7 @@
         "url": "https://boards.greenhouse.io/legion",
         "company": "legion",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3658,7 +3688,7 @@
         "url": "https://job-boards.greenhouse.io/merqube",
         "company": "Merqube",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3698,7 +3728,7 @@
         "url": "https://job-boards.greenhouse.io/miqdigital",
         "company": "MiQ",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3738,7 +3768,7 @@
         "url": "https://boards.greenhouse.io/mixpanel",
         "company": "Mixpanel",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3758,7 +3788,7 @@
         "url": "https://boards.greenhouse.io/moloco",
         "company": "Moloco",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3778,7 +3808,7 @@
         "url": "https://boards.greenhouse.io/moniepoint",
         "company": "Moniepoint",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3868,7 +3898,7 @@
         "url": "https://boards.greenhouse.io/neo4j/jobs/4706206006",
         "company": "Neo4j",
         "active": true,
-        "last_ok": "2026-10-04",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -3898,7 +3928,7 @@
         "url": "https://job-boards.greenhouse.io/newglobesandbox",
         "company": "New Globe",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3908,7 +3938,7 @@
         "url": "https://boards.greenhouse.io/newrelic",
         "company": "New Relic",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -3928,7 +3958,7 @@
         "url": "https://boards.greenhouse.io/nice",
         "company": "Nice",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4028,7 +4058,7 @@
         "url": "https://job-boards.greenhouse.io/oliverseapac",
         "company": "Oliver Agency",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4168,7 +4198,7 @@
         "url": "https://boards.greenhouse.io/oportun",
         "company": "oportun",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4268,7 +4298,7 @@
         "url": "https://boards.greenhouse.io/pay2dc/",
         "company": "Pay2",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4388,7 +4418,7 @@
         "url": "https://boards.greenhouse.io/point72/jobs/8555518002",
         "company": "Point72",
         "active": true,
-        "last_ok": "2026-10-05",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -4408,7 +4438,7 @@
         "url": "https://boards.greenhouse.io/poppulo/",
         "company": "Populla",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4518,7 +4548,7 @@
         "url": "https://boards.greenhouse.io/prophecysimpledatalabs/",
         "company": "Prophecy",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4548,7 +4578,7 @@
         "url": "https://boards.greenhouse.io/putnamassociatesllc?t=17ab7bf01us",
         "company": "Putnam",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4608,7 +4638,7 @@
         "url": "https://job-boards.greenhouse.io/quince",
         "company": "quience",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4668,7 +4698,7 @@
         "url": "https://boards.greenhouse.io/reddit",
         "company": "Reddit",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4698,7 +4728,7 @@
         "url": "https://boards.greenhouse.io/reltio",
         "company": "Reltio",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4708,7 +4738,7 @@
         "url": "https://boards.greenhouse.io/remotecom",
         "company": "Remote",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4768,7 +4798,7 @@
         "url": "https://job-boards.greenhouse.io/rockstargames",
         "company": "Rockstar Games",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -4958,7 +4988,7 @@
         "url": "https://boards.greenhouse.io/simplisafe",
         "company": "SimpliSafe",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4968,7 +4998,7 @@
         "url": "https://boards.greenhouse.io/singlestore/",
         "company": "Single Store",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -4988,7 +5018,7 @@
         "url": "https://boards.greenhouse.io/slice",
         "company": "Slice",
         "active": true,
-        "last_ok": "2026-10-04",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -4998,7 +5028,7 @@
         "url": "https://boards.greenhouse.io/smartbear",
         "company": "smartbear",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5068,7 +5098,7 @@
         "url": "https://job-boards.greenhouse.io/sonymusicasiacareers",
         "company": "Sony Music Career",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5138,7 +5168,7 @@
         "url": "https://boards.greenhouse.io/spauldingridge/",
         "company": "Spaulding Ridge",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5208,7 +5238,7 @@
         "url": "https://boards.greenhouse.io/stage",
         "company": "Stage",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5298,7 +5328,7 @@
         "url": "https://job-boards.greenhouse.io/sumologic",
         "company": "Sumo logic",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -5324,11 +5354,21 @@
         "source": "Wayback/Common Crawl"
       },
       {
+        "key": "supplyhouse",
+        "url": "https://boards.greenhouse.io/supplyhouse/jobs/5983867004",
+        "company": "Supplyhouse",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
         "key": "surveymonkey",
         "url": "https://job-boards.greenhouse.io/surveymonkey",
         "company": "Survay Monkey",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5348,7 +5388,7 @@
         "url": "https://boards.greenhouse.io/taboola",
         "company": "Taboola",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5368,7 +5408,7 @@
         "url": "https://job-boards.greenhouse.io/taketwo",
         "company": "Take-Two Interactive",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5428,7 +5468,7 @@
         "url": "https://boards.greenhouse.io/techholding?t=6043fa045us",
         "company": "techholding",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5448,7 +5488,7 @@
         "url": "https://boards.greenhouse.io/tellius/",
         "company": "Tellius",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5458,7 +5498,7 @@
         "url": "https://boards.greenhouse.io/telnyx54",
         "company": "Telnyx",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5528,7 +5568,7 @@
         "url": "https://boards.greenhouse.io/thenewyorktimes",
         "company": "The New York Times",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5538,7 +5578,7 @@
         "url": "https://boards.greenhouse.io/theorchard",
         "company": "The Orchard",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5658,7 +5698,7 @@
         "url": "https://boards.greenhouse.io/tide",
         "company": "Tide",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5728,7 +5768,7 @@
         "url": "https://boards.greenhouse.io/truecaller",
         "company": "truecaller",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -5785,13 +5825,13 @@
       },
       {
         "key": "udemy",
-        "url": "https://boards.greenhouse.io/udemy",
+        "url": "https://boards.greenhouse.io/udemy/jobs/640973",
         "company": "Udemy",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
+        "source": "Search API"
       },
       {
         "key": "ujet",
@@ -6158,7 +6198,7 @@
         "url": "https://boards.greenhouse.io/wongdoody",
         "company": "WongDoody",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6178,7 +6218,7 @@
         "url": "https://job-boards.greenhouse.io/workato",
         "company": "Workato",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6238,7 +6278,7 @@
         "url": "https://boards.greenhouse.io/wrike",
         "company": "Wrike",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6328,7 +6368,7 @@
         "url": "https://job-boards.greenhouse.io/zenoti",
         "company": "Zenoti",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6348,7 +6388,7 @@
         "url": "https://job-boards.greenhouse.io/zinnia?gh_src=e2e3d5f14us",
         "company": "Zinnia",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6368,7 +6408,7 @@
         "url": "https://boards.greenhouse.io/zscaler",
         "company": "Zscaler",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6378,7 +6418,7 @@
         "url": "https://boards.greenhouse.io/zuora",
         "company": "Zuora",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6430,7 +6470,7 @@
         "url": "https://jobs.lever.co/acceldata",
         "company": "AccelData",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6440,7 +6480,7 @@
         "url": "https://jobs.lever.co/accurate",
         "company": "Accurate",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6460,7 +6500,7 @@
         "url": "https://jobs.lever.co/actian",
         "company": "Actian",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6490,7 +6530,7 @@
         "url": "https://jobs.lever.co/aeratechnology",
         "company": "Aera Technology",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6520,7 +6560,7 @@
         "url": "https://jobs.lever.co/aisle_and_abroad/7fa5ec97-a9a9-4cfc-af50-04ad14e9284d",
         "company": "Aisle And Abroad",
         "active": true,
-        "last_ok": "2026-10-05",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -6570,7 +6610,7 @@
         "url": "https://jobs.lever.co/appzen",
         "company": "appzen",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6630,7 +6670,7 @@
         "url": "https://jobs.lever.co/bazaarvoice",
         "company": "Bazaar Voice",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -6650,7 +6690,7 @@
         "url": "https://jobs.lever.co/beghouconsulting",
         "company": "beghou consulting",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6660,7 +6700,7 @@
         "url": "https://jobs.lever.co/binance",
         "company": "Binance",
         "active": true,
-        "last_ok": "2026-10-05",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -6680,7 +6720,7 @@
         "url": "https://jobs.lever.co/bounteous/",
         "company": "bounteous",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6700,7 +6740,7 @@
         "url": "https://jobs.lever.co/brightedge",
         "company": "Bright Edge",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6710,7 +6750,7 @@
         "url": "https://jobs.lever.co/brillio-2",
         "company": "Brillio",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6720,7 +6760,7 @@
         "url": "https://jobs.lever.co/Coda",
         "company": "Coda",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6750,7 +6790,7 @@
         "url": "https://jobs.lever.co/coupa",
         "company": "Coupa",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6760,7 +6800,7 @@
         "url": "https://jobs.lever.co/cred",
         "company": "Cred",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -6770,14 +6810,14 @@
         "url": "https://jobs.lever.co/cyara",
         "company": "cyara",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
       },
       {
         "key": "destinationknot",
-        "url": "https://jobs.lever.co/destinationknot/99d2e9f5-e311-478b-b1c1-f85bc2b4609b",
+        "url": "https://jobs.lever.co/destinationknot/e762212d-8117-45ae-9a46-0e7d9f9ad0bc",
         "company": "Destinationknot",
         "active": true,
         "last_ok": "",
@@ -6810,7 +6850,7 @@
         "url": "https://jobs.lever.co/doola/",
         "company": "Doola",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6840,7 +6880,7 @@
         "url": "https://jobs.lever.co/drivetrain",
         "company": "Drivetrain",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6850,7 +6890,7 @@
         "url": "https://jobs.lever.co/dnb/",
         "company": "dun bradstreet",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6860,7 +6900,7 @@
         "url": "https://jobs.lever.co/entrata",
         "company": "entrata",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6870,7 +6910,7 @@
         "url": "https://jobs.lever.co/extremenetworks/",
         "company": "extreme network",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6890,7 +6930,7 @@
         "url": "https://jobs.lever.co/fanatee",
         "company": "Fanatee",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6900,7 +6940,7 @@
         "url": "https://jobs.lever.co/epifi",
         "company": "Fi",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6910,7 +6950,7 @@
         "url": "https://jobs.lever.co/findem",
         "company": "Findem",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -6940,7 +6980,7 @@
         "url": "https://jobs.lever.co/fiscalnote/bcf6be4d-a409-4671-9e7e-84d71eff42b7/apply",
         "company": "Fiscalnote",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -6967,10 +7007,10 @@
       },
       {
         "key": "getwingapp",
-        "url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2",
+        "url": "https://jobs.lever.co/getwingapp",
         "company": "Getwingapp",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -6990,7 +7030,7 @@
         "url": "https://jobs.lever.co/GoToGroup",
         "company": "GoTo Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7010,7 +7050,7 @@
         "url": "https://jobs.lever.co/highspot/",
         "company": "Highspot",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7030,7 +7070,7 @@
         "url": "https://jobs.lever.co/ion",
         "company": "Ion",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7040,7 +7080,7 @@
         "url": "https://jobs.lever.co/jmawireless/",
         "company": "JMA",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7050,7 +7090,7 @@
         "url": "https://jobs.lever.co/jobgether/8d263e58-50e0-475b-9952-d53efb1f88c3",
         "company": "Jobgether",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -7090,7 +7130,7 @@
         "url": "https://jobs.eu.lever.co/kwalee",
         "company": "Kwalee",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7100,7 +7140,7 @@
         "url": "https://jobs.lever.co/levelai/",
         "company": "level ai",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7110,7 +7150,7 @@
         "url": "https://jobs.lever.co/economicmodeling",
         "company": "Lightcast",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7120,7 +7160,7 @@
         "url": "https://jobs.lever.co/limitbreak/",
         "company": "limit break",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7160,7 +7200,7 @@
         "url": "https://jobs.lever.co/matchgroup/",
         "company": "Match Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7180,7 +7220,7 @@
         "url": "https://jobs.lever.co/mendix",
         "company": "Mendix",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7190,7 +7230,7 @@
         "url": "https://jobs.lever.co/mindtickle",
         "company": "Mindtickle",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -7200,7 +7240,7 @@
         "url": "https://jobs.lever.co/netomi",
         "company": "Netomi",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7210,7 +7250,7 @@
         "url": "https://jobs.lever.co/ninjavan",
         "company": "NinjaVan",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7220,7 +7260,7 @@
         "url": "https://jobs.lever.co/nium",
         "company": "Nium",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7240,7 +7280,7 @@
         "url": "https://jobs.lever.co/Onehouse",
         "company": "Onehouse",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7260,7 +7300,7 @@
         "url": "https://jobs.lever.co/paytm",
         "company": "Paytm",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -7270,7 +7310,7 @@
         "url": "https://jobs.lever.co/penumbrainc",
         "company": "Penumbrainc",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7280,7 +7320,7 @@
         "url": "https://jobs.lever.co/peoplegrove/bb2ee766-a420-4fe9-bac7-fa0a41caffa5",
         "company": "Peoplegrove",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -7310,7 +7350,7 @@
         "url": "https://jobs.lever.co/rackspace",
         "company": "Rackspace Technology",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7370,7 +7410,7 @@
         "url": "https://jobs.lever.co/safe",
         "company": "Safe security",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7380,7 +7420,7 @@
         "url": "https://jobs.lever.co/saviynt/",
         "company": "Saviynt",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7400,7 +7440,7 @@
         "url": "https://jobs.lever.co/shieldai",
         "company": "Shield AI",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7410,7 +7450,7 @@
         "url": "https://jobs.lever.co/shyftlabs",
         "company": "ShyftLabs",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7420,7 +7460,7 @@
         "url": "https://jobs.lever.co/sitetracker/",
         "company": "sitetracker",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7430,7 +7470,7 @@
         "url": "https://jobs.lever.co/smarsh/",
         "company": "smarsh",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7440,7 +7480,7 @@
         "url": "https://jobs.lever.co/sonarsource",
         "company": "Sonar Source",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7450,7 +7490,7 @@
         "url": "https://jobs.lever.co/spinai/3810c47a-517e-414c-a37a-0e369c68f41c",
         "company": "Spinai",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Search API"
@@ -7490,7 +7530,7 @@
         "url": "https://jobs.lever.co/tala/",
         "company": "TALA",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7510,7 +7550,7 @@
         "url": "https://jobs.lever.co/toku/",
         "company": "Toku",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7550,7 +7590,7 @@
         "url": "https://jobs.lever.co/vendavo",
         "company": "Vendavo",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7570,7 +7610,7 @@
         "url": "https://jobs.lever.co/zeeco",
         "company": "Zeeco, Inc.",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7580,7 +7620,7 @@
         "url": "https://jobs.lever.co/zeta/",
         "company": "zeta",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -7602,58 +7642,6 @@
         "active": true,
         "last_ok": "",
         "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      }
-    ],
-    "Breezy": [
-      {
-        "key": "breezy",
-        "url": "https://breezy.breezy.hr/",
-        "company": "Breezy",
-        "active": true,
-        "last_ok": "2026-10-04",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "deca-games",
-        "url": "https://deca-games.breezy.hr/",
-        "company": "DECA Games",
-        "active": true,
-        "last_ok": "2026-10-06",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "gamurs",
-        "url": "https://gamurs.breezy.hr/",
-        "company": "Gamurs Group",
-        "active": true,
-        "last_ok": "2026-10-06",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "nexthire",
-        "url": "https://nexthire.breezy.hr/",
-        "company": "NextHire",
-        "active": true,
-        "last_ok": "2026-10-06",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "solvative",
-        "url": "https://solvative.breezy.hr/",
-        "company": "Solvative",
-        "active": true,
-        "last_ok": "2026-10-06",
-        "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
       }
@@ -7844,7 +7832,7 @@
         "url": "https://apply.workable.com/antarcticaglobal/",
         "company": "Antarctica Global",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7854,7 +7842,7 @@
         "url": "https://apply.workable.com/bestex-research",
         "company": "Bestex Research",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7864,7 +7852,7 @@
         "url": "https://apply.workable.com/applications/",
         "company": "blend",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7874,7 +7862,7 @@
         "url": "https://apply.workable.com/euromonitor/",
         "company": "Euromonitor",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7884,7 +7872,7 @@
         "url": "https://apply.workable.com/fortanix/",
         "company": "fortanix",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7894,7 +7882,7 @@
         "url": "https://apply.workable.com/imagine-io",
         "company": "Imagine.io",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7904,7 +7892,7 @@
         "url": "https://jobs.workable.com/company/opHQRFj36NSqJkgaUByHfF/jobs-at-imagine.io",
         "company": "Imagine.io",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7914,7 +7902,7 @@
         "url": "https://apply.workable.com/ionenergy/?lng=en",
         "company": "ION Energy",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,Career Directory"
@@ -7924,27 +7912,27 @@
         "url": "https://apply.workable.com/jellyfish-pictures-ltd/",
         "company": "Jellyfish",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
       },
       {
         "key": "keywords-intl1",
-        "url": "https://apply.workable.com/keywords-intl1/",
+        "url": "https://apply.workable.com/keywords-intl1/j/7F7965B98D",
         "company": "Keywords Studios",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
+        "source": "Google Jobs"
       },
       {
         "key": "lakshyadigitalglobal",
         "url": "https://apply.workable.com/lakshyadigitalglobal/",
         "company": "Lakshya Digital",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7954,7 +7942,7 @@
         "url": "https://apply.workable.com/nextgen-clearing/",
         "company": "nextgen-clearing",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7974,7 +7962,7 @@
         "url": "https://apply.workable.com/sideinc/",
         "company": "Side",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7984,7 +7972,7 @@
         "url": "https://apply.workable.com/sinch/",
         "company": "sinch",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -7994,7 +7982,7 @@
         "url": "https://apply.workable.com/stellar-entertainment/?lng=en",
         "company": "Stellar Entertainment Software",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -8004,7 +7992,7 @@
         "url": "https://apply.workable.com/tentworks-interactive/",
         "company": "Tentworks Interactive",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -8014,7 +8002,7 @@
         "url": "https://apply.workable.com/twocircles/",
         "company": "Two Circles",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -8024,7 +8012,59 @@
         "url": "https://apply.workable.com/vizrt/",
         "company": "vizrt",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      }
+    ],
+    "Breezy": [
+      {
+        "key": "breezy",
+        "url": "https://breezy.breezy.hr/",
+        "company": "Breezy",
+        "active": true,
+        "last_ok": "2026-10-04",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "deca-games",
+        "url": "https://deca-games.breezy.hr/",
+        "company": "DECA Games",
+        "active": true,
+        "last_ok": "2026-10-07",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "gamurs",
+        "url": "https://gamurs.breezy.hr/",
+        "company": "Gamurs Group",
+        "active": true,
+        "last_ok": "2026-10-07",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "nexthire",
+        "url": "https://nexthire.breezy.hr/",
+        "company": "NextHire",
+        "active": true,
+        "last_ok": "2026-10-07",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "solvative",
+        "url": "https://solvative.breezy.hr/",
+        "company": "Solvative",
+        "active": true,
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -8066,7 +8106,7 @@
         "url": "https://jobs.smartrecruiters.com/10times",
         "company": "10times",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -9456,7 +9496,7 @@
         "url": "https://jobs.smartrecruiters.com/aristanetworks",
         "company": "Arista Networks",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -9706,7 +9746,7 @@
         "url": "https://careers.smartrecruiters.com/ASSYSTEM",
         "company": "Assystems",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10106,7 +10146,7 @@
         "url": "https://careers.smartrecruiters.com/BetaCraftTechnologies",
         "company": "Beta Craft",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10156,7 +10196,7 @@
         "url": "https://jobs.smartrecruiters.com/boschgroup",
         "company": "Bosch Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10166,7 +10206,7 @@
         "url": "https://careers.smartrecruiters.com/BoschGroup/india",
         "company": "Bosch Group India",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10206,7 +10246,7 @@
         "url": "https://jobs.smartrecruiters.com/bytedance",
         "company": "ByteDance",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -10226,7 +10266,7 @@
         "url": "https://careers.smartrecruiters.com/Canva",
         "company": "Canva",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10336,7 +10376,7 @@
         "url": "https://careers.smartrecruiters.com/Daxko1",
         "company": "Daxko",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10406,7 +10446,7 @@
         "url": "https://careers.smartrecruiters.com/dentsu/",
         "company": "Dentsu",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10486,7 +10526,7 @@
         "url": "https://jobs.smartrecruiters.com/endava",
         "company": "Endava",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10616,7 +10656,7 @@
         "url": "https://jobs.smartrecruiters.com/ewargames",
         "company": "Ewar games",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10746,7 +10786,7 @@
         "url": "https://jobs.smartrecruiters.com/gamecloudtechnologiespvtltd",
         "company": "GameCloud Technologies Pvt Ltd",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -10796,7 +10836,7 @@
         "url": "https://careers.smartrecruiters.com/Grab/",
         "company": "Grab",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -10836,7 +10876,7 @@
         "url": "https://jobs.smartrecruiters.com/hackerrank",
         "company": "HackerRank",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -10966,7 +11006,7 @@
         "url": "https://careers.smartrecruiters.com/HitachiSolutions",
         "company": "Hitachi",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -11066,7 +11106,7 @@
         "url": "https://careers.smartrecruiters.com/InformaGroupPlc/",
         "company": "Informa Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11106,7 +11146,7 @@
         "url": "https://careers.smartrecruiters.com/Insightsoftware/",
         "company": "Insight Software",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11156,7 +11196,7 @@
         "url": "https://jobs.smartrecruiters.com/jsheldllc",
         "company": "J.S. Held LLC",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11176,7 +11216,7 @@
         "url": "https://careers.smartrecruiters.com/Jellyfish1",
         "company": "Jellyfish",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11276,7 +11316,7 @@
         "url": "https://careers.smartrecruiters.com/KnackStudios",
         "company": "Knack studios",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11446,7 +11486,7 @@
         "url": "https://careers.smartrecruiters.com/MattelInc",
         "company": "Mattel Inc",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11506,7 +11546,7 @@
         "url": "https://careers.smartrecruiters.com/miratech1",
         "company": "Miratech",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11536,7 +11576,7 @@
         "url": "https://jobs.smartrecruiters.com/movingpicturecompany",
         "company": "Moving Picture Company",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11546,7 +11586,7 @@
         "url": "https://careers.smartrecruiters.com/MovingWallsIndiaPvtLtd",
         "company": "Moving Walls India",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11576,7 +11616,7 @@
         "url": "https://careers.smartrecruiters.com/Nagarro1/",
         "company": "Nagarro",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -11666,7 +11706,7 @@
         "url": "https://jobs.smartrecruiters.com/newrelic",
         "company": "New Relic",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11676,7 +11716,7 @@
         "url": "https://careers.smartrecruiters.com/NielsenIQ/",
         "company": "NielsenIQ",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11746,7 +11786,7 @@
         "url": "https://careers.smartrecruiters.com/OpenSystemsTechnologies",
         "company": "Open Systems Technologies",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11796,7 +11836,7 @@
         "url": "https://careers.smartrecruiters.com/PaloAltoNetworks2/",
         "company": "Palo Alto Networks",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -11876,7 +11916,7 @@
         "url": "https://careers.smartrecruiters.com/PublicisGroupe",
         "company": "Publicis Groupe",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11886,7 +11926,7 @@
         "url": "https://careers.smartrecruiters.com/Ramboll3/",
         "company": "Ramboll3",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -11906,7 +11946,7 @@
         "url": "https://careers.smartrecruiters.com/Recruitrix",
         "company": "Recruitrix",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12066,7 +12106,7 @@
         "url": "https://careers.smartrecruiters.com/SikaAG/",
         "company": "Sika Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12176,7 +12216,7 @@
         "url": "https://careers.smartrecruiters.com/SyngentaGroup/",
         "company": "Syngenta Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12186,7 +12226,7 @@
         "url": "https://careers.smartrecruiters.com/T-SystemsICTIndiaPvtLtd1",
         "company": "T systems",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -12216,7 +12256,7 @@
         "url": "https://careers.smartrecruiters.com/TechnorizenSoftwareSolution",
         "company": "Technorizen Software Solution",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12236,7 +12276,7 @@
         "url": "https://jobs.smartrecruiters.com/techstargroup",
         "company": "Techstar group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12246,7 +12286,7 @@
         "url": "https://careers.smartrecruiters.com/TechVedika",
         "company": "TechVedika",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12266,7 +12306,7 @@
         "url": "https://jobs.smartrecruiters.com/themill2",
         "company": "TheMill2",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12316,7 +12356,7 @@
         "url": "https://careers.smartrecruiters.com/TonicDNA1",
         "company": "Tonic DNA",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12366,7 +12406,7 @@
         "url": "https://careers.smartrecruiters.com/Ubisoft2",
         "company": "Ubisoft",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -12486,7 +12526,7 @@
         "url": "https://careers.smartrecruiters.com/Version1",
         "company": "version 1",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12586,7 +12626,7 @@
         "url": "https://careers.smartrecruiters.com/WesternDigital/",
         "company": "Western Digital",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -12596,7 +12636,7 @@
         "url": "https://careers.smartrecruiters.com/KeywordsAustralia/wickedworkshop",
         "company": "Wicked Workshop",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12656,7 +12696,7 @@
         "url": "https://careers.smartrecruiters.com/Xplor/",
         "company": "Xplor Technologies",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12676,7 +12716,7 @@
         "url": "https://careers.smartrecruiters.com/YggdrasilSandbox",
         "company": "Yggdrasil Gaming Ltd",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12698,7 +12738,7 @@
         "url": "https://adobe.wd5.myworkdayjobs.com/external_experienced",
         "company": "Adobe",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -12708,7 +12748,7 @@
         "url": "https://adtran.wd3.myworkdayjobs.com/ADTRAN",
         "company": "Adtran",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12718,7 +12758,7 @@
         "url": "https://alation.wd5.myworkdayjobs.com/ExternalSite",
         "company": "Alation",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12728,7 +12768,7 @@
         "url": "https://alphawave.wd10.myworkdayjobs.com/Alphawave_External",
         "company": "Alphawave Semi",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12738,7 +12778,7 @@
         "url": "https://ansira.wd1.myworkdayjobs.com/Ansira_Careers",
         "company": "ansira",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12748,7 +12788,7 @@
         "url": "https://aptiv.wd5.myworkdayjobs.com/APTIV_CAREERS",
         "company": "Aptive",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12758,7 +12798,7 @@
         "url": "https://aristocrat.wd3.myworkdayjobs.com/AristocratExternalCareersSite/",
         "company": "Aristocrat",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12768,7 +12808,7 @@
         "url": "https://autodesk.wd1.myworkdayjobs.com/Ext",
         "company": "Autodesk",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12778,7 +12818,7 @@
         "url": "https://bb.wd3.myworkdayjobs.com/QNX",
         "company": "Black Bery",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12788,7 +12828,7 @@
         "url": "https://jda.wd5.myworkdayjobs.com/JDA_Careers",
         "company": "Blue Yonder",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12798,7 +12838,7 @@
         "url": "https://broadcom.wd1.myworkdayjobs.com/External_Career",
         "company": "broadcom",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12808,7 +12848,7 @@
         "url": "https://cadence.wd1.myworkdayjobs.com/External_Careers",
         "company": "Cadence",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -12818,7 +12858,7 @@
         "url": "https://cae.wd3.myworkdayjobs.com/en-US/career",
         "company": "CAE",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12828,7 +12868,7 @@
         "url": "https://cerence.wd5.myworkdayjobs.com/Cerence",
         "company": "Cerence",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12838,7 +12878,7 @@
         "url": "https://csgi.wd5.myworkdayjobs.com/CSGCareers",
         "company": "CGS Carrers",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12848,7 +12888,7 @@
         "url": "https://clearwateranalytics.wd1.myworkdayjobs.com/Clearwater_Analytics_Careers",
         "company": "Clearwater Analytics",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12858,7 +12898,7 @@
         "url": "https://cmegroup.wd1.myworkdayjobs.com/cme_careers/job/",
         "company": "CME Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12868,7 +12908,7 @@
         "url": "https://comscore.wd5.myworkdayjobs.com/External",
         "company": "Comscore",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12878,7 +12918,7 @@
         "url": "https://condenast.wd5.myworkdayjobs.com/CondeCareers",
         "company": "Condé Nast",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12888,7 +12928,7 @@
         "url": "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers",
         "company": "Crowd Strick",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12898,7 +12938,7 @@
         "url": "https://cubic.wd1.myworkdayjobs.com/cubic_global_careers",
         "company": "Cubic corporation",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12908,7 +12948,7 @@
         "url": "https://dh.wd3.myworkdayjobs.com/DHC",
         "company": "Definitive Healthcare",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12918,7 +12958,7 @@
         "url": "https://dentsuaegis.wd3.myworkdayjobs.com/DAN_GLOBAL",
         "company": "Dentsu",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12928,7 +12968,7 @@
         "url": "https://ebay.wd5.myworkdayjobs.com/apply/",
         "company": "eBay",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -12938,7 +12978,7 @@
         "url": "https://fico.wd1.myworkdayjobs.com/en-US/External",
         "company": "FICO",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12948,7 +12988,7 @@
         "url": "https://flexerasoftware.wd1.myworkdayjobs.com/FlexeraSoftware",
         "company": "Flexera Software",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12958,7 +12998,7 @@
         "url": "https://forcepoint.wd1.myworkdayjobs.com/en-US/engineering-external-careers1/details/Software-Engineer-I_JR465420",
         "company": "Forcepoint",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12968,7 +13008,7 @@
         "url": "https://sandvik.wd3.myworkdayjobs.com/gibbscam-jobs/",
         "company": "Gibbs Cam",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12978,7 +13018,7 @@
         "url": "https://travelhrportal.wd1.myworkdayjobs.com/Jobs/jobs?jobFamilyGroup=bd2bf4b4421e1040b43e9281b79243f8",
         "company": "Global Business Travel",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12988,7 +13028,7 @@
         "url": "https://guardianlife.wd5.myworkdayjobs.com/Guardian-Life-Careers",
         "company": "Guardian",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -12998,7 +13038,7 @@
         "url": "https://gsknch.wd3.myworkdayjobs.com/GSKCareers/",
         "company": "Haleon",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13008,7 +13048,7 @@
         "url": "https://hp.wd5.myworkdayjobs.com/ExternalCareerSite",
         "company": "HP",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13018,7 +13058,7 @@
         "url": "https://illumina.wd1.myworkdayjobs.com/illumina-careers",
         "company": "Illumina",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13028,7 +13068,7 @@
         "url": "https://intel.wd1.myworkdayjobs.com/External",
         "company": "Intel",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13038,7 +13078,7 @@
         "url": "https://ironmountain.wd5.myworkdayjobs.com/iron-mountain-jobs/",
         "company": "Iron Mountain",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13048,7 +13088,7 @@
         "url": "https://issgovernance.wd1.myworkdayjobs.com/ISScareers/",
         "company": "ISS Stoxx",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13058,7 +13098,7 @@
         "url": "https://likewize.wd1.myworkdayjobs.com/en-US/External",
         "company": "Likewize",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13068,7 +13108,7 @@
         "url": "https://lseg.wd3.myworkdayjobs.com/Careers/",
         "company": "London stock Exchange",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13078,7 +13118,7 @@
         "url": "https://lytx.wd1.myworkdayjobs.com/Lytx",
         "company": "Lytx, Inc.",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13088,7 +13128,7 @@
         "url": "https://maersk.wd3.myworkdayjobs.com/Maersk_Careers",
         "company": "Maersk",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13098,7 +13138,7 @@
         "url": "https://mmc.wd1.myworkdayjobs.com/MMC",
         "company": "Marsh McLennan",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13108,7 +13148,7 @@
         "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers",
         "company": "Marvell",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13118,7 +13158,7 @@
         "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CUOReqSite",
         "company": "Mastercard",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13128,7 +13168,7 @@
         "url": "https://mastercard.wd1.myworkdayjobs.com/CorporateCareers",
         "company": "Mastercard",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13138,7 +13178,7 @@
         "url": "https://mimecast.wd5.myworkdayjobs.com/Mimecast-Careers",
         "company": "Minecast",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13148,7 +13188,7 @@
         "url": "https://morningstar.wd5.myworkdayjobs.com/Americas",
         "company": "Morning Star",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13158,7 +13198,7 @@
         "url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers",
         "company": "Motorola solutions",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13168,7 +13208,7 @@
         "url": "https://nasdaq.wd1.myworkdayjobs.com/en-US/Global_External_Site",
         "company": "Nasdaq",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13178,7 +13218,7 @@
         "url": "https://ncratleos.wd1.myworkdayjobs.com/ext_apacatleos",
         "company": "NCR Atleos",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13188,7 +13228,7 @@
         "url": "https://ncr.wd1.myworkdayjobs.com/ext_apac/",
         "company": "NCR Voyix",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13198,7 +13238,7 @@
         "url": "https://alliance.wd3.myworkdayjobs.com/en-US/nissanjobs",
         "company": "nissan",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13208,7 +13248,7 @@
         "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
         "company": "NVIDIA",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13218,7 +13258,7 @@
         "url": "https://nxp.wd3.myworkdayjobs.com/careers",
         "company": "NXP",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13228,7 +13268,7 @@
         "url": "https://optiv.wd5.myworkdayjobs.com/Optiv_Careers",
         "company": "Optiv",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13238,7 +13278,7 @@
         "url": "https://paypal.wd1.myworkdayjobs.com/en-US/jobs",
         "company": "PayPal",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13248,7 +13288,7 @@
         "url": "https://pentair.wd5.myworkdayjobs.com/Pentair_Careers",
         "company": "pentair",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13258,7 +13298,7 @@
         "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/",
         "company": "Philips",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13268,7 +13308,7 @@
         "url": "https://phinia.wd5.myworkdayjobs.com/PHINIA_Careers",
         "company": "PHINIA",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13278,7 +13318,7 @@
         "url": "https://plugpower.wd5.myworkdayjobs.com/Plug_Power_Inc",
         "company": "Plug power",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13288,7 +13328,7 @@
         "url": "https://pluralsight.wd1.myworkdayjobs.com/Careers",
         "company": "Pluralsight",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13298,7 +13338,7 @@
         "url": "https://pwc.wd3.myworkdayjobs.com/Global_Experienced_Careers/",
         "company": "PwC",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13308,7 +13348,7 @@
         "url": "https://flexerasoftware.wd1.myworkdayjobs.com/revenera",
         "company": "Revenera",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13318,7 +13358,7 @@
         "url": "https://rocket.wd5.myworkdayjobs.com/rocket_careers",
         "company": "Rocket",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13328,7 +13368,7 @@
         "url": "https://rollsroyce.wd3.myworkdayjobs.com/professional",
         "company": "Rolls-Royce",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13338,7 +13378,7 @@
         "url": "https://russell.wd5.myworkdayjobs.com/russellinvestments/",
         "company": "Ruselle Investments",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13348,7 +13388,7 @@
         "url": "https://sabre.wd1.myworkdayjobs.com/SabreJobs",
         "company": "Sabre India",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13358,7 +13398,7 @@
         "url": "https://sailpoint.wd1.myworkdayjobs.com/en-US/SailPoint",
         "company": "Sailpoint",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13368,7 +13408,7 @@
         "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site",
         "company": "Salesforce",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13378,7 +13418,7 @@
         "url": "https://saxobank.wd3.myworkdayjobs.com/CareeratSaxoBank/",
         "company": "Saxo Bank",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13388,7 +13428,7 @@
         "url": "https://sglottery.wd5.myworkdayjobs.com/ScientificGamesExternalCareers",
         "company": "Scientific Games",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13398,7 +13438,7 @@
         "url": "https://lnw.wd5.myworkdayjobs.com/SciPlayExternalCareersSite/",
         "company": "SciPlay",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13408,7 +13448,7 @@
         "url": "https://semtech.wd1.myworkdayjobs.com/SemtechCareers/1/refreshFacet/318c8bb6f553100021d223d9780d30be",
         "company": "Semtech",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13418,7 +13458,7 @@
         "url": "https://sandvik.wd3.myworkdayjobs.com/sigmanest-jobs",
         "company": "Sigma Nest",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13428,7 +13468,7 @@
         "url": "https://silabs.wd1.myworkdayjobs.com/SiliconlabsCareers",
         "company": "Silicon Labs",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13438,7 +13478,7 @@
         "url": "https://simcorp.wd3.myworkdayjobs.com/en-US/SimCorp_Jobs",
         "company": "Simcorp",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13448,7 +13488,7 @@
         "url": "https://springernature.wd3.myworkdayjobs.com/en-US/SpringerNatureCareers",
         "company": "Springer Group",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13458,7 +13498,7 @@
         "url": "https://sprinklr.wd1.myworkdayjobs.com/careers/",
         "company": "Sprinkler",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13468,7 +13508,7 @@
         "url": "https://stem.wd12.myworkdayjobs.com/steminc",
         "company": "Stem, Inc.",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13478,7 +13518,7 @@
         "url": "https://stibosystems.wd3.myworkdayjobs.com/careers-at-stibo-systems",
         "company": "Stibo Systems",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13488,7 +13528,7 @@
         "url": "https://synechron.wd1.myworkdayjobs.com/SynechronCareers",
         "company": "Synechron",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13498,7 +13538,7 @@
         "url": "https://syniverse.wd1.myworkdayjobs.com/SyniverseCareers",
         "company": "Syniverse",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13508,7 +13548,7 @@
         "url": "https://tag.wd3.myworkdayjobs.com/Tag_Careers",
         "company": "TAG",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13518,7 +13558,7 @@
         "url": "https://telstra.wd3.myworkdayjobs.com/Telstra_Careers/",
         "company": "Telastra",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13528,7 +13568,7 @@
         "url": "https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/",
         "company": "Tencent",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13538,7 +13578,7 @@
         "url": "https://thales.wd3.myworkdayjobs.com/Careers",
         "company": "Thales",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13548,7 +13588,7 @@
         "url": "https://disney.wd5.myworkdayjobs.com/en-US/disneycareer?jobFamilyGroup=4f84d9e8a097010115f120fd13d00000&jobFamilyGroup=4f84d9e8a097010115f0cde63e9e0000&jobFamilyGroup=4f84d9e8a097010115f1495649a00000&jobFamilyGroup=4f84d9e8a097010115f0b237c9d40000",
         "company": "The Walt Disney Company",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13558,7 +13598,7 @@
         "url": "https://toppanmerrill.wd5.myworkdayjobs.com/en-US/Toppan_Merrill",
         "company": "Toppan MErril",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13568,7 +13608,7 @@
         "url": "https://transunion.wd5.myworkdayjobs.com/TransUnion",
         "company": "TransUnion",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13578,7 +13618,7 @@
         "url": "https://trekbikes.wd1.myworkdayjobs.com/TREK",
         "company": "Trek",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13588,7 +13628,7 @@
         "url": "https://trellix.wd1.myworkdayjobs.com/EnterpriseCareers",
         "company": "Trellix",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13598,7 +13638,7 @@
         "url": "https://trendmicro.wd3.myworkdayjobs.com/External",
         "company": "Trend Micro",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13608,7 +13648,7 @@
         "url": "https://tvh.wd3.myworkdayjobs.com/JobsatTVH",
         "company": "TVH",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13618,7 +13658,7 @@
         "url": "https://unilever.wd3.myworkdayjobs.com/Unilever_Experienced_Professionals/1/refreshFacet/318c8bb6f553100021d223d9780d30be",
         "company": "Unilever",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13628,7 +13668,7 @@
         "url": "https://unisys.wd5.myworkdayjobs.com/External/",
         "company": "Unisys",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13638,7 +13678,7 @@
         "url": "https://valeo.wd3.myworkdayjobs.com/en-US/valeo_jobs/",
         "company": "Valeo",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13648,7 +13688,7 @@
         "url": "https://walmart.wd5.myworkdayjobs.com/WalmartExternal/",
         "company": "Walmart",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13658,7 +13698,7 @@
         "url": "https://warnerbros.wd5.myworkdayjobs.com/global?q=game",
         "company": "warner bros games",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13668,7 +13708,7 @@
         "url": "https://wabtec.wd1.myworkdayjobs.com/wabtec_careers/",
         "company": "WebTech Corporation",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13678,7 +13718,7 @@
         "url": "https://wk.wd3.myworkdayjobs.com/External",
         "company": "Wolters Kluwer",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13688,7 +13728,7 @@
         "url": "https://ouryahoo.wd5.myworkdayjobs.com/careers",
         "company": "Yahoo",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -13698,7 +13738,7 @@
         "url": "https://zelis.wd1.myworkdayjobs.com/ZelisCareers",
         "company": "Zelis",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13708,7 +13748,7 @@
         "url": "https://zoom.wd5.myworkdayjobs.com/Zoom",
         "company": "Zoom",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,Career Directory"
@@ -13960,7 +14000,7 @@
         "url": "https://jobs.ashbyhq.com/bold",
         "company": "BOLD",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13970,7 +14010,7 @@
         "url": "https://jobs.ashbyhq.com/cointracker",
         "company": "CoinTracker",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13980,7 +14020,7 @@
         "url": "https://jobs.ashbyhq.com/deel",
         "company": "deel.",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -13990,7 +14030,7 @@
         "url": "https://jobs.ashbyhq.com/elevenlabs",
         "company": "ElevenLabs",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14000,7 +14040,7 @@
         "url": "https://jobs.ashbyhq.com/ema",
         "company": "EMA",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14010,7 +14050,7 @@
         "url": "https://jobs.ashbyhq.com/firecrawl",
         "company": "Firecrawl",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14020,7 +14060,7 @@
         "url": "https://jobs.ashbyhq.com/furtherai",
         "company": "Further AI",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14030,7 +14070,7 @@
         "url": "https://jobs.ashbyhq.com/Gardens",
         "company": "Gardens Interactive",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14040,7 +14080,7 @@
         "url": "https://jobs.ashbyhq.com/hawkeyeinnovations",
         "company": "Hawkeye Innovations",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14050,7 +14090,7 @@
         "url": "https://jobs.ashbyhq.com/hightouch",
         "company": "Hightouch",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14060,7 +14100,7 @@
         "url": "https://jobs.ashbyhq.com/lilt",
         "company": "Lilt",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14070,7 +14110,7 @@
         "url": "https://jobs.ashbyhq.com/sift",
         "company": "SIFT",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14080,7 +14120,7 @@
         "url": "https://jobs.ashbyhq.com/zapier",
         "company": "Zapier",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14562,7 +14602,7 @@
         "url": "https://armada.bamboohr.com/jobs/",
         "company": "Armada",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -14902,7 +14942,7 @@
         "url": "https://blackrock.bamboohr.com/jobs/",
         "company": "BlackRock",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs,Career Directory"
@@ -14972,7 +15012,7 @@
         "url": "https://bold.bamboohr.com/jobs/",
         "company": "BOLD",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -15482,7 +15522,7 @@
         "url": "https://collectiveacegmbh.bamboohr.com/careers",
         "company": "Collective Ace",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -16382,7 +16422,7 @@
         "url": "https://fullcircle.bamboohr.com/jobs/",
         "company": "Full Circle",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -16422,7 +16462,7 @@
         "url": "https://gallagher.bamboohr.com/jobs/",
         "company": "Gallagher",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -16782,7 +16822,7 @@
         "url": "https://headspin.bamboohr.com/jobs/",
         "company": "HeadSpin",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -16972,7 +17012,7 @@
         "url": "https://hycu.bamboohr.com/careers",
         "company": "HYCU",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -17702,7 +17742,7 @@
         "url": "https://lji.bamboohr.com/careers",
         "company": "Loyalty Juggernaut",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -18792,7 +18832,7 @@
         "url": "https://qs.bamboohr.com/careers/",
         "company": "QS Quacquarelli Symonds",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -19362,7 +19402,7 @@
         "url": "https://skidos.bamboohr.com/careers",
         "company": "Skidos",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -19762,7 +19802,7 @@
         "url": "https://techmahindra.bamboohr.com/jobs/",
         "company": "Tech Mahindra",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -20252,7 +20292,7 @@
         "url": "https://veve.bamboohr.com/careers",
         "company": "VeVe",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21124,7 +21164,7 @@
         "url": "https://veoneerin.teamtailor.com/jobs/",
         "company": "Venoeer",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21146,7 +21186,7 @@
         "url": "https://framestore.recruitee.com/",
         "company": "frames store",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21156,7 +21196,7 @@
         "url": "https://futureworks.recruitee.com/",
         "company": "Future Works",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21166,7 +21206,7 @@
         "url": "https://infeedo.recruitee.com/",
         "company": "inFeedo AI",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21176,7 +21216,7 @@
         "url": "https://ola.recruitee.com/",
         "company": "Ola",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,Career Directory"
@@ -21196,7 +21236,7 @@
         "url": "https://tgs.recruitee.com",
         "company": "TransPerfect",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21206,7 +21246,7 @@
         "url": "https://villagetalkies.recruitee.com/",
         "company": "Village talkies",
         "active": true,
-        "last_ok": "2026-10-06",
+        "last_ok": "2026-10-07",
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
@@ -21231,16 +21271,6 @@
       "url": "https://3i-infotech.com/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
-    },
-    {
-      "company": "9+ Remote support Jobs in India",
-      "url": "https://cutshort.io/jobs/remote-support-jobs",
-      "source": "Google/exa",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:boards.greenhouse.io India remote \"technical support\"",
-      "last_discovered": "2026-10-06"
     },
     {
       "company": "Accenture",
@@ -21369,6 +21399,12 @@
       "ats": "Company Career"
     },
     {
+      "company": "Ardentisys",
+      "url": "https://www.ardentisys.com/about-us/careers",
+      "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
       "company": "Arista Networks",
       "url": "https://www.arista.com/en/careers",
       "source": "Company,OpenJobs,Career Directory",
@@ -21382,7 +21418,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.jobylon.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Atari",
@@ -21421,6 +21457,12 @@
       "ats": "Company Career"
     },
     {
+      "company": "BairesDev",
+      "url": "https://www.jobaaj.com/job/soci-t-g-n-rale-marocai-specialist-software-engineer-java-production-support-chennai-5-to-10-years-33391",
+      "source": "Google Jobs",
+      "ats": "Company Career"
+    },
+    {
       "company": "Bajaj",
       "url": "https://www.bajajgroup.org/careers",
       "source": "Company,Career Directory",
@@ -21440,7 +21482,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.jobylon.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Basware Apprentice Elevate Program (Under NATS)",
@@ -21450,7 +21492,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.jobylon.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Bazaar Voice",
@@ -21531,8 +21573,8 @@
       "ats": "Company Career"
     },
     {
-      "company": "Brooklinen",
-      "url": "https://www.brooklinen.com/pages/careers",
+      "company": "Bottemline Technologies",
+      "url": "https://www.bottomline.com/apac/about/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
     },
@@ -21748,7 +21790,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Success Manager (Global Remote | SaaS)",
@@ -21758,7 +21800,17 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
+    },
+    {
+      "company": "Customer Success Team Lead Job",
+      "url": "https://www.iitjobs.com/job/customer-success-team-lead-remote-india-152603",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Support Back-Office Executive",
@@ -21768,7 +21820,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Support Back-Office Executive",
@@ -21778,17 +21830,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
-    },
-    {
-      "company": "Customer Support Engineer",
-      "url": "https://www.comeet.com/jobs/vastdata/43.001/customer-support-engineer---india/67.73C-80.50C",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Support Engineer – PCB Assembly / SMT ...",
@@ -21798,7 +21840,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Support Executive",
@@ -21808,7 +21850,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Support Executive",
@@ -21818,7 +21860,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Customer Support IT Hardware Engineer (Field Support)",
@@ -21828,7 +21870,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Cvent",
@@ -21846,6 +21888,12 @@
       "company": "CyberArk",
       "url": "https://www.cyberark.com/careers/all-job-openings",
       "source": "Company,OpenJobs",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Daffodil Software",
+      "url": "https://www.daffodilsw.com/career",
+      "source": "Company,Career Directory",
       "ats": "Company Career"
     },
     {
@@ -21957,12 +22005,6 @@
       "ats": "Company Career"
     },
     {
-      "company": "EA Games",
-      "url": "https://www.ea.com/careers",
-      "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
       "company": "eBay",
       "url": "https://careers.ebayinc.com",
       "source": "Company,OpenJobs,Career Directory",
@@ -22001,6 +22043,12 @@
     {
       "company": "Ericsson",
       "url": "https://www.ericsson.com/en/careers",
+      "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
+      "company": "EXL Healthcare",
+      "url": "https://exlservice.com/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
     },
@@ -22085,12 +22133,6 @@
     {
       "company": "Freshworks",
       "url": "https://www.freshworks.com/company/careers",
-      "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Frugal Testing",
-      "url": "https://frugaltesting.com/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
     },
@@ -22239,16 +22281,6 @@
       "ats": "Company Career"
     },
     {
-      "company": "Head of Support at Papaya Global",
-      "url": "https://www.comeet.com/jobs/papayaglobal/16.005/head-of-support/BD.863",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
-    },
-    {
       "company": "HealthAsyst",
       "url": "https://www.healthasyst.com/careers",
       "source": "Company,Career Directory",
@@ -22271,16 +22303,6 @@
       "url": "https://holycowprod.com/careers",
       "source": "Company,OpenJobs",
       "ats": "Company Career"
-    },
-    {
-      "company": "Hotel Onboarding + Support Agent at HyperGuest",
-      "url": "https://www.comeet.com/jobs/hyperguest/09.00B/hotel-onboarding--support-agent/EC.F4E",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
     },
     {
       "company": "HP",
@@ -22362,7 +22384,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.jobylon.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Intel",
@@ -22373,12 +22395,6 @@
     {
       "company": "Intuit",
       "url": "https://www.intuit.com/careers",
-      "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
-      "company": "IP Infusion",
-      "url": "https://www.ipinfusion.com/career",
       "source": "Company,Career Directory",
       "ats": "Company Career"
     },
@@ -22414,37 +22430,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
-    },
-    {
-      "company": "Jobs at Ceragon",
-      "url": "https://www.comeet.com/jobs/ceragon/d3.003",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
-    },
-    {
-      "company": "Jobs at INFINIDAT",
-      "url": "https://www.comeet.com/jobs/infinidat/D6.003",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
-    },
-    {
-      "company": "Jobs at VAST Data",
-      "url": "https://www.comeet.com/jobs/vastdata/43.001",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "JP Morgan",
@@ -22463,16 +22449,6 @@
       "url": "https://jumbotail.com/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
-    },
-    {
-      "company": "Junior Sales Operations Assistant at Ship4wd",
-      "url": "https://www.comeet.com/jobs/ship4wd/29.00B/junior-sales-operations-assistant/0D.077",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
     },
     {
       "company": "Juniper Networks",
@@ -22502,6 +22478,18 @@
       "company": "Kantar",
       "url": "https://www.kantar.com/careers",
       "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Keywords Studios",
+      "url": "https://cutshort.io/job/Tech-Support-Manager-Pune-Skanda-Projects-Wzuto0Lc",
+      "source": "Google Jobs",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Keywords Studios",
+      "url": "https://www.shine.com/jobs/tech-support-manager/skandhanshi-infra-projects/19530150",
+      "source": "Google Jobs",
       "ats": "Company Career"
     },
     {
@@ -22578,7 +22566,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.jobylon.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Mantech International",
@@ -22600,7 +22588,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "McAfee",
@@ -22910,17 +22898,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
-    },
-    {
-      "company": "Product Support Engineer",
-      "url": "https://www.comeet.com/jobs/Claroty/F2.004/product-support-engineer/EC.070",
-      "source": "Google/serper",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Proptiger",
@@ -22990,7 +22968,17 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
+    },
+    {
+      "company": "Remote Customer Support Jobs in India (413 new)",
+      "url": "https://remotefirstjobs.com/jobs/locations/india/customer-support",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"customer support\" India \"remote\" careers -linkedin -indeed -glassdoor",
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Rendered Ideas",
@@ -23146,6 +23134,12 @@
       "company": "Singarajan Studios",
       "url": "https://singarajanstudios.zohorecruit.in/jobs/Careers",
       "source": "Company,OpenJobs",
+      "ats": "Company Career"
+    },
+    {
+      "company": "SIRI Innovations",
+      "url": "https://www.siriinnovations.com/careers",
+      "source": "Company,Career Directory",
       "ats": "Company Career"
     },
     {
@@ -23305,6 +23299,12 @@
       "ats": "Company Career"
     },
     {
+      "company": "Tech Mahindra",
+      "url": "https://careers.techmahindra.com/CurrentOpportunity.aspx",
+      "source": "Company,OpenJobs",
+      "ats": "Company Career"
+    },
+    {
       "company": "Technical Customer Support (International Voice Process)",
       "url": "https://candidateportal.ceipal.com/job-details/vUm7R7v8KyG7YGFiQeBjHx4taV7CfXWyO7s_lZ8qpb4",
       "source": "Google/serper",
@@ -23312,7 +23312,7 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.ceipal.com India \"customer support\"",
-      "last_discovered": "2026-10-06"
+      "last_discovered": "2026-10-07"
     },
     {
       "company": "Techstar group",
@@ -23357,9 +23357,27 @@
       "ats": "Company Career"
     },
     {
+      "company": "thumpN",
+      "url": "https://bebee.com/in/jobs/support-engineer-bizzdesign-guindy-chennai-tamil-nadu--t7xk-842974053",
+      "source": "Google Jobs",
+      "ats": "Company Career"
+    },
+    {
+      "company": "thumpN",
+      "url": "https://hiring.thumpn.com/jobs/8349267-support-engineer",
+      "source": "Google Jobs",
+      "ats": "Company Career"
+    },
+    {
       "company": "Times Internet",
       "url": "https://timesinternet.in/careers",
       "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
+      "company": "TOMRA",
+      "url": "https://joblagbe.online/jobs/linkedin-4468714466-technical-support-engineer",
+      "source": "Google Jobs",
       "ats": "Company Career"
     },
     {
@@ -23384,6 +23402,24 @@
       "company": "Turvo",
       "url": "https://turvo.com/careers",
       "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Twenty5",
+      "url": "https://djinni.co/jobs/834576-technical-consultant-product-support-engineer",
+      "source": "Google Jobs",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Twenty5",
+      "url": "https://remotive.com/remote/jobs/customer-service/technical-product-support-engineer-6094352",
+      "source": "Google Jobs",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Twenty5",
+      "url": "https://www.remotesource.com/jobs/T2ELHLI2kf-L1htl7oTCO-product-technical-support-engineer-remote-at-johnson-controls",
+      "source": "Google Jobs",
       "ats": "Company Career"
     },
     {
@@ -23555,6 +23591,12 @@
       "ats": "Company Career"
     },
     {
+      "company": "xogar games",
+      "url": "https://jobs.recooty.com/xogar-games",
+      "source": "Company,OpenJobs",
+      "ats": "Company Career"
+    },
+    {
       "company": "Xoriant",
       "url": "https://www.xoriant.com/about-xoriant/careers",
       "source": "Company,Career Directory",
@@ -23627,6 +23669,6 @@
       "ats": "Company Career"
     }
   ],
-  "company_count": 1882,
-  "board_count": 2119
+  "company_count": 1898,
+  "board_count": 2123
 }
