@@ -1,12 +1,23 @@
 [
   {
-    "discovery_url": "https://remoterush.mysmartpros.com/job/3177496",
-    "title": "[Remote] Avionics Customer Support Field Engineer (Remote)",
-    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | Note: The job is a remote job and is open to candidates in USA. reputed company is a leader in technologically advanced, intelligent solutions that help redefine the aerospace and defense industry. The Avionics Customer Support Field Engineer will support airline customers, primarily reputed company, by providing technical solutions and fostering positive customer relations through excellent support and collaboration with various departments.ResponsibilitiesProvide technical support regarding reputed company avionics/sensors and fire detection products owned and operated by reputed companyYou",
+    "discovery_url": "https://remoterush.mysmartpros.com/job/4088439",
+    "title": "[Remote] Platform Support Engineer",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | Note: The job is a remote job and is open to candidates in USA. reputed company is a provider of Dynamic reputed company Orchestration solutions that connect people, technology, and real-time data to improve customer service operations. The Platform Support Engineer serves as an escalation resource for complex platform issues, performing root cause analysis, database investigations, monitoring administration, technical backlog management, and cross-functional coordination with Engineering and Technical Experience teams.ResponsibilitiesServe as an escalation resource for complex platform-level",
     "source": "Google Jobs/SerpApi",
     "query": "technical support support engineer product support India remote",
     "score": 100,
     "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://shopifynova.shyamkirpa.in/blogs/news/remote-onboarding-specialist-digital-solutions",
+    "title": "[Remote] Onboarding Specialist, Digital Solutions",
+    "snippet": "JobHub | Anywhere | Job | Note The job is a remote job and is open to candidates in USA. Cvent is a leading meetings, events, and hospitality technology provider, seeking an Onboarding Specialist, Digital Solutions to lead new customers through a seamless onboarding experience. This role focuses on driving adoption, delivering value, and enabling long-term customer success by providing expert support and training to clients transitioning onto the Goldcast platform. Responsibilities • Deliver inclusive, engaging onboarding and training sessions that equip clients with the knowledge and tools needed to be successful on t",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "JobHub",
     "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
@@ -66,10 +77,21 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/getwingapp",
-    "title": "Wing Assistant - Lever",
-    "snippet": "Customer Support Representative. Remote — Full TimeNairobi · Apply · Head of Post ... General Virtual Assistant (India). Remote — New Delhi, India · Apply ...",
-    "source": "Google/search1",
+    "discovery_url": "https://jobs.lever.co/zimperium",
+    "title": "Zimperium",
+    "snippet": "Zimperium logo ##### Technical Product Support Engineer - Endpoint/MTD (Device) & Cybersecurity ##### AI Software Engineer (DevOps) - Bangalore, India ##### Site Reliability Engineer - India Zimperium Home Page Lever logo",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Zimperium",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
+    "title": "Wing Assistant - Technical Support Representative (India)",
+    "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Technical Support Representative (Remote) [...] • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. [...] Wing is on the exciting mission of redefining the future of work for companies worldwide! We are looking to be the one-stop shop for companies that are looking to build world-class teams & place their operations on autopilot. And we’re looking for a Technical Support Representative to start immediately! Duties and Responsibilities include but are not limited to: 1. Troubleshoot IT issues (e.g., how do I log in, reset password, remote access trackers not working, etc.)",
+    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Wing Assistant",
@@ -77,25 +99,69 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/ardentmc/jobs/8186204",
-    "title": "Tier 2/3 Support Specialist at Ardentmc",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "discovery_url": "https://jobs.lever.co/getwingapp/bb76b70e-66d2-49bb-9c42-c5edc70548e0",
+    "title": "Wing Assistant - General Virtual Assistant (India)",
+    "snippet": "10. Convey information to incoming calls & make calls for appointments or conduct informational inquiries. 11. Reply to emails, follow up on correspondence, organize inbox as per client preferences, and notify clients about important emails. 12. Ad hoc tasks Qualifications: • At least 6 months to 1 year of experience as a Virtual Assistant • At least 18 years of age and completed Senior High School • Excellent phone, email, and instant messaging communication skills [...] Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India General Virtual Assistant (Remote) [...] Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: Up to INR 32,000 Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. • We have other vacancies that might interest your friends & colleagues. They can check us out at our Jobs Website. • You may also refer your friends using our Affiliate Marketing Program and earn up to INR 2,000 if your referral is hired. ₹10,000 - ₹32,000 a month",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "Tier 2/3 Support Specialist at Ardentmc",
+    "company": "Wing Assistant",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/easyship/jobs/4650127006",
-    "title": "Technical Support Specialist at Easyship",
+    "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2",
+    "title": "Wing Assistant - Customer Service Representative (India)",
+    "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Customer Service Representative (Remote) [...] • Backup Internet Service Speed: at least 10 Mbps Benefits: • Performance Incentives • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: [...] Wing Assistant logo ## Customer Service Representative (India) New Delhi, India IND – IND / apply for this job Please whitelist the domains \"lever.co\" and \"hire.lever.co\" with your email provider to make sure you get our emails.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2/apply",
+    "title": "Wing Assistant - Customer Service Representative (India)",
+    "snippet": "We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. [...] Lever logo [...] Wing Assistant logo ## Customer Service Representative (India) #### Submit your application Authorize sharing of selected LinkedIn profile details to auto-complete this form. Learn more File exceeds the maximum upload size of 100MB. Please try a smaller size. #### Links #### Salary #### Application Questions #### Internet & Computer Specs Wing Assistant Home Page",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp",
+    "title": "Wing Assistant",
+    "snippet": "Wing Assistant logo ##### Bookkeeper (India) ##### Content Writer (India) ##### Customer Service Representative (India) ##### Digital Marketing Specialist (India) ##### E-Commerce Specialist (India) ##### Executive Assistant (India) ##### Full Stack Developer ##### General Virtual Assistant (India) ##### Graphic Designer (India) ##### Lead Generation Specialist (India) ##### Personal Assistant (India) ##### Senior Software Engineer ##### Social Media Assistant (India) [...] ##### Technical Support Representative (India) Wing Assistant Home Page",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jobgether/02236d70-8052-460b-8719-46ef5c47222b",
+    "title": "Technical Support Specialist (PST/EST/CST Timezone) - Lever",
     "snippet": "",
     "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "Technical Support Specialist at Easyship",
+    "company": "Technical Support Specialist (PST/EST/CST Timezone)",
     "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.instahyre.com/job-444159-technical-support-engineer-at-algosec-work-from-home",
+    "title": "Technical Support Engineer",
+    "snippet": "AlgoSec | Anywhere | Instahyre | We are hiring a Technical Support Engineer for a leading support position based in India. Responsibilities: Supporting our global customers via email, phone, and webcasts, guiding AlgoSec customers, partners, and sales engineers in product installation, operations, and troubleshooting.Maintaining and updating the AlgoSec knowledge base, participating in the buildup of the support organization.Introducing support methodologies, tools, and more.Working in tight integration with the global support teams as well as with AlgoSec R& D, delivery, and product management. Requirements: At least 3 years",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical support support engineer product support India remote",
+    "score": 100,
+    "company": "AlgoSec",
+    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -118,6 +184,28 @@
     "score": 100,
     "company": "TOMRA",
     "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://api.www.communication.coding.light.exam.novel.bsfootball.org/remote-jobs/technical-support-engineer-12",
+    "title": "Technical Support Engineer",
+    "snippet": "TOMRA | Anywhere | Jobgether | This a Full Remote job, the offer is available from: Asia, APAC, Singapore Company Description TOMRA was founded on an innovation in 1972 that began with the design, manufacturing and sale of reverse vending machines (RVMs) for automated collection of used beverage containers. Today TOMRA provides technology-led solutions that enable the circular economy with advanced collection and sorting systems that optimize resource recovery and minimize waste in the food, recycling and mining industries and is committed to building a more sustainable future. TOMRA has ~100,000 installations in over 80 ma",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical support support engineer product support India remote",
+    "score": 100,
+    "company": "TOMRA",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/avepoint/jobs/7544357",
+    "title": "Technical Support Analyst",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Technical Support Analyst",
+    "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
@@ -209,7 +297,7 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://bebee.com/in/jobs/support-engineer-bizzdesign-guindy-chennai-tamil-nadu--t7xk-842974053",
+    "discovery_url": "https://bebee.com/in/jobs/support-engineer-vigilnz-teynampet-chennai-tamil-nadu--t7xk-836673114",
     "title": "Support Engineer",
     "snippet": "thumpN | Anywhere | ThumpN | Support EngineerWhen a ticket won't scan at the gate, you're the one who makes the show go on anyway. WHY THIS ROLE EXISTS Support here is how we learn what to build next We power everything from club nights to large-format festivals: event pages, ticketing, gate entry, and an AI-powered discovery experience for fans. When something breaks, it breaks in front of a queue, a scanner, or a payment screen, not in a backlog. You'll be the first line of technical response for organisers, internal ops, and consumers, closest to where things actually go wrong. This is a hands-on, investigative role. Y",
     "source": "Google Jobs/SerpApi",
@@ -231,6 +319,61 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://remoteworld.mysmartpros.com/job/customer-onboarding-manager-china",
+    "title": "Strategic Customer Onboarding Manager – China Market Expansion & Global Payroll Implementation Specialist at arenaflex",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | ```html About arenaflex Welcome to arenaflex, the trailblazing platform that is redefining how businesses manage talent across borders. In a world where teams are increasingly distributed, arenaflex delivers a unified, AI‑powered solution that seamlessly integrates HRIS, payroll, compliance, benefits, performance, and equipment management. Our mission is simple yet powerful: unlock global opportunity for every person, team, and business. With a presence in over 100 countries and a vibrant community of 5,000 employees who speak 74 languages, arenaflex is not just a company – it’s a movement tow",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://talentripple.liveblog365.com/remote-jobs/senior-customer-success-manager-strategic-account-leadership-global-growth-champion-at-opportunicore",
+    "title": "Strategic Customer Onboarding Manager – China Market Expansion & Global Payroll Implementation Specialist at arenaflex",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | ```html About arenaflex Welcome to arenaflex, the trailblazing platform that is redefining how businesses manage talent across borders. In a world where teams are increasingly distributed, arenaflex delivers a unified, AI‑powered solution that seamlessly integrates HRIS, payroll, compliance, benefits, performance, and equipment management. Our mission is simple yet powerful: unlock global opportunity for every person, team, and business. With a presence in over 100 countries and a vibrant community of 5,000 employees who speak 74 languages, arenaflex is not just a company – it’s a movement tow",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.jobleads.com/us/job/global-customer-success-manager-international-support--united-states--eea2236389f55327c45c375036a7ad8a7",
+    "title": "Strategic Customer Onboarding Manager – China Market Expansion & Global Payroll Implementation Specialist at arenaflex",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | ```html About arenaflex Welcome to arenaflex, the trailblazing platform that is redefining how businesses manage talent across borders. In a world where teams are increasingly distributed, arenaflex delivers a unified, AI‑powered solution that seamlessly integrates HRIS, payroll, compliance, benefits, performance, and equipment management. Our mission is simple yet powerful: unlock global opportunity for every person, team, and business. With a presence in over 100 countries and a vibrant community of 5,000 employees who speak 74 languages, arenaflex is not just a company – it’s a movement tow",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://juntojobs.gamer.gd/remote-jobs/payroll-customer-success-manager-global-payroll-hris-solutions-specialist-at-worksphere",
+    "title": "Strategic Customer Onboarding Manager – China Market Expansion & Global Payroll Implementation Specialist at arenaflex",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | ```html About arenaflex Welcome to arenaflex, the trailblazing platform that is redefining how businesses manage talent across borders. In a world where teams are increasingly distributed, arenaflex delivers a unified, AI‑powered solution that seamlessly integrates HRIS, payroll, compliance, benefits, performance, and equipment management. Our mission is simple yet powerful: unlock global opportunity for every person, team, and business. With a presence in over 100 countries and a vibrant community of 5,000 employees who speak 74 languages, arenaflex is not just a company – it’s a movement tow",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://hirefast.g8r.social-networking.me/remote-jobs/strategic-customer-success-manager-professional-employer-organization-peo-global-payroll-solutions-at-careerforge",
+    "title": "Strategic Customer Onboarding Manager – China Market Expansion & Global Payroll Implementation Specialist at arenaflex",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | ```html About arenaflex Welcome to arenaflex, the trailblazing platform that is redefining how businesses manage talent across borders. In a world where teams are increasingly distributed, arenaflex delivers a unified, AI‑powered solution that seamlessly integrates HRIS, payroll, compliance, benefits, performance, and equipment management. Our mission is simple yet powerful: unlock global opportunity for every person, team, and business. With a presence in over 100 countries and a vibrant community of 5,000 employees who speak 74 languages, arenaflex is not just a company – it’s a movement tow",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://boards.greenhouse.io/slice",
     "title": "Slice Careers — Open for Talent",
     "snippet": "#### Wellness Tools and days-off to promote mental health #### Flexible workplace Generous paid time-off and WFH policies #### Referral bonuses Compensation for each referred hire #### Fun Fun Fun Regular social and charitable events ### ENJOY ADDITIONAL BENEFITS UNIQUE TO OUR WORKFORCE REGIONS. ## Career Opportunities If you’re ambitious, interested in taking your career to new heights, and hungry to join one of the most mission-focused companies in tech, we may have a role for you. [...] ## WIN TOGETHER. From our cosmopolitan offices to home workspaces, you’ll find coworkers who embrace collective goals, welcome diverse viewpoints, and rally around each other. We see each big, juicy challenge as an opportunity to innovate, learn, and grow. And every win as a cause to celebrate. #### Ilir R. Sales How supportive are the teams at Slice? #### Jules G. Engineering What’s your team currently working on? #### Julia Z. Go-to-Market Does Slice support community initiatives? [...] #### Nessa B. Post Sales What’s it like working with such a global team? #### Aankit M. Business Development What do you think sets Slice apart? #### Marion R. Data Strategy and Governance Does Slice support women in technology? ### HEAR MORE ABOUT LIFE AT SLICE ### ADD TO A VIBRANT CULTURE Our hackathons are popular events for Slicers to explore experimental projects. Build a few bonds with your fellow coworkers during work or after.",
@@ -238,17 +381,6 @@
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
     "company": "Slice Careers — Open for Talent",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/point72/jobs/8555518002",
-    "title": "Service Desk Engineer, Technology at Point72",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Service Desk Engineer, Technology at Point72",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -264,11 +396,33 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://remoterush.mysmartpros.com/job/600916",
-    "title": "Senior Product Support Engineer",
-    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About reputed company Serving thousands of enterprise customers around the world including 40% of Fortune 500 companies, reputed company (reputed company: ZS) was founded in 2007 with a mission to make the cloud a safe place to do business and a more enjoyable experience for enterprise users. As the operator of the world’s largest security cloud, reputed company accelerates digital transformation so enterprises can be more agile, efficient, resilient, and secure. The pioneering, AI-powered reputed company Zero Trust Exchange™ platform, which is found in our SASE and SSE offerings, protects tho",
+    "discovery_url": "https://remoterush.mysmartpros.com/job/4731963",
+    "title": "Senior Manager, Customer Implementation & Onboarding – Driving Seamless Onboarding Excellence, Customer Success, Process Innovation & Strategic Growth at reputed company",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About reputed company reputed company is a trailblazer in the logistics, supply‑chain, and e‑commerce arena, redefining how businesses move, connect, and scale. With a relentless focus on speed, reliability, and innovation, we empower partners worldwide to deliver exceptional value to their customers. At reputed company, we believe that the journey of every partner begins with a flawless onboarding experience. That belief fuels a culture that celebrates curiosity, collaboration, and a relentless pursuit of customer delight. Whether you’re a seasoned professional or an ambitious newcomer, reput",
     "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://remoterush.mysmartpros.com/job/4699120",
+    "title": "Senior Manager of Customer Implementation & Onboarding – Championing Seamless Onboarding Excellence, Customer Success, and Process Innovation at reputed company",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About reputed company reputed company stands at the forefront of the logistics, supply‑chain, and e‑commerce arena, delivering unmatched speed, reliability, and innovation to customers across the globe. Our mission is simple yet powerful: to transform the way businesses move, connect, and grow by providing cutting‑edge technology and world‑class service. At reputed company, we believe that the journey of every customer begins with a flawless onboarding experience. That’s why we’re building a culture that celebrates curiosity, collaboration, and a relentless focus on customer delight. Whether y",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://hiregrid.4w.10001mb.com/job/senior-manager-of-customer-implementation-onboarding-championing-seamless-onboarding-excellence-customer-success-and-process-innovation-at-reputed-company",
+    "title": "Senior Manager of Customer Implementation & Onboarding – Championing Seamless Onboarding Excellence, Customer Success, and Process Innovation at reputed company",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About reputed company reputed company stands at the forefront of the logistics, supply‑chain, and e‑commerce arena, delivering unmatched speed, reliability, and innovation to customers across the globe. Our mission is simple yet powerful: to transform the way businesses move, connect, and grow by providing cutting‑edge technology and world‑class service. At reputed company, we believe that the journey of every customer begins with a flawless onboarding experience. That’s why we’re building a culture that celebrates curiosity, collaboration, and a relentless focus on customer delight. Whether y",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
     "score": 100,
     "company": "remotepromsp",
     "seed_type": "Google Jobs Apply URL",
@@ -286,6 +440,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://hirequest.7y.liveblog365.com/job/director-customer-onboarding-apac-10",
+    "title": "Senior Director of Global Customer Onboarding – APAC – Driving Payroll Implementation Excellence at arenaflex",
+    "snippet": "HireQuest | Anywhere | HireQuest | About arenaflex At arenaflex, we are redefining the future of work by providing a unified, AI‑powered platform that brings reputed company HRIS, payroll, compliance, benefits, performance, and equipment management into one seamless experience. Our mission is simple yet ambitious reputed company global opportunity for every person, team, and business . With a presence in over 100 countries and a reputed company of more than 5,000 employees who speak 74 languages, arenaflex is a truly distributed organization that thrives on collaboration, continuous learning, and innovation. As the fastest‑grow",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "HireQuest",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobrise.n4q.liveblog365.com/remote-jobs/senior-customer-support-engineer-emea-remote-expert-in-cloud-infrastructure-devops-support-4057631b",
     "title": "Senior Customer Support Engineer – EMEA Remote – Expert in Cloud Infrastructure & DevOps Support",
     "snippet": "JobRise | Anywhere | JobRise | ```html About brighthush brighthush is a trailblazing, fast‑growing software company that builds high‑performance developer infrastructure used by engineering teams worldwide. Our platform empowers developers to ship code faster, scale applications more reliably, and collaborate across distributed teams with unprecedented speed and confidence. With a global customer base that spans startups, Fortune 500 companies, and everything in between, we are on a mission to redefine what it means to build and operate modern software. Why Join brighthush? At brighthush, we believe that great technology is",
@@ -297,20 +462,75 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/chime/jobs/8512628002",
-    "title": "Search | Chime Careers",
-    "snippet": "- [x] checkbox label label - [x] checkbox label label - [x] checkbox label label Reject All Confirm My Choices Image 3: Powered by Onetrust Image 4 [...] ensure the proper functioning of the website. They perform tasks such as remembering your cookie settings and logging you into your account. See the Chime Privacy Notice for more information about the data we collect and how we use it. [...] my choices\", to save your selection. If you opt out, we will stop sharing your information collected through cookies with our advertising partners, and you will no longer receive personalized ads from us online. This tool is limited to the device and web browser you are using because it works off your device ID or browser ID. If you use another device or browser, you will need to opt-out on each device and browser. If you block or clear cookies from your browser, it may remove the opt-out",
+    "discovery_url": "https://remoterush.mysmartpros.com/job/3442909",
+    "title": "Senior Customer Onboarding Consultant – Enterprise & Franchise Implementation Specialist for Conversational SMS Platforms",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About arenaflex arenaflex is a market‑leading conversational texting and automation platform that empowers brands to deliver personalized, high‑impact text messaging experiences at scale. By turning ordinary SMS into a strategic, two‑way dialogue, arenaflex helps businesses build authentic relationships, drive revenue, and deepen customer loyalty. Recognized as a Top 10 most innovative technology company, arenaflex recently secured $34 million in Series A funding from premier reputed company partners, underscoring its rapid growth trajectory and commitment to shaping the future of digital comm",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://gyhuvlae.strivehischools.org/remote-jobs/senior-customer-onboarding-engineer-security-compliance-integration-specialist-for-cloud-siem-platforms",
+    "title": "Senior Customer Onboarding Consultant – Enterprise & Franchise Implementation Specialist for Conversational SMS Platforms",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About arenaflex arenaflex is a market‑leading conversational texting and automation platform that empowers brands to deliver personalized, high‑impact text messaging experiences at scale. By turning ordinary SMS into a strategic, two‑way dialogue, arenaflex helps businesses build authentic relationships, drive revenue, and deepen customer loyalty. Recognized as a Top 10 most innovative technology company, arenaflex recently secured $34 million in Series A funding from premier reputed company partners, underscoring its rapid growth trajectory and commitment to shaping the future of digital comm",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/robinhood/jobs/7958750",
+    "title": "Robinhood Careers - Transform the Future of Finance",
+    "snippet": "Don’t see the role that you’re looking for? ###### Stay up to date on the latest happenings at Robinhood and get notified when we post new job opportunities that match your interests. ###### Follow us on Facebook logo LinkedIn Logo X Twitter Logo Instagram Logo [...] Rewards vary by employment type/location. Your Community Collaborative, inclusive workplace to drive connection and empower performance Your Office Life Exceptional office experience to unlock the power of in-person work We don’t chase the future of finance, we define it. And we’re just getting started. We don’t chase the future of finance, we define it. And we’re just getting started. Join our team Filter by: Sorry, no jobs were found for that criteria. [...] We hold ourselves to the highest standards of ethics and regulatory compliance, as we know customer trust is hard earned and easily lost. See our Code of Conduct here. We operate with an extreme sense of urgency. The world's not slowing down, and neither are we. Working here is intense, urgent, and fast-moving by design. We run toward hard problems and push through all-out sprints for purposeful work that makes real-world impact in weeks, not years. We believe in doing more with less.",
     "source": "Google/tavily",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Search | Chime Careers",
+    "company": "Robinhood Careers",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://remoterush.mysmartpros.com/job/2033343",
-    "title": "Remote Senior Technical Support Engineer - SaaS Platforms",
-    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | reputed company is a rapidly growing SaaS company looking for a motivated and experienced Senior Technical Support Engineer to join their fully remote team. In this critical role, you will provide advanced technical assistance and troubleshooting for their cutting-edge software platforms. You will be the primary point of contact for complex customer issues, working diligently to resolve them efficiently and effectively. This position requires a deep understanding of software systems, excellent problem-solving skills, and a commitment to delivering outstanding customer experiences from the comf",
+    "discovery_url": "https://remoterush.mysmartpros.com/job/1040952",
+    "title": "Product Support Engineer",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | **This role is located in Somerville, MA (Location) - We are a hybrid work environment and are in the office 3+ days/per week.** reputed company, the leader in frontline operations, is helping companies around the world equip their reputed company with connected apps, leading to higher quality work, improved efficiency, and end-to-end traceability across operations. Companies of all sizes and across industries have implemented composable solutions with reputed company’s cloud-native, no-code platform to solve some of the most pressing challenges in operations: error-proofing processes and boos",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical support support engineer product support India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://fr.trabajo.org/offre-4112-e252a47f7f71bb25c16525774a409f50",
+    "title": "Product Support Engineer",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | **This role is located in Somerville, MA (Location) - We are a hybrid work environment and are in the office 3+ days/per week.** reputed company, the leader in frontline operations, is helping companies around the world equip their reputed company with connected apps, leading to higher quality work, improved efficiency, and end-to-end traceability across operations. Companies of all sizes and across industries have implemented composable solutions with reputed company’s cloud-native, no-code platform to solve some of the most pressing challenges in operations: error-proofing processes and boos",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical support support engineer product support India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.metaintro.com/job/aeronautical-product-support-engineer-at-at11-f442299e-8e14-5afc-825c-10e28973cdf8",
+    "title": "Product Support Engineer",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | **This role is located in Somerville, MA (Location) - We are a hybrid work environment and are in the office 3+ days/per week.** reputed company, the leader in frontline operations, is helping companies around the world equip their reputed company with connected apps, leading to higher quality work, improved efficiency, and end-to-end traceability across operations. Companies of all sizes and across industries have implemented composable solutions with reputed company’s cloud-native, no-code platform to solve some of the most pressing challenges in operations: error-proofing processes and boos",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical support support engineer product support India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://psychology.government.astronomy.reading.iknowhowtoread.org/remote-jobs/product-support-engineer-59c9afeb",
+    "title": "Product Support Engineer",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | **This role is located in Somerville, MA (Location) - We are a hybrid work environment and are in the office 3+ days/per week.** reputed company, the leader in frontline operations, is helping companies around the world equip their reputed company with connected apps, leading to higher quality work, improved efficiency, and end-to-end traceability across operations. Companies of all sizes and across industries have implemented composable solutions with reputed company’s cloud-native, no-code platform to solve some of the most pressing challenges in operations: error-proofing processes and boos",
     "source": "Google Jobs/SerpApi",
     "query": "technical support support engineer product support India remote",
     "score": 100,
@@ -330,47 +550,69 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/a038bda8-f785-4e10-9c2a-db23df068767",
-    "title": "JumpCloud - Tier 1 Customer Support Engineer, Windows - India",
-    "snippet": "Title: JumpCloud - Tier 1 Customer Support Engineer, Windows - India ## Tier 1 Customer Support Engineer, Windows - India. ### About JumpCloud®. ### **JumpCloud is Intelligent, Secure IT.**. ### About the role:. As a Customer Support Engineer - Tier 1 you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve front line customer issues in a fast-paced environment. As a Customer Support Engineer- Tier 1 you will help provide assistance via Chat, Phone and Email. ### What you’ll be doing:. Provide technical support, troubleshooting and issue resolution to our customers via email, phone, chat or remote web session. Manage a queue of support tickets for high priority and complex technical issues. Reproduce issues in-house and respond to customers in a timely manner. Collaborate with Peers, Mentors, Escalation Engineers, Knowledge Base and other internal tools to provide the most effective, world-class solutions for our customers. Evaluate, identify, and escalate platform bugs and issues as they are encountered. Maintain a technical understanding of the entire JumpCloud Platform. Collaborate with Customer Success Managers, Account Managers and Implementation Engineers to ensure the success of our new customers as they transition into the day-to-day use of our product. Develop and maintain knowledge base articles to increase shared knowledge among the entire Support Engineering team. Collaborate with peers on projects aimed at improving the customer and Support Engineering operations. ### We’re looking for:. Minimum of 3 years of experience in a technical, customer-facing position, preferably in a SaaS environment. Minimum of 2 year of experience working with mission critical customer issues and customer and technical escalations. Good knowledge with configuring & troubleshooting Single Sign-on (SAML+ SCIM). Good experience with configuring & troubleshooting RADIUS. Strong oral and written communication skills. Understanding of user onboarding and offboarding practices. Understanding of Information security best practices. Passion for learning new technologies. Ability to thrive in a rapidly changing environment. ### Preferred Qualifications:. Non-Windows Directory Services (G Suite, AWS, LDAP). Using AI to enhance your productivity. Full-time remote working and self-motivated productivity. Using macOS hardware as your primary work-device. ### Shift schedule:. ###### #LI-YI1.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "JumpCloud",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/586204da-957d-469f-a2ee-832906ad017f",
-    "title": "JumpCloud - Tier 1 Customer Support Engineer, Linux - India",
-    "snippet": "Title: JumpCloud - Tier 1 Customer Support Engineer, Linux - India ## Tier 1 Customer Support Engineer, Linux - India. Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. We help organizations around the globe eliminate complexity and turn AI risk into an optimized advantage, ensuring the right people and agents have secure access to the right resources at all times. ### **JumpCloud is Intelligent, Secure IT.**. ### About the role:. As a Customer Support Engineer - Tier 1 you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve front line customer issues in a fast-paced environment. As a Customer Support Engineer- Tier 1 you will help provide assistance via Chat, Phone and Email. * Provide technical support, troubleshooting and issue resolution to our customers via email, phone, chat or remote web session. * Maintain a technical understanding of the entire JumpCloud Platform. * Collaborate with Customer Success Managers, Account Managers and Implementation Engineers to ensure the success of our new customers as they transition into the day-to-day use of our product. * Minimum of 3 years experience in a technical, customer-facing position, *preferably* in a SaaS environment. * Minimum of 2 years experience working with mission critical customer issues and customer & technical escalations. * Ability to leverage AI to enhance self productivity and customer experience with the Support. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "JumpCloud",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jumpcloud",
-    "title": "JumpCloud - Lever",
-    "snippet": "Customer Support Engineer, Tier 1 (MacOS and MDM) - Mexico. Remote — Full ... India - Remote / Mumbai, India - Remote / Pune, India - Remote · Apply ...",
+    "discovery_url": "https://jobs.lever.co/pointclickcare/d5324867-071b-4502-bc77-88b4aeb64c7c/apply",
+    "title": "PointClickCare - US -Manager, Customer Support (Senior Care)",
+    "snippet": "US -Manager, Customer Support (Senior Care). Remote - US. PointClickCare – Customer Operations /. Full-Time /. Remote. Submit your application. LinkedIn profile.",
     "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "JumpCloud",
+    "company": "PointClickCare",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/02f302ea-f712-4a23-a4b0-328dd5a7384f",
-    "title": "JumpCloud - Customer Support Engineer, Tier 2 - India",
-    "snippet": "Title: JumpCloud - Customer Support Engineer, Tier 2 - India ## Customer Support Engineer, Tier 2 - India. Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. We help organizations around the globe eliminate complexity and turn AI risk into an optimized advantage, ensuring the right people and agents have secure access to the right resources at all times. ### **JumpCloud is Intelligent, Secure IT.**. ### **About The Role**. As a **Customer Support Engineer - Tier 2 and Partner Support** you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve high priority and mission critical customer issues in a fast-paced environment. As a Customer Support Engineer- Tier 2 you will help provide mentoring and training to Tier 1 Engineers, apply your deep technical knowledge to resolve customer issues, and regularly interface across Support and Engineering to ensure the timely resolution of defects. * Manage a queue of support tickets for high priority and complex technical issues. * Maintain a deep technical understanding of the entire JumpCloud Platform while serving as an SME to develop internal training. * Work closely with Account Managers and Implementation Engineers to ensure the success of our new customers as they transition into the day to day use of our product. JumpCloud® is committed to being Remote First, meaning that you are able to work remotely within the country noted in the Job Description. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about.",
+    "discovery_url": "https://jobs.lever.co/parcelvision/23bcdc94-6fc8-4473-b542-7d6a9b4de0a1",
+    "title": "ParcelHero - Customer service manager (IN)",
+    "snippet": "You will be responsible for driving cross-department collaboration between the customer service, customer experience, and QA teams - working closely with them to optimise processes and continuously improve the customer experience as we scale. ### Responsibilities Team Leadership: Manage and develop a team of team leaders overseeing a 50-strong remote customer service team, setting clear performance expectations and fostering high performance under pressure. [...] Are you passionate about improving the customer experience? Does coordinating across teams, countries, and time zones excite you? Parcelhero is looking for an experienced Customer Service Manager to lead our team leaders and 50-strong remote team, drive quality of service, and elevate the experience for both our consumer and business customers as we expand internationally. [...] We're a highly innovative company, deeply focused on optimisation, automation, and continuous process improvement. Joining now means being part of the journey - helping shape our technology, our processes, and our approach as we scale globally. We're also a remote-first business: no commute, no office politics, just great work with talented colleagues around the world.",
     "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
-    "company": "JumpCloud",
+    "company": "ParcelHero",
     "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/mashgin/4beb7212-bb9e-4c23-8a43-fb8d2dc35f1f/apply",
+    "title": "Mashgin - Remote Technical Support",
+    "snippet": "We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. [...] Lever logo [...] Select all that apply Mashgin Home Page",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Mashgin",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/ensono/jobs/4740793005",
+    "title": "Manager, Mainframe Systems Programming - Ensono",
+    "snippet": "Provides Technical support for SW solutions. · Provide direction to Team Leaders and resources. · Possess communication skills to participate in client/team ...",
+    "source": "Google/search1",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Manager, Mainframe Systems Programming",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/guidepointsecurity/jobs/6129926004",
+    "title": "Manager, IT Service Delivery & Enterprise Applications- Remote (Anywhere in the U.S.) at Guidepointsecurity",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Manager, IT Service Delivery & Enterprise Applications- Remote (Anywhere in the U.S.) at Guidepointsecurity",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://remoterush.mysmartpros.com/job/1941088",
+    "title": "Manager of Customer Onboarding",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | Steer offers a suite of software tools for today's automotive repair shop. We combine a mix of software tools that a repair shop needs to run a highly profitable shop, in one user-friendly, cost-effective platform. Through the Steer suite, we allow the shop owner to get back to focusing on what matters, and to stop worrying about marketing and customer retention. Steer began as an online directory for drivers to find a local mechanic. reputed company to today, Steer has launched a complete Customer Relationship Management (CRM) marketing suite, complete with text messaging, email automation, d",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -378,17 +620,6 @@
     "title": "JumpCloud - Customer Support Engineer, Tier 1 (MacOS and MDM) - India",
     "snippet": "",
     "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "JumpCloud",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/03189f4e-6bcb-42a9-ac40-463530cda0c1",
-    "title": "JumpCloud - Customer Support Engineer, Tier 1 (MacOS and MDM) - India",
-    "snippet": "Title: JumpCloud - Customer Support Engineer, Tier 1 (MacOS and MDM) - India ## Customer Support Engineer, Tier 1 (MacOS and MDM) - India. Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. ### About the role:. As a Customer Support Engineer - Tier 1 you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve high priority and mission critical customer issues in a fast-paced environment. As a Technical Support Engineer- Tier 1 you will apply your technical knowledge to resolve customer issues, and regularly interface across Support and Engineering to ensure the timely resolution of defects. * Manage a queue of support tickets for high priority and complex technical issues. * Collaborate with peers, escalation points, mentors, our knowledge base, community forums and other internal tools to provide the most effective, world-class solutions for our customers. * Maintain a technical understanding of the entire JumpCloud Platform. * Collaborate with Account Manager and Implementation Engineers to ensure the success of our new customers as they transition into the day to day use of our product. * Minimum of 1 year of experience in a technical, customer-facing position, preferably in a SaaS environment. * Minimum of 1 year of experience working with mission critical customer issues and customer and technical escalations. JumpCloud® is committed to being Remote First, meaning that you are able to work remotely within the country noted in the Job Description. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about.",
-    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "JumpCloud",
@@ -407,41 +638,19 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/97538cb6-c888-45f0-a835-734624531c12",
-    "title": "JumpCloud - Customer Support Associate - India",
-    "snippet": "Title: JumpCloud - Customer Support Associate - India Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. We help organizations around the globe eliminate complexity and turn AI risk into an optimized advantage, ensuring the right people and agents have secure access to the right resources at all times. ### **JumpCloud is Intelligent, Secure IT.**. ### About the role:. We are seeking inspired technology professionals who thrive on challenges and aspire to be part of a cutting-edge, cloud-based Directory Platform. As a Customer Support Associate, you will oversee daily inbound case queues and tooling, contribute to technical documentation, and engage directly with our customers to ensure their success. You will have the chance to expand your technical expertise and share your knowledge as we scale our global, world-class support team. You will collaborate with passionate team members to support an expanding worldwide user base. * A strong commitment to customer success through the effective utilization of Directory-as-a-Service software. JumpCloud® is committed to being Remote First, meaning that you are able to work remotely within the country noted in the Job Description. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. If you thrive working in a fast, SaaS-based environment and you are passionate about solving challenging technical problems, we look forward to hearing from you! You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about. All communication related to interviews and offers from our recruiters and hiring managers will come from official company email addresses (@jumpcloud.com) and will never ask for any payment, fee to be paid or purchases to be made by the job seeker.",
+    "discovery_url": "https://boards.greenhouse.io/flexport/jobs/6599777",
+    "title": "Jobs at Flexport",
+    "snippet": "Mumbai, India Recruiter Manila, Philippines; Singapore, Singapore ### Global Operations | Job |",
     "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "JumpCloud",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jobgether/02236d70-8052-460b-8719-46ef5c47222b",
-    "title": "Jobgether - Technical Support Specialist (PST/EST/CST Timezone)",
-    "snippet": "3+ years of professional experience in B2B software or technical customer support. ... Remote opportunity for professionals based in India. Opportunity to ...",
-    "source": "Google/searlo",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Jobgether",
+    "company": "Jobs at Flexport",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://jobs.lever.co/jobgether/f0441706-68f7-4b4e-b825-ee49cb173e09",
-    "title": "Jobgether - Social Media Customer Support Team Lead",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jobgether/7e9e7147-ad17-48b8-bc9f-1ee603fdba4e",
-    "title": "Jobgether - Senior Technical Customer Support Engineer",
+    "title": "Jobgether - Social Media Customer Support Team Lead - Lever",
     "snippet": "",
     "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
@@ -473,32 +682,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether/c1df6168-3c0f-4be1-b247-8c1715a23416",
-    "title": "Jobgether - Global Enablement Program Manager, Account Management & Customer Support - India",
-    "snippet": "## Global Enablement Program Manager, Account Management & Customer Support - India. We are currently looking for a Global Enablement Program Manager, Account Management & Customer Support in India.**. As a Global Enablement Program Manager, you will design and deliver targeted enablement initiatives for Account Managers (AMs) and Customer Success Managers (CSMs) across multiple regions. You will work at the intersection of training, coaching, and data-driven insights to strengthen team performance and drive customer adoption, retention, and expansion. The role requires collaboration with cross-functional teams including Sales, Customer Success, Product, and Marketing to ensure global consistency and scalability. You will create engaging onboarding programs, facilitate skill development, and provide ongoing coaching to improve account planning, customer advocacy, and expansion strategies. This is a remote-first role in India, offering the opportunity to influence global post-sales operations in a fast-growing SaaS environment. + Design and deliver onboarding and ongoing enablement programs for global AM and CSM teams supporting Commercial and Enterprise segments. + Develop and facilitate skill-development sessions focused on customer lifecycle excellence, including adoption, value realization, renewal, and expansion. + Provide 1:1 and small-group coaching to strengthen performance in relationship management, success planning, and expansion strategy. + Drive adoption of AM & CSM playbooks and processes to ensure consistent customer engagement and growth execution. + Collaborate cross-functionally to align enablement initiatives with customer lifecycle processes, marketing campaigns, and product launches. + Analyze performance and engagement metrics (renewal rate, expansion pipeline, NRR, adoption trends) to identify skill gaps and prioritize enablement programs. + 3+ years of experience in a post-sales customer-facing role, such as Account Manager, Customer Success Manager, or equivalent, in a Commercial or Enterprise B2B SaaS organization. + 1+ year of experience in Sales or Customer Success Enablement, training, coaching, or leadership with measurable impact. + Deep understanding of the post-sales customer lifecycle, including onboarding, adoption, success planning, renewal, and expansion. + Ability to work effectively in a remote, cross-functional, global team environment. + Opportunity to lead global enablement programs and influence post-sales performance. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/jobgether/939d924d-df61-4b3d-aeb1-1b94eba52f9b",
     "title": "Jobgether - Email Customer Support Team Lead - Lever",
     "snippet": "Email Customer Support Team Lead. India. Customer Success – Support /. Full-time /. Remote. apply for this job. This position is listed on behalf of a partner ...",
     "source": "Google/searlo",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jobgether/9ee9ca47-b873-46c1-aefb-b216f314454f",
-    "title": "Jobgether - Customer Support Representative I",
-    "snippet": "",
-    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -518,7 +705,7 @@
   },
   {
     "discovery_url": "https://jobs.lever.co/jobgether/8d263e58-50e0-475b-9952-d53efb1f88c3",
-    "title": "Jobgether - Customer Support Analyst",
+    "title": "Jobgether - Customer Support Analyst - Lever",
     "snippet": "",
     "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
@@ -550,28 +737,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.jobaaj.com/job/soci-t-g-n-rale-marocai-specialist-software-engineer-java-production-support-chennai-5-to-10-years-33391",
-    "title": "Java Technical Support Engineer - Remote Work | REF#284432",
-    "snippet": "BairesDev | Anywhere | LinkedIn | At BairesDev®, we've been leading the way in technology projects for over 15 years. We deliver cutting-edge solutions to giants like Google and the most innovative startups in Silicon Valley. Our diverse 4,000+ team, composed of the world's Top 1% of tech talent, works remotely on roles that drive significant impact worldwide. When you apply for this position, you're taking the first step in a process that goes beyond the ordinary. We aim to align your passions and skills with our vacancies, setting you on a path to exceptional career development and success. Java Technical Support Engineer at",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "BairesDev",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://callcenterjob.co.in/software-engineer-java-programming-ni733-chennai_837513",
-    "title": "Java Technical Support Engineer - Remote Work | REF#284432",
-    "snippet": "BairesDev | Anywhere | LinkedIn | At BairesDev®, we've been leading the way in technology projects for over 15 years. We deliver cutting-edge solutions to giants like Google and the most innovative startups in Silicon Valley. Our diverse 4,000+ team, composed of the world's Top 1% of tech talent, works remotely on roles that drive significant impact worldwide. When you apply for this position, you're taking the first step in a process that goes beyond the ordinary. We aim to align your passions and skills with our vacancies, setting you on a path to exceptional career development and success. Java Technical Support Engineer at",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "BairesDev",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://boards.greenhouse.io/point72/jobs/8236937002",
     "title": "It Operations Engineer, Application Support at Point72",
     "snippet": "",
@@ -579,17 +744,6 @@
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
     "company": "It Operations Engineer, Application Support at Point72",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/andurilindustries/jobs/5234138007",
-    "title": "IT Support Specialist, APAC at Andurilindustries",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "IT Support Specialist, APAC at Andurilindustries",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -607,22 +761,11 @@
   {
     "discovery_url": "https://jobs.lever.co/gohighlevel",
     "title": "HighLevel - Lever",
-    "snippet": "IndiaIndia Support Customer Support Apply Manager, Customer Escalations Remote. Product Strategy & Operations",
+    "snippet": "IndiaIndia Support Customer Support Apply Manager, Customer Escalations Remote — Technology Exec Office Technology Exec Office Apply Director, Product Strategy ...",
     "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "HighLevel",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://boards.greenhouse.io/neo4j/jobs/4706206006",
-    "title": "Graph database jobs | Career opportunities at Neo4j",
-    "snippet": "At Neo4j, we prioritize action over talk. When we commit to a project, deliverable, deadline, customer, or relationship, we follow through. If circumstances change, we take ownership and present a new plan to honor our original commitment. `(we)-[:DELIVER_ON]->(ourCommitments)` ## What we offer At Neo4j, we prioritize your well-being – physical, financial, and emotional. Our global benefits philosophy ensures a consistent, inclusive experience for our diverse team worldwide. We offer: [...] \"Neo4j is a problem-solver's paradise. Every day brings new challenges and opportunities for creativity. The work is never repetitive, and the passion of our team is contagious. With great autonomy and real-world impact, it's the ideal place for innovation.\" Tselmeg Basaan Software Engineer, Cluster team Kay Nair headshot [...] ## Grow your way At Neo4j, your growth is in your hands. Dive into challenging projects and embrace exciting initiatives. Our global team offers endless opportunities to expand your skills, whether coding cutting-edge features, strategizing with Fortune 500 customers, or speaking at international tech conferences. Here, your ideas matter, your impact is real, and your career path is limitless. Global Talent team offsite in Boston. ## Recognized for relationships",
-    "source": "Google/tavily",
-    "query": "site:boards.greenhouse.io India remote \"technical support\"",
-    "score": 100,
-    "company": "Graph database jobs | Career opportunities at Neo4j",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -649,10 +792,21 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://remoterush.mysmartpros.com/job/2085825",
+    "title": "Enterprise Onboarding Specialist - 100% Remote - North America",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | NOTE: This is a FULLY remote role, but the candidate must be within North America EST or CST time zones to collaborate with their team, peers, and internal customers. You do not have to be in the specific country or city shown in this listing, but reputed company only apply if you are physically based within North America EST or CST time zones. Trusted by 20,000+ property managers worldwide, reputed company is an industry leading, AI-powered reputed company rental management platform designed for professional short-term rental operators. reputed company brings everything reputed company for gr",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://boards.greenhouse.io/dominodatalab/jobs/7894258",
     "title": "Domino Data Lab open jobs - Puck",
-    "snippet": "IT Support Engineer. Remote Argentina, Remote India, Remote UK - General & Administrative ... Support. Senior Technical Support Engineer. Remote UK - Support.",
-    "source": "Google/searlo",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
     "company": "Domino Data Lab open jobs",
@@ -660,25 +814,14 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/destinationknot/99d2e9f5-e311-478b-b1c1-f85bc2b4609b",
-    "title": "Destination Knot - Travel Customer Support – Remote",
-    "snippet": "Title: Destination Knot - Travel Customer Support – Remote ## Travel Customer Support – Remote. Destination Knot is a growing travel agency dedicated to helping clients design stress-free and memorable travel experiences. We provide our team with training, resources, and ongoing support to thrive in the travel industry. We are hiring enthusiastic individuals in the UK to provide remote customer support for our clients. As a Travel Customer Support Representative, you will answer inquiries, assist with bookings, and ensure clients have a smooth planning experience. Respond to client questions via email, phone, and online platforms. Support travel bookings for holidays, flights, resorts, and cruises. Provide friendly, professional service throughout the client journey. Research and present travel options tailored to client preferences. Maintain client records accurately and securely. Excellent communication and interpersonal skills. Prior experience in customer service or travel is helpful but not required. Strong organizational and time-management abilities. Comfortable working independently in a remote setting. Must be 18+ with internet access and a computer. Performance-based incentives and recognition. Reward programs for outstanding contributions. Access to travel perks and discounts. $50,000 - $65,000 a year. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. Jobs powered by Lever logo.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "discovery_url": "https://remoterush.mysmartpros.com/job/2610536",
+    "title": "Director of Customer Onboarding – Remote Strategic Program Implementation, Client Success, and Cross‑Functional Leadership for arenaflex",
+    "snippet": "remotepromsp | Anywhere | Remote Jobs USA | About arenaflex arenaflex is a mission‑driven organization that partners with hospitals, health systems, and specialty clinics to deliver innovative, patient‑focused programs across the United States. Our purpose is to improve health outcomes by providing seamless, high‑value services that empower clinicians, patients, and payers alike. With a rapidly expanding portfolio of specialty initiatives, arenaflex is looking for a visionary leader who can translate strategic intent into flawless execution, ensuring every new program launches on time, on budget, and with the highest level of client sat",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
     "score": 100,
-    "company": "Destination Knot",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/destinationknot/e762212d-8117-45ae-9a46-0e7d9f9ad0bc",
-    "title": "Destination Careers - Remote | Travel Customer Support",
-    "snippet": "Title: Destination Careers - Remote | Travel Customer Support ## Remote | Travel Customer Support. Destination Knot is a growing travel agency dedicated to helping clients design stress-free and memorable travel experiences. We provide our team with training, resources, and ongoing support to thrive in the travel industry. We are hiring enthusiastic individuals in the UK to provide remote customer support for our clients. As a Travel Customer Support Representative, you will answer inquiries, assist with bookings, and ensure clients have a smooth planning experience. Respond to client questions via email, phone, and online platforms. Support travel bookings for holidays, flights, resorts, and cruises. Provide friendly, professional service throughout the client journey. Research and present travel options tailored to client preferences. Maintain client records accurately and securely. Excellent communication and interpersonal skills. Prior experience in customer service or travel is helpful but not required. Strong organizational and time-management abilities. Comfortable working independently in a remote setting. Must be 18+ with internet access and a computer. Performance-based incentives and recognition. Reward programs for outstanding contributions. Access to travel perks and discounts. $50,000 - $65,000 a year. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. Jobs powered by Lever logo.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Destination Careers",
-    "seed_type": "ATS Board Seed",
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -739,8 +882,8 @@
   {
     "discovery_url": "https://jobs.lever.co/fiscalnote/bcf6be4d-a409-4671-9e7e-84d71eff42b7/apply",
     "title": "Client Support Associate, Voter Voice - FiscalNote - Lever",
-    "snippet": "Client Support Associate, Voter Voice. Gurugram, Haryana. VoterVoice – 510 - Customer Support /. Full Time Employee /. Remote. Submit your application. Resume/ ...",
-    "source": "Google/searlo",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Client Support Associate, Voter Voice",
@@ -750,11 +893,33 @@
   {
     "discovery_url": "https://boards.greenhouse.io/udemy/jobs/640973",
     "title": "Careers | About Udemy",
-    "snippet": "Udemy is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, pregnancy, sexual orientation, gender identity, national origin, age, protected veteran status, or disability status. If you require a reasonable accommodation to apply for a Udemy position, please email (/cdn-cgi/l/email-protection#92e0f7f1e0e7fbe6fbfcf5f3f1f1fdfffffdf6f3e6fbfdfce1d2e7f6f7ffebbcf1fdff). [...] We have a global parental leave policy that applies to all new parents, inclusive of gender, family structure, or path to parenthood. Additionally, we provide extended bereavement leave, including support for pregnancy loss. ## Our Awards Builtin 2025 Best Places to Work Award Builtin 2025 Best Places to Work Award TIME - World's Top EdTech Companies 2024 TIME - World's Top EdTech Companies 2024 ## Our Locations Mumbai Mumbai Chennai Chennai ## Our Current Opportunities",
+    "snippet": "Udemy is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, pregnancy, sexual orientation, gender identity, national origin, age, protected veteran status, or disability status. If you require a reasonable accommodation to apply for a Udemy position, please email (/cdn-cgi/l/email-protection#92e0f7f1e0e7fbe6fbfcf5f3f1f1fdfffffdf6f3e6fbfdfce1d2e7f6f7ffebbcf1fdff). [...] We have a global parental leave policy that applies to all new parents, inclusive of gender, family structure, or path to parenthood. Additionally, we provide extended bereavement leave, including support for pregnancy loss. ## Our Awards Builtin 2025 Best Places to Work Award Builtin 2025 Best Places to Work Award TIME - World's Top EdTech Companies 2024 TIME - World's Top EdTech Companies 2024 ## Our Locations Mumbai Mumbai Chennai Chennai ## Our Current Opportunities [...] We will not consider applications sent to this email address. Know Your Rights | Pay Transparency Nondiscrimination E-Verify Logo E-Verify Logo ### Connect with us LinkedIn Button LinkedIn Button Facebook Button Facebook Button Twitter Button Twitter Button Instagram Button Instagram Button ## Choose a Language Udemy Udemy",
     "source": "Google/tavily",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
     "company": "Careers | About Udemy",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/figma/jobs/6112135004",
+    "title": "Careers at Figma",
+    "snippet": "Customer Operations and Support · Business Systems Analyst · Enterprise Support Specialist, Korean Speaking (London, United Kingdom) · Manager, Technical Support ( ...",
+    "source": "Google/search1",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Careers at Figma",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://boards.greenhouse.io/digicert/jobs/7071273002",
+    "title": "Careers at DigiCert",
+    "snippet": "At DigiCert, you experience cutting-edge vanguard technology use, holistic compensation and benefits, opportunities to both grow and lead, and a focus on environmental, social and governance. CARE is more than a value, it is our employer identity. We live and breathe Customer Obsession, Amazing Innovation, Relentless Execution and Exceptional Collaboration. Together we create exceptional products, delight our customers, and achieve extraordinary results. [...] digicert-logo Access analyst reports, data sheets, white papers, and expert guidance to build knowledge, solve complex challenges, and prepare for what’s next. Contact Us ## Choose your language Virtual Trust Summit: Get expert advice on building trust in AI Careers at DigiCert ###### Careers at DigiCert # Work you can value #### Become an integral part of building Intelligent Trust for the real world. CARE Culture Logo ## Our CARE commitment [...] If these culture drivers also motivate you, then align your values and career goals at DigiCert. We treasure your wellbeing and development as much as you do, and we invest accordingly. The evolution of your career accelerates here. ###### VIDEO ## Our values Trust starts here. We cultivate trust with each other and our customers to deliver innovative solutions for the digital world. ## Life at DigiCert",
+    "source": "Google/tavily",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
+    "score": 100,
+    "company": "Careers at DigiCert",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -770,9 +935,9 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://boards.greenhouse.io/6sense/jobs/8139159",
+    "discovery_url": "https://boards.greenhouse.io/6sense/jobs/8055700",
     "title": "Career Openings | 6sense",
-    "snippet": "location\\_onUnited States, Remote Remote Product Management Sr. Content Designer location\\_onPune, Maharashtra, India Hybrid Product Management Sr. Content Designer location\\_onBengaluru, Karnataka, India Hybrid Product Management Sr. Manager, R&D Operations location\\_onUnited States, Remote Remote Product Management Sr. Portfolio Program Manager - R&D location\\_onBengaluru, Karnataka, India Hybrid Product Management Staff Product Manager - Agentic Platform [...] Remote No open positions in this department at the moment. ### Engineering Engineering Manager, Engineering location\\_onBengaluru, Karnataka, India Hybrid Engineering Principal AI Architect, Agentic Platform location\\_onBengaluru, Karnataka, India Hybrid Engineering Software Engineer II location\\_onPune, Maharashtra, India Hybrid Engineering Sr. Software Engineer location\\_onSan Francisco, California, United States Hybrid Engineering Staff Software Engineer [...] Remote Sales Strategic Advertising Account Executive location\\_onUnited States, Remote Remote No open positions in this department at the moment. ### Finance Finance Manager , Accounts Payable location\\_onPune, Maharashtra, India Hybrid Finance VP, FP&A location\\_onUnited States, Remote Remote No open positions in this department at the moment. ### Customer Success Customer Success Manager, Customer Success - Upmarket location\\_onUnited States, Remote Remote",
+    "snippet": "Remote Sales Strategic Advertising Account Executive location\\_onUnited States, Remote Remote No open positions in this department at the moment. ### Engineering Engineering Fullstack Engineer III location\\_onBengaluru, Karnataka, India Hybrid Engineering Manager, Engineering location\\_onBengaluru, Karnataka, India Hybrid Engineering Principal AI Architect, Agentic Platform location\\_onBengaluru, Karnataka, India Hybrid Engineering Software Engineer II [...] Hybrid Product Management Product Lead, Predictive Platform location\\_onUnited States, Remote Remote Product Management Sr. Content Designer location\\_onPune, Maharashtra, India Hybrid Product Management Sr. Content Designer location\\_onBengaluru, Karnataka, India Hybrid Product Management Sr. Manager, R&D Operations location\\_onUnited States, Remote Remote Product Management Sr. Portfolio Program Manager - R&D location\\_onBengaluru, Karnataka, India Hybrid [...] Hybrid Product Management Staff Product Manager - Agentic Platform location\\_onUnited States, Remote Remote No open positions in this department at the moment. ### AI/ML Engineering AI/ML Engineering Sr. Machine Learning Engineer location\\_onSan Francisco, California, United States Hybrid No open positions in this department at the moment. ### Business Technology Business Technology Sr. Manager, Enterprise Analytics - G&A location\\_onBengaluru, Karnataka, India Hybrid",
     "source": "Google/tavily",
     "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
@@ -792,24 +957,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/aisle_and_abroad/7fa5ec97-a9a9-4cfc-af50-04ad14e9284d",
-    "title": "Aisles & Abroad - Remote | Entry Level | Customer Support Advisor",
-    "snippet": "## Remote | Entry Level | Customer Support Advisor ### Position Overview We are seeking a dependable and detail-oriented Remote Customer Support Specialist to assist with client communications and support coordination. This role focuses on managing incoming requests, organizing key details, and ensuring a smooth and responsive experience across all client interactions. [...] This is a fully remote, entry-level friendly position ideal for individuals who are organized, proactive, and comfortable working in a structured, service-focused environment. ### Key Responsibilities ### Requirements ### What We Offer ### Work Environment This is a remote role requiring a reliable internet connection and the ability to stay organized and productive in a virtual setting. Aisles & Abroad Home Page Lever logo",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "discovery_url": "https://workfinity.liveblog365.com/job/application-support-engineer-2",
+    "title": "Application Support Engineer",
+    "snippet": "Cresta | Anywhere | Workfinity | Cresta unlocks the true potential of the customer experience, turning every conversation into a competitive advantage. Cresta’s unified AI platform combines conversational AI agents, real-time human agent augmentation, and comprehensive conversation intelligence to drive revenue and efficiency gains across every channel. The world’s leading companies, including United Airlines, Cox Communications, and Marriott, use Cresta to power world-class customer experiences every day. Born from the Stanford AI Lab, Cresta has raised more than $270 million from the world’s leading investors, including a16",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical support support engineer product support India remote",
     "score": 100,
-    "company": "Aisles & Abroad",
-    "seed_type": "ATS Board Seed",
+    "company": "Cresta",
+    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/aisle_and_abroad/35b0e64b-db1b-4ea8-8bd8-cf8e6c54b312",
-    "title": "Aisles & Abroad - Customer Support Coordinator | Remote",
-    "snippet": "Title: Aisles & Abroad - Customer Support Coordinator | Remote ## Customer Support Coordinator | Remote. ### **Position Overview**. We are seeking a dependable and service-oriented **Customer Support Coordinator** to provide client assistance, manage support requests, and help coordinate scheduling and service-related activities in a remote environment. This position focuses on communication, organization, and delivering a positive client experience. This role is ideal for individuals who are detail-oriented, responsive, and comfortable working independently using digital tools. ### Key Responsibilities. * Respond to client inquiries and provide timely, professional support. * Assist with coordinating scheduling, reservations, and service requests. * Maintain accurate client records and support documentation in internal systems. * Communicate with clients via email, phone, and online platforms. * Track and follow up on open requests to ensure resolution. * Review service details and confirmations for accuracy. * Provide general administrative and customer support. * Collaborate with internal teams to ensure a smooth client experience. ### Qualifications:. * Strong written and verbal communication skills. * Excellent organizational skills and attention to detail. * Comfortable using online systems and customer support tools. * Ability to manage multiple tasks in a remote environment. * Customer service or administrative experience preferred. * Reliable internet access and ability to work remotely. ### Preferred (Not Required). * Experience in customer service, coordination, or administrative support. * Interest in travel, hospitality, or event-related services. ### What We Offer. * Step-by-step onboarding and ongoing support. * Opportunities for growth and advancement based on performance. * Supportive and collaborative team environment. $45,000 - $75,000 a year. ### **Work Environment**. This is a remote role requiring a reliable internet connection and the ability to stay organized and self-directed in a virtual workspace. ### **Apply Today**. If you enjoy helping clients stay organized and ensuring booking details are handled efficiently, we encourage you to apply. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. Jobs powered by Lever logo.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "discovery_url": "https://boards.greenhouse.io/gravitonresearchcapital/jobs/8185148002",
+    "title": "Application Reliability Engineer at Gravitonresearchcapital",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 100,
-    "company": "Aisles & Abroad",
+    "company": "Application Reliability Engineer at Gravitonresearchcapital",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -825,14 +990,47 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.shine.com/job-search/technical-support-jobs-in-work-from-home-remote",
-    "title": "Work From Home Technical Support Remote Jobs - 167,340 Work ...",
-    "snippet": "Explore Work From Home Technical Support Remote Job Vacancies at Shine.com. Discover 167,340 Work From Home Technical Support Remote openings in top companies. Apply now and land your dream job.",
-    "source": "Google/serper",
-    "query": "\"technical support\" India \"remote\" careers -linkedin -indeed -glassdoor",
-    "score": 95,
-    "company": "Work From Home Technical Support Remote Jobs",
-    "seed_type": "Google Job Page",
+    "discovery_url": "https://remoteworld.mysmartpros.com/job/senior-customer-onboarding-migration-manager-remote-driving-seamless-global-implementation-stakeholder-success-at-arenaflex",
+    "title": "**Senior Customer Onboarding & Migration Manager – Remote – Driving Seamless Global Implementation & Stakeholder Success at arenaflex**",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | --- About arenaflex Welcome to arenaflex, a trailblazer in the travel technology arena that empowers businesses worldwide to transform how they plan, book, and experience travel. With a mission to make travel smarter, safer, and more sustainable, arenaflex blends cutting‑edge software, data analytics, and human expertise to deliver end‑to‑end solutions for corporate travelers, travel agencies, and hospitality partners. Our culture is built on curiosity, collaboration, and a relentless focus on customer impact. Whether you’re a seasoned industry veteran or an ambitious newcomer, arenaflex offer",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://flexrecruit.liveblog365.com/remote-jobs/associate-customer-success-manager-france-benelux-driving-global-payroll-hr-solutions-at-nexahire",
+    "title": "**Senior Customer Onboarding & Migration Manager – Remote – Driving Seamless Global Implementation & Stakeholder Success at arenaflex**",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | --- About arenaflex Welcome to arenaflex, a trailblazer in the travel technology arena that empowers businesses worldwide to transform how they plan, book, and experience travel. With a mission to make travel smarter, safer, and more sustainable, arenaflex blends cutting‑edge software, data analytics, and human expertise to deliver end‑to‑end solutions for corporate travelers, travel agencies, and hospitality partners. Our culture is built on curiosity, collaboration, and a relentless focus on customer impact. Whether you’re a seasoned industry veteran or an ambitious newcomer, arenaflex offer",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://us.remotejobs.dedyn.io/job/customer-success-manager-reputed-company-it-2-19",
+    "title": "**Senior Customer Onboarding & Migration Manager – Remote – Driving Seamless Global Implementation & Stakeholder Success at arenaflex**",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | --- About arenaflex Welcome to arenaflex, a trailblazer in the travel technology arena that empowers businesses worldwide to transform how they plan, book, and experience travel. With a mission to make travel smarter, safer, and more sustainable, arenaflex blends cutting‑edge software, data analytics, and human expertise to deliver end‑to‑end solutions for corporate travelers, travel agencies, and hospitality partners. Our culture is built on curiosity, collaboration, and a relentless focus on customer impact. Whether you’re a seasoned industry veteran or an ambitious newcomer, arenaflex offer",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://hirefast.g8r.social-networking.me/remote-jobs/senior-customer-success-manager-professional-employer-organization-peo-global-payroll-hr-solutions",
+    "title": "**Senior Customer Onboarding & Migration Manager – Remote – Driving Seamless Global Implementation & Stakeholder Success at arenaflex**",
+    "snippet": "vmysmartpros | Anywhere | USA Remote Jobs Mysmartpros | --- About arenaflex Welcome to arenaflex, a trailblazer in the travel technology arena that empowers businesses worldwide to transform how they plan, book, and experience travel. With a mission to make travel smarter, safer, and more sustainable, arenaflex blends cutting‑edge software, data analytics, and human expertise to deliver end‑to‑end solutions for corporate travelers, travel agencies, and hospitality partners. Our culture is built on curiosity, collaboration, and a relentless focus on customer impact. Whether you’re a seasoned industry veteran or an ambitious newcomer, arenaflex offer",
+    "source": "Google Jobs/SerpApi",
+    "query": "implementation onboarding customer experience India remote",
+    "score": 100,
+    "company": "vmysmartpros",
+    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -844,6 +1042,17 @@
     "score": 95,
     "company": "Urgent: Remote tech support Jobs in India",
     "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://candidateportal.ceipal.com/job-details/y490dePnHceDiVb39g2z-4PC6nuIrX1OqrduGZlqmtI",
+    "title": "Technical Customer Support Engineer II – Product-Based IT ...",
+    "snippet": "Position: Technical Customer Support Engineer II (Technical Solutions / Support) ; Location: Remote (India) ; Experience: 5+ Years ...",
+    "source": "Google/serper",
+    "query": "site:*.ceipal.com India \"customer support\"",
+    "score": 95,
+    "company": "Technical Customer Support Engineer II – Product-Based IT ...",
+    "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
@@ -860,7 +1069,7 @@
   {
     "discovery_url": "https://in.jooble.org/jobs-remote-technical-support/India",
     "title": "Remote technical support jobs in India - Jooble",
-    "snippet": "Apply for Remote technical support jobs in India. Explore 30.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs. Fast & Free. Top employers in India. Remote technical support jobs is easy to find. Start your new career right now!",
+    "snippet": "Apply for Remote technical support jobs in India. Explore 35.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs. Fast & Free. Top employers in India. Remote technical support jobs is easy to find. Start your new career right now!",
     "source": "Google/serper",
     "query": "\"technical support\" India \"remote\" careers -linkedin -indeed -glassdoor",
     "score": 95,
@@ -891,6 +1100,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://scrut.keka.com/careers/jobdetails/161533",
+    "title": "Product Support Engineer",
+    "snippet": "Title: Product Support EngineerLocation: India (Remote)Shift: Business Hours (24×5 coverage, Rotational)ROLE OVERVIEWAs a Product Support Engineer at Scrut, you will own end-to-end resolution of complex product issues — from triaging tickets to analysing platform behaviour and collaborating with Engineering and Product teams. This role combines deep technical problem-solving with strong ...",
+    "source": "Google/serper",
+    "query": "\"product support\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "score": 95,
+    "company": "Product Support Engineer",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://candidateportalnew.ceipal.com/job-details/pbcj9WNlm5tesNJb2baU7_yNCq1HB4T0Dae5jOi3hfA",
     "title": "Product Specialist - Customer Support",
     "snippet": "TSPL - 25701 - Product Specialist - Customer Support. [Chennai, TN, 600031], India. 1 - 6 Years. N/A. Posted 11 months ago. We are no longer accepting new ...",
@@ -898,17 +1118,6 @@
     "query": "site:*.ceipal.com India \"customer support\"",
     "score": 95,
     "company": "Product Specialist",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://emp.jobylon.com/jobs/371749-basware-manager-customer-support",
-    "title": "Manager, Customer Support - Basware",
-    "snippet": "Customer Support provides professional, efficient and effective technical support to Basware customers/partners in a manner that further enhances customer ...",
-    "source": "Google/serper",
-    "query": "site:*.jobylon.com India \"customer support\"",
-    "score": 95,
-    "company": "Manager, Customer Support",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -924,24 +1133,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://emp.jobylon.com/jobs/386486-basware-inside-sales-executive",
-    "title": "Inside Sales Executive - Basware",
-    "snippet": "\"Absolutely the best colleagues and line managers in the world!\" Jaakko Jutila - VP, Customer Support ... We have been recognized as a Great Place to Work® in ...",
-    "source": "Google/serper",
-    "query": "site:*.jobylon.com India \"customer support\"",
+    "discovery_url": "https://boards.greenhouse.io/embed/job_app",
+    "title": "Job Application for Customer Support Associate at Workstream",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:boards.greenhouse.io India remote \"technical support\"",
     "score": 95,
-    "company": "Inside Sales Executive",
-    "seed_type": "Google Career Page",
+    "company": "Job Application for Customer Support Associate at Workstream",
+    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://candidateportalnew.ceipal.com/job-details/CVjCHHcNPohOkuyvUCjzP_YNpO6DyaGYkBypFFEeAY0",
-    "title": "Customer Support IT Hardware Engineer (Field Support)",
-    "snippet": "Arminus - 6411 - Customer Support IT Hardware Engineer (Field Support). [bangalore], [delhi], [pune], India. 1 - 3 Years. Full Time. Posted 1 week ago.",
+    "discovery_url": "https://candidateportalnew.ceipal.com/job-details/hJ4v7N5h3d79J-aJWJUCE1gHg3WI3rSBTpN87OmGN1g",
+    "title": "Customer Support Rep-IC2",
+    "snippet": "TSPL - 27300 - Customer Support Rep-IC2. [Hyderabad, AP], India. 3 - 5 Years. N/A. Posted 7 months ago. We are no longer accepting new profiles for this ...",
     "source": "Google/serper",
     "query": "site:*.ceipal.com India \"customer support\"",
     "score": 95,
-    "company": "Customer Support IT Hardware Engineer (Field Support)",
+    "company": "Customer Support Rep-IC2",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -979,17 +1188,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://candidateportalnew.ceipal.com/job-details/MsnNX4X46Eh5TpguCq4Q--dwI-YsZbS8cnS_GGiQikw",
-    "title": "Customer Support Back-Office Executive",
-    "snippet": "Job Title: Customer Support Back-Office Executive. Job Location. Pune/ Bangalore/Delhi ((Office-based role)/). Show more. Contact Information.",
-    "source": "Google/serper",
-    "query": "site:*.ceipal.com India \"customer support\"",
-    "score": 95,
-    "company": "Customer Support Back-Office Executive",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://candidateportalnew.ceipal.com/job-details/6hkygku15zxP5pnKG8zWHn6ucPOxaABdPnBTg0cv7Go",
     "title": "Customer Support Back-Office Executive",
     "snippet": "Job Title: Customer Support Back-Office Executive. Job Location. Pune/ Bangalore/Delhi ((Office-based role)/). Show more.",
@@ -1023,6 +1221,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://flexremote.in/jobs_by_category/Customer%20Success",
+    "title": "Customer Success Remote Jobs",
+    "snippet": "Customer Success Remote Jobs. Browse verified remote Customer Success opportunities from top companies worldwide. Work from anywhere. 12,400+Remote Jobs.",
+    "source": "Google/serper",
+    "query": "\"customer success\" India \"remote\" careers -linkedin -indeed -glassdoor",
+    "score": 95,
+    "company": "Customer Success Remote Jobs",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://builtin.com/job/customer-success-manager-global-remote-saas/9650254",
     "title": "Customer Success Manager (Global Remote | SaaS)",
     "snippet": "Passion.io is hiring for a Remote Customer Success Manager (Global Remote | SaaS) in Toronto, ON, CAN. Find more details about the job and how to apply at Built",
@@ -1034,35 +1243,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://emp.jobylon.com/jobs/302210-basware-apprentice-basware-apprentice-elevate-program-under-nats",
-    "title": "Basware Apprentice Elevate Program (Under NATS)",
-    "snippet": "\"Absolutely the best colleagues and line managers in the world!\" Jaakko Jutila - VP, Customer Support. Jaakko Jutila. VP, Customer Support. \"At Basware you ...",
+    "discovery_url": "https://www.weekday.works/jobs/technical-product-support-jobs-in-india-remote",
+    "title": "480+ Remote Technical & Product Support Jobs in India",
+    "snippet": "Browse 487 remote technical & product support jobs in India. 86 new this week. Compare salary, experience and work mode, and apply free on Weekday.",
     "source": "Google/serper",
-    "query": "site:*.jobylon.com India \"customer support\"",
+    "query": "\"technical support\" India \"remote\" careers -linkedin -indeed -glassdoor",
     "score": 95,
-    "company": "Basware Apprentice Elevate Program (Under NATS)",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://emp.jobylon.com/companies/1689-basware",
-    "title": "Basware",
-    "snippet": "Customer Support provides professional, efficient and effective technical ... India program aimed at building future-ready talent through real-time ...",
-    "source": "Google/serper",
-    "query": "site:*.jobylon.com India \"customer support\"",
-    "score": 95,
-    "company": "Basware",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://emp.jobylon.com/jobs/375862-basware-associate-cloud-operations-engineer",
-    "title": "Associate Cloud Operations Engineer - Basware",
-    "snippet": "\"Absolutely the best colleagues and line managers in the world!\" Jaakko Jutila - VP, Customer Support. Jaakko Jutila. VP, Customer Support. \"At Basware you ...",
-    "source": "Google/serper",
-    "query": "site:*.jobylon.com India \"customer support\"",
-    "score": 95,
-    "company": "Associate Cloud Operations Engineer",
+    "company": "480+ Remote Technical & Product Support Jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
