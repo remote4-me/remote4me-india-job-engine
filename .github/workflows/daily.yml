@@ -217,6 +217,10 @@ jobs:
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
+          JOBVETTA_API_KEY: ${{ secrets.JOBVETTA_API_KEY }}
+          JOBVETTA_DAILY_QUERIES: "4"
+          JOBVETTA_DAYS: "14"
+          JOBVETTA_DETAIL_BUDGET: "20"
           JOA_DAILY_RECORD_BUDGET: "28"
           JOA_PAGE_SIZE: "10"
           HIMALAYAS_MAX_PAGES: "3"
