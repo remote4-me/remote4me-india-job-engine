@@ -1,6 +1,6 @@
-# Remote4.me V12 — Direct Job + India ATS + JS Career Crawler
+# Remote4.me V13.7 — India-Only Support Job Discovery Crawler
 
-India-first Customer Support / Customer Success / Technical Support crawler.
+India-only Customer Support / Customer Success / Technical Support crawler. It searches nationwide across Indian cities and supports eligible India-wide remote roles; it does not intentionally collect US jobs.
 
 ## Sources
 
@@ -14,6 +14,7 @@ India-first Customer Support / Customer Success / Technical Support crawler.
 - Remote OK
 - Startup Jobs
 - Job Opportunities API
+- Jobvetta (India-wide support-role search; 4 rotating queries/day by default, within its 50-request daily quota)
 - RemoteJobs.org / optional Adzuna / Jooble when configured
 
 Feed results are never accepted as final JOBS URLs when the URL remains an aggregator. The crawler attempts to resolve them to an ATS/employer URL and drops unresolved aggregator URLs.
@@ -51,6 +52,7 @@ The API query is restricted to India, remote/hybrid, live roles, ATS/company-car
 - `GOOGLE_SHEET_ID`
 - `STARTUP_JOBS_API_KEY`
 - `JOB_OPPORTUNITIES_API_KEY`
+- `JOBVETTA_API_KEY` (optional; add from Jobvetta dashboard)
 
 ## Daily workflow
 
@@ -61,3 +63,24 @@ The career job installs Chromium only for the Playwright fallback.
 ## Important source policy
 
 Himalayas, Startup Jobs, Remotive, Jobicy, Remote OK and WWR have their own attribution/usage requirements. V12 treats them as discovery sources and prefers the employer/ATS URL. If a direct employer/ATS URL cannot be resolved, the aggregator URL is excluded from JOBS.
+
+### Jobvetta India-wide coverage
+
+The daily feeds job rotates four nationwide support-related searches (no city restriction) and requests up to 10 records per query, for a maximum of 40 search results/day. It performs at most 20 optional detail lookups/day to recover full descriptions and employer/ATS links while staying below the 50-call daily limit under normal use. It only accepts jobs explicitly marked Remote or Hybrid, rejects unknown work models, and treats Jobvetta-hosted pages as discovery leads unless an external employer/ATS URL is explicitly present in the API response. The API key stays in GitHub Secrets.
+
+### LinkedIn and Indeed
+
+The crawler does not log in to or directly scrape LinkedIn/Indeed pages, bypass CAPTCHAs, or evade access controls. Search discovery is aimed at employer career pages and ATS listings so the final job URL can be verified at the source. Use official/licensed APIs or written permission if you want direct ingestion from either platform.
+
+
+## Applying this upgrade to an existing private repository
+
+This ZIP is an **overlay** for your existing repository, not a replacement for the entire repository. Copy `crawler.py` to the repository root and `.github/workflows/daily.yml` to `.github/workflows/daily.yml`. Keep your existing `requirements.txt`, `config/` files, discovery manifests, and other source files. Review the diff before committing.
+
+## Required setup
+
+Add `JOBVETTA_API_KEY` as a GitHub Actions repository secret if you have a Jobvetta API key. It is optional; the crawler skips Jobvetta when the secret is absent. Keep all API keys in GitHub Secrets, never hard-code them in the source.
+
+## Verification status
+
+The delivered Python file passed `py_compile`, and the workflow YAML parsed successfully. This does not replace a live GitHub Actions run: API responses and credentials must be verified in your repository.

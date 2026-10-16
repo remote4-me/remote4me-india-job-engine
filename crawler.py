@@ -70,6 +70,10 @@ SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID", "")
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS", "")
 STARTUP_JOBS_API_KEY = os.environ.get("STARTUP_JOBS_API_KEY", "").strip()
 JOB_OPPORTUNITIES_API_KEY = os.environ.get("JOB_OPPORTUNITIES_API_KEY", "").strip()
+JOBVETTA_API_KEY = os.environ.get("JOBVETTA_API_KEY", "").strip()
+JOBVETTA_DAILY_QUERIES = max(0, min(8, int(os.environ.get("JOBVETTA_DAILY_QUERIES", "4"))))
+JOBVETTA_DAYS = max(1, min(365, int(os.environ.get("JOBVETTA_DAYS", "14"))))
+JOBVETTA_DETAIL_BUDGET = max(0, min(40, int(os.environ.get("JOBVETTA_DETAIL_BUDGET", "20"))))
 # Search/discovery APIs. Keys are supplied only through GitHub Actions Secrets.
 SERPER_API_KEY = os.environ.get("SERPER_API_KEY", "").strip()
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "").strip()
@@ -1003,6 +1007,7 @@ AGGREGATOR_HOSTS = {
     "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com",
     "remotejobs.org", "weworkremotely.com", "remotive.com",
     "arbeitnow.com", "workingnomads.com", "jobopportunitiesapi.org",
+    "jobvetta.com",
 }
 
 def is_aggregator_host(host):
@@ -1028,6 +1033,178 @@ def feed_recent_enough(posted):
 # ============================================================
 # PUBLIC API SOURCES
 # ============================================================
+
+def fetch_jobvetta():
+    """India-wide support-job discovery from Jobvetta's documented API.
+
+    The API has a shared limit of 50 requests per key per UTC day and returns
+    at most 10 records per request. We intentionally use four rotating
+    national keyword searches (40 maximum records/day), without a city filter,
+    so the search covers all India rather than only a handful of metros.
+
+    Jobvetta-hosted URLs are discovery links, not treated as employer apply
+    links. A record enters the direct jobs queue only if the API explicitly
+    supplies an external employer/ATS/application URL.
+    """
+    if not JOBVETTA_API_KEY:
+        print("Jobvetta: JOBVETTA_API_KEY not configured; skipping")
+        return []
+    if JOBVETTA_DAILY_QUERIES <= 0:
+        print("Jobvetta: daily query budget is zero; skipping")
+        return []
+
+    terms = [
+        "customer support", "customer service", "customer success",
+        "technical support", "product support", "support engineer",
+        "support specialist", "customer experience", "customer care",
+        "IT support", "help desk", "service desk", "application support",
+        "SaaS support", "platform support", "client support",
+        "technical account manager", "customer onboarding", "implementation specialist",
+        "customer operations", "customer adoption", "customer enablement",
+        "customer retention", "escalation specialist", "payments support",
+        "trust and safety", "chat support", "email support", "contact center",
+        "support analyst", "support team lead", "customer success manager",
+        "technical support engineer", "product support specialist",
+        "customer support executive", "service delivery", "merchant support",
+        "developer support", "integration support", "L1 support", "L2 support",
+    ]
+    day = datetime.now(timezone.utc).date().toordinal()
+    start = (day * JOBVETTA_DAILY_QUERIES) % len(terms)
+    selected = [terms[(start + i) % len(terms)] for i in range(JOBVETTA_DAILY_QUERIES)]
+    headers = {"Authorization": f"Bearer {JOBVETTA_API_KEY}", "Accept": "application/json"}
+    jobs = []
+    seen = set()
+    detail_calls = 0
+
+    def external_url(record):
+        for field in ("apply_url", "application_url", "employer_url", "source_url",
+                      "original_url", "source_link", "career_url", "external_url", "job_url", "url"):
+            candidate = clean_text(record.get(field))
+            if not candidate.startswith(("https://", "http://")):
+                continue
+            host = urlparse(candidate).netloc.lower().split(":", 1)[0].lstrip("www.")
+            if host and not (host == "jobvetta.com" or host.endswith(".jobvetta.com")):
+                return candidate
+        return ""
+
+    for term in selected:
+        params = {"q": term, "days": JOBVETTA_DAYS, "limit": 10}
+        try:
+            response = SESSION.get(
+                "https://api.jobvetta.com/v1/jobs", params=params,
+                headers=headers, timeout=25,
+            )
+        except requests.RequestException as exc:
+            print(f"Jobvetta [{term}]: request error: {type(exc).__name__}: {exc}")
+            continue
+
+        remaining = response.headers.get("X-RateLimit-Remaining", "unknown")
+        if response.status_code == 401:
+            print("Jobvetta: HTTP 401; verify JOBVETTA_API_KEY")
+            break
+        if response.status_code == 429:
+            print(f"Jobvetta: rate limit reached (Retry-After={response.headers.get('Retry-After', 'unknown')}); stopping")
+            break
+        if response.status_code != 200:
+            print(f"Jobvetta [{term}]: HTTP {response.status_code}; skipping this query")
+            continue
+        try:
+            payload = response.json()
+        except ValueError:
+            print(f"Jobvetta [{term}]: invalid JSON; skipping")
+            continue
+
+        records = payload.get("jobs", []) if isinstance(payload, dict) else []
+        accepted = 0
+        for item in records:
+            if not isinstance(item, dict):
+                continue
+            title = clean_text(item.get("title") or item.get("normalized_title"))
+            if not title_relevant(title):
+                continue
+            job_id = clean_text(item.get("job_id") or item.get("id"))
+            if job_id and job_id in seen:
+                continue
+            if job_id:
+                seen.add(job_id)
+
+            # Full detail records may expose the employer's original apply URL
+            # and fuller location/work-model data. Keep a daily cap to protect
+            # Jobvetta's shared 50-call quota (4 searches + at most 20 details).
+            if job_id and not external_url(item) and detail_calls < JOBVETTA_DETAIL_BUDGET:
+                try:
+                    detail_response = SESSION.get(
+                        "https://api.jobvetta.com/v1/jobs/" + quote(job_id, safe=""),
+                        headers=headers, timeout=20,
+                    )
+                    detail_calls += 1
+                    if detail_response.status_code == 200:
+                        detail_payload = detail_response.json()
+                        if isinstance(detail_payload, dict):
+                            detail = detail_payload.get("job") if isinstance(detail_payload.get("job"), dict) else detail_payload
+                            # Preserve search summary values, while filling missing fields from detail.
+                            item = {**detail, **item}
+                    elif detail_response.status_code == 429:
+                        print("Jobvetta: detail lookup rate-limited; stopping further detail lookups")
+                        detail_calls = JOBVETTA_DETAIL_BUDGET
+                except (requests.RequestException, ValueError) as exc:
+                    print(f"Jobvetta detail [{job_id}]: {type(exc).__name__}; continuing without details")
+
+            desc = clean_text(item.get("description") or item.get("summary") or item.get("snippet"))
+            loc = clean_text(item.get("location"))
+            country = clean_text(item.get("country") or item.get("country_code") or "India")
+            # The API documents its index as India-only. Preserve the city and
+            # normalize country context so downstream India eligibility checks
+            # do not discard city-only labels such as "Bengaluru, Karnataka".
+            if not INDIA_REGEX.search(loc) and not INDIA_CITY_REGEX.search(loc):
+                loc = f"{loc}, India".strip(", ") if loc else "India"
+            model = clean_text(item.get("work_model") or item.get("workplace") or item.get("workplace_type")).lower()
+            if "remote" in model or REMOTE_RE.search(loc):
+                workplace = "Remote"
+            elif "hybrid" in model or HYBRID_RE.search(loc):
+                workplace = "Hybrid"
+            else:
+                # Do not assume an unspecified work model is remote.
+                continue
+            if not allowed_india(loc, "IN", "India", desc, workplace):
+                continue
+            posted_raw = item.get("created_at") or item.get("posted_at") or item.get("date_posted") or item.get("posted_date")
+            if isinstance(posted_raw, (int, float)):
+                try:
+                    posted = datetime.fromtimestamp(posted_raw, tz=timezone.utc).date().isoformat()
+                except (ValueError, OSError, OverflowError):
+                    posted = ""
+            else:
+                posted = parse_date(posted_raw)
+            if not feed_recent_enough(posted):
+                continue
+
+            # Prefer a documented external application/employer URL if supplied.
+            # The documented `url` may be a Jobvetta-hosted detail page; that is
+            # retained as a discovery lead rather than falsely called direct.
+            direct_url = external_url(item)
+            listing_url = clean_text(item.get("url"))
+            link = direct_url or listing_url
+            if not link:
+                continue
+            company = clean_text(item.get("company") or item.get("company_name"))
+            score, matched = score_job(title, desc, loc)
+            record = {
+                "added": datetime.now(timezone.utc).date().isoformat(),
+                "title": title, "company": company, "location": loc,
+                "workplace": workplace, "posted_date": posted,
+                "job_url": normalize_url(link) or link,
+                "source": "Jobvetta" + ("->Employer/ATS" if direct_url else "->Discovery"),
+                "score": score, "matched": matched,
+                "direct": bool(direct_url),
+                "eligibility": "India-specific",
+            }
+            jobs.append(record)
+            accepted += 1
+        print(f"Jobvetta [{term}]: records={len(records)} relevant_remote_hybrid={accepted}; rate_remaining={remaining}")
+    print(f"Jobvetta: detail lookups used={detail_calls}/{JOBVETTA_DETAIL_BUDGET}; search budget={JOBVETTA_DAILY_QUERIES} calls")
+    return jobs
+
 
 def fetch_jobicy():
     """Broad Jobicy discovery feed. No key is required.
@@ -6295,6 +6472,7 @@ def feed_direct_only():
     review. Employer/ATS-direct sources continue straight to JOBS.
     """
     feeds = [
+        ("Jobvetta", fetch_jobvetta),
         ("Himalayas", fetch_himalayas),
         ("Arbeitnow", fetch_arbeitnow),
         ("Working Nomads", fetch_working_nomads),
@@ -6475,7 +6653,7 @@ def normalize_identity(j):
 
 
 def merge_direct_jobs(jobs):
-    blocked={"himalayas.app","startup.jobs","jobicy.com","remoteok.com","remotejobs.org","wellfound.com","cutshort.io","weworkremotely.com","remotive.com","arbeitnow.com","workingnomads.com","jobopportunitiesapi.org"}
+    blocked={"himalayas.app","startup.jobs","jobicy.com","remoteok.com","remotejobs.org","wellfound.com","cutshort.io","weworkremotely.com","remotive.com","arbeitnow.com","workingnomads.com","jobopportunitiesapi.org","jobvetta.com"}
     unique={}
     rejected_scam=0
     rejected_location=0
@@ -6901,6 +7079,7 @@ def main_v11():
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
     print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
     print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
+    print(f"Jobvetta API: {'configured' if JOBVETTA_API_KEY else 'NOT configured'} (national query budget={JOBVETTA_DAILY_QUERIES}, max 10 results/query, days={JOBVETTA_DAYS})")
     print("External fallbacks: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none")
     print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
     print("Search discovery: " + ", ".join([x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]) or "none")
