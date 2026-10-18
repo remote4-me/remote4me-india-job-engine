@@ -12,7 +12,7 @@ from urllib import robotparser
 from datetime import datetime, timezone, timedelta
 from email.utils import parsedate_to_datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from urllib.parse import urlparse, urljoin, quote, unquote
+from urllib.parse import urlparse, urljoin, quote, unquote, parse_qsl, urlencode
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
@@ -28,8 +28,8 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V14.3
-# INDIA-FIRST / NO PAID SEARCH API
+# REMOTE4.ME JOB CRAWLER V14.6
+# INDIA-FIRST / EXPANDED ATS + CAREER PAGE DISCOVERY
 # ============================================================
 #
 # Goal:
@@ -95,6 +95,8 @@ GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER = max(1, int(os.environ.get("GOOGLE_DISCOV
 GOOGLE_DISCOVERY_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("GOOGLE_DISCOVERY_RESULTS_PER_QUERY", "10"))))
 GOOGLE_DISCOVERY_ROTATION_DAYS = max(1, int(os.environ.get("GOOGLE_DISCOVERY_ROTATION_DAYS", "1")))
 GOOGLE_DISCOVERY_WORKERS = max(2, int(os.environ.get("GOOGLE_DISCOVERY_WORKERS", "12")))
+JOB_BOARD_QUERIES_PER_RUN = max(1, min(12, int(os.environ.get("JOB_BOARD_QUERIES_PER_RUN", "4"))))
+JOB_BOARD_ROTATION_DAYS = max(1, int(os.environ.get("JOB_BOARD_ROTATION_DAYS", "1")))
 GOOGLE_JOBS_ENABLED = os.environ.get("GOOGLE_JOBS_ENABLED", "1").lower() not in {"0", "false", "no"}
 GOOGLE_JOBS_MAX_QUERIES_PER_DAY = max(1, int(os.environ.get("GOOGLE_JOBS_MAX_QUERIES_PER_DAY", "2")))
 GOOGLE_JOBS_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("GOOGLE_JOBS_RESULTS_PER_QUERY", "10"))))
@@ -584,6 +586,32 @@ ATS_DOMAINS = {
     "Crelate": [
         "crelate.com",
     ],
+    # Additional public ATS / career systems discovered from company pages.
+    "RecruitCRM": ["recruitcrm.io", "recruitcrm.com"],
+    "Recruiterbox": ["recruiterbox.com"],
+    "Teamtailor": ["teamtailor.com"],
+    "Recruitee": ["recruitee.com"],
+    "Pinpoint": ["pinpointhq.com"],
+    "Comeet": ["comeet.com"],
+    "Join": ["join.com"],
+    "Personio": ["jobs.personio.de", "jobs.personio.com", "personio.com"],
+    "Breezy HR": ["breezy.hr"],
+    "BambooHR": ["bamboohr.com"],
+    "Rippling": ["ats.rippling.com", "rippling.com"],
+    "Fountain": ["fountain.com", "apply.fountain.com"],
+    "Jobylon": ["jobylon.com"],
+    "TalentLyft": ["talentlyft.com"],
+    "Manatal": ["jobs.manatal.com", "manatal.com"],
+    "CEIPAL": ["ceipal.com"],
+    "Avature": ["avature.net"],
+    "Eightfold": ["eightfold.ai"],
+    "Phenom": ["phenompeople.com", "careers.phenom.com", "phenom.com"],
+    "Oracle Recruiting": ["oraclecloud.com", "ocs.oraclecloud.com"],
+    "UKG": ["ultipro.com", "ukg.com"],
+    "Paylocity": ["paylocity.com"],
+    "iCIMS": ["icims.com"],
+    "Taleo": ["taleo.net"],
+    "SuccessFactors": ["successfactors.com", "successfactors.eu"],
 }
 
 ARCHIVE_DOMAINS = {
@@ -598,6 +626,25 @@ ARCHIVE_DOMAINS = {
     "BambooHR": ["*.bamboohr.com"],
     "Personio": ["*.jobs.personio.de", "*.jobs.personio.com"],
     "Workday": ["*.myworkdayjobs.com"],
+    "Pinpoint": ["*.pinpointhq.com"],
+    "Comeet": ["*.comeet.com"],
+    "Jobvite": ["jobs.jobvite.com", "jobs2.jobvite.com"],
+    "JazzHR": ["*.applytojob.com", "*.jazz.co"],
+    "iCIMS": ["*.icims.com"],
+    "Taleo": ["*.taleo.net"],
+    "ADP": ["*.workforcenow.adp.com"],
+    "SuccessFactors": ["*.successfactors.com", "*.successfactors.eu"],
+    "Phenom": ["*.phenompeople.com", "careers.phenom.com"],
+    "Eightfold": ["*.eightfold.ai"],
+    "Avature": ["*.avature.net"],
+    "Fountain": ["*.fountain.com"],
+    "Jobylon": ["*.jobylon.com"],
+    "TalentLyft": ["*.talentlyft.com"],
+    "Manatal": ["jobs.manatal.com"],
+    "CEIPAL": ["*.ceipal.com"],
+    "Rippling": ["ats.rippling.com"],
+    "UKG": ["*.ultipro.com"],
+    "Paylocity": ["*.paylocity.com"],
 }
 
 
@@ -781,13 +828,20 @@ def get_html(url, timeout=HTML_TIMEOUT):
 
 
 def normalize_url(url):
+    """Canonicalize a URL without deleting meaningful job IDs/query parameters."""
     if not url:
         return ""
     try:
         p = urlparse(str(url).strip())
         if p.scheme not in {"http", "https"} or not p.netloc:
             return ""
-        return f"{p.scheme.lower()}://{p.netloc.lower()}{p.path}".rstrip("/")
+        # Keep requisition IDs and application routing parameters. Remove only
+        # obvious analytics trackers so source links remain directly usable.
+        pairs = parse_qsl(p.query, keep_blank_values=True)
+        kept = [(k, v) for k, v in pairs if not (k.lower().startswith("utm_") or k.lower() in {"gclid", "fbclid", "msclkid", "mc_cid", "mc_eid", "_ga"})]
+        query = urlencode(kept, doseq=True)
+        base = f"{p.scheme.lower()}://{p.netloc.lower()}{p.path}".rstrip("/")
+        return base + (f"?{query}" if query else "")
     except Exception:
         return str(url).strip().rstrip("/")
 
@@ -2459,7 +2513,27 @@ def crawl_company_career_page(company_name, website):
         return results
 
     html, final_url = get_html(website, timeout=20)
+    # A company's public homepage may be a JS shell; try a bounded public-page
+    # render before giving up. If it still cannot be opened, the seed URL remains
+    # in the persistent company manifest for retry rather than being discarded.
+    if not html and PLAYWRIGHT_ENABLED and _browser_slot():
+        try:
+            from playwright.sync_api import sync_playwright
+            with sync_playwright() as pw:
+                browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
+                page = browser.new_page(user_agent=USER_AGENT)
+                page.goto(website, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=min(5000, PLAYWRIGHT_TIMEOUT_MS))
+                except Exception:
+                    pass
+                html = page.content()
+                final_url = page.url or website
+                browser.close()
+        except Exception as exc:
+            print(f"COMPANY CAREER PAGE: browser could not open {website}: {type(exc).__name__}")
     if not html:
+        print(f"COMPANY CAREER PAGE: could not open; retained seed URL for retry: {website}")
         return results
 
     soup = BeautifulSoup(html, "html.parser")
@@ -4138,6 +4212,10 @@ def inspect_discovery_job_page(job, try_browser=False, page_url=""):
         x.update(detail_status="Rejected", verification_notes="Missing discovery URL")
         return x
 
+    # Always retain the candidate URL independently from whether the crawler can
+    # fetch it. Access blocks, timeouts and login walls must not erase a useful lead.
+    x["source_page_url"] = source_url
+    x["source_link_status"] = "URL_FORMAT_VALID_FETCH_PENDING"
     html, final_url = get_html(source_url, timeout=V11_HTML_TIMEOUT)
     browser_used = False
     if html and len(clean_text(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))) < 350:
@@ -4163,9 +4241,16 @@ def inspect_discovery_job_page(job, try_browser=False, page_url=""):
             x["verification_notes"] = f"Browser detail fetch failed: {type(exc).__name__}"
 
     if not html:
-        x.update(detail_status="Fetch failed", verification_notes=x.get("verification_notes") or "Public page could not be fetched")
+        x.update(
+            detail_status="Fetch failed; link retained",
+            source_link_status="URL_FORMAT_VALID_PAGE_NOT_OPENED",
+            source_page_final_url=normalize_url(final_url) or source_url,
+            discovery_url=source_url,
+            verification_notes=(x.get("verification_notes") or "Page could not be opened by crawler; original candidate URL retained. This does not prove the page is broken."),
+        )
         return x
 
+    x["source_link_status"] = "PAGE_FETCHED" if not browser_used else "PAGE_RENDERED_WITH_BROWSER"
     soup = BeautifulSoup(html, "html.parser")
     body_text = clean_text(soup.get_text(" ", strip=True))[:50000]
     structured = []
@@ -4290,6 +4375,9 @@ def inspect_discovery_job_page(job, try_browser=False, page_url=""):
         "detail_status": "Verified details" if not notes else "Needs review",
         "verification_notes": "; ".join(notes) if notes else "Role, workplace and India evidence found on public page",
         "source_page_final_url": normalize_url(final_url) or source_url,
+        "source_page_url": source_url,
+        "source_link_status": x.get("source_link_status", "PAGE_FETCHED"),
+        "company_career_page": x.get("company_website", ""),
     })
     if chosen:
         score, matched = score_job(x.get("title", ""), description, location)
@@ -5431,7 +5519,84 @@ GOOGLE_JOBS_QUERY_BANK = [
     'technical account manager customer success India hybrid',
 ]
 
+# Dedicated public search-index queries for LinkedIn/Indeed job-detail URLs.
+# These are search-engine queries only; the crawler does not log into or bypass
+# LinkedIn/Indeed access controls. Results are leads that must pass normal checks.
+JOB_BOARD_QUERY_BANK = [
+    'site:linkedin.com/jobs/view "customer support" India remote',
+    'site:linkedin.com/jobs/view "customer service" India remote',
+    'site:linkedin.com/jobs/view "technical support" India remote',
+    'site:linkedin.com/jobs/view "product support" India remote',
+    'site:linkedin.com/jobs/view "customer success" India remote',
+    'site:linkedin.com/jobs/view "customer onboarding" India remote',
+    'site:linkedin.com/jobs/view "implementation specialist" India remote',
+    'site:linkedin.com/jobs/view "technical account manager" India remote',
+    'site:linkedin.com/jobs/view "support specialist" "remote India"',
+    'site:linkedin.com/jobs/view "customer experience" "work from home" India',
+    'site:linkedin.com/jobs/view "chat support" India remote',
+    'site:linkedin.com/jobs/view "email support" India remote',
+    'site:linkedin.com/jobs/view "help desk" India remote',
+    'site:linkedin.com/jobs/view "application support" India remote',
+    'site:linkedin.com/jobs/view "service desk" India remote',
+    'site:linkedin.com/jobs/view "customer operations" India remote',
+    'site:linkedin.com/jobs/view "client support" India remote',
+    'site:linkedin.com/jobs/view "customer success associate" India remote',
+    'site:linkedin.com/jobs/view "customer support" "India" hybrid',
+    'site:linkedin.com/jobs/view "technical support" "India" hybrid',
+    'site:indeed.com/viewjob "customer support" India remote',
+    'site:indeed.com/viewjob "customer service" India remote',
+    'site:indeed.com/viewjob "technical support" India remote',
+    'site:indeed.com/viewjob "product support" India remote',
+    'site:indeed.com/viewjob "customer success" India remote',
+    'site:indeed.com/viewjob "customer onboarding" India remote',
+    'site:indeed.com/viewjob "implementation specialist" India remote',
+    'site:indeed.com/viewjob "technical account manager" India remote',
+    'site:indeed.com/viewjob "support specialist" "remote India"',
+    'site:indeed.com/viewjob "customer experience" "work from home" India',
+    'site:indeed.com/viewjob "chat support" India remote',
+    'site:indeed.com/viewjob "email support" India remote',
+    'site:indeed.com/viewjob "help desk" India remote',
+    'site:indeed.com/viewjob "application support" India remote',
+    'site:indeed.com/viewjob "service desk" India remote',
+    'site:indeed.com/viewjob "customer operations" India remote',
+    'site:indeed.com/viewjob "client support" India remote',
+    'site:indeed.com/viewjob "customer success associate" India remote',
+    'site:indeed.com/viewjob "customer support" India hybrid',
+    'site:indeed.com/viewjob "technical support" India hybrid',
+    'site:linkedin.com/jobs/view ("customer support" OR "customer service") ("remote India" OR "India remote" OR "work from home")',
+    'site:linkedin.com/jobs/view ("customer success" OR "client success") (India remote OR "remote India")',
+    'site:linkedin.com/jobs/view ("technical support" OR "product support" OR "application support") India remote',
+    'site:indeed.com/viewjob ("customer support" OR "customer service") ("remote India" OR "India remote" OR "work from home")',
+    'site:indeed.com/viewjob ("customer success" OR "client success") (India remote OR "remote India")',
+    'site:indeed.com/viewjob ("technical support" OR "product support" OR "application support") India remote',
+    'site:linkedin.com/jobs/view (support OR onboarding OR implementation) (India OR Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai) remote',
+    'site:indeed.com/viewjob (support OR onboarding OR implementation) (India OR Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai) remote',
+    'site:linkedin.com/jobs/view ("non voice" OR "voice process") India remote support',
+    'site:indeed.com/viewjob ("non voice" OR "voice process") India remote support',
+]
+
 SEARCH_GOOGLE_QUERY_BANK = [
+    # Broad multi-ATS queries: one search can cover several major ATS hosts.
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer support" OR "customer service" OR "technical support" OR "product support" OR helpdesk OR "customer success") (remote OR anywhere OR "work from home") India',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer support" OR "customer service") ("remote India" OR "India remote" OR "work from home")',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("technical support" OR "product support" OR "application support" OR "support specialist") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer success" OR "client success" OR "customer experience") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (onboarding OR implementation OR "customer enablement") (India OR "remote India")',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR "help desk" OR "service desk" OR "IT support") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("chat support" OR "email support" OR "non voice" OR "customer care") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer support" OR "technical support") India remote -developer -sales -marketing -director',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer service" OR "customer experience" OR "client services") India remote -sales -marketing -director',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("support analyst" OR "support specialist" OR "support associate") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer success associate" OR "customer success specialist" OR "customer success manager") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("technical account manager" OR "customer enablement" OR "product specialist") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("remote worldwide" OR "work from anywhere" OR "distributed team") (support OR success OR onboarding) India',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer support" OR "customer success" OR "technical support") (India OR APAC) remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer support" OR "product support") (remote OR hybrid) after:2026-01-01',
+    '(site:boards.greenhouse.io OR site:job-boards.greenhouse.io) ("customer support" OR "customer success" OR "technical support" OR onboarding) India remote',
+    '(site:jobs.lever.co OR site:jobs.eu.lever.co) ("customer support" OR "customer success" OR "product support" OR implementation) India remote',
+    '(site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer support" OR "technical support" OR onboarding OR implementation) India remote',
+    '(site:myworkdayjobs.com OR site:careers.smartrecruiters.com) ("customer support" OR "customer service" OR "technical support") India (remote OR hybrid)',
     'site:boards.greenhouse.io India (remote OR hybrid) ("customer support" OR "customer success")',
     'site:job-boards.greenhouse.io India (remote OR hybrid) ("technical support" OR "product support")',
     'site:jobs.lever.co India (remote OR hybrid) ("customer support" OR "customer success")',
@@ -5494,6 +5659,10 @@ SEARCH_GOOGLE_QUERY_BANK = [
 ]
 
 SEARCH_ATS_QUERY_BANK = [
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer support" OR "customer service" OR "technical support" OR "product support") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("customer success" OR "customer experience" OR onboarding OR implementation) India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) ("remote India" OR "India remote" OR "work from home") (support OR success OR service)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR "help desk" OR "application support" OR "support specialist") India remote',
     'site:jobs.ashbyhq.com India remote "customer support"',
     'site:jobs.ashbyhq.com India remote "customer success"',
     'site:jobs.ashbyhq.com India remote "technical support"',
@@ -5841,6 +6010,10 @@ def discover_search_engine_urls():
     regular_queries=[SEARCH_ATS_QUERY_BANK[(regular_rotation+i)%len(SEARCH_ATS_QUERY_BANK)] for i in range(max(1,SEARCH_QUERIES_PER_PROVIDER))]
     google_rotation=(day//GOOGLE_DISCOVERY_ROTATION_DAYS) % len(SEARCH_GOOGLE_QUERY_BANK)
     google_queries=[SEARCH_GOOGLE_QUERY_BANK[(google_rotation+i)%len(SEARCH_GOOGLE_QUERY_BANK)] for i in range(GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER)] if GOOGLE_DISCOVERY_ENABLED else []
+    # Dedicated LinkedIn/Indeed query rotation. Advance in blocks so each run
+    # covers fresh queries rather than repeating an overlapping sliding window.
+    board_start=(day*JOB_BOARD_QUERIES_PER_RUN) % len(JOB_BOARD_QUERY_BANK)
+    board_queries=[JOB_BOARD_QUERY_BANK[(board_start+i)%len(JOB_BOARD_QUERY_BANK)] for i in range(JOB_BOARD_QUERIES_PER_RUN)]
     jobs_rotation=(day//GOOGLE_JOBS_ROTATION_DAYS) % len(GOOGLE_JOBS_QUERY_BANK)
     jobs_remaining=max(0,GOOGLE_JOBS_MAX_QUERIES_PER_DAY-_google_jobs_calls_used_today())
     google_jobs_queries=[GOOGLE_JOBS_QUERY_BANK[(jobs_rotation+i)%len(GOOGLE_JOBS_QUERY_BANK)] for i in range(min(GOOGLE_JOBS_MAX_QUERIES_PER_DAY,jobs_remaining))] if google_jobs_configured else []
@@ -5852,6 +6025,14 @@ def discover_search_engine_urls():
         qs = google_queries if provider == "serper" and GOOGLE_DISCOVERY_ENABLED else regular_queries
         for q in qs:
             tasks.append((provider,q))
+    # Run targeted LinkedIn/Indeed search queries through one configured web
+    # search provider per workflow run to control API usage. Prefer Serper; if
+    # it is not configured, fall back to the first configured provider.
+    board_provider = "serper" if "serper" in configured else (configured[0] if configured else "")
+    if board_provider:
+        for q in board_queries:
+            tasks.append((board_provider,q))
+
     for q in google_jobs_queries:
         tasks.append(("serpapi_google_jobs",q))
 
@@ -5859,6 +6040,7 @@ def discover_search_engine_urls():
         f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} "
         f"google_queries={len(google_queries) if GOOGLE_DISCOVERY_ENABLED else 0} "
         f"google_jobs_queries={len(google_jobs_queries)} "
+        f"job_board_queries={len(board_queries) if board_provider else 0} "
         f"regular_queries={len(regular_queries)} tasks={len(tasks)} "
         f"serpapi_organic={'on' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'off'}"
     )
@@ -6565,7 +6747,7 @@ def feed_direct_only():
         ]
     print(f"AGGREGATOR RESOLUTION: tried={min(len(aggregator_candidates), resolve_budget)} resolved_direct={len(resolved)} unresolved_retained={len(aggregator_candidates)-len(resolved)} budget={resolve_budget}")
 
-    # V14.3: visit resolved employer/ATS pages before accepting them as direct.
+    # V14.4: visit resolved employer/ATS pages before accepting them as direct.
     # A route alone is not sufficient: title, India eligibility, remote/hybrid,
     # and page details must be supported by the actual destination page.
     checked_resolved = []
@@ -6781,6 +6963,7 @@ DISCOVERY_HEADERS=[
     "Added","Job Title","Company","Location","Work Type","Posted","Discovery URL",
     "Source","Score","Matched Keywords","Company Website","Review Status","First Seen","Last Seen",
     "Seed Type","Crawl Seed","Description","Direct Apply URL","Detail Status","India Eligibility","Verification Notes",
+    "Source Link Status","Source Page URL","Final Page URL","Company Career Page",
 ]
 
 
@@ -6920,12 +7103,16 @@ def append_discovery_v11(ws, jobs):
             "Detail Status": j.get("detail_status", "Not checked"),
             "India Eligibility": j.get("eligibility", ""),
             "Verification Notes": j.get("verification_notes", ""),
+            "Source Link Status": j.get("source_link_status", "URL_FORMAT_VALID_NOT_YET_FETCHED"),
+            "Source Page URL": j.get("source_page_url", u),
+            "Final Page URL": j.get("source_page_final_url", ""),
+            "Company Career Page": j.get("company_career_page", j.get("company_website", "")),
         }
         if u in existing:
             rno=existing[u]
             # Preserve any manual review status and manual edits. Only refresh
             # metadata fields that the crawler owns.
-            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen","Description","Direct Apply URL","Detail Status","India Eligibility","Verification Notes"]:
+            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen","Description","Direct Apply URL","Detail Status","India Eligibility","Verification Notes","Source Link Status","Source Page URL","Final Page URL","Company Career Page"]:
                 if h not in idx: continue
                 col=idx[h]+1
                 updates.append({"range":f"{__import__('gspread').utils.rowcol_to_a1(rno,col)}","values":[[values[h]]]})
@@ -7130,7 +7317,7 @@ def run_merge(out_dir,write_sheet=False):
 
 
 def main_v11():
-    parser=argparse.ArgumentParser(description="Remote4.me V11 India-first high coverage crawler")
+    parser=argparse.ArgumentParser(description="Remote4.me V14.6 India-first high coverage crawler")
     parser.add_argument("--discover",action="store_true")
     parser.add_argument("--ats",choices=["Greenhouse","Lever","Ashby","Workable","SmartRecruiters","Recruitee","Breezy","Teamtailor","BambooHR","Personio","Workday","Nonstandard"],default="")
     parser.add_argument("--careers",action="store_true")
@@ -7140,7 +7327,7 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V14.1 — INDIA DIRECT-APPLY QUALITY GATE")
+    print("REMOTE4.ME JOB CRAWLER V14.6 — EXPANDED ATS + CAREER PAGES + LINK RETENTION")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
