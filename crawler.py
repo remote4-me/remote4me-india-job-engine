@@ -28,7 +28,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V14.0
+# REMOTE4.ME JOB CRAWLER V14.1
 # INDIA-FIRST / NO PAID SEARCH API
 # ============================================================
 #
@@ -1235,6 +1235,76 @@ def fetch_wwr_rss():
             )
     except requests.RequestException as exc:
         print(f"We Work Remotely RSS: {exc}")
+    return jobs
+
+
+def fetch_jobicy():
+    """Broad Jobicy discovery feed. No key is required.
+
+    Jobicy's public API is discovery-only here: the listing URL is kept as the
+    discovery URL and is never written to the direct JOBS sheet.
+    """
+    jobs = []
+    seen_ids = set()
+    cursor = None
+    for page in range(JOBICY_MAX_PAGES):
+        params = {"count": 200}
+        if cursor:
+            params["cursor"] = cursor
+        data = get_json("https://jobicy.com/api/v2/remote-jobs", params=params, timeout=25)
+        if not isinstance(data, dict):
+            break
+        items = data.get("jobs") or data.get("data") or []
+        if not items:
+            break
+        for j in items:
+            if not isinstance(j, dict):
+                continue
+            jid = clean_text(j.get("id") or j.get("jobId") or j.get("slug") or j.get("url"))
+            if jid and jid in seen_ids:
+                continue
+            if jid:
+                seen_ids.add(jid)
+
+            title = clean_text(j.get("jobTitle") or j.get("title"))
+            desc = clean_text(j.get("jobDescription") or j.get("description"))
+            if not title_relevant(title):
+                continue
+            loc = clean_text(j.get("jobGeo") or j.get("location") or j.get("geo"))
+            workplace = classify_workplace(
+                loc, j.get("workplaceType") or j.get("jobGeo"),
+                j.get("isRemote", False), j, desc,
+            ) or "Remote"
+            if not allowed_india(loc, j.get("country"), "", desc, workplace):
+                continue
+            posted = parse_date(j.get("pubDate") or j.get("datePosted") or j.get("publishedAt"))
+            if not feed_recent_enough(posted):
+                continue
+            link = clean_text(j.get("url") or j.get("jobUrl") or j.get("applyUrl"))
+            if not link:
+                continue
+            company_obj = j.get("company") if isinstance(j.get("company"), dict) else {}
+            company = clean_text(
+                j.get("companyName") or
+                (company_obj.get("name") if isinstance(company_obj, dict) else j.get("company"))
+            )
+            company_website = clean_text(
+                j.get("companyWebsite") or j.get("companyUrl") or j.get("company_url") or
+                (company_obj.get("website") if isinstance(company_obj, dict) else "")
+            )
+            score, matched = score_job(title, desc, loc)
+            jobs.append({
+                "added": datetime.now(timezone.utc).date().isoformat(),
+                "title": title, "company": company, "location": loc or "India / Remote",
+                "workplace": workplace, "posted_date": posted, "job_url": link,
+                "source": "Jobicy", "score": score, "matched": matched,
+                "company_website": company_website, "direct": False,
+                "discovery_url": link,
+            })
+        cursor = data.get("nextCursor") or data.get("next_cursor")
+        if not cursor or len(items) < 200:
+            break
+    print(f"Jobicy: {len(jobs)} discovery candidates")
     return jobs
 
 
@@ -6766,7 +6836,7 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V14.0 — INDIA DIRECT-APPLY QUALITY GATE")
+    print("REMOTE4.ME JOB CRAWLER V14.1 — INDIA DIRECT-APPLY QUALITY GATE")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
