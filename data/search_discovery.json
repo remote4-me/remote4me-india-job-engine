@@ -12,7 +12,7 @@
   },
   {
     "discovery_url": "https://jobs.lever.co/zimperium/8c50666e-76d4-425b-aed2-4cbdf6cbd099",
-    "title": "Zimperium - Technical Product Support Engineer",
+    "title": "Zimperium - Technical Product Support Engineer - Endpoint/MTD ...",
     "snippet": "5+ years' experience (senior) or 1-3 years (junior) in customer support roles, preferably with security and mobile device management solution providers. Good ...",
     "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
@@ -23,9 +23,9 @@
   },
   {
     "discovery_url": "https://jobs.lever.co/zimperium",
-    "title": "Zimperium",
-    "snippet": "Zimperium logo ##### Technical Product Support Engineer - Endpoint/MTD (Device) & Cybersecurity ##### AI Software Engineer (DevOps) - Bangalore, India ##### Site Reliability Engineer - India Zimperium Home Page Lever logo",
-    "source": "Google/tavily",
+    "title": "Zimperium - Lever",
+    "snippet": "Customer Success. Customer Support. Apply · Technical Product Support Engineer - Endpoint/MTD (Device) & Cybersecurity. Remote — Full timeIndia (Remote).",
+    "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Zimperium",
@@ -33,43 +33,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
-    "title": "Wing Assistant - Technical Support Representative (India)",
-    "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Technical Support Representative (Remote) [...] • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. [...] Wing is on the exciting mission of redefining the future of work for companies worldwide! We are looking to be the one-stop shop for companies that are looking to build world-class teams & place their operations on autopilot. And we’re looking for a Technical Support Representative to start immediately! Duties and Responsibilities include but are not limited to: 1. Troubleshoot IT issues (e.g., how do I log in, reset password, remote access trackers not working, etc.)",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Wing Assistant",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/getwingapp/bb76b70e-66d2-49bb-9c42-c5edc70548e0",
-    "title": "Wing Assistant - General Virtual Assistant (India)",
-    "snippet": "10. Convey information to incoming calls & make calls for appointments or conduct informational inquiries. 11. Reply to emails, follow up on correspondence, organize inbox as per client preferences, and notify clients about important emails. 12. Ad hoc tasks Qualifications: • At least 6 months to 1 year of experience as a Virtual Assistant • At least 18 years of age and completed Senior High School • Excellent phone, email, and instant messaging communication skills [...] Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India General Virtual Assistant (Remote) [...] Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: Up to INR 32,000 Please note: • Only qualified candidates will be invited to take the assessment & scheduled for an interview. • We have other vacancies that might interest your friends & colleagues. They can check us out at our Jobs Website. • You may also refer your friends using our Affiliate Marketing Program and earn up to INR 2,000 if your referral is hired. ₹10,000 - ₹32,000 a month",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Wing Assistant",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2",
     "title": "Wing Assistant - Customer Service Representative (India)",
-    "snippet": "Disclaimer: This is a generic job description for the position stated below. Actual tasks and tools will be discussed further when you reach the final interview stage. Please ensure you apply for the right job based on your location and experience. We prioritize people who can do this successfully! \\Please only apply for this job if you are located in India Customer Service Representative (Remote) [...] • Backup Internet Service Speed: at least 10 Mbps Benefits: • Performance Incentives • Job Security and Stability • Paid Training • Inclusive Culture • Upskilling Opportunities • 100% Work-From-Home • Exceptionally Supportive Team • Opportunities for Career Growth • Fun Work Environment • Holiday & Overtime Pay Schedule: US work hours (20-40 hours per week) Location: This is a remote job Salary: This is based on experience and skills. Please note: [...] Wing Assistant logo ## Customer Service Representative (India) New Delhi, India IND – IND / apply for this job Please whitelist the domains \"lever.co\" and \"hire.lever.co\" with your email provider to make sure you get our emails.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Wing Assistant",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2/apply",
-    "title": "Wing Assistant - Customer Service Representative (India)",
-    "snippet": "We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. [...] Lever logo [...] Wing Assistant logo ## Customer Service Representative (India) #### Submit your application Authorize sharing of selected LinkedIn profile details to auto-complete this form. Learn more File exceeds the maximum upload size of 100MB. Please try a smaller size. #### Links #### Salary #### Application Questions #### Internet & Computer Specs Wing Assistant Home Page",
-    "source": "Google/tavily",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Wing Assistant",
@@ -79,11 +46,22 @@
   {
     "discovery_url": "https://jobs.lever.co/getwingapp",
     "title": "Wing Assistant",
-    "snippet": "Wing Assistant logo ##### Bookkeeper (India) ##### Content Writer (India) ##### Customer Service Representative (India) ##### Digital Marketing Specialist (India) ##### E-Commerce Specialist (India) ##### Executive Assistant (India) ##### Full Stack Developer ##### General Virtual Assistant (India) ##### Graphic Designer (India) ##### Lead Generation Specialist (India) ##### Personal Assistant (India) ##### Senior Software Engineer ##### Social Media Assistant (India) [...] ##### Technical Support Representative (India) Wing Assistant Home Page [...] We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",
+    "snippet": "##### Sales Development Representative Bilingual Spanish-English Remote LATAM ##### Social Media Assistant (Latin America) ##### Technical Account Manager - AI Agents ##### Technical Customer Success Manager - AI Agents ##### Bookkeeper (India) ##### Content Writer (India) ##### Customer Service Representative (India) ##### Digital Marketing Specialist (India) ##### E-Commerce Specialist (India) ##### Executive Assistant (India) ##### Full Stack Developer [...] ##### General Virtual Assistant (India) ##### Graphic Designer (India) ##### Lead Generation Specialist (India) ##### Personal Assistant (India) ##### Senior Software Engineer ##### Social Media Assistant (India) ##### Technical Support Representative (India) ##### Bookkeeper (Mexico) ##### Content Writer (Mexico) ##### Customer Service Representative (Mexico) ##### Digital Marketing Specialist - Mexico ##### Digital Marketing Specialist (Mexico) [...] ##### Sales Development Representative - Full Time or Part-time ##### Sales Development Representative Full Time (with Lead Generation) ##### Sales Development Representative Part-Time ##### Legal Assistant ##### Partner Executive Assistant ( Healthcare Industry) ##### Full Stack Web Developer ##### React Native Developer ##### React Native Developer ##### General Virtual Assistant - Bilingual: Cantonese-English (Remote)",
     "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
     "company": "Wing Assistant",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
+    "title": "Technical Support Representative (India) at Getwingapp",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Technical Support Representative (India) at Getwingapp",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -180,7 +158,7 @@
     "title": "Sprinto - Manager - Customer Support",
     "snippet": "",
     "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Sprinto",
     "seed_type": "ATS Board Seed",
@@ -202,17 +180,6 @@
     "title": "Sprinto - Enterprise Customer Success Manager - APAC & EU",
     "snippet": "",
     "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
-    "score": 100,
-    "company": "Sprinto",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/Sprinto/640fd9e7-76d3-463a-9c0c-7f31fc3a4c6f",
-    "title": "Sprinto - Customer Success Manager - Lever",
-    "snippet": "Customer Success Manager. Remote (India). Customer Experience /. Remote /. Remote. apply for this job. Sprinto is an Autonomous Trust Platform that centralizes ...",
-    "source": "Google/searlo",
     "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
     "company": "Sprinto",
@@ -253,6 +220,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/jobgether/e26eab7a-3320-4265-89bf-c32b7d662018",
+    "title": "Senior Techncal Support Consultant, ICX at Jobgether",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Senior Techncal Support Consultant, ICX at Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/saviynt",
     "title": "Saviynt - Lever",
     "snippet": "Platform Support Engineer -. Hybrid — Full-TimeBengaluru, India. Customer Support ... L3 SOC Analyst. Remote — Full-TimeRemote UK · Apply · Senior platform ...",
@@ -266,22 +244,11 @@
   {
     "discovery_url": "https://jobs.lever.co/peoplegrove/bb2ee766-a420-4fe9-bac7-fa0a41caffa5",
     "title": "Product Success Specialist (Remote) - PeopleGrove - Lever",
-    "snippet": "With over 100 dedicated professionals across the US and India, we are ... Customer Support & Troubleshooting: Monitor and manage support channels for ...",
+    "snippet": "Product Success Specialist (Remote). Mumbai Metropolitan Region. Customer Success /. Full Time (Remote) /. Hybrid. apply for this job. Overview. PeopleGrove+ ...",
     "source": "Google/searlo",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Product Success Specialist (Remote)",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/policyme/d5f14a0e-b004-41f4-9a48-eca276b40cee",
-    "title": "PolicyMe - Customer Success Specialist (Remote)",
-    "snippet": "Additional Notes: Job Vacancy: This role reflects growth in our team and expanded operational scope. We’re hiring to support increasing demand and continue delivering an exceptional customer experience. Commitment to Equal Opportunity: PolicyMe is an equal opportunity employer. We welcome applicants of all backgrounds and provide fair consideration regardless of race, colour, religion, sex, sexual orientation, gender identity, national origin, or disability. [...] Generous PTO - 20 vacation days A comprehensive benefits plan with premiums paid in full by PolicyMe Investment in your professional development, including an L&D budget, AI tooling budget, performance reviews twice a year and ongoing feedback to ensure you reach your highest potential An extremely high performing, low-ego, remote-first team that is truly disrupting an old industry [...] We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses and identifying potential inconsistencies or verification signals in application materials based on available information. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",
-    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
-    "company": "PolicyMe",
+    "company": "Product Success Specialist (Remote)",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -310,7 +277,7 @@
   {
     "discovery_url": "https://jobs.lever.co/Loop%20AI/c0740b12-d8f6-437a-9ca6-d6c0a9ff44c6",
     "title": "Loop AI - Customer Success Manager - Lever",
-    "snippet": "Required · Native or near-native English communication skills (spoken and written). · 2+ years in Customer Success, Implementation, Solutions Consulting, ...",
+    "snippet": "We have offices in San Francisco, New York, Tampa and India. ... We're looking for an exceptionally bright, highly technical, customer-focused Customer Success ...",
     "source": "Google/searlo",
     "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
@@ -319,22 +286,55 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/6c90470e-62db-4a11-9a51-0c90cd74ebcd",
-    "title": "JumpCloud - Customer Success Manager, North America - India",
-    "snippet": "Title: JumpCloud - Customer Success Manager, North America - India ## Customer Success Manager, North America - India. ### About JumpCloud®. ### **JumpCloud is Intelligent, Secure IT.**. We are seeking a Customer Success Manager based in India to oversee a $3M+ Book of Business composed of US customers in the Commercial sector. This role is fully remote but will cover US working hours. As a Customer Success Manager, you’ll be partnering closely with sales, support, product and engineering teams to deliver a world class customer experience. Partnering with Implementation services, you will oversee customer onboarding, working with customer stakeholders to achieve critical IT objectives in a timely fashion. You will act as a trusted advisor to customers, providing guidance that drives product adoption, driving health and identifying expansion opportunities that benefit your customer’s objectives. You will serve as the customer champion as the primary point of contact for all customer needs ensuring issues are receiving the proper attention, features are properly prioritized and sharing product updates that impact your customers’ environment. ### What you’ll be doing:. ### We’re looking for:.",
+    "discovery_url": "https://jobs.lever.co/jumpcloud/a038bda8-f785-4e10-9c2a-db23df068767",
+    "title": "JumpCloud - Tier 1 Customer Support Engineer, Windows - India",
+    "snippet": "Title: JumpCloud - Tier 1 Customer Support Engineer, Windows - India ## Tier 1 Customer Support Engineer, Windows - India. ### About JumpCloud®. ### **JumpCloud is Intelligent, Secure IT.**. ### About the role:. As a Customer Support Engineer - Tier 1 you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve front line customer issues in a fast-paced environment. As a Customer Support Engineer- Tier 1 you will help provide assistance via Chat, Phone and Email. ### What you’ll be doing:. Provide technical support, troubleshooting and issue resolution to our customers via email, phone, chat or remote web session. Manage a queue of support tickets for high priority and complex technical issues. Reproduce issues in-house and respond to customers in a timely manner. Collaborate with Peers, Mentors, Escalation Engineers, Knowledge Base and other internal tools to provide the most effective, world-class solutions for our customers. Evaluate, identify, and escalate platform bugs and issues as they are encountered. Maintain a technical understanding of the entire JumpCloud Platform. Collaborate with Customer Success Managers, Account Managers and Implementation Engineers to ensure the success of our new customers as they transition into the day-to-day use of our product. Develop and maintain knowledge base articles to increase shared knowledge among the entire Support Engineering team. Collaborate with peers on projects aimed at improving the customer and Support Engineering operations. ### We’re looking for:. Minimum of 3 years of experience in a technical, customer-facing position, preferably in a SaaS environment. Minimum of 2 year of experience working with mission critical customer issues and customer and technical escalations. Good knowledge with configuring & troubleshooting Single Sign-on (SAML+ SCIM). Good experience with configuring & troubleshooting RADIUS. Strong oral and written communication skills. Understanding of user onboarding and offboarding practices. Understanding of Information security best practices. Passion for learning new technologies. Ability to thrive in a rapidly changing environment. ### Preferred Qualifications:. Non-Windows Directory Services (G Suite, AWS, LDAP). Using AI to enhance your productivity. Full-time remote working and self-motivated productivity. Using macOS hardware as your primary work-device. ### Shift schedule:. ###### #LI-YI1.",
     "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "JumpCloud",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jumpcloud/3f7bf6e1-a71c-4040-8d41-900a2ee39d91",
-    "title": "JumpCloud - Customer Success Manager - India",
-    "snippet": "Title: JumpCloud - Customer Success Manager - India ## Customer Success Manager - India. ### About JumpCloud®. ### **About the Role**. We are seeking an experienced **Customer Success Manager** based in **India (Remote)** to own the end-to-end post-sales technical success for a strategic portfolio of APAC / EMEA based **Enterprise and high-value Commercial customers**. This is a **technical-first, strategic advisory role** that combines deep hands-on product expertise with long-term customer outcome ownership. You will serve as the trusted technical advisor to our customers, ranging from hands-on IT Admins and Systems Engineers to CISOs, Directors, and VPs of IT and Compliance. You will partner closely with Account Managers, Support, Product, Engineering, and Solutions Architecture teams to drive product utilization, customer health, rapid onboarding, and gross/net retention across the JumpCloud platform. **Portfolio & Lifecycle Ownership:** Own the post-sales success plan for an assigned portfolio of Enterprise and Commercial accounts, aligning JumpCloud features directly with client business objectives. **Trusted Technical Advisor:** Serve as the strategic advisor for IT administrators, Security Operations, and Executive Sponsors on identity, access, device management, and Zero Trust best practices. **Onboarding & Time-to-Value (TTV):** Lead complex technical onboarding, deployment architectures, feature rollouts, and change management strategies to ensure rapid time-to-value. **Health & Telemetry Monitoring:** Proactively analyze account usage data, deployment health signals, and platform telemetry (leveraging AI-driven insights and health dashboards) to identify adoption risks or unused features. Partner with Support, Product, and Engineering to diagnose root causes and expedite resolution. **Executive & Technical Business Reviews (EBRs/QBRs):** Prepare and conduct regular value-driven reviews with executive and technical stakeholders, demonstrating ROI, security improvement, and product roadmap alignment. **Growth Collaboration (CSQLs):** Identify new technical use cases, expanding user bases, or add-on product opportunities and collaborating with Account Managers to drive expansion. **Voice of the Customer:** Advocate for customer requirements by channeling technical feedback, feature requests, and bug patterns directly into Product and Engineering roadmaps. **Experience:** 5+ years of customer-facing technical experience in SaaS (Customer Success, Technical Account Management, Solutions Engineering, Technical Support, or Professional Services), with at least **3+ years in a dedicated technical capacity**. **Prior JumpCloud or Admin Experience:** Direct experience administering JumpCloud, or hands-on experience as a SysAdmin/IT Manager.",
+    "discovery_url": "https://jobs.lever.co/jumpcloud/586204da-957d-469f-a2ee-832906ad017f",
+    "title": "JumpCloud - Tier 1 Customer Support Engineer, Linux - India",
+    "snippet": "Title: JumpCloud - Tier 1 Customer Support Engineer, Linux - India ## Tier 1 Customer Support Engineer, Linux - India. Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. We help organizations around the globe eliminate complexity and turn AI risk into an optimized advantage, ensuring the right people and agents have secure access to the right resources at all times. ### **JumpCloud is Intelligent, Secure IT.**. ### About the role:. As a Customer Support Engineer - Tier 1 you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve front line customer issues in a fast-paced environment. As a Customer Support Engineer- Tier 1 you will help provide assistance via Chat, Phone and Email. * Provide technical support, troubleshooting and issue resolution to our customers via email, phone, chat or remote web session. * Maintain a technical understanding of the entire JumpCloud Platform. * Collaborate with Customer Success Managers, Account Managers and Implementation Engineers to ensure the success of our new customers as they transition into the day-to-day use of our product. * Minimum of 3 years experience in a technical, customer-facing position, *preferably* in a SaaS environment. * Minimum of 2 years experience working with mission critical customer issues and customer & technical escalations. * Ability to leverage AI to enhance self productivity and customer experience with the Support. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about.",
     "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "JumpCloud",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jumpcloud/02f302ea-f712-4a23-a4b0-328dd5a7384f",
+    "title": "JumpCloud - Customer Support Engineer, Tier 2 - India",
+    "snippet": "Title: JumpCloud - Customer Support Engineer, Tier 2 - India ## Customer Support Engineer, Tier 2 - India. Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. We help organizations around the globe eliminate complexity and turn AI risk into an optimized advantage, ensuring the right people and agents have secure access to the right resources at all times. ### **JumpCloud is Intelligent, Secure IT.**. ### **About The Role**. As a **Customer Support Engineer - Tier 2 and Partner Support** you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve high priority and mission critical customer issues in a fast-paced environment. As a Customer Support Engineer- Tier 2 you will help provide mentoring and training to Tier 1 Engineers, apply your deep technical knowledge to resolve customer issues, and regularly interface across Support and Engineering to ensure the timely resolution of defects. * Manage a queue of support tickets for high priority and complex technical issues. * Maintain a deep technical understanding of the entire JumpCloud Platform while serving as an SME to develop internal training. * Work closely with Account Managers and Implementation Engineers to ensure the success of our new customers as they transition into the day to day use of our product. JumpCloud® is committed to being Remote First, meaning that you are able to work remotely within the country noted in the Job Description. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "JumpCloud",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jumpcloud/03189f4e-6bcb-42a9-ac40-463530cda0c1",
+    "title": "JumpCloud - Customer Support Engineer, Tier 1 (MacOS and MDM) - India",
+    "snippet": "Title: JumpCloud - Customer Support Engineer, Tier 1 (MacOS and MDM) - India ## Customer Support Engineer, Tier 1 (MacOS and MDM) - India. Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. ### About the role:. As a Customer Support Engineer - Tier 1 you will be responsible for providing world-class technical support to JumpCloud’s customers. We are looking for a highly technical self-starter that is driven to exceed customer expectations across JumpCloud’s various support channels. This position will resolve high priority and mission critical customer issues in a fast-paced environment. As a Technical Support Engineer- Tier 1 you will apply your technical knowledge to resolve customer issues, and regularly interface across Support and Engineering to ensure the timely resolution of defects. * Manage a queue of support tickets for high priority and complex technical issues. * Collaborate with peers, escalation points, mentors, our knowledge base, community forums and other internal tools to provide the most effective, world-class solutions for our customers. * Maintain a technical understanding of the entire JumpCloud Platform. * Collaborate with Account Manager and Implementation Engineers to ensure the success of our new customers as they transition into the day to day use of our product. * Minimum of 1 year of experience in a technical, customer-facing position, preferably in a SaaS environment. * Minimum of 1 year of experience working with mission critical customer issues and customer and technical escalations. JumpCloud® is committed to being Remote First, meaning that you are able to work remotely within the country noted in the Job Description. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "JumpCloud",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jumpcloud/97538cb6-c888-45f0-a835-734624531c12",
+    "title": "JumpCloud - Customer Support Associate - India",
+    "snippet": "Title: JumpCloud - Customer Support Associate - India Customer Success – Customer Support Engineering /. **All roles at JumpCloud® are Remote unless otherwise specified in the Job Description.**. ### About JumpCloud®. JumpCloud® is the AI-powered unified IT management platform designed to secure the modern workforce. By consolidating identity, device, and access management, JumpCloud provides intelligent, secure IT that scales from human users to autonomous AI agents. We help organizations around the globe eliminate complexity and turn AI risk into an optimized advantage, ensuring the right people and agents have secure access to the right resources at all times. ### **JumpCloud is Intelligent, Secure IT.**. ### About the role:. We are seeking inspired technology professionals who thrive on challenges and aspire to be part of a cutting-edge, cloud-based Directory Platform. As a Customer Support Associate, you will oversee daily inbound case queues and tooling, contribute to technical documentation, and engage directly with our customers to ensure their success. You will have the chance to expand your technical expertise and share your knowledge as we scale our global, world-class support team. You will collaborate with passionate team members to support an expanding worldwide user base. * A strong commitment to customer success through the effective utilization of Directory-as-a-Service software. JumpCloud® is committed to being Remote First, meaning that you are able to work remotely within the country noted in the Job Description. **You must be located in and authorized to work in the country noted in the job description to be considered for this role.**. To be considered for a role at JumpCloud®, you will be required to speak and write in English fluently. If you thrive working in a fast, SaaS-based environment and you are passionate about solving challenging technical problems, we look forward to hearing from you! You’ll have a voice in the organization as you work with a seasoned executive team, a supportive board and in a proven market that our customers are excited about. All communication related to interviews and offers from our recruiters and hiring managers will come from official company email addresses (@jumpcloud.com) and will never ask for any payment, fee to be paid or purchases to be made by the job seeker.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "JumpCloud",
     "seed_type": "ATS Board Seed",
@@ -374,6 +374,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/jobgether/4cfbb442-17c8-4c0a-a1ca-b59a9f0841aa",
+    "title": "Jobgether - Service Representative II-2 - Lever",
+    "snippet": "Service Representative II-2. India. Customer Success – Support /. Full-time /. Remote. apply for this job. This position is listed on behalf of a partner ...",
+    "source": "Google/searlo",
+    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/jobgether/64ffa2ec-b378-4d87-a984-55f9d6d37def",
     "title": "Jobgether - Senior Technical Customer Success Manager",
     "snippet": "",
@@ -396,28 +407,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether/792d2ee1-2bc6-4e3b-9180-7ee42bc34717",
-    "title": "Jobgether - Patient Onboarding Agent (Customer Support) - Lever",
-    "snippet": "Our partner is looking for a Patient Onboarding Agent (Customer Support) based in India. This is a remote customer support opportunity focused on guiding ...",
-    "source": "Google/searlo",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jobgether/525daa72-41d9-4f19-964f-07a2bd79b051",
-    "title": "Jobgether - Manager, Customer Success - REMOTE",
-    "snippet": "Title: Jobgether - Manager, Customer Success - REMOTE ## Manager, Customer Success - REMOTE. This position is posted by Jobgether on behalf of a partner company. We are currently looking for a Senior Manager, Customer Success - REMOTE. In this role, you will have a significant impact on shaping customer relationships and ensuring success across various enterprise clients. You will lead a team dedicated to enhancing customer experience and engagement, focusing on driving adoption and realization of the product's value. This leadership position requires collaboration with cross-functional teams to deliver measurable business outcomes while fostering strong customer loyalty. The ideal candidate will inspire their team to maintain the highest standards in customer success practices and develop strategic plans for enhancing customer experiences. * Manage, coach, and develop a team of Customer Success Managers across enterprise segments. * Ensure strong execution of customer engagement across onboarding, adoption, value realization, and renewals. * Establish consistent standards for success planning, customer health, and value delivery. * Support workload and coverage alignment based on customer needs and priorities. * Own customer health, adoption, and retention outcomes across the assigned portfolio. * Help teams articulate ROI, outcomes, and value to both operational and executive stakeholders. * 8+ years of experience in Customer Success, Consulting, or SaaS roles. * 3+ years of experience managing customer-facing teams in enterprise environments. * Strong understanding of customer adoption, lifecycle management, and value realization. * Experience engaging with senior customer stakeholders. * Proven ability to coach teams to drive adoption and measurable customer outcomes. * Strong operational discipline paired with a customer-first mindset. * Comprehensive healthcare coverage for you and your family. We use an AI-powered matching process to ensure your application is reviewed quickly, objectively, and fairly against the role's core requirements. Our system identifies the top-fitting candidates, and this shortlist is then shared directly with the hiring company. We appreciate your interest and wish you the best! Data Privacy Notice: By submitting your application, you acknowledge that Jobgether will process your personal data to evaluate your candidacy and share relevant information with the hiring employer. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/jobgether/98c5706a-689a-47b9-a9df-56aa8a7e0946",
     "title": "Jobgether - Head of Customer Success (Remote from India)",
     "snippet": "",
@@ -429,10 +418,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether/cdf897be-e4e6-4b8b-8019-8e2f0088dd2b",
-    "title": "Jobgether - FlexFund Support Representative - Lever",
-    "snippet": "Fully remote work arrangement from India. ... Opportunities to develop customer support, technical troubleshooting, and operational skills within a global working ...",
-    "source": "Google/searlo",
+    "discovery_url": "https://jobs.lever.co/jobgether/c1df6168-3c0f-4be1-b247-8c1715a23416",
+    "title": "Jobgether - Global Enablement Program Manager, Account Management & Customer Support - India",
+    "snippet": "## Global Enablement Program Manager, Account Management & Customer Support - India. We are currently looking for a Global Enablement Program Manager, Account Management & Customer Support in India.**. As a Global Enablement Program Manager, you will design and deliver targeted enablement initiatives for Account Managers (AMs) and Customer Success Managers (CSMs) across multiple regions. You will work at the intersection of training, coaching, and data-driven insights to strengthen team performance and drive customer adoption, retention, and expansion. The role requires collaboration with cross-functional teams including Sales, Customer Success, Product, and Marketing to ensure global consistency and scalability. You will create engaging onboarding programs, facilitate skill development, and provide ongoing coaching to improve account planning, customer advocacy, and expansion strategies. This is a remote-first role in India, offering the opportunity to influence global post-sales operations in a fast-growing SaaS environment. + Design and deliver onboarding and ongoing enablement programs for global AM and CSM teams supporting Commercial and Enterprise segments. + Develop and facilitate skill-development sessions focused on customer lifecycle excellence, including adoption, value realization, renewal, and expansion. + Provide 1:1 and small-group coaching to strengthen performance in relationship management, success planning, and expansion strategy. + Drive adoption of AM & CSM playbooks and processes to ensure consistent customer engagement and growth execution. + Collaborate cross-functionally to align enablement initiatives with customer lifecycle processes, marketing campaigns, and product launches. + Analyze performance and engagement metrics (renewal rate, expansion pipeline, NRR, adoption trends) to identify skill gaps and prioritize enablement programs. + 3+ years of experience in a post-sales customer-facing role, such as Account Manager, Customer Success Manager, or equivalent, in a Commercial or Enterprise B2B SaaS organization. + 1+ year of experience in Sales or Customer Success Enablement, training, coaching, or leadership with measurable impact. + Deep understanding of the post-sales customer lifecycle, including onboarding, adoption, success planning, renewal, and expansion. + Ability to work effectively in a remote, cross-functional, global team environment. + Opportunity to lead global enablement programs and influence post-sales performance. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses.",
+    "source": "Google/tavily",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
@@ -440,11 +429,11 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether/70d46718-bdb2-4bbd-af28-7aaf152f3c41",
-    "title": "Jobgether - Enterprise Customer Success Manager, India",
-    "snippet": "## Enterprise Customer Success Manager, India. We are currently looking for an Enterprise Customer Success Manager in India.**. This role offers the opportunity to drive enterprise-wide adoption and value realization of a cutting-edge AI governance platform. You will manage key customer accounts, lead projects from onboarding to renewal, and ensure long-term success by aligning platform capabilities with customer objectives. The position requires strategic thinking, excellent communication, and the ability to manage multiple priorities in a fast-paced SaaS environment. It is ideal for candidates who are passionate about AI, governance, and helping organizations operationalize responsible technology practices. You will work in a remote-first setup with occasional in-person meetups and company-wide offsites. + Lead enterprise-wide adoption of the AI governance platform, managing projects and coordinating with internal teams to ensure successful delivery. + Oversee the full customer lifecycle, including onboarding, training, support, business reviews, retention, renewal, and advocacy. + Define and execute customer success plans aligned with goals and milestones to drive measurable outcomes and long-term value. + Develop deep understanding of customer priorities, decision-making processes, and success drivers to support account growth. + Collaborate with Sales, Product, and Engineering teams to ensure alignment and effective delivery of customer objectives. + 5+ years of experience in enterprise Customer Success, Account Management, or Implementation roles within B2B SaaS organizations. + Proven track record of managing and growing large accounts and leading multiple concurrent customer engagements. + Strong project management skills and ability to coordinate across cross-functional teams. + Experience working in startup environments and managing enterprise/Fortune 500 customers is highly desirable. We use an **AI-powered matching process** to ensure your application is reviewed quickly, objectively, and fairly against the role's core requirements. The final decision and next steps (interviews, assessments) are managed by their internal team. **Data Privacy Notice:** By submitting your application, you acknowledge that Jobgether will process your personal data to evaluate your candidacy and share relevant information with the hiring employer. This processing is based on legitimate interest and pre-contractual measures under applicable data protection laws (including GDPR). We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "discovery_url": "https://jobs.lever.co/jobgether/cdf897be-e4e6-4b8b-8019-8e2f0088dd2b",
+    "title": "Jobgether - FlexFund Support Representative - Lever",
+    "snippet": "Fully remote work arrangement from India. ... Opportunities to develop customer support, technical troubleshooting, and operational skills within a global working ...",
+    "source": "Google/searlo",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "Jobgether",
     "seed_type": "ATS Board Seed",
@@ -484,17 +473,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether/eb2f8137-9151-434d-9825-d13c057844df",
-    "title": "Jobgether - Customer Success Specialist - REMOTE",
-    "snippet": "Title: Jobgether - Customer Success Specialist - REMOTE ## Customer Success Specialist - REMOTE. This position is posted by Jobgether on behalf of a partner company. We are currently looking for a Customer Success Manager - REMOTE. In this pivotal role, you will establish and shape the customer success function from the ground up, ensuring a seamless onboarding experience and fostering long-term relationships with our compliance-critical customers. You will have a direct impact on customer retention and satisfaction by understanding their unique needs and guiding them in utilizing our platform effectively. Reporting directly to the CEO, you'll have the autonomy and context to influence strategic decisions and enhance the overall customer experience. Join us in this exciting journey to build a strong foundation for customer success in a rapidly growing environment. * Own the end-to-end onboarding experience for new customers. * Design a repeatable onboarding playbook for compliance-driven use cases. * Reduce time-to-value by guiding customers through setup and workflows. * Manage the renewal pipeline end-to-end, ensuring customer retention. * Build a renewal tracking system to manage contract expirations. * Document and optimize customer success processes and workflows. * Synthesize customer feedback for internal improvements. * 3–7 years in customer success or account management at a B2B SaaS company. * Demonstrated success in managing renewals and maintaining retention rates. * Experience in building customer success processes from scratch. * Strong organizational skills and ability to manage multiple accounts. * Paid time off and medical leave. * Direct access to the CEO. * Influence over customer experience and success strategy. We use an AI-powered matching process to ensure your application is reviewed quickly, objectively, and fairly against the role's core requirements. Our system identifies the top-fitting candidates, and this shortlist is then shared directly with the hiring company. The final decision and next steps (interviews, assessments) are managed by their internal team. We appreciate your interest and wish you the best! Data Privacy Notice: By submitting your application, you acknowledge that Jobgether will process your personal data to evaluate your candidacy and share relevant information with the hiring employer. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/jobgether/121999fe-ff07-4620-a8d1-25c1e12afbc1",
     "title": "Jobgether - Customer Success Engineer, VIP",
     "snippet": "",
@@ -519,7 +497,18 @@
   {
     "discovery_url": "https://jobs.lever.co/jobgether/497a1720-a9e8-4ec2-a75f-f1a71a36580c",
     "title": "Jobgether - Customer Care Specialist - Email, Chat and Voice - Lever",
-    "snippet": "Multichannel customer support: Manage incoming phone calls, emails, and live ... Remote work experience: Previous experience working in a remote ...",
+    "snippet": "Customer Care Specialist - Email, Chat and Voice. India. Customer Success – Support /. Full-time /. Remote. apply for this job. This position is listed on ...",
+    "source": "Google/searlo",
+    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jobgether/d1c3bf80-b570-47cc-89d7-014c707fff66",
+    "title": "Jobgether - Community Moderator (External Contractor) - Lever",
+    "snippet": "... remote collaboration. Previous experience in community moderation, online forum management, customer support, student engagement, or a similar role is ...",
     "source": "Google/searlo",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
@@ -563,22 +552,22 @@
   {
     "discovery_url": "https://jobs.lever.co/jobgether",
     "title": "Jobgether",
-    "snippet": "##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager - CRM Suite ##### Customer Success Manager, Site Research ##### Customer Support Agent ##### Customer Support Specialist (Retail Operations) ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer [...] ##### Customer Care Specialist - Email, Chat and Voice ##### Customer Onboarding Manager ##### Customer Service Agent ##### Customer Success Advisor ##### Customer Success Engineer II ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager [...] ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### Director of Client Experience ##### Director of Client Success ##### Director, Customer Care Operations ##### Enterprise CSM ##### Enterprise CSM ##### Enterprise Customer Success Manager ##### Enterprise Customer Success Manager",
+    "snippet": "##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager - CRM Suite ##### Customer Success Manager, Site Research ##### Customer Support Agent ##### Customer Support Specialist (Retail Operations) ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer ##### DevOps Customer Support Engineer [...] ##### Customer Care Specialist - Email, Chat and Voice ##### Customer Onboarding Manager ##### Customer Service Agent ##### Customer Success Advisor ##### Customer Success Engineer II ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager ##### Customer Success Manager [...] ##### Senior Technical Customer Success Manager ##### Service Representative II-2 ##### Sr. Customer Care Professional ##### Sr. Customer Success Manager ##### Sr. Customer Success Manager ##### Sr. Director, Customer Experience and Strategic Execution ##### Sr. Director, Customer Experience and Strategic Execution ##### Sr. Director, Customer Experience and Strategic Execution ##### Sr. Support Analyst ##### Sr. Support Analyst ##### Staff Customer Success Manager",
     "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
     "company": "Jobgether",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/highspot/c62796e5-a0ab-421b-a8d2-e3c2292df977",
-    "title": "Highspot - Sr. Customer Success Manager - Remote",
-    "snippet": "Highspot logo ## Sr. Customer Success Manager - Remote ### What You'll Do ### Your Background ### This position is available either in-office or remote, as applicable, at the following locations: Highspot Home Page Lever logo",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "discovery_url": "https://jobs.workable.com/view/4xujNRwJDW57krHxKdh83u/implementation-specialist-india-in-coimbatore-at-base.com",
+    "title": "Implementation Specialist INDIA | Base.com",
+    "snippet": "Implementation Specialist INDIA ... Experienced & Independent: 2–5 years of experience in ecommerce SaaS implementation with strong self-management in a remote ...",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
     "score": 100,
-    "company": "Highspot",
+    "company": "Implementation Specialist INDIA | Base.com",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -594,10 +583,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/gohighlevel",
-    "title": "HighLevel - Lever",
-    "snippet": "Customer Success. CS Enablement & Training. Apply · Manager, Enablement. Remote ... Manager, Revenue Operations (Support). Remote — Employee IndiaIndia · Apply ...",
-    "source": "Google/search1",
+    "discovery_url": "https://jobs.lever.co/gohighlevel/5a89b1b8-d958-438f-bcbe-c7a0df1d0dbc",
+    "title": "HighLevel - Sr. Director, Customer Delivery - Lever",
+    "snippet": "... remote-first organization built for speed and ownership. We value ... Customer Success Management Leadership: Lead CSM across the United States and India ...",
+    "source": "Google/searlo",
     "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
     "company": "HighLevel",
@@ -605,24 +594,24 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/gohighlevel",
+    "title": "HighLevel - Lever",
+    "snippet": "Manager, Revenue Operations (Support). Remote — Employee IndiaIndia · Apply · Sr. Revenue Operations Analyst. Remote — Employee IndiaIndia. Support. Customer ...",
+    "source": "Google/search1",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "HighLevel",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/happyco/4dca0dbf-c105-46de-99a7-a824a300c6b8/apply",
-    "title": "HappyCo - Level 2 Support Representative",
+    "title": "HappyCo - Level 2 Support Representative - Lever",
     "snippet": "This role is 100% remote within the US. Are you able to work ... How would you rate your experience resolving escalated SaaS customer support issues?",
     "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
     "company": "HappyCo",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/foxitsoftware/22e4e065-5ee9-4535-a87d-64184ab2b254",
-    "title": "Foxit Software - L1 India Support Engineer",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:jobs.lever.co India remote \"customer support\"",
-    "score": 100,
-    "company": "Foxit Software",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -638,9 +627,42 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://jobs.lever.co/firemon/3a778ab3-2771-45fe-ae3d-3a400e48d06d",
+    "title": "FireMon - Customer Success Manager",
+    "snippet": "for customers, understanding their desired outcomes, sharing best practices, providing high level solution guidance, or bringing in resources for deep level technical advice, ensuring they realize real value from their investments. You will support operational readiness, and regularly engage with customers by providing status updates of open Support and Development tickets, Professional Services project tracking, sharing upcoming release dates and trending issues, as well as upgrade [...] We are looking for a Customer Success Manager (CSM) to own a set of large strategic accounts and ensure maximum customer satisfaction, high application engagement, customer retention, and champion growth. The CSM will own the process of determining the desired outcomes for their customers, and work to drive time to value by ensuring adoption and measuring the value delivered. You will drive customer experience by working to remove friction points along the customer journey and ensuring outcome [...] ensuring outcome value is tracked, shared internally and with customers, as well as leveraged to achieve goals.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer success\"",
+    "score": 100,
+    "company": "FireMon",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.shine.com/jobs/experienced-customer-experience-manager-leading-high-performing-teams-in/remotepromsp/19684252",
+    "title": "Experienced Customer Experience Manager Leading High-Performing Teams in",
+    "snippet": "remotepromsp | India | Shine | Introduction to blithequark At blithequark, our mission is to revolutionize the way our customers interact with software, driving lasting success and value through their partnership with us. As a leader in the industry, we are committed to creating a unified team of Technical Account Managers (TAMs) and Customer Success Managers (CSMs) who collaborate closely to support our most strategic, complex, and high-value customers. Our Customer Experience team is a strategic pillar in our mission, and we are seeking a seasoned leader to guide this evolving team structure. Role Overview As the Manager,",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical account manager customer success India hybrid",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://remoterush.mysmartpros.com/job/1118666",
+    "title": "Experienced Customer Experience Manager Leading High-Performing Teams in",
+    "snippet": "remotepromsp | India | Shine | Introduction to blithequark At blithequark, our mission is to revolutionize the way our customers interact with software, driving lasting success and value through their partnership with us. As a leader in the industry, we are committed to creating a unified team of Technical Account Managers (TAMs) and Customer Success Managers (CSMs) who collaborate closely to support our most strategic, complex, and high-value customers. Our Customer Experience team is a strategic pillar in our mission, and we are seeking a seasoned leader to guide this evolving team structure. Role Overview As the Manager,",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical account manager customer success India hybrid",
+    "score": 100,
+    "company": "remotepromsp",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/endpointclinical",
-    "title": "Endpoint Clinical",
-    "snippet": "F - Full TimeRemote India. 472 COGS - Customer Support (Data Management). Apply · Data Specialist. Remote — F - Full TimeRemote India · Endpoint ...",
+    "title": "Endpoint Clinical - Lever",
+    "snippet": "Remote — F - Full TimeRemote India. 472 COGS - Customer Support (Data Management). Apply · Data Specialist. Remote — F - Full TimeRemote India · Endpoint ...",
     "source": "Google/search1",
     "query": "site:jobs.lever.co India remote \"customer support\"",
     "score": 100,
@@ -657,39 +679,6 @@
     "score": 100,
     "company": "Dozee",
     "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/dozee/4fb2480c-0b7c-457e-97e9-97fb8984b75e",
-    "title": "Dozee - Customer Success Associate - Remote",
-    "snippet": "Title: Dozee - Customer Success Associate - Remote Dozee is looking for a proactive and detail-oriented professional to manage client support, project execution, and reporting operations. The role involves handling end-to-end project management, preparing clinical and technical reports, ensuring data accuracy, and supporting teams via HubSpot and other tools. Candidates should have 2+ years of experience, strong communication skills, and expertise in operations, CRM systems, and Advanced Excel. * Support the virtual command center team that escalates health alerts to hospitals and field ops. * Assist hospitals and patients with setup process and problem resolution for smooth execution and scaling. * Build and manage relationships with nurses and patients. * Provide analysis of frequent issues/alerts escalated and support the team in ensuring long time solutions are created to mitigate the same. * Must have prior experience of CRM/IVR systems. Dozee is India’s leading AI-Powered **contactless Remote Patient Monitoring (RPM)** and **Early Warning System (EWS).** A solution that continuously monitors patients and provides early warnings of clinical deterioration, enabling timely interventions and enhancing patient safety in hospitals, nursing facilities and patient homes. A **\"Made in India for the World\"** solution, Dozee has pioneered the world’s first non-contact blood pressure monitoring system. Trusted by leading healthcare providers in India, the USA, and Africa, Dozee is transforming patient safety and care by enhancing outcomes and reducing costs. * A tertiary care hospital study published in **JMIR***,* validated Dozee’s Early Warning System (EWS), showing it **identified 97% of deteriorating patients, provided alerts ~19 hours in advance**, and generated **5x fewer alerts,** reducing alarm fatigue and improving patient outcomes. * A study at King George Medical University, Lucknow, and published in **Frontiers in Medical Technology** demonstrated that Dozee’s automation can potentially save **2.5 hours of nursing time per shift**, improving workflow efficiency and allowing more focus on patient care. * A study on remote patient monitoring in general wards published in **Cureus** found that **90%+ of healthcare providers reported improved care** and patient safety, **74% of patients felt safer**, and there was a **43% increase in time for direct patient care.**. * **Business :** Providing Continuum of care with AI-powered contactless Remote Patient Monitoring (RPM) and Early Warning System (EWS) for Hospitals and Home.",
-    "source": "Google/tavily",
-    "query": "site:jobs.lever.co India remote \"customer success\"",
-    "score": 100,
-    "company": "Dozee",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.shine.com/jobs/director-technical-success-management-india/zscaler/19689652",
-    "title": "Director, Technical Success Management (India)",
-    "snippet": "Zscaler | India | Shine | We are looking for a Director, Technical Success Management to join our team. This is a Hybrid role, reporting to the VP of TSM International in the Customer Success department. At Zscaler, our Customer Success Organization is a global, customer-focused team dedicated to delivering high-impact experiences and identifying solutions. We use valuable data and research to provide expert, hands-on support starting from the implementation phase and beyond, ensuring customers achieve their goals and use our technology to its fullest potential. Together, we create a customer-centric culture that foste",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical account manager customer success India hybrid",
-    "score": 100,
-    "company": "Zscaler",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.kitjob.in/job/340147645/director-technical-success-management-india",
-    "title": "Director, Technical Success Management (India)",
-    "snippet": "Zscaler | India | Shine | We are looking for a Director, Technical Success Management to join our team. This is a Hybrid role, reporting to the VP of TSM International in the Customer Success department. At Zscaler, our Customer Success Organization is a global, customer-focused team dedicated to delivering high-impact experiences and identifying solutions. We use valuable data and research to provide expert, hands-on support starting from the implementation phase and beyond, ensuring customers achieve their goals and use our technology to its fullest potential. Together, we create a customer-centric culture that foste",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical account manager customer success India hybrid",
-    "score": 100,
-    "company": "Zscaler",
-    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -715,6 +704,61 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://bebee.com/in/jobs/digital-customer-success-manager-mongodb-gurugram--techmap_in_4480106917",
+    "title": "Digital Customer Success Manager",
+    "snippet": "MongoDB | Gurugram, Haryana | LinkedIn | This role sits within our Digital Customer Success team. This team exists to manage and evolve how we serve customers through digital and agentic experiences. The team helps MongoDB deliver a consistent, personalised and relevant experience using data, lifecycle programmes, automation, and human judgement where it matters most. We are looking for a Digital Success Manager to foster high-impact customer relationships at scale by leveraging data, automation, and digital channels to deliver tailored, value-led experiences. Blending strategic insight with digital programmes, you will advance our D",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical account manager customer success India hybrid",
+    "score": 100,
+    "company": "MongoDB",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://naukribandhu.in/job/102860-digital-customer-success-manager-mongodb",
+    "title": "Digital Customer Success Manager",
+    "snippet": "MongoDB | Gurugram, Haryana | LinkedIn | This role sits within our Digital Customer Success team. This team exists to manage and evolve how we serve customers through digital and agentic experiences. The team helps MongoDB deliver a consistent, personalised and relevant experience using data, lifecycle programmes, automation, and human judgement where it matters most. We are looking for a Digital Success Manager to foster high-impact customer relationships at scale by leveraging data, automation, and digital channels to deliver tailored, value-led experiences. Blending strategic insight with digital programmes, you will advance our D",
+    "source": "Google Jobs/SerpApi",
+    "query": "technical account manager customer success India hybrid",
+    "score": 100,
+    "company": "MongoDB",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/destinationknot/99d2e9f5-e311-478b-b1c1-f85bc2b4609b",
+    "title": "Destination Knot - Travel Customer Support – Remote",
+    "snippet": "Title: Destination Knot - Travel Customer Support – Remote ## Travel Customer Support – Remote. Destination Knot is a growing travel agency dedicated to helping clients design stress-free and memorable travel experiences. We provide our team with training, resources, and ongoing support to thrive in the travel industry. We are hiring enthusiastic individuals in the UK to provide remote customer support for our clients. As a Travel Customer Support Representative, you will answer inquiries, assist with bookings, and ensure clients have a smooth planning experience. Respond to client questions via email, phone, and online platforms. Support travel bookings for holidays, flights, resorts, and cruises. Provide friendly, professional service throughout the client journey. Research and present travel options tailored to client preferences. Maintain client records accurately and securely. Excellent communication and interpersonal skills. Prior experience in customer service or travel is helpful but not required. Strong organizational and time-management abilities. Comfortable working independently in a remote setting. Must be 18+ with internet access and a computer. Performance-based incentives and recognition. Reward programs for outstanding contributions. Access to travel perks and discounts. $50,000 - $65,000 a year. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. Jobs powered by Lever logo.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Destination Knot",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.adzuna.in/details/5856195279",
+    "title": "Customer Success and Support Specialist",
+    "snippet": "Venture Smarter | Anywhere | Adzuna | We are seeking a Customer Success Specialist to provide exceptional support and guidance to our customers. You will act as the primary point of contact, ensuring customers fully utilize our products, resolve technical issues, and have a positive experience. Position: Remote / Onsite (depending on company policy) Key ResponsibilitiesProvide exceptional support to customers via email, chat, and phone, addressing product inquiries, technical issues, and general questions.Guide customers through the onboarding process, ensuring they understand and can effectively use our products.Act as the voice",
+    "source": "Google Jobs/SerpApi",
+    "query": "customer support customer service customer success India remote",
+    "score": 100,
+    "company": "Venture Smarter",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://bebee.com/in/jobs/business-risk-assessment-and-support-ideslabs-private-limited-hyderabad--t7xk-882715400",
+    "title": "Customer Success and Support Specialist",
+    "snippet": "Venture Smarter | Anywhere | Adzuna | We are seeking a Customer Success Specialist to provide exceptional support and guidance to our customers. You will act as the primary point of contact, ensuring customers fully utilize our products, resolve technical issues, and have a positive experience. Position: Remote / Onsite (depending on company policy) Key ResponsibilitiesProvide exceptional support to customers via email, chat, and phone, addressing product inquiries, technical issues, and general questions.Guide customers through the onboarding process, ensuring they understand and can effectively use our products.Act as the voice",
+    "source": "Google Jobs/SerpApi",
+    "query": "customer support customer service customer success India remote",
+    "score": 100,
+    "company": "Venture Smarter",
+    "seed_type": "Google Jobs Apply URL",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/jobgether/98ee56a7-1ed0-4693-b6f4-0f13b407b9a4",
     "title": "Customer Success Manager at Jobgether",
     "snippet": "",
@@ -726,9 +770,9 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/firemon/3a778ab3-2771-45fe-ae3d-3a400e48d06d",
-    "title": "Customer Success Manager - FireMon - Lever",
-    "snippet": "India, Remote. Customer Experience – Customer Success /. Full-Time /. Remote. apply for this job. FireMon is looking for a Customer Success Manager (CSM) to ...",
+    "discovery_url": "https://jobs.lever.co/Sprinto/640fd9e7-76d3-463a-9c0c-7f31fc3a4c6f",
+    "title": "Customer Success Manager - Sprinto - Lever",
+    "snippet": "Customer Success Manager. Remote (India). Customer Experience /. Remote /. Remote. apply for this job. Sprinto is an Autonomous Trust Platform that centralizes ...",
     "source": "Google/searlo",
     "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
@@ -737,25 +781,14 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.michaelpage.co.in/job-detail/customer-success-manager-bfsi-saas-fintech-series-c/ref/jn-042026-6996794",
-    "title": "Customer Success Manager (BFSI) | SaaS - Fintech (Series C)",
-    "snippet": "Michael Page | Mumbai, Maharashtra | Michael Page | Drive real business impact by owning complex, high-stakes enterprise customers oGrow your career in a well‑funded, fast‑scaling SaaS company with strong leaders About Our Client Our client is a well-funded enterprise SaaS company that is transforming how large financial institutions manage their distribution networks, field operations, and collections. Backed by $45M+ in funding from top-tier global venture capital firms and strategic investors, the company operates at significant scale, serving 350,000+ users across 70+ large global financial enterprises. Its AI-powered platforms help banks a",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical account manager customer success India hybrid",
+    "discovery_url": "https://jobs.lever.co/arcadia/878f8c29-b287-488d-b6c0-e65e059f24b4/apply",
+    "title": "Customer Success Manager - Arcadia - Lever",
+    "snippet": "Customer Success Manager. Remote. Operations – Customer Success /. Full-time ... India, Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand ...",
+    "source": "Google/search1",
+    "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
-    "company": "Michael Page",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.iimjobs.com/j/head-customer-success-saas-platform-1727606",
-    "title": "Customer Success Manager (BFSI) | SaaS - Fintech (Series C)",
-    "snippet": "Michael Page | Mumbai, Maharashtra | Michael Page | Drive real business impact by owning complex, high-stakes enterprise customers oGrow your career in a well‑funded, fast‑scaling SaaS company with strong leaders About Our Client Our client is a well-funded enterprise SaaS company that is transforming how large financial institutions manage their distribution networks, field operations, and collections. Backed by $45M+ in funding from top-tier global venture capital firms and strategic investors, the company operates at significant scale, serving 350,000+ users across 70+ large global financial enterprises. Its AI-powered platforms help banks a",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical account manager customer success India hybrid",
-    "score": 100,
-    "company": "Michael Page",
-    "seed_type": "Google Jobs Apply URL",
+    "company": "Customer Success Manager",
+    "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
@@ -766,6 +799,50 @@
     "query": "site:jobs.lever.co India remote \"customer success\"",
     "score": 100,
     "company": "ChowNow",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://careers.smartrecruiters.com/Talenticate",
+    "title": "Careers at Talenticate",
+    "snippet": "Remote, India. 1 job. Salesforce CDP Technical Implementation Specialist. Full-time. Employees can work remotely. Go back to top. powered by. Cookies Settings.",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 100,
+    "company": "Careers at Talenticate",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/aisle_and_abroad/7fa5ec97-a9a9-4cfc-af50-04ad14e9284d",
+    "title": "Aisles & Abroad - Remote | Entry Level | Customer Support Advisor",
+    "snippet": "## Remote | Entry Level | Customer Support Advisor ### Position Overview We are seeking a dependable and detail-oriented Remote Customer Support Specialist to assist with client communications and support coordination. This role focuses on managing incoming requests, organizing key details, and ensuring a smooth and responsive experience across all client interactions. [...] This is a fully remote, entry-level friendly position ideal for individuals who are organized, proactive, and comfortable working in a structured, service-focused environment. ### Key Responsibilities ### Requirements ### What We Offer ### Work Environment This is a remote role requiring a reliable internet connection and the ability to stay organized and productive in a virtual setting. Aisles & Abroad Home Page Lever logo",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Aisles & Abroad",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/aisle_and_abroad/1f168cbd-3220-44ee-bc8d-7d1f3d23bb3b",
+    "title": "Aisles & Abroad - Customer Support Coordinator | Remote",
+    "snippet": "## Customer Support Coordinator | Remote ### Position Overview We are seeking a dependable and service-oriented Customer Support Coordinator to provide client assistance, manage support requests, and help coordinate scheduling and service-related activities in a remote environment. This position focuses on communication, organization, and delivering a positive client experience. [...] This role is ideal for individuals who are detail-oriented, responsive, and comfortable working independently using digital tools. ### Key Responsibilities ### Qualifications: ### Preferred (Not Required) ### What We Offer ### Work Environment This is a remote role requiring a reliable internet connection and the ability to stay organized and self-directed in a virtual workspace. ### Apply Today [...] ### Apply Today If you enjoy helping clients stay organized and ensuring booking details are handled efficiently, we encourage you to apply. Aisles & Abroad Home Page Lever logo",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Aisles & Abroad",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/aisle_and_abroad/35b0e64b-db1b-4ea8-8bd8-cf8e6c54b312",
+    "title": "Aisles & Abroad - Customer Support Coordinator | Remote",
+    "snippet": "Title: Aisles & Abroad - Customer Support Coordinator | Remote ## Customer Support Coordinator | Remote. ### **Position Overview**. We are seeking a dependable and service-oriented **Customer Support Coordinator** to provide client assistance, manage support requests, and help coordinate scheduling and service-related activities in a remote environment. This position focuses on communication, organization, and delivering a positive client experience. This role is ideal for individuals who are detail-oriented, responsive, and comfortable working independently using digital tools. ### Key Responsibilities. * Respond to client inquiries and provide timely, professional support. * Assist with coordinating scheduling, reservations, and service requests. * Maintain accurate client records and support documentation in internal systems. * Communicate with clients via email, phone, and online platforms. * Track and follow up on open requests to ensure resolution. * Review service details and confirmations for accuracy. * Provide general administrative and customer support. * Collaborate with internal teams to ensure a smooth client experience. ### Qualifications:. * Strong written and verbal communication skills. * Excellent organizational skills and attention to detail. * Comfortable using online systems and customer support tools. * Ability to manage multiple tasks in a remote environment. * Customer service or administrative experience preferred. * Reliable internet access and ability to work remotely. ### Preferred (Not Required). * Experience in customer service, coordination, or administrative support. * Interest in travel, hospitality, or event-related services. ### What We Offer. * Step-by-step onboarding and ongoing support. * Opportunities for growth and advancement based on performance. * Supportive and collaborative team environment. $45,000 - $75,000 a year. ### **Work Environment**. This is a remote role requiring a reliable internet connection and the ability to stay organized and self-directed in a virtual workspace. ### **Apply Today**. If you enjoy helping clients stay organized and ensuring booking details are handled efficiently, we encourage you to apply. We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us. Jobs powered by Lever logo.",
+    "source": "Google/tavily",
+    "query": "site:jobs.lever.co India remote \"customer support\"",
+    "score": 100,
+    "company": "Aisles & Abroad",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -816,7 +893,7 @@
   {
     "discovery_url": "https://wellfound.com/role/l/technical-account-manager/bangalore",
     "title": "Technical Account Manager Jobs in Bengaluru, India - 2027",
-    "snippet": "Find the best Technical Account Manager jobs in Bengaluru, India in 2027 ... Remote Jobs, Locations, Startups, Startups Hiring, Industries, Tech ...",
+    "snippet": "Find the best Technical Account Manager jobs in Bengaluru, India in 2027 ... Remote Operations Manager Jobs · Remote Growth Marketer Jobs · Remote ...",
     "source": "Google/serper",
     "query": "\"technical account manager\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
@@ -836,24 +913,57 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://in.jooble.org/jobs-remote%20customer%20service/India",
-    "title": "Remote customer service jobs in India - Jooble",
-    "snippet": "Apply for Remote customer service jobs in India. Explore 196.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs. Fast & Free. Top employers in India. Remote customer service jobs is easy to find. Start your new career right now!",
+    "discovery_url": "https://in.jobsora.com/job-54035973357",
+    "title": "Technical Account Manager",
+    "snippet": "Our partner is looking for a Technical Account Manager based in India. ... Fully remote working opportunity from India. Senior, customer-facing ...",
     "source": "Google/serper",
-    "query": "\"customer service representative\" India \"remote\" jobs -linkedin -indeed",
+    "query": "\"technical account manager\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "Remote customer service jobs in India",
+    "company": "Technical Account Manager",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.experian.com/job/senior-implementation-specialist-remote-in-united-states-jid-2225",
+    "title": "Senior Implementation Specialist - Remote",
+    "snippet": "Senior Implementation Specialist - Remote. __vacancyopjusttionswidget.opt ... Delhi, India. Experience Level. Not Applicable. Employment. Permanent. Location.",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Senior Implementation Specialist",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.careers-page.com/remote-core-solutions/job/L679W6XW/apply",
+    "title": "Rippling Implementation Specialist - Remote Core Solutions",
+    "snippet": "Rippling Implementation Specialist. Mumbai, Maharashtra, India. Job Openings Rippling Implementation Specialist Apply. Full Name: *. Email: *. Phone: *.",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Rippling Implementation Specialist",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://startup.jobs/roles/implementation-specialist/remote",
+    "title": "Remote Implementation Specialist Jobs in October 2026",
+    "snippet": "Work from anywhere as a Implementation Specialist at a fast-growing startup. All Implementation Specialist jobs All remote jobs.",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Remote Implementation Specialist Jobs in October 2026",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://himalayas.app/jobs/countries/india/implementation-specialist",
-    "title": "Remote Implementation Specialist Jobs in India | Himalayas",
-    "snippet": "Discover the best remote and work from home Implementation Specialist jobs at top remote companies hiring in India on Himalayas. Find high-match roles daily, tailor your resume & cover letter and auto-apply using AI.",
+    "discovery_url": "https://www.cogencis.com/jobs/36",
+    "title": "Pre-Sales & Implementation Specialist – Enterprise Solutions",
+    "snippet": "Pre-Sales & Implementation Specialist – Enterprise Solutions. Home / Pre ... Comfortable working and presenting in both remote and face-to-face settings.",
     "source": "Google/serper",
     "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "Remote Implementation Specialist Jobs in India | Himalayas",
+    "company": "Pre-Sales & Implementation Specialist – Enterprise Solutions",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -891,6 +1001,28 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://wellfound.com/jobs/3162557-implementation-specialist-technical",
+    "title": "Implementation specialist (technical) at Base.com",
+    "snippet": "We're looking for a Technical Implementation Specialist – India to lead ... Remote Jobs, Locations, Startups, Startups Hiring, Industries, Tech Hubs.",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Implementation specialist (technical) at Base.com",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://ats.rippling.com/rippling/jobs/c92d6b7d-3c78-4f3c-ac0a-9a95b8e28e72",
+    "title": "Implementation Specialist, IT",
+    "snippet": "Implementation Specialist, IT. About Rippling. Rippling gives businesses ... Final offer amounts may vary from the amounts listed below. #li-remote. The ...",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Implementation Specialist, IT",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://myinternships.in/jobs/twilio-is-hiring-fast-track-onboarding-specialist-2-india-67c335",
     "title": "Fast Track Onboarding Specialist 2 Job at Twilio, India",
     "snippet": "Twilio is hiring a Fast Track Onboarding Specialist 2 in India (Remote) — published 11 June 2026 on the company's official careers board. Apply free.",
@@ -898,28 +1030,6 @@
     "query": "\"onboarding specialist\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
     "company": "Fast Track Onboarding Specialist 2 Job at Twilio, India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.placementindia.com/job-search/implementation-specialist-jobs.htm",
-    "title": "Best Implementation Specialist Jobs - Implementation ...",
-    "snippet": "We are looking for a skilled and results-driven SEO Specialist to join our marketing team.In this role, you will be responsible for developing, implementing, and managing strategies to improve organic search rankings, increase website traffic, andoptimize overall site performance.",
-    "source": "Google/serper",
-    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "Best Implementation Specialist Jobs",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/remote-implementation-specialist-jobs-SRCH_IL.0,6_IS12563_KO7,32.htm",
-    "title": "99 Implementation specialist jobs in Remote - Glassdoor",
-    "snippet": "Search Implementation specialist jobs in Remote with company ratings and salaries. 99 open jobs for Implementation specialist in Remote.",
-    "source": "Google/serper",
-    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "99 Implementation specialist jobs in Remote",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -946,35 +1056,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/remote-implementation-specialist-jobs-SRCH_KO0,32.htm",
-    "title": "698 Remote implementation specialist jobs in India - Glassdoor",
-    "snippet": "Search Remote implementation specialist jobs. Get the right Remote implementation specialist job with company ratings and salaries. 698 open jobs for Remote implementation specialist.",
-    "source": "Google/serper",
-    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "698 Remote implementation specialist jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/help-desk-support-remote-jobs-SRCH_KO0,24.htm",
-    "title": "382 Help desk support remote jobs in India - Glassdoor",
-    "snippet": "Search Help desk support remote jobs. Get the right Help desk support remote job with company ratings and salaries. 382 open jobs for Help desk support remote.",
+    "discovery_url": "https://www.glassdoor.co.in/Job/india-it-helpdesk-from-home-jobs-SRCH_IL.0,5_IN115_KO6,27.htm",
+    "title": "32 it helpdesk from home jobs in India, August 2026",
+    "snippet": "hr representative jobs in RemoteRemote jobshighlevel jobs in Remote ... help desk technician jobs in IndiaSupportHub360 jobs in India · SupportHub360 ...",
     "source": "Google/serper",
     "query": "\"help desk\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "382 Help desk support remote jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/remote-customer-service-representative-jobs-SRCH_KO0,38.htm",
-    "title": "280 Remote customer service representative jobs in India",
-    "snippet": "Search Remote customer service representative jobs. Get the right Remote customer service representative job with company ratings and salaries. 280 open jobs for Remote customer service representative.",
-    "source": "Google/serper",
-    "query": "\"customer service representative\" India \"remote\" jobs -linkedin -indeed",
-    "score": 95,
-    "company": "280 Remote customer service representative jobs in India",
+    "company": "32 it helpdesk from home jobs in India, August 2026",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -990,24 +1078,57 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/remote-it-help-desk-jobs-SRCH_KO0,19.htm",
-    "title": "241 Remote it help desk jobs in India - Glassdoor",
-    "snippet": "Search Remote it help desk jobs. Get the right Remote it help desk job with company ratings and salaries. 228 open jobs for Remote it help desk.",
+    "discovery_url": "https://www.glassdoor.co.in/Job/india-application-support-jobs-SRCH_IL.0,5_IN115_KO6,25.htm",
+    "title": "23,436 Application support jobs in India - Glassdoor",
+    "snippet": "Search Application support jobs in India with company ratings and salaries. 23,436 open jobs for Application support in India.",
     "source": "Google/serper",
-    "query": "\"help desk\" India \"remote\" careers -linkedin -indeed",
+    "query": "\"application support\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "241 Remote it help desk jobs in India",
+    "company": "23,436 Application support jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/customer-service-remote-work-from-home-jobs-SRCH_KO0%2C38.htm",
-    "title": "1,262 Customer service remote work from home jobs in India",
-    "snippet": "Search Customer service remote work from home jobs. Get the right Customer service remote work from home job with company ratings and salaries. 1,262 open jobs for Customer service remote work from home.",
+    "discovery_url": "https://www.glassdoor.co.in/Job/help-desk-support-specialist-jobs-SRCH_KW0,28.htm",
+    "title": "207 India jobs - Work from home - Glassdoor",
+    "snippet": "Indore. ₹3L - ₹4L (Glassdoor Est.) Familiarity with our industry is a plus. Experience using help desk software and remote support ticketing systems.",
     "source": "Google/serper",
-    "query": "\"customer service representative\" India \"remote\" jobs -linkedin -indeed",
+    "query": "\"help desk\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "1,262 Customer service remote work from home jobs in India",
+    "company": "207 India jobs",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.glassdoor.co.in/Job/work-from-home-application-support-jobs-SRCH_FW0,14_KO15,34.htm",
+    "title": "2,509 Application support jobs in India - Work from home",
+    "snippet": "Search work from home Application support jobs. Get the right remote Application support job with company ratings and salaries. 2,509 open work from home Application support jobs. Get hired!",
+    "source": "Google/serper",
+    "query": "\"application support\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "2,509 Application support jobs in India",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.glassdoor.co.in/Job/remote-implementation-specialist-jobs-SRCH_IL.0,6_IS12563_KO7,32.htm",
+    "title": "111 implementation specialist jobs in Remote, June 2026",
+    "snippet": "Search Implementation specialist jobs in Remote with company ratings and salaries. 111 open jobs for Implementation specialist in Remote.",
+    "source": "Google/serper",
+    "query": "\"implementation specialist\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "111 implementation specialist jobs in Remote, June 2026",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.glassdoor.co.in/Job/noida-remote-support-jobs-SRCH_IL.0,5_IC4477468_KO6,20.htm",
+    "title": "1,652 remote support jobs in Noida, October 2026 - Glassdoor",
+    "snippet": "Search Remote support jobs in Noida with company ratings and salaries ... help desk technician jobs in NoidaNoida jobsNTT DATA jobs in Noida · NTT DATA ...",
+    "source": "Google/serper",
+    "query": "\"help desk\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "1,652 remote support jobs in Noida, October 2026",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1021,17 +1142,6 @@
     "company": "MongoDB",
     "seed_type": "Google Jobs Result",
     "crawl_seed": "No"
-  },
-  {
-    "discovery_url": "https://jobs.siemens.com/de_DE/externaljobs/JobDetail/515427",
-    "title": "PreSales Technical Account Manager - Job Detail",
-    "snippet": "#LI-REMOTE. #SWSaaS. Tap to unmute. Your browser can't play this video. Learn more ... Technical Account Manager -MendixRapidMiner (MXRM), India. Bangalore ...",
-    "source": "Google/serper",
-    "query": "\"technical account manager\" India \"remote\" careers -linkedin -indeed",
-    "score": 85,
-    "company": "PreSales Technical Account Manager",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://careers.yardi.com/openings",
