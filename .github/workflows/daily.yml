@@ -1,4 +1,4 @@
-name: Remote4.me V13.7 Final India High-Coverage Crawler
+name: Remote4.me V14.6 Expanded ATS + Company Career Crawler
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: remote4me-v13-daily
+  group: remote4me-v14-daily
   cancel-in-progress: false
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Refresh discovery manifests
+      - name: Refresh V14.6 discovery manifests
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -40,10 +40,13 @@ jobs:
           SEARCH_QUERIES_PER_PROVIDER: "2"
           SEARCH_RESULTS_PER_QUERY: "10"
           SEARCH_DISCOVERY_ROTATION_DAYS: "10"
+          SEARCH_QUERIES_PER_PROVIDER: "2"
           SEARCH_DISCOVERY_MAX_URLS: "2000"
           GOOGLE_DISCOVERY_ENABLED: "1"
-          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "6"
+          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "10"
           GOOGLE_DISCOVERY_RESULTS_PER_QUERY: "10"
+          JOB_BOARD_QUERIES_PER_RUN: "6"
+          JOB_BOARD_ROTATION_DAYS: "1"
           GOOGLE_DISCOVERY_ROTATION_DAYS: "1"
           GOOGLE_DISCOVERY_WORKERS: "12"
           GOOGLE_JOBS_ENABLED: "1"
@@ -91,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
-      group: remote4me-v13-${{ matrix.ats }}
+      group: remote4me-v14-${{ matrix.ats }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
@@ -160,7 +163,12 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          CAREER_DAILY_BUDGET: "1000"
+          CAREER_DAILY_BUDGET: "1200"
+          CAREER_CRAWL_BUDGET: "1000"
+          ATS_BOARD_BUDGET: "2400"
+          DIRECT_DETAIL_BUDGET: "160"
+          DISCOVERY_DETAIL_BUDGET: "240"
+          AGGREGATOR_RESOLVE_BUDGET: "180"
           CAREER_PAGE_LIMIT: "4"
           CRAWL_WORKERS: "32"
           JOB_MAX_AGE_DAYS: "30"
@@ -168,7 +176,7 @@ jobs:
           PUBLISH_APAC_WORLDWIDE: "0"
           CAREER_PREFLIGHT_ENABLED: "1"
           CAREER_PREFLIGHT_WORKERS: "36"
-          CAREER_BROWSER_MAX_CALLS: "160"
+          CAREER_BROWSER_MAX_CALLS: "180"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_MAX_PAGES: "2"
           PLAYWRIGHT_TIMEOUT_MS: "25000"
@@ -217,6 +225,10 @@ jobs:
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           JOB_OPPORTUNITIES_API_KEY: ${{ secrets.JOB_OPPORTUNITIES_API_KEY }}
+          JOBVETTA_API_KEY: ${{ secrets.JOBVETTA_API_KEY }}
+          JOBVETTA_DAILY_QUERIES: "4"
+          JOBVETTA_DAYS: "14"
+          JOBVETTA_DETAIL_BUDGET: "20"
           JOA_DAILY_RECORD_BUDGET: "28"
           JOA_PAGE_SIZE: "10"
           HIMALAYAS_MAX_PAGES: "3"
@@ -226,8 +238,8 @@ jobs:
           ARBEITNOW_MAX_PAGES: "5"
           STARTUP_JOBS_MAX_PAGES: "5"
           FEED_MAX_JOB_AGE_DAYS: "14"
-          FEED_DISCOVERY_MAX_ROWS: "1200"
-          FEED_DIRECT_BUDGET: "400"
+          FEED_DISCOVERY_MAX_ROWS: "1500"
+          FEED_DIRECT_BUDGET: "450"
           JOB_MAX_AGE_DAYS: "30"
           ALLOW_APAC_WORLDWIDE: "0"
           PUBLISH_APAC_WORLDWIDE: "0"
@@ -283,8 +295,8 @@ jobs:
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-          git diff --cached --quiet || git commit -m "Refresh V14.0 discovery manifests"
+          git diff --cached --quiet || git commit -m "Refresh V14.6 discovery manifests"
           git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me V14.0 daily crawl and publish completed."
+        run: echo "Remote4.me V14.5 daily crawl and publish completed."
