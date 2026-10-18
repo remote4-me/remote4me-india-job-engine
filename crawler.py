@@ -28,7 +28,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V14.1
+# REMOTE4.ME JOB CRAWLER V14.3
 # INDIA-FIRST / NO PAID SEARCH API
 # ============================================================
 #
@@ -4124,6 +4124,205 @@ def extract_exact_job_url_from_page(source_url, title_hint=""):
     return uniq[0] if uniq else ""
 
 
+def inspect_discovery_job_page(job, try_browser=False, page_url=""):
+    """Visit a public discovery page and enrich it with actual job-page details.
+
+    This is an evidence-gathering step, not an approval shortcut: a discovery
+    URL never becomes a direct job URL unless the separate resolver validates
+    an exact employer/ATS route. We preserve the original source and record why
+    details could or could not be verified.
+    """
+    x = dict(job)
+    source_url = normalize_url(page_url or x.get("discovery_url") or x.get("job_url") or "")
+    if not source_url:
+        x.update(detail_status="Rejected", verification_notes="Missing discovery URL")
+        return x
+
+    html, final_url = get_html(source_url, timeout=V11_HTML_TIMEOUT)
+    browser_used = False
+    if html and len(clean_text(BeautifulSoup(html, "html.parser").get_text(" ", strip=True))) < 350:
+        html = ""
+    # JS-rendered public pages: bounded browser fallback, only when enabled and
+    # the page appears to be a shell. No login, challenge bypass, or private data.
+    if (not html) and try_browser and PLAYWRIGHT_ENABLED and _browser_slot():
+        try:
+            from playwright.sync_api import sync_playwright
+            with sync_playwright() as pw:
+                browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
+                page = browser.new_page(user_agent=USER_AGENT)
+                page.goto(source_url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=min(5000, PLAYWRIGHT_TIMEOUT_MS))
+                except Exception:
+                    pass
+                html = page.content()
+                final_url = page.url or source_url
+                browser.close()
+                browser_used = bool(html)
+        except Exception as exc:
+            x["verification_notes"] = f"Browser detail fetch failed: {type(exc).__name__}"
+
+    if not html:
+        x.update(detail_status="Fetch failed", verification_notes=x.get("verification_notes") or "Public page could not be fetched")
+        return x
+
+    soup = BeautifulSoup(html, "html.parser")
+    body_text = clean_text(soup.get_text(" ", strip=True))[:50000]
+    structured = []
+    for obj in _iter_jsonld_objects(soup):
+        typ = obj.get("@type")
+        types = typ if isinstance(typ, list) else [typ]
+        if any(str(t).lower() == "jobposting" for t in types):
+            structured.append(obj)
+
+    # Prefer matching JobPosting JSON-LD, since it usually carries the most
+    # trustworthy title, employer, country, workplace, date and description.
+    chosen = None
+    title_hint = clean_text(x.get("title", "")).lower()
+    for obj in structured:
+        t = clean_text(obj.get("title") or obj.get("name")).lower()
+        if not chosen or (t and (t == title_hint or title_hint in t or t in title_hint)):
+            chosen = obj
+        if t and (t == title_hint or title_hint in t or t in title_hint):
+            break
+
+    title = clean_text((chosen or {}).get("title") or (chosen or {}).get("name")) if chosen else ""
+    company = ""
+    location = ""
+    workplace = ""
+    description = ""
+    posted = ""
+    country_code = ""
+    if chosen:
+        org = chosen.get("hiringOrganization") or {}
+        if isinstance(org, dict):
+            company = clean_text(org.get("name"))
+            same_as = org.get("sameAs")
+            if not x.get("company_website") and isinstance(same_as, str) and same_as.startswith("http"):
+                x["company_website"] = normalize_url(same_as)
+        location = _job_location_text(chosen)
+        description = clean_text(chosen.get("description"))[:12000]
+        posted = parse_date(chosen.get("datePosted") or chosen.get("dateCreated") or chosen.get("validFrom"))
+        workplace = _structured_workplace(chosen, description)
+        jl = chosen.get("jobLocation")
+        locs = jl if isinstance(jl, list) else [jl]
+        for loc in locs:
+            if isinstance(loc, dict) and isinstance(loc.get("address"), dict):
+                country_code = clean_text(loc["address"].get("addressCountry")) or country_code
+        if not workplace and chosen.get("jobLocationType"):
+            workplace = "Remote" if "tele" in clean_text(chosen.get("jobLocationType")).lower() else ""
+
+    # Fall back to visible page details, but don't overwrite strong source data.
+    if not title:
+        for selector, attr in [("meta[property='og:title']", "content"), ("meta[name='twitter:title']", "content")]:
+            node = soup.select_one(selector)
+            if node and clean_text(node.get(attr)):
+                title = clean_text(node.get(attr)); break
+        if not title and soup.find("h1"):
+            title = clean_text(soup.find("h1").get_text(" ", strip=True))
+        if not title and soup.title:
+            title = clean_text(soup.title.get_text(" "))
+    if not company:
+        for selector, attr in [("meta[property='og:site_name']", "content"), ("meta[name='author']", "content")]:
+            node = soup.select_one(selector)
+            if node and clean_text(node.get(attr)):
+                candidate = clean_text(node.get(attr))
+                if candidate.lower() not in {"linkedin", "indeed", "wellfound", "himalayas", "jobicy", "remote ok"}:
+                    company = candidate; break
+    if not description:
+        node = soup.select_one("meta[name='description'], meta[property='og:description']")
+        description = clean_text(node.get("content"))[:12000] if node else ""
+    if not location:
+        # Only use visible text if it explicitly signals India; don't infer India
+        # from an aggregator's broad 'worldwide' label.
+        m = re.search(r"[^.;|]{0,90}\b(?:India|Bengaluru|Bangalore|Mumbai|Pune|Hyderabad|Chennai|Delhi|Noida|Gurugram|Gurgaon|Kochi|Coimbatore|Ahmedabad|Kolkata)\b[^.;|]{0,90}", body_text, re.I)
+        if m:
+            location = clean_text(m.group(0))
+    if not workplace:
+        if HYBRID_RE.search((location + " " + body_text[:12000])):
+            workplace = "Hybrid"
+        elif REMOTE_RE.search((location + " " + body_text[:12000])):
+            workplace = "Remote"
+
+    # Description on aggregator pages often includes site navigation. Keep only
+    # a bounded text excerpt; the original source URL remains available for audit.
+    if not description:
+        description = body_text[:12000]
+
+    # Find application URL, preferring explicit Apply buttons and known ATS links.
+    apply_candidates = []
+    for a in soup.find_all("a", href=True):
+        href = normalize_url(urljoin(final_url or source_url, a.get("href", "")))
+        if not href:
+            continue
+        label = clean_text(a.get_text(" ", strip=True)).lower()
+        host = urlparse(href).netloc.lower()
+        if is_aggregator_host(host) and host != urlparse(source_url).netloc.lower():
+            continue
+        if ats_from_url(href) or any(k in label for k in ("apply", "apply now", "employer site", "company website", "view original", "apply on company")):
+            if href != normalize_url(source_url):
+                score = (80 if ats_from_url(href) else 0) + (40 if "apply" in label else 0) + (10 if is_exact_job_url(href) else 0)
+                apply_candidates.append((score, href))
+    apply_url = sorted(apply_candidates, key=lambda z: (-z[0], len(z[1])))[0][1] if apply_candidates else ""
+
+    # A job is detail-verified only if the page supports the target role, remote/
+    # hybrid arrangement, India eligibility, and a non-stale posting date when one
+    # is available. Missing evidence remains a lead, never a direct job.
+    eligibility = v11_india_eligibility(location, country_code, country_code, description, workplace)
+    notes = []
+    if not title or not title_relevant(title): notes.append("Target role not confirmed")
+    if not workplace or not _workplace_allowed(workplace): notes.append("Remote/hybrid not confirmed")
+    if not eligibility: notes.append("India eligibility not confirmed")
+    if posted and not recent_enough(posted): notes.append("Posting appears stale")
+    if not description or len(description) < 120: notes.append("Description/details are thin")
+    if browser_used: notes.append("Rendered with browser")
+    if final_url and normalize_url(final_url) != source_url: notes.append("Source redirected")
+
+    x.update({
+        "title": title or x.get("title", ""),
+        "company": company or x.get("company", ""),
+        "location": location or x.get("location", ""),
+        "workplace": workplace or x.get("workplace", ""),
+        "posted_date": posted or x.get("posted_date", ""),
+        "description": description,
+        "resolved_apply_url": apply_url or x.get("resolved_apply_url", ""),
+        "eligibility": eligibility,
+        "detail_status": "Verified details" if not notes else "Needs review",
+        "verification_notes": "; ".join(notes) if notes else "Role, workplace and India evidence found on public page",
+        "source_page_final_url": normalize_url(final_url) or source_url,
+    })
+    if chosen:
+        score, matched = score_job(x.get("title", ""), description, location)
+        x["score"] = max(int(x.get("score", 0) or 0), score)
+        x["matched"] = matched or x.get("matched", "")
+    return x
+
+
+def enrich_discovery_details(jobs, budget=180):
+    """Inspect the highest-value public discovery leads and populate job details."""
+    if not jobs:
+        return []
+    budget = max(0, int(budget))
+    selected_urls = {
+        normalize_url(j.get("discovery_url") or j.get("job_url") or "")
+        for j in sorted(jobs, key=lambda x: (int(x.get("score", 0) or 0), bool(x.get("company_website")), x.get("posted_date", "")), reverse=True)[:budget]
+    }
+    def one(j):
+        u = normalize_url(j.get("discovery_url") or j.get("job_url") or "")
+        if u not in selected_urls:
+            return dict(j)
+        return inspect_discovery_job_page(j, try_browser=True)
+    out=[]
+    with ThreadPoolExecutor(max_workers=min(6, max(1, len(selected_urls)))) as ex:
+        futures=[ex.submit(one,j) for j in jobs]
+        for f in as_completed(futures):
+            try: out.append(f.result())
+            except Exception as exc: print(f"DISCOVERY DETAIL: {type(exc).__name__}: {exc}")
+    # Keep source order roughly stable after concurrent fetches by URL.
+    by_url={normalize_url(x.get("discovery_url") or x.get("job_url") or ""):x for x in out}
+    return [by_url.get(normalize_url(j.get("discovery_url") or j.get("job_url") or ""), dict(j)) for j in jobs]
+
+
 def resolve_public_feed_jobs_to_direct(jobs, budget=140):
     """Try to turn aggregator job-detail URLs into verified employer/ATS URLs.
 
@@ -4162,6 +4361,7 @@ def resolve_public_feed_jobs_to_direct(jobs, budget=140):
 
         x = dict(j)
         x["job_url"] = direct
+        x["resolved_apply_url"] = direct
         x["direct"] = True
         x["direct_validation"] = "resolved-ats-job" if ats else "resolved-company-job"
         x["original_discovery_url"] = source_url
@@ -6364,6 +6564,55 @@ def feed_direct_only():
             if normalize_url(x.get("discovery_url") or x.get("job_url") or "") not in resolved_urls
         ]
     print(f"AGGREGATOR RESOLUTION: tried={min(len(aggregator_candidates), resolve_budget)} resolved_direct={len(resolved)} unresolved_retained={len(aggregator_candidates)-len(resolved)} budget={resolve_budget}")
+
+    # V14.3: visit resolved employer/ATS pages before accepting them as direct.
+    # A route alone is not sufficient: title, India eligibility, remote/hybrid,
+    # and page details must be supported by the actual destination page.
+    checked_resolved = []
+    requeue_for_review = []
+    direct_detail_budget = max(0, int(os.environ.get("DIRECT_DETAIL_BUDGET", "120")))
+    for idx, item in enumerate(direct):
+        if idx >= direct_detail_budget or not item.get("original_discovery_url"):
+            checked_resolved.append(item)
+            continue
+        inspected = inspect_discovery_job_page(item, try_browser=True, page_url=item.get("job_url", ""))
+        inspected["original_discovery_url"] = item.get("original_discovery_url", "")
+        inspected["discovery_url"] = item.get("original_discovery_url", "")
+        if (inspected.get("detail_status") == "Verified details"
+                and title_relevant(inspected.get("title", ""))
+                and inspected.get("eligibility")
+                and _workplace_allowed(inspected.get("workplace", ""))):
+            inspected["direct"] = True
+            inspected["direct_validation"] = item.get("direct_validation", "resolved-job-detail")
+            inspected["job_url"] = item.get("job_url", "")
+            inspected["resolved_apply_url"] = item.get("job_url", "")
+            checked_resolved.append(inspected)
+        else:
+            # Keep the original aggregator page and the discovered employer URL
+            # visible for review, but don't send an unverified job to JOBS.
+            inspected["job_url"] = item.get("original_discovery_url", item.get("job_url", ""))
+            inspected["discovery_url"] = item.get("original_discovery_url", item.get("job_url", ""))
+            inspected["resolved_apply_url"] = item.get("job_url", "")
+            inspected["direct"] = False
+            inspected["detail_status"] = inspected.get("detail_status") or "Needs review"
+            inspected["verification_notes"] = (inspected.get("verification_notes", "") + "; direct destination did not pass detail verification").strip("; ")
+            requeue_for_review.append(inspected)
+    direct = checked_resolved
+    # Add rejected/unverified resolved candidates back into discovery review.
+    existing_discovery_urls = {normalize_url(x.get("discovery_url") or x.get("job_url") or "") for x in discovery}
+    for item in requeue_for_review:
+        u = normalize_url(item.get("discovery_url") or "")
+        if u and u not in existing_discovery_urls:
+            discovery.append(item); existing_discovery_urls.add(u)
+
+    # Visit unresolved discovery pages and extract actual title/company/location/work
+    # type/date/description/apply URL. This is bounded separately from resolution
+    # so the run stays predictable. Unverified leads are explicitly labelled.
+    detail_budget = max(0, int(os.environ.get("DISCOVERY_DETAIL_BUDGET", "180")))
+    discovery = enrich_discovery_details(discovery, budget=detail_budget)
+    verified_details = sum(1 for x in discovery if x.get("detail_status") == "Verified details")
+    print(f"DIRECT DETAIL VERIFICATION: checked={min(len(direct), direct_detail_budget)} verified_direct={len(direct)} requeued_for_review={len(requeue_for_review)} budget={direct_detail_budget}")
+    print(f"DISCOVERY DETAIL INSPECTION: checked={min(len(discovery), detail_budget)} verified_details={verified_details} remaining_needs_review={len(discovery)-verified_details} budget={detail_budget}")
     print(f"FEEDS DIRECT CANDIDATES: {len(direct)}")
     print(f"FEEDS DISCOVERY CANDIDATES: {len(discovery)}")
     return direct, discovery, stats
@@ -6531,7 +6780,7 @@ STATS_HEADERS=["Run Date","Run ID","Mode","Source","Raw/Boards","Accepted","New 
 DISCOVERY_HEADERS=[
     "Added","Job Title","Company","Location","Work Type","Posted","Discovery URL",
     "Source","Score","Matched Keywords","Company Website","Review Status","First Seen","Last Seen",
-    "Seed Type","Crawl Seed",
+    "Seed Type","Crawl Seed","Description","Direct Apply URL","Detail Status","India Eligibility","Verification Notes",
 ]
 
 
@@ -6667,12 +6916,16 @@ def append_discovery_v11(ws, jobs):
             "Company Website": j.get("company_website",""), "Review Status": "Pending",
             "First Seen": today, "Last Seen": today,
             "Seed Type": j.get("seed_type", ""), "Crawl Seed": j.get("crawl_seed", "No"),
+            "Description": j.get("description", ""), "Direct Apply URL": j.get("resolved_apply_url", ""),
+            "Detail Status": j.get("detail_status", "Not checked"),
+            "India Eligibility": j.get("eligibility", ""),
+            "Verification Notes": j.get("verification_notes", ""),
         }
         if u in existing:
             rno=existing[u]
             # Preserve any manual review status and manual edits. Only refresh
             # metadata fields that the crawler owns.
-            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen"]:
+            for h in ["Job Title","Company","Location","Work Type","Posted","Source","Score","Matched Keywords","Company Website","Last Seen","Description","Direct Apply URL","Detail Status","India Eligibility","Verification Notes"]:
                 if h not in idx: continue
                 col=idx[h]+1
                 updates.append({"range":f"{__import__('gspread').utils.rowcol_to_a1(rno,col)}","values":[[values[h]]]})
