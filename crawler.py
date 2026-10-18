@@ -4125,32 +4125,66 @@ def extract_exact_job_url_from_page(source_url, title_hint=""):
 
 
 def resolve_public_feed_jobs_to_direct(jobs, budget=140):
-    if not jobs:
+    """Try to turn aggregator job-detail URLs into verified employer/ATS URLs.
+
+    Aggregators are discovery sources only. A candidate is returned as direct
+    only when its final URL is an exact ATS job route or an exact job page on
+    the employer domain supplied by the source. Otherwise it remains a lead.
+    """
+    if not jobs or budget <= 0:
         return []
-    selected = sorted(jobs, key=lambda x: (x.get("score", 0), x.get("posted_date", "")), reverse=True)[:budget]
-    out = []
+    selected = sorted(
+        jobs,
+        key=lambda x: (int(x.get("score", 0) or 0), bool(x.get("company_website")), x.get("posted_date", "")),
+        reverse=True,
+    )[:budget]
+
     def one(j):
-        direct = extract_exact_job_url_from_page(j.get("job_url", ""), j.get("title", ""))
+        source_url = normalize_url(j.get("discovery_url") or j.get("job_url") or "")
+        if not source_url or not is_aggregator_host(urlparse(source_url).netloc):
+            return None
+        direct = extract_exact_job_url_from_page(source_url, j.get("title", ""))
+        direct = normalize_url(direct) if direct else ""
         if not direct:
             return None
-        if ats_from_url(direct) or urlparse(direct).netloc.lower() not in {
-            "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org", "wellfound.com", "cutshort.io", "weworkremotely.com","jobopportunitiesapi.org"
-        }:
-            x = dict(j)
-            x["job_url"] = normalize_url(direct) or direct
-            x["source"] = f"{j.get('source','Feed')}->Direct"
-            return x
-        return None
-    with ThreadPoolExecutor(max_workers=min(V11_WORKERS, 16)) as ex:
-        futures = {ex.submit(one, j): j for j in selected}
+        host = urlparse(direct).netloc.lower().split(":", 1)[0]
+        if not host or is_aggregator_host(host) or not is_exact_job_url(direct):
+            return None
+
+        ats = ats_from_url(direct)
+        company_site = normalize_url(j.get("company_website", ""))
+        company_host = urlparse(company_site).netloc.lower().split(":", 1)[0] if company_site else ""
+        is_company_domain = bool(company_host and (host == company_host or host.endswith("." + company_host) or company_host.endswith("." + host)))
+        if not ats and not is_company_domain:
+            # Do not assume an unknown external domain is the employer just
+            # because an aggregator linked to it.
+            return None
+
+        x = dict(j)
+        x["job_url"] = direct
+        x["direct"] = True
+        x["direct_validation"] = "resolved-ats-job" if ats else "resolved-company-job"
+        x["original_discovery_url"] = source_url
+        x["source"] = f"{j.get('source', 'Aggregator')}->Direct"
+        return x
+
+    out = []
+    with ThreadPoolExecutor(max_workers=min(V11_WORKERS, 12, len(selected))) as ex:
+        futures = [ex.submit(one, j) for j in selected]
         for f in as_completed(futures):
             try:
                 item = f.result()
                 if item:
                     out.append(item)
-            except Exception:
-                pass
-    return out
+            except Exception as exc:
+                print(f"AGGREGATOR RESOLVE: {type(exc).__name__}: {exc}")
+    # Keep one record per normalized application URL.
+    dedup = {}
+    for j in out:
+        u = normalize_url(j.get("job_url", ""))
+        if u:
+            dedup.setdefault(u, j)
+    return list(dedup.values())
 
 
 def v11_discover_company_routes(companies):
@@ -6313,6 +6347,23 @@ def feed_direct_only():
     )
     discovery = discovery[:FEED_DISCOVERY_MAX_ROWS]
 
+    # New V14.2 behavior: actively resolve a bounded batch of aggregator leads.
+    # Successful resolutions move into the direct queue; unresolved leads stay
+    # in discovery for later retry/review. This avoids silently discarding them.
+    resolve_budget = max(0, int(os.environ.get("AGGREGATOR_RESOLVE_BUDGET", "120")))
+    aggregator_candidates = [
+        x for x in discovery
+        if is_aggregator_host(urlparse(x.get("discovery_url") or x.get("job_url") or "").netloc)
+    ]
+    resolved = resolve_public_feed_jobs_to_direct(aggregator_candidates, budget=resolve_budget)
+    resolved_urls = {normalize_url(x.get("original_discovery_url") or "") for x in resolved}
+    if resolved:
+        direct.extend(resolved)
+        discovery = [
+            x for x in discovery
+            if normalize_url(x.get("discovery_url") or x.get("job_url") or "") not in resolved_urls
+        ]
+    print(f"AGGREGATOR RESOLUTION: tried={min(len(aggregator_candidates), resolve_budget)} resolved_direct={len(resolved)} unresolved_retained={len(aggregator_candidates)-len(resolved)} budget={resolve_budget}")
     print(f"FEEDS DIRECT CANDIDATES: {len(direct)}")
     print(f"FEEDS DISCOVERY CANDIDATES: {len(discovery)}")
     return direct, discovery, stats
