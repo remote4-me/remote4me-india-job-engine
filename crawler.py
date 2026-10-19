@@ -37,10 +37,9 @@ except Exception:
 #   Customer Success, Technical Support and closely related jobs.
 #
 # Discovery strategy:
-#   1) Public job APIs/feeds (Himalayas + Remotive + Arbeitnow + Working Nomads + Jobicy + Remote OK + Startup Jobs + WWR RSS)
+#   1) Public job APIs/feeds (Himalayas + Arbeitnow + Working Nomads + Jobicy + Startup Jobs + WWR RSS)
 #   2) Wellfound public India role pages -> company/job seeds
-#   3) Cutshort public India role pages -> company/job seeds
-#   4) Internet Archive + Common Crawl -> ATS board discovery
+##   4) Internet Archive + Common Crawl -> ATS board discovery
 #   5) Company website -> career page -> ATS/job link hunter
 #   6) Direct ATS public feeds/APIs
 #
@@ -6314,8 +6313,8 @@ def discover_company_manifest():
     # Refresh directory seeds; these pages are cheap compared with ATS crawling.
     try: wf_companies,_=extract_wellfound_seeds()
     except Exception: wf_companies=[]
-    try: cs_companies,_=extract_cutshort_seeds()
-    except Exception: cs_companies=[]
+    cs_companies=[]  # Cutshort disabled by request; avoid spending discovery requests on it.
+    print("CUTSHORT: disabled by configuration")
     existing=_load_json(COMPANIES_FILE,[])
     companies=merge_company_universe(openjobs, careers, wf_companies, cs_companies, existing)
     companies=companies[:V11_COMPANY_DISCOVERY_LIMIT]
@@ -6646,7 +6645,6 @@ def feed_direct_only():
         ("Working Nomads", fetch_working_nomads),
         ("We Work Remotely", fetch_wwr_rss),
         ("Jobicy", fetch_jobicy),
-        ("Remotive", fetch_remotive),
         ("Startup Jobs", fetch_startup_jobs),
         ("Job Opportunities API", fetch_jobopportunitiesapi),
         ("Remote Landers", fetch_remote_landers),
