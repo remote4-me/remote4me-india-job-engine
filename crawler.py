@@ -6646,7 +6646,7 @@ def feed_direct_only():
         ("Working Nomads", fetch_working_nomads),
         ("We Work Remotely", fetch_wwr_rss),
         ("Jobicy", fetch_jobicy),
-        ("Remote OK", fetch_remoteok),
+        ("Remotive", fetch_remotive),
         ("Startup Jobs", fetch_startup_jobs),
         ("Job Opportunities API", fetch_jobopportunitiesapi),
         ("Remote Landers", fetch_remote_landers),
