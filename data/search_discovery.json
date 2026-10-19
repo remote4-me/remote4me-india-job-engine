@@ -1,71 +1,5 @@
 [
   {
-    "discovery_url": "https://remotive.com/remote/jobs/customer-service/technical-product-support-engineer-6094352",
-    "title": "[Hiring] Technical Product Support Engineer @Twenty5",
-    "snippet": "Twenty5 | Anywhere | Remotive | Role Description Twenty5 is seeking a hands-on Technical Product Support Engineer to help customers troubleshoot issues and get the most from our SaaS products. You will own support cases, use SQL to investigate product and data issues, and partner with engineering to resolve complex problems. This role suits someone who takes initiative, communicates clearly, and can move an investigation forward independently. Qualifications At least 3 years of hands-on technical product support experience in a SaaS environment, with demonstrated ownership of customer issues through resolution. Proficiency w",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Twenty5",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://djinni.co/jobs/834576-technical-consultant-product-support-engineer",
-    "title": "[Hiring] Technical Product Support Engineer @Twenty5",
-    "snippet": "Twenty5 | Anywhere | Remotive | Role Description Twenty5 is seeking a hands-on Technical Product Support Engineer to help customers troubleshoot issues and get the most from our SaaS products. You will own support cases, use SQL to investigate product and data issues, and partner with engineering to resolve complex problems. This role suits someone who takes initiative, communicates clearly, and can move an investigation forward independently. Qualifications At least 3 years of hands-on technical product support experience in a SaaS environment, with demonstrated ownership of customer issues through resolution. Proficiency w",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Twenty5",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.remoterocketship.com/company/telnyx/jobs/technical-product-support-engineer-amer-brazil-remote",
-    "title": "[Hiring] Technical Product Support Engineer @Twenty5",
-    "snippet": "Twenty5 | Anywhere | Remotive | Role Description Twenty5 is seeking a hands-on Technical Product Support Engineer to help customers troubleshoot issues and get the most from our SaaS products. You will own support cases, use SQL to investigate product and data issues, and partner with engineering to resolve complex problems. This role suits someone who takes initiative, communicates clearly, and can move an investigation forward independently. Qualifications At least 3 years of hands-on technical product support experience in a SaaS environment, with demonstrated ownership of customer issues through resolution. Proficiency w",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Twenty5",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.remotesource.com/jobs/T2ELHLI2kf-L1htl7oTCO-product-technical-support-engineer-remote-at-johnson-controls",
-    "title": "[Hiring] Technical Product Support Engineer @Twenty5",
-    "snippet": "Twenty5 | Anywhere | Remotive | Role Description Twenty5 is seeking a hands-on Technical Product Support Engineer to help customers troubleshoot issues and get the most from our SaaS products. You will own support cases, use SQL to investigate product and data issues, and partner with engineering to resolve complex problems. This role suits someone who takes initiative, communicates clearly, and can move an investigation forward independently. Qualifications At least 3 years of hands-on technical product support experience in a SaaS environment, with demonstrated ownership of customer issues through resolution. Proficiency w",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Twenty5",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://dailyremote.com/remote-job/technical-product-support-engineer-5707432",
-    "title": "[Hiring] Technical Product Support Engineer @Twenty5",
-    "snippet": "Twenty5 | Anywhere | Remotive | Role Description Twenty5 is seeking a hands-on Technical Product Support Engineer to help customers troubleshoot issues and get the most from our SaaS products. You will own support cases, use SQL to investigate product and data issues, and partner with engineering to resolve complex problems. This role suits someone who takes initiative, communicates clearly, and can move an investigation forward independently. Qualifications At least 3 years of hands-on technical product support experience in a SaaS environment, with demonstrated ownership of customer issues through resolution. Proficiency w",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Twenty5",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://sagility.wd1.myworkdayjobs.com/eQuest/job/Work-from-Home--Customer-Service-Representative--Healthcare-_REQ-026850/apply",
-    "title": "Work from Home: Customer Service Representative ...",
-    "snippet": "Start Your Application. Work from Home: Customer Service Representative (Healthcare). Autofill with Resume · Apply Manually · Use My Last Application.",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
-    "score": 100,
-    "company": "Work from Home: Customer Service Representative ...",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://sagility.wd1.myworkdayjobs.com/en-US/eQuest/job/Work-from-Home--Customer-Service-Representative--Healthcare-_REQ-026850",
     "title": "Work from Home: Customer Service Representative ...",
     "snippet": "Work from Home: Customer Service Representative (Healthcare) ; Benefits You Will Enjoy: Competitive pay: $14.00 – $15.00/hour. Performance-based incentives.",
@@ -77,13 +11,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One/job/Work-from-Home---Senior-Customer-Service-Coordinator---Partnership-Servicing--Overnight-_R248578-1/apply",
-    "title": "Work from Home - Senior Customer Service Coordinator ...",
-    "snippet": "Start Your Application. Work from Home - Senior Customer Service Coordinator - Partnership Servicing (Overnight). Autofill with Resume · Apply Manually.",
+    "discovery_url": "https://sagility.wd1.myworkdayjobs.com/eQuest/job/Work-from-Home--Customer-Service-Representative--Healthcare-_REQ-026850/apply",
+    "title": "Work from Home: Customer Service Representative ...",
+    "snippet": "Start Your Application. Work from Home: Customer Service Representative (Healthcare). Autofill with Resume · Apply Manually · Use My Last Application.",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
     "score": 100,
-    "company": "Work from Home",
+    "company": "Work from Home: Customer Service Representative ...",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -110,58 +44,36 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://deskless.liveblog365.com/remote-jobs/technical-support-engineer-i-patient-monitoring-systems-d426f9bb",
-    "title": "Technical Support Engineer I - Patient Monitoring Systems",
-    "snippet": "Patient Monitoring Systems | Anywhere | Deskless | Job Description SummaryThe Technical Support Engineer I (TSE I) drives customer satisfaction through Service Excellence by providing technical support and counsel both remote and onsite to Field Engineers (FEs), Client Service Technicians (CSTs), and Customers experiencing system performance issues. This position is the technical resource for service-related escalations regarding Patient Care Solutions (PCS) products.This is a remote role where you will work out of your home office. The successful candidate will need the ability to support customers in the Eastern Time Zone, M-Fri 8am – 6pm wi",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
+    "discovery_url": "https://billgosling.wd5.myworkdayjobs.com/en-US/Global/job/WFH---Associate--Customer-Service-Representative_REQ-00030549",
+    "title": "WFH - Associate, Customer Service Representative",
+    "snippet": "our dynamic work environment where fun meets results! Customer Service Associate – Work From Home ... remote environment. If you have the skills ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
-    "company": "Patient Monitoring Systems",
-    "seed_type": "Google Jobs Apply URL",
+    "company": "WFH",
+    "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://shopifynova.shyamkirpa.in/blogs/news/remote-technical-support-engineer-tier-i-north-carolina",
-    "title": "Technical Support Engineer I - Patient Monitoring Systems",
-    "snippet": "Patient Monitoring Systems | Anywhere | Deskless | Job Description SummaryThe Technical Support Engineer I (TSE I) drives customer satisfaction through Service Excellence by providing technical support and counsel both remote and onsite to Field Engineers (FEs), Client Service Technicians (CSTs), and Customers experiencing system performance issues. This position is the technical resource for service-related escalations regarding Patient Care Solutions (PCS) products.This is a remote role where you will work out of your home office. The successful candidate will need the ability to support customers in the Eastern Time Zone, M-Fri 8am – 6pm wi",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
+    "discovery_url": "https://jobs.workable.com/view/6xZzqCcwMW8A92pkCXRNnH/remote-trust-%26-safety-operations-executive-in-bengaluru-at-apna",
+    "title": "Trust & Safety Operations Executive | Apna",
+    "snippet": "at Apna. RemoteBengaluru, Karnataka, IndiaOperations. Posted today. Share job ... Data Analysis: Analyze trends and patterns related to trust and safety issues to ...",
+    "source": "Google/serper",
+    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
     "score": 100,
-    "company": "Patient Monitoring Systems",
-    "seed_type": "Google Jobs Apply URL",
+    "company": "Trust & Safety Operations Executive | Apna",
+    "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://tidewell.gilect.net/remote-jobs/technical-support-engineer-i-patient-monitoring-systems-d426f9bb",
-    "title": "Technical Support Engineer I - Patient Monitoring Systems",
-    "snippet": "Patient Monitoring Systems | Anywhere | Deskless | Job Description SummaryThe Technical Support Engineer I (TSE I) drives customer satisfaction through Service Excellence by providing technical support and counsel both remote and onsite to Field Engineers (FEs), Client Service Technicians (CSTs), and Customers experiencing system performance issues. This position is the technical resource for service-related escalations regarding Patient Care Solutions (PCS) products.This is a remote role where you will work out of your home office. The successful candidate will need the ability to support customers in the Eastern Time Zone, M-Fri 8am – 6pm wi",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
+    "discovery_url": "https://job-boards.greenhouse.io/safebreach/jobs/4444518009",
+    "title": "Technical Support Engineer",
+    "snippet": "Title: Technical Support Engineer. Location: Bangalore, India (Remote). ⏱️ Work Pattern: 4pm-12am shift. Reporting To: Sr. Director, Global TAM and ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
-    "company": "Patient Monitoring Systems",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://ybvgfcvf.hyuhgtf.infinityfree.me/blogs/news/remote-technical-support-engineer-tier-i-north-carolina",
-    "title": "Technical Support Engineer I - Patient Monitoring Systems",
-    "snippet": "Patient Monitoring Systems | Anywhere | Deskless | Job Description SummaryThe Technical Support Engineer I (TSE I) drives customer satisfaction through Service Excellence by providing technical support and counsel both remote and onsite to Field Engineers (FEs), Client Service Technicians (CSTs), and Customers experiencing system performance issues. This position is the technical resource for service-related escalations regarding Patient Care Solutions (PCS) products.This is a remote role where you will work out of your home office. The successful candidate will need the ability to support customers in the Eastern Time Zone, M-Fri 8am – 6pm wi",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Patient Monitoring Systems",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://wfzone.l4x.html-5.me/remote-jobs/technical-support-engineer-i-patient-monitoring-systems",
-    "title": "Technical Support Engineer I - Patient Monitoring Systems",
-    "snippet": "Patient Monitoring Systems | Anywhere | Deskless | Job Description SummaryThe Technical Support Engineer I (TSE I) drives customer satisfaction through Service Excellence by providing technical support and counsel both remote and onsite to Field Engineers (FEs), Client Service Technicians (CSTs), and Customers experiencing system performance issues. This position is the technical resource for service-related escalations regarding Patient Care Solutions (PCS) products.This is a remote role where you will work out of your home office. The successful candidate will need the ability to support customers in the Eastern Time Zone, M-Fri 8am – 6pm wi",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Patient Monitoring Systems",
-    "seed_type": "Google Jobs Apply URL",
+    "company": "Technical Support Engineer",
+    "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
@@ -173,17 +85,6 @@
     "score": 100,
     "company": "Technical Support & AI Engineer (Full Time, Remote)",
     "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobgether.com/offer/6ad2354449c73d7b9988d901-technical-product-support-specialist",
-    "title": "Technical Product Support Specialist",
-    "snippet": "Xtremepush | Anywhere | Jobgether | This a Full Remote job, the offer is available from: Oceania, APAC, Australia About the RoleAs a Product Support Specialist, you’ll be the first line of expert support for Xtremepush customers across the Asia-Pacific region. You’ll provide technical support, troubleshoot issues and help customers get the most from the Xtremepush platform. You’ll work across channels including email, mobile push, web push, SMS, in-app and on-site messaging, as well as webhooks, APIs and integrations. You’ll also advise customers on best practice across campaigns, segmentation, automated journeys, personalisatio",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "Xtremepush",
-    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -210,23 +111,12 @@
   },
   {
     "discovery_url": "https://rocket.wd5.myworkdayjobs.com/en-US/rocket_careers/job/India-Remote/Senior-Technical-Support-Engineer---Enterprise-Support---Linux---Database_R2026-6581",
-    "title": "Rocket Software is currently seeking a Senior Technical Support Engineer ...",
+    "title": "Rocket Software is currently seeking a ... - Myworkdayjobs.com",
     "snippet": "",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
-    "company": "Rocket Software is currently seeking a Senior Technical Support Engineer ...",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://apply.workable.com/nogigiddy/j/A1BFC28AD5",
-    "title": "Remote Customer Service Rep - 19 per hour Starting",
-    "snippet": "We're inviting enthusiastic individuals to join our team as Remote Customer Support Advocates. From your own home ... Work From Home - Remote Customer Service Rep ...",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
-    "score": 100,
-    "company": "Remote Customer Service Rep",
+    "company": "Rocket Software is currently seeking a ...",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -242,35 +132,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.simplyhired.co.in/job/CQ91Ecp-0wnM5VzDo1VhMESsrLTfLNGIeMb7T-wsMzGxfdT8aVAp4w",
-    "title": "Level 1 – Customer Support Engineer",
-    "snippet": "LakeFusion | Anywhere | SimplyHired | About the Role LakeFusion is seeking a Customer Support Engineer (Level 1) to provide frontline support for our Master Data Management platform, built natively on the Databricks Data Intelligence Platform. In this role, you will serve as the first point of contact for customers, helping resolve foundational technical issues and ensuring a smooth user experience across the platform. You will take a hands-on role in troubleshooting common issues related to data ingestion, pipeline configuration, access, and platform usage, while guiding customers through onboarding tasks such as connecting data",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "LakeFusion",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://job-boards.greenhouse.io/opswat/jobs/4399621005",
-    "title": "Joint Professional Services – Technical Support Engineer in ...",
+    "title": "Joint Professional Services – Technical Support Engineer ...",
     "snippet": "6-7 years of experience, with strong technical support background, including 3-4 years of professional services/delivery experience. Strong knowledge of Windows ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
-    "company": "Joint Professional Services – Technical Support Engineer in ...",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://job-boards.greenhouse.io/freshprints",
-    "title": "Jobs at Fresh Prints",
-    "snippet": "Customer Support Specialist (Retail Operations). India (Remote) · Finance ... Technical Support & AI Engineer (Full Time, Remote). India & The Philippines.",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
-    "score": 100,
-    "company": "Jobs at Fresh Prints",
+    "company": "Joint Professional Services – Technical Support Engineer ...",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -288,22 +156,11 @@
   {
     "discovery_url": "https://jobs.lever.co/jobgether",
     "title": "Jobgether",
-    "snippet": "... Customer Success & Implementation Mananager. Remote — Full-timeCanada · Apply ... Work From Home. Remote — Full-timeUS · Apply · Manager, Applications Support.",
+    "snippet": "Bilingual Customer Service Representative. Remote — Full-timeCanada · Apply ... Work From Home. Remote — Full-timeUS · Apply · Manager, Applications Support.",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
     "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://job-boards.greenhouse.io/safebreach/jobs/4444518009",
-    "title": "Job Application for Technical Support Engineer at SafeBreach",
-    "snippet": "Title: Technical Support Engineer. Location: Bangalore, India (Remote). ⏱️ Work Pattern: 4pm-12am shift. Reporting To: Sr. Director, Global TAM and ...",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
-    "score": 100,
-    "company": "Job Application for Technical Support Engineer at SafeBreach",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -319,7 +176,7 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/sureify/jobs/5231980008",
+    "discovery_url": "http://job-boards.greenhouse.io/sureify/jobs/5231980008",
     "title": "Job Application for Technical Support Analyst at Sureify",
     "snippet": "Experience: 2+ years of experience in a role where you investigated problems in B2B application software systems — technical support, QA, IT operations, or ...",
     "source": "Google/serper",
@@ -327,28 +184,6 @@
     "score": 100,
     "company": "Job Application for Technical Support Analyst at Sureify",
     "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.jobaaj.com/job/soci-t-g-n-rale-marocai-specialist-software-engineer-java-production-support-chennai-5-to-10-years-33391",
-    "title": "Java Technical Support Engineer - Remote Work | REF#284432",
-    "snippet": "BairesDev | Anywhere | LinkedIn | At BairesDev®, we've been leading the way in technology projects for over 15 years. We deliver cutting-edge solutions to giants like Google and the most innovative startups in Silicon Valley. Our diverse 4,000+ team, composed of the world's Top 1% of tech talent, works remotely on roles that drive significant impact worldwide. When you apply for this position, you're taking the first step in a process that goes beyond the ordinary. We aim to align your passions and skills with our vacancies, setting you on a path to exceptional career development and success. Java Technical Support Engineer at",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "BairesDev",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://callcenterjob.co.in/software-engineer-java-programming-ni733-chennai_837513",
-    "title": "Java Technical Support Engineer - Remote Work | REF#284432",
-    "snippet": "BairesDev | Anywhere | LinkedIn | At BairesDev®, we've been leading the way in technology projects for over 15 years. We deliver cutting-edge solutions to giants like Google and the most innovative startups in Silicon Valley. Our diverse 4,000+ team, composed of the world's Top 1% of tech talent, works remotely on roles that drive significant impact worldwide. When you apply for this position, you're taking the first step in a process that goes beyond the ordinary. We aim to align your passions and skills with our vacancies, setting you on a path to exceptional career development and success. Java Technical Support Engineer at",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 100,
-    "company": "BairesDev",
-    "seed_type": "Google Jobs Apply URL",
     "crawl_seed": "Yes"
   },
   {
@@ -440,28 +275,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.adzuna.in/details/5856195279",
-    "title": "Customer Success and Support Specialist",
-    "snippet": "Venture Smarter | Anywhere | Adzuna | We are seeking a Customer Success Specialist to provide exceptional support and guidance to our customers. You will act as the primary point of contact, ensuring customers fully utilize our products, resolve technical issues, and have a positive experience. Position: Remote / Onsite (depending on company policy) Key ResponsibilitiesProvide exceptional support to customers via email, chat, and phone, addressing product inquiries, technical issues, and general questions.Guide customers through the onboarding process, ensuring they understand and can effectively use our products.Act as the voice",
-    "source": "Google Jobs/SerpApi",
-    "query": "customer support customer service customer success India remote",
-    "score": 100,
-    "company": "Venture Smarter",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://bebee.com/in/jobs/business-risk-assessment-and-support-ideslabs-private-limited-hyderabad--t7xk-882715400",
-    "title": "Customer Success and Support Specialist",
-    "snippet": "Venture Smarter | Anywhere | Adzuna | We are seeking a Customer Success Specialist to provide exceptional support and guidance to our customers. You will act as the primary point of contact, ensuring customers fully utilize our products, resolve technical issues, and have a positive experience. Position: Remote / Onsite (depending on company policy) Key ResponsibilitiesProvide exceptional support to customers via email, chat, and phone, addressing product inquiries, technical issues, and general questions.Guide customers through the onboarding process, ensuring they understand and can effectively use our products.Act as the voice",
-    "source": "Google Jobs/SerpApi",
-    "query": "customer support customer service customer success India remote",
-    "score": 100,
-    "company": "Venture Smarter",
-    "seed_type": "Google Jobs Apply URL",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://modmed.wd501.myworkdayjobs.com/en-US/ModMed12/job/Customer-Success-Manager--Strategic_R4349",
     "title": "Customer Success Manager, Strategic - Myworkdayjobs.com",
     "snippet": "... Customer Success Manager to join our positive, passionate, and high ... customer experience, adoption, and success. Proactively identify areas where ...",
@@ -517,17 +330,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "http://job-boards.greenhouse.io/atomicwork/jobs/4174435008",
-    "title": "Customer Success Manager (Bangalore, India)",
-    "snippet": "We're seeking an experienced customer success manager to join our team and help us build our modern service management platform. This is a hybrid position based ...",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Customer Success Manager (Bangalore, India)",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://hcsc.wd1.myworkdayjobs.com/en-US/HCSC_LuminareHealth/job/Customer-Service-Representative---LHB_R0050688-2",
     "title": "Customer Service Representative - LHB - Myworkdayjobs.com",
     "snippet": "Customer Service Representative - LHB. Apply. remote type: Remote. locations: Work From Home (HB). time type: Full time. posted on: Posted 30+ Days Ago.",
@@ -561,13 +363,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/securly13",
-    "title": "Careers at Securly | Remote-First K-12 EdTech Jobs",
-    "snippet": "Browse our current openings and apply to the roles that match your skills and aspirations, or join our talent network for future opportunities. Customer Success.",
+    "discovery_url": "https://nttglobaldatacenters.wd501.myworkdayjobs.com/en-US/External/job/Navi-Mumbai-india/Client-Success-Manager_JR102192",
+    "title": "Client Success Manager - Myworkdayjobs.com",
+    "snippet": "Client Success Manager. Apply. remote type: Hybrid. locations: Navi Mumbai, india. time type: Full time. posted on: Posted 7 Days Ago.",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
     "score": 100,
-    "company": "Careers at Securly | Remote-First K-12 EdTech Jobs",
+    "company": "Client Success Manager",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -576,7 +378,7 @@
     "title": "Careers at Harness: Open Positions & Job Opportunities",
     "snippet": "Customer Success, Adoption. Senior Customer Architect. U.S. (Remote) ; Customer Success, Customer Experience. Customer Experience Engineer I/II. U.S. (Remote).",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
     "company": "Careers at Harness: Open Positions & Job Opportunities",
     "seed_type": "ATS Board Seed",
@@ -605,13 +407,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.shine.com/job-search/work-from-home-international-voice-process-jobs",
-    "title": "Work From Home International Voice Process jobs in India",
-    "snippet": "Work From Home International Voice Process jobs in India ; TE. The Elite Job2 days ago · All India · Customer service·Verbal communication·Time management ...",
+    "discovery_url": "https://www.shine.com/job-search/work-from-home-chat-process-jobs-in-delhi-ncr",
+    "title": "Work From Home Chat Process jobs in India - Shine",
+    "snippet": "Required:Data entry·Customer support·Voice process·Chat process. Apply ... MNC Hiring || WFH || Voice Process. 0 to 4 Yrs Not Disclosed All ...",
     "source": "Google/serper",
     "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "Work From Home International Voice Process jobs in India",
+    "company": "Work From Home Chat Process jobs in India",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
@@ -627,24 +429,35 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://in.jooble.org/jobs-remote-customer-service",
-    "title": "Urgent: Remote customer service Jobs - October 2026 - 12521 ...",
-    "snippet": "Looking for a fully remote opportunity where your income depends on your effort, not a fixed salary cap? We are hiring Independent Travel Managers to handle inbound travel inquiries and assist international clients with bookings and support.",
+    "discovery_url": "https://www.jobleads.com/in/job/trust-and-safety-analyst--india--e09250a60e6577dabfacd7d9157b13f5a",
+    "title": "Trust and Safety Analyst | India",
+    "snippet": "WebHosting is hiring Trust and Safety Analyst in India. Apply now with JobLeads ... Trust and Safety Analyst. WebHosting. India. Remote. INR ...",
     "source": "Google/serper",
-    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
     "score": 95,
-    "company": "Urgent: Remote customer service Jobs",
+    "company": "Trust and Safety Analyst | India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://euremotejobs.com/job/trust-and-safety-analyst",
-    "title": "Trust and Safety Analyst - euremotejobs.com",
-    "snippet": "Trust and Safety Analyst at Godaddy - Remote role investigating DNS abuse, phishing, and malware. India-based.",
+    "discovery_url": "https://www.shine.com/jobs/trust-and-safety-analyst-cy/remote-quest-jobs/19552643",
+    "title": "Trust and Safety Analyst (CY) Job in remote quest jobs ... - Shine",
+    "snippet": "Apply to Trust and Safety Analyst (CY) Job in remote quest jobs at All India. Find related Trust and Safety Analyst (CY) and Internet / E ...",
     "source": "Google/serper",
     "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
     "score": 95,
-    "company": "Trust and Safety Analyst",
+    "company": "Trust and Safety Analyst (CY) Job in remote quest jobs ...",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://in.jobsora.com/job-54278539442",
+    "title": "Trust & Safety Product Manager",
+    "snippet": "Software Engineer - Machine Learning, Trust and Safety. Mercari, Inc. (India),Bangalore. Full-time, Remote. About Us Mercari is a ...",
+    "source": "Google/serper",
+    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Trust & Safety Product Manager",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -662,22 +475,11 @@
   {
     "discovery_url": "https://www.comeet.com/jobs/island/09.00A/technical-account-manager-india/11.370",
     "title": "Technical Account Manager (India) at Island - Comeet",
-    "snippet": "Support & Troubleshooting - Proactively manage and assist with support cases, feature requests, and escalations. You'll open, monitor, and drive resolution,",
-    "source": "Google/tavily",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Technical Account Manager (India) at Island",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.tspa.org/explore/job-board",
-    "title": "TSPA Job Board - Trust & Safety Professional Association",
-    "snippet": "Planning your next career move and seeking new opportunities in the field of trust and safety? Explore the latest global job openings.",
-    "source": "Google/serper",
-    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
-    "score": 95,
-    "company": "TSPA Job Board",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -726,13 +528,35 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.crossover.com/jobs/customer-support/in",
-    "title": "Remote Customer Support Jobs in India - Crossover",
-    "snippet": "Find leading US companies hiring full-time customer service representatives in India. Help customers, solve problems, share knowledge, and maintain valuable partnerships.",
+    "discovery_url": "https://goodspace.ai/jobs/customer-support-executive-remote-india-30908",
+    "title": "Remote Customer Support Executive Job (India)",
+    "snippet": "GoodSpace is hiring a Customer Support Executive for a remote role in India. Full-time, 1-3 years of experience, ₹9-12 LPA. Apply free on GoodSpace.",
     "source": "Google/serper",
     "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "Remote Customer Support Jobs in India",
+    "company": "Remote Customer Support Executive Job (India)",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.randstad.in/jobs/s-remote-customer-service",
+    "title": "Remote Customer Service Jobs & Vacancies",
+    "snippet": "Discover all the 18 vacancies for remote customer service across india and apply now ... customer experience · data & analytics · digital product & engineering.",
+    "source": "Google/serper",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Remote Customer Service Jobs & Vacancies",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/radwin/06.00E/pre-sales--bd-manager--transportation-india--apac/51.F67",
+    "title": "Pre-Sales & BD Manager – Transportation (India & APAC) at RADWIN",
+    "snippet": "Customer Facing: Deliver high-impact technical and commercial ... Support & Travel: Travel extensively within India to drive local engagements ...",
+    "source": "Google/serpent",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Pre-Sales & BD Manager – Transportation (India & APAC) at RADWIN",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -744,6 +568,17 @@
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "PLM Application Support Engineer at U.P.PRO",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://us.remotejobs.dedyn.io/job/senior-customer-experience-specialist-remote-in-person-technical-non-technical-service-gurgaon-india-reputed-company",
+    "title": "Non‑Technical Service – Gurgaon, India – reputed company",
+    "snippet": "Senior Customer Experience Specialist – Remote & In‑Person Technical & Non‑Technical Service – Gurgaon, India – reputed company. Remote, USA.",
+    "source": "Google/serper",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Non‑Technical Service – Gurgaon, India – reputed company",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -770,10 +605,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001?coref=1.3.r0B_110",
+    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001",
     "title": "Jobs at VAST Data - Comeet",
-    "snippet": "Customer Support Engineer - India. India; Full-time · Customer Support Engineer - India. Bengaluru; Full-time · Customer Support Engineer - Taiwan. Taiwan",
-    "source": "Google/tavily",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Jobs at VAST Data",
@@ -781,13 +616,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/solaredge/71.00A",
-    "title": "Jobs at SolarEdge - Comeet",
-    "snippet": "G&A · Oracle Fusion Support Specialist. Bangalore, India; Junior; Full-time · Oracle Integration Cloud Developer. Bangalore, India; Associate; Full-time ...",
-    "source": "Google/search1",
+    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001?coref=1.3.r0B_110",
+    "title": "Jobs at VAST Data - Comeet",
+    "snippet": "Customer Support Engineer - India. India; Full-time · Customer Support Engineer - India. Bengaluru; Full-time · Customer Support Engineer - Taiwan. Taiwan",
+    "source": "Google/tavily",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
-    "company": "Jobs at SolarEdge",
+    "company": "Jobs at VAST Data",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -816,8 +651,8 @@
   {
     "discovery_url": "https://www.comeet.com/jobs/allot/C4.009",
     "title": "Jobs at Allot - Comeet",
-    "snippet": "Allot is an industry leader in network security and visibility. A global growing company in cyber-security with a strong Tier1 customer base.",
-    "source": "Google/tavily",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Jobs at Allot",
@@ -836,25 +671,14 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001",
-    "title": "Job opportunities at VAST Data",
-    "snippet": "Customer Support Engineer Raleigh, North Carolina Senior Full-time Customer Support Engineer Seattle Senior Full-time Customer Support Engineer Dallas Senior Full-time Customer Support Engineer - APAC Sydney Australia Full-time Customer Support Engineer - India India Full-time Customer Support Engineer - India Bengaluru Full-time Customer Support Engineer - London London Intermediate Full-time [...] Select all Clear Apply Department [- [x] Sales (97)]( [- [x] Alliances, OEM, Channel (2)]( [- [x] Systems Engineering (36)]( [- [x] Engineering (63)]( [- [x] Business Development (9)]( [- [x] Finance (7)]( [- [x] Customer Support (36)]( [- [x] Marketing (5)]( [- [x] Business Operations (3)]( [- [x] Product (1)]( [- [x] Revenue Operations (1)]( [- [x] Operations (8)]( [- [x] Enablement (1)]( Select all Clear Apply ## Alliances, OEM, Channel [...] Professional Services engineer London Intermediate Full-time Resident Customer Support Engineer (Onsite - Dallas, TX) Dallas Full-time Resident Customer Support Engineer (Onsite - Dallas, TX) Texas Full-time Resident Customer Support Engineer - Memphis, TN Memphis, TN Full-time Services Operations Center - Tel Aviv Israel - Tel Aviv Services Operations Center -APAC APAC Intermediate Full-time",
-    "source": "Google/tavily",
-    "query": "site:*.comeet.com India customer support",
-    "score": 95,
-    "company": "Job opportunities at VAST Data",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.shine.com/job-search/international-voice-process-work-from-home-jobs-in-pune",
-    "title": "International Voice Process Work From Home jobs in Pune",
-    "snippet": "Explore International Voice Process Work From Home Jobs in Pune at Shine.com. Discover 521 International Voice Process Work From Home job openings ...",
+    "discovery_url": "https://getwork.org/job-details/international-bpo-non-voice-chat-support-13365",
+    "title": "International Bpo - Non Voice Chat Support Job at GOOGLE",
+    "snippet": "PAN India ... Intouch CX is Hiring for International Voice & Non Voice process! Job Description : We are hiring for international chat process ( Customer support ).",
     "source": "Google/serper",
     "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "International Voice Process Work From Home jobs in Pune",
-    "seed_type": "Google Job Page",
+    "company": "International Bpo",
+    "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
@@ -902,6 +726,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.monster.co.th/job/hiring-for-voice-process-wfh-startek-remote-34870159",
+    "title": "Hiring For voice Process WFH - Job Search at Monster Thailand",
+    "snippet": "Posted 09:04:25 AM Startek is hiring an Hiring For voice Process WFH with 0 - 5 Years of Experience in Remote. Explore required skills ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Hiring For voice Process WFH",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.comeet.com/jobs/papayaglobal/16.005/head-of-support/BD.863",
     "title": "Head of Support at Papaya Global - Comeet",
     "snippet": "Papaya Global is a rapidly growing, award‑winning B2B tech unicorn transforming the future of global payroll and payments. Backed by over $400M from ...",
@@ -916,7 +751,7 @@
     "discovery_url": "https://www.manatal.com/blog/ep94-nlb-services-varun-sachdeva",
     "title": "EP94: NLB Services - How to Use Human Intelligence to Find Talent",
     "snippet": "All-In Recruitment is a podcast by Manatal focusing on all things related to the recruitment industry's missions and trends.",
-    "source": "Google/search1",
+    "source": "Google/serpsearch",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP94: NLB Services",
@@ -926,8 +761,8 @@
   {
     "discovery_url": "https://www.manatal.com/blog/ep69-riot-games-rajashree-chandramogan",
     "title": "EP69: Riot Games - Building a Practical Onboarding Journey",
-    "snippet": "I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Dina Demajo Senior Talent Acquisition - Manpower Group [...] No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs ## Transform the Way You Recruit Today. World-leading Recruitment Software for Talent Acquisition and Recruitment Professionals. Recruitment processes managed. Active recruiting teams. ##### Bill Twinning Talent Resources & Development Director - Charoen Pokphand Group [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Edmund Yeo Human Resources Manager - Oakwood",
-    "source": "Google/tavily",
+    "snippet": "We were focusing on customer service agents who would call up folks and ask about their repayment of loans … specifically for India.",
+    "source": "Google/serpsearch",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP69: Riot Games",
@@ -936,9 +771,9 @@
   },
   {
     "discovery_url": "https://www.manatal.com/blog/ep19-taking-talent-acquisition-to-the-next-level-with-automation-ai-and-technology",
-    "title": "EP19: Klaviyo - Taking Talent Acquisition to The Next Level with Automation, AI, and Technology (With Paul Abercrombie)",
-    "snippet": "Source & hire candidates faster with Manatal's ATS. No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs ## Transform the Way You Recruit Today. World-leading Recruitment Software for Talent Acquisition and Recruitment Professionals. Recruitment processes managed. Active recruiting teams. ##### Bill Twinning [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Dina Demajo Senior Talent Acquisition - Manpower Group [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Edmund Yeo Human Resources Manager - Oakwood",
-    "source": "Google/tavily",
+    "title": "EP19: Klaviyo - Taking Talent Acquisition to The Next Level with ...",
+    "snippet": "All-In Recruitment is a podcast by Manatal focusing on all things related to the recruitment industry's missions and trends.",
+    "source": "Google/serpsearch",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP19: Klaviyo",
@@ -959,11 +794,22 @@
   {
     "discovery_url": "https://www.comeet.com/jobs/snapscale/C9.006/digital-advertising-support-specialist-india-remote/ED.556",
     "title": "Digital Advertising Support Specialist (India Remote) - Comeet",
-    "snippet": "Snapscale is seeking an Intermediate Digital Advertising Support Specialist to join our dynamic team in a remote capacity from India.",
-    "source": "Google/tavily",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Digital Advertising Support Specialist (India Remote)",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.manatal.com/de/blog/remote-job-boards-india",
+    "title": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
+    "snippet": "Stellen in den Bereichen Kundenbetreuung, Marketing, Betrieb, HR und Inhalt werden zunehmend auf Plattformen wie Indeed, FlexJobs und ...",
+    "source": "Google/serpsearch",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -976,6 +822,17 @@
     "score": 95,
     "company": "Customer service non voice jobs in work from home",
     "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.experian.com/job/customer-support-ii-international-voice-process-work-from-home-in-hyderabad-india-jid-3888",
+    "title": "Customer Support II ( International Voice Process - Work ...",
+    "snippet": "Tech Careers · Early Careers · Locations and Teams · EMEA APAC · North America · Latin ... Customer Support II ( International Voice Process - Work From Home). __ ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Support II ( International Voice Process",
+    "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
@@ -1012,76 +869,87 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.bayt.com/en/india/jobs/customer-service-remote-job-jobs",
-    "title": "Customer Service Remote Job Jobs in India - Bayt.com",
-    "snippet": "Apply now to over 430 Customer Service Remote Job jobs in India and make your job hunting simpler. Find the latest Customer Service Remote Job job vacancies and employment opportunities in India.",
+    "discovery_url": "https://www.tp.com/en-us/job-opportunities/india/customer-service-associate-voice",
+    "title": "Customer Service Associate - Voice Process",
+    "snippet": "Customer Service Associate - Voice Process. Global · India. Category Customer Service. Full Time. APPLY NOW. Key Responsibilities and Accountabilities ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Service Associate",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://bigitjobs.com/job-detail/customer-experience-specialist-remote-hired-gurgaon-1963610",
+    "title": "Customer Experience Specialist (remote)-Hired-Gurgaon, ...",
+    "snippet": "Role : Customer Experience Specialist (Remote); Location : Remote (Work from Anywhere). Role Overview: We are hiring for one of our clients, ...",
     "source": "Google/serper",
     "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "Customer Service Remote Job Jobs in India",
+    "company": "Customer Experience Specialist (remote)-Hired-Gurgaon, ...",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/zenity/19.000/solutions-architect/F3.D6F",
-    "title": "AI Agent Security | Solutions Architect - Zenity",
-    "snippet": "Run weekly sync meetings with the customer and Zenity teams to review open issues, track progress, and ensure accountability through to closure.",
-    "source": "Google/search1",
-    "query": "site:*.comeet.com India customer support",
-    "score": 95,
-    "company": "AI Agent Security | Solutions Architect",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/india-customer-support-voice-and-non-voice-process-jobs-SRCH_IL.0,5_IN115_KO6,50.htm",
-    "title": "843 Customer support voice and non voice process jobs in India",
-    "snippet": "Search Customer support voice and non voice process jobs in India with company ratings and salaries. 843 open jobs for Customer support voice and non voice ...",
+    "discovery_url": "https://bebee.com/in/jobs/customer-advisor-voice-process-jobs-in-delhi-smart-vision-consultancy-services-new-delhi--t7xk-812775624",
+    "title": "Customer Advisor Voice Process Jobs In Delhi",
+    "snippet": "Delhi-based corporate Company is hiring for customer care advisor voice process only graduate with 1 year of similar exp. with excellent comms skills,salary ...",
     "source": "Google/serper",
     "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "843 Customer support voice and non voice process jobs in India",
+    "company": "Customer Advisor Voice Process Jobs In Delhi",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/noida-international-bpo-voice-process-jobs-SRCH_IL.0,5_IC4477468_KO6,37.htm",
-    "title": "82 international bpo voice process jobs in Noida, August 2026",
-    "snippet": "82 International bpo voice process jobs in Noida ; iQor India. International Chat Support Executive · ₹25,000 - ₹29,000 (Employer provided) ; Nextstep ...",
+    "discovery_url": "https://www.placementindia.com/job-search/chat-process-jobs-in-delhi-ncr.htm",
+    "title": "Chat Process Job Vacancies in Delhi NCR",
+    "snippet": "Customer Service Client Solutions Solving Queries Chat Support Chat Process BPO Non Voice Process Customer Support Customer Care. COMPANY NAME-VERTEX GROUP ...",
     "source": "Google/serper",
     "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "82 international bpo voice process jobs in Noida, August 2026",
+    "company": "Chat Process Job Vacancies in Delhi NCR",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://in.jooble.org/jobs-bpo-voice-process/Delhi",
+    "title": "Bpo voice process Jobs in Delhi - July 2026",
+    "snippet": "Apply for Bpo voice process jobs in Delhi. Explore 180.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs.",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Bpo voice process Jobs in Delhi",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://careers.soprasteria.in/job/bps-voice-process-associate-in-noida-uttar-pradesh-india-jid-6330",
+    "title": "BPS - Voice Process Associate job in Noida, Uttar Pradesh, ...",
+    "snippet": "BPS - Voice Process Associate. Salary. ​. Location. Noida, Uttar Pradesh, India. Vacancy language. English. Job Type. Standard. Experience Level. 0 to 2 years.",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "BPS",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/work-from-home-india-trust-and-safety-jobs-SRCH_FW0,14_IL.15,20_KO21,37.htm",
-    "title": "82 Trust and safety jobs in India - Work from home - Glassdoor",
-    "snippet": "Search work from home Trust and safety jobs in India. Get the right remote Trust and safety job in India with company ratings and salaries. 82 open work from home Trust and safety jobs in India. Get hired!",
+    "discovery_url": "https://euremotejobs.com/job/analyst-trust-safety-operations",
+    "title": "Analyst, Trust & Safety Operations",
+    "snippet": "The Trust and Safety ... Remote jobs by Category. Remote Marketing Jobs · Remote Sales Jobs · Remote Design Jobs · Remote HR Jobs · Remote Customer Support Jobs ...",
     "source": "Google/serper",
     "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
     "score": 95,
-    "company": "82 Trust and safety jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/work-from-home-trust-and-safety-jobs-SRCH_FW0,14_KO15,31.htm",
-    "title": "82 Trust and safety jobs in India - Work from home - Glassdoor",
-    "snippet": "Search work from home Trust and safety jobs. Get the right remote Trust and safety job with company ratings and salaries. 82 open work from home Trust and safety jobs. Get hired!",
-    "source": "Google/serper",
-    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
-    "score": 95,
-    "company": "82 Trust and safety jobs in India",
+    "company": "Analyst, Trust & Safety Operations",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://www.manatal.com/blog/trends-will-shape-post-pandemic-recruitment-sector",
     "title": "7 Trends that Will Shape the Post-Pandemic Recruitment Sector",
-    "snippet": "Industries expected to fare the worst are food service, customer sales, and service roles, as well as less-skilled office support roles. ## 2. Gig workers here to stay In addition to new jobs, skills, and sectors, a new type of worker has also emerged, and they are poised to play a big part in driving post-pandemic business growth. [...] On the flip side, gig workers like the independence offered by contract or project work – they are not “chained to a desk” and have more control over their income and lifestyle choices. They also like the growing range of opportunities available, from customer service calls to coding web pages across diverse sectors, including IT, finance, customer service, and more. Hiring without boundaries is another positive for employers and gig workers. [...] If you’re ready to take your recruiting to the next level, sign up for a free 14-day trial with Manatal now to see how our efficient AI-powered ATS can help you find the best talent (anywhere) faster. ‍ .webp) ## Sourcing candidates shouldn't be hard Source & hire candidates faster with Manatal's ATS. No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs",
-    "source": "Google/tavily",
+    "snippet": "They also like the growing range of opportunities available, from customer service calls to coding web pages across diverse sectors, including IT, finance, ...",
+    "source": "Google/search1",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "7 Trends that Will Shape the Post-Pandemic Recruitment Sector",
@@ -1089,24 +957,35 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/india-customer-service-remote-jobs-SRCH_IL.0,5_IN115_KO6,29.htm",
-    "title": "6,590 Customer service remote jobs in India - Glassdoor",
-    "snippet": "Search Customer service remote jobs in India with company ratings and salaries. 6,590 open jobs for Customer service remote in India.",
+    "discovery_url": "https://www.glassdoor.co.in/Job/work-from-home-live-chat-support-jobs-SRCH_FW0,14_KO15,32.htm",
+    "title": "55 Live chat support jobs in India - Work from home - Glassdoor",
+    "snippet": "Customer Support Executive (Chat Support). Remote. ₹8,000 - ₹10,000 (Employer provided). Easy Apply. Respond to customer queries via email, chat, ...",
     "source": "Google/serper",
-    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "6,590 Customer service remote jobs in India",
+    "company": "55 Live chat support jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/customer-service-remote-jobs-SRCH_KO0,23.htm",
-    "title": "6,405 Customer service remote jobs in India - Glassdoor",
-    "snippet": "Search Customer service remote jobs. Get the right Customer service remote job with company ratings and salaries. 6,405 open jobs for Customer service remote.",
+    "discovery_url": "https://cutshort.io/jobs/customer-support-jobs",
+    "title": "434+ Customer Support Jobs in India",
+    "snippet": "Remote only · 0 - 2 years · ₹4L - ₹6L / yr · Profitable · Remote only ... Job Title: Chat Support Executive (Non-Voice Process). Location: Ahmedabad.",
+    "source": "Google/serper",
+    "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "434+ Customer Support Jobs in India",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://delhi.in.expertini.com/jobs/in/customer-experience-specialist-remote-delhi-hired",
+    "title": "2920+ Customer Experience Specialist Remote Delhi ...",
+    "snippet": "2,920+ Customer Experience Specialist Remote Delhi Hired Jobs in Delhi, India — Local Employers Hiring October 2026. Apply today & jumpstart ...",
     "source": "Google/serper",
     "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "6,405 Customer service remote jobs in India",
+    "company": "2920+ Customer Experience Specialist Remote Delhi ...",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1123,23 +1002,12 @@
   },
   {
     "discovery_url": "https://www.glassdoor.co.in/Job/non-voice-remote-jobs-SRCH_KO0,16.htm",
-    "title": "214 Non voice remote jobs in India - Glassdoor",
-    "snippet": "Search Non voice remote jobs. Get the right Non voice remote job with company ratings and salaries. 214 open jobs for Non voice remote.",
+    "title": "222 Non voice remote jobs in India - Glassdoor",
+    "snippet": "Search Non voice remote jobs. Get the right Non voice remote job with company ratings and salaries. 222 open jobs for Non voice remote.",
     "source": "Google/serper",
     "query": "\"non voice\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "214 Non voice remote jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/india-remote-international-voice-process-jobs-SRCH_IL.0,5_IN115_KO6,40.htm",
-    "title": "162 Remote international voice process jobs in India",
-    "snippet": "162 open jobs for Remote international voice process in India ... UClik Technologies Private Limited. Customer support Executive (International Voice Process).",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
-    "score": 95,
-    "company": "162 Remote international voice process jobs in India",
+    "company": "222 Non voice remote jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1188,18 +1056,18 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://support.manatal.com/docs/support-guests",
-    "title": "",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:*.manatal.com India customer support",
+    "discovery_url": "https://www.glassdoor.co.in/Job/email-customer-support-remote-jobs-SRCH_KO0,29.htm",
+    "title": "1,871 Email customer support remote jobs in India - Glassdoor",
+    "snippet": "Search Email customer support remote jobs. Get the right Email customer support remote job with company ratings and salaries. 1,871 open jobs for Email customer support remote.",
+    "source": "Google/serper",
+    "query": "\"email support\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "support",
+    "company": "1,871 Email customer support remote jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://support.manatal.com/docs/en/manage-subscription",
+    "discovery_url": "https://support.manatal.com/docs/support-guests",
     "title": "",
     "snippet": "",
     "source": "Google/exa",
@@ -1221,70 +1089,26 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.google.com/search?ibp=htl%3Bjobs&q=technical+support+support+engineer+product+support+India+remote&htidocid=o8fEsnms9gKetzjBAAAAAA%3D%3D&hl=en-IN&shem=epsd1%2Cesd2e%2Crimspwouoe%2Csdpie&shndl=37&shmd=H4sIAAAAAAAA_y3MMQoCMRBAUayEPYLV1BaJCNtoYyPaCILbiSzZOCSROBOSWVw77yBe0JOoYPO796vXqNodtyEHcido0HoK1kTYZz73VuDQp8RZYE0uEGKGVXNDknsN78cTLtxBQZOtBybYMLuIk6UXSWWhdSlRuSJGglWWr5oJOx70F5Vf2uJNxhSNYDuvZ4NK5Kbj__4D53ijKJgAAAA&shmds=v1_ARwrE22iBkx6oQADbwl8kZQCa8Uz7WXY9iJKTc9bRIpIwKD5gw&source=sh%2Fx%2Fjob%2Fli%2Fm1%2F1",
-    "title": "[Hiring] Technical Product Support Engineer @Twenty5",
-    "snippet": "Twenty5 | Anywhere | Remotive | Role Description Twenty5 is seeking a hands-on Technical Product Support Engineer to help customers troubleshoot issues and get the most from our SaaS products. You will own support cases, use SQL to investigate product and data issues, and partner with engineering to resolve complex problems. This role suits someone who takes initiative, communicates clearly, and can move an investigation forward independently. Qualifications At least 3 years of hands-on technical product support experience in a SaaS environment, with demonstrated ownership of customer issues through resolution. Proficiency w",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 90,
-    "company": "Twenty5",
-    "seed_type": "Google Jobs Result",
-    "crawl_seed": "No"
+    "discovery_url": "https://support.manatal.com/docs/client-and-job-management-webinar-guide",
+    "title": "",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "support",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.google.com/search?ibp=htl%3Bjobs&q=technical+support+support+engineer+product+support+India+remote&htidocid=Jv1q2IfnMn7yE-RIAAAAAA%3D%3D&hl=en-IN&shem=epsd1%2Cesd2e%2Crimspwouoe%2Csdpie&shndl=37&shmd=H4sIAAAAAAAA_32NMQoCMRBFsd0jWE2tuBHBRmsRC0FcrZcYh2wkOxMyI6ydd_A-HsaTGC9g84sH7_3qPaqOJ3QdBWcjNPeUOCtsyAdCzLCDGRysBiSFPVNQzoE8NA9R7AU-zxfc-AKCNrsOmGDL7COO151qkpUxIrH2oiXhase9YcILD6ZI8ptWOpsxRavYLpbzoU7kJ9M_j4HgXCBeoSlRlC89d9NxwQAAAA&shmds=v1_ARwrE20poIl86sL2HxpdPp5SrYUer8xrrisrKzmpwYpbYX9N7g&source=sh%2Fx%2Fjob%2Fli%2Fm1%2F1",
-    "title": "Technical Support Engineer I - Patient Monitoring Systems",
-    "snippet": "Patient Monitoring Systems | Anywhere | Deskless | Job Description SummaryThe Technical Support Engineer I (TSE I) drives customer satisfaction through Service Excellence by providing technical support and counsel both remote and onsite to Field Engineers (FEs), Client Service Technicians (CSTs), and Customers experiencing system performance issues. This position is the technical resource for service-related escalations regarding Patient Care Solutions (PCS) products.This is a remote role where you will work out of your home office. The successful candidate will need the ability to support customers in the Eastern Time Zone, M-Fri 8am – 6pm wi",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 90,
-    "company": "Patient Monitoring Systems",
-    "seed_type": "Google Jobs Result",
-    "crawl_seed": "No"
-  },
-  {
-    "discovery_url": "https://www.google.com/search?ibp=htl%3Bjobs&q=technical+support+support+engineer+product+support+India+remote&htidocid=bS5lkdcYR73OtUUKAAAAAA%3D%3D&hl=en-IN&shem=epsd1%2Cesd2e%2Crimspwouoe%2Csdpie&shndl=37&shmd=H4sIAAAAAAAA_xXLsQrCQAyAYVy7ujllduiJ4KI4SzdBB7eSpqF3cr0clxQ6-griG_ok1uX_pr96r6rzncmnQBjhWqSfyOA25SxlMTMFjEENvq8PPKUDZSzkQRJcRIbIm5M3y3p0TjXWgxpaoJpkdJK4k9ktk_7TqsfCOaJxuz_s5jqnYbt-WOGR86QeQoIm9QF_WvWYL5QAAAA&shmds=v1_ARwrE23bDV9Tcn5GdvOctMeanlQjhvZmrytZLuSsW7-CHWqY4Q&source=sh%2Fx%2Fjob%2Fli%2Fm1%2F1",
-    "title": "Technical Product Support Specialist",
-    "snippet": "Xtremepush | Anywhere | Jobgether | This a Full Remote job, the offer is available from: Oceania, APAC, Australia About the RoleAs a Product Support Specialist, you’ll be the first line of expert support for Xtremepush customers across the Asia-Pacific region. You’ll provide technical support, troubleshoot issues and help customers get the most from the Xtremepush platform. You’ll work across channels including email, mobile push, web push, SMS, in-app and on-site messaging, as well as webhooks, APIs and integrations. You’ll also advise customers on best practice across campaigns, segmentation, automated journeys, personalisatio",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 90,
-    "company": "Xtremepush",
-    "seed_type": "Google Jobs Result",
-    "crawl_seed": "No"
-  },
-  {
-    "discovery_url": "https://www.google.com/search?ibp=htl%3Bjobs&q=technical+support+support+engineer+product+support+India+remote&htidocid=eZEKAXJFrJXx-PgEAAAAAA%3D%3D&hl=en-IN&shem=epsd1%2Cesd2e%2Crimspwouoe%2Csdpie&shndl=37&shmd=H4sIAAAAAAAA_xWLMQ7CMAwAxZonMHlmSACJBSQWVFi68YAqrawkkMZR7KCOrMz8kJfQLjfc6dRnpc4tvjDCDn7vL1wqC41Y4F5zpiLQJBcSzmKpD-qB0ZbBAyW4EbmI65MXyXw0hjlqx2IlDHqg0VDCniYzT7ygY28L5mgFu_1hO-mc3Ea19onXyoHSH1K9GROMAAAA&shmds=v1_ARwrE20iV3Dwp57DN_8gDJxdTeOoI1zmndPpEperIIPCQwuVnw&source=sh%2Fx%2Fjob%2Fli%2Fm1%2F1",
-    "title": "Level 1 – Customer Support Engineer",
-    "snippet": "LakeFusion | Anywhere | SimplyHired | About the Role LakeFusion is seeking a Customer Support Engineer (Level 1) to provide frontline support for our Master Data Management platform, built natively on the Databricks Data Intelligence Platform. In this role, you will serve as the first point of contact for customers, helping resolve foundational technical issues and ensuring a smooth user experience across the platform. You will take a hands-on role in troubleshooting common issues related to data ingestion, pipeline configuration, access, and platform usage, while guiding customers through onboarding tasks such as connecting data",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 90,
-    "company": "LakeFusion",
-    "seed_type": "Google Jobs Result",
-    "crawl_seed": "No"
-  },
-  {
-    "discovery_url": "https://www.google.com/search?ibp=htl%3Bjobs&q=technical+support+support+engineer+product+support+India+remote&htidocid=ns1Q6yrNgTHRjy85AAAAAA%3D%3D&hl=en-IN&shem=epsd1%2Cesd2e%2Crimspwouoe%2Csdpie&shndl=37&shmd=H4sIAAAAAAAA_xXLMW4CMRAFUKXlCFRfSodgN1qIhEKXsERKQQFIKdGsM7KdeGcs2yAKitwhV-FEnATSvO4NLg-D7QcdCTs2TryhgO0hRk0FrVgvzAkTbLjXwvjU9IMzNu3qsZnPZtMG198_fGuHzJSMgwreVW3g4cKVEvNLXeccKpsLFW8qo32twp2e6nvK_-yzo8QxUOF98_x0qqLYEV7JJ85LPsIL3hyLkB9jR70PWNPX4QZ1nMxHtwAAAA&shmds=v1_ARwrE210L94bA6ns3iZIaqaIic7jmQpom16NVHrI8HjkKDRf3A&source=sh%2Fx%2Fjob%2Fli%2Fm1%2F1",
-    "title": "Java Technical Support Engineer - Remote Work | REF#284432",
-    "snippet": "BairesDev | Anywhere | LinkedIn | At BairesDev®, we've been leading the way in technology projects for over 15 years. We deliver cutting-edge solutions to giants like Google and the most innovative startups in Silicon Valley. Our diverse 4,000+ team, composed of the world's Top 1% of tech talent, works remotely on roles that drive significant impact worldwide. When you apply for this position, you're taking the first step in a process that goes beyond the ordinary. We aim to align your passions and skills with our vacancies, setting you on a path to exceptional career development and success. Java Technical Support Engineer at",
-    "source": "Google Jobs/SerpApi",
-    "query": "technical support support engineer product support India remote",
-    "score": 90,
-    "company": "BairesDev",
-    "seed_type": "Google Jobs Result",
-    "crawl_seed": "No"
-  },
-  {
-    "discovery_url": "https://www.google.com/search?ibp=htl%3Bjobs&q=customer+support+customer+service+customer+success+India+remote&htidocid=Rr_IBU3oftwKDGBLAAAAAA%3D%3D&hl=en-IN&shem=epsd1%2Cesd2e%2Crimspwouoe%2Csdpie&shndl=37&shmd=H4sIAAAAAAAA_xWOMQrCQBAAsc0TrLYTRHIi2GgjWGgfsQ2by3KJXHaP2w3Ezj_4Cd_lS4zNMM3AFJ9FcTqPajJQhmr0nlQBuZ09JckGVSLfY-zV4Pt6w0MaUMLsOxCGi0iItDx2ZkkPzqnGMqih9b70MjhhamRyc6R_1NphphTRqN7tt1OZOKxXd2IbM0E1YLb5ome4PlvK2GC7gRtF5ICMP6qgf5erAAAA&shmds=v1_ARwrE22hNzC8Gw13-Z5cQgoYBF4J1RXD1MP9YsG52l4bsfV05Q&source=sh%2Fx%2Fjob%2Fli%2Fm1%2F1",
-    "title": "Customer Success and Support Specialist",
-    "snippet": "Venture Smarter | Anywhere | Adzuna | We are seeking a Customer Success Specialist to provide exceptional support and guidance to our customers. You will act as the primary point of contact, ensuring customers fully utilize our products, resolve technical issues, and have a positive experience. Position: Remote / Onsite (depending on company policy) Key ResponsibilitiesProvide exceptional support to customers via email, chat, and phone, addressing product inquiries, technical issues, and general questions.Guide customers through the onboarding process, ensuring they understand and can effectively use our products.Act as the voice",
-    "source": "Google Jobs/SerpApi",
-    "query": "customer support customer service customer success India remote",
-    "score": 90,
-    "company": "Venture Smarter",
-    "seed_type": "Google Jobs Result",
-    "crawl_seed": "No"
+    "discovery_url": "https://jobs.apple.com/en-in/details/200612979/trust-and-safety-technical-program-manager",
+    "title": "Trust and Safety Technical Program Manager",
+    "snippet": "Apply for a Trust and Safety Technical Program Manager job at Apple ... Shop Siri Remote · TV & Home Accessories. More from TV & Home. Apple TV ...",
+    "source": "Google/serper",
+    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+    "score": 85,
+    "company": "Trust and Safety Technical Program Manager",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://status.comeet.com",
@@ -1309,13 +1133,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.manatal.com",
-    "title": "Leading AI Recruitment Software | Manatal.com",
-    "snippet": "Reach out to us 24/5 through live chat or email. Find answers to your questions in our documentation. #### Data Privacy Compliance Remain up to date with the latest privacy policies, with absolute control of your data and the highest security credentials. .svg) Discover All Features # Simple and Transparent Pricing Yearly plans Monthly plans ##### Professional Plan For individuals & small teams $15/per user per month Start Free Trial Up to 15 Jobs / Account Up to 10,000 Candidates [...] Contact Us Everything in Enterprise Plus Dedicated account manager Phone support Custom Features Custom Integrations Custom compliance and reports Additional GST fees will be applied to Singaporean tax residents Compare All Price Plans ## Get started with Manatal Our 14-day free trial allows anyone to explore the platform without commitment, while our team is committed to providing support and guidance throughout the process. View All Features [...] Start Free Trial Unlimited Jobs Unlimited Candidates Unlimited Hiring Managers Workflow Automation Popular ##### Enterprise Plus Plan For industry leaders $59/per user per month Start Free Trial Everything in Enterprise Advanced Report Builder ChatGPT, Claude & LLM Integration Manatal Open API Candidate Portal & Internal Mobility Custom Permissions & User Groups Single Sign On Priority Support ##### Custom Plan For custom integrations On Demand Contact Us",
-    "source": "Google/tavily",
-    "query": "site:*.manatal.com India customer support",
+    "discovery_url": "https://careers.cisco.com/global/en/c/customer-experience-jobs",
+    "title": "Customer Experience Jobs",
+    "snippet": "Customer Experience Manager - Splunk (remote) ... Become part of our team as a Customer Experience Manager at Splunk, where you will serve as ...",
+    "source": "Google/serper",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 85,
-    "company": "Leading AI Recruitment Software | Manatal.com",
+    "company": "Customer Experience Jobs",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1342,24 +1166,35 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/india-remote-chat-support-jobs-SRCH_IL.0,5_IN115_KO6,25.htm",
-    "title": "605 Remote chat support jobs in India - Glassdoor",
-    "snippet": "Search Remote chat support jobs in India with company ratings and salaries. 605 open jobs for Remote chat support in India.",
+    "discovery_url": "https://himalayas.app/jobs/countries/india/email-support",
+    "title": "Remote Email Support Jobs in India | Himalayas",
+    "snippet": "Find remote Email Support jobs you can do from India. Compare salaries and apply on Himalayas.",
     "source": "Google/serper",
-    "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
+    "query": "\"email support\" India \"remote\" careers -linkedin -indeed",
     "score": 55,
-    "company": "605 Remote chat support jobs in India",
+    "company": "Remote Email Support Jobs in India | Himalayas",
     "seed_type": "Google Career Page",
     "crawl_seed": "No"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/chat-support-remote-jobs-SRCH_KO0,19.htm",
-    "title": "604 Chat support remote jobs in India - Glassdoor",
-    "snippet": "Search Chat support remote jobs. Get the right Chat support remote job with company ratings and salaries. 604 open jobs for Chat support remote.",
+    "discovery_url": "https://www.placementindia.com/job-search/chat-support-jobs.htm",
+    "title": "Chat Support Jobs",
+    "snippet": "We are looking for motivated candidates to fill the position of Remote Chat Support Executive. This role involves assisting customers through online chat ...",
     "source": "Google/serper",
     "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
     "score": 55,
-    "company": "604 Chat support remote jobs in India",
+    "company": "Chat Support Jobs",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "No"
+  },
+  {
+    "discovery_url": "https://www.glassdoor.co.in/Job/india-live-chat-support-remote-part-time-jobs-SRCH_IL.0,5_IN115_KO6,40.htm",
+    "title": "30 Live chat support remote part time jobs in India - Glassdoor",
+    "snippet": "Search Live chat support remote part time jobs in India with company ratings and salaries. 30 open jobs for Live chat support remote part time in India.",
+    "source": "Google/serper",
+    "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
+    "score": 55,
+    "company": "30 Live chat support remote part time jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "No"
   }

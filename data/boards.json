@@ -1,6 +1,6 @@
 {
   "version": "13.8-final-quality",
-  "generated_at": "2026-10-19T11:01:27.641037+00:00",
+  "generated_at": "2026-10-19T14:49:26.984493+00:00",
   "boards": {
     "Greenhouse": [
       {
@@ -3865,7 +3865,7 @@
       },
       {
         "key": "freshprints",
-        "url": "https://job-boards.greenhouse.io/freshprints",
+        "url": "http://job-boards.greenhouse.io/freshprints",
         "company": "Freshprints",
         "active": true,
         "last_ok": "2026-10-19",
@@ -8235,7 +8235,7 @@
       },
       {
         "key": "sureify",
-        "url": "https://job-boards.greenhouse.io/sureify/jobs/5231980008",
+        "url": "http://job-boards.greenhouse.io/sureify/jobs/5231980008",
         "company": "Sureify",
         "active": true,
         "last_ok": "2026-10-19",
@@ -9694,6 +9694,1838 @@
         "source": "Wayback/Common Crawl"
       }
     ],
+    "Lever": [
+      {
+        "key": "100ms",
+        "url": "https://jobs.lever.co/100ms",
+        "company": "100ms",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "10thmagnitude",
+        "url": "https://jobs.lever.co/10thmagnitude",
+        "company": "10thmagnitude",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "10up-2",
+        "url": "https://jobs.lever.co/10up-2",
+        "company": "10up 2",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "11855760-canada-inc",
+        "url": "https://jobs.lever.co/11855760-canada-inc",
+        "company": "11855760 Canada Inc",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "11:11Media",
+        "url": "https://jobs.lever.co/11%3A11Media",
+        "company": "11:11Media",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "11fs",
+        "url": "https://jobs.lever.co/11fs",
+        "company": "11fs",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "15five",
+        "url": "https://jobs.lever.co/15five",
+        "company": "15five",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "174powerglobal",
+        "url": "https://jobs.lever.co/174powerglobal",
+        "company": "174powerglobal",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "1776",
+        "url": "https://jobs.lever.co/1776",
+        "company": "1776",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "1840&Company",
+        "url": "https://jobs.lever.co/1840%26Company",
+        "company": "1840&Company",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "4screen",
+        "url": "https://jobs.lever.co/4screen",
+        "company": "4screen",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "aave",
+        "url": "https://jobs.lever.co/aave",
+        "company": "Aave",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "aavelabs",
+        "url": "https://jobs.lever.co/aavelabs",
+        "company": "Aavelabs",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "abzena",
+        "url": "https://jobs.lever.co/abzena",
+        "company": "Abzena",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "acceldata",
+        "url": "https://jobs.lever.co/acceldata",
+        "company": "AccelData",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "accurate",
+        "url": "https://jobs.lever.co/accurate",
+        "company": "Accurate",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "acrolinx",
+        "url": "https://jobs.lever.co/acrolinx",
+        "company": "Acrolinx",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "actian",
+        "url": "https://jobs.lever.co/actian",
+        "company": "Actian",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "adaptovate",
+        "url": "https://jobs.lever.co/adaptovate",
+        "company": "Adaptovate",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "advertima",
+        "url": "https://jobs.lever.co/advertima",
+        "company": "Advertima",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "aeratechnology",
+        "url": "https://jobs.lever.co/aeratechnology",
+        "company": "Aera Technology",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "aevi",
+        "url": "https://jobs.lever.co/aevi",
+        "company": "Aevi",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "aidash",
+        "url": "https://jobs.lever.co/aidash",
+        "company": "AiDash",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "aisle_and_abroad",
+        "url": "https://jobs.lever.co/aisle_and_abroad/7fa5ec97-a9a9-4cfc-af50-04ad14e9284d",
+        "company": "Aisle And Abroad",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "alictus",
+        "url": "https://jobs.lever.co/alictus",
+        "company": "Alictus",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "amicustherapeutics",
+        "url": "https://jobs.lever.co/amicustherapeutics",
+        "company": "Amicustherapeutics",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "amo",
+        "url": "https://jobs.lever.co/amo",
+        "company": "Amo",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "anyvan",
+        "url": "https://jobs.lever.co/anyvan",
+        "company": "Anyvan",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "appzen",
+        "url": "https://jobs.lever.co/appzen",
+        "company": "appzen",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "arcadia",
+        "url": "https://jobs.lever.co/arcadia/878f8c29-b287-488d-b6c0-e65e059f24b4/apply",
+        "company": "Arcadia",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "ascentcore",
+        "url": "https://jobs.lever.co/ascentcore",
+        "company": "Ascentcore",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "asobostudio",
+        "url": "https://jobs.lever.co/asobostudio",
+        "company": "Asobostudio",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "avara",
+        "url": "https://jobs.lever.co/avara",
+        "company": "Avara",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "balbix",
+        "url": "https://jobs.lever.co/balbix/",
+        "company": "Balbix",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "bazaarvoice",
+        "url": "https://jobs.lever.co/bazaarvoice",
+        "company": "Bazaar Voice",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs,Career Directory"
+      },
+      {
+        "key": "bdo",
+        "url": "https://jobs.lever.co/bdo",
+        "company": "Bdo",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "beghouconsulting",
+        "url": "https://jobs.lever.co/beghouconsulting",
+        "company": "beghou consulting",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "binance",
+        "url": "https://jobs.lever.co/binance",
+        "company": "Binance",
+        "active": true,
+        "last_ok": "2026-10-11",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "biofidelity",
+        "url": "https://jobs.lever.co/biofidelity",
+        "company": "Biofidelity",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "blackshark",
+        "url": "https://jobs.lever.co/blackshark",
+        "company": "Blackshark",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "bounteous",
+        "url": "https://jobs.lever.co/bounteous/",
+        "company": "bounteous",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "brevo",
+        "url": "https://jobs.lever.co/brevo/521db96a-9518-4ca9-ba81-b7ea4cfe52ff",
+        "company": "Brevo",
+        "active": true,
+        "last_ok": "2026-10-05",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "brightedge",
+        "url": "https://jobs.lever.co/brightedge",
+        "company": "Bright Edge",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "brillio-2",
+        "url": "https://jobs.lever.co/brillio-2",
+        "company": "Brillio",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "chownow",
+        "url": "https://jobs.lever.co/chownow/300dcd24-6795-456a-b4e9-7d6091285314/apply",
+        "company": "Chownow",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "cirrus",
+        "url": "https://jobs.lever.co/cirrus",
+        "company": "Cirrus",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "Coda",
+        "url": "https://jobs.lever.co/Coda",
+        "company": "Coda",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "cognite",
+        "url": "https://jobs.lever.co/cognite",
+        "company": "Cognite",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "controlai",
+        "url": "https://jobs.lever.co/controlai",
+        "company": "Controlai",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "ConverseNow",
+        "url": "https://jobs.lever.co/ConverseNow",
+        "company": "Converse.AI",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "coretechsecurity",
+        "url": "https://jobs.lever.co/coretechsecurity",
+        "company": "Coretechsecurity",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "coupa",
+        "url": "https://jobs.lever.co/coupa",
+        "company": "Coupa",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "cred",
+        "url": "https://jobs.lever.co/cred",
+        "company": "Cred",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs,Career Directory"
+      },
+      {
+        "key": "csmcy",
+        "url": "https://jobs.lever.co/csmcy",
+        "company": "Csmcy",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "cyara",
+        "url": "https://jobs.lever.co/cyara",
+        "company": "cyara",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "destinationknot",
+        "url": "https://jobs.lever.co/destinationknot/99d2e9f5-e311-478b-b1c1-f85bc2b4609b",
+        "company": "Destinationknot",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "divvyhomes",
+        "url": "https://jobs.lever.co/divvyhomes",
+        "company": "Divvy Homes",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,Career Directory"
+      },
+      {
+        "key": "dlocal",
+        "url": "https://jobs.lever.co/dlocal/19902daf-4a0a-4673-a316-8a5c610bff8e/apply",
+        "company": "Dlocal",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "doola",
+        "url": "https://jobs.lever.co/doola/",
+        "company": "Doola",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "dozee",
+        "url": "https://jobs.lever.co/dozee/d7821fe2-56bc-4f8f-b4c3-1f8d56a19bb7",
+        "company": "Dozee",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "dreamsports",
+        "url": "https://jobs.lever.co/dreamsports",
+        "company": "Dream Sports",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "drivetrain",
+        "url": "https://jobs.lever.co/drivetrain",
+        "company": "Drivetrain",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "dnb",
+        "url": "https://jobs.lever.co/dnb/",
+        "company": "dun bradstreet",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "efficioconsulting",
+        "url": "https://jobs.lever.co/efficioconsulting",
+        "company": "Efficioconsulting",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "endpointclinical",
+        "url": "https://jobs.lever.co/endpointclinical",
+        "company": "Endpointclinical",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "eneba",
+        "url": "https://jobs.lever.co/eneba",
+        "company": "Eneba",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "entrata",
+        "url": "https://jobs.lever.co/entrata",
+        "company": "entrata",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "extremenetworks",
+        "url": "https://jobs.lever.co/extremenetworks/",
+        "company": "extreme network",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "scanlinevfx",
+        "url": "https://jobs.lever.co/scanlinevfx",
+        "company": "Eyeline",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "fanatee",
+        "url": "https://jobs.lever.co/fanatee",
+        "company": "Fanatee",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "epifi",
+        "url": "https://jobs.lever.co/epifi",
+        "company": "Fi",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "findem",
+        "url": "https://jobs.lever.co/findem",
+        "company": "Findem",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "firemon",
+        "url": "https://jobs.lever.co/firemon/3a778ab3-2771-45fe-ae3d-3a400e48d06d",
+        "company": "Firemon",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "fireworkhq",
+        "url": "https://jobs.lever.co/fireworkhq/57511620-5983-4c7e-9922-c97fb73e5f02",
+        "company": "Fireworkhq",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "fiscalnote",
+        "url": "https://jobs.lever.co/fiscalnote/bcf6be4d-a409-4671-9e7e-84d71eff42b7/apply",
+        "company": "Fiscalnote",
+        "active": true,
+        "last_ok": "2026-10-08",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "fluence",
+        "url": "https://jobs.lever.co/fluence/",
+        "company": "fluence",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": " FoschiniRetailGroup",
+        "url": "https://jobs.lever.co/%20FoschiniRetailGroup",
+        "company": "FoschiniRetailGroup",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "foxitsoftware",
+        "url": "https://jobs.lever.co/foxitsoftware/22e4e065-5ee9-4535-a87d-64184ab2b254",
+        "company": "Foxitsoftware",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "frontier",
+        "url": "https://jobs.lever.co/frontier",
+        "company": "Frontier",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "genomines",
+        "url": "https://jobs.lever.co/genomines",
+        "company": "Genomines",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "getwingapp",
+        "url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2",
+        "company": "Getwingapp",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "gohighlevel",
+        "url": "https://jobs.lever.co/gohighlevel/5a89b1b8-d958-438f-bcbe-c7a0df1d0dbc",
+        "company": "Gohighlevel",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "GoToGroup",
+        "url": "https://jobs.lever.co/GoToGroup",
+        "company": "GoTo Group",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "granicus",
+        "url": "https://jobs.lever.co/granicus/",
+        "company": "Granicus",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "gushwork",
+        "url": "https://jobs.lever.co/gushwork/a933add4-5971-4f9c-9603-dacfe9a3b0be",
+        "company": "Gushwork",
+        "active": true,
+        "last_ok": "2026-10-14",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "happyco",
+        "url": "https://jobs.lever.co/happyco/4dca0dbf-c105-46de-99a7-a824a300c6b8/apply",
+        "company": "Happyco",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "highspot",
+        "url": "https://jobs.lever.co/highspot/",
+        "company": "Highspot",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "hkr",
+        "url": "https://jobs.lever.co/hkr",
+        "company": "Hkr",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "innogames",
+        "url": "https://jobs.lever.co/innogames",
+        "company": "Innogames",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "insiderone",
+        "url": "https://jobs.lever.co/insiderone",
+        "company": "Insiderone",
+        "active": true,
+        "last_ok": "2026-10-04",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "insomniacookiesuk",
+        "url": "https://jobs.lever.co/insomniacookiesuk",
+        "company": "Insomniacookiesuk",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "ion",
+        "url": "https://jobs.lever.co/ion",
+        "company": "Ion",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "ivcevidensia",
+        "url": "https://jobs.lever.co/ivcevidensia",
+        "company": "Ivcevidensia",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "jacquemus",
+        "url": "https://jobs.lever.co/jacquemus",
+        "company": "Jacquemus",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "jmawireless",
+        "url": "https://jobs.lever.co/jmawireless/",
+        "company": "JMA",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "jobgether",
+        "url": "https://jobs.lever.co/jobgether",
+        "company": "Jobgether",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "jumpcloud",
+        "url": "https://jobs.lever.co/jumpcloud/97538cb6-c888-45f0-a835-734624531c12",
+        "company": "Jumpcloud",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "jupiter",
+        "url": "https://jobs.lever.co/jupiter",
+        "company": "Jupiter money",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,Career Directory"
+      },
+      {
+        "key": "kenko",
+        "url": "https://jobs.lever.co/kenko/970b5c5f-ef8f-4b1a-b968-a49bd2baeb7d",
+        "company": "Kenko",
+        "active": true,
+        "last_ok": "2026-10-13",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "kwalee",
+        "url": "https://jobs.eu.lever.co/kwalee",
+        "company": "Kwalee",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "levelai",
+        "url": "https://jobs.lever.co/levelai/",
+        "company": "level ai",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "economicmodeling",
+        "url": "https://jobs.lever.co/economicmodeling",
+        "company": "Lightcast",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "limitbreak",
+        "url": "https://jobs.lever.co/limitbreak/",
+        "company": "limit break",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "Loop AI",
+        "url": "https://jobs.lever.co/Loop%20AI/c0740b12-d8f6-437a-9ca6-d6c0a9ff44c6",
+        "company": "Loop AI",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "lovehoneygroup",
+        "url": "https://jobs.lever.co/lovehoneygroup",
+        "company": "Lovehoneygroup",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "madisonlogic",
+        "url": "https://jobs.lever.co/madisonlogic",
+        "company": "Madison Logic",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "mashgin",
+        "url": "https://jobs.lever.co/mashgin/4beb7212-bb9e-4c23-8a43-fb8d2dc35f1f/apply",
+        "company": "Mashgin",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "matchgroup",
+        "url": "https://jobs.lever.co/matchgroup/",
+        "company": "Match Group",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "megaport",
+        "url": "https://jobs.lever.co/megaport/1e6f848d-372b-4e49-be32-fba1766e9c4d",
+        "company": "Megaport",
+        "active": true,
+        "last_ok": "2026-10-04",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "mendix",
+        "url": "https://jobs.lever.co/mendix",
+        "company": "Mendix",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "mindtickle",
+        "url": "https://jobs.lever.co/mindtickle",
+        "company": "Mindtickle",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs,Career Directory"
+      },
+      {
+        "key": "mobileye",
+        "url": "https://jobs.lever.co/mobileye",
+        "company": "Mobileye",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "netomi",
+        "url": "https://jobs.lever.co/netomi",
+        "company": "Netomi",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "ninjavan",
+        "url": "https://jobs.lever.co/ninjavan",
+        "company": "NinjaVan",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "nium",
+        "url": "https://jobs.lever.co/nium",
+        "company": "Nium",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "normalyze",
+        "url": "https://jobs.lever.co/normalyze",
+        "company": "Normalyze",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "numan",
+        "url": "https://jobs.lever.co/numan",
+        "company": "Numan",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "olx",
+        "url": "https://jobs.lever.co/olx",
+        "company": "Olx",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "Onehouse",
+        "url": "https://jobs.lever.co/Onehouse",
+        "company": "Onehouse",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "oni",
+        "url": "https://jobs.lever.co/oni",
+        "company": "Oni",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "opencast",
+        "url": "https://jobs.lever.co/opencast",
+        "company": "Opencast",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "orasio",
+        "url": "https://jobs.lever.co/orasio",
+        "company": "Orasio",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "outreach",
+        "url": "https://jobs.lever.co/outreach/13e953ce-8527-436c-be6c-55d3b659dd60",
+        "company": "Outreach",
+        "active": true,
+        "last_ok": "2026-10-14",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "parcelvision",
+        "url": "https://jobs.lever.co/parcelvision/23bcdc94-6fc8-4473-b542-7d6a9b4de0a1",
+        "company": "Parcelvision",
+        "active": true,
+        "last_ok": "2026-10-16",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "paytm",
+        "url": "https://jobs.lever.co/paytm",
+        "company": "Paytm",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs,Career Directory"
+      },
+      {
+        "key": "penumbrainc",
+        "url": "https://jobs.lever.co/penumbrainc",
+        "company": "Penumbrainc",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "peoplegrove",
+        "url": "https://jobs.lever.co/peoplegrove/bb2ee766-a420-4fe9-bac7-fa0a41caffa5",
+        "company": "Peoplegrove",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "pingwind",
+        "url": "https://jobs.lever.co/pingwind/4b70395b-3138-4557-828e-8093728ded0c/apply",
+        "company": "Pingwind",
+        "active": true,
+        "last_ok": "2026-10-16",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "pnlfin",
+        "url": "https://jobs.lever.co/pnlfin",
+        "company": "Pnlfin",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "pointclickcare",
+        "url": "https://jobs.lever.co/pointclickcare/5143e4c8-5d52-4707-8eb6-5f13d81898ce/apply",
+        "company": "Pointclickcare",
+        "active": true,
+        "last_ok": "2026-10-16",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "policyme",
+        "url": "https://jobs.lever.co/policyme/d5f14a0e-b004-41f4-9a48-eca276b40cee",
+        "company": "Policyme",
+        "active": true,
+        "last_ok": "2026-10-17",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "prima",
+        "url": "https://jobs.lever.co/prima",
+        "company": "Prima",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "prosus",
+        "url": "https://jobs.lever.co/prosus",
+        "company": "Prosus",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "protegrity",
+        "url": "https://jobs.lever.co/protegrity?location=Bengaluru",
+        "company": "Protegrity",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,Career Directory"
+      },
+      {
+        "key": "quadcode",
+        "url": "https://jobs.lever.co/quadcode",
+        "company": "Quadcode",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "quandri",
+        "url": "https://jobs.lever.co/quandri",
+        "company": "Quandri",
+        "active": true,
+        "last_ok": "2026-10-09",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "quantinuum",
+        "url": "https://jobs.lever.co/quantinuum",
+        "company": "Quantinuum",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "quantummetric",
+        "url": "https://jobs.lever.co/quantummetric/58e7a348-1de4-4f59-86b7-8e900cbaccd0/apply",
+        "company": "Quantummetric",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "rackspace",
+        "url": "https://jobs.lever.co/rackspace",
+        "company": "Rackspace Technology",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "rw1",
+        "url": "https://jobs.lever.co/rw1",
+        "company": "realworld one",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "refugeerights",
+        "url": "https://jobs.lever.co/refugeerights",
+        "company": "Refugeerights",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "regrello",
+        "url": "https://jobs.lever.co/regrello",
+        "company": "Regrello",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "repurposeglobal",
+        "url": "https://jobs.lever.co/repurposeglobal/4b2024ac-dfe1-4c50-a788-3b50d9c7c57c",
+        "company": "Repurposeglobal",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "revinate",
+        "url": "https://jobs.lever.co/revinate/45a13ce7-f16c-40bf-8327-594c25f80882",
+        "company": "Revinate",
+        "active": true,
+        "last_ok": "2026-10-14",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "rivosinc",
+        "url": "https://jobs.lever.co/rivosinc/",
+        "company": "rivos",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "robots.txt",
+        "url": "https://jobs.lever.co/robots.txt",
+        "company": "Robots.txt",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "safe",
+        "url": "https://jobs.lever.co/safe",
+        "company": "Safe security",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "saviynt",
+        "url": "https://jobs.lever.co/saviynt/",
+        "company": "Saviynt",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "seb",
+        "url": "https://jobs.lever.co/seb",
+        "company": "Seb",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "seedify-fund",
+        "url": "https://jobs.lever.co/seedify-fund",
+        "company": "seedify",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "shieldai",
+        "url": "https://jobs.lever.co/shieldai",
+        "company": "Shield AI",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "shyftlabs",
+        "url": "https://jobs.lever.co/shyftlabs",
+        "company": "ShyftLabs",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "silverfin",
+        "url": "https://jobs.lever.co/silverfin",
+        "company": "Silverfin",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "sitetracker",
+        "url": "https://jobs.lever.co/sitetracker/",
+        "company": "sitetracker",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "smarsh",
+        "url": "https://jobs.lever.co/smarsh/",
+        "company": "smarsh",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "sonarsource",
+        "url": "https://jobs.lever.co/sonarsource",
+        "company": "Sonar Source",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "spinai",
+        "url": "https://jobs.lever.co/spinai/3810c47a-517e-414c-a37a-0e369c68f41c",
+        "company": "Spinai",
+        "active": true,
+        "last_ok": "2026-10-14",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "sportalliance",
+        "url": "https://jobs.lever.co/sportalliance",
+        "company": "Sportalliance",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "sporty",
+        "url": "https://jobs.lever.co/sporty",
+        "company": "Sporty",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "Sprinto",
+        "url": "https://jobs.lever.co/Sprinto/640fd9e7-76d3-463a-9c0c-7f31fc3a4c6f",
+        "company": "Sprinto",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "stellar",
+        "url": "https://jobs.lever.co/stellar",
+        "company": "Stellar",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "sumo-digital",
+        "url": "https://jobs.lever.co/sumo-digital",
+        "company": "Sumo Digital",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "tala",
+        "url": "https://jobs.lever.co/tala/",
+        "company": "TALA",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "tokenmetrics",
+        "url": "https://jobs.lever.co/tokenmetrics/",
+        "company": "Token Metrics",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "toku",
+        "url": "https://jobs.lever.co/toku/",
+        "company": "Toku",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "tuumplatform",
+        "url": "https://jobs.lever.co/tuumplatform",
+        "company": "Tuumplatform",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "uniphore",
+        "url": "https://jobs.lever.co/uniphore",
+        "company": "Uniphore",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "unzer",
+        "url": "https://jobs.lever.co/unzer",
+        "company": "Unzer",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "upstox",
+        "url": "https://jobs.lever.co/upstox",
+        "company": "upstox",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs,Career Directory"
+      },
+      {
+        "key": "usasurveyjob",
+        "url": "https://jobs.lever.co/usasurveyjob/af01fe65-76d0-42a0-8187-6dc6bb35c459",
+        "company": "Usasurveyjob",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "useinsider",
+        "url": "https://jobs.lever.co/useinsider",
+        "company": "USE Insider",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "vendavo",
+        "url": "https://jobs.lever.co/vendavo",
+        "company": "Vendavo",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "voltus",
+        "url": "https://jobs.lever.co/voltus/74788219-f059-4a07-87f2-4dae2fa20c74/apply",
+        "company": "Voltus",
+        "active": true,
+        "last_ok": "2026-10-11",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "vwgds",
+        "url": "https://jobs.lever.co/vwgds",
+        "company": "Vwgds",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "weekdayworks",
+        "url": "https://jobs.lever.co/weekdayworks/0b4304b7-ae85-4665-8759-a93474fe7807",
+        "company": "Weekdayworks",
+        "active": true,
+        "last_ok": "2026-10-04",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "westernacher",
+        "url": "https://jobs.lever.co/westernacher",
+        "company": "Westernacher",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "xentral",
+        "url": "https://jobs.lever.co/xentral",
+        "company": "Xentral",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "xm",
+        "url": "https://jobs.lever.co/xm",
+        "company": "Xm",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "xtb",
+        "url": "https://jobs.lever.co/xtb",
+        "company": "Xtb",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Wayback/Common Crawl"
+      },
+      {
+        "key": "zeeco",
+        "url": "https://jobs.lever.co/zeeco",
+        "company": "Zeeco, Inc.",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      },
+      {
+        "key": "zeta",
+        "url": "https://jobs.lever.co/zeta/",
+        "company": "zeta",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs,Career Directory"
+      },
+      {
+        "key": "zimperium",
+        "url": "https://jobs.lever.co/zimperium",
+        "company": "Zimperium",
+        "active": true,
+        "last_ok": "2026-10-18",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
+        "key": "zuru",
+        "url": "https://jobs.lever.co/zuru",
+        "company": "Zuru",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Company,OpenJobs"
+      }
+    ],
     "Workday": [
       {
         "key": "adobe|wd5|external_experienced",
@@ -9774,6 +11606,16 @@
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
+      },
+      {
+        "key": "billgosling|wd5|Global",
+        "url": "https://billgosling.wd5.myworkdayjobs.com/en-US/Global/job/WFH---Associate--Customer-Service-Representative_REQ-00030549",
+        "company": "Billgosling|wd5|Global",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
       },
       {
         "key": "bb|wd3|QNX",
@@ -10246,6 +12088,16 @@
         "source": "Company,OpenJobs"
       },
       {
+        "key": "nttglobaldatacenters|wd501|External",
+        "url": "https://nttglobaldatacenters.wd501.myworkdayjobs.com/en-US/External/job/Navi-Mumbai-india/Client-Success-Manager_JR102192",
+        "company": "Nttglobaldatacenters|wd501|External",
+        "active": true,
+        "last_ok": "2026-10-19",
+        "fail_count": 0,
+        "jobs_found_last": 0,
+        "source": "Search API"
+      },
+      {
         "key": "nvidia|wd5|NVIDIAExternalCareerSite",
         "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
         "company": "NVIDIA",
@@ -10407,7 +12259,7 @@
       },
       {
         "key": "sagility|wd1|eQuest",
-        "url": "https://sagility.wd1.myworkdayjobs.com/eQuest/job/Work-from-Home--Customer-Service-Representative--Healthcare-_REQ-026850/apply",
+        "url": "https://sagility.wd1.myworkdayjobs.com/en-US/eQuest/job/Work-from-Home--Customer-Service-Representative--Healthcare-_REQ-026850",
         "company": "Sagility|wd1|eQuest",
         "active": true,
         "last_ok": "2026-10-19",
@@ -13618,16 +15470,6 @@
         "source": "Company,OpenJobs"
       },
       {
-        "key": "jobs",
-        "url": "https://jobs.workable.com/company/opHQRFj36NSqJkgaUByHfF/jobs-at-imagine.io",
-        "company": "Imagine.io",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
         "key": "informed-solutions",
         "url": "https://apply.workable.com/informed-solutions/",
         "company": "Informed Solutions",
@@ -13836,6 +15678,16 @@
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Company,OpenJobs"
+      },
+      {
+        "key": "jobs",
+        "url": "https://jobs.workable.com/view/6xZzqCcwMW8A92pkCXRNnH/remote-trust-%26-safety-operations-executive-in-bengaluru-at-apna",
+        "company": "Jobs",
+        "active": true,
+        "last_ok": "",
+        "fail_count": 1,
+        "jobs_found_last": 0,
+        "source": "Search API"
       },
       {
         "key": "joinmakropro",
@@ -17176,1838 +19028,6 @@
         "fail_count": 0,
         "jobs_found_last": 0,
         "source": "Wayback/Common Crawl"
-      }
-    ],
-    "Lever": [
-      {
-        "key": "100ms",
-        "url": "https://jobs.lever.co/100ms",
-        "company": "100ms",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "10thmagnitude",
-        "url": "https://jobs.lever.co/10thmagnitude",
-        "company": "10thmagnitude",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "10up-2",
-        "url": "https://jobs.lever.co/10up-2",
-        "company": "10up 2",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "11855760-canada-inc",
-        "url": "https://jobs.lever.co/11855760-canada-inc",
-        "company": "11855760 Canada Inc",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "11:11Media",
-        "url": "https://jobs.lever.co/11%3A11Media",
-        "company": "11:11Media",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "11fs",
-        "url": "https://jobs.lever.co/11fs",
-        "company": "11fs",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "15five",
-        "url": "https://jobs.lever.co/15five",
-        "company": "15five",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "174powerglobal",
-        "url": "https://jobs.lever.co/174powerglobal",
-        "company": "174powerglobal",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "1776",
-        "url": "https://jobs.lever.co/1776",
-        "company": "1776",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "1840&Company",
-        "url": "https://jobs.lever.co/1840%26Company",
-        "company": "1840&Company",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "4screen",
-        "url": "https://jobs.lever.co/4screen",
-        "company": "4screen",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "aave",
-        "url": "https://jobs.lever.co/aave",
-        "company": "Aave",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "aavelabs",
-        "url": "https://jobs.lever.co/aavelabs",
-        "company": "Aavelabs",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "abzena",
-        "url": "https://jobs.lever.co/abzena",
-        "company": "Abzena",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "acceldata",
-        "url": "https://jobs.lever.co/acceldata",
-        "company": "AccelData",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "accurate",
-        "url": "https://jobs.lever.co/accurate",
-        "company": "Accurate",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "acrolinx",
-        "url": "https://jobs.lever.co/acrolinx",
-        "company": "Acrolinx",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "actian",
-        "url": "https://jobs.lever.co/actian",
-        "company": "Actian",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "adaptovate",
-        "url": "https://jobs.lever.co/adaptovate",
-        "company": "Adaptovate",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "advertima",
-        "url": "https://jobs.lever.co/advertima",
-        "company": "Advertima",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "aeratechnology",
-        "url": "https://jobs.lever.co/aeratechnology",
-        "company": "Aera Technology",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "aevi",
-        "url": "https://jobs.lever.co/aevi",
-        "company": "Aevi",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "aidash",
-        "url": "https://jobs.lever.co/aidash",
-        "company": "AiDash",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "aisle_and_abroad",
-        "url": "https://jobs.lever.co/aisle_and_abroad/7fa5ec97-a9a9-4cfc-af50-04ad14e9284d",
-        "company": "Aisle And Abroad",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "alictus",
-        "url": "https://jobs.lever.co/alictus",
-        "company": "Alictus",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "amicustherapeutics",
-        "url": "https://jobs.lever.co/amicustherapeutics",
-        "company": "Amicustherapeutics",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "amo",
-        "url": "https://jobs.lever.co/amo",
-        "company": "Amo",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "anyvan",
-        "url": "https://jobs.lever.co/anyvan",
-        "company": "Anyvan",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "appzen",
-        "url": "https://jobs.lever.co/appzen",
-        "company": "appzen",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "arcadia",
-        "url": "https://jobs.lever.co/arcadia/878f8c29-b287-488d-b6c0-e65e059f24b4/apply",
-        "company": "Arcadia",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "ascentcore",
-        "url": "https://jobs.lever.co/ascentcore",
-        "company": "Ascentcore",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "asobostudio",
-        "url": "https://jobs.lever.co/asobostudio",
-        "company": "Asobostudio",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "avara",
-        "url": "https://jobs.lever.co/avara",
-        "company": "Avara",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "balbix",
-        "url": "https://jobs.lever.co/balbix/",
-        "company": "Balbix",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "bazaarvoice",
-        "url": "https://jobs.lever.co/bazaarvoice",
-        "company": "Bazaar Voice",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs,Career Directory"
-      },
-      {
-        "key": "bdo",
-        "url": "https://jobs.lever.co/bdo",
-        "company": "Bdo",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "beghouconsulting",
-        "url": "https://jobs.lever.co/beghouconsulting",
-        "company": "beghou consulting",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "binance",
-        "url": "https://jobs.lever.co/binance",
-        "company": "Binance",
-        "active": true,
-        "last_ok": "2026-10-11",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "biofidelity",
-        "url": "https://jobs.lever.co/biofidelity",
-        "company": "Biofidelity",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "blackshark",
-        "url": "https://jobs.lever.co/blackshark",
-        "company": "Blackshark",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "bounteous",
-        "url": "https://jobs.lever.co/bounteous/",
-        "company": "bounteous",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "brevo",
-        "url": "https://jobs.lever.co/brevo/521db96a-9518-4ca9-ba81-b7ea4cfe52ff",
-        "company": "Brevo",
-        "active": true,
-        "last_ok": "2026-10-05",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "brightedge",
-        "url": "https://jobs.lever.co/brightedge",
-        "company": "Bright Edge",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "brillio-2",
-        "url": "https://jobs.lever.co/brillio-2",
-        "company": "Brillio",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "chownow",
-        "url": "https://jobs.lever.co/chownow/300dcd24-6795-456a-b4e9-7d6091285314/apply",
-        "company": "Chownow",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "cirrus",
-        "url": "https://jobs.lever.co/cirrus",
-        "company": "Cirrus",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "Coda",
-        "url": "https://jobs.lever.co/Coda",
-        "company": "Coda",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "cognite",
-        "url": "https://jobs.lever.co/cognite",
-        "company": "Cognite",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "controlai",
-        "url": "https://jobs.lever.co/controlai",
-        "company": "Controlai",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "ConverseNow",
-        "url": "https://jobs.lever.co/ConverseNow",
-        "company": "Converse.AI",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "coretechsecurity",
-        "url": "https://jobs.lever.co/coretechsecurity",
-        "company": "Coretechsecurity",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "coupa",
-        "url": "https://jobs.lever.co/coupa",
-        "company": "Coupa",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "cred",
-        "url": "https://jobs.lever.co/cred",
-        "company": "Cred",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs,Career Directory"
-      },
-      {
-        "key": "csmcy",
-        "url": "https://jobs.lever.co/csmcy",
-        "company": "Csmcy",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "cyara",
-        "url": "https://jobs.lever.co/cyara",
-        "company": "cyara",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "destinationknot",
-        "url": "https://jobs.lever.co/destinationknot/99d2e9f5-e311-478b-b1c1-f85bc2b4609b",
-        "company": "Destinationknot",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "divvyhomes",
-        "url": "https://jobs.lever.co/divvyhomes",
-        "company": "Divvy Homes",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,Career Directory"
-      },
-      {
-        "key": "dlocal",
-        "url": "https://jobs.lever.co/dlocal/19902daf-4a0a-4673-a316-8a5c610bff8e/apply",
-        "company": "Dlocal",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "doola",
-        "url": "https://jobs.lever.co/doola/",
-        "company": "Doola",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "dozee",
-        "url": "https://jobs.lever.co/dozee/d7821fe2-56bc-4f8f-b4c3-1f8d56a19bb7",
-        "company": "Dozee",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "dreamsports",
-        "url": "https://jobs.lever.co/dreamsports",
-        "company": "Dream Sports",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "drivetrain",
-        "url": "https://jobs.lever.co/drivetrain",
-        "company": "Drivetrain",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "dnb",
-        "url": "https://jobs.lever.co/dnb/",
-        "company": "dun bradstreet",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "efficioconsulting",
-        "url": "https://jobs.lever.co/efficioconsulting",
-        "company": "Efficioconsulting",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "endpointclinical",
-        "url": "https://jobs.lever.co/endpointclinical",
-        "company": "Endpointclinical",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "eneba",
-        "url": "https://jobs.lever.co/eneba",
-        "company": "Eneba",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "entrata",
-        "url": "https://jobs.lever.co/entrata",
-        "company": "entrata",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "extremenetworks",
-        "url": "https://jobs.lever.co/extremenetworks/",
-        "company": "extreme network",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "scanlinevfx",
-        "url": "https://jobs.lever.co/scanlinevfx",
-        "company": "Eyeline",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "fanatee",
-        "url": "https://jobs.lever.co/fanatee",
-        "company": "Fanatee",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "epifi",
-        "url": "https://jobs.lever.co/epifi",
-        "company": "Fi",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "findem",
-        "url": "https://jobs.lever.co/findem",
-        "company": "Findem",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "firemon",
-        "url": "https://jobs.lever.co/firemon/3a778ab3-2771-45fe-ae3d-3a400e48d06d",
-        "company": "Firemon",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "fireworkhq",
-        "url": "https://jobs.lever.co/fireworkhq/57511620-5983-4c7e-9922-c97fb73e5f02",
-        "company": "Fireworkhq",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "fiscalnote",
-        "url": "https://jobs.lever.co/fiscalnote/bcf6be4d-a409-4671-9e7e-84d71eff42b7/apply",
-        "company": "Fiscalnote",
-        "active": true,
-        "last_ok": "2026-10-08",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "fluence",
-        "url": "https://jobs.lever.co/fluence/",
-        "company": "fluence",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": " FoschiniRetailGroup",
-        "url": "https://jobs.lever.co/%20FoschiniRetailGroup",
-        "company": "FoschiniRetailGroup",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "foxitsoftware",
-        "url": "https://jobs.lever.co/foxitsoftware/22e4e065-5ee9-4535-a87d-64184ab2b254",
-        "company": "Foxitsoftware",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "frontier",
-        "url": "https://jobs.lever.co/frontier",
-        "company": "Frontier",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "genomines",
-        "url": "https://jobs.lever.co/genomines",
-        "company": "Genomines",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "getwingapp",
-        "url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
-        "company": "Getwingapp",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "gohighlevel",
-        "url": "https://jobs.lever.co/gohighlevel/5a89b1b8-d958-438f-bcbe-c7a0df1d0dbc",
-        "company": "Gohighlevel",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "GoToGroup",
-        "url": "https://jobs.lever.co/GoToGroup",
-        "company": "GoTo Group",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "granicus",
-        "url": "https://jobs.lever.co/granicus/",
-        "company": "Granicus",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "gushwork",
-        "url": "https://jobs.lever.co/gushwork/a933add4-5971-4f9c-9603-dacfe9a3b0be",
-        "company": "Gushwork",
-        "active": true,
-        "last_ok": "2026-10-14",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "happyco",
-        "url": "https://jobs.lever.co/happyco/4dca0dbf-c105-46de-99a7-a824a300c6b8/apply",
-        "company": "Happyco",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "highspot",
-        "url": "https://jobs.lever.co/highspot/",
-        "company": "Highspot",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "hkr",
-        "url": "https://jobs.lever.co/hkr",
-        "company": "Hkr",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "innogames",
-        "url": "https://jobs.lever.co/innogames",
-        "company": "Innogames",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "insiderone",
-        "url": "https://jobs.lever.co/insiderone",
-        "company": "Insiderone",
-        "active": true,
-        "last_ok": "2026-10-04",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "insomniacookiesuk",
-        "url": "https://jobs.lever.co/insomniacookiesuk",
-        "company": "Insomniacookiesuk",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "ion",
-        "url": "https://jobs.lever.co/ion",
-        "company": "Ion",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "ivcevidensia",
-        "url": "https://jobs.lever.co/ivcevidensia",
-        "company": "Ivcevidensia",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "jacquemus",
-        "url": "https://jobs.lever.co/jacquemus",
-        "company": "Jacquemus",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "jmawireless",
-        "url": "https://jobs.lever.co/jmawireless/",
-        "company": "JMA",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "jobgether",
-        "url": "https://jobs.lever.co/jobgether",
-        "company": "Jobgether",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "jumpcloud",
-        "url": "https://jobs.lever.co/jumpcloud/97538cb6-c888-45f0-a835-734624531c12",
-        "company": "Jumpcloud",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "jupiter",
-        "url": "https://jobs.lever.co/jupiter",
-        "company": "Jupiter money",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,Career Directory"
-      },
-      {
-        "key": "kenko",
-        "url": "https://jobs.lever.co/kenko/970b5c5f-ef8f-4b1a-b968-a49bd2baeb7d",
-        "company": "Kenko",
-        "active": true,
-        "last_ok": "2026-10-13",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "kwalee",
-        "url": "https://jobs.eu.lever.co/kwalee",
-        "company": "Kwalee",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "levelai",
-        "url": "https://jobs.lever.co/levelai/",
-        "company": "level ai",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "economicmodeling",
-        "url": "https://jobs.lever.co/economicmodeling",
-        "company": "Lightcast",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "limitbreak",
-        "url": "https://jobs.lever.co/limitbreak/",
-        "company": "limit break",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "Loop AI",
-        "url": "https://jobs.lever.co/Loop%20AI/c0740b12-d8f6-437a-9ca6-d6c0a9ff44c6",
-        "company": "Loop AI",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "lovehoneygroup",
-        "url": "https://jobs.lever.co/lovehoneygroup",
-        "company": "Lovehoneygroup",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "madisonlogic",
-        "url": "https://jobs.lever.co/madisonlogic",
-        "company": "Madison Logic",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "mashgin",
-        "url": "https://jobs.lever.co/mashgin/4beb7212-bb9e-4c23-8a43-fb8d2dc35f1f/apply",
-        "company": "Mashgin",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "matchgroup",
-        "url": "https://jobs.lever.co/matchgroup/",
-        "company": "Match Group",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "megaport",
-        "url": "https://jobs.lever.co/megaport/1e6f848d-372b-4e49-be32-fba1766e9c4d",
-        "company": "Megaport",
-        "active": true,
-        "last_ok": "2026-10-04",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "mendix",
-        "url": "https://jobs.lever.co/mendix",
-        "company": "Mendix",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "mindtickle",
-        "url": "https://jobs.lever.co/mindtickle",
-        "company": "Mindtickle",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs,Career Directory"
-      },
-      {
-        "key": "mobileye",
-        "url": "https://jobs.lever.co/mobileye",
-        "company": "Mobileye",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "netomi",
-        "url": "https://jobs.lever.co/netomi",
-        "company": "Netomi",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "ninjavan",
-        "url": "https://jobs.lever.co/ninjavan",
-        "company": "NinjaVan",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "nium",
-        "url": "https://jobs.lever.co/nium",
-        "company": "Nium",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "normalyze",
-        "url": "https://jobs.lever.co/normalyze",
-        "company": "Normalyze",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "numan",
-        "url": "https://jobs.lever.co/numan",
-        "company": "Numan",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "olx",
-        "url": "https://jobs.lever.co/olx",
-        "company": "Olx",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "Onehouse",
-        "url": "https://jobs.lever.co/Onehouse",
-        "company": "Onehouse",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "oni",
-        "url": "https://jobs.lever.co/oni",
-        "company": "Oni",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "opencast",
-        "url": "https://jobs.lever.co/opencast",
-        "company": "Opencast",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "orasio",
-        "url": "https://jobs.lever.co/orasio",
-        "company": "Orasio",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "outreach",
-        "url": "https://jobs.lever.co/outreach/13e953ce-8527-436c-be6c-55d3b659dd60",
-        "company": "Outreach",
-        "active": true,
-        "last_ok": "2026-10-14",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "parcelvision",
-        "url": "https://jobs.lever.co/parcelvision/23bcdc94-6fc8-4473-b542-7d6a9b4de0a1",
-        "company": "Parcelvision",
-        "active": true,
-        "last_ok": "2026-10-16",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "paytm",
-        "url": "https://jobs.lever.co/paytm",
-        "company": "Paytm",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs,Career Directory"
-      },
-      {
-        "key": "penumbrainc",
-        "url": "https://jobs.lever.co/penumbrainc",
-        "company": "Penumbrainc",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "peoplegrove",
-        "url": "https://jobs.lever.co/peoplegrove/bb2ee766-a420-4fe9-bac7-fa0a41caffa5",
-        "company": "Peoplegrove",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "pingwind",
-        "url": "https://jobs.lever.co/pingwind/4b70395b-3138-4557-828e-8093728ded0c/apply",
-        "company": "Pingwind",
-        "active": true,
-        "last_ok": "2026-10-16",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "pnlfin",
-        "url": "https://jobs.lever.co/pnlfin",
-        "company": "Pnlfin",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "pointclickcare",
-        "url": "https://jobs.lever.co/pointclickcare/5143e4c8-5d52-4707-8eb6-5f13d81898ce/apply",
-        "company": "Pointclickcare",
-        "active": true,
-        "last_ok": "2026-10-16",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "policyme",
-        "url": "https://jobs.lever.co/policyme/d5f14a0e-b004-41f4-9a48-eca276b40cee",
-        "company": "Policyme",
-        "active": true,
-        "last_ok": "2026-10-17",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "prima",
-        "url": "https://jobs.lever.co/prima",
-        "company": "Prima",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "prosus",
-        "url": "https://jobs.lever.co/prosus",
-        "company": "Prosus",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "protegrity",
-        "url": "https://jobs.lever.co/protegrity?location=Bengaluru",
-        "company": "Protegrity",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,Career Directory"
-      },
-      {
-        "key": "quadcode",
-        "url": "https://jobs.lever.co/quadcode",
-        "company": "Quadcode",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "quandri",
-        "url": "https://jobs.lever.co/quandri",
-        "company": "Quandri",
-        "active": true,
-        "last_ok": "2026-10-09",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "quantinuum",
-        "url": "https://jobs.lever.co/quantinuum",
-        "company": "Quantinuum",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "quantummetric",
-        "url": "https://jobs.lever.co/quantummetric/58e7a348-1de4-4f59-86b7-8e900cbaccd0/apply",
-        "company": "Quantummetric",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "rackspace",
-        "url": "https://jobs.lever.co/rackspace",
-        "company": "Rackspace Technology",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "rw1",
-        "url": "https://jobs.lever.co/rw1",
-        "company": "realworld one",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "refugeerights",
-        "url": "https://jobs.lever.co/refugeerights",
-        "company": "Refugeerights",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "regrello",
-        "url": "https://jobs.lever.co/regrello",
-        "company": "Regrello",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "repurposeglobal",
-        "url": "https://jobs.lever.co/repurposeglobal/4b2024ac-dfe1-4c50-a788-3b50d9c7c57c",
-        "company": "Repurposeglobal",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "revinate",
-        "url": "https://jobs.lever.co/revinate/45a13ce7-f16c-40bf-8327-594c25f80882",
-        "company": "Revinate",
-        "active": true,
-        "last_ok": "2026-10-14",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "rivosinc",
-        "url": "https://jobs.lever.co/rivosinc/",
-        "company": "rivos",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "robots.txt",
-        "url": "https://jobs.lever.co/robots.txt",
-        "company": "Robots.txt",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "safe",
-        "url": "https://jobs.lever.co/safe",
-        "company": "Safe security",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "saviynt",
-        "url": "https://jobs.lever.co/saviynt/",
-        "company": "Saviynt",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "seb",
-        "url": "https://jobs.lever.co/seb",
-        "company": "Seb",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "seedify-fund",
-        "url": "https://jobs.lever.co/seedify-fund",
-        "company": "seedify",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "shieldai",
-        "url": "https://jobs.lever.co/shieldai",
-        "company": "Shield AI",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "shyftlabs",
-        "url": "https://jobs.lever.co/shyftlabs",
-        "company": "ShyftLabs",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "silverfin",
-        "url": "https://jobs.lever.co/silverfin",
-        "company": "Silverfin",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "sitetracker",
-        "url": "https://jobs.lever.co/sitetracker/",
-        "company": "sitetracker",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "smarsh",
-        "url": "https://jobs.lever.co/smarsh/",
-        "company": "smarsh",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "sonarsource",
-        "url": "https://jobs.lever.co/sonarsource",
-        "company": "Sonar Source",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "spinai",
-        "url": "https://jobs.lever.co/spinai/3810c47a-517e-414c-a37a-0e369c68f41c",
-        "company": "Spinai",
-        "active": true,
-        "last_ok": "2026-10-14",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "sportalliance",
-        "url": "https://jobs.lever.co/sportalliance",
-        "company": "Sportalliance",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "sporty",
-        "url": "https://jobs.lever.co/sporty",
-        "company": "Sporty",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "Sprinto",
-        "url": "https://jobs.lever.co/Sprinto/640fd9e7-76d3-463a-9c0c-7f31fc3a4c6f",
-        "company": "Sprinto",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "stellar",
-        "url": "https://jobs.lever.co/stellar",
-        "company": "Stellar",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "sumo-digital",
-        "url": "https://jobs.lever.co/sumo-digital",
-        "company": "Sumo Digital",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "tala",
-        "url": "https://jobs.lever.co/tala/",
-        "company": "TALA",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "tokenmetrics",
-        "url": "https://jobs.lever.co/tokenmetrics/",
-        "company": "Token Metrics",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "toku",
-        "url": "https://jobs.lever.co/toku/",
-        "company": "Toku",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "tuumplatform",
-        "url": "https://jobs.lever.co/tuumplatform",
-        "company": "Tuumplatform",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "uniphore",
-        "url": "https://jobs.lever.co/uniphore",
-        "company": "Uniphore",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "unzer",
-        "url": "https://jobs.lever.co/unzer",
-        "company": "Unzer",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "upstox",
-        "url": "https://jobs.lever.co/upstox",
-        "company": "upstox",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs,Career Directory"
-      },
-      {
-        "key": "usasurveyjob",
-        "url": "https://jobs.lever.co/usasurveyjob/af01fe65-76d0-42a0-8187-6dc6bb35c459",
-        "company": "Usasurveyjob",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "useinsider",
-        "url": "https://jobs.lever.co/useinsider",
-        "company": "USE Insider",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "vendavo",
-        "url": "https://jobs.lever.co/vendavo",
-        "company": "Vendavo",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "voltus",
-        "url": "https://jobs.lever.co/voltus/74788219-f059-4a07-87f2-4dae2fa20c74/apply",
-        "company": "Voltus",
-        "active": true,
-        "last_ok": "2026-10-11",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "vwgds",
-        "url": "https://jobs.lever.co/vwgds",
-        "company": "Vwgds",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "weekdayworks",
-        "url": "https://jobs.lever.co/weekdayworks/0b4304b7-ae85-4665-8759-a93474fe7807",
-        "company": "Weekdayworks",
-        "active": true,
-        "last_ok": "2026-10-04",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "westernacher",
-        "url": "https://jobs.lever.co/westernacher",
-        "company": "Westernacher",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "xentral",
-        "url": "https://jobs.lever.co/xentral",
-        "company": "Xentral",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "xm",
-        "url": "https://jobs.lever.co/xm",
-        "company": "Xm",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "xtb",
-        "url": "https://jobs.lever.co/xtb",
-        "company": "Xtb",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Wayback/Common Crawl"
-      },
-      {
-        "key": "zeeco",
-        "url": "https://jobs.lever.co/zeeco",
-        "company": "Zeeco, Inc.",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
-      },
-      {
-        "key": "zeta",
-        "url": "https://jobs.lever.co/zeta/",
-        "company": "zeta",
-        "active": true,
-        "last_ok": "2026-10-19",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs,Career Directory"
-      },
-      {
-        "key": "zimperium",
-        "url": "https://jobs.lever.co/zimperium",
-        "company": "Zimperium",
-        "active": true,
-        "last_ok": "2026-10-18",
-        "fail_count": 0,
-        "jobs_found_last": 0,
-        "source": "Search API"
-      },
-      {
-        "key": "zuru",
-        "url": "https://jobs.lever.co/zuru",
-        "company": "Zuru",
-        "active": true,
-        "last_ok": "",
-        "fail_count": 1,
-        "jobs_found_last": 0,
-        "source": "Company,OpenJobs"
       }
     ],
     "Ashby": [
@@ -38237,9 +38257,25 @@
       "ats": "Company Career"
     },
     {
+      "company": "3i Infotech",
+      "url": "https://3i-infotech.com/careers",
+      "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
+      "company": "434+ Customer Support Jobs in India",
+      "url": "https://cutshort.io/jobs/customer-support-jobs",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
       "company": "7 Trends that Will Shape the Post-Pandemic Recruitment Sector",
       "url": "https://www.manatal.com/blog/trends-will-shape-post-pandemic-recruitment-sector",
-      "source": "Google/tavily",
+      "source": "Google/search1",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -38281,16 +38317,6 @@
       "url": "https://www.agileinfoways.com/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
-    },
-    {
-      "company": "AI Agent Security | Solutions Architect",
-      "url": "https://www.comeet.com/jobs/zenity/19.000/solutions-architect/F3.D6F",
-      "source": "Google/search1",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India customer support",
-      "last_discovered": "2026-10-19"
     },
     {
       "company": "Airbase",
@@ -38383,12 +38409,6 @@
       "ats": "Company Career"
     },
     {
-      "company": "Ardentisys",
-      "url": "https://www.ardentisys.com/about-us/careers",
-      "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
       "company": "Arista Networks",
       "url": "https://www.arista.com/en/careers",
       "source": "Company,OpenJobs,Career Directory",
@@ -38428,12 +38448,6 @@
       "company": "Bain & Co",
       "url": "https://www.bain.com/careers",
       "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
-      "company": "BairesDev",
-      "url": "https://www.jobaaj.com/job/soci-t-g-n-rale-marocai-specialist-software-engineer-java-production-support-chennai-5-to-10-years-33391",
-      "source": "Google Jobs",
       "ats": "Company Career"
     },
     {
@@ -38527,10 +38541,14 @@
       "ats": "Company Career"
     },
     {
-      "company": "Bottemline Technologies",
-      "url": "https://www.bottomline.com/apac/about/careers",
-      "source": "Company,Career Directory",
-      "ats": "Company Career"
+      "company": "BPS",
+      "url": "https://careers.soprasteria.in/job/bps-voice-process-associate-in-noida-uttar-pradesh-india-jid-6330",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
     },
     {
       "company": "Brooklinen",
@@ -38759,6 +38777,36 @@
       "ats": "Company Career"
     },
     {
+      "company": "Customer Advisor Voice Process Jobs In Delhi",
+      "url": "https://bebee.com/in/jobs/customer-advisor-voice-process-jobs-in-delhi-smart-vision-consultancy-services-new-delhi--t7xk-812775624",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Customer Experience Jobs",
+      "url": "https://careers.cisco.com/global/en/c/customer-experience-jobs",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Customer Experience Specialist (remote)-Hired-Gurgaon, ...",
+      "url": "https://bigitjobs.com/job-detail/customer-experience-specialist-remote-hired-gurgaon-1963610",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
       "company": "Customer Support Executive (Morning and Afternoon) | Manatal Co LTD",
       "url": "https://careers.manatal.com/jobs/b4180a37-d543-469a-8d00-64963888ac7c",
       "source": "Google/exa",
@@ -38786,6 +38834,16 @@
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
       "query": "site:*.manatal.com India customer support",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Customer Support II ( International Voice Process",
+      "url": "https://jobs.experian.com/job/customer-support-ii-international-voice-process-work-from-home-in-hyderabad-india-jid-3888",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
       "last_discovered": "2026-10-19"
     },
     {
@@ -38879,6 +38937,16 @@
       "ats": "Company Career"
     },
     {
+      "company": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
+      "url": "https://www.manatal.com/de/blog/remote-job-boards-india",
+      "source": "Google/serpsearch",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "site:*.manatal.com India customer support",
+      "last_discovered": "2026-10-19"
+    },
+    {
       "company": "Diebold",
       "url": "https://www.dieboldnixdorf.com/en-us/careers",
       "source": "Company,Career Directory",
@@ -38893,7 +38961,7 @@
     {
       "company": "Digital Advertising Support Specialist (India Remote)",
       "url": "https://www.comeet.com/jobs/snapscale/C9.006/digital-advertising-support-specialist-india-remote/ED.556",
-      "source": "Google/tavily",
+      "source": "Google/exa",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -38985,7 +39053,7 @@
     {
       "company": "EP19: Klaviyo",
       "url": "https://www.manatal.com/blog/ep19-taking-talent-acquisition-to-the-next-level-with-automation-ai-and-technology",
-      "source": "Google/tavily",
+      "source": "Google/serpsearch",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -38995,7 +39063,7 @@
     {
       "company": "EP69: Riot Games",
       "url": "https://www.manatal.com/blog/ep69-riot-games-rajashree-chandramogan",
-      "source": "Google/tavily",
+      "source": "Google/serpsearch",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -39005,7 +39073,7 @@
     {
       "company": "EP94: NLB Services",
       "url": "https://www.manatal.com/blog/ep94-nlb-services-varun-sachdeva",
-      "source": "Google/search1",
+      "source": "Google/serpsearch",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -39441,6 +39509,16 @@
       "ats": "Company Career"
     },
     {
+      "company": "International Bpo",
+      "url": "https://getwork.org/job-details/international-bpo-non-voice-chat-support-13365",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
       "company": "Intuit",
       "url": "https://www.intuit.com/careers",
       "source": "Company,Career Directory",
@@ -39477,16 +39555,6 @@
       "ats": "Company Career"
     },
     {
-      "company": "Job opportunities at VAST Data",
-      "url": "https://www.comeet.com/jobs/vastdata/43.001",
-      "source": "Google/tavily",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India customer support",
-      "last_discovered": "2026-10-19"
-    },
-    {
       "company": "Jobs at AlgoSec",
       "url": "https://www.comeet.com/jobs/algosec/71.006/dba/98.A4A",
       "source": "Google/searlo",
@@ -39499,7 +39567,7 @@
     {
       "company": "Jobs at Allot",
       "url": "https://www.comeet.com/jobs/allot/C4.009",
-      "source": "Google/tavily",
+      "source": "Google/exa",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -39527,9 +39595,9 @@
       "last_discovered": "2026-10-19"
     },
     {
-      "company": "Jobs at SolarEdge",
-      "url": "https://www.comeet.com/jobs/solaredge/71.00A",
-      "source": "Google/search1",
+      "company": "Jobs at VAST Data",
+      "url": "https://www.comeet.com/jobs/vastdata/43.001",
+      "source": "Google/exa",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -39611,16 +39679,6 @@
       "ats": "Company Career"
     },
     {
-      "company": "Leading AI Recruitment Software | Manatal.com",
-      "url": "https://www.manatal.com",
-      "source": "Google/tavily",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.manatal.com India customer support",
-      "last_discovered": "2026-10-19"
-    },
-    {
       "company": "LILA Games",
       "url": "https://lilagames.com/careers",
       "source": "Company,OpenJobs",
@@ -39667,16 +39725,6 @@
       "url": "https://careers.techmahindra.com",
       "source": "Company,Career Directory",
       "ats": "Company Career"
-    },
-    {
-      "company": "Manatal Status",
-      "url": "https://status.manatal.com",
-      "source": "Google/exa",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.manatal.com India customer support",
-      "last_discovered": "2026-10-19"
     },
     {
       "company": "Mantech International",
@@ -40029,6 +40077,16 @@
       "ats": "Company Career"
     },
     {
+      "company": "Pre-Sales & BD Manager – Transportation (India & APAC) at RADWIN",
+      "url": "https://www.comeet.com/jobs/radwin/06.00E/pre-sales--bd-manager--transportation-india--apac/51.F67",
+      "source": "Google/serpent",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "site:*.comeet.com India customer support",
+      "last_discovered": "2026-10-19"
+    },
+    {
       "company": "Priceline",
       "url": "https://careers.priceline.com/search",
       "source": "Company,Career Directory",
@@ -40113,8 +40171,18 @@
       "ats": "Company Career"
     },
     {
-      "company": "Remote Customer Support Jobs in India",
-      "url": "https://www.crossover.com/jobs/customer-support/in",
+      "company": "Remote Customer Service Jobs & Vacancies",
+      "url": "https://www.randstad.in/jobs/s-remote-customer-service",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Remote Customer Support Executive Job (India)",
+      "url": "https://goodspace.ai/jobs/customer-support-executive-remote-india-30908",
       "source": "Google/serper",
       "ats": "Company Career",
       "crawl_priority": 0,
@@ -40132,12 +40200,6 @@
       "company": "Resemble AI",
       "url": "https://app.dover.io/dover/careers/64b57c81-9467-4ad2-9c8c-128f553157b5",
       "source": "Company,OpenJobs",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Rockstar Games",
-      "url": "https://www.rockstargames.com/careers",
-      "source": "Company,OpenJobs,Career Directory",
       "ats": "Company Career"
     },
     {
@@ -40297,8 +40359,20 @@
       "ats": "Company Career"
     },
     {
+      "company": "SkillVertex",
+      "url": "https://www.linkedin.com/jobs/search?f_C=75860188&geoId=92000000",
+      "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
       "company": "Slack",
       "url": "https://slack.com/intl/en-in/careers",
+      "source": "Company,Career Directory",
+      "ats": "Company Career"
+    },
+    {
+      "company": "Sling Media",
+      "url": "https://www.linkedin.com/jobs/sling-media-jobs?originalSubdomain=in",
       "source": "Company,Career Directory",
       "ats": "Company Career"
     },
@@ -40319,16 +40393,6 @@
       "url": "https://www.soprasteria.com/careers",
       "source": "Company,Career Directory",
       "ats": "Company Career"
-    },
-    {
-      "company": "Spark Hire Recruit Status",
-      "url": "https://status.comeet.com",
-      "source": "Google/exa",
-      "ats": "Company Career",
-      "crawl_priority": 0,
-      "seed_type": "Google Career Page",
-      "query": "site:*.comeet.com India customer support",
-      "last_discovered": "2026-10-19"
     },
     {
       "company": "Spec India",
@@ -40424,7 +40488,7 @@
     },
     {
       "company": "support",
-      "url": "https://support.manatal.com/docs/en/manage-subscription",
+      "url": "https://support.manatal.com/docs/client-and-job-management-webinar-guide",
       "source": "Google/exa",
       "ats": "Company Career",
       "crawl_priority": 0,
@@ -40521,15 +40585,9 @@
       "ats": "Company Career"
     },
     {
-      "company": "Tech Mahindra",
-      "url": "https://careers.techmahindra.com/CurrentOpportunity.aspx",
-      "source": "Company,OpenJobs",
-      "ats": "Company Career"
-    },
-    {
       "company": "Technical Account Manager (India) at Island",
       "url": "https://www.comeet.com/jobs/island/09.00A/technical-account-manager-india/11.370",
-      "source": "Google/tavily",
+      "source": "Google/exa",
       "ats": "Company Career",
       "crawl_priority": 0,
       "seed_type": "Google Career Page",
@@ -40619,8 +40677,38 @@
       "ats": "Company Career"
     },
     {
-      "company": "TSPA Job Board",
-      "url": "https://www.tspa.org/explore/job-board",
+      "company": "Trust & Safety Product Manager",
+      "url": "https://in.jobsora.com/job-54278539442",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Trust and Safety Analyst (CY) Job in remote quest jobs ...",
+      "url": "https://www.shine.com/jobs/trust-and-safety-analyst-cy/remote-quest-jobs/19552643",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Trust and Safety Analyst | India",
+      "url": "https://www.jobleads.com/in/job/trust-and-safety-analyst--india--e09250a60e6577dabfacd7d9157b13f5a",
+      "source": "Google/serper",
+      "ats": "Company Career",
+      "crawl_priority": 0,
+      "seed_type": "Google Career Page",
+      "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+      "last_discovered": "2026-10-19"
+    },
+    {
+      "company": "Trust and Safety Technical Program Manager",
+      "url": "https://jobs.apple.com/en-in/details/200612979/trust-and-safety-technical-program-manager",
       "source": "Google/serper",
       "ats": "Company Career",
       "crawl_priority": 0,
@@ -40632,30 +40720,6 @@
       "company": "Turvo",
       "url": "https://turvo.com/careers",
       "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Twenty5",
-      "url": "https://djinni.co/jobs/834576-technical-consultant-product-support-engineer",
-      "source": "Google Jobs",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Twenty5",
-      "url": "https://remotive.com/remote/jobs/customer-service/technical-product-support-engineer-6094352",
-      "source": "Google Jobs",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Twenty5",
-      "url": "https://www.remoterocketship.com/company/telnyx/jobs/technical-product-support-engineer-amer-brazil-remote",
-      "source": "Google Jobs",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Twenty5",
-      "url": "https://www.remotesource.com/jobs/T2ELHLI2kf-L1htl7oTCO-product-technical-support-engineer-remote-at-johnson-controls",
-      "source": "Google Jobs",
       "ats": "Company Career"
     },
     {
@@ -40734,12 +40798,6 @@
       "company": "Velotio Technologies",
       "url": "https://www.velotio.com/careers",
       "source": "Company,Career Directory",
-      "ats": "Company Career"
-    },
-    {
-      "company": "Venture Smarter",
-      "url": "https://bebee.com/in/jobs/business-risk-assessment-and-support-ideslabs-private-limited-hyderabad--t7xk-882715400",
-      "source": "Google Jobs",
       "ats": "Company Career"
     },
     {
@@ -40921,6 +40979,6 @@
       "ats": "Company Career"
     }
   ],
-  "company_count": 1972,
-  "board_count": 3816
+  "company_count": 1974,
+  "board_count": 3818
 }
