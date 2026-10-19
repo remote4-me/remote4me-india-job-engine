@@ -35,9 +35,9 @@
   {
     "discovery_url": "https://jobs.lever.co/getwingapp/f6c44f7d-2606-4e18-a886-8e96e59ed2f2",
     "title": "Wing Assistant - Customer Service Representative (India)",
-    "snippet": "Customer Service Representative (Remote). Wing is on the exciting mission of ... • 100% Work-From-Home. • Exceptionally Supportive Team. • Opportunities ...",
+    "snippet": "Customer Service Representative (India). New Delhi, India. IND – IND ... • 100% Work-From-Home. • Exceptionally Supportive Team. • Opportunities for ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
     "score": 100,
     "company": "Wing Assistant",
     "seed_type": "ATS Board Seed",
@@ -101,9 +101,9 @@
   {
     "discovery_url": "https://jobs.lever.co/Sprinto/9246976f-5d9c-4065-842d-476a093a588a",
     "title": "Sprinto - Project Manager – Enterprise Customer Onboarding",
-    "snippet": "Customer Experience / ... Lead enterprise customer implementations from post-sales handover through onboarding, go-live and transition to Customer Success.",
+    "snippet": "Project Manager – Enterprise Customer Onboarding. Remote (India). Customer Experience /. Remote /. Remote. apply for this job. Sprinto is an Autonomous Trust ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 100,
     "company": "Sprinto",
     "seed_type": "ATS Board Seed",
@@ -244,7 +244,7 @@
   {
     "discovery_url": "https://job-boards.greenhouse.io/easyship/jobs/4667600006",
     "title": "Easyship Careers: Join Our Global Team",
-    "snippet": "Support Specialist (Tech and customer support). Bangalore,India. Customer Service · Technical Support Specialist. Bangalore,India. Customer Service. No jobs.",
+    "snippet": "Bangalore,India. Customer Service · Technical Implementation Lead. Remote · Technical Support Specialist. Bangalore,India. Customer Service · Warehouse ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
@@ -374,13 +374,35 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site",
+    "title": "Careers at Thomson Reuters - Myworkdayjobs.com",
+    "snippet": "Customer Success Manager Remote (NY, IN, OH) - Direct Tax. remote ... Tech Customer Success Manager - Mid Level. remote type: Hybrid.",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "score": 100,
+    "company": "Careers at Thomson Reuters",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://job-boards.greenhouse.io/harnessinc",
     "title": "Careers at Harness: Open Positions & Job Opportunities",
     "snippet": "Customer Success, Adoption. Senior Customer Architect. U.S. (Remote) ; Customer Success, Customer Experience. Customer Experience Engineer I/II. U.S. (Remote).",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
     "score": 100,
     "company": "Careers at Harness: Open Positions & Job Opportunities",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://careers.smartrecruiters.com/AdeebaEServicesPvtLtd?search=&page=90&location=Kolkata",
+    "title": "Careers at Adeeba e Services Pvt. Ltd.",
+    "snippet": "Adeeba Group Need Customer Care Executives For US Inbound Process. Kolkata, India; Full-time · CCE( Customer Care Executive) - (Inbound Tech Sales Voice Process).",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 100,
+    "company": "Careers at Adeeba e Services Pvt. Ltd.",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -407,14 +429,14 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.shine.com/job-search/work-from-home-chat-process-jobs-in-delhi-ncr",
-    "title": "Work From Home Chat Process jobs in India - Shine",
-    "snippet": "Required:Data entry·Customer support·Voice process·Chat process. Apply ... MNC Hiring || WFH || Voice Process. 0 to 4 Yrs Not Disclosed All ...",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "discovery_url": "https://support.manatal.com/docs/vendor-account",
+    "title": "What is the Vendor Portal | Manatal ATS | Documentation",
+    "snippet": "What is a Vendor Account Manatal's Vendor Account is a feature specifically designed for companies working with Recruitment, Employment or Staffing Agencies (Vendors) to collaborate with them on Manatal. Create multiple Vendors and provide them with limited access to your Vendor Portal. Share a specific jobs with each of your vendors. Vendors can submit candidates to shared jobs. Collaborate ...",
+    "source": "Google/endless",
+    "query": "site:*.manatal.com India customer support",
     "score": 95,
-    "company": "Work From Home Chat Process jobs in India",
-    "seed_type": "Google Job Page",
+    "company": "What is the Vendor Portal | Manatal ATS | Documentation",
+    "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
@@ -429,35 +451,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.jobleads.com/in/job/trust-and-safety-analyst--india--e09250a60e6577dabfacd7d9157b13f5a",
-    "title": "Trust and Safety Analyst | India",
-    "snippet": "WebHosting is hiring Trust and Safety Analyst in India. Apply now with JobLeads ... Trust and Safety Analyst. WebHosting. India. Remote. INR ...",
+    "discovery_url": "https://apna.co/jobs/voice-process-and-work-from-home-jobs-in-kolkata",
+    "title": "Voice Process Work From Home Jobs In Kolkata",
+    "snippet": "Apply for best Voice Process Work From Home Jobs In Kolkata from top companies hiring near you. Explore 1+ verified job openings and apply instantly on Apna.",
     "source": "Google/serper",
-    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "Trust and Safety Analyst | India",
+    "company": "Voice Process Work From Home Jobs In Kolkata",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.shine.com/jobs/trust-and-safety-analyst-cy/remote-quest-jobs/19552643",
-    "title": "Trust and Safety Analyst (CY) Job in remote quest jobs ... - Shine",
-    "snippet": "Apply to Trust and Safety Analyst (CY) Job in remote quest jobs at All India. Find related Trust and Safety Analyst (CY) and Internet / E ...",
-    "source": "Google/serper",
-    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+    "discovery_url": "https://www.comeet.com/jobs/snapscale/C9.006/virtual-assistant-ar--collections-support-remote-india/29.A51?coref=1.11.p1B_9518",
+    "title": "Virtual Assistant (AR / Collections Support) [Remote India] at Snapscale",
+    "snippet": "Snapscale is seeking an Intermediate Virtual Assistant with a focus on Accounts Receivable and Collections Support to join our remote team in India.",
+    "source": "Google/serpsearch",
+    "query": "site:*.comeet.com India customer support",
     "score": 95,
-    "company": "Trust and Safety Analyst (CY) Job in remote quest jobs ...",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://in.jobsora.com/job-54278539442",
-    "title": "Trust & Safety Product Manager",
-    "snippet": "Software Engineer - Machine Learning, Trust and Safety. Mercari, Inc. (India),Bangalore. Full-time, Remote. About Us Mercari is a ...",
-    "source": "Google/serper",
-    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
-    "score": 95,
-    "company": "Trust & Safety Product Manager",
+    "company": "Virtual Assistant (AR / Collections Support) [Remote India] at Snapscale",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -469,6 +480,17 @@
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "Top-Rated Job Sites in Delhi for Effective Recruitment 2026",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.manatal.com/hr-guide/how-to-post-a-job",
+    "title": "The Complete Guide to How to Post a Job - Manatal.com",
+    "snippet": "Customer Service (Part-time) at San Francisco Premium Outlets; Accounting ... Oodle (United States, Canada, United Kingdom, India, Ireland, Australia ...",
+    "source": "Google/searlo",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "The Complete Guide to How to Post a Job",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -485,12 +507,12 @@
   },
   {
     "discovery_url": "https://www.manatal.com/job-description/swift-developer-job-description",
-    "title": "Swift Developer Job Description Template for Recruiters",
-    "snippet": "Assisting in troubleshooting and providing technical support to end-users when required. ... Asia / India: $20,000–$45,000 / year. Freelancers/Contractors.",
-    "source": "Google/searlo",
+    "title": "Swift Developer job Job Description Template for Recruiters",
+    "snippet": "Keeping up-to-date with the latest trends and best practices in iOS and macOS application development, including new features and updates in the Swift programming language. Collaborating with the Quality Assurance team to ensure the delivery of high-quality software applications that meet customer expectations. Assisting in troubleshooting and providing technical support to end-users when required. [...] ## How Much Does It Cost to Hire? Full-Time Salaries US / Canada: $95,000–$160,000+/year Western Europe: €60,000–€110,000+ / year Eastern Europe: $35,000–$70,000 / year Asia / India: $20,000–$45,000 / year Freelancers/Contractors Intermediate Swift Developer: $40–$70/hour Senior iOS Engineer: $75–$150/hour Expert/Architect: $150–$250/hour Cost Factors SwiftUI expertise App Store deployment experience Industry (FinTech & MedTech pay more) Project duration and complexity [...] Designing and developing user-friendly and scalable iOS and macOS applications using the Swift programming language. Collaborating with cross-functional teams, including designers and product managers, to understand project requirements and deliver high-quality software solutions. Participating in the full software development lifecycle, including requirements analysis, design, coding, testing, debugging, and deployment.",
+    "source": "Google/tavily",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
-    "company": "Swift Developer Job Description Template for Recruiters",
+    "company": "Swift Developer job Job Description Template for Recruiters",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -517,13 +539,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/sparsolutions/89.00A/sr_-salesforce-developer/79.941",
-    "title": "Sr. Salesforce Developer at SPAR Solutions - Comeet",
-    "snippet": "... technical support, maintaining high standards of professionalism and service. ... Address: SPAR Solutions India Pvt. Ltd. Pune IT Park, B-503, Bhau Patil ...",
-    "source": "Google/searlo",
-    "query": "site:*.comeet.com India customer support",
+    "discovery_url": "https://www.shine.com/jobs/remote-virtual-customer-care-specialist-chat-customer-experience/automattic/19629686",
+    "title": "Remote Virtual Customer Care Specialist Chat ... - Shine",
+    "snippet": "Position OverviewWere looking for a Remote Virtual Customer Care Specialistto join our Customer Experience team. In this hybrid role, youll ...",
+    "source": "Google/serper",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "Sr. Salesforce Developer at SPAR Solutions",
+    "company": "Remote Virtual Customer Care Specialist Chat ...",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.shine.com/jobs/remote-trust-safety-operations-analyst-ads/vacancy-global-pro/19578282?position_in_results=125",
+    "title": "Remote Trust & Safety Operations Analyst, Ads - Shine",
+    "snippet": "Note: The job is a remote job and is open to candidates in USA. ... Trust and Safety Trainer. 2 to 6 Yrs Not Disclosed All India. Required ...",
+    "source": "Google/serper",
+    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Remote Trust & Safety Operations Analyst, Ads",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -535,6 +568,28 @@
     "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
     "company": "Remote Customer Support Executive Job (India)",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobglance.app/jobs/remote/customer-service",
+    "title": "Remote Customer Service Jobs (2026) - Updated Daily",
+    "snippet": "Bilingual Customer Experience Specialist (Spanish). Instacart · 1+ years ... All Remote JobsRemote Jobs in IndiaRemote Jobs in NigeriaRemote Jobs in ...",
+    "source": "Google/serper",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Remote Customer Service Jobs (2026)",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.randstad.in/jobs/s-remote-customer-service/re-karnataka/ci-bangalore",
+    "title": "Remote Customer Service Jobs & Vacancies in Bangalore ...",
+    "snippet": "Discover all the 4 vacancies for remote customer service across Bangalore, Karnataka, india and apply now ... customer experience · data & analytics · digital ...",
+    "source": "Google/serper",
+    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "score": 95,
+    "company": "Remote Customer Service Jobs & Vacancies in Bangalore ...",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -561,24 +616,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/jobs/uppro/18.003/plm-application-support-engineer/4F.E62",
-    "title": "PLM Application Support Engineer at U.P.PRO - Comeet",
-    "snippet": "Work closely with global engineering support teams in the US, Europe, India and China. Maintain technical documentation, troubleshooting guides and internal ...",
-    "source": "Google/searlo",
+    "discovery_url": "https://developers.comeet.com/reference/careers-position-model",
+    "title": "Positions - Comeet For Developers",
+    "snippet": "A position data model is a JSON object, therefore, when planning your code, address the position data as a dictionary and not as an array. It means that any code that uses the position model cannot rely on a fixed order of fields in the modal. Specifically, assume that the order of the model fields may change and new fields may be added in different places in the model as it evolves over time ...",
+    "source": "Google/endless",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
-    "company": "PLM Application Support Engineer at U.P.PRO",
+    "company": "Positions",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://us.remotejobs.dedyn.io/job/senior-customer-experience-specialist-remote-in-person-technical-non-technical-service-gurgaon-india-reputed-company",
-    "title": "Non‑Technical Service – Gurgaon, India – reputed company",
-    "snippet": "Senior Customer Experience Specialist – Remote & In‑Person Technical & Non‑Technical Service – Gurgaon, India – reputed company. Remote, USA.",
-    "source": "Google/serper",
-    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
+    "discovery_url": "https://www.comeet.com/jobs/uppro/18.003/plm-application-support-engineer/4F.E62",
+    "title": "PLM Application Support Engineer at U.P.PRO - Comeet",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:*.comeet.com India customer support",
     "score": 95,
-    "company": "Non‑Technical Service – Gurgaon, India – reputed company",
+    "company": "PLM Application Support Engineer at U.P.PRO",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -594,6 +649,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://app.manatal.com/jobs/4465185",
+    "title": "Manatal",
+    "snippet": "Forgot your password? Not registered on Manatal yet? Create your account",
+    "source": "Google/endless",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "Manatal",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.comeet.com/jobs/ship4wd/29.00B/junior-sales-operations-assistant/0D.077",
     "title": "Junior Sales Operations Assistant at Ship4wd - Comeet",
     "snippet": "Junior Sales Operations Assistant. Sales; Mumbai, Maharashtra, India; Entry ... Collaborate with global teams to deliver excellent customer support. Why ...",
@@ -601,6 +667,17 @@
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Junior Sales Operations Assistant at Ship4wd",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001?coref=1.11.p0D_6A1C",
+    "title": "Jobs at VAST Data - comeet.com",
+    "snippet": "Customer Support Engineer - India Bengaluru Full-time Customer Support Engineer - London London Intermediate Full-time Customer Support Engineer - Taiwan Taiwan Senior Full-time Customer Support Engineer- Singapore Singapore Senior Full-time Customer Support Team Lead with Vast Data, Inc. Remote - United States Professional Services Singapore ...",
+    "source": "Google/endless",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Jobs at VAST Data",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -618,8 +695,8 @@
   {
     "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001?coref=1.3.r0B_110",
     "title": "Jobs at VAST Data - Comeet",
-    "snippet": "Customer Support Engineer - India. India; Full-time · Customer Support Engineer - India. Bengaluru; Full-time · Customer Support Engineer - Taiwan. Taiwan",
-    "source": "Google/tavily",
+    "snippet": "Customer Support Engineer - India. India; Full-time · Customer Support Engineer - India. Bengaluru; Full-time · Customer Support Engineer - Taiwan. Taiwan ...",
+    "source": "Google/search1",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Jobs at VAST Data",
@@ -627,10 +704,43 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001?coref=1.11.p4C_C910",
+    "title": "Jobs at VAST Data - Comeet",
+    "snippet": "Customer Support Engineer - India . India; Full-time · Customer Support Engineer - India. Bengaluru; Full-time · Customer Support Engineer - Taiwan. Taiwan ...",
+    "source": "Google/serpsearch",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Jobs at VAST Data",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/thetaray/72.00F",
+    "title": "Jobs at Thetaray - comeet.com",
+    "snippet": "Customer Operations Technical Program Manager Madrid, Spain Full-time Technical Program Manager (French Speaking) Madrid, Spain Full-time Technical Program Manager - Financial Crime Mexico City, Mexico Full-time Tier 3 Technical Support Engineer Madrid, Spain Intermediate Full-time",
+    "source": "Google/endless",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Jobs at Thetaray",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/solaredge/71.00A",
+    "title": "Jobs at SolarEdge - Comeet",
+    "snippet": "G&A · Oracle Fusion Support Specialist. Bangalore, India; Junior; Full-time · Oracle Integration Cloud Developer. Bangalore, India; Associate; Full-time",
+    "source": "Google/tavily",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Jobs at SolarEdge",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.comeet.com/jobs/snapscale/C9.006",
     "title": "Jobs at Snapscale - Comeet",
-    "snippet": "Current Openings · Healthcare (Philippines) (33) · Support | Client & Customer (10) · Healthcare (India) (8) · Healthcare (Mexico) (10) · Technical (India) (7).",
-    "source": "Google/searlo",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Jobs at Snapscale",
@@ -638,10 +748,32 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.comeet.com/jobs/sensi/E7.00F/customer-technical-support-manager/8C.F5D",
+    "title": "Jobs at Sensi.AI - comeet.com",
+    "snippet": "Sensi is the world’s first in-home virtual care agent, empowering long-term care providers to overcome some of the biggest challenges in the industry and provide their customers with 24/7 support in a cost efficient and scalable manner, while significantly upping the quality of care.",
+    "source": "Google/endless",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Jobs at Sensi.AI",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/matrix-ifs/19.00F/production-support/97.160",
+    "title": "Jobs at Matrix Global - comeet.com",
+    "snippet": "HR Marketing Leader USA Senior Full-time Senior Technical Recruiter India Intermediate Full-time",
+    "source": "Google/endless",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Jobs at Matrix Global",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.comeet.com/jobs/ceragon/d3.003",
     "title": "Jobs at Ceragon - Comeet",
-    "snippet": "India Bangalore; P4 Specialist; Full-time · Payroll Bookkeeper. Paraguay ... Radio Customer Support Expert. Israel Rosh Ha'ayin; P5 Expert; Full-time. IT.",
-    "source": "Google/searlo",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Jobs at Ceragon",
@@ -663,11 +795,22 @@
     "discovery_url": "https://www.comeet.com/jobs/algosec/71.006/dba/98.A4A",
     "title": "Jobs at AlgoSec - Comeet",
     "snippet": "Customer Success Associate, India. India; Full-time · Customer Success ... Technical Support Engineer (Cloud), India. India. Powered by Spark Hire. Terms ...",
-    "source": "Google/searlo",
+    "source": "Google/serpent",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Jobs at AlgoSec",
     "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.placementindia.com/job-search/international-voice-process-jobs-in-indore.htm",
+    "title": "International Voice Process Job Vacancies in Indore",
+    "snippet": "Job Description:We are hiring Customer Support professionals for an International Voice Process (Career Counseling role). ... remote working experience.Why ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "International Voice Process Job Vacancies in Indore",
+    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
@@ -739,8 +882,8 @@
   {
     "discovery_url": "https://www.comeet.com/jobs/papayaglobal/16.005/head-of-support/BD.863",
     "title": "Head of Support at Papaya Global - Comeet",
-    "snippet": "Papaya Global is a rapidly growing, award‑winning B2B tech unicorn transforming the future of global payroll and payments. Backed by over $400M from ...",
-    "source": "Google/searlo",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.comeet.com India customer support",
     "score": 95,
     "company": "Head of Support at Papaya Global",
@@ -748,10 +891,21 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://developers.comeet.com/reference/evaluation-api-overview",
+    "title": "Evaluation API Overview - Comeet For Developers",
+    "snippet": "Comeet enables recruiters to automate their recruiting processes by creating workflows comprised of recruiting steps or tasks. These steps are either handled in-house or by external recruiters or integrated recruiting tools. The Evaluation API allows to integrate a recruiting tool as an automated step in the hiring workflow. The API can be used to ...",
+    "source": "Google/endless",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Evaluation API Overview",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.manatal.com/blog/ep94-nlb-services-varun-sachdeva",
     "title": "EP94: NLB Services - How to Use Human Intelligence to Find Talent",
-    "snippet": "All-In Recruitment is a podcast by Manatal focusing on all things related to the recruitment industry's missions and trends.",
-    "source": "Google/serpsearch",
+    "snippet": "No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs ## Transform the Way You Recruit Today. World-leading Recruitment Software for Talent Acquisition and Recruitment Professionals. Recruitment processes managed. Active recruiting teams. ##### Bill Twinning Talent Resources & Development Director - Charoen Pokphand Group [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Dina Demajo Senior Talent Acquisition - Manpower Group [...] I am using Manatal for talent sourcing and it is the best platform ever. I am so impressed, the Manatal team did an excellent job. This is so awesome I am recommending the solution to all recruiters I know. ## Try Manatal for free during 14-day with no commitment. No credit card required No commitment Try it Now .webp) Manatal is an AI Recruitment Software enabling human resources departments and recruitment agencies to source and hire in the most effective way.",
+    "source": "Google/tavily",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP94: NLB Services",
@@ -761,8 +915,8 @@
   {
     "discovery_url": "https://www.manatal.com/blog/ep69-riot-games-rajashree-chandramogan",
     "title": "EP69: Riot Games - Building a Practical Onboarding Journey",
-    "snippet": "We were focusing on customer service agents who would call up folks and ask about their repayment of loans … specifically for India.",
-    "source": "Google/serpsearch",
+    "snippet": "I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Dina Demajo Senior Talent Acquisition - Manpower Group [...] No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs ## Transform the Way You Recruit Today. World-leading Recruitment Software for Talent Acquisition and Recruitment Professionals. Recruitment processes managed. Active recruiting teams. ##### Bill Twinning Talent Resources & Development Director - Charoen Pokphand Group [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Edmund Yeo Human Resources Manager - Oakwood",
+    "source": "Google/tavily",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP69: Riot Games",
@@ -771,9 +925,9 @@
   },
   {
     "discovery_url": "https://www.manatal.com/blog/ep19-taking-talent-acquisition-to-the-next-level-with-automation-ai-and-technology",
-    "title": "EP19: Klaviyo - Taking Talent Acquisition to The Next Level with ...",
-    "snippet": "All-In Recruitment is a podcast by Manatal focusing on all things related to the recruitment industry's missions and trends.",
-    "source": "Google/serpsearch",
+    "title": "EP19: Klaviyo - Taking Talent Acquisition to The Next Level with Automation, AI, and Technology (With Paul Abercrombie)",
+    "snippet": "Source & hire candidates faster with Manatal's ATS. No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs ## Transform the Way You Recruit Today. World-leading Recruitment Software for Talent Acquisition and Recruitment Professionals. Recruitment processes managed. Active recruiting teams. ##### Bill Twinning [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Dina Demajo Senior Talent Acquisition - Manpower Group [...] I've been using Manatal for the past couple of months and the platform is excellent, user-friendly and it has helped me a lot in my recruitment process, operation and database management. I'm very happy with their great support. Whenever I ask something they come back to me within minutes. ##### Edmund Yeo Human Resources Manager - Oakwood",
+    "source": "Google/tavily",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP19: Klaviyo",
@@ -783,11 +937,33 @@
   {
     "discovery_url": "https://www.manatal.com/blog/ep127-talentmatchafrica-gerard-holland",
     "title": "EP 127: TalentMatch Africa - How to Deliver Values to Clients",
-    "snippet": "All-In Recruitment is a podcast by Manatal focusing on all things related to the recruitment industry's missions and trends.",
-    "source": "Google/search1",
+    "snippet": "12 Feb 2025 ... This could be sales support, but ultimately it's about giving ... Africa's Tech Rise Will Happen Faster Than India's. Lydia: Where do ...",
+    "source": "Google/searlo",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP 127: TalentMatch Africa",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://support.manatal.com/docs/support-users",
+    "title": "Documentation | Recruitment Software Support - Manatal",
+    "snippet": "Manatal's ATS team offers live 7/7 support. Contact our customer support to get help while using the recruiting software.",
+    "source": "Google/endless",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "Documentation | Recruitment Software Support",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://support.manatal.com/v1/es",
+    "title": "Documentation & Knowledge Base - Manatal",
+    "snippet": "Create and separate organizations (departments, clients, etc.) for better management.",
+    "source": "Google/endless",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "Documentation & Knowledge Base",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -803,17 +979,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.manatal.com/de/blog/remote-job-boards-india",
-    "title": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
-    "snippet": "Stellen in den Bereichen Kundenbetreuung, Marketing, Betrieb, HR und Inhalt werden zunehmend auf Plattformen wie Indeed, FlexJobs und ...",
-    "source": "Google/serpsearch",
-    "query": "site:*.manatal.com India customer support",
-    "score": 95,
-    "company": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://in.jooble.org/jobs-customer-service-non-voice/work-from-home",
     "title": "Customer service non voice jobs in work from home",
     "snippet": "Apply for Customer service non voice jobs in work from home. Explore 41.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs. Fast & Free. Top employers in work from home. Customer service non voice jobs is easy to find. Start your new career right now!",
@@ -821,6 +986,17 @@
     "query": "\"non voice\" India remote customer support careers -linkedin -indeed",
     "score": 95,
     "company": "Customer service non voice jobs in work from home",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.shine.com/job-search/customer-support-jobs-in-india",
+    "title": "Customer Support Jobs in India - Shine",
+    "snippet": "Required:hindi·customer support·customer care·voice process. Apply ... Customer Support Agent India (Remote). 0 to 4 Yrs Not Disclosed All ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Support Jobs in India",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
@@ -869,6 +1045,28 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.comeet.com/jobs/vastdata/43.001/customer-support-engineer---india/67.73C",
+    "title": "Customer Support Engineer - India at VAST Data - Comeet",
+    "snippet": "The main responsibilities include responding to customer issues (reactive and proactive), evaluating the problem, using hands-on-keyboard skills to solve for ...",
+    "source": "Google/serpsearch",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Customer Support Engineer",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/jobs/algosec/71.006/customer-success-associate-india/31.37B",
+    "title": "Customer Success Associate, India at AlgoSec - Comeet",
+    "snippet": "Customer Success Associate, India . Manage a large volume of customers in the scaled segment, For 2-5 years of experience in a Customer Success Associate role, ...",
+    "source": "Google/serpsearch",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "Customer Success Associate, India at AlgoSec",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.tp.com/en-us/job-opportunities/india/customer-service-associate-voice",
     "title": "Customer Service Associate - Voice Process",
     "snippet": "Customer Service Associate - Voice Process. Global · India. Category Customer Service. Full Time. APPLY NOW. Key Responsibilities and Accountabilities ...",
@@ -880,57 +1078,24 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://bigitjobs.com/job-detail/customer-experience-specialist-remote-hired-gurgaon-1963610",
-    "title": "Customer Experience Specialist (remote)-Hired-Gurgaon, ...",
+    "discovery_url": "https://bigitjobs.com/job-detail/customer-experience-specialist-remote-hired-chennai-3156153",
+    "title": "Customer Experience Specialist (remote) - Hired",
     "snippet": "Role : Customer Experience Specialist (Remote); Location : Remote (Work from Anywhere). Role Overview: We are hiring for one of our clients, ...",
     "source": "Google/serper",
     "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
-    "company": "Customer Experience Specialist (remote)-Hired-Gurgaon, ...",
+    "company": "Customer Experience Specialist (remote)",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://bebee.com/in/jobs/customer-advisor-voice-process-jobs-in-delhi-smart-vision-consultancy-services-new-delhi--t7xk-812775624",
-    "title": "Customer Advisor Voice Process Jobs In Delhi",
-    "snippet": "Delhi-based corporate Company is hiring for customer care advisor voice process only graduate with 1 year of similar exp. with excellent comms skills,salary ...",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "discovery_url": "https://support.manatal.com/docs/create-your-first-candidate",
+    "title": "Create Your First Candidate | Manatal ATS | Documentation",
+    "snippet": "Explore our AI-powered ATS features and learn how you can create candidate profiles. Discover our various sourcing features & recruit better, faster, smarter.",
+    "source": "Google/endless",
+    "query": "site:*.manatal.com India customer support",
     "score": 95,
-    "company": "Customer Advisor Voice Process Jobs In Delhi",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.placementindia.com/job-search/chat-process-jobs-in-delhi-ncr.htm",
-    "title": "Chat Process Job Vacancies in Delhi NCR",
-    "snippet": "Customer Service Client Solutions Solving Queries Chat Support Chat Process BPO Non Voice Process Customer Support Customer Care. COMPANY NAME-VERTEX GROUP ...",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
-    "score": 95,
-    "company": "Chat Process Job Vacancies in Delhi NCR",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://in.jooble.org/jobs-bpo-voice-process/Delhi",
-    "title": "Bpo voice process Jobs in Delhi - July 2026",
-    "snippet": "Apply for Bpo voice process jobs in Delhi. Explore 180.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs.",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
-    "score": 95,
-    "company": "Bpo voice process Jobs in Delhi",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://careers.soprasteria.in/job/bps-voice-process-associate-in-noida-uttar-pradesh-india-jid-6330",
-    "title": "BPS - Voice Process Associate job in Noida, Uttar Pradesh, ...",
-    "snippet": "BPS - Voice Process Associate. Salary. ​. Location. Noida, Uttar Pradesh, India. Vacancy language. English. Job Type. Standard. Experience Level. 0 to 2 years.",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
-    "score": 95,
-    "company": "BPS",
+    "company": "Create Your First Candidate | Manatal ATS | Documentation",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -946,46 +1111,24 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.comeet.com/jobs/zenity/19.000/solutions-architect/F3.D6F",
+    "title": "AI Agent Security | Solutions Architect",
+    "snippet": "Support the customer's infrastructure teams in deploying Zenity's new features (e.g., Outpost, Azure AI Foundry) alongside the customer's engineering teams",
+    "source": "Google/tavily",
+    "query": "site:*.comeet.com India customer support",
+    "score": 95,
+    "company": "AI Agent Security | Solutions Architect",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.manatal.com/blog/trends-will-shape-post-pandemic-recruitment-sector",
     "title": "7 Trends that Will Shape the Post-Pandemic Recruitment Sector",
-    "snippet": "They also like the growing range of opportunities available, from customer service calls to coding web pages across diverse sectors, including IT, finance, ...",
-    "source": "Google/search1",
+    "snippet": "Industries expected to fare the worst are food service, customer sales, and service roles, as well as less-skilled office support roles. ## 2. Gig workers here to stay In addition to new jobs, skills, and sectors, a new type of worker has also emerged, and they are poised to play a big part in driving post-pandemic business growth. [...] On the flip side, gig workers like the independence offered by contract or project work – they are not “chained to a desk” and have more control over their income and lifestyle choices. They also like the growing range of opportunities available, from customer service calls to coding web pages across diverse sectors, including IT, finance, customer service, and more. Hiring without boundaries is another positive for employers and gig workers. [...] If you’re ready to take your recruiting to the next level, sign up for a free 14-day trial with Manatal now to see how our efficient AI-powered ATS can help you find the best talent (anywhere) faster. ‍ .webp) ## Sourcing candidates shouldn't be hard Source & hire candidates faster with Manatal's ATS. No credit card required No commitment Sign up for Free ## Our Top Articles 24 / 5 support availability via live chat All-in-one platform covering all your recruitment needs",
+    "source": "Google/tavily",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "7 Trends that Will Shape the Post-Pandemic Recruitment Sector",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/work-from-home-live-chat-support-jobs-SRCH_FW0,14_KO15,32.htm",
-    "title": "55 Live chat support jobs in India - Work from home - Glassdoor",
-    "snippet": "Customer Support Executive (Chat Support). Remote. ₹8,000 - ₹10,000 (Employer provided). Easy Apply. Respond to customer queries via email, chat, ...",
-    "source": "Google/serper",
-    "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "55 Live chat support jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://cutshort.io/jobs/customer-support-jobs",
-    "title": "434+ Customer Support Jobs in India",
-    "snippet": "Remote only · 0 - 2 years · ₹4L - ₹6L / yr · Profitable · Remote only ... Job Title: Chat Support Executive (Non-Voice Process). Location: Ahmedabad.",
-    "source": "Google/serper",
-    "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "434+ Customer Support Jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://delhi.in.expertini.com/jobs/in/customer-experience-specialist-remote-delhi-hired",
-    "title": "2920+ Customer Experience Specialist Remote Delhi ...",
-    "snippet": "2,920+ Customer Experience Specialist Remote Delhi Hired Jobs in Delhi, India — Local Employers Hiring October 2026. Apply today & jumpstart ...",
-    "source": "Google/serper",
-    "query": "\"customer experience\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "2920+ Customer Experience Specialist Remote Delhi ...",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1009,6 +1152,17 @@
     "score": 95,
     "company": "222 Non voice remote jobs in India",
     "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.shine.com/job-search/customer-service-non-voice-work-from-home-jobs",
+    "title": "17,180 Customer Service Non Voice Work From Home Jobs",
+    "snippet": "Explore Customer Service (Non-Voice) Work From Home Job Vacancies at Shine.com. Discover 17,180 Customer Service (Non-Voice) Work From Home openings in top companies. Apply now and land your dream job. Explore exciting Customer Service (Non-Voice) Work From Home Job opportunities!",
+    "source": "Google/serper",
+    "query": "\"non voice\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "17,180 Customer Service Non Voice Work From Home Jobs",
+    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
@@ -1045,17 +1199,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.manatal.com/blog/free-job-posting-sites-usa",
-    "title": "13 Best Free Job Sites in the USA for 2026 - Manatal.com",
-    "snippet": "The Times of India ... Our 14-day free trial allows anyone to explore the platform without commitment, while our team is committed to providing support and ...",
-    "source": "Google/searlo",
-    "query": "site:*.manatal.com India customer support",
-    "score": 95,
-    "company": "13 Best Free Job Sites in the USA for 2026",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://www.glassdoor.co.in/Job/email-customer-support-remote-jobs-SRCH_KO0,29.htm",
     "title": "1,871 Email customer support remote jobs in India - Glassdoor",
     "snippet": "Search Email customer support remote jobs. Get the right Email customer support remote job with company ratings and salaries. 1,871 open jobs for Email customer support remote.",
@@ -1063,6 +1206,17 @@
     "query": "\"email support\" India \"remote\" careers -linkedin -indeed",
     "score": 95,
     "company": "1,871 Email customer support remote jobs in India",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.dice.com/jobs/q-%22trust+&+safety%22-l-remote-jobs",
+    "title": "\"trust & safety\" jobs in remote",
+    "snippet": "... & safety\" jobs in remote. ... Job Search · Companies. Career Resources. Tech Career AdviceAI Careers Center ... Responsibilities The Trust and Safety(TnS) ...",
+    "source": "Google/serper",
+    "query": "\"trust and safety\" India \"remote\" support careers -linkedin -indeed",
+    "score": 95,
+    "company": "\"trust & safety\" jobs in remote",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1078,7 +1232,7 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://support.manatal.com/docs/hireez-integration",
+    "discovery_url": "https://support.manatal.com/docs/en/manage-subscription",
     "title": "",
     "snippet": "",
     "source": "Google/exa",
@@ -1144,17 +1298,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.comeet.com/contact-us",
-    "title": "Contact Us | Spark Hire",
-    "snippet": "Find support resources for candidates and customers. Visit support hub. Spark Hire Headquarters. Thousands of organizations are interviewing, screening, and ...",
-    "source": "Google/searlo",
-    "query": "site:*.comeet.com India customer support",
-    "score": 85,
-    "company": "Contact Us | Spark Hire",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://www.manatal.com/contact-us",
     "title": "Contact Us | Manatal.com | AI Recruitment Software",
     "snippet": "",
@@ -1162,6 +1305,17 @@
     "query": "site:*.manatal.com India customer support",
     "score": 85,
     "company": "Contact Us | Manatal.com | AI Recruitment Software",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.comeet.com/contact-us",
+    "title": "Contact Us",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:*.comeet.com India customer support",
+    "score": 85,
+    "company": "Contact Us",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1177,24 +1331,24 @@
     "crawl_seed": "No"
   },
   {
-    "discovery_url": "https://www.placementindia.com/job-search/chat-support-jobs.htm",
-    "title": "Chat Support Jobs",
-    "snippet": "We are looking for motivated candidates to fill the position of Remote Chat Support Executive. This role involves assisting customers through online chat ...",
+    "discovery_url": "https://www.glassdoor.co.in/Job/india-remote-chat-support-jobs-SRCH_IL.0,5_IN115_KO6,25.htm",
+    "title": "605 Remote chat support jobs in India - Glassdoor",
+    "snippet": "Search Remote chat support jobs in India with company ratings and salaries. 605 open jobs for Remote chat support in India.",
     "source": "Google/serper",
     "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
     "score": 55,
-    "company": "Chat Support Jobs",
-    "seed_type": "Google Job Page",
+    "company": "605 Remote chat support jobs in India",
+    "seed_type": "Google Career Page",
     "crawl_seed": "No"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/india-live-chat-support-remote-part-time-jobs-SRCH_IL.0,5_IN115_KO6,40.htm",
-    "title": "30 Live chat support remote part time jobs in India - Glassdoor",
-    "snippet": "Search Live chat support remote part time jobs in India with company ratings and salaries. 30 open jobs for Live chat support remote part time in India.",
+    "discovery_url": "https://www.glassdoor.co.in/Job/chat-support-remote-jobs-SRCH_KO0,19.htm",
+    "title": "604 Chat support remote jobs in India - Glassdoor",
+    "snippet": "Search Chat support remote jobs. Get the right Chat support remote job with company ratings and salaries. 604 open jobs for Chat support remote.",
     "source": "Google/serper",
     "query": "\"chat support\" India \"remote\" careers -linkedin -indeed",
     "score": 55,
-    "company": "30 Live chat support remote part time jobs in India",
+    "company": "604 Chat support remote jobs in India",
     "seed_type": "Google Career Page",
     "crawl_seed": "No"
   }
