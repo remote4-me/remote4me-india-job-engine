@@ -84,6 +84,11 @@ SCRAPINGANT_API_KEY = os.environ.get("SCRAPINGANT_API_KEY", "").strip()
 JINA_API_KEY = os.environ.get("JINA_API_KEY", "").strip()
 SEARCH1_API_KEY = os.environ.get("SEARCH1_API_KEY", "").strip()
 SEARLO_API_KEY = os.environ.get("SEARLO_API_KEY", "").strip()
+SERPFAST_API_KEY = os.environ.get("SERPFAST_API_KEY", "").strip()
+SERPENT_API_KEY = os.environ.get("SERPENT_API_KEY", "").strip()
+ENDLESS_SEARCH_API_KEY = os.environ.get("ENDLESS_SEARCH_API_KEY", "").strip()
+SERPSEARCH_API_KEY = os.environ.get("SERPSEARCH_API_KEY", "").strip()
+FREESEA_API_KEY = os.environ.get("FREESEA_API_KEY", "").strip()
 SEARCH_DISCOVERY_ENABLED = os.environ.get("SEARCH_DISCOVERY_ENABLED", "1").lower() not in {"0", "false", "no"}
 SEARCH_QUERIES_PER_PROVIDER = int(os.environ.get("SEARCH_QUERIES_PER_PROVIDER", "3"))
 SEARCH_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("SEARCH_RESULTS_PER_QUERY", "10"))))
@@ -5734,6 +5739,7 @@ SEARCH_ATS_QUERY_BANK = [
 
 SEARCH_PROVIDER_NAMES = [
     "serper", "you", "exa", "tavily", "searlo", "search1", "serpapi",
+    "serpfast", "serpent", "endless", "serpsearch", "freesea",
 ]
 
 
@@ -5842,6 +5848,75 @@ def _search_searlo(query):
         return _parse_search_urls(r.json().get("organic",[]) or r.json().get("items",[]))
     except Exception as exc:
         print(f"SEARCH searlo error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_serpfast(query):
+    """SerpFast free SERP API; capped to one query per workflow run."""
+    if not SERPFAST_API_KEY: return []
+    try:
+        r=SESSION.get("https://serpfast.com/api/v1/search",
+            params={"q":query,"gl":"IN","hl":"en","num":10},
+            headers={"Authorization":f"Bearer {SERPFAST_API_KEY}"},timeout=45)
+        if r.status_code!=200: print(f"SEARCH serpfast HTTP {r.status_code}"); return []
+        return _parse_search_urls(r.json().get("organic_results",[]))
+    except Exception as exc:
+        print(f"SEARCH serpfast error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_serpent(query):
+    """Serpent quick SERP endpoint; one query per run to protect free credits."""
+    if not SERPENT_API_KEY: return []
+    try:
+        r=SESSION.get("https://apiserpent.com/api/search/quick",
+            params={"q":query,"engine":"google","country":"in"},
+            headers={"X-API-Key":SERPENT_API_KEY},timeout=35)
+        if r.status_code!=200: print(f"SEARCH serpent HTTP {r.status_code}"); return []
+        data=r.json()
+        results=(data.get("results") or {}).get("organic",[])
+        return _parse_search_urls(results)
+    except Exception as exc:
+        print(f"SEARCH serpent error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_endless(query):
+    if not ENDLESS_SEARCH_API_KEY: return []
+    try:
+        r=SESSION.get("https://search.endless.sbs/api/v1/search",
+            params={"q":query,"type":"web","language":"en","safesearch":1},
+            headers={"X-API-Key":ENDLESS_SEARCH_API_KEY},timeout=30)
+        if r.status_code!=200: print(f"SEARCH endless HTTP {r.status_code}"); return []
+        data=r.json()
+        results=data.get("results") or data.get("organic") or data.get("items") or []
+        return _parse_search_urls(results)
+    except Exception as exc:
+        print(f"SEARCH endless error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_serpsearch(query):
+    if not SERPSEARCH_API_KEY: return []
+    try:
+        r=SESSION.get("https://api.serpsearch.com/api/v1/search",
+            params={"query":query},
+            headers={"Authorization":f"Bearer {SERPSEARCH_API_KEY}"},timeout=35)
+        if r.status_code!=200: print(f"SEARCH serpsearch HTTP {r.status_code}"); return []
+        data=r.json()
+        return _parse_search_urls(data.get("organic_results") or data.get("results") or [])
+    except Exception as exc:
+        print(f"SEARCH serpsearch error: {type(exc).__name__}: {exc}"); return []
+
+
+def _search_freesea(query):
+    if not FREESEA_API_KEY: return []
+    try:
+        r=SESSION.post("https://freesea.dev/v1/search",
+            headers={"Authorization":f"Bearer {FREESEA_API_KEY}","Content-Type":"application/json"},
+            json={"query":query},timeout=35)
+        if r.status_code!=200: print(f"SEARCH freesea HTTP {r.status_code}"); return []
+        data=r.json()
+        results=data.get("results") or data.get("web_results") or data.get("organic_results") or []
+        return _parse_search_urls(results)
+    except Exception as exc:
+        print(f"SEARCH freesea error: {type(exc).__name__}: {exc}"); return []
 
 
 def _load_google_jobs_usage():
@@ -5975,6 +6050,11 @@ def _search_provider(name, query):
         "searlo": _search_searlo,
         "search1": _search_search1,
         "serpapi": _search_serpapi,
+        "serpfast": _search_serpfast,
+        "serpent": _search_serpent,
+        "endless": _search_endless,
+        "serpsearch": _search_serpsearch,
+        "freesea": _search_freesea,
         "serpapi_google_jobs": _search_serpapi_google_jobs,
     }.get(name, lambda _q: [])(query)
 
@@ -5994,6 +6074,9 @@ def discover_search_engine_urls():
         "serper":SERPER_API_KEY,"you":YOU_API_KEY,"exa":EXA_API_KEY,
         "tavily":TAVILY_API_KEY,"searlo":SEARLO_API_KEY,
         "search1":SEARCH1_API_KEY,"serpapi":SERPAPI_API_KEY,
+        "serpfast":SERPFAST_API_KEY,"serpent":SERPENT_API_KEY,
+        "endless":ENDLESS_SEARCH_API_KEY,"serpsearch":SERPSEARCH_API_KEY,
+        "freesea":FREESEA_API_KEY,
     }
     configured=[
         p for p in SEARCH_PROVIDER_NAMES
@@ -6018,10 +6101,19 @@ def discover_search_engine_urls():
     google_jobs_queries=[GOOGLE_JOBS_QUERY_BANK[(jobs_rotation+i)%len(GOOGLE_JOBS_QUERY_BANK)] for i in range(min(GOOGLE_JOBS_MAX_QUERIES_PER_DAY,jobs_remaining))] if google_jobs_configured else []
 
     tasks=[]
+    provider_query_caps = {
+        "serpfast": 1,  # free tier: one request per 30 seconds
+        "serpent": 1,   # conservative free-credit protection
+        "endless": 4,   # well below its advertised daily request allowance
+        "serpsearch": 2,
+        "freesea": 2,
+    }
     for provider in configured:
         # Serper is the default Google-web provider. SerpApi organic Google is
         # disabled by default so its quota can be reserved for Google Jobs.
         qs = google_queries if provider == "serper" and GOOGLE_DISCOVERY_ENABLED else regular_queries
+        if provider in provider_query_caps:
+            qs = qs[:provider_query_caps[provider]]
         for q in qs:
             tasks.append((provider,q))
     # Run targeted LinkedIn/Indeed search queries through one configured web
