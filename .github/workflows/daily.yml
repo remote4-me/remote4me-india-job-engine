@@ -35,6 +35,11 @@ jobs:
           EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
           SEARCH1_API_KEY: ${{ secrets.SEARCH1_API_KEY }}
           SEARLO_API_KEY: ${{ secrets.SEARLO_API_KEY }}
+          SERPFAST_API_KEY: ${{ secrets.SERPFAST_API_KEY }}
+          SERPENT_API_KEY: ${{ secrets.SERPENT_API_KEY }}
+          ENDLESS_SEARCH_API_KEY: ${{ secrets.ENDLESS_SEARCH_API_KEY }}
+          SERPSEARCH_API_KEY: ${{ secrets.SERPSEARCH_API_KEY }}
+          FREESEA_API_KEY: ${{ secrets.FREESEA_API_KEY }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           SEARCH_DISCOVERY_ENABLED: "1"
           SEARCH_QUERIES_PER_PROVIDER: "2"
