@@ -22,6 +22,28 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One/job/Work-from-Home---Senior-Customer-Service-Coordinator---Partnership-Servicing--Overnight-_R248578-1/apply",
+    "title": "Work from Home - Senior Customer Service Coordinator ...",
+    "snippet": "Start Your Application. Work from Home - Senior Customer Service Coordinator - Partnership Servicing (Overnight). Autofill with Resume · Apply Manually.",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
+    "score": 100,
+    "company": "Work from Home",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://job-boards.greenhouse.io/samsara/jobs/8281479",
+    "title": "Work at Samsara: Apply to open roles today",
+    "snippet": "Sr Customer Experience Specialist - Finance. Remote - US · Sr Finance Program ... Digital Customer Success Manager, AI & Automation. Remote - US · Director ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
+    "score": 100,
+    "company": "Work at Samsara: Apply to open roles today",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
     "title": "Wing Assistant - Technical Support Representative (India)",
     "snippet": "Technical Support Representative (India). New Delhi, India. IND – IND /. Remote. Apply for this job. Please whitelist the domains \"lever.co\" and \"hire.lever.co ...",
@@ -44,11 +66,22 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://veradigm.wd12.myworkdayjobs.com/VR",
+    "title": "Veradigm - Myworkdayjobs.com",
+    "snippet": "Welcome to Veradigm, remote type Hybrid locations. Success remote type Remote locations Remote. Care Coordination remote type Hybrid ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
+    "score": 100,
+    "company": "Veradigm",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://job-boards.greenhouse.io/godaddy/jobs/7983909003",
     "title": "Technical Support and Sales Rep - United States",
-    "snippet": "As a Technical Support & Sales Rep at GoDaddy, you will respond to inbound customer inquiries providing expert advice, troubleshooting support, and offering ...",
+    "snippet": "Technical Support and Sales Rep. R024134. United States. Customer Care Sales. Regular ... Location Details: Remote, India At GoDaddy the future of work looks ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
     "score": 100,
     "company": "Technical Support and Sales Rep",
     "seed_type": "ATS Board Seed",
@@ -88,20 +121,31 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.ashbyhq.com/sentilink/cf18ff52-74f0-4d8b-9399-bdc0c55ad336",
-    "title": "Strategic Customer Success Manager @ SentiLink",
-    "snippet": "Requirements: 7-9 years experience as an advisor, consultant, Customer Success Manager or Account Manager in the Fraud and/or Identity space.",
+    "discovery_url": "https://apply.workable.com/supportyourapp",
+    "title": "SupportYourApp - Current Openings",
+    "snippet": "Job Openings · (Fluent English) Technical Support Consultant (Remote) · (Fluent English) Technical Support Consultant (Global) · (Fluent English) Technical Support ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
-    "company": "Strategic Customer Success Manager @ SentiLink",
+    "company": "SupportYourApp",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://genpact.wd108.myworkdayjobs.com/en-US/External_Careers/job/Sr-Associate---Customer-Care---Voice-5B_JR10012344",
+    "title": "Sr. Associate - Customer Care - Voice 5B - Myworkdayjobs.com",
+    "snippet": "Sr. Associate - Customer Care - Voice 5B. Apply. remote type: Office. locations: 1401-G-India: Ph V, STPI, Gurgaon. time type: Full time.",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
+    "score": 100,
+    "company": "Sr. Associate",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://genpact.wd108.myworkdayjobs.com/en-US/External_Careers/job/Sr-Associate---Customer-Care---Voice-5B_JR10028283",
     "title": "Sr. Associate - Customer Care - Voice 5B - Myworkdayjobs.com",
-    "snippet": "... Customer Care - Voice Remote Type - Office Work Shift - Rotating (India) ... Remote Type -. Office. Work Shift -. Rotating (India). Why join ...",
+    "snippet": "Sr. Associate - Customer Care - Voice 5B · Able to sense other people's emotions and provide the answer or support based on their needs. · Have a ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
     "score": 100,
@@ -112,9 +156,20 @@
   {
     "discovery_url": "https://jobs.lever.co/Sprinto/9246976f-5d9c-4065-842d-476a093a588a",
     "title": "Sprinto - Project Manager – Enterprise Customer Onboarding",
-    "snippet": "Customer Experience / ... Lead enterprise customer implementations from post-sales handover through onboarding, go-live and transition to Customer Success.",
+    "snippet": "Project Manager – Enterprise Customer Onboarding. Remote (India). Customer ... Sales-to-onboarding and onboarding-to-CS handovers become more complete.",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (onboarding OR implementation OR \"customer enablement\") (India OR \"remote India\")",
+    "score": 100,
+    "company": "Sprinto",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/Sprinto",
+    "title": "Sprinto",
+    "snippet": "RemoteBengaluru Customer Experience Apply. Support Engineer Remote — RemoteBengaluru. We may use artificial intelligence (AI) tools to support parts of the ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
     "score": 100,
     "company": "Sprinto",
     "seed_type": "ATS Board Seed",
@@ -132,17 +187,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://procore.wd12.myworkdayjobs.com/en-US/Procore_External_Careers/job/IN---India---Bangalore/Senior-Service-Desk-Analyst_R0018795",
-    "title": "Senior Service Desk Analyst - Myworkdayjobs.com",
-    "snippet": "The Senior Service Desk Analyst acts as a technical escalation point and team anchor within the IT Service Desk, handling incidents beyond first ...",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Senior Service Desk Analyst",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://porch.wd1.myworkdayjobs.com/en-US/careers/job/IT-Helpdesk-Technician_JR101501",
     "title": "Senior IT Helpdesk Technician - Myworkdayjobs.com",
     "snippet": "Bachelor's degree in an IT-related field or 6+ years of progressive experience in corporate IT support roles. Expert-level knowledge of Microsoft Windows and ...",
@@ -154,13 +198,35 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://harriscomputer.wd3.myworkdayjobs.com/Altera",
+    "title": "Search for Jobs - Myworkdayjobs.com",
+    "snippet": "Search for Jobs page is loaded. 47 JOBS FOUND. Jump to selected job details. Sr Software Engineer. locations: Remote Pune-Baroda, India.",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
+    "score": 100,
+    "company": "Search for Jobs",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://job-boards.greenhouse.io/godaddy?error=true",
     "title": "Search Page",
-    "snippet": "... remotely.​... Read more · Website Security Support - Product Analyst. R024208. India. Customer Care Technology. Location Details: Remote - India At GoDaddy the ...",
+    "snippet": "Some teams work in the office full-time; others have a hybrid arrangement (they work remotely some days and in the office some days) and some work entirely ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
     "score": 100,
     "company": "Search Page",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Remote-India/Technical-Support-Engineer_R171714",
+    "title": "Remote India - Workday is currently unavailable.",
+    "snippet": "",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
+    "score": 100,
+    "company": "Remote India",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -187,13 +253,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers",
-    "title": "Motorola Solutions Careers - Search for Jobs",
-    "snippet": "Washington Remote Work. posted on: Posted Today. Washington ... Customer Support Engineer (Fresh Graduates are welcome!) locations ...",
+    "discovery_url": "https://sagility.wd1.myworkdayjobs.com/en-US/SagilityUSA/job/Healthcare-Customer-Service-Specialist---Work-from-Home_REQ-021495-2",
+    "title": "Patient Services Representative – Work From Home",
+    "snippet": "Patient Services Representative – Work From Home · 1 year of customer service experience in a call center environment · 25 WPM or higher · 4 weeks of training ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
     "score": 100,
-    "company": "Motorola Solutions Careers",
+    "company": "Patient Services Representative – Work From Home",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -231,13 +297,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/freshprints/jobs/6166871004",
-    "title": "Jobs at Fresh Prints",
-    "snippet": "Hyderabad, India (Remote). Operations. Job. Customer Service Associate. The Philippines (Remote) · Embroidery Digitizer. Pakistan, India, The Philippines ( ...",
+    "discovery_url": "https://job-boards.greenhouse.io/zetaglobal/jobs/5968681004",
+    "title": "Jobs at Zeta Global",
+    "snippet": "Director, Customer Success. Atlanta, GA · Group Vice President, UK Customer Growth - CRM. London, UK · Senior Client Success Manager - Programmatic. Remote - ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
     "score": 100,
-    "company": "Jobs at Fresh Prints",
+    "company": "Jobs at Zeta Global",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -253,11 +319,33 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://job-boards.greenhouse.io/fourkites/jobs/8146530",
+    "title": "Jobs at FourKites",
+    "snippet": "Current openings at FourKites. India Senior AI Engineer Chennai or Remote, Product Support - Intern. Inventory & Orders",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
+    "score": 100,
+    "company": "Jobs at FourKites",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://jobs.lever.co/jobgether",
     "title": "Jobgether",
-    "snippet": "Bilingual Customer Service Representative. Remote — Full-timeIndia · Apply · Bilingual Customer Service Representative. Remote — Full-timeCanada · Apply ...",
+    "snippet": "Bilingual Customer Care Specialist - English and Spanish. Remote — Full-timeIndia · Apply · Bilingual Customer Service Representative. Remote — Full-timeIndia.",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
+    "score": 100,
+    "company": "Jobgether",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.lever.co/jobgether?department=Customer+Success",
+    "title": "Jobgether",
+    "snippet": "Full-timeNew Zealand · Apply · Head of Customer Experience. Remote ... VP of Customer Success. Remote — Full-timeUS · Apply · VP of Customer Success.",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
     "score": 100,
     "company": "Jobgether",
     "seed_type": "ATS Board Seed",
@@ -330,6 +418,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://huron.wd1.myworkdayjobs.com/en-US/huroncareers/job/IT-Support-Analyst_JR-0016194",
+    "title": "IT Support Analyst - Careers - Myworkdayjobs.com",
+    "snippet": "Introduce Yourself. IT Support Analyst page is loaded. IT Support Analyst. Apply. remote type: Hybrid. locations: Bangalore India - Outer Ring Road. time type ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
+    "score": 100,
+    "company": "IT Support Analyst",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://quickenloans.wd5.myworkdayjobs.com/rocket_india/job/Helpdesk-Engineer-II_R-084966",
     "title": "Helpdesk Engineer II - Myworkdayjobs.com",
     "snippet": "Proven experience in IT Helpdesk, Service Desk, or end-user technical support environments; Strong troubleshooting and problem-solving skills ...",
@@ -374,24 +473,35 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/easyship/jobs/4697171006",
-    "title": "Easyship Careers: Join Our Global Team",
-    "snippet": "Bangalore,India. Customer Service · Technical Implementation Lead. Remote. Engineering · Technical Support Specialist. Bangalore,India. Customer Service ...",
+    "discovery_url": "https://firstadvantage.wd5.myworkdayjobs.com/FirstAdvantage",
+    "title": "First Advantage Search for Jobs - Myworkdayjobs.com",
+    "snippet": "First Advantage is a leading provider of global software and data in the HR technology industry. Enabled by its proprietary technology and ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
     "score": 100,
-    "company": "Easyship Careers: Join Our Global Team",
+    "company": "First Advantage Search for Jobs",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "http://job-boards.greenhouse.io/freshprints/jobs/6219787004",
-    "title": "Customer Support Specialist (Retail Operations)",
-    "snippet": "Customer Support Specialist (Retail Operations). India (Remote). Apply. About Frontier. Frontier is a subsidiary of Fresh Prints. Fresh Prints is a New York ...",
+    "discovery_url": "https://job-boards.greenhouse.io/fingerprint/jobs/6143259004",
+    "title": "Fingerprint Careers - Join Our 100% Remote Team",
+    "snippet": "Customer Success. Manager, Customer Success Managers - EMEARemote. Senior Customer Success Manager - EMEARemote. Strategic Customer Success Engineer - USRemote.",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
-    "company": "Customer Support Specialist (Retail Operations)",
+    "company": "Fingerprint Careers",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://job-boards.greenhouse.io/easyship/jobs/4667600006",
+    "title": "Easyship Careers: Join Our Global Team",
+    "snippet": "Bangalore,India. Customer Service · Technical Implementation Lead. Remote. Engineering · Technical Support Specialist. Bangalore,India. Customer Service ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
+    "score": 100,
+    "company": "Easyship Careers: Join Our Global Team",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -429,9 +539,9 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/armorcode/jobs/5226128007",
-    "title": "Customer Success Manager - India",
-    "snippet": "ArmorCode Customer Success Manager (CSM) is responsible for providing a world-class customer experience, delivering value to our client community for the ...",
+    "discovery_url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Customer-Success-Manager--Marketing-cloud_JR353553",
+    "title": "Customer Success Manager - Marketing Cloud",
+    "snippet": "... Customer Success Manager (CSM) is a versatile expert responsible for ensuring ... customer experience, and renewal and expansion. Signature Lifecycle ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
     "score": 100,
@@ -447,28 +557,6 @@
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
     "score": 100,
     "company": "Customer Success Manager",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.ashbyhq.com/worldly/05ed3aca-cdca-4b83-8b0c-239c3612aa94",
-    "title": "Customer Success Associate (Sustainability) @ Worldly",
-    "snippet": "Worldly is seeking a Customer Success Associate to support the APAC Customer Success team across customer data operations, customer program delivery, training, ...",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Customer Success Associate (Sustainability) @ Worldly",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://smiinc.wd108.myworkdayjobs.com/en-US/smicareers/job/Customer-Service-Representative-SDU-Work-From-Home-San-Antonio-TX-ONLY_JR100346/apply",
-    "title": "Customer Service Representative-SDU-Work From Home-San ...",
-    "snippet": "Start Your Application. Customer Service Representative-SDU-Work From Home-San Antonio TX ONLY. Autofill with Resume · Apply Manually · Use My Last Application.",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
-    "score": 100,
-    "company": "Customer Service Representative-SDU-Work From Home-San ...",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -495,31 +583,20 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://sutterhealth.wd1.myworkdayjobs.com/en-US/SH/job/Customer-Service-Agent-II--Work-From-Home_R-143760/apply",
-    "title": "Customer Service Agent II, Work From Home",
-    "snippet": "Start Your Application. Customer Service Agent II, Work From Home. Autofill with Resume · Apply Manually · Use My Last Application ...",
+    "discovery_url": "https://job-boards.greenhouse.io/fastly?from_theconsensus=1",
+    "title": "Current Job Openings",
+    "snippet": "Browse Fastly's current job openings across engineering, product, sales, and more. Join the team powering the internet for top digital brands.",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
     "score": 100,
-    "company": "Customer Service Agent II, Work From Home",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/jobgether/497a1720-a9e8-4ec2-a75f-f1a71a36580c",
-    "title": "Customer Care Specialist - Email, Chat and Voice",
-    "snippet": "This position is listed on behalf of a partner company, which manages all applications and next steps. Our partner is looking for a Customer Care Specialist ...",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
-    "score": 100,
-    "company": "Customer Care Specialist",
+    "company": "Current Job Openings",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://apply.workable.com/nogigiddy/j/6A68DD19E2",
     "title": "Chat Support Agent (Remote) - Entry Level, No Degree ...",
-    "snippet": "Look no further! NoGigiddy is seeking enthusiastic and dedicated individuals to join our team as Chat Support Agents. In this entry-level role, you will be the ...",
+    "snippet": "Chat Support Agent (Remote) - Entry Level, No Degree Required - 15 - 18 per Hour. RemotePart time. OverviewApplication. Share this job. SVGs not supported by ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
     "score": 100,
@@ -530,11 +607,22 @@
   {
     "discovery_url": "https://apply.workable.com/nogigiddy/j/6A68DD19E2/apply",
     "title": "Chat Support Agent (Remote) - Entry Level, No Degree ...",
-    "snippet": "Chat Support Agent (Remote) - Entry Level, No Degree Required - 15 - 18 per ... India (+91). Indonesia (+62). Iran (+98). Iraq (+964). Ireland (+353). Isle ...",
+    "snippet": "Chat Support Agent (Remote) - Entry Level, No Degree Required - 15 - 18 per Hour. RemotePart time. OverviewApplication. Autofill application. Save time by ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
     "score": 100,
     "company": "Chat Support Agent (Remote)",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site",
+    "title": "Careers at Thomson Reuters - Myworkdayjobs.com",
+    "snippet": "Account Specialist remote type Hybrid. Ann Arbor; Bangalore; Frisco; Senior Software Engineer remote type Hybrid … work across law, tax, ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
+    "score": 100,
+    "company": "Careers at Thomson Reuters",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
@@ -561,31 +649,53 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://boards.greenhouse.io/figma/jobs/5822583004",
+    "title": "Careers at Figma",
+    "snippet": "Community Support Specialist (Bengaluru, India) · Customer Support ... Customer Enablement Manager (São Paulo, Brazil) · Director, SMB Sales (London ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (onboarding OR implementation OR \"customer enablement\") (India OR \"remote India\")",
+    "score": 100,
+    "company": "Careers at Figma",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://job-boards.greenhouse.io/avathon/jobs/4736320005",
+    "title": "Careers - Industrial AI Jobs",
+    "snippet": "Open roles at Avathon in engineering, AI research, sales and operations, across Pleasanton, Austin, Bengaluru and remote — plus the benefits that come with them",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (support OR success OR onboarding) (Bengaluru OR Bangalore OR Chennai OR Pune OR Hyderabad OR Mumbai OR Coimbatore) (remote OR hybrid)",
+    "score": 100,
+    "company": "Careers",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://job-boards.greenhouse.io/classpass",
     "title": "Career Opportunities | Playlist",
-    "snippet": "Remote - India, Remote - Malaysia, Remote - Mexico, Remote - Netherlands ... Technical Support Specialist I-Romania (French Speaking), Customer Experience ...",
+    "snippet": "Remote - India, Remote - Malaysia, Remote - Mexico, Remote - Netherlands, Remote ... Solutions Implementation Specialist, Customer Experience, Playlist ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (onboarding OR implementation OR \"customer enablement\") (India OR \"remote India\")",
     "score": 100,
     "company": "Career Opportunities | Playlist",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://genpact.wd108.myworkdayjobs.com/en-US/External_Careers/job/Associate---Customer-Care---Voice-5A_JR10028276-1",
-    "title": "Associate - Customer Care - Voice 5A - Myworkdayjobs.com",
-    "snippet": "... Customer Care - Voice Remote Type - Office Work Shift - Night Job (India) ... Remote Type -. Office. Work Shift -. Night Job (India). Why join ...",
+    "discovery_url": "https://hempel.wd3.myworkdayjobs.com/en-US/hempelcareers/job/Associate-Customer-Care-Representative_JR9315-1",
+    "title": "Associate Customer Care Representative - Myworkdayjobs.com",
+    "snippet": "The role focuses on executing defined and routine customer care activities, including customer documentation, quotations, order placement, order ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
     "score": 100,
-    "company": "Associate",
+    "company": "Associate Customer Care Representative",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://genpact.wd108.myworkdayjobs.com/en-US/External_Careers/job/Associate---Customer-Care---Non---Voice-5A_JR10017350",
     "title": "Associate - Customer Care - Non - Voice 5A",
-    "snippet": "Associate - Customer Care - Non - Voice Ready to turn bold ideas into real ... Remote Type - Office Work Shift - Rotating (India) Why join Genpact ...",
+    "snippet": "Associate - Customer Care - Non - Voice 5A page is loaded. Associate - Customer Care - Non - Voice 5A. Apply. remote type: Office. locations: 1401-G-India ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"chat support\" OR \"email support\" OR \"non voice\" OR \"customer care\") India remote",
     "score": 100,
@@ -594,24 +704,13 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.manatal.com/customer-stories/wilhelmsen",
-    "title": "Wilhelmsen Case Study | Manatal",
-    "snippet": "Robust Compliance Support: By centralizing all candidate information and automating consent management, Manatal provides the tools for Wilhelmsen to confidently ...",
-    "source": "Google/serpsearch",
-    "query": "site:*.manatal.com India customer support",
+    "discovery_url": "https://getwork.org/job-details/work-from-home-non-voice-process-10822",
+    "title": "Work From Home Non Voice process Job at 24-7 intouch",
+    "snippet": "Work From Home Non Voice process Job at 24-7 intouch ... HR Manager roles starting at ₹8 LPA. 3-month HR program. Guaranteed interviews with top companies.",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "Wilhelmsen Case Study | Manatal",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.manatal.com/glossary/sick-leave-pay",
-    "title": "What is Sick Leave Pay? | Manatal Recruitment",
-    "snippet": "According to state rules, an employee in India is entitled to 10 days of sick time every year. ... support and guidance throughout the process. Data ...",
-    "source": "Google/searlo",
-    "query": "site:*.manatal.com India customer support",
-    "score": 95,
-    "company": "What is Sick Leave Pay? | Manatal Recruitment",
+    "company": "Work From Home Non Voice process Job at 24-7 intouch",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -638,17 +737,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.manatal.com/hr-guide/how-to-post-a-job",
-    "title": "The Complete Guide to How to Post a Job - Manatal.com",
-    "snippet": "Customer Service (Part-time) at San Francisco Premium Outlets; Accounting ... Oodle (United States, Canada, United Kingdom, India, Ireland, Australia ...",
-    "source": "Google/searlo",
-    "query": "site:*.manatal.com India customer support",
-    "score": 95,
-    "company": "The Complete Guide to How to Post a Job",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://www.talentlyft.com/blog/the-a-to-z-of-remote-hiring",
     "title": "The A to Z of Remote Hiring | Talentlyft",
     "snippet": "27 Nov 2019 ... For organizations looking to set a bar for customer support, embracing time zones can help them achieve it with ease. ... India, Mexico, or the ...",
@@ -660,21 +748,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://toolio.talentlyft.com/jobs/technical-support-specialist-turkey-cfYc",
-    "title": "Technical Support Specialist - Turkey - Toolio",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:*.talentlyft.com India customer support",
-    "score": 95,
-    "company": "Technical Support Specialist",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://www.talentlyft.com/template/technical-support-engineer-interview-questions",
     "title": "Technical Support Engineer Interview Questions | Talentlyft",
-    "snippet": "A customer complains that the software provided is not meeting their business needs, despite being marketed as the ideal solution. How would you assess the customer’s requirements, identify the gaps in the software, and provide a suitable alternative or workaround? [...] Can you describe a time when you had to use your communication skills to resolve a difficult issue with a customer or team member in the technical support field? How do you approach problem-solving when dealing with complex technical issues, and how do you communicate your solutions to both technical and non-technical individuals? Have you ever experienced a dissatisfied customer, and how did you use your empathy and listening skills to handle the situation in a positive way? [...] Users of a particular application are experiencing intermittent connectivity issues during peak usage hours. How would you go about determining the cause of the problem and implementing a fix to permanently resolve the connection issue? A customer has reported a data breach or other security issue in your company’s systems. How would you assess the situation, identify the source of the problem, and develop and implement a plan to remediate the issue and prevent future attacks?",
-    "source": "Google/tavily",
+    "snippet": "The goal for a successful interview of a Technical Support Engineer is to assess the candidate's technical skills, problem-solving ability, and communication ...",
+    "source": "Google/search1",
     "query": "site:*.talentlyft.com India customer support",
     "score": 95,
     "company": "Technical Support Engineer Interview Questions | Talentlyft",
@@ -683,12 +760,12 @@
   },
   {
     "discovery_url": "https://www.manatal.com/job-description/swift-developer-job-description",
-    "title": "Swift Developer job Job Description Template for Recruiters",
-    "snippet": "Keeping up-to-date with the latest trends and best practices in iOS and macOS application development, including new features and updates in the Swift programming language. Collaborating with the Quality Assurance team to ensure the delivery of high-quality software applications that meet customer expectations. Assisting in troubleshooting and providing technical support to end-users when required. [...] ## How Much Does It Cost to Hire? Full-Time Salaries US / Canada: $95,000–$160,000+/year Western Europe: €60,000–€110,000+ / year Eastern Europe: $35,000–$70,000 / year Asia / India: $20,000–$45,000 / year Freelancers/Contractors Intermediate Swift Developer: $40–$70/hour Senior iOS Engineer: $75–$150/hour Expert/Architect: $150–$250/hour Cost Factors SwiftUI expertise App Store deployment experience Industry (FinTech & MedTech pay more) Project duration and complexity [...] Designing and developing user-friendly and scalable iOS and macOS applications using the Swift programming language. Collaborating with cross-functional teams, including designers and product managers, to understand project requirements and deliver high-quality software solutions. Participating in the full software development lifecycle, including requirements analysis, design, coding, testing, debugging, and deployment.",
-    "source": "Google/tavily",
+    "title": "Swift Developer Job Description Template for Recruiters",
+    "snippet": "Assisting in troubleshooting and providing technical support to end-users when required. ... Asia / India: $20,000–$45,000 / year. Freelancers/Contractors.",
+    "source": "Google/searlo",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
-    "company": "Swift Developer job Job Description Template for Recruiters",
+    "company": "Swift Developer Job Description Template for Recruiters",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -715,10 +792,21 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://sellcord.talentlyft.com/o/ckLXagKact",
+    "title": "Senior Billing Specialist – Bogotá | QuickBooks & AR - SellCord",
+    "snippet": "Join SellCord as a Senior Billing Specialist in Bogotá. Manage billing, accounts receivable, invoicing, reconciliations, and payment tracking.",
+    "source": "Google/search1",
+    "query": "site:*.talentlyft.com India customer support",
+    "score": 95,
+    "company": "Senior Billing Specialist – Bogotá | QuickBooks & AR",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.talentlyft.com/template/salon-manager-job-description",
     "title": "Salon Manager job description template | Talentlyft",
-    "snippet": "This Customer Service Representative job description template includes the list of most important Customer Service Representative's duties and responsibilities. It is customizable and ready to post to job... + Job Description + Content Team#### Product Manager job description [...] Valid cosmetology license (preferred) Experience in customer service or retail management Proficiency in computer software programs, such as Microsoft Office and salon management software Ability to multitask and work in a fast-paced environment [...] This SQL Developer job description template includes the list of most important SQL Developer's duties and responsibilities. It is customizable and ready to post to job... + Job Description + Content Team#### Customer Service Representative job description",
-    "source": "Google/tavily",
+    "snippet": "In this position, you will be responsible for managing staff, ensuring customer satisfaction, and maintaining inventory. handle customer complaints. Handle ...",
+    "source": "Google/search1",
     "query": "site:*.talentlyft.com India customer support",
     "score": 95,
     "company": "Salon Manager job description template | Talentlyft",
@@ -739,8 +827,8 @@
   {
     "discovery_url": "https://www.talentlyft.com/template/sales-coordinator-job-description",
     "title": "Sales Coordinator job description template | Talentlyft",
-    "snippet": "Sales Coordinators are responsible for providing support to the sales team and customers during the sales process. They help customers resolve sales-related issues in a timely manner, generally providing real-time support. ## Sales Coordinator job description: Intro Sales Coordinator job description should start with an interesting, eye-catching introduction. Here is an idea of what this introduction may look like: [...] X years of experience as a Sales Coordinator or similar role X years of experience in sales Proficiency in MS Office Understanding of sales process, preferably with customer service experience A sense of ownership and pride in your performance and its impact on the company’s success Critical thinker and problem-solving skills Team player Good time-management skills Great interpersonal and communication skills BS in Business or relevant field [...] Plan, implement and manage sales educational workshops Identify bottlenecks in the sales process Suggest solutions in a timely manner Identify labor with needs, strengths and weaknesses Identify needs for sales skills improvement Set objectives and KPIs Set up and monitor sales processes Serve as advisor to our employees by answering all of their sales related questions and concerns Evaluate strengths and weaknesses to identify training needs",
-    "source": "Google/tavily",
+    "snippet": "Sales Coordinators are responsible for providing support to the sales team and customers during the sales process. They help customers resolve sales-related ...",
+    "source": "Google/search1",
     "query": "site:*.talentlyft.com India customer support",
     "score": 95,
     "company": "Sales Coordinator job description template | Talentlyft",
@@ -759,29 +847,29 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://sellcord.talentlyft.com/o/clCzagKact",
-    "title": "Remote Account Manager | E-commerce Growth Role - SellCord",
-    "snippet": "Join SellCord as an Account Manager! Manage and grow client accounts in the e-commerce space. Hybrid role with great benefits. Apply now!",
+    "discovery_url": "https://www.talentlyft.com/template/quality-manager-interview-questions",
+    "title": "Quality Manager Interview Questions | Talentlyft",
+    "snippet": "Looking for the quality manager interview questions to ask potential candidates? Here is our list of the best quality manager interview question examples!",
     "source": "Google/search1",
     "query": "site:*.talentlyft.com India customer support",
     "score": 95,
-    "company": "Remote Account Manager | E-commerce Growth Role",
+    "company": "Quality Manager Interview Questions | Talentlyft",
     "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://in.jooble.org/jobs-non-voice-chat-support/work-from-home",
+    "title": "Non voice chat support jobs in work from home - Jooble",
+    "snippet": "Apply for Non voice chat support jobs in work from home. Explore 180.000+ new and current Job vacancies. Competitive salary. Full-time, temporary, and part-time jobs. Fast & Free. Top employers in work from home. Non voice chat support jobs is easy to find. Start your new career right now!",
+    "source": "Google/serper",
+    "query": "\"non voice\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Non voice chat support jobs in work from home",
+    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
     "discovery_url": "https://app.manatal.com/jobs/4488971",
-    "title": "Manatal",
-    "snippet": "Forgot your password? Not registered on Manatal yet? Create your account",
-    "source": "Google/endless",
-    "query": "site:*.manatal.com India customer support",
-    "score": 95,
-    "company": "Manatal",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://app.manatal.com/jobs/4464627",
     "title": "Manatal",
     "snippet": "Forgot your password? Not registered on Manatal yet? Create your account",
     "source": "Google/serpfast",
@@ -794,8 +882,8 @@
   {
     "discovery_url": "https://www.manatal.com/es/blog/why-hr-analytics-is-important",
     "title": "La importancia de la analítica de recursos humanos y cómo ...",
-    "snippet": "Descubra la verdadera importancia de la analítica de RR.HH. para tomar decisiones sobre la plantilla basadas en datos, mejorar la …",
-    "source": "Google/endless",
+    "snippet": "Descubra la verdadera importancia de la analítica de RR.HH. para tomar decisiones sobre la plantilla basadas en datos, mejorar la retención y la planificación estratégica en un mundo empresarial competitivo.",
+    "source": "Google/serpfast",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "La importancia de la analítica de recursos humanos y cómo ...",
@@ -816,8 +904,8 @@
   {
     "discovery_url": "https://www.manatal.com/integrations/my-contract-olx",
     "title": "Integrate OLX with Manatal ATS",
-    "snippet": "It functions as a digital marketplace, enabling users to buy, sell, or exchange a wide range of used goods and services independently. The platform facilitates ...",
-    "source": "Google/searlo",
+    "snippet": "... India, Brazil, Poland, and Ukraine. The platform offers localized search ... 24 / 5 support availability via live chat. All-in-one platform covering all ...",
+    "source": "Google/serpent",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "Integrate OLX with Manatal ATS",
@@ -832,6 +920,17 @@
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "Integrate Naukri with Manatal ATS",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://cool-ideas-service-provider.talentlyft.com/jobs/customer-service-analyst-chgo",
+    "title": "IT Customer Service Analyst",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:*.talentlyft.com India customer support",
+    "score": 95,
+    "company": "IT Customer Service Analyst",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -858,21 +957,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://sellcord.talentlyft.com/o/ckLXagKact",
-    "title": "Home | SellCord",
-    "snippet": "# Build the Brands of Tomorrow—With Us We’re builders, thinkers, and doers—making an impact together from every corner of the world. ## Open job positions Find your dream job",
-    "source": "Google/tavily",
-    "query": "site:*.talentlyft.com India customer support",
-    "score": 95,
-    "company": "Home | SellCord",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://www.talentlyft.com/template/field-service-engineer-interview-questions",
     "title": "Field Service Engineer Interview Questions | Talentlyft",
-    "snippet": "How do you handle challenging situations when dealing with customers in the field? Can you describe a time when you had to communicate technical information to a non-technical customer? How did you ensure they understood the information? How do you manage your time and prioritize tasks when working on multiple service requests in the field? Can you tell me about a time when you worked collaboratively with a team of coworkers to solve a complex problem in the field? [...] Applicant Tracking, Recruitment Marketing, Sourcing and Talent CRM software are powerful alone, but unstoppable when used together! Request a demo The goal for a successful interview for a Field Service Engineer is for the candidate to demonstrate their technical expertise in the field, ability to troubleshoot and solve problems on-site, and communicate effectively with customers and team members. ## Situational interview questions [...] ## Soft skills interview questions",
-    "source": "Google/tavily",
+    "snippet": "Soft skills interview questions · How do you handle challenging situations when dealing with customers in the field? · Can you describe a time when you had to ...",
+    "source": "Google/search1",
     "query": "site:*.talentlyft.com India customer support",
     "score": 95,
     "company": "Field Service Engineer Interview Questions | Talentlyft",
@@ -893,8 +981,8 @@
   {
     "discovery_url": "https://www.manatal.com/blog/ep94-nlb-services-varun-sachdeva",
     "title": "EP94: NLB Services - How to Use Human Intelligence to Find Talent",
-    "snippet": "we basically help our clients in hiring the right talent at the right time of technology and human intelligence. We take care of our customers. ...",
-    "source": "Google/serpsearch",
+    "snippet": "22 May 2024 ... We take care of our customers. First, we understand the needs of our ... For example, if you look at global capability centers, Vietnam and India ...",
+    "source": "Google/searlo",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "EP94: NLB Services",
@@ -938,7 +1026,7 @@
     "discovery_url": "https://support.manatal.com/docs/support-users",
     "title": "Documentation | Recruitment Software Support - Manatal",
     "snippet": "Manatal's ATS team offers live 7/7 support. Contact our customer support to get help while using the recruiting software.",
-    "source": "Google/endless",
+    "source": "Google/serpfast",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "Documentation | Recruitment Software Support",
@@ -949,10 +1037,21 @@
     "discovery_url": "https://support.manatal.com/v1/es",
     "title": "Documentation & Knowledge Base - Manatal",
     "snippet": "Create and separate organizations (departments, clients, etc.) for better management.",
-    "source": "Google/endless",
+    "source": "Google/serpfast",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "Documentation & Knowledge Base",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.manatal.com/de/blog/remote-job-boards-india",
+    "title": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
+    "snippet": "Stellen in den Bereichen Kundenbetreuung, Marketing, Betrieb, HR und Inhalt werden zunehmend auf Plattformen wie Indeed, FlexJobs und ...",
+    "source": "Google/serpsearch",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "Die 15 besten Jobbörsen in Indien für Online-Arbeitsangebote",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -990,13 +1089,46 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://careers.manatal.com/jobs/f0bf50fe-dbe1-4ae7-9022-edeb0b07e1bf",
-    "title": "Customer Support Executive (Spanish & English Speaking)- REMOTE | Manatal Co LTD",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:*.manatal.com India customer support",
+    "discovery_url": "https://www.shine.com/job-search/customer-support-jobs-in-india",
+    "title": "Customer Support Jobs in India - Shine",
+    "snippet": "Required:hindi·customer support·customer care·voice process. Apply ... Customer Support Agent India (Remote). 0 to 4 Yrs Not Disclosed All ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "Customer Support Executive (Spanish & English Speaking)- REMOTE | Manatal Co LTD",
+    "company": "Customer Support Jobs in India",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://wellfound.com/role/l/customer-support/india",
+    "title": "Customer Support Jobs in India - 2027",
+    "snippet": "Customer Support Executive — RemoteFull-time. ₹15,000 – ₹18,000. Remote ... Customer Support- International Voice ProcessFull-time. ₹20,000 ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Support Jobs in India",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://apna.co/jobs/customer-support-jobs",
+    "title": "Customer Support Jobs - 2732+ Vacancies in October 2026",
+    "snippet": "International Voice Process Agent. NR Consulting. Airoli, Navi Mumbai. ₹40,000 - ₹58,000. Work from Office. Full Time. Min. 1 year. Basic English. Prev; 1 · 2 ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Support Jobs",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://jobs.experian.com/job/customer-support-ii-international-voice-process-work-from-home-in-hyderabad-india-jid-3888",
+    "title": "Customer Support II ( International Voice Process - Work ...",
+    "snippet": "Tech Careers · Early Careers · Locations and Teams · EMEA APAC · North America · Latin ... Customer Support II ( International Voice Process - Work From Home). __ ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Support II ( International Voice Process",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1023,6 +1155,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.tp.com/en-us/job-opportunities/india/customer-service-associate-voice",
+    "title": "Customer Service Associate - Voice Process",
+    "snippet": "Customer Service Associate - Voice Process · Assist other team members who are new to the process. · Check for updates with the Team Leader and share the same ...",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "Customer Service Associate",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://foreo.talentlyft.com/jobs/customer-service-associate-sea-cgZx",
     "title": "Customer Service Associate (SEA) - FOREO",
     "snippet": "",
@@ -1034,21 +1177,10 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://m-plus.talentlyft.com/jobs/customer-experience-representative-for-cryptocurrency-Dm3",
-    "title": "Customer Experience Representative for Cryptocurrency | Mplus Serbia Career Page",
-    "snippet": "",
-    "source": "Google/exa",
-    "query": "site:*.talentlyft.com India customer support",
-    "score": 95,
-    "company": "Customer Experience Representative for Cryptocurrency | Mplus Serbia Career Page",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://www.manatal.com/es/blog/small-business-recruitment",
     "title": "Contratación de pequeñas empresas: 10 estrategias para atraer ...",
-    "snippet": "Impulse la contratación en su pequeña empresa con 10 estrategias de eficacia probada para atraer y retener a los mejores talentos. …",
-    "source": "Google/endless",
+    "snippet": "Impulse la contratación en su pequeña empresa con 10 estrategias de eficacia probada para atraer y retener a los mejores talentos. ¡Compite con las grandes empresas y crea un equipo próspero hoy mismo!",
+    "source": "Google/serpfast",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "Contratación de pequeñas empresas: 10 estrategias para atraer ...",
@@ -1057,9 +1189,9 @@
   },
   {
     "discovery_url": "https://sellcord.talentlyft.com/jobs/ai-operations-specialist-clBG",
-    "title": "AI Operations Specialist - SellCord",
-    "snippet": "Maintain a prioritized backlog of AI opportunities, weighing effort against business impact. Train the team so non-technical teammates use AI confidently. Partner with teams to understand workflows and customer journeys, and translate technical work for leadership and non-technical audiences. [...] ### Who We Are: SellCord is the largest Walmart-exclusive agency dedicated to helping sellers maximize their success on the Walmart platform. Our mission is to empower businesses with the tools, insights, and support they need to thrive in a competitive e-commerce landscape. ### About the Role: [...] 3+ years of software development experience, preferable in the tech industry or from an agency, including building with AI tools, models, or APIs. Strong understanding of user and customer experience and how the tools you build impact the business. Self-starter with strong communication skills who takes initiative without waiting for detailed direction. Curious, open-minded, and passionate about AI, always exploring new tools and ideas; no specific tech stack required.",
-    "source": "Google/tavily",
+    "title": "AI Operations Specialist",
+    "snippet": "",
+    "source": "Google/exa",
     "query": "site:*.talentlyft.com India customer support",
     "score": 95,
     "company": "AI Operations Specialist",
@@ -1068,9 +1200,9 @@
   },
   {
     "discovery_url": "https://www.manatal.com/customer-stories/adi-group",
-    "title": "ADI Group Case Study",
-    "snippet": "our team is committed to providing support and guidance throughout the process. support availability via live chat All-in-one platform covering all your ...",
-    "source": "Google/serpsearch",
+    "title": "ADI Group Case Study - Manatal.com",
+    "snippet": "As ADI Group continues to expand its reach and diversify its services, Manatal remains a crucial tool in their journey towards continued success. Results with ...",
+    "source": "Google/searlo",
     "query": "site:*.manatal.com India customer support",
     "score": 95,
     "company": "ADI Group Case Study",
@@ -1086,6 +1218,17 @@
     "score": 95,
     "company": "7 Trends that Will Shape the Post-Pandemic Recruitment Sector",
     "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.placementindia.com/job-search/international-voice-process-fresher-jobs.htm",
+    "title": "600+ International Voice Process Fresher Jobs",
+    "snippet": "As an International Voice Process Executive based in Bhubaneswar, you will play a crucial role in handling customer interactions for clients across the globe.",
+    "source": "Google/serper",
+    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
+    "score": 95,
+    "company": "600+ International Voice Process Fresher Jobs",
+    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
@@ -1111,36 +1254,14 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/voice-process-work-from-home-jobs-SRCH_KO0,28.htm",
-    "title": "196 Voice process work from home jobs in India - Glassdoor",
-    "snippet": "New Fleet Solutions is hiring experienced and talented professionals for the International Voice Process Executive role. If you have experience handling international customers, excellent communication skills, and a customer-centric approach, we would love to connect with you.",
+    "discovery_url": "https://www.glassdoor.co.in/Job/non-voice-chat-support-jobs-SRCH_KO0,22.htm",
+    "title": "163 Non voice chat support jobs in India",
+    "snippet": "Hiring Non-Voice Process Executive. Bengaluru. ₹17,935 - ₹32,905 ... Non-Voice Process executive handles customer queries, support, or data tasks ...",
     "source": "Google/serper",
     "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
     "score": 95,
-    "company": "196 Voice process work from home jobs in India",
+    "company": "163 Non voice chat support jobs in India",
     "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.glassdoor.co.in/Job/india-voice-process-work-from-home-jobs-SRCH_IL.0,5_IN115_KO6,34.htm",
-    "title": "183 Voice process work from home jobs in India - Glassdoor",
-    "snippet": "Search Voice process work from home jobs in India with company ratings and salaries. 183 open jobs for Voice process work from home in India.",
-    "source": "Google/serper",
-    "query": "\"voice process\" India remote customer support careers -linkedin -indeed",
-    "score": 95,
-    "company": "183 Voice process work from home jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://www.shine.com/job-search/customer-service-non-voice-work-from-home-jobs",
-    "title": "17,180 Customer Service Non Voice Work From Home Jobs",
-    "snippet": "Explore Customer Service (Non-Voice) Work From Home Job Vacancies at Shine.com. Discover 17,180 Customer Service (Non-Voice) Work From Home openings in top companies. Apply now and land your dream job. Explore exciting Customer Service (Non-Voice) Work From Home Job opportunities!",
-    "source": "Google/serper",
-    "query": "\"non voice\" India remote customer support careers -linkedin -indeed",
-    "score": 95,
-    "company": "17,180 Customer Service Non Voice Work From Home Jobs",
-    "seed_type": "Google Job Page",
     "crawl_seed": "Yes"
   },
   {
@@ -1188,17 +1309,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.glassdoor.co.in/Job/email-customer-support-remote-jobs-SRCH_KO0,29.htm",
-    "title": "1,871 Email customer support remote jobs in India - Glassdoor",
-    "snippet": "Search Email customer support remote jobs. Get the right Email customer support remote job with company ratings and salaries. 1,871 open jobs for Email customer support remote.",
-    "source": "Google/serper",
-    "query": "\"email support\" India \"remote\" careers -linkedin -indeed",
-    "score": 95,
-    "company": "1,871 Email customer support remote jobs in India",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://support.manatal.com/docs/support-guests",
     "title": "",
     "snippet": "",
@@ -1210,7 +1320,18 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://support.manatal.com/docs/en/manage-subscription",
+    "discovery_url": "https://support.manatal.com/docs/my-own-contracts",
+    "title": "",
+    "snippet": "",
+    "source": "Google/exa",
+    "query": "site:*.manatal.com India customer support",
+    "score": 95,
+    "company": "support",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://support.manatal.com/docs/hireez-integration",
     "title": "",
     "snippet": "",
     "source": "Google/exa",
@@ -1234,8 +1355,8 @@
   {
     "discovery_url": "https://foreo.talentlyft.com",
     "title": "Want to work for FOREO? Check out our open positions!",
-    "snippet": "### WHERE TO FIND US Melbourne, Australia | Sarajevo, Bosnia & Herzegovina | São Paulo, Brasil | Suzhou, Jiangsu Province, China | Shanghai, China | Zagreb, Croatia | Paris, France | Nűrnberg, Germany | Tokyo, Japan | Ciudad de México, México | Warszawa, Poland | Moscow, Russia | Beograd, Serbia | Singapore, Singapore | Madrid, Spain | Stockholm,Sweden | Bangkok, Thailand | Istanbul, Turkey | London, United Kingdom | Las Vegas, Nevada, USA [...] 21/1/2022 - 2.0 last version FOREO Careers page # Build the most human brand with us. Proudly born upon the Stockholm panorama in 2013, FOREO started with the idea of making everyday life better for millions of people worldwide by introducing small selfcare changes with staggering results in support of wellbeing & life quality. [...] Since the initial spark, we quickly expanded into a progressive beauty-tech business, pushing the industry boundaries and creating a new niche where beauty and tech meet that human touch. Today, we are a thriving family of over 3000 beautiful people scattered across80+ countries worldwide. ### If you cherish well-being and seek better ways for one to take care of themselves, see what we offer! ### GLOBAL OPEN POSITIONS GROWTH We aim to find new angles to meet old challenges",
-    "source": "Google/tavily",
+    "snippet": "... care of themselves, see what we offer! GLOBAL OPEN POSITIONS .COM, Business Analytics, Business Development, CRM, Customer Care, Digital Marketing, eCommerce ...",
+    "source": "Google/search1",
     "query": "site:*.talentlyft.com India customer support",
     "score": 85,
     "company": "Want to work for FOREO? Check out our open positions!",
@@ -1250,6 +1371,17 @@
     "query": "site:*.manatal.com India customer support",
     "score": 85,
     "company": "Manatal Status",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.manatal.com",
+    "title": "Leading AI Recruitment Software | Manatal.com",
+    "snippet": "Contact Us Everything in Enterprise Plus Dedicated account manager Phone support Custom Features Custom Integrations Custom compliance and reports Additional GST fees will be applied to Singaporean tax residents Compare All Price Plans ## Get started with Manatal Our 14-day free trial allows anyone to explore the platform without commitment, while our team is committed to providing support and guidance throughout the process. View All Features [...] Start Free Trial Unlimited Jobs Unlimited Candidates Unlimited Hiring Managers Workflow Automation Popular ##### Enterprise Plus Plan For industry leaders $59/per user per month Start Free Trial Everything in Enterprise Advanced Report Builder ChatGPT, Claude & LLM Integration Manatal Open API Candidate Portal & Internal Mobility Custom Permissions & User Groups Single Sign On Priority Support ##### Custom Plan For custom integrations On Demand Contact Us [...] View All Features Data migration from your existing recruitment software Training for a fast and smooth onboarding Transparent and flexible pricing without lock-in contract Highest security protocol as standard (SOC II Type 2) 24 / 5 support via live chat All-in-one platform covering all your recruitment needs ## Transform the Way You Recruit Today. World-leading Recruitment Software for Talent Acquisition and Recruitment Professionals. Recruitment processes managed.",
+    "source": "Google/tavily",
+    "query": "site:*.manatal.com India customer support",
+    "score": 85,
+    "company": "Leading AI Recruitment Software | Manatal.com",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -1285,27 +1417,5 @@
     "company": "Contact Us | Manatal.com | AI Recruitment Software",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://adria-scan.talentlyft.com",
-    "title": "AdriaScan Careers",
-    "snippet": "Welcome to AdriaScan careers. We are always looking for talented people to join our team. Customer services department, Development department, Finances",
-    "source": "Google/tavily",
-    "query": "site:*.talentlyft.com India customer support",
-    "score": 85,
-    "company": "AdriaScan Careers",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://himalayas.app/jobs/countries/india/email-support",
-    "title": "Remote Email Support Jobs in India | Himalayas",
-    "snippet": "Discover the best remote and work from home Email Support jobs at top remote companies hiring in India on Himalayas. Find high-match roles daily, tailor your resume & cover letter and auto-apply using AI.",
-    "source": "Google/serper",
-    "query": "\"email support\" India \"remote\" careers -linkedin -indeed",
-    "score": 55,
-    "company": "Remote Email Support Jobs in India | Himalayas",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "No"
   }
 ]
