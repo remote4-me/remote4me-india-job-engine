@@ -7357,10 +7357,37 @@ def run_merge(out_dir,write_sheet=False):
     # Dedupe discovery leads across feed + Google search layers.
     ded={normalize_url(x.get("discovery_url") or x.get("job_url") or ""):x for x in discovery if isinstance(x,dict) and normalize_url(x.get("discovery_url") or x.get("job_url") or "")}
     discovery=list(ded.values())
+    # Split hybrid discovery candidates into their own review queue. Keep the
+    # existing DISCOVERY tab for remote and unclassified/general leads, so the
+    # old tab and its manual review workflow remain available.
+    hybrid_discovery=[]
+    regular_discovery=[]
+    for item in discovery:
+        workplace = classify_workplace(
+            location=item.get("location", ""),
+            workplace_type=item.get("workplace", item.get("work_type", item.get("work_mode", ""))),
+            remote=item.get("remote", False),
+            structured=item.get("structured") if isinstance(item.get("structured"), dict) else None,
+            description=item.get("description", ""),
+        )
+        if workplace == "Hybrid":
+            item["workplace"] = "Hybrid"
+            hybrid_discovery.append(item)
+        else:
+            regular_discovery.append(item)
+    discovery = regular_discovery
+    # Keep the established quality pipeline intact, then route the final verified
+    # rows by workplace. JOBS remains remote-only; HYBRID is India-only too.
     final=merge_direct_jobs(jobs)
     final=verify_jobs_before_publish(final)
     final=merge_direct_jobs(final)
-    print(f"MERGE: raw direct rows={len(jobs)} final unique={len(final)}")
+    remote_final=[j for j in final if clean_text(j.get("workplace", "")) == "Remote"]
+    hybrid_final=[j for j in final if clean_text(j.get("workplace", "")) == "Hybrid"]
+    # Defensive invariant: merge_direct_jobs should already enforce this.
+    unexpected=[j for j in final if clean_text(j.get("workplace", "")) not in {"Remote", "Hybrid"}]
+    if unexpected:
+        print(f"WARNING: excluded {len(unexpected)} rows with unsupported workplace values")
+    print(f"MERGE: raw direct rows={len(jobs)} final unique={len(final)} remote={len(remote_final)} hybrid={len(hybrid_final)}")
     if not write_sheet:
         path=Path(out_dir)/"merged.jsonl"
         with path.open("w",encoding="utf-8") as f:
@@ -7368,16 +7395,26 @@ def run_merge(out_dir,write_sheet=False):
         return
     spreadsheet=get_spreadsheet_v11()
     jobs_ws=get_ws(spreadsheet,"JOBS",rows=10000,cols=20)
+    hybrid_ws=get_ws(spreadsheet,"HYBRID",rows=10000,cols=20)
     companies_ws=get_ws(spreadsheet,"COMPANIES",rows=30000,cols=12)
     stats_ws=get_ws(spreadsheet,"STATS",rows=5000,cols=len(STATS_HEADERS))
     discovery_ws=get_ws(spreadsheet,"DISCOVERY",rows=30000,cols=len(DISCOVERY_HEADERS))
+    hybrid_discovery_ws=get_ws(spreadsheet,"HYBRID_DISCOVERY",rows=30000,cols=len(DISCOVERY_HEADERS))
     ensure_headers_v11(jobs_ws,V11_JOBS_HEADERS)
+    ensure_headers_v11(hybrid_ws,V11_JOBS_HEADERS)
     ensure_headers_v11(companies_ws,V11_COMPANY_HEADERS)
     ensure_headers_v11(stats_ws,STATS_HEADERS)
     ensure_headers_v11(discovery_ws,DISCOVERY_HEADERS)
-    new_rows=append_jobs_v11(jobs_ws,final)
+    ensure_headers_v11(hybrid_discovery_ws,DISCOVERY_HEADERS)
+    new_remote_rows=append_jobs_v11(jobs_ws,remote_final)
+    new_hybrid_rows=append_jobs_v11(hybrid_ws,hybrid_final)
+    new_rows=new_remote_rows+new_hybrid_rows
+    print(f"JOBS SHEET (REMOTE): final={len(remote_final)} new={new_remote_rows}")
+    print(f"HYBRID SHEET: final={len(hybrid_final)} new={new_hybrid_rows}")
     discovery_added, discovery_updated = append_discovery_v11(discovery_ws, discovery)
-    print(f"DISCOVERY SHEET: added={discovery_added} updated={discovery_updated}")
+    print(f"DISCOVERY SHEET (REMOTE/GENERAL): added={discovery_added} updated={discovery_updated}")
+    hybrid_discovery_added, hybrid_discovery_updated = append_discovery_v11(hybrid_discovery_ws, hybrid_discovery)
+    print(f"HYBRID_DISCOVERY SHEET: added={hybrid_discovery_added} updated={hybrid_discovery_updated}")
     # Merge board statuses from all artifacts.
     statuses=[]; career_links=[]
     for p in sorted(Path(out_dir).glob("*.status.json")):
@@ -7397,11 +7434,11 @@ def run_merge(out_dir,write_sheet=False):
         a=canonical_ats_name(st.get("ats","")); by_ats[a]["boards"]+=1; by_ats[a]["jobs"]+=int(st.get("jobs_found",0) or 0)
         if not st.get("ok",False): by_ats[a]["errors"]+=1
     for a,m in sorted(by_ats.items()): stat_rows.append({"source":f"ATS::{a}","raw_or_boards":m["boards"],"accepted":m["jobs"],"errors":str(m["errors"])})
-    stat_rows.append({"source":"TOTAL","raw_or_boards":len(jobs),"accepted":len(final),"new_rows":new_rows,"notes":f"registry updates={registry_count}"})
+    stat_rows.append({"source":"TOTAL","raw_or_boards":len(jobs),"accepted":len(final),"new_rows":new_rows,"notes":f"remote={len(remote_final)} (JOBS new={new_remote_rows}); hybrid={len(hybrid_final)} (HYBRID new={new_hybrid_rows}); hybrid discovery={len(hybrid_discovery)} (added={hybrid_discovery_added}, updated={hybrid_discovery_updated}); registry updates={registry_count}"})
     runtime=int((datetime.now(timezone.utc)-started).total_seconds())
     write_stats(stats_ws,run_id,"daily",stat_rows,runtime)
     print(f"FINAL UNIQUE DIRECT JOBS: {len(final)}")
-    print(f"NEW ROWS WRITTEN: {new_rows}")
+    print(f"NEW ROWS WRITTEN: total={new_rows} remote={new_remote_rows} hybrid={new_hybrid_rows}")
     print(f"COMPANY REGISTRY UPSERTS: {registry_count}")
     print(f"RUNTIME SECONDS: {runtime}")
 
