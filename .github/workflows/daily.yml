@@ -1,4 +1,4 @@
-name: Remote4.me V14.7 Expanded ATS + India Career Coverage
+name: Remote4.me V14.8 Search-First + Cleaner ATS Discovery
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Refresh V14.7 discovery manifests
+      - name: Refresh V14.8 discovery manifests
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -42,6 +42,9 @@ jobs:
           FREESEA_API_KEY: ${{ secrets.FREESEA_API_KEY }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           SEARCH_DISCOVERY_ENABLED: "1"
+          PUBLIC_SERP_FALLBACK_ENABLED: "1"
+          PUBLIC_SERP_QUERIES_PER_RUN: "12"
+          PUBLIC_SERP_WORKERS: "4"
           SEARCH_QUERIES_PER_PROVIDER: "2"
           SEARCH_RESULTS_PER_QUERY: "10"
           SEARCH_DISCOVERY_ROTATION_DAYS: "10"
@@ -94,7 +97,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ats: [Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR, Personio, Workday, Zoho Recruit, Darwinbox, Keka, Zwayam, PeopleStrong, HROne, Freshteam, Oracle Recruiting, iCIMS, Taleo, SuccessFactors, ADP, Nonstandard]
+        ats: [Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR, Personio, Workday, Nonstandard]
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
@@ -181,6 +184,7 @@ jobs:
           CAREER_PREFLIGHT_ENABLED: "1"
           CAREER_PREFLIGHT_WORKERS: "36"
           CAREER_BROWSER_MAX_CALLS: "180"
+          PLAYWRIGHT_CONCURRENT_BROWSERS: "3"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_MAX_PAGES: "2"
           PLAYWRIGHT_TIMEOUT_MS: "25000"
@@ -243,6 +247,7 @@ jobs:
           STARTUP_JOBS_MAX_PAGES: "5"
           FEED_MAX_JOB_AGE_DAYS: "14"
           FEED_DISCOVERY_MAX_ROWS: "1500"
+          PLAYWRIGHT_CONCURRENT_BROWSERS: "3"
           FEED_DIRECT_BUDGET: "450"
           JOB_MAX_AGE_DAYS: "30"
           ALLOW_APAC_WORLDWIDE: "0"
@@ -299,8 +304,8 @@ jobs:
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-          git diff --cached --quiet || git commit -m "Refresh V14.6 discovery manifests"
+          git diff --cached --quiet || git commit -m "Refresh V14.8 discovery manifests"
           git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me V14.6 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
+        run: echo "Remote4.me V14.8 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."

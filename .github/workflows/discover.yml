@@ -1,4 +1,4 @@
-name: Remote4.me V11 Weekly Discovery
+name: Remote4.me V14.8 Weekly Discovery
 
 on:
   workflow_dispatch:
@@ -24,9 +24,18 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Discover companies and ATS boards
         env:
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+          YOU_API_KEY: ${{ secrets.YOU_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          SEARCH1_API_KEY: ${{ secrets.SEARCH1_API_KEY }}
+          SEARLO_API_KEY: ${{ secrets.SEARLO_API_KEY }}
+          PUBLIC_SERP_FALLBACK_ENABLED: "1"
+          PUBLIC_SERP_QUERIES_PER_RUN: "12"
           DISCOVERY_VALIDATE_PER_ATS: "1800"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
           DISCOVERY_WORKERS: "36"
