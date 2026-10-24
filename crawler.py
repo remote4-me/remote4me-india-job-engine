@@ -6,6 +6,7 @@ import hashlib
 import argparse
 import threading
 import warnings
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from collections import Counter, defaultdict
 from urllib import robotparser
@@ -28,7 +29,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V14.6
+# REMOTE4.ME JOB CRAWLER V14.8
 # INDIA-FIRST / EXPANDED ATS + CAREER PAGE DISCOVERY
 # ============================================================
 #
@@ -90,6 +91,12 @@ ENDLESS_SEARCH_API_KEY = os.environ.get("ENDLESS_SEARCH_API_KEY", "").strip()
 SERPSEARCH_API_KEY = os.environ.get("SERPSEARCH_API_KEY", "").strip()
 FREESEA_API_KEY = os.environ.get("FREESEA_API_KEY", "").strip()
 SEARCH_DISCOVERY_ENABLED = os.environ.get("SEARCH_DISCOVERY_ENABLED", "1").lower() not in {"0", "false", "no"}
+# Public, no-key search fallback. Bing RSS is an unofficial public endpoint and
+# may be throttled; paid/index APIs stay optional and should never be required.
+PUBLIC_SERP_FALLBACK_ENABLED = os.environ.get("PUBLIC_SERP_FALLBACK_ENABLED", "1").lower() not in {"0", "false", "no"}
+PUBLIC_SERP_QUERIES_PER_RUN = max(1, min(24, int(os.environ.get("PUBLIC_SERP_QUERIES_PER_RUN", "12"))))
+PUBLIC_SERP_WORKERS = max(1, min(8, int(os.environ.get("PUBLIC_SERP_WORKERS", "4"))))
+_BING_RSS_SEMAPHORE = threading.BoundedSemaphore(PUBLIC_SERP_WORKERS)
 SEARCH_QUERIES_PER_PROVIDER = int(os.environ.get("SEARCH_QUERIES_PER_PROVIDER", "3"))
 SEARCH_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("SEARCH_RESULTS_PER_QUERY", "10"))))
 SEARCH_DISCOVERY_ROTATION_DAYS = max(1, int(os.environ.get("SEARCH_DISCOVERY_ROTATION_DAYS", "10")))
@@ -141,6 +148,8 @@ PLAYWRIGHT_ENABLED = os.environ.get("PLAYWRIGHT_ENABLED", "1").lower() not in {"
 PLAYWRIGHT_TIMEOUT_MS = int(os.environ.get("PLAYWRIGHT_TIMEOUT_MS", "25000"))
 PLAYWRIGHT_MAX_PAGES = int(os.environ.get("PLAYWRIGHT_MAX_PAGES", "3"))
 CAREER_BROWSER_MAX_CALLS = max(0, int(os.environ.get("CAREER_BROWSER_MAX_CALLS", "180")))
+PLAYWRIGHT_CONCURRENT_BROWSERS = max(1, min(6, int(os.environ.get("PLAYWRIGHT_CONCURRENT_BROWSERS", "3"))))
+_PLAYWRIGHT_SEMAPHORE = threading.BoundedSemaphore(PLAYWRIGHT_CONCURRENT_BROWSERS)
 CAREER_PREFLIGHT_ENABLED = os.environ.get("CAREER_PREFLIGHT_ENABLED", "1").lower() not in {"0", "false", "no"}
 CAREER_PREFLIGHT_WORKERS = max(4, int(os.environ.get("CAREER_PREFLIGHT_WORKERS", "36")))
 
@@ -561,7 +570,7 @@ ATS_DOMAINS = {
         "hrone.cloud", "hrone.com",
     ],
     "Manatal": [
-        "manatal.com",
+        "jobs.manatal.com",
     ],
     "Fountain": [
         "fountain.com",
@@ -605,7 +614,7 @@ ATS_DOMAINS = {
     "Fountain": ["fountain.com", "apply.fountain.com"],
     "Jobylon": ["jobylon.com"],
     "TalentLyft": ["talentlyft.com"],
-    "Manatal": ["jobs.manatal.com", "manatal.com"],
+    "Manatal": ["jobs.manatal.com"],
     "CEIPAL": ["ceipal.com"],
     "Avature": ["avature.net"],
     "Eightfold": ["eightfold.ai"],
@@ -1072,7 +1081,9 @@ AGGREGATOR_HOSTS = {
 }
 
 def is_aggregator_host(host):
-    host = (host or "").lower().split(":", 1)[0].lstrip("www.")
+    host = (host or "").lower().split(":", 1)[0]
+    if host.startswith("www."):
+        host = host[4:]
     return host in AGGREGATOR_HOSTS or any(host.endswith("." + h) for h in AGGREGATOR_HOSTS)
 
 
@@ -2188,13 +2199,51 @@ def probe_public_board(ats, slug):
 def ats_from_url(url):
     try:
         host = urlparse(url).netloc.lower().split(":")[0]
+        path = unquote(urlparse(url).path or "/").lower()
     except Exception:
         return ""
+    # Filter platform's own website, support, developer and static surfaces before
+    # generic domain matching. The old broad matching marked thousands of
+    # manatal.com URLs as ATS routes (including docs and product pages).
+    if _BAD_CAREER_PATH_RE.search(path) or _BAD_CAREER_FILE_RE.search(path):
+        return ""
+    exact_overrides = {
+        "jobs.manatal.com": "Manatal",
+        "jobs.lever.co": "Lever",
+        "jobs.eu.lever.co": "Lever",
+        "boards.greenhouse.io": "Greenhouse",
+        "job-boards.greenhouse.io": "Greenhouse",
+        "jobs.ashbyhq.com": "Ashby",
+        "apply.workable.com": "Workable",
+        "careers.smartrecruiters.com": "SmartRecruiters",
+        "jobs.smartrecruiters.com": "SmartRecruiters",
+    }
+    if host in exact_overrides:
+        return exact_overrides[host]
+    blocked_prefixes = {"www", "support", "help", "docs", "developers", "developer", "status", "blog", "blogs", "cdn", "static", "assets", "api", "app", "community", "forum", "resources", "careers", "jobs"}
+    broad_roots = {
+        "manatal.com", "talentlyft.com", "phenom.com", "phenompeople.com", "oracle.com",
+        "zoho.com", "darwinbox.com", "darwinbox.ai", "darwinbox.in", "keka.com", "keka.hr",
+        "workable.com", "adp.com", "freshteam.com", "bamboohr.com", "recruitee.com",
+        "teamtailor.com", "breezy.hr", "personio.com", "icims.com", "taleo.net",
+    }
+    for root in broad_roots:
+        if host == root:
+            # Some dedicated job paths on root domains are valid, but only when
+            # the path explicitly looks like a job/career route.
+            if re.search(r"/(?:jobs?|careers?|careersection|jobdetail|positions?|openings?)(?:/|\.|$)", path, re.I):
+                break
+            return ""
+        if host.endswith("." + root):
+            first = host[:-(len(root)+1)].split(".")[0]
+            if first in blocked_prefixes:
+                return ""
+            break
     for ats, domains in ATS_DOMAINS.items():
         for d in domains:
             d = d.replace("*.", "")
             if same_or_subdomain(host, d):
-                return ats
+                return canonical_ats_name(ats)
     return ""
 
 
@@ -3243,7 +3292,7 @@ V11_ATS_EXTRA_DOMAINS = {
     "JazzHR": ["applytojob.com", "app.jazz.co", "jazz.co"],
     "Comeet": ["comeet.com"],
     "Pinpoint": ["pinpointhq.com"],
-    "Manatal": ["jobs.manatal.com", "manatal.com"],
+    "Manatal": ["jobs.manatal.com"],
     "Paylocity": ["recruiting2.ultipro.com", "ultipro.com", "paylocity.com"],
     "UKG": ["recruiting.ultipro.com", "ultipro.com"],
     "Freshteam": ["freshteam.com", "jobs.freshteam.com"],
@@ -3610,12 +3659,24 @@ def is_exact_job_url(url, base_url=""):
 
 
 def preflight_career_seed(url, timeout=8):
+    """Reject clearly dead/noisy seeds, but retain plausible pages blocked to bots.
+
+    A 403, 429, transient 5xx or request timeout does not prove a career page is
+    dead. Removing these during discovery caused sites that need JS/browser
+    fallback to disappear before the career crawler could try them.
+    """
     if not is_plausible_career_seed(url):
         return False
     try:
         r=SESSION.get(url, timeout=timeout, allow_redirects=True, stream=False)
-        if r.status_code != 200:
+        if r.status_code in {404, 410}:
             return False
+        if r.status_code in {401, 403, 408, 425, 429, 500, 502, 503, 504} or r.status_code >= 500:
+            return True
+        if r.status_code != 200:
+            # Keep ambiguous client blocks/rate limits for a later deeper fetch;
+            # hard 404/410 are the only status-based permanent rejections above.
+            return r.status_code >= 400 and r.status_code not in {400, 410, 422}
         final=r.url or url
         ctype=(r.headers.get("content-type") or "").lower()
         if ctype and not any(x in ctype for x in ("text/html", "application/xhtml+xml", "text/plain")):
@@ -3624,7 +3685,9 @@ def preflight_career_seed(url, timeout=8):
             return False
         return True
     except requests.RequestException:
-        return False
+        # Plausible but temporarily inaccessible pages should still reach the
+        # request/browser/fallback tiers. The later quality gate controls jobs.
+        return True
 
 
 def preflight_career_seeds(records):
@@ -3695,7 +3758,7 @@ def parse_structured_jobpostings(html, base_url, company_hint="", source="Compan
         if not is_exact_job_url(job_url, base_url):
             continue
         org = item.get("hiringOrganization") or {}
-        company = company_hint or clean_text(org.get("name") if isinstance(org, dict) else "")
+        company = clean_text(org.get("name") if isinstance(org, dict) else "") or company_hint
         score, matched = score_job(title, body, location)
         score += 20
         if posted:
@@ -3708,6 +3771,118 @@ def parse_structured_jobpostings(html, base_url, company_hint="", source="Compan
             "job_id": clean_text(item.get("identifier") or item.get("jobId") or item.get("id")),
         })
     return out
+
+
+def _is_noise_job_url(url):
+    """Reject static assets, policy/help pages and known ATS marketing hosts."""
+    try:
+        p = urlparse(url)
+        host = p.netloc.lower().split(":", 1)[0]
+        path = unquote(p.path or "/").lower()
+    except Exception:
+        return True
+    if p.scheme not in {"http", "https"} or not host:
+        return True
+    if _BAD_CAREER_PATH_RE.search(path) or _BAD_CAREER_FILE_RE.search(path):
+        return True
+    if re.search(r"/(?:privacy|terms|cookies?|cookie[-_]policy|accessibility|security|status|support|help|docs?|developers?|blog|newsroom|press|about|contact|pricing|product|features)(?:/|$)", path, re.I):
+        return True
+    # Candidate portals and recruitment-event pages aren't live vacancies or
+    # useful board roots. They were inflating Workday/Eightfold/iCIMS route counts.
+    if re.search(r"/(?:userhome|introduceyourself)(?:/|$)|/(?:events?)(?:/|$)|/candidate/landing(?:/|$)|/careers?/join(?:/|$)|/jobs?/(?:intro|home)(?:/|$)|/form/|talent[-_]?community", path, re.I):
+        return True
+    if re.search(r"\.(?:pdf|docx?|xlsx?|pptx?|zip|rar|png|jpe?g|gif|svg|ico|woff2?|ttf|eot|js|mjs|css|map|xml|json)(?:$|[?#])", path, re.I):
+        return True
+    # These are product/docs/support surfaces, not employer job boards.
+    blocked_subdomains = {
+        "manatal.com": {"www", "app", "support", "developers", "status", "blog", "docs", "api", "cdn", "community"},
+        "talentlyft.com": {"www", "support", "developers", "status", "blog", "docs", "api", "cdn", "help"},
+        "phenompeople.com": {"cdn", "api", "static", "assets", "developers", "docs"},
+        "oracle.com": {"www", "support", "docs", "blogs", "community", "developer", "developers", "shop", "store"},
+        "zoho.com": {"www", "support", "help", "blogs", "blog", "accounts", "store", "marketplace", "community", "developer", "developers"},
+        "darwinbox.com": {"www", "blog", "blogs", "support", "help", "docs", "developers", "api", "cdn"},
+        "darwinbox.ai": {"www", "blog", "blogs", "support", "help", "docs", "developers", "api", "cdn"},
+        "keka.com": {"www", "blog", "blogs", "support", "help", "docs", "developers", "api", "cdn"},
+        "workable.com": {"www", "resources", "blog", "help", "support", "docs", "developers", "api", "cdn"},
+        "bamboohr.com": {"www", "support", "help", "blog", "developers", "docs", "api", "cdn"},
+        "recruitee.com": {"www", "support", "help", "blog", "developers", "docs", "api", "cdn", "status"},
+        "teamtailor.com": {"www", "support", "help", "blog", "developers", "docs", "api", "cdn", "status"},
+        "freshteam.com": {"www", "support", "help", "blog", "developers", "docs", "api", "cdn"},
+    }
+    for root, labels in blocked_subdomains.items():
+        if host == root:
+            return True
+        if host.endswith("." + root):
+            first = host[:-(len(root)+1)].split(".")[0]
+            if first in labels:
+                return True
+    if host in {"jobs.manatal.com"}:
+        return False
+    return False
+
+
+def _is_real_ats_route(url, ats=""):
+    """An ATS-looking domain is not enough: require a job/board-like host or path."""
+    if _is_noise_job_url(url):
+        return False
+    try:
+        p = urlparse(url)
+        host = p.netloc.lower().split(":", 1)[0]
+        parts = [x for x in p.path.split("/") if x]
+    except Exception:
+        return False
+    ats = canonical_ats_name(ats or ats_from_url(url))
+    if not ats:
+        return False
+    if ats == "Manatal":
+        return host == "jobs.manatal.com" and bool(parts)
+    if ats == "Zoho Recruit" and host in {"jobs.zohorecruit.com", "recruit.zoho.com"}:
+        return bool(parts) and not _is_noise_job_url(url)
+    dedicated = {
+        "Greenhouse": {"boards.greenhouse.io", "job-boards.greenhouse.io"},
+        "Lever": {"jobs.lever.co", "jobs.eu.lever.co"},
+        "Ashby": {"jobs.ashbyhq.com"},
+        "SmartRecruiters": {"careers.smartrecruiters.com", "jobs.smartrecruiters.com"},
+        "Workday": set(),
+        "Personio": {"jobs.personio.de", "jobs.personio.com"},
+    }
+    if ats in dedicated and dedicated[ats] and host not in dedicated[ats]:
+        if ats != "Personio" and ats != "SmartRecruiters":
+            return False
+    if ats == "Workday" and "myworkdayjobs.com" not in host:
+        return False
+    # Do not crawl explicitly foreign Oracle Recruiting country-filter pages.
+    # A general Oracle career root is still allowed; individual jobs still pass
+    # through the later India + remote/hybrid verification gate.
+    if ats == "Oracle Recruiting" and host.endswith("oraclecloud.com"):
+        q = [(k.lower(), unquote(v).replace("+", " ").lower()) for k, v in parse_qsl(p.query, keep_blank_values=True)]
+        loc_values = [v for k, v in q if k in {"location", "country"} and v]
+        india_terms = ("india", "bengaluru", "bangalore", "hyderabad", "pune", "chennai", "delhi", "gurugram", "gurgaon", "mumbai", "noida", "kolkata", "ahmedabad", "remote")
+        if loc_values and any(not any(term in value for term in india_terms) for value in loc_values):
+            return False
+    dedicated_hosts = set().union(*dedicated.values()) if dedicated else set()
+    dedicated_hosts.update({"jobs.manatal.com", "jobs.zohorecruit.com", "recruit.zoho.com"})
+    if host.split(".")[0] in {"www", "support", "help", "docs", "developers", "status", "blog", "cdn", "api", "static", "assets", "app"}:
+        return False
+    if host.split(".")[0] == "jobs" and host not in dedicated_hosts and ats not in {"Zoho Recruit"}:
+        return False
+    if is_exact_job_url(url):
+        return True
+    # Standard ATS company slugs are useful crawl seeds before an exact vacancy
+    # URL is discovered (for example, boards.greenhouse.io/acme).
+    board_roots = {
+        "Greenhouse": {"boards.greenhouse.io", "job-boards.greenhouse.io"},
+        "Lever": {"jobs.lever.co", "jobs.eu.lever.co"},
+        "Ashby": {"jobs.ashbyhq.com"},
+        "Workable": {"apply.workable.com"},
+        "SmartRecruiters": {"careers.smartrecruiters.com", "jobs.smartrecruiters.com"},
+    }
+    if ats in board_roots and host in board_roots[ats] and 1 <= len(parts) <= 2:
+        if not any(x.lower() in {"login", "signin", "sign-in", "search", "about", "privacy", "terms", "form"} for x in parts):
+            return True
+    if not parts:
+        return ats in {"Breezy", "Recruitee", "Teamtailor", "TalentLyft", "BambooHR", "Freshteam", "Darwinbox", "Keka", "PeopleStrong", "HROne", "Zoho Recruit", "Oracle Recruiting", "Phenom", "Eightfold", "ADP", "SuccessFactors", "iCIMS", "Taleo"}
+    return bool(re.search(r"(?:^|/)(?:jobs?|careers?|careersection|vacancies|openings|positions|jobdetail)(?:/|$|\.)", p.path, re.I) or len(parts) >= 2)
 
 
 def _extract_job_links(soup, base_url):
@@ -3723,6 +3898,12 @@ def _extract_job_links(soup, base_url):
             continue
         txt = clean_text(a.get_text(" ", strip=True))
         path = urlparse(href).path
+        if _is_noise_job_url(href):
+            continue
+        # A generic ATS product/support page should not be fed back as a career seed.
+        href_ats = ats_from_url(href)
+        if href_ats and not _is_real_ats_route(href, href_ats):
+            continue
         if keywords.search(txt) or path_re.search(path):
             candidates.append((href, txt))
     # Also recognize forms/buttons with action URLs.
@@ -3876,44 +4057,45 @@ def crawl_career_page_with_browser(company, url, source="Company Career"):
     discovered = []
     responses = []
     try:
-        with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
-            page = browser.new_page(user_agent=USER_AGENT)
-            def on_response(resp):
-                u = resp.url.lower()
-                ct = (resp.headers.get("content-type") or "").lower()
-                if ("json" in ct or any(k in u for k in ["/api/", "/jobs", "/job/", "graphql", "requisition", "opening"])) and len(responses) < 80:
-                    try:
-                        responses.append((resp.url, resp.json()))
-                    except Exception:
-                        pass
-            page.on("response", on_response)
-            page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
-            try:
-                page.wait_for_load_state("networkidle", timeout=min(10000, PLAYWRIGHT_TIMEOUT_MS))
-            except Exception:
-                pass
-            page.wait_for_timeout(1200)
-            html = page.content()
-            final_url = page.url
-            jobs.extend(_browser_extract_job_candidates(html, final_url, company, source))
-            # Extract obvious job URLs from captured JSON objects.
-            def walk(obj, depth=0):
-                if depth > 5 or len(discovered) >= 100:
-                    return
-                if isinstance(obj, dict):
-                    title = clean_text(obj.get("title") or obj.get("jobTitle") or obj.get("name"))
-                    href = clean_text(obj.get("apply_url") or obj.get("applyUrl") or obj.get("jobUrl") or obj.get("job_url") or obj.get("url") or obj.get("absoluteUrl") or obj.get("jobDetailUrl") or obj.get("externalPath"))
-                    if title and href and re.match(r"^https?://", href) and title_relevant(title):
-                        discovered.append((title, href, obj))
-                    for v in obj.values():
-                        walk(v, depth + 1)
-                elif isinstance(obj, list):
-                    for v in obj[:100]:
-                        walk(v, depth + 1)
-            for _, payload in responses:
-                walk(payload)
-            browser.close()
+        with _PLAYWRIGHT_SEMAPHORE:
+            with sync_playwright() as pw:
+                browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
+                page = browser.new_page(user_agent=USER_AGENT)
+                def on_response(resp):
+                    u = resp.url.lower()
+                    ct = (resp.headers.get("content-type") or "").lower()
+                    if ("json" in ct or any(k in u for k in ["/api/", "/jobs", "/job/", "graphql", "requisition", "opening"])) and len(responses) < 80:
+                        try:
+                            responses.append((resp.url, resp.json()))
+                        except Exception:
+                            pass
+                page.on("response", on_response)
+                page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=min(10000, PLAYWRIGHT_TIMEOUT_MS))
+                except Exception:
+                    pass
+                page.wait_for_timeout(1200)
+                html = page.content()
+                final_url = page.url
+                jobs.extend(_browser_extract_job_candidates(html, final_url, company, source))
+                # Extract obvious job URLs from captured JSON objects.
+                def walk(obj, depth=0):
+                    if depth > 5 or len(discovered) >= 100:
+                        return
+                    if isinstance(obj, dict):
+                        title = clean_text(obj.get("title") or obj.get("jobTitle") or obj.get("name"))
+                        href = clean_text(obj.get("apply_url") or obj.get("applyUrl") or obj.get("jobUrl") or obj.get("job_url") or obj.get("url") or obj.get("absoluteUrl") or obj.get("jobDetailUrl") or obj.get("externalPath"))
+                        if title and href and re.match(r"^https?://", href) and title_relevant(title):
+                            discovered.append((title, href, obj))
+                        for v in obj.values():
+                            walk(v, depth + 1)
+                    elif isinstance(obj, list):
+                        for v in obj[:100]:
+                            walk(v, depth + 1)
+                for _, payload in responses:
+                    walk(payload)
+                browser.close()
     except Exception as exc:
         print(f"PLAYWRIGHT {company}: {type(exc).__name__}: {exc}")
         return jobs, []
@@ -3978,21 +4160,15 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
     career_links = []
     seen = set()
 
-    # Capture exact ATS links, even when embedded in buttons/iframes.
-    for a in soup.find_all(["a", "iframe", "script"], href=True) if False else []:
-        pass
-    for a in soup.find_all("a", href=True):
+    # Capture only actual ATS board/job routes. Platform marketing, help, docs,
+    # app and script URLs previously inflated this list without yielding jobs.
+    for a in soup.find_all(["a", "iframe"], href=True):
         href = urljoin(final_url, a.get("href", ""))
+        if _is_noise_job_url(href):
+            continue
         ats = ats_from_url(href)
-        if ats:
-            career_links.append((ats, href))
-
-    # Embedded script URLs are common on modern ATS widgets.
-    for script in soup.find_all("script", src=True):
-        href = urljoin(final_url, script.get("src", ""))
-        ats = ats_from_url(href)
-        if ats:
-            career_links.append((ats, href))
+        if ats and _is_real_ats_route(href, ats):
+            career_links.append((canonical_ats_name(ats), normalize_url(href) or href))
 
     for href, anchor_text in _extract_job_links(soup, final_url):
         key = normalize_url(href)
@@ -4001,7 +4177,11 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
         seen.add(key)
         if len(seen) > max_job_pages:
             break
+        if _is_noise_job_url(href):
+            continue
         href_ats = ats_from_url(href)
+        if href_ats and not _is_real_ats_route(href, href_ats):
+            continue
         # If the anchor itself is clearly a role page, fetch it. If it is just
         # a generic /jobs page, it will be handled as a shallow second pass.
         if href_ats or re.search(r"/(?:job|jobs|career|careers|opening|openings|position|vacanc)", urlparse(href).path, re.I) or title_relevant(anchor_text):
@@ -4276,21 +4456,25 @@ def inspect_discovery_job_page(job, try_browser=False, page_url=""):
         html = ""
     # JS-rendered public pages: bounded browser fallback, only when enabled and
     # the page appears to be a shell. No login, challenge bypass, or private data.
-    if (not html) and try_browser and PLAYWRIGHT_ENABLED and _browser_slot():
+    source_host = urlparse(source_url).netloc.lower().split(":", 1)[0]
+    browser_blocked_roots = {"linkedin.com", "indeed.com", "glassdoor.com", "himalayas.app", "startup.jobs", "remotejobs.org", "x.com", "twitter.com", "reddit.com"}
+    blocked_for_browser = is_aggregator_host(source_host) or any(source_host == root or source_host.endswith("." + root) for root in browser_blocked_roots)
+    if (not html) and try_browser and not blocked_for_browser and PLAYWRIGHT_ENABLED and _browser_slot():
         try:
             from playwright.sync_api import sync_playwright
-            with sync_playwright() as pw:
-                browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
-                page = browser.new_page(user_agent=USER_AGENT)
-                page.goto(source_url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
-                try:
-                    page.wait_for_load_state("networkidle", timeout=min(5000, PLAYWRIGHT_TIMEOUT_MS))
-                except Exception:
-                    pass
-                html = page.content()
-                final_url = page.url or source_url
-                browser.close()
-                browser_used = bool(html)
+            with _PLAYWRIGHT_SEMAPHORE:
+                with sync_playwright() as pw:
+                    browser = pw.chromium.launch(headless=True, args=["--disable-dev-shm-usage", "--no-sandbox"])
+                    page = browser.new_page(user_agent=USER_AGENT)
+                    page.goto(source_url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT_MS)
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=min(5000, PLAYWRIGHT_TIMEOUT_MS))
+                    except Exception:
+                        pass
+                    html = page.content()
+                    final_url = page.url or source_url
+                    browser.close()
+                    browser_used = bool(html)
         except Exception as exc:
             x["verification_notes"] = f"Browser detail fetch failed: {type(exc).__name__}"
 
@@ -5787,6 +5971,21 @@ SEARCH_ATS_QUERY_BANK = [
     '"India" "remote" "technical account manager" careers',
 ]
 
+SOCIAL_SEARCH_QUERY_BANK = [
+    'site:linkedin.com/posts ("we are hiring" OR "hiring for" OR "join our team") ("customer support" OR "customer service") India',
+    'site:linkedin.com/posts ("technical support" OR "product support" OR "support engineer") (India OR Bengaluru OR Chennai OR Pune OR Hyderabad) (hiring OR vacancy)',
+    'site:linkedin.com/posts ("customer success" OR "customer onboarding" OR "implementation specialist") (India OR remote) hiring',
+    'site:linkedin.com/feed/update/ ("customer support" OR "technical support" OR "customer success") (India OR Bengaluru OR Chennai) hiring',
+    'site:x.com ("customer support" OR "customer service") (India OR Bengaluru OR Chennai) (hiring OR "we are hiring")',
+    'site:twitter.com ("technical support" OR "product support" OR "customer success") India (hiring OR vacancy)',
+    'site:reddit.com/r/IndiaJobs ("customer support" OR "technical support" OR "customer success") (remote OR hybrid)',
+    'site:reddit.com ("hiring in India" OR "India remote") ("support engineer" OR "customer support" OR "customer success")',
+    'site:linkedin.com/posts ("work from home" OR remote) India ("chat support" OR "email support" OR "non voice") hiring',
+    'site:x.com ("work from home" OR remote India) ("support specialist" OR "support analyst") hiring',
+    'site:linkedin.com/posts ("hybrid" OR Bengaluru OR Hyderabad OR Pune OR Chennai) ("support engineer" OR "application support") hiring',
+    'site:reddit.com ("remote jobs India" OR "hybrid jobs India") support hiring direct apply',
+]
+
 SEARCH_PROVIDER_NAMES = [
     "serper", "you", "exa", "tavily", "searlo", "search1", "serpapi",
     "serpfast", "serpent", "endless", "serpsearch", "freesea",
@@ -6063,7 +6262,8 @@ def _search_serpapi_google_jobs(query):
             u=clean_text(a.get("link") or a.get("url"))
             if not u.startswith(("http://","https://")):
                 continue
-            host=urlparse(u).netloc.lower().split(":",1)[0].lstrip("www.")
+            host_raw=urlparse(u).netloc.lower().split(":",1)[0]
+            host=host_raw[4:] if host_raw.startswith("www.") else host_raw
             if host in blocked or any(host.endswith("."+b) for b in blocked):
                 continue
             options.append({"url":normalize_url(u) or u,"title":clean_text(a.get("title") or a.get("name"))})
@@ -6091,6 +6291,40 @@ def _search_serpapi_google_jobs(query):
     return out
 
 
+def _search_bing_rss(query):
+    """Keyless public Bing RSS search fallback; bounded and rate-limited by caller."""
+    try:
+        with _BING_RSS_SEMAPHORE:
+            r = SESSION.get(
+                "https://www.bing.com/search",
+                params={"q": query, "format": "rss", "cc": "IN", "setlang": "en"},
+                headers={"Accept": "application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.5",
+                         "Referer": "https://www.bing.com/"},
+                timeout=22,
+            )
+        if r.status_code != 200:
+            print(f"SEARCH bing_rss HTTP {r.status_code}")
+            return []
+        try:
+            root = ET.fromstring(r.content)
+        except Exception:
+            print("SEARCH bing_rss: response was not valid RSS/XML")
+            return []
+        out = []
+        for node in root.findall(".//item"):
+            title = clean_text(node.findtext("title") or "")
+            link = clean_text(node.findtext("link") or "")
+            snippet = clean_text(node.findtext("description") or "")
+            if link.startswith(("https://", "http://")):
+                out.append({"url": normalize_url(link), "title": title, "snippet": snippet})
+            if len(out) >= SEARCH_RESULTS_PER_QUERY:
+                break
+        return out
+    except Exception as exc:
+        print(f"SEARCH bing_rss error: {type(exc).__name__}: {exc}")
+        return []
+
+
 def _search_provider(name, query):
     return {
         "serper": _search_serper,
@@ -6105,20 +6339,21 @@ def _search_provider(name, query):
         "endless": _search_endless,
         "serpsearch": _search_serpsearch,
         "freesea": _search_freesea,
+        "bing_rss": _search_bing_rss,
         "serpapi_google_jobs": _search_serpapi_google_jobs,
     }.get(name, lambda _q: [])(query)
 
 
 def discover_search_engine_urls():
-    """Discover ATS boards, career pages, and individual job URLs.
+    """Discover ATS boards, company career pages, job pages and public social leads.
 
-    Serper and SerpAPI are Google-result providers. We use Google's public
-    index through those APIs rather than scraping google.com HTML directly.
-    Dedicated site:/inurl:/phrase queries find both ATS boards and individual
-    company job pages. Calls are parallelized so broader discovery does not
-    materially slow the prepare job.
+    Configured search providers are optional. A bounded Bing RSS pass runs as a
+    no-key fallback (and supplement) so a missing API secret does not make search
+    discovery silently return zero results. We do not scrape Google HTML or
+    bypass login/anti-bot controls on social platforms.
     """
     if not SEARCH_DISCOVERY_ENABLED:
+        print("SEARCH DISCOVERY: disabled by configuration")
         return []
     configured_map={
         "serper":SERPER_API_KEY,"you":YOU_API_KEY,"exa":EXA_API_KEY,
@@ -6133,52 +6368,58 @@ def discover_search_engine_urls():
         if configured_map.get(p) and (p != "serpapi" or SERPAPI_ORGANIC_DISCOVERY_ENABLED)
     ]
     google_jobs_configured=bool(SERPAPI_API_KEY and GOOGLE_JOBS_ENABLED)
-    if not configured and not google_jobs_configured:
-        print("SEARCH DISCOVERY: no search API keys configured")
-        return []
-
     day=datetime.now(timezone.utc).date().toordinal()
     regular_rotation=(day//SEARCH_DISCOVERY_ROTATION_DAYS) % len(SEARCH_ATS_QUERY_BANK)
     regular_queries=[SEARCH_ATS_QUERY_BANK[(regular_rotation+i)%len(SEARCH_ATS_QUERY_BANK)] for i in range(max(1,SEARCH_QUERIES_PER_PROVIDER))]
     google_rotation=(day//GOOGLE_DISCOVERY_ROTATION_DAYS) % len(SEARCH_GOOGLE_QUERY_BANK)
     google_queries=[SEARCH_GOOGLE_QUERY_BANK[(google_rotation+i)%len(SEARCH_GOOGLE_QUERY_BANK)] for i in range(GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER)] if GOOGLE_DISCOVERY_ENABLED else []
-    # Dedicated LinkedIn/Indeed query rotation. Advance in blocks so each run
-    # covers fresh queries rather than repeating an overlapping sliding window.
     board_start=(day*JOB_BOARD_QUERIES_PER_RUN) % len(JOB_BOARD_QUERY_BANK)
     board_queries=[JOB_BOARD_QUERY_BANK[(board_start+i)%len(JOB_BOARD_QUERY_BANK)] for i in range(JOB_BOARD_QUERIES_PER_RUN)]
+    social_start=(day*PUBLIC_SERP_QUERIES_PER_RUN) % len(SOCIAL_SEARCH_QUERY_BANK)
+    social_queries=[SOCIAL_SEARCH_QUERY_BANK[(social_start+i)%len(SOCIAL_SEARCH_QUERY_BANK)] for i in range(min(PUBLIC_SERP_QUERIES_PER_RUN, len(SOCIAL_SEARCH_QUERY_BANK)))]
     jobs_rotation=(day//GOOGLE_JOBS_ROTATION_DAYS) % len(GOOGLE_JOBS_QUERY_BANK)
     jobs_remaining=max(0,GOOGLE_JOBS_MAX_QUERIES_PER_DAY-_google_jobs_calls_used_today())
     google_jobs_queries=[GOOGLE_JOBS_QUERY_BANK[(jobs_rotation+i)%len(GOOGLE_JOBS_QUERY_BANK)] for i in range(min(GOOGLE_JOBS_MAX_QUERIES_PER_DAY,jobs_remaining))] if google_jobs_configured else []
 
     tasks=[]
-    provider_query_caps = {
-        "serpfast": 1,  # free tier: one request per 30 seconds
-        "serpent": 1,   # conservative free-credit protection
-        "endless": 4,   # well below its advertised daily request allowance
-        "serpsearch": 2,
-        "freesea": 2,
-    }
+    provider_query_caps={"serpfast":1,"serpent":1,"endless":4,"serpsearch":2,"freesea":2}
     for provider in configured:
-        # Serper is the default Google-web provider. SerpApi organic Google is
-        # disabled by default so its quota can be reserved for Google Jobs.
         qs = google_queries if provider == "serper" and GOOGLE_DISCOVERY_ENABLED else regular_queries
         if provider in provider_query_caps:
             qs = qs[:provider_query_caps[provider]]
         for q in qs:
             tasks.append((provider,q))
-    # Run targeted LinkedIn/Indeed search queries through one configured web
-    # search provider per workflow run to control API usage. Prefer Serper; if
-    # it is not configured, fall back to the first configured provider.
     board_provider = "serper" if "serper" in configured else (configured[0] if configured else "")
     if board_provider:
         for q in board_queries:
             tasks.append((board_provider,q))
-
+        # Rotate social hiring-post queries through the configured public SERP provider.
+        for q in social_queries[:min(6, len(social_queries))]:
+            tasks.append((board_provider,q))
     for q in google_jobs_queries:
         tasks.append(("serpapi_google_jobs",q))
 
+    # Keyless public-search fallback. Always supplement with a small daily slice;
+    # use a wider slice when no API-based provider is configured.
+    if PUBLIC_SERP_FALLBACK_ENABLED:
+        # Guarantee a social-hiring slice each run. Earlier rotation across one
+        # very large mixed bank often went days without searching public posts.
+        general_bank = list(dict.fromkeys(SEARCH_GOOGLE_QUERY_BANK + SEARCH_ATS_QUERY_BANK + JOB_BOARD_QUERY_BANK))
+        fallback_budget = PUBLIC_SERP_QUERIES_PER_RUN if not configured else min(6, PUBLIC_SERP_QUERIES_PER_RUN)
+        social_budget = min(len(SOCIAL_SEARCH_QUERY_BANK), max(2, fallback_budget // 3))
+        general_budget = max(0, fallback_budget - social_budget)
+        fallback_start = (day * max(1, general_budget)) % len(general_bank)
+        general_queries = [general_bank[(fallback_start+i)%len(general_bank)] for i in range(general_budget)]
+        fallback_social_start = (day * max(1, social_budget)) % len(SOCIAL_SEARCH_QUERY_BANK)
+        social_fallback_queries = [SOCIAL_SEARCH_QUERY_BANK[(fallback_social_start+i)%len(SOCIAL_SEARCH_QUERY_BANK)] for i in range(social_budget)]
+        fallback_queries = list(dict.fromkeys(general_queries + social_fallback_queries))
+        tasks.extend(("bing_rss", q) for q in fallback_queries)
+
     print(
         f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} "
+        f"public_fallback={'bing_rss' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
+        f"fallback_queries={sum(1 for p,_ in tasks if p == 'bing_rss')} "
+        f"social_queries={len(social_queries)} "
         f"google_queries={len(google_queries) if GOOGLE_DISCOVERY_ENABLED else 0} "
         f"google_jobs_queries={len(google_jobs_queries)} "
         f"job_board_queries={len(board_queries) if board_provider else 0} "
@@ -6186,31 +6427,74 @@ def discover_search_engine_urls():
         f"serpapi_organic={'on' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'off'}"
     )
     if google_jobs_configured:
-        print(f"GOOGLE JOBS: SerpApi budget remaining today={len(google_jobs_queries)}; configured daily cap={GOOGLE_JOBS_MAX_QUERIES_PER_DAY} (~{GOOGLE_JOBS_MAX_QUERIES_PER_DAY*30}/30-day month)")
+        print(f"GOOGLE JOBS: SerpApi budget remaining today={len(google_jobs_queries)}; configured daily cap={GOOGLE_JOBS_MAX_QUERIES_PER_DAY}")
 
     all_results=[]
     seen=set()
+    counts=Counter()
     def one(task):
         provider,q=task
         return provider,q,_search_provider(provider,q)
-    with ThreadPoolExecutor(max_workers=min(GOOGLE_DISCOVERY_WORKERS,max(1,len(tasks)))) as ex:
+    worker_limit=min(max(GOOGLE_DISCOVERY_WORKERS, PUBLIC_SERP_WORKERS), max(1,len(tasks)))
+    with ThreadPoolExecutor(max_workers=worker_limit) as ex:
         futures=[ex.submit(one,t) for t in tasks]
         for f in as_completed(futures):
             try:
                 provider,q,results=f.result()
-            except Exception:
+            except Exception as exc:
+                print(f"SEARCH TASK ERROR: {type(exc).__name__}: {exc}")
                 continue
+            counts[provider] += len(results or [])
             for item in results or []:
-                u=item.get("url","")
+                u=normalize_url(item.get("url",""))
                 if u and u not in seen:
                     seen.add(u)
+                    item["url"]=u
                     item["provider"]=provider
                     item["query"]=q
                     all_results.append(item)
-
     all_results=all_results[:SEARCH_DISCOVERY_MAX_URLS]
+    print("SEARCH PROVIDER RESULTS: " + ", ".join(f"{p}={n}" for p,n in sorted(counts.items())) if counts else "SEARCH PROVIDER RESULTS: no results returned")
     print(f"SEARCH DISCOVERY: unique URLs={len(all_results)}")
     return all_results
+
+
+def _company_hint_from_search_result(ats, url, title="", company=""):
+    """Infer a conservative company hint for a specific ATS job URL.
+
+    Search result titles are often job titles, not employer names. Prefer an
+    explicit provider-supplied company, then ATS tenant/board slug, and avoid
+    labelling a job title as the company.
+    """
+    title = clean_text(title)
+    company = clean_text(company)
+    role_title = bool(re.search(
+        r"customer\s+(?:support|service|success|experience|care)|technical\s+support|"
+        r"product\s+support|support\s+engineer|help\s*desk|service\s+desk|"
+        r"application\s+support|platform\s+support|onboarding|implementation",
+        title, re.I,
+    ))
+    if company and not role_title:
+        return company
+    try:
+        p = urlparse(url)
+        host = p.netloc.lower().split(":", 1)[0]
+        parts = [unquote(x) for x in p.path.split("/") if x]
+    except Exception:
+        return ""
+    if ats == "Workday":
+        m = re.match(r"^([a-z0-9-]+)\.wd\d+\.myworkdayjobs\.com$", host)
+        if m:
+            return humanize_slug(m.group(1))
+    if ats in {"Greenhouse", "Lever", "Ashby", "Workable", "SmartRecruiters", "Zoho Recruit", "TalentLyft"} and parts:
+        # For the known public ATS hosts, the first path segment is normally
+        # the employer/board slug. SmartRecruiters starts with company slug too.
+        return humanize_slug(parts[0])
+    if title and not role_title:
+        first = clean_text(title.split(" - ")[0].split(" | ")[0])
+        if first and len(first) < 90:
+            return first
+    return ""
 
 
 def add_search_discovery_to_maps(search_results, board_map, career_map):
@@ -6223,7 +6507,7 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
     generating jobs after the initial discovery run.
     """
     added_boards=0; added_careers=0; discovery=[]
-    blocked_hosts={"linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com"}
+    review_only_hosts={"linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com","x.com","twitter.com","reddit.com"}
     role_re = re.compile(
         r"customer\s+(?:support|service|success|experience|care)|"
         r"technical\s+support|technical\s+account|product\s+support|support\s+engineer|"
@@ -6235,13 +6519,30 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
         u=normalize_url(item.get("url",""))
         if not u.startswith(("http://","https://")): continue
         parsed=urlparse(u)
-        host=parsed.netloc.lower().split(":",1)[0].lstrip("www.")
-        if host in blocked_hosts or any(host.endswith("."+x) for x in blocked_hosts):
-            continue
+        full_host=parsed.netloc.lower().split(":",1)[0]
+        host=full_host[4:] if full_host.startswith("www.") else full_host
+        review_only_host = any(host == root or host.endswith("." + root) for root in review_only_hosts)
+        social_host = any(host == root or host.endswith("." + root) for root in {"linkedin.com","x.com","twitter.com","reddit.com"})
 
         provider=clean_text(item.get("provider"))
         ats=canonical_ats_name(ats_from_url(u))
         title=clean_text(item.get("title")); snippet=clean_text(item.get("snippet")); query=clean_text(item.get("query"))
+
+        # Public social/job-board URLs are review leads only. Keep them visible,
+        # but never turn a post or aggregator listing into a crawl seed by itself.
+        content = f"{title} {snippet}"
+        social_role_hit = bool(role_re.search(content) or role_re.search(query))
+        social_india_hint = bool(re.search(r"\bindia\b|bengaluru|bangalore|hyderabad|pune|chennai|delhi|gurugram|noida|mumbai", content, re.I)) or (bool(re.search(r"\b(remote|hybrid|work from home)\b", content, re.I)) and bool(re.search(r"\bindia\b|bengaluru|bangalore|hyderabad|pune|chennai|delhi|gurugram|noida|mumbai", query, re.I)))
+        if review_only_host and social_role_hit and social_india_hint:
+            discovery.append({
+                "discovery_url":u,"title":title,"snippet":snippet,
+                "source":f"{'Social Search' if social_host else 'Public Job Board Search'}/{provider or 'search'}",
+                "query":query,"score":85 if social_host else 78,
+                "company":clean_text(title.split(" | ")[0].split(" - ")[0]) if title else "",
+                "seed_type":"Public Social Hiring Post" if social_host else "Public Job Board Listing",
+                "crawl_seed":"No","detail_status":"Pending public post verification",
+            })
+            continue
 
         # Dedicated Google Jobs results: keep the Google Jobs record for manual
         # review, and promote every non-aggregator employer/ATS apply option to
@@ -6255,8 +6556,10 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
                     apply_urls.append(x)
             if apply_urls:
                 for apply_url in apply_urls[:5]:
-                    ahost=urlparse(apply_url).netloc.lower().split(":",1)[0].lstrip("www.")
-                    if ahost in blocked_hosts or any(ahost.endswith("."+x) for x in blocked_hosts):
+                    ahost_raw=urlparse(apply_url).netloc.lower().split(":",1)[0]
+                    ahost=ahost_raw[4:] if ahost_raw.startswith("www.") else ahost_raw
+                    if any(ahost == root or ahost.endswith("."+root) for root in review_only_hosts):
+                        discovery.append({"discovery_url":apply_url,"title":title,"snippet":snippet,"source":"Google Jobs/SerpApi","query":query,"score":75,"company":clean_text(item.get("company")),"seed_type":"Public Job Board Listing","crawl_seed":"No"})
                         continue
                     a_ats=canonical_ats_name(ats_from_url(apply_url))
                     if a_ats:
@@ -6288,20 +6591,58 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
                 })
             continue
 
-        # 1) Exact ATS result -> persistent ATS board queue.
+        # Exact ATS vacancy pages should be crawled as individual candidates,
+        # not converted into a whole-company board seed. This keeps noisy or
+        # foreign "work from home" search hits from expanding the board universe.
+        if ats and is_exact_job_url(u):
+            role_evidence = bool(role_re.search(f"{query} {title} {snippet}"))
+            # Workday often indexes both /job/... and /job/.../apply for the
+            # same opening. Crawl one canonical detail page, not both variants.
+            parsed_job = urlparse(u)
+            canonical_path = re.sub(r"/apply/?$", "", parsed_job.path, flags=re.I)
+            canonical_job_url = parsed_job._replace(path=canonical_path).geturl() if canonical_path != parsed_job.path else u
+            company_hint = _company_hint_from_search_result(ats, canonical_job_url, title, item.get("company", ""))
+            if role_evidence and is_plausible_career_seed(canonical_job_url):
+                career_map.setdefault(canonical_job_url, {
+                    "company": company_hint,
+                    "url": canonical_job_url,
+                    "source": f"Search/{provider or 'search'}",
+                    "ats": "Company Career",
+                    "crawl_priority": 0,
+                    "seed_type": "Google Job Page",
+                    "query": query,
+                    "last_discovered": datetime.now(timezone.utc).date().isoformat(),
+                })
+                added_careers += 1
+                discovery.append({
+                    "discovery_url":canonical_job_url,"title":title,"snippet":snippet,
+                    "source":f"Search/{provider or 'search'}","query":query,
+                    "score":100,"company":company_hint,
+                    "seed_type":"Google Job Page","crawl_seed":"Yes",
+                    "detail_status":"Pending original job-page verification",
+                })
+            else:
+                discovery.append({
+                    "discovery_url":canonical_job_url,"title":title,"snippet":snippet,
+                    "source":f"Search/{provider or 'search'}","query":query,
+                    "score":60,"company":company_hint,
+                    "seed_type":"Search Result","crawl_seed":"No",
+                    "detail_status":"Review; target role not confirmed in search result",
+                })
+            continue
+
+        # Non-detail ATS pages remain board seeds. This path only applies to
+        # actual board/listing URLs; exact vacancy URLs above are not promoted.
         if ats:
             key=board_key_from_url(ats,u)
-            if key and is_valid_board_seed(ats,u):
-                rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Search API"})
+            if key and is_valid_board_seed(ats,u) and role_re.search(f"{query} {title} {snippet}"):
+                rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":humanize_slug(key),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":f"Search/{provider or 'search'}"})
                 if rec.get("url") in {"",None}: rec["url"]=u
                 added_boards+=1
-                # ATS result is also useful for manual review, but it remains a
-                # discovery seed rather than a published JOBS row.
                 discovery.append({
                     "discovery_url":u,"title":title,"snippet":snippet,
-                    "source":f"Google/{provider or 'search'}","query":query,
-                    "score":100 if role_re.search(f"{query} {title} {snippet}") else 75,
-                    "company":clean_text(title.split(" - ")[0]) if title else humanize_slug(key),
+                    "source":f"{'Search' if provider == 'bing_rss' else 'Google'}/{provider or 'search'}","query":query,
+                    "score":100,"company":clean_text(title.split(" - ")[0]) if title else humanize_slug(key),
                     "seed_type":"ATS Board Seed","crawl_seed":"Yes",
                 })
                 continue
@@ -6430,7 +6771,7 @@ def canonical_ats_name(ats):
     # Normalize aliases from the discovery directories.
     aliases={
         "smart recruiter":"SmartRecruiters", "smartrecruiter":"SmartRecruiters",
-        "smartrecruiters":"SmartRecruiters", "greenhouse":"Greenhouse", "lever":"Lever",
+        "smartrecruiters":"SmartRecruiters", "greenhouse":"Greenhouse", "lever":"Lever", "zoho":"Zoho Recruit",
         "ashby":"Ashby", "workable":"Workable", "recruitee":"Recruitee", "breezy":"Breezy",
         "teamtailor":"Teamtailor", "bamboohr":"BambooHR", "personio":"Personio", "workday":"Workday",
         "zohorecruit":"Zoho Recruit", "zoho recruit":"Zoho Recruit", "darwinbox":"Darwinbox",
@@ -6672,7 +7013,8 @@ def daily_crawl_nonstandard():
         if ats in FETCHERS or ats=="Workday":
             continue
         for r in recs or []:
-            if r.get("active",True) and r.get("url"):
+            url=clean_text(r.get("url"))
+            if r.get("active",True) and url and not _is_noise_job_url(url) and _is_real_ats_route(url, ats):
                 rr=dict(r); rr["ats"]=ats; rows.append(rr)
     rows=rotate_records(rows,int(os.environ.get("NONSTANDARD_DAILY_BUDGET","700")),"nonstandard")
     print(f"NONSTANDARD ATS/CAREER ROUTES: {len(rows)}")
@@ -6761,7 +7103,7 @@ def daily_crawl_careers():
     ded={normalize_url(r.get("url","")):r for r in records if r.get("url")}
     records=list(ded.values())[:V11_CAREER_DAILY_BUDGET]
     print(f"CAREER PAGES: {len(records)} (google-priority={min(len(google_records),google_budget)}, other={len(records)-min(len(google_records),google_budget)})")
-    out=[]; discovered=[]
+    out=[]; discovered=[]; errors=0
     def one(rec):
         company=clean_text(rec.get("company")); url=rec.get("url")
         if not url:return [],[]
@@ -6770,15 +7112,29 @@ def daily_crawl_careers():
         futs={ex.submit(one,r):r for r in records}
         done=0
         for f in as_completed(futs):
-            try:j,links=f.result()
-            except Exception:j,links=[],[]
+            try:
+                j,links=f.result()
+            except Exception as exc:
+                j,links=[],[]; errors+=1
+                if errors <= 12:
+                    rec=futs[f]
+                    print(f"CAREER CRAWL ERROR: {clean_text(rec.get('company'))} {clean_text(rec.get('url'))[:120]} -> {type(exc).__name__}: {exc}")
             for job in j:
                 job["direct"]=True; job["eligibility"]=job.get("eligibility") or v11_india_eligibility(job.get("location",""),"",job.get("location",""),"",job.get("workplace",""))
             out.extend(j)
             for ats,url in links:
-                discovered.append({"company":futs[f].get("company",""),"ats":canonical_ats_name(ats),"url":url,"source":"Company Career"})
+                if _is_real_ats_route(url, ats):
+                    discovered.append({"company":futs[f].get("company",""),"ats":canonical_ats_name(ats),"url":url,"source":"Company Career"})
             done+=1
-            if done%100==0: print(f"CAREER PROGRESS: {done}/{len(records)}")
+            if done%100==0: print(f"CAREER PROGRESS: {done}/{len(records)} jobs={len(out)} useful_routes={len(discovered)} errors={errors}")
+    # Deduplicate the route artifact before it is uploaded/merged.
+    route_dedup={}
+    for rec in discovered:
+        u=normalize_url(rec.get("url") or "")
+        if u:
+            route_dedup[u]=rec
+    discovered=list(route_dedup.values())
+    print(f"CAREER SUMMARY: pages={len(records)} jobs={len(out)} useful_ats_routes={len(discovered)} errors={errors}")
     return out,discovered
 
 
@@ -6903,10 +7259,16 @@ def feed_direct_only():
     checked_resolved = []
     requeue_for_review = []
     direct_detail_budget = max(0, int(os.environ.get("DIRECT_DETAIL_BUDGET", "120")))
-    for idx, item in enumerate(direct):
-        if idx >= direct_detail_budget or not item.get("original_discovery_url"):
+    direct_detail_checked = 0
+    for item in direct:
+        # Already-direct feed/ATS rows do not consume the resolver-verification budget.
+        if not item.get("original_discovery_url"):
             checked_resolved.append(item)
             continue
+        if direct_detail_checked >= direct_detail_budget:
+            checked_resolved.append(item)
+            continue
+        direct_detail_checked += 1
         inspected = inspect_discovery_job_page(item, try_browser=True, page_url=item.get("job_url", ""))
         inspected["original_discovery_url"] = item.get("original_discovery_url", "")
         inspected["discovery_url"] = item.get("original_discovery_url", "")
@@ -6942,8 +7304,36 @@ def feed_direct_only():
     # so the run stays predictable. Unverified leads are explicitly labelled.
     detail_budget = max(0, int(os.environ.get("DISCOVERY_DETAIL_BUDGET", "180")))
     discovery = enrich_discovery_details(discovery, budget=detail_budget)
+    # A successful aggregator inspection may expose a real employer/ATS Apply URL
+    # even when the first lightweight resolver could not fetch the aggregator.
+    # Re-verify that destination and promote only if the destination itself proves
+    # the target role + India + Remote/Hybrid. Otherwise retain the original lead.
+    promoted_urls = set()
+    promoted = []
+    for lead in discovery:
+        apply_url = normalize_url(lead.get("resolved_apply_url") or "")
+        if lead.get("detail_status") != "Verified details" or not apply_url:
+            continue
+        host = urlparse(apply_url).netloc.lower().split(":", 1)[0]
+        if not apply_url.startswith(("http://", "https://")) or is_aggregator_host(host) or not is_exact_job_url(apply_url):
+            continue
+        direct_detail = inspect_discovery_job_page(lead, try_browser=True, page_url=apply_url)
+        direct_detail["job_url"] = apply_url
+        direct_detail["source"] = f"{clean_text(lead.get('source'))} (verified employer apply link)"
+        direct_detail["direct"] = True
+        direct_detail["direct_validation"] = "aggregator-apply-link-verified"
+        if (direct_detail.get("detail_status") == "Verified details"
+                and title_relevant(direct_detail.get("title", ""))
+                and direct_detail.get("eligibility") in {"India-specific", "India-inferred"}
+                and _workplace_allowed(direct_detail.get("workplace", ""))):
+            promoted.append(direct_detail)
+            promoted_urls.add(normalize_url(lead.get("discovery_url") or lead.get("job_url") or ""))
+    if promoted:
+        direct.extend(promoted)
+        discovery = [x for x in discovery if normalize_url(x.get("discovery_url") or x.get("job_url") or "") not in promoted_urls]
     verified_details = sum(1 for x in discovery if x.get("detail_status") == "Verified details")
-    print(f"DIRECT DETAIL VERIFICATION: checked={min(len(direct), direct_detail_budget)} verified_direct={len(direct)} requeued_for_review={len(requeue_for_review)} budget={direct_detail_budget}")
+    print(f"VERIFIED AGGREGATOR APPLY LINKS: promoted={len(promoted)}")
+    print(f"DIRECT DETAIL VERIFICATION: checked={direct_detail_checked} verified_direct={len(direct)} requeued_for_review={len(requeue_for_review)} budget={direct_detail_budget}")
     print(f"DISCOVERY DETAIL INSPECTION: checked={min(len(discovery), detail_budget)} verified_details={verified_details} remaining_needs_review={len(discovery)-verified_details} budget={detail_budget}")
     print(f"FEEDS DIRECT CANDIDATES: {len(direct)}")
     print(f"FEEDS DISCOVERY CANDIDATES: {len(discovery)}")
@@ -7377,7 +7767,7 @@ def run_careers_cli(out_path):
     with open(out_path,"w",encoding="utf-8") as f:
         for j in jobs:f.write(json.dumps(j,ensure_ascii=False)+"\n")
     with open(os.path.splitext(out_path)[0]+".links.json","w",encoding="utf-8") as f:json.dump(disc,f,ensure_ascii=False,indent=2)
-    print(f"CAREERS: DIRECT JOBS {len(jobs)} exact routes discovered {len(disc)}")
+    print(f"CAREERS: DIRECT JOBS {len(jobs)} | UNIQUE USEFUL ATS ROUTES {len(disc)}")
 
 
 def run_feeds_cli(out_path):
@@ -7504,7 +7894,7 @@ def run_merge(out_dir,write_sheet=False):
 
 
 def main_v11():
-    parser=argparse.ArgumentParser(description="Remote4.me V14.6 India-first high coverage crawler")
+    parser=argparse.ArgumentParser(description="Remote4.me V14.8 India-first high coverage crawler")
     parser.add_argument("--discover",action="store_true")
     parser.add_argument("--ats",choices=["Greenhouse","Lever","Ashby","Workable","SmartRecruiters","Recruitee","Breezy","Teamtailor","BambooHR","Personio","Workday","Zoho Recruit","Darwinbox","Keka","Zwayam","PeopleStrong","HROne","Freshteam","Oracle Recruiting","iCIMS","Taleo","SuccessFactors","ADP","Nonstandard"],default="")
     parser.add_argument("--careers",action="store_true")
@@ -7514,7 +7904,7 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V14.6 — EXPANDED ATS + CAREER PAGES + LINK RETENTION")
+    print("REMOTE4.ME JOB CRAWLER V14.8 — SEARCH FALLBACK + CLEANER ATS ROUTES + VERIFIED APPLY LINKS")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
@@ -7522,7 +7912,9 @@ def main_v11():
     print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
     print("External fallbacks: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none")
     print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
-    print("Search discovery: " + ", ".join([x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]) or "none")
+    configured_search_names = [x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]
+    print("Search discovery providers: " + ", ".join(configured_search_names or ["none configured"]))
+    print(f"Public no-key search fallback: {'enabled' if PUBLIC_SERP_FALLBACK_ENABLED else 'disabled'} in the --discover prepare step")
     print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
     if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
         print(f"Google Jobs daily budget: {GOOGLE_JOBS_MAX_QUERIES_PER_DAY} search call(s) (~{GOOGLE_JOBS_MAX_QUERIES_PER_DAY*30}/30-day month)")

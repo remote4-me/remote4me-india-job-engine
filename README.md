@@ -1,20 +1,34 @@
-# Remote4.me V14 India crawler upgrade
+# Remote4.me crawler V14.8 — search-first, cleaner ATS discovery
+
+This package upgrades the existing Remote4.me crawler without requiring new paid search API keys. Existing API providers remain optional and are used when configured.
 
 ## What changed
-- Removed Jobvetta completely (no code, config, workflow secret, or feed call).
-- India-first remote/hybrid support, customer success, product support and related role scope retained.
-- Added a conservative direct-apply quality gate: known aggregators (including LinkedIn and Indeed) are discovery-only and cannot enter the direct jobs output.
-- Feed records are direct only when they resolve to an exact supported ATS job route or an exact job route on the employer domain recorded for that company. A random non-aggregator hostname is no longer enough.
-- Existing Google Sheets/manual review and sharded GitHub Actions flow are preserved.
+
+- **Keyless SERP fallback:** the `--discover` stage runs a bounded public Bing RSS search pass even when search-provider API secrets are absent. Queries rotate across India-first remote/hybrid jobs, ATS pages, job boards, and public social hiring posts. Four of the default twelve keyless queries are reserved for social searches each run. This is a fallback, not a guaranteed search service; public RSS endpoints can throttle or change.
+- **Individual job-page seeds:** exact ATS vacancy URLs from SERP results are queued as individual high-priority career seeds instead of being expanded into a whole ATS-board crawl. `/apply` variants are canonicalized to avoid crawling both forms of the same Workday vacancy.
+- **Public social discovery:** search-engine-indexed public LinkedIn, X/Twitter, and Reddit hiring posts can appear as review-only discovery leads. They are never treated as verified direct-apply jobs automatically.
+- **Cleaner ATS route detection:** platform marketing, app, help, developer, documentation, static asset, candidate portal, event, and form URLs are filtered. Manatal's general marketing/support/app domains are no longer treated as career boards; only the job-board host is accepted.
+- **Better fallback coverage:** plausible career pages are not dropped during preflight merely because they return 403/429/5xx or a transient network error. Clearly dead 404/410 URLs and non-HTML assets are still rejected. Later parsing, role, location, workplace, freshness, and link checks remain in force.
+- **Lower browser contention:** Playwright browser concurrency is capped to reduce pipe-closure errors from launching too many Chromium instances at once.
+- **Verification budget fix:** already-direct rows no longer consume the limited budget reserved for verifying aggregator-to-employer links.
+- **Better logs:** the crawler prints the configured search providers separately from the no-key fallback, makes clear that SERP discovery runs in the `--discover` prepare stage, and reports useful ATS routes rather than raw route counts.
+- **Existing sheet structure preserved:** `JOBS` remains remote-only; India-only hybrid jobs stay in `HYBRID`; discovery leads continue to go to `DISCOVERY` and `HYBRID_DISCOVERY`.
 
 ## Install
-1. Back up the current `crawler.py` and `.github/workflows/daily.yml`.
-2. Replace repository `crawler.py` with `remote4me_v14_crawler.py` (rename to `crawler.py`).
-3. Replace `.github/workflows/daily.yml` with `remote4me_v14_daily.yml` (rename to `daily.yml`).
-4. Commit and run the workflow manually. Review `jobs-careers`, `jobs-feeds`, ATS artifacts, and the discovery sheet before publishing.
+
+Replace these files in your repository:
+
+- `crawler.py` → repository root `crawler.py`
+- `daily.yml` → `.github/workflows/daily.yml`
+- `discover.yml` → `.github/workflows/discover.yml` (or your existing weekly-discovery workflow path)
+
+Keep your existing `requirements.txt` and `data/` files. The workflow expects the existing Google Sheets secrets (`GOOGLE_SERVICE_ACCOUNT_JSON`, `GOOGLE_SHEET_ID`) and optionally uses whatever SERP/feed secrets you already have. No new secret is required for the public RSS fallback.
+
+Commit and push the files, then run the **daily workflow** manually once. Check the `prepare` job's `SEARCH DISCOVERY` / `SEARCH PROVIDER RESULTS` lines, the career job's `CAREER SUMMARY` line, and the final `VERIFIED AGGREGATOR APPLY LINKS` / `FEEDS DIRECT CANDIDATES` counters.
 
 ## Important limitations
-- LinkedIn and Indeed are not directly scraped or bypassed. Their links are not treated as employer-direct application URLs. Use permitted discovery signals, then resolve to the employer's public career page or authorized ATS page.
-- Himalayas remains a discovery source. A Himalayas page itself is not an employer application link; a separately verified employer/ATS link can qualify.
-- This is not a promise of more jobs every run. The stricter direct-link gate may initially reduce the number of rows while improving accuracy.
-- The live GitHub run still needs your existing repository secrets, dependencies, and manifests. This package was validated locally for Python syntax and workflow YAML only; no live external crawl was run.
+
+- The no-key fallback uses a public Bing RSS-style endpoint, not Google HTML scraping. It may be blocked, throttled, or changed by the provider; no-key search results are not guaranteed on every run.
+- Public social posts are discovery leads only. The crawler does not log in, bypass access controls, or publish a job solely because a social post exists.
+- Search result snippets and ATS URLs are candidates, not proof of eligibility. The original listing must still support the target role, India eligibility, remote/hybrid arrangement, freshness, and a valid direct job URL before it enters the final direct-job output.
+- This package was syntax-checked, its workflow YAML parsed, and targeted logic smoke tests were run. It was **not** run as a live GitHub Action against your Google Sheet from this environment, so actual live job yield and provider availability remain unverified.
