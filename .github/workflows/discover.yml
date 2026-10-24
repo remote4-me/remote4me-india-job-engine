@@ -1,4 +1,4 @@
-name: Remote4.me V14.8 Weekly Discovery
+name: Remote4.me V15.0 Weekly Discovery
 
 on:
   workflow_dispatch:
@@ -35,17 +35,20 @@ jobs:
           SEARCH1_API_KEY: ${{ secrets.SEARCH1_API_KEY }}
           SEARLO_API_KEY: ${{ secrets.SEARLO_API_KEY }}
           PUBLIC_SERP_FALLBACK_ENABLED: "1"
-          PUBLIC_SERP_QUERIES_PER_RUN: "12"
-          DISCOVERY_VALIDATE_PER_ATS: "1800"
+          PUBLIC_SERP_QUERIES_PER_RUN: "24"
+          SEARCH_API_PROVIDERS_PER_RUN: "1"
+          SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED: "0"
+          GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "1"
+          DISCOVERY_VALIDATE_PER_ATS: "1200"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
-          DISCOVERY_WORKERS: "36"
+          DISCOVERY_WORKERS: "24"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --discover
       - name: Commit refreshed manifests
         run: |
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/boards.json data/companies.json
+          git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
           git diff --cached --quiet && echo "No manifest changes." && exit 0
-          git commit -m "Refresh V11 company and ATS discovery manifests"
+          git commit -m "Refresh V15.0 company and ATS discovery manifests"
           git push

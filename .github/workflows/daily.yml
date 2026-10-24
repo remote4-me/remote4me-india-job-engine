@@ -1,4 +1,4 @@
-name: Remote4.me V14.8 Search-First + Cleaner ATS Discovery
+name: Remote4.me V15.0 Search-First + Cleaner ATS Discovery
 
 on:
   workflow_dispatch:
@@ -6,10 +6,10 @@ on:
     - cron: "30 13 * * *"  # 19:00 IST
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: remote4me-v14-daily
+  group: remote4me-v15-daily
   cancel-in-progress: false
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Refresh V14.8 discovery manifests
+      - name: Refresh V15.0 discovery manifests
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -43,21 +43,23 @@ jobs:
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           SEARCH_DISCOVERY_ENABLED: "1"
           PUBLIC_SERP_FALLBACK_ENABLED: "1"
-          PUBLIC_SERP_QUERIES_PER_RUN: "12"
+          PUBLIC_SERP_QUERIES_PER_RUN: "24"
           PUBLIC_SERP_WORKERS: "4"
           SEARCH_QUERIES_PER_PROVIDER: "2"
+          SEARCH_API_PROVIDERS_PER_RUN: "1"
+          SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED: "0"
           SEARCH_RESULTS_PER_QUERY: "10"
           SEARCH_DISCOVERY_ROTATION_DAYS: "10"
           SEARCH_DISCOVERY_MAX_URLS: "2000"
           GOOGLE_DISCOVERY_ENABLED: "1"
-          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "10"
+          GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "6"
           GOOGLE_DISCOVERY_RESULTS_PER_QUERY: "10"
-          JOB_BOARD_QUERIES_PER_RUN: "6"
+          JOB_BOARD_QUERIES_PER_RUN: "4"
           JOB_BOARD_ROTATION_DAYS: "1"
           GOOGLE_DISCOVERY_ROTATION_DAYS: "1"
           GOOGLE_DISCOVERY_WORKERS: "12"
           GOOGLE_JOBS_ENABLED: "1"
-          GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "2"
+          GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "1"
           ALLOW_APAC_WORLDWIDE: "0"
           PUBLISH_APAC_WORLDWIDE: "0"
           GOOGLE_JOBS_RESULTS_PER_QUERY: "10"
@@ -67,8 +69,8 @@ jobs:
           ARCHIVE_DISCOVERY_INTERVAL_DAYS: "7"
           COMPANY_DISCOVERY_LIMIT: "15000"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
-          DISCOVERY_VALIDATE_PER_ATS: "1800"
-          DISCOVERY_WORKERS: "36"
+          DISCOVERY_VALIDATE_PER_ATS: "1200"
+          DISCOVERY_WORKERS: "24"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --discover
       - name: Package same-run discovery manifests
@@ -101,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
-      group: remote4me-v14-${{ matrix.ats }}
+      group: remote4me-v15-${{ matrix.ats }}
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
@@ -170,27 +172,30 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          CAREER_DAILY_BUDGET: "1200"
-          CAREER_CRAWL_BUDGET: "1000"
+          CAREER_DAILY_BUDGET: "1400"
+          CAREER_CRAWL_BUDGET: "1200"
           ATS_BOARD_BUDGET: "2400"
           DIRECT_DETAIL_BUDGET: "160"
           DISCOVERY_DETAIL_BUDGET: "240"
           AGGREGATOR_RESOLVE_BUDGET: "180"
-          CAREER_PAGE_LIMIT: "4"
-          CRAWL_WORKERS: "32"
+          AGGREGATOR_SEARCH_FALLBACK_BUDGET: "12"
+          CAREER_PAGE_LIMIT: "8"
+          CAREER_HOMEPAGE_BUDGET: "300"
+          HOMEPAGE_WORKERS: "8"
+          HOMEPAGE_ROUTE_LIMIT: "8"
+          CRAWL_WORKERS: "24"
           JOB_MAX_AGE_DAYS: "30"
           ALLOW_APAC_WORLDWIDE: "0"
           PUBLISH_APAC_WORLDWIDE: "0"
           CAREER_PREFLIGHT_ENABLED: "1"
-          CAREER_PREFLIGHT_WORKERS: "36"
-          CAREER_BROWSER_MAX_CALLS: "180"
-          PLAYWRIGHT_CONCURRENT_BROWSERS: "3"
+          CAREER_PREFLIGHT_WORKERS: "24"
+          CAREER_BROWSER_MAX_CALLS: "240"
+          PLAYWRIGHT_CONCURRENT_BROWSERS: "2"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_MAX_PAGES: "2"
           PLAYWRIGHT_TIMEOUT_MS: "25000"
-          EXTERNAL_FETCH_FALLBACK_ENABLED: "1"
-          EXTERNAL_FETCH_MAX_CALLS: "12"
-          EXTERNAL_FETCH_PROVIDER_CAPS: "Jina=2,ScrapingAnt=2,BrightData=1,Firecrawl=2,ScraperAPI=1,Diffbot=1"
+          EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
+          EXTERNAL_FETCH_MAX_CALLS: "0"
           JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
           SCRAPINGANT_API_KEY: ${{ secrets.SCRAPINGANT_API_KEY }}
           BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
@@ -304,8 +309,8 @@ jobs:
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-          git diff --cached --quiet || git commit -m "Refresh V14.8 discovery manifests"
+          git diff --cached --quiet || git commit -m "Refresh V15.0 discovery manifests"
           git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me V14.8 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
+        run: echo "Remote4.me V15.0 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
