@@ -287,7 +287,7 @@ jobs:
         run: |
           mkdir -p out
           cp data/search_discovery.json out/search_discovery.json
-      - name: Merge and write Google Sheets
+      - name: Merge, quality-check, and publish Remote + Hybrid Google Sheets tabs
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
@@ -303,4 +303,4 @@ jobs:
           git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me V14.5 daily crawl and publish completed."
+        run: echo "Remote4.me V14.6 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
