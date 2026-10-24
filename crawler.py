@@ -29,7 +29,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V14.8
+# REMOTE4.ME JOB CRAWLER V15.0
 # INDIA-FIRST / EXPANDED ATS + CAREER PAGE DISCOVERY
 # ============================================================
 #
@@ -90,6 +90,7 @@ SERPENT_API_KEY = os.environ.get("SERPENT_API_KEY", "").strip()
 ENDLESS_SEARCH_API_KEY = os.environ.get("ENDLESS_SEARCH_API_KEY", "").strip()
 SERPSEARCH_API_KEY = os.environ.get("SERPSEARCH_API_KEY", "").strip()
 FREESEA_API_KEY = os.environ.get("FREESEA_API_KEY", "").strip()
+SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED = os.environ.get("SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED", "0").lower() not in {"0", "false", "no"}
 SEARCH_DISCOVERY_ENABLED = os.environ.get("SEARCH_DISCOVERY_ENABLED", "1").lower() not in {"0", "false", "no"}
 # Public, no-key search fallback. Bing RSS is an unofficial public endpoint and
 # may be throttled; paid/index APIs stay optional and should never be required.
@@ -97,7 +98,8 @@ PUBLIC_SERP_FALLBACK_ENABLED = os.environ.get("PUBLIC_SERP_FALLBACK_ENABLED", "1
 PUBLIC_SERP_QUERIES_PER_RUN = max(1, min(24, int(os.environ.get("PUBLIC_SERP_QUERIES_PER_RUN", "12"))))
 PUBLIC_SERP_WORKERS = max(1, min(8, int(os.environ.get("PUBLIC_SERP_WORKERS", "4"))))
 _BING_RSS_SEMAPHORE = threading.BoundedSemaphore(PUBLIC_SERP_WORKERS)
-SEARCH_QUERIES_PER_PROVIDER = int(os.environ.get("SEARCH_QUERIES_PER_PROVIDER", "3"))
+SEARCH_QUERIES_PER_PROVIDER = int(os.environ.get("SEARCH_QUERIES_PER_PROVIDER", "2"))
+SEARCH_API_PROVIDERS_PER_RUN = max(0, min(6, int(os.environ.get("SEARCH_API_PROVIDERS_PER_RUN", "2"))))
 SEARCH_RESULTS_PER_QUERY = min(20, max(5, int(os.environ.get("SEARCH_RESULTS_PER_QUERY", "10"))))
 SEARCH_DISCOVERY_ROTATION_DAYS = max(1, int(os.environ.get("SEARCH_DISCOVERY_ROTATION_DAYS", "10")))
 SEARCH_DISCOVERY_MAX_URLS = int(os.environ.get("SEARCH_DISCOVERY_MAX_URLS", "1200"))
@@ -2220,7 +2222,7 @@ def ats_from_url(url):
     }
     if host in exact_overrides:
         return exact_overrides[host]
-    blocked_prefixes = {"www", "support", "help", "docs", "developers", "developer", "status", "blog", "blogs", "cdn", "static", "assets", "api", "app", "community", "forum", "resources", "careers", "jobs"}
+    blocked_prefixes = {"www", "support", "help", "docs", "developers", "developer", "status", "blog", "blogs", "cdn", "static", "assets", "api", "app", "community", "forum", "resources"}
     broad_roots = {
         "manatal.com", "talentlyft.com", "phenom.com", "phenompeople.com", "oracle.com",
         "zoho.com", "darwinbox.com", "darwinbox.ai", "darwinbox.in", "keka.com", "keka.hr",
@@ -2300,6 +2302,24 @@ def extract_ats_slug(ats, url):
     if ats == "Personio":
         return host.split(".")[0]
 
+    # Many ATS providers have tenant-specific paths/hosts but no stable public
+    # slug format. Preserve the exact public board URL as a stable opaque key;
+    # the generic crawler uses the stored URL and does not guess an API endpoint.
+    if ats and ats not in FETCHERS and ats != "Workday":
+        if is_exact_job_url(url) or _is_noise_job_url(url):
+            return ""
+        if not _is_real_ats_route(url, ats):
+            return ""
+        canonical = normalize_url(url)
+        if not canonical:
+            return ""
+        try:
+            cp = urlparse(canonical)
+            canonical = cp._replace(query="", fragment="").geturl().rstrip("/").lower()
+        except Exception:
+            canonical = canonical.lower().rstrip("/")
+        return "route-" + hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:20]
+
     return ""
 
 
@@ -2365,8 +2385,9 @@ def discover_archive_urls(pattern, limit=ARCHIVE_CANDIDATE_CAP):
 
 
 def discover_ats_boards_from_archives():
-    candidates = {ats: set() for ats in ARCHIVE_DOMAINS}
+    candidates = {canonical_ats_name(ats): set() for ats in ARCHIVE_DOMAINS}
     for ats, domains in ARCHIVE_DOMAINS.items():
+        ats_norm = canonical_ats_name(ats)
         for domain in domains:
             pattern = domain
             if "*" in pattern:
@@ -2378,14 +2399,21 @@ def discover_ats_boards_from_archives():
             urls = discover_archive_urls(query_pattern)
             for u in urls:
                 found_ats = ats_from_url(u)
-                if found_ats != ats:
+                if canonical_ats_name(found_ats) != ats_norm:
                     continue
                 if _BAD_CAREER_PATH_RE.search(urlparse(u).path) or _BAD_CAREER_FILE_RE.search(urlparse(u).path):
                     continue
-                slug = extract_ats_slug(ats, u)
-                if slug:
-                    candidates[ats].add(slug)
-            print(f"ARCHIVE {ats}: {len(candidates.get(ats, set()))} candidates")
+                ats_norm = canonical_ats_name(ats)
+                if ats_norm in FETCHERS or ats_norm == "Workday":
+                    slug = extract_ats_slug(ats_norm, u)
+                    if slug and not is_exact_job_url(u):
+                        candidates.setdefault(ats_norm, set()).add(slug)
+                elif _is_real_ats_route(u, ats_norm) and not is_exact_job_url(u):
+                    # Unknown public ATS sites are crawled by URL, never by a
+                    # guessed endpoint. Cap URLs per ATS to keep weekly archive
+                    # discovery affordable.
+                    candidates.setdefault(ats_norm, set()).add("URL::" + (normalize_url(u) or u))
+            print(f"ARCHIVE {ats}: {len(candidates.get(canonical_ats_name(ats), set()))} candidates")
     return candidates
 
 
@@ -2615,6 +2643,11 @@ def crawl_company_career_page(company_name, website):
     if not website:
         return results
 
+    # Respect robots.txt on employer-owned pages. Recognized ATS hosts use their
+    # own public-route handling in the dedicated crawler.
+    if not ats_from_url(website) and not robots_allowed(website):
+        print(f"COMPANY CAREER PAGE: robots.txt disallows homepage {website}")
+        return results
     html, final_url = get_html(website, timeout=20)
     # A company's public homepage may be a JS shell; try a bounded public-page
     # render before giving up. If it still cannot be opened, the seed URL remains
@@ -2670,6 +2703,8 @@ def crawl_company_career_page(company_name, website):
 
     for link in links:
         ats = ats_from_url(link)
+        if not ats and not robots_allowed(link):
+            continue
         if ats:
             results.append({
                 "company": company_name,
@@ -2682,6 +2717,13 @@ def crawl_company_career_page(company_name, website):
         page_html, page_url = get_html(link, timeout=18)
         if not page_html:
             continue
+        if is_plausible_career_seed(page_url or link) or is_exact_job_url(page_url or link):
+            results.append({
+                "company": company_name,
+                "ats": "Company Career",
+                "ats_url": normalize_url(page_url or link) or (page_url or link),
+                "website": website,
+            })
         ps = BeautifulSoup(page_html, "html.parser")
         for a in ps.find_all("a", href=True):
             href = urljoin(page_url, a.get("href", ""))
@@ -3616,6 +3658,36 @@ def is_plausible_career_seed(url):
     ))
 
 
+def is_company_homepage_url(url):
+    """True for a real company/career-host homepage that can reveal job links."""
+    try:
+        p = urlparse(str(url or "").strip())
+        host = (p.netloc or "").lower().split(":", 1)[0]
+    except Exception:
+        return False
+    if p.scheme not in {"http", "https"} or not host or "." not in host:
+        return False
+    if p.path not in {"", "/"} or p.query or p.fragment:
+        return False
+    if ats_from_url(url):
+        return False
+    if is_aggregator_host(host):
+        return False
+    blocked = {
+        "google.com", "bing.com", "microsoft.com", "facebook.com", "linkedin.com",
+        "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com", "wellfound.com",
+        "cutshort.io", "himalayas.app", "startup.jobs", "remoteok.com", "remotejobs.org",
+        "weworkremotely.com", "jobicy.com", "reddit.com", "x.com", "twitter.com",
+        "youtube.com", "instagram.com", "wikipedia.org", "github.com", "github.io",
+    }
+    if any(host == d or host.endswith("." + d) for d in blocked):
+        return False
+    first = host.split(".")[0]
+    if first in {"support", "help", "docs", "developers", "developer", "api", "cdn", "static", "assets", "status", "blog", "community", "forum", "app", "login", "accounts"}:
+        return False
+    return True
+
+
 def is_exact_job_url(url, base_url=""):
     """True only for a job-detail/application URL, never a generic career landing page."""
     try:
@@ -3864,8 +3936,8 @@ def _is_real_ats_route(url, ats=""):
     dedicated_hosts.update({"jobs.manatal.com", "jobs.zohorecruit.com", "recruit.zoho.com"})
     if host.split(".")[0] in {"www", "support", "help", "docs", "developers", "status", "blog", "cdn", "api", "static", "assets", "app"}:
         return False
-    if host.split(".")[0] == "jobs" and host not in dedicated_hosts and ats not in {"Zoho Recruit"}:
-        return False
+    # Nonstandard ATS vendors commonly use tenant URLs such as jobs.<tenant>.provider.com.
+    # The domain must already have matched a known ATS and the path is still checked below.
     if is_exact_job_url(url):
         return True
     # Standard ATS company slugs are useful crawl seeds before an exact vacancy
@@ -4146,17 +4218,25 @@ def crawl_career_url_v10(company, url, source="Company Career", max_job_pages=8)
         return [], []
     soup = BeautifulSoup(html, "html.parser")
     jobs = parse_structured_jobpostings(html, final_url, company, source)
-    # If the landing page exposes little/no structured data, use the site's public
-    # sitemap as a cheap second extraction tier. This is especially useful for
-    # custom Indian career sites where the visible page is only a JS shell.
-    if not jobs and not ats_from_url(final_url):
-        for sitemap_url in sitemap_job_urls(final_url, cap=min(8, max_job_pages * 2)):
+    # Always sample public sitemap job URLs, even if the landing page exposed a
+    # few JobPosting objects. One structured card on the homepage must not hide
+    # hundreds of other openings in the site's sitemap.
+    if not ats_from_url(final_url) and len(jobs) < max_job_pages:
+        sitemap_urls = sitemap_job_urls(final_url, cap=min(20, max_job_pages * 3))
+        seen_job_urls = {normalize_url(j.get("job_url", "")) for j in jobs if j.get("job_url")}
+        for sitemap_url in sitemap_urls:
             if len(jobs) >= max_job_pages:
                 break
             page_html, page_final = get_html(sitemap_url, timeout=V11_HTML_TIMEOUT)
             if not page_html:
                 continue
-            jobs.extend(parse_structured_jobpostings(page_html, page_final, company, source))
+            for parsed_job in parse_structured_jobpostings(page_html, page_final, company, source):
+                job_url = normalize_url(parsed_job.get("job_url", ""))
+                if job_url and job_url not in seen_job_urls:
+                    jobs.append(parsed_job)
+                    seen_job_urls.add(job_url)
+                    if len(jobs) >= max_job_pages:
+                        break
     career_links = []
     seen = set()
 
@@ -4649,6 +4729,63 @@ def enrich_discovery_details(jobs, budget=180):
     return [by_url.get(normalize_url(j.get("discovery_url") or j.get("job_url") or ""), dict(j)) for j in jobs]
 
 
+def resolve_candidate_via_public_search(job):
+    """Use one bounded keyless public-search query to find a likely employer/ATS URL.
+
+    This is only a lead resolver: callers still have to validate the exact URL and
+    inspect the destination page before it can be published as a direct job.
+    """
+    title = clean_text(job.get("title", ""))
+    company = clean_text(job.get("company", ""))
+    if not title or not company:
+        return ""
+    # Avoid query injection/length spikes from scraped display text.
+    title_q = re.sub(r"\s+", " ", title)[:110].replace('"', " ").strip()
+    company_q = re.sub(r"\s+", " ", company)[:80].replace('"', " ").strip()
+    if not title_q or not company_q:
+        return ""
+    hosts = [
+        "jobs.lever.co", "jobs.eu.lever.co", "boards.greenhouse.io", "job-boards.greenhouse.io",
+        "jobs.ashbyhq.com", "apply.workable.com", "careers.smartrecruiters.com",
+        "jobs.smartrecruiters.com", "myworkdayjobs.com",
+    ]
+    company_site = normalize_url(job.get("company_website", ""))
+    if company_site:
+        company_host = urlparse(company_site).netloc.lower().split(":", 1)[0]
+        company_host = company_host[4:] if company_host.startswith("www.") else company_host
+        if company_host and "." in company_host and company_host not in {"google.com", "linkedin.com"}:
+            hosts.append(company_host)
+    site_clause = " OR ".join(f"site:{h}" for h in dict.fromkeys(hosts))
+    query = f'"{title_q}" "{company_q}" ({site_clause})'
+    try:
+        results = _search_bing_rss(query)
+    except Exception:
+        return ""
+    title_tokens = {t for t in re.findall(r"[a-z0-9]+", title_q.lower()) if len(t) >= 3 and t not in {"the", "and", "for", "with", "from", "india", "remote", "hybrid"}}
+    company_tokens = {t for t in re.findall(r"[a-z0-9]+", company_q.lower()) if len(t) >= 3 and t not in {"inc", "llc", "ltd", "limited", "corp", "corporation", "company", "private", "pvt", "group"}}
+    best = (0.0, "")
+    for result in results or []:
+        u = normalize_url(result.get("url", ""))
+        if not u or not u.startswith(("http://", "https://")):
+            continue
+        host = urlparse(u).netloc.lower().split(":", 1)[0]
+        if not host or is_aggregator_host(host) or not is_exact_job_url(u):
+            continue
+        if not ats_from_url(u) and not is_exact_job_url(u):
+            continue
+        context = " ".join(clean_text(result.get(k, "")) for k in ("title", "snippet", "url")).lower()
+        got_title = {t for t in title_tokens if t in context}
+        title_ratio = len(got_title) / max(1, len(title_tokens))
+        company_match = any(t in context for t in company_tokens)
+        # Do not accept a similarly titled role at an unrelated employer.
+        if not company_match or (len(title_tokens) >= 3 and title_ratio < 0.45):
+            continue
+        score = title_ratio + (0.8 if company_match else 0.0) + (0.3 if ats_from_url(u) else 0.0)
+        if score > best[0]:
+            best = (score, u)
+    return best[1]
+
+
 def resolve_public_feed_jobs_to_direct(jobs, budget=140):
     """Try to turn aggregator job-detail URLs into verified employer/ATS URLs.
 
@@ -4663,6 +4800,11 @@ def resolve_public_feed_jobs_to_direct(jobs, budget=140):
         key=lambda x: (int(x.get("score", 0) or 0), bool(x.get("company_website")), x.get("posted_date", "")),
         reverse=True,
     )[:budget]
+    search_budget = max(0, min(len(selected), int(os.environ.get("AGGREGATOR_SEARCH_FALLBACK_BUDGET", "12"))))
+    search_urls = {
+        normalize_url(j.get("discovery_url") or j.get("job_url") or "")
+        for j in selected[:search_budget]
+    }
 
     def one(j):
         source_url = normalize_url(j.get("discovery_url") or j.get("job_url") or "")
@@ -4670,6 +4812,11 @@ def resolve_public_feed_jobs_to_direct(jobs, budget=140):
             return None
         direct = extract_exact_job_url_from_page(source_url, j.get("title", ""))
         direct = normalize_url(direct) if direct else ""
+        search_method = ""
+        if not direct and source_url in search_urls:
+            direct = normalize_url(resolve_candidate_via_public_search(j))
+            if direct:
+                search_method = "public-bing-search"
         if not direct:
             return None
         host = urlparse(direct).netloc.lower().split(":", 1)[0]
@@ -4692,6 +4839,8 @@ def resolve_public_feed_jobs_to_direct(jobs, budget=140):
         x["direct_validation"] = "resolved-ats-job" if ats else "resolved-company-job"
         x["original_discovery_url"] = source_url
         x["source"] = f"{j.get('source', 'Aggregator')}->Direct"
+        if search_method:
+            x["resolution_method"] = search_method
         return x
 
     out = []
@@ -4710,7 +4859,10 @@ def resolve_public_feed_jobs_to_direct(jobs, budget=140):
         u = normalize_url(j.get("job_url", ""))
         if u:
             dedup.setdefault(u, j)
-    return list(dedup.values())
+    final = list(dedup.values())
+    searched = sum(1 for x in final if x.get("resolution_method") == "public-bing-search")
+    print(f"AGGREGATOR PUBLIC SEARCH FALLBACK: attempted={len(search_urls)} direct_candidates_found={searched} (all still require destination verification)")
+    return final
 
 
 def v11_discover_company_routes(companies):
@@ -4870,7 +5022,7 @@ def should_run_v11_archive():
 # REMOTE4.ME V13.8 — SHARDED HIGH-COVERAGE + STRICT JOB QUALITY
 # ============================================================
 
-V11_VERSION = "13.8-final-quality"
+V11_VERSION = "14.9-search-first-crawl-graph"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -4878,7 +5030,10 @@ COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
 # High-coverage defaults. They can be overridden by GitHub Actions env vars.
 V11_COMPANY_DISCOVERY_LIMIT = int(os.environ.get("COMPANY_DISCOVERY_LIMIT", "15000"))
 V11_CAREER_DAILY_BUDGET = int(os.environ.get("CAREER_DAILY_BUDGET", "1400"))
-V11_CAREER_PAGE_LIMIT = int(os.environ.get("CAREER_PAGE_LIMIT", "4"))
+V11_CAREER_PAGE_LIMIT = int(os.environ.get("CAREER_PAGE_LIMIT", "8"))
+V11_CAREER_HOMEPAGE_BUDGET = max(0, int(os.environ.get("CAREER_HOMEPAGE_BUDGET", "250")))
+V11_HOMEPAGE_WORKERS = max(2, min(16, int(os.environ.get("HOMEPAGE_WORKERS", "10"))))
+V11_HOMEPAGE_ROUTE_LIMIT = max(1, min(16, int(os.environ.get("HOMEPAGE_ROUTE_LIMIT", "8"))))
 V11_FEED_DIRECT_BUDGET = int(os.environ.get("FEED_DIRECT_BUDGET", "350"))
 V11_WORKDAY_MAX_PAGES_PER_KEYWORD = int(os.environ.get("WORKDAY_MAX_PAGES_PER_KEYWORD", "3"))
 V11_WORKDAY_MAX_RESULTS_PER_BOARD = int(os.environ.get("WORKDAY_MAX_RESULTS_PER_BOARD", "180"))
@@ -5427,6 +5582,57 @@ def parse_workday_board_url(url):
             "url": url, "key": f"{tenant}|{shard}|{site}"}
 
 
+def normalize_workday_board_record(board):
+    """Normalize a stored Workday manifest record to tenant/shard/site fields.
+
+    Existing manifests store `key="tenant|wdN|site"` plus a URL, but do not
+    necessarily store separate tenant/shard/site fields. The V14.8 worker indexed
+    those missing keys directly and raised KeyError for every Workday record.
+    Prefer the canonical key, since a stored URL may be an individual job detail.
+    """
+    if isinstance(board, str):
+        value = board.strip()
+        parts = value.split("|", 2)
+        if len(parts) == 3:
+            tenant, shard, site = [clean_text(x) for x in parts]
+            original_url = ""
+            locale = ""
+        else:
+            parsed = parse_workday_board_url(value)
+            if not parsed:
+                return None
+            tenant, shard, site = parsed["tenant"], parsed["shard"], parsed["site"]
+            original_url, locale = value, parsed.get("locale", "")
+        source = {}
+    elif isinstance(board, dict):
+        source = dict(board)
+        original_url = clean_text(source.get("url") or source.get("board_url") or source.get("career_url"))
+        key_parts = clean_text(source.get("key", "")).split("|", 2)
+        parsed_url = parse_workday_board_url(original_url) if original_url else None
+        if len(key_parts) == 3:
+            tenant, shard, site = [clean_text(x) for x in key_parts]
+            locale = parsed_url.get("locale", "") if parsed_url and parsed_url.get("tenant", "").lower() == tenant.lower() and parsed_url.get("shard", "").lower() == shard.lower() else ""
+        else:
+            parsed = parsed_url
+            if not parsed:
+                return None
+            tenant, shard, site, locale = parsed["tenant"], parsed["shard"], parsed["site"], parsed.get("locale", "")
+    else:
+        return None
+    if not (re.fullmatch(r"[a-z0-9-]+", tenant, re.I)
+            and re.fullmatch(r"wd\d+", shard, re.I)
+            and _is_clean_ats_slug("Workday", site)):
+        return None
+    if site.lower() in {"job", "jobs", "search", "apply", "login", "signin", "sign-in", "careers", "career"}:
+        return None
+    prefix = "/".join(x for x in [locale, site] if x)
+    canonical_url = f"https://{tenant}.{shard}.myworkdayjobs.com/{prefix}"
+    result = dict(source)
+    result.update({"tenant": tenant, "shard": shard, "site": site, "locale": locale,
+                   "url": canonical_url, "key": f"{tenant}|{shard}|{site}"})
+    return result
+
+
 def workday_job_url(board, external_path):
     p = parse_workday_board_url(board.get("url", "")) or board
     origin = f"https://{p['tenant']}.{p['shard']}.myworkdayjobs.com"
@@ -5436,19 +5642,9 @@ def workday_job_url(board, external_path):
 
 
 def fetch_workday_board(board, company_hint=""):
-    if isinstance(board, str):
-        parts = board.split("|", 2)
-        if len(parts) != 3:
-            return []
-        tenant, shard, site = parts
-        info = {
-            "tenant": tenant, "shard": shard, "site": site, "locale": "",
-            "url": f"https://{tenant}.{shard}.myworkdayjobs.com/{site}",
-            "key": f"{tenant}|{shard}|{site}",
-        }
-    else:
-        info = dict(board)
-        info.setdefault("key", f"{info.get('tenant','')}|{info.get('shard','')}|{info.get('site','')}")
+    info = normalize_workday_board_record(board)
+    if not info:
+        raise ValueError(f"invalid Workday board record: {str(board)[:180]}")
 
     api = f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/wday/cxs/{info['tenant']}/{info['site']}/jobs"
     referer = info.get("url") or f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/{info['site']}"
@@ -6356,17 +6552,32 @@ def discover_search_engine_urls():
         print("SEARCH DISCOVERY: disabled by configuration")
         return []
     configured_map={
+        # Prefer providers with the established JSON/web-search integration.
+        # Only one configured search provider is selected per run by default;
+        # extra experimental endpoints can be opted in for testing.
         "serper":SERPER_API_KEY,"you":YOU_API_KEY,"exa":EXA_API_KEY,
-        "tavily":TAVILY_API_KEY,"searlo":SEARLO_API_KEY,
-        "search1":SEARCH1_API_KEY,"serpapi":SERPAPI_API_KEY,
-        "serpfast":SERPFAST_API_KEY,"serpent":SERPENT_API_KEY,
-        "endless":ENDLESS_SEARCH_API_KEY,"serpsearch":SERPSEARCH_API_KEY,
-        "freesea":FREESEA_API_KEY,
+        "tavily":TAVILY_API_KEY,"search1":SEARCH1_API_KEY,
+        "searlo":SEARLO_API_KEY,"serpapi":SERPAPI_API_KEY,
     }
-    configured=[
+    if SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED:
+        configured_map.update({
+            "serpfast":SERPFAST_API_KEY,"serpent":SERPENT_API_KEY,
+            "endless":ENDLESS_SEARCH_API_KEY,"serpsearch":SERPSEARCH_API_KEY,
+            "freesea":FREESEA_API_KEY,
+        })
+    configured_all=[
         p for p in SEARCH_PROVIDER_NAMES
         if configured_map.get(p) and (p != "serpapi" or SERPAPI_ORGANIC_DISCOVERY_ENABLED)
     ]
+    # Search APIs are optional enhancements. Rotate a small number of configured
+    # providers per day so a long list of secrets does not become a hard runtime
+    # dependency or consume every provider quota on every run.
+    if SEARCH_API_PROVIDERS_PER_RUN and len(configured_all) > SEARCH_API_PROVIDERS_PER_RUN:
+        offset = datetime.now(timezone.utc).date().toordinal() % len(configured_all)
+        rotated = configured_all[offset:] + configured_all[:offset]
+        configured = rotated[:SEARCH_API_PROVIDERS_PER_RUN]
+    else:
+        configured = configured_all[:SEARCH_API_PROVIDERS_PER_RUN] if SEARCH_API_PROVIDERS_PER_RUN else []
     google_jobs_configured=bool(SERPAPI_API_KEY and GOOGLE_JOBS_ENABLED)
     day=datetime.now(timezone.utc).date().toordinal()
     regular_rotation=(day//SEARCH_DISCOVERY_ROTATION_DAYS) % len(SEARCH_ATS_QUERY_BANK)
@@ -6405,7 +6616,7 @@ def discover_search_engine_urls():
         # Guarantee a social-hiring slice each run. Earlier rotation across one
         # very large mixed bank often went days without searching public posts.
         general_bank = list(dict.fromkeys(SEARCH_GOOGLE_QUERY_BANK + SEARCH_ATS_QUERY_BANK + JOB_BOARD_QUERY_BANK))
-        fallback_budget = PUBLIC_SERP_QUERIES_PER_RUN if not configured else min(6, PUBLIC_SERP_QUERIES_PER_RUN)
+        fallback_budget = PUBLIC_SERP_QUERIES_PER_RUN if not configured else min(12, PUBLIC_SERP_QUERIES_PER_RUN)
         social_budget = min(len(SOCIAL_SEARCH_QUERY_BANK), max(2, fallback_budget // 3))
         general_budget = max(0, fallback_budget - social_budget)
         fallback_start = (day * max(1, general_budget)) % len(general_bank)
@@ -6416,7 +6627,7 @@ def discover_search_engine_urls():
         tasks.extend(("bing_rss", q) for q in fallback_queries)
 
     print(
-        f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} "
+        f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} available_keys={len(configured_all)} api_budget={SEARCH_API_PROVIDERS_PER_RUN} "
         f"public_fallback={'bing_rss' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
         f"fallback_queries={sum(1 for p,_ in tasks if p == 'bing_rss')} "
         f"social_queries={len(social_queries)} "
@@ -6734,26 +6945,65 @@ def _save_json(path, obj):
     os.replace(tmp,path)
 
 
+def _is_clean_ats_slug(ats, slug):
+    """Conservative check for a company/tenant slug, not arbitrary indexed text."""
+    slug = unquote(str(slug or "")).strip()
+    if not slug or len(slug) > 80:
+        return False
+    # Public ATS company slugs are URL-safe identifiers. Archive results can
+    # otherwise leak prices, CSS values, punctuation and fragments into boards.json.
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*[A-Za-z0-9]|[A-Za-z0-9]", slug):
+        return False
+    low = slug.lower().strip("._-")
+    generic = {
+        "job", "jobs", "career", "careers", "apply", "search", "privacy", "terms",
+        "about", "login", "signin", "sign-in", "api", "assets", "static", "undefined",
+        "null", "none", "nan", "well-known", "favicon", "index", "company", "tenant",
+        "jquery", "webpack", "runtime", "vendor", "globalplatform", "ph-basic", "job-board",
+        "job_board", "embed", "public", "www",
+    }
+    if low in generic or low.startswith(".well-known"):
+        return False
+    if re.fullmatch(r"\d+", low):
+        return False
+    if re.fullmatch(r"\d+(?:\.\d+)?(?:k|m|b|px|vh|vw|rem|em|%)", low, re.I):
+        return False
+    if re.search(r"(?:jquery|webpack|runtime|vendor|globalplatform|ph-basic|job_board|embed)", low, re.I):
+        return False
+    return True
+
+
 def is_valid_board_seed(ats, url):
-    """Reject archive/static/login URLs masquerading as ATS boards."""
+    """Reject archive/static/login URLs and validate company/tenant identifiers."""
     if not url or not isinstance(url, str):
         return False
+    ats = canonical_ats_name(ats or ats_from_url(url))
     try:
-        p=urlparse(url)
-        path=p.path.lower()
+        p = urlparse(url)
+        path = unquote(p.path or "").lower()
+        host = (p.netloc or "").lower().split(":", 1)[0]
     except Exception:
+        return False
+    if p.scheme not in {"http", "https"} or not host:
         return False
     if _BAD_CAREER_PATH_RE.search(path) or _BAD_CAREER_FILE_RE.search(path):
         return False
+    if _is_noise_job_url(url):
+        return False
     if ats == "Workday":
-        return bool(parse_workday_board_url(url))
-    slug=extract_ats_slug(ats,url)
-    if not slug:
+        info = parse_workday_board_url(url)
+        if not info:
+            return False
+        if info.get("site", "").lower() in {"job", "jobs", "search", "apply", "login", "signin", "sign-in", "careers", "career"}:
+            return False
+        return bool(re.fullmatch(r"[a-z0-9-]+", info.get("tenant", ""), re.I)
+                    and re.fullmatch(r"wd\d+", info.get("shard", ""), re.I)
+                    and _is_clean_ats_slug("Workday", info.get("site", "")))
+    slug = extract_ats_slug(ats, url)
+    if not _is_clean_ats_slug(ats, slug):
         return False
-    # Archive noise often produces JavaScript/JSON blobs as the apparent slug.
-    if len(slug) > 100 or any(ch in slug for ch in '{}[]"<>'):
-        return False
-    if re.search(r"(?:jquery|webpack|runtime|vendor|globalplatform|ph-basic|job_board|embed)", slug, re.I):
+    # Don't let a generic product/marketing domain masquerade as an ATS tenant.
+    if not _is_real_ats_route(url, ats):
         return False
     return True
 
@@ -6800,38 +7050,114 @@ def discover_company_manifest():
     print("CUTSHORT: disabled by configuration")
     existing=_load_json(COMPANIES_FILE,[])
     companies=merge_company_universe(openjobs, careers, wf_companies, cs_companies, existing)
-    companies=companies[:V11_COMPANY_DISCOVERY_LIMIT]
+    before_cap = len(companies)
+    companies = company_rotation(companies, V11_COMPANY_DISCOVERY_LIMIT, "company-universe")
+    print(f"COMPANY UNIVERSE: unique={before_cap} selected={len(companies)}")
+
+    # Load last-run state before rebuilding today's discovery candidates. Without
+    # this merge, an ATS category absent from today's new search results could
+    # disappear from boards.json and never be crawled again.
+    old_manifest=_load_json(BOARDS_FILE,{})
+    if not isinstance(old_manifest, dict):
+        old_manifest={}
+    old_board_groups=old_manifest.get("boards",{}) if isinstance(old_manifest.get("boards",{}), dict) else {}
 
     board_map=defaultdict(dict)
     career_map={}
+    homepage_map={}
+    for item in companies:
+        website = normalize_url(item.get("website", ""))
+        company = clean_text(item.get("company", ""))
+        if website and company and is_company_homepage_url(website):
+            homepage_map.setdefault(website, {
+                "company": company, "url": website,
+                "source": item.get("source", "Company Registry"),
+                "seed_type": "Company Homepage",
+            })
+    # Retain yesterday's career and homepage seeds so query rotation or a
+    # transient search outage cannot shrink the crawl universe.
+    for rec in old_manifest.get("careers", []) or []:
+        if not isinstance(rec, dict):
+            continue
+        u=normalize_url(rec.get("url", ""))
+        if u and (is_plausible_career_seed(u) or is_exact_job_url(u)):
+            career_map.setdefault(u, dict(rec, url=u))
+    for rec in old_manifest.get("homepages", []) or []:
+        if not isinstance(rec, dict):
+            continue
+        u=normalize_url(rec.get("url", ""))
+        if u and is_company_homepage_url(u):
+            homepage_map.setdefault(u, dict(rec, url=u, website=u, seed_type="Company Homepage"))
+
     # Search engines are used as a board/career discovery layer. We do not
     # publish their result URLs directly; they are validated/crawled below.
     search_discovery=[]
+    search_results=[]
     try:
         search_results=discover_search_engine_urls()
+        # A search result that is an employer homepage can be a useful long-term
+        # discovery seed even if its root URL is not itself a /careers path.
+        # Only add roots when the search context is clearly about our target roles
+        # and India/remote/hybrid; actual vacancies still require page verification.
+        homepage_role_re=re.compile(
+            r"customer\s+(?:support|service|success|experience|care)|technical\s+support|"
+            r"product\s+support|support\s+engineer|help\s*desk|service\s+desk|"
+            r"application\s+support|platform\s+support|onboarding|implementation|client\s+services?",
+            re.I,
+        )
+        homepage_india_re=re.compile(
+            r"\bindia\b|bengaluru|bangalore|hyderabad|pune|chennai|delhi|gurugram|noida|mumbai|"
+            r"\bremote\b|\bhybrid\b|work from home",
+            re.I,
+        )
+        for result in search_results:
+            u=normalize_url(result.get("url", ""))
+            if not u or not is_company_homepage_url(u):
+                continue
+            context=" ".join(clean_text(result.get(k, "")) for k in ("query", "title", "snippet"))
+            if not homepage_role_re.search(context) or not homepage_india_re.search(context):
+                continue
+            title=clean_text(result.get("company") or result.get("title", ""))
+            company=clean_text(title.split(" | ")[0].split(" - ")[0].split(" — ")[0])
+            if not company or len(company)>100:
+                company=humanize_slug(urlparse(u).netloc.split(".")[0])
+            homepage_map.setdefault(u, {
+                "company": company, "url": u, "website": u,
+                "source": f"Search/{clean_text(result.get('provider') or 'public search')}",
+                "seed_type": "Company Homepage",
+            })
         _,_,search_discovery=add_search_discovery_to_maps(search_results,board_map,career_map)
     except Exception as exc:
-        print(f"DISCOVERY search API ERROR: {type(exc).__name__}: {exc}")
+        print(f"DISCOVERY search error: {type(exc).__name__}: {exc}")
     # The India-specific career-ops directory is an exact ATS map rather than a name guesser.
     for ats_raw, url in india_ats:
         ats=canonical_ats_name(ats_raw)
-        key=board_key_from_url(ats,url)
-        if not key:
+        u=normalize_url(url)
+        if not u:
             continue
-        board_map[ats].setdefault(key,{"key":key,"url":url,"company":"","active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"India ATS Directory"})
+        if is_exact_job_url(u):
+            career_map.setdefault(u,{"company":"","url":u,"source":"India ATS Directory","ats":"Company Career","crawl_priority":0,"seed_type":"Exact ATS Job Page"})
+            continue
+        key=board_key_from_url(ats,u)
+        if not key or not is_valid_board_seed(ats,u):
+            continue
+        board_map[ats].setdefault(key,{"key":key,"url":u,"company":"","active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"India ATS Directory"})
 
     for item in companies:
         company=clean_text(item.get("company"))
         for url in (item.get("ats_links") or []) + (item.get("career_links") or []):
             if not isinstance(url,str) or not url.startswith("http"): continue
-            ats=canonical_ats_name(ats_from_url(url))
+            u=normalize_url(url)
+            ats=canonical_ats_name(ats_from_url(u))
             if ats:
-                key=board_key_from_url(ats,url)
-                if key and is_valid_board_seed(ats, url):
-                    rec=board_map[ats].setdefault(key,{"key":key,"url":url,"company":company,"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":item.get("source","Directory")})
+                if is_exact_job_url(u):
+                    career_map.setdefault(u,{"company":company,"url":u,"source":item.get("source","Directory"),"ats":"Company Career","crawl_priority":0,"seed_type":"Exact ATS Job Page"})
+                    continue
+                key=board_key_from_url(ats,u)
+                if key and is_valid_board_seed(ats, u):
+                    rec=board_map[ats].setdefault(key,{"key":key,"url":u,"company":company,"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":item.get("source","Directory")})
                     if company and not rec.get("company"): rec["company"]=company
             else:
-                u=normalize_url(url)
                 if u and is_plausible_career_seed(u) and u not in career_map:
                     career_map[u]={"company":company,"url":u,"source":item.get("source","Directory"),"ats":"Company Career"}
     # Exact Workday URLs can also be embedded in any discovered ATS links or website fields.
@@ -6858,15 +7184,23 @@ def discover_company_manifest():
         print(f"DISCOVERY: archive/common-crawl skipped today; cadence={ARCHIVE_DISCOVERY_INTERVAL_DAYS} days")
     for ats,slugs in archive_candidates.items():
         ats=canonical_ats_name(ats)
-        if ats not in FETCHERS and ats != "Workday":
-            continue
-        for slug in sorted(slugs,key=str.lower)[:V11_DISCOVERY_CANDIDATE_LIMIT]:
-            url=public_ats_board_url(ats,slug) if ats in FETCHERS else ""
-            if ats=="Workday":
-                # Archive extractor generally yields a tenant/site slug. If it is not a URL, skip rather than guess.
-                continue
-            if not url or not is_valid_board_seed(ats, url): continue
-            board_map[ats].setdefault(slug,{"key":slug,"url":url,"company":humanize_slug(slug),"active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Wayback/Common Crawl"})
+        # Archives provide exact URLs for non-standard ATSs; we never guess a
+        # tenant-specific API or try to synthesize an application URL.
+        for slug in sorted(slugs,key=str.lower)[:min(V11_DISCOVERY_CANDIDATE_LIMIT, 160)]:
+            if slug.startswith("URL::"):
+                url=slug[5:]
+                key=board_key_from_url(ats,url)
+                if not key:
+                    continue
+            else:
+                if ats not in FETCHERS and ats != "Workday":
+                    continue
+                if ats=="Workday":
+                    continue
+                url=public_ats_board_url(ats,slug)
+                key=slug
+            if not url or is_exact_job_url(url) or not is_valid_board_seed(ats,url): continue
+            board_map[ats].setdefault(key,{"key":key,"url":url,"company":humanize_slug(key) if not key.startswith("route-") else "","active":True,"last_ok":"","fail_count":0,"jobs_found_last":0,"source":"Wayback/Common Crawl"})
 
     # Remove dead/non-career URLs before they ever reach the expensive browser job.
     career_records=list(career_map.values())
@@ -6876,8 +7210,29 @@ def discover_company_manifest():
     # Save company universe separately so daily career crawling can rotate through it.
     _save_json(COMPANIES_FILE, companies)
 
-    # Validate exact public boards. We validate much more than the old 250 cap but
-    # never let validation failure kill the manifest.
+    # Merge previously live ATS boards into today's candidate set even if today's
+    # directory/search results do not happen to rediscover that vendor or company.
+    # A stored URL is preferred for nonstandard ATSs because its tenant path cannot
+    # safely be reconstructed from a guessed slug.
+    preserved_board_seeds=0
+    for old_ats_raw, old_records in old_board_groups.items():
+        old_ats=canonical_ats_name(old_ats_raw)
+        for old_rec in old_records or []:
+            if not isinstance(old_rec, dict) or not old_rec.get("active", True):
+                continue
+            old_url=normalize_url(old_rec.get("url") or public_ats_board_url(old_ats, old_rec.get("key", "")))
+            old_key=clean_text(old_rec.get("key")) or board_key_from_url(old_ats, old_url)
+            if not old_url or not old_key or not is_valid_board_seed(old_ats, old_url):
+                continue
+            candidate=dict(old_rec)
+            candidate.update({"key":old_key, "url":old_url, "source":old_rec.get("source") or "Previous Manifest"})
+            if old_key not in board_map[old_ats]:
+                board_map[old_ats][old_key]=candidate
+                preserved_board_seeds+=1
+    print(f"DISCOVERY PRESERVED: prior_ats_boards_added={preserved_board_seeds} prior_careers={len(old_manifest.get('careers',[]) or [])} prior_homepages={len(old_manifest.get('homepages',[]) or [])}")
+
+    # Validate exact public boards. Validation is bounded per ATS and failures
+    # are retained for repeated attempts rather than deleting whole ATS families.
     boards_out={}
     for ats,records in board_map.items():
         recs=list(records.values())
@@ -6911,7 +7266,7 @@ def discover_company_manifest():
                     if nr["active"]:
                         valid.append(nr)
         # Also preserve old manifest boards that weren't in this discovery slice.
-        old=_load_json(BOARDS_FILE,{})
+        old=old_manifest
         old_version=str(old.get("version","")) if isinstance(old,dict) else ""
         for oldr in (old.get("boards",{}).get(ats,[]) if isinstance(old,dict) else []):
             if not oldr.get("active") or oldr.get("key") in {x.get("key") for x in valid}:
@@ -6919,7 +7274,7 @@ def discover_company_manifest():
             old_url=oldr.get("url") or public_ats_board_url(ats,oldr.get("key",""))
             # On the 13.1 migration, drop legacy archive/static pollution and
             # let the stricter discovery/validation rebuild those boards.
-            if old_version != V11_VERSION and (oldr.get("source") == "Wayback/Common Crawl" or not is_valid_board_seed(ats, old_url)):
+            if not is_valid_board_seed(ats, old_url):
                 continue
             if is_valid_board_seed(ats, old_url):
                 oldr=dict(oldr); oldr["url"]=old_url; valid.append(oldr)
@@ -6932,13 +7287,14 @@ def discover_company_manifest():
         "generated_at":datetime.now(timezone.utc).isoformat(),
         "boards":boards_out,
         "careers":sorted(career_map.values(),key=lambda x:(x.get("company","").lower(),x.get("url",""))),
+        "homepages":sorted(homepage_map.values(),key=lambda x:(x.get("company","").lower(),x.get("url",""))),
         "company_count":len(companies),
         "board_count":sum(len(v) for v in boards_out.values()),
     }
     _save_json(BOARDS_FILE,manifest)
     _save_json(os.path.join(DATA_DIR,"search_discovery.json"),search_discovery)
     elapsed=(datetime.now(timezone.utc)-started).total_seconds()
-    print(f"DISCOVERY COMPLETE: companies={len(companies)} boards={manifest['board_count']} careers={len(manifest['careers'])} runtime={int(elapsed)}s")
+    print(f"DISCOVERY COMPLETE: companies={len(companies)} boards={manifest['board_count']} careers={len(manifest['careers'])} homepages={len(manifest.get('homepages', []))} runtime={int(elapsed)}s")
     return manifest
 
 
@@ -6946,8 +7302,7 @@ def validate_board_record(rec):
     ats=canonical_ats_name(rec.get("ats", ""))
     key=rec.get("key","")
     if ats=="Workday":
-        b=rec.get("url") or key
-        info=parse_workday_board_url(b) if isinstance(b,str) else None
+        info=normalize_workday_board_record(rec)
         if not info:
             return False,0,"error"
         api=f"https://{info['tenant']}.{info['shard']}.myworkdayjobs.com/wday/cxs/{info['tenant']}/{info['site']}/jobs"
@@ -6990,16 +7345,44 @@ def load_manifest():
 
 
 def rotate_records(records,budget,salt="v11"):
+    """Rotate bounded crawls daily so records beyond the cap aren't skipped for 7-10 days.
+
+    Priority: boards that yielded jobs in the last run, employer/directory seeds,
+    other current discoveries, then archive-only candidates. Stable hashes make
+    the chunks repeatable, while the daily slice index guarantees the selected
+    chunk changes each day until the entire set has been covered.
+    """
     records=list(records)
-    if len(records)<=budget:return records
+    if budget <= 0 or len(records)<=budget:
+        return records
     day=datetime.now(timezone.utc).date().toordinal()
-    keyed=[]
-    for r in records:
-        k=f"{r.get('company','')}|{r.get('url','')}|{salt}|{day//V11_ROTATION_DAYS}"
-        h=hashlib.sha256(k.encode()).hexdigest()
-        keyed.append((h,r))
-    keyed.sort()
-    return [r for _,r in keyed[:budget]]
+    def sort_key(r):
+        source=clean_text(r.get("source") or r.get("discovery_source") or "").lower()
+        try: jobs_last=int(r.get("jobs_found_last", r.get("jobs_found", 0)) or 0)
+        except Exception: jobs_last=0
+        try: fails=int(r.get("fail_count", 0) or 0)
+        except Exception: fails=0
+        if jobs_last > 0:
+            priority=0
+        elif any(tag in source for tag in ("openjobs", "career directory", "company registry", "company career", "search api", "google", "wellfound", "india ats directory")):
+            priority=1
+        elif "wayback" in source or "common crawl" in source or "archive" in source:
+            priority=3
+        else:
+            priority=2
+        if fails >= 3:
+            priority += 1
+        ident=f"{r.get('company','')}|{r.get('url','')}|{r.get('key','')}|{salt}"
+        return (priority, hashlib.sha256(ident.encode()).hexdigest())
+    ordered=sorted(records,key=sort_key)
+    slices=(len(ordered)+budget-1)//budget
+    slice_index=day % slices
+    start=slice_index*budget
+    selected=ordered[start:start+budget]
+    # Keep the configured budget productive when the last chunk is short.
+    if len(selected)<budget:
+        selected += ordered[:budget-len(selected)]
+    return selected
 
 
 # --------------------------
@@ -7056,12 +7439,13 @@ def fetch_board_record(rec):
             if not board_url:
                 return [], {"key":key,"ats":ats,"company":company,"ok":False,"status":"unsupported-no-board-url","jobs_found":0}
             jobs, _links = crawl_career_url_v11(
-                company or humanize_slug(key), board_url,
+                company or "", board_url,
                 source=f"{ats}->Direct", max_job_pages=V11_CAREER_PAGE_LIMIT,
             )
         for j in jobs:
             j["board_key"]=key
-            if not j.get("company") or j.get("company") == humanize_slug(key): j["company"]=company or j.get("company")
+            if (not j.get("company") or j.get("company") == humanize_slug(key) or str(key).startswith("route-")) and company:
+                j["company"]=company
             j["direct"]=True
             if not j.get("eligibility"):
                 j["eligibility"]=v11_india_eligibility(j.get("location",""),"",j.get("location",""),j.get("description",""),j.get("workplace","")) or j.get("eligibility","")
@@ -7088,26 +7472,91 @@ def daily_crawl_ats(ats):
     return out,statuses
 
 
+def crawl_company_homepage_seed(company, website):
+    """Inspect a company homepage, its linked careers page, and exposed ATS routes."""
+    jobs = []
+    links = []
+    seen_urls = {normalize_url(website)}
+    if not website:
+        return jobs, links
+
+    # Parse the homepage itself first; it may embed JobPosting JSON-LD or an ATS link.
+    try:
+        root_jobs, root_links = crawl_career_url_v10(
+            company, website, source="Company Career", max_job_pages=V11_CAREER_PAGE_LIMIT
+        )
+        jobs.extend(root_jobs)
+        links.extend(root_links)
+    except Exception as exc:
+        print(f"HOMEPAGE ROOT ERROR: {company} {type(exc).__name__}")
+
+    try:
+        discovered = crawl_company_career_page(company, website)
+    except Exception as exc:
+        print(f"HOMEPAGE DISCOVERY ERROR: {company} {type(exc).__name__}")
+        discovered = []
+
+    candidate_count = 0
+    for rec in discovered:
+        route = normalize_url(rec.get("ats_url") or rec.get("url") or "")
+        if not route or route in seen_urls or candidate_count >= V11_HOMEPAGE_ROUTE_LIMIT:
+            continue
+        seen_urls.add(route)
+        ats = canonical_ats_name(rec.get("ats", "Company Career"))
+        if ats != "Company Career" and not _is_real_ats_route(route, ats):
+            continue
+        if ats == "Company Career" and not (is_plausible_career_seed(route) or is_exact_job_url(route)):
+            continue
+        candidate_count += 1
+        # Persist both ATS routes and ordinary employer career/job URLs.
+        # These become seeds for later runs; they are not automatically published.
+        links.append((ats, route))
+        try:
+            if ats in FETCHERS:
+                slug = extract_ats_slug(ats, route)
+                route_jobs = FETCHERS[ats](slug) if slug else []
+                nested_links = []
+            else:
+                route_jobs, nested_links = crawl_career_url_v10(
+                    company, route, source=(f"{ats}->Direct" if ats != "Company Career" else "Company Career"),
+                    max_job_pages=V11_CAREER_PAGE_LIMIT,
+                )
+            for job in route_jobs:
+                if company and (not job.get("company") or re.sub(r"[^a-z0-9]", "", clean_text(job.get("company")).lower()) in {"", re.sub(r"[^a-z0-9]", "", humanize_slug(extract_ats_slug(ats, route)).lower())}):
+                    job["company"] = company
+            jobs.extend(route_jobs)
+            links.extend(nested_links)
+        except Exception as exc:
+            print(f"HOMEPAGE ROUTE ERROR: {company} {route[:100]} {type(exc).__name__}")
+    # The caller deduplicates all job/route results across company and ATS seeds.
+    return jobs, links
+
+
 def daily_crawl_careers():
     manifest=load_manifest()
     all_records=list(manifest.get("careers",[]) or [])
-    # Reserve part of the daily career budget for fresh Google-discovered
-    # employer/job pages. This ensures a good search hit is not merely stored
-    # and then lost in the larger rotating career universe.
-    google_records=[r for r in all_records if str(r.get("crawl_priority", "")) == "0" or str(r.get("source", "")).startswith("Google/")]
+    google_records=[r for r in all_records if str(r.get("crawl_priority", "")) == "0" or str(r.get("source", "")).startswith(("Google/", "Search/"))]
     other_records=[r for r in all_records if r not in google_records]
-    google_budget=min(len(google_records), max(50, min(200, V11_CAREER_DAILY_BUDGET//4)))
+    google_budget=min(len(google_records), max(50, min(250, V11_CAREER_DAILY_BUDGET//4)))
     other_budget=max(0, V11_CAREER_DAILY_BUDGET-google_budget)
     records=rotate_records(google_records,google_budget,"google-careers") + rotate_records(other_records,other_budget,"careers")
-    # De-duplicate after combining the priority queues.
     ded={normalize_url(r.get("url","")):r for r in records if r.get("url")}
     records=list(ded.values())[:V11_CAREER_DAILY_BUDGET]
-    print(f"CAREER PAGES: {len(records)} (google-priority={min(len(google_records),google_budget)}, other={len(records)-min(len(google_records),google_budget)})")
+    career_urls=set(ded.keys())
+    homepages=[r for r in (manifest.get("homepages",[]) or []) if normalize_url(r.get("url","")) not in career_urls]
+    homepages=rotate_records(homepages,V11_CAREER_HOMEPAGE_BUDGET,"company-homepages")
+    print(f"CAREER PAGES: {len(records)} (search-priority={min(len(google_records),google_budget)}, other={len(records)-min(len(google_records),google_budget)})")
+    print(f"COMPANY HOMEPAGES: selected={len(homepages)} budget={V11_CAREER_HOMEPAGE_BUDGET} from_manifest={len(manifest.get('homepages',[]) or [])}")
     out=[]; discovered=[]; errors=0
     def one(rec):
         company=clean_text(rec.get("company")); url=rec.get("url")
         if not url:return [],[]
-        return crawl_career_url_v11(company,url,source="Company Career",max_job_pages=V11_CAREER_PAGE_LIMIT)
+        source = clean_text(rec.get("source", ""))
+        if source.startswith(("Search/", "Google/", "Google Jobs")):
+            crawl_source = source
+        else:
+            crawl_source = "Company Career"
+        return crawl_career_url_v11(company,url,source=crawl_source,max_job_pages=V11_CAREER_PAGE_LIMIT)
     with ThreadPoolExecutor(max_workers=V11_CRAWL_WORKERS) as ex:
         futs={ex.submit(one,r):r for r in records}
         done=0
@@ -7120,23 +7569,60 @@ def daily_crawl_careers():
                     rec=futs[f]
                     print(f"CAREER CRAWL ERROR: {clean_text(rec.get('company'))} {clean_text(rec.get('url'))[:120]} -> {type(exc).__name__}: {exc}")
             for job in j:
-                job["direct"]=True; job["eligibility"]=job.get("eligibility") or v11_india_eligibility(job.get("location",""),"",job.get("location",""),"",job.get("workplace",""))
+                job["direct"]=True; job["eligibility"]=job.get("eligibility") or v11_india_eligibility(job.get("location",""),"",job.get("location",""),job.get("description",""),job.get("workplace",""))
             out.extend(j)
             for ats,url in links:
-                if _is_real_ats_route(url, ats):
-                    discovered.append({"company":futs[f].get("company",""),"ats":canonical_ats_name(ats),"url":url,"source":"Company Career"})
+                if _is_real_ats_route(url, ats) or (canonical_ats_name(ats) == "Company Career" and (is_plausible_career_seed(url) or is_exact_job_url(url))):
+                    discovered.append({"company":futs[f].get("company",""),"ats":canonical_ats_name(ats) or "Company Career","url":url,"source":"Company Career"})
             done+=1
             if done%100==0: print(f"CAREER PROGRESS: {done}/{len(records)} jobs={len(out)} useful_routes={len(discovered)} errors={errors}")
-    # Deduplicate the route artifact before it is uploaded/merged.
+
+    homepage_errors=0
+    def one_homepage(rec):
+        return crawl_company_homepage_seed(clean_text(rec.get("company")), clean_text(rec.get("url")))
+    with ThreadPoolExecutor(max_workers=min(V11_HOMEPAGE_WORKERS, max(1, len(homepages)))) as ex:
+        futs={ex.submit(one_homepage,r):r for r in homepages}
+        done=0
+        for f in as_completed(futs):
+            try:
+                j,links=f.result()
+            except Exception as exc:
+                j,links=[],[]; homepage_errors+=1
+                if homepage_errors <= 8:
+                    rec=futs[f]
+                    print(f"HOMEPAGE CRAWL ERROR: {clean_text(rec.get('company'))} {type(exc).__name__}: {exc}")
+            for job in j:
+                job["direct"]=True
+                job["eligibility"]=job.get("eligibility") or v11_india_eligibility(job.get("location",""),"",job.get("location",""),job.get("description",""),job.get("workplace",""))
+            out.extend(j)
+            home_rec=futs[f]
+            for ats,url in links:
+                if _is_real_ats_route(url, ats) or (canonical_ats_name(ats) == "Company Career" and (is_plausible_career_seed(url) or is_exact_job_url(url))):
+                    discovered.append({"company":home_rec.get("company",""),"ats":canonical_ats_name(ats) or "Company Career","url":url,"source":"Company Homepage Discovery"})
+            done+=1
+            if done%50==0: print(f"HOMEPAGE PROGRESS: {done}/{len(homepages)} jobs={len(out)} routes={len(discovered)} errors={homepage_errors}")
+
     route_dedup={}
     for rec in discovered:
         u=normalize_url(rec.get("url") or "")
         if u:
-            route_dedup[u]=rec
+            # Preserve nonblank company labels and more specific source annotations.
+            old=route_dedup.get(u,{})
+            merged=dict(old); merged.update({k:v for k,v in rec.items() if v or k not in merged})
+            if not merged.get("company"): merged["company"]=old.get("company", "")
+            route_dedup[u]=merged
     discovered=list(route_dedup.values())
-    print(f"CAREER SUMMARY: pages={len(records)} jobs={len(out)} useful_ats_routes={len(discovered)} errors={errors}")
+    for home in homepages:
+        url=normalize_url(home.get("url", ""))
+        company=clean_text(home.get("company", ""))
+        if url and company and is_company_homepage_url(url):
+            discovered.append({
+                "company":company, "url":url, "website":url,
+                "ats":"Company Homepage", "seed_type":"Company Homepage",
+                "source":clean_text(home.get("source", "Company Homepage Discovery")),
+            })
+    print(f"CAREER SUMMARY: pages={len(records)} homepages={len(homepages)} jobs={len(out)} useful_routes={len(discovered)} page_errors={errors} homepage_errors={homepage_errors}")
     return out,discovered
-
 
 def feed_direct_only():
     """Fetch public feeds quickly and split them into direct vs discovery queues.
@@ -7756,6 +8242,14 @@ def run_ats_cli(ats,out_path):
         for j in jobs: f.write(json.dumps(j,ensure_ascii=False)+"\n")
     status_path=os.path.splitext(out_path)[0]+".status.json"
     write_board_status_artifact(ats,statuses,status_path)
+    if ats != "Nonstandard":
+        positive=sum(1 for x in statuses if int(x.get("jobs_found",0) or 0)>0)
+        errors=[x for x in statuses if not x.get("ok",False)]
+        zero=max(0,len(statuses)-positive-len(errors))
+        error_types=Counter(clean_text(x.get("error") or x.get("status") or "error") for x in errors)
+        print(f"ATS BOARD SUMMARY {ats}: boards={len(statuses)} with_target_jobs={positive} zero_target_jobs={zero} errors={len(errors)}")
+        if error_types:
+            print("ATS ERROR TYPES " + ats + ": " + ", ".join(f"{k}={v}" for k,v in error_types.most_common(6)))
     if links:
         with open(os.path.splitext(out_path)[0]+".links.json","w",encoding="utf-8") as f: json.dump(links,f,ensure_ascii=False,indent=2)
     print(f"ATS {ats}: DIRECT JOBS {len(jobs)}")
@@ -7781,6 +8275,66 @@ def run_feeds_cli(out_path):
     with open(os.path.splitext(out_path)[0]+".stats.json","w",encoding="utf-8") as f:
         json.dump(stats,f,ensure_ascii=False,indent=2)
     print(f"FEEDS: DIRECT JOBS {len(jobs)} | DISCOVERY LEADS {len(discovery)}")
+
+
+def persist_discovered_company_seeds(records):
+    """Carry newly discovered employer/ATS routes into data/companies.json for later runs."""
+    existing = _load_json(COMPANIES_FILE, [])
+    if not isinstance(existing, list):
+        existing = []
+    by_company = {}
+    for item in existing:
+        if not isinstance(item, dict):
+            continue
+        company = clean_text(item.get("company", ""))
+        if company:
+            by_company[re.sub(r"[^a-z0-9]+", "", company.lower())] = item
+            item.setdefault("career_links", [])
+            item.setdefault("ats_links", [])
+    added = 0
+    seen_inputs = set()
+    for rec in records or []:
+        if not isinstance(rec, dict):
+            continue
+        url = normalize_url(rec.get("url") or rec.get("ats_url") or "")
+        company = clean_text(rec.get("company", ""))
+        if not url or not company or (company.lower(), url) in seen_inputs:
+            continue
+        seen_inputs.add((company.lower(), url))
+        seed_type = clean_text(rec.get("seed_type", ""))
+        if seed_type == "Company Homepage" and is_company_homepage_url(url):
+            target_type = "website"
+        elif is_exact_job_url(url):
+            target_type = "career_links"
+        else:
+            ats = canonical_ats_name(rec.get("ats", "Company Career"))
+            if ats != "Company Career" and ats != "Company Homepage" and ats_from_url(url) and _is_real_ats_route(url, ats):
+                target_type = "ats_links"
+            elif is_plausible_career_seed(url):
+                target_type = "career_links"
+            else:
+                continue
+        key = re.sub(r"[^a-z0-9]+", "", company.lower())
+        item = by_company.get(key)
+        if item is None:
+            item = {"company": company, "website": clean_text(rec.get("website", "")), "career_links": [], "ats_links": [], "source": "Daily Crawl Registry"}
+            existing.append(item); by_company[key] = item; added += 1
+        if target_type == "website":
+            if url and not item.get("website"):
+                item["website"] = url; added += 1
+        else:
+            if rec.get("website") and not item.get("website"):
+                item["website"] = clean_text(rec.get("website"))
+            urls = item.setdefault(target_type, [])
+            if url not in urls:
+                urls.append(url); added += 1
+        source = clean_text(rec.get("source", ""))
+        if source and source not in clean_text(item.get("source", "")):
+            item["source"] = (clean_text(item.get("source", "Company")) + "," + source).strip(",")
+    if added:
+        _save_json(COMPANIES_FILE, existing)
+    print(f"PERSISTED DISCOVERY GRAPH: added_routes={added} companies={len(existing)}")
+    return added
 
 
 def run_merge(out_dir,write_sheet=False):
@@ -7873,6 +8427,7 @@ def run_merge(out_dir,write_sheet=False):
     for p in sorted(Path(out_dir).glob("*.links.json")):
         try: career_links.extend(_load_json(str(p),[]))
         except Exception: pass
+    persist_discovered_company_seeds(career_links)
     manifest=load_manifest()
     registry=build_registry_records(manifest,statuses,career_links)
     registry_count=upsert_companies_v11(companies_ws,registry)
@@ -7894,7 +8449,7 @@ def run_merge(out_dir,write_sheet=False):
 
 
 def main_v11():
-    parser=argparse.ArgumentParser(description="Remote4.me V14.8 India-first high coverage crawler")
+    parser=argparse.ArgumentParser(description="Remote4.me V15.0 India-first high coverage crawler")
     parser.add_argument("--discover",action="store_true")
     parser.add_argument("--ats",choices=["Greenhouse","Lever","Ashby","Workable","SmartRecruiters","Recruitee","Breezy","Teamtailor","BambooHR","Personio","Workday","Zoho Recruit","Darwinbox","Keka","Zwayam","PeopleStrong","HROne","Freshteam","Oracle Recruiting","iCIMS","Taleo","SuccessFactors","ADP","Nonstandard"],default="")
     parser.add_argument("--careers",action="store_true")
@@ -7904,17 +8459,21 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V14.8 — SEARCH FALLBACK + CLEANER ATS ROUTES + VERIFIED APPLY LINKS")
+    print("REMOTE4.ME JOB CRAWLER V15.0 — ATS FIXES + DAILY ROTATION + SEARCH-FIRST")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
     print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
     print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
-    print("External fallbacks: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none")
+    if EXTERNAL_FETCH_FALLBACK_ENABLED and EXTERNAL_FETCH_MAX_CALLS > 0:
+        print("External fallbacks enabled: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none configured")
+    else:
+        print("External fallbacks: DISABLED (no external scraping-service calls)")
     print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
     configured_search_names = [x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]
     print("Search discovery providers: " + ", ".join(configured_search_names or ["none configured"]))
     print(f"Public no-key search fallback: {'enabled' if PUBLIC_SERP_FALLBACK_ENABLED else 'disabled'} in the --discover prepare step")
+    print(f"Search API provider budget: {SEARCH_API_PROVIDERS_PER_RUN} per run; homepage crawl budget: {V11_CAREER_HOMEPAGE_BUDGET}; career page depth: {V11_CAREER_PAGE_LIMIT}")
     print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
     if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
         print(f"Google Jobs daily budget: {GOOGLE_JOBS_MAX_QUERIES_PER_DAY} search call(s) (~{GOOGLE_JOBS_MAX_QUERIES_PER_DAY*30}/30-day month)")

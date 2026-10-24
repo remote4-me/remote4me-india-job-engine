@@ -1,34 +1,25 @@
-# Remote4.me crawler V14.8 — search-first, cleaner ATS discovery
+# Remote4.me V15.0 — ATS recovery and daily crawl rotation
 
-This package upgrades the existing Remote4.me crawler without requiring new paid search API keys. Existing API providers remain optional and are used when configured.
+This release builds on V14.9 and responds to the October 24 V14.8 run logs.
 
-## What changed
+## High-impact fixes
 
-- **Keyless SERP fallback:** the `--discover` stage runs a bounded public Bing RSS search pass even when search-provider API secrets are absent. Queries rotate across India-first remote/hybrid jobs, ATS pages, job boards, and public social hiring posts. Four of the default twelve keyless queries are reserved for social searches each run. This is a fallback, not a guaranteed search service; public RSS endpoints can throttle or change.
-- **Individual job-page seeds:** exact ATS vacancy URLs from SERP results are queued as individual high-priority career seeds instead of being expanded into a whole ATS-board crawl. `/apply` variants are canonicalized to avoid crawling both forms of the same Workday vacancy.
-- **Public social discovery:** search-engine-indexed public LinkedIn, X/Twitter, and Reddit hiring posts can appear as review-only discovery leads. They are never treated as verified direct-apply jobs automatically.
-- **Cleaner ATS route detection:** platform marketing, app, help, developer, documentation, static asset, candidate portal, event, and form URLs are filtered. Manatal's general marketing/support/app domains are no longer treated as career boards; only the job-board host is accepted.
-- **Better fallback coverage:** plausible career pages are not dropped during preflight merely because they return 403/429/5xx or a transient network error. Clearly dead 404/410 URLs and non-HTML assets are still rejected. Later parsing, role, location, workplace, freshness, and link checks remain in force.
-- **Lower browser contention:** Playwright browser concurrency is capped to reduce pipe-closure errors from launching too many Chromium instances at once.
-- **Verification budget fix:** already-direct rows no longer consume the limited budget reserved for verifying aggregator-to-employer links.
-- **Better logs:** the crawler prints the configured search providers separately from the no-key fallback, makes clear that SERP discovery runs in the `--discover` prepare stage, and reports useful ATS routes rather than raw route counts.
-- **Existing sheet structure preserved:** `JOBS` remains remote-only; India-only hybrid jobs stay in `HYBRID`; discovery leads continue to go to `DISCOVERY` and `HYBRID_DISCOVERY`.
+- **Workday record normalization:** previous manifests typically store `key="tenant|wdN|site"` plus a URL, not separate `tenant`, `shard`, and `site` fields. The prior worker read those missing dictionary fields directly, causing every Workday board in the supplied status summary to fail. V15.0 reconstructs the fields from the key and normalizes the URL to the actual tenant/site landing page before calling Workday's public CXS endpoint.
+- **Strict ATS slugs:** rejects archive artifacts such as `$12.1K`, `100vw`, `100%`, `...`, `.well-known`, and pure numeric tokens as board identifiers. This filters historical Common Crawl/Wayback noise when `data/boards.json` is rebuilt.
+- **Daily coverage rotation:** the old `rotate_records()` used `day // V11_ROTATION_DAYS`, meaning a bounded ATS crawl could select the same slice for 7–10 days. V15.0 uses deterministic chunks that rotate daily, preferring boards with recent positive results and current directory/employer seeds over archive-only candidates.
+- **Search API restraint:** one configured core SERP provider is used per run, with the keyless Bing RSS fallback as the supplement. Less reliable experimental endpoints that returned HTTP 429/TLS errors in your logs are opt-in via `SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED=1`.
+- **Aggregator resolution fallback:** when an aggregator page cannot be fetched, the resolver may use up to 12 keyless Bing RSS queries per run to look for an exact employer/ATS job URL. Every result still goes through destination-page verification; no snippet-only promotion.
+- **ATS status diagnostics:** each ATS shard prints boards attempted, boards yielding target jobs, zero-result boards, and error counts/types.
+- Keeps V14.9 fixes: persists homepage seeds, carries forward valid prior boards, crawls deeper into employer career pages, supports more nonstandard ATS routes, and keeps strict role/India/workplace/direct-apply validation.
 
 ## Install
 
-Replace these files in your repository:
-
-- `crawler.py` → repository root `crawler.py`
-- `daily.yml` → `.github/workflows/daily.yml`
-- `discover.yml` → `.github/workflows/discover.yml` (or your existing weekly-discovery workflow path)
-
-Keep your existing `requirements.txt` and `data/` files. The workflow expects the existing Google Sheets secrets (`GOOGLE_SERVICE_ACCOUNT_JSON`, `GOOGLE_SHEET_ID`) and optionally uses whatever SERP/feed secrets you already have. No new secret is required for the public RSS fallback.
-
-Commit and push the files, then run the **daily workflow** manually once. Check the `prepare` job's `SEARCH DISCOVERY` / `SEARCH PROVIDER RESULTS` lines, the career job's `CAREER SUMMARY` line, and the final `VERIFIED AGGREGATOR APPLY LINKS` / `FEEDS DIRECT CANDIDATES` counters.
+1. Back up `crawler.py`, `.github/workflows/daily.yml`, `.github/workflows/discover.yml`, and the `data/` folder.
+2. Replace those three code/workflow files with the V15.0 versions in this ZIP.
+3. Keep `requirements.txt`, Google Sheets secrets, and existing repository data; the existing `data/boards.json` is cleaned during the next discovery refresh.
+4. Commit and push, then run the **full daily workflow** first. Its prepare step runs discovery before the ATS, career, and feed shards. The separate weekly discovery workflow can remain on its existing schedule.
+5. In the first run, check the `ATS BOARD SUMMARY Workday` line and ensure Workday's error count falls below the previous 136/136. Check that invalid archive slugs disappear from newly generated `data/boards.json`.
 
 ## Important limitations
 
-- The no-key fallback uses a public Bing RSS-style endpoint, not Google HTML scraping. It may be blocked, throttled, or changed by the provider; no-key search results are not guaranteed on every run.
-- Public social posts are discovery leads only. The crawler does not log in, bypass access controls, or publish a job solely because a social post exists.
-- Search result snippets and ATS URLs are candidates, not proof of eligibility. The original listing must still support the target role, India eligibility, remote/hybrid arrangement, freshness, and a valid direct job URL before it enters the final direct-job output.
-- This package was syntax-checked, its workflow YAML parsed, and targeted logic smoke tests were run. It was **not** run as a live GitHub Action against your Google Sheet from this environment, so actual live job yield and provider availability remain unverified.
+This package has been syntax-checked and tested with local/mocked cases; it has not been run against your live GitHub Actions, spreadsheet, or all external sites. The public Bing RSS fallback may throttle or change. It is a discovery fallback, not a guaranteed Google replacement. Jobs still need employer/ATS page verification; more crawled URLs do not automatically mean more valid jobs.
