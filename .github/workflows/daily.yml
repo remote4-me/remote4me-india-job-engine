@@ -1,4 +1,4 @@
-name: Remote4.me V14.6 Expanded ATS + Company Career Crawler
+name: Remote4.me V14.7 Expanded ATS + India Career Coverage
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Refresh V14.6 discovery manifests
+      - name: Refresh V14.7 discovery manifests
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -94,7 +94,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ats: [Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR, Personio, Workday, Nonstandard]
+        ats: [Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR, Personio, Workday, Zoho Recruit, Darwinbox, Keka, Zwayam, PeopleStrong, HROne, Freshteam, Oracle Recruiting, iCIMS, Taleo, SuccessFactors, ADP, Nonstandard]
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
