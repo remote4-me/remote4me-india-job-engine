@@ -1091,6 +1091,56 @@ def feed_recent_enough(posted):
         return True
 
 
+def _append_public_job(jobs, title, company, location, workplace, posted, url, source, description=""):
+    """Normalize a public-feed record into the private discovery queue.
+
+    Public feeds are discovery sources, not proof that the employer's direct
+    application route is verified. This helper intentionally preserves the
+    source URL and does not mark the record as directly publishable.
+    """
+    title = clean_text(title)
+    company = clean_text(company)
+    location = clean_text(location)
+    description = clean_text(description)
+    url = normalize_url(url)
+    posted = parse_date(posted)
+    workplace = classify_workplace(
+        location=location,
+        workplace_type=workplace,
+        description=description,
+    )
+    if not title or not company or not url:
+        return
+    if not title_relevant(title) or not feed_recent_enough(posted):
+        return
+    if workplace not in {"Remote", "Hybrid"}:
+        return
+    # Keep the user's India-only eligibility requirement for both work modes.
+    if not allowed_india(location, "", "", description, workplace):
+        return
+    score, matched = score_job(title, description, location)
+    jobs.append({
+        "added": datetime.now(timezone.utc).date().isoformat(),
+        "title": title,
+        "company": company,
+        "location": location,
+        "workplace": workplace,
+        "posted_date": posted,
+        "job_url": url,
+        "source": clean_text(source),
+        "score": score,
+        "matched": matched,
+        "description": description[:12000],
+        "direct": False,
+        "direct_validation": "aggregator-or-unverified-host",
+        "discovery_url": url,
+        "source_page_url": url,
+        "source_link_status": "URL_FORMAT_VALID_NOT_YET_FETCHED",
+        "detail_status": "Pending direct employer/ATS verification",
+        "company_website": "",
+    })
+
+
 # ============================================================
 # PUBLIC API SOURCES
 # ============================================================
@@ -6656,7 +6706,17 @@ def fetch_board_record(rec):
         elif ats in FETCHERS:
             jobs=FETCHERS[ats](key)
         else:
-            return [], {"key":key,"ats":ats,"company":company,"ok":False,"status":"unsupported","jobs_found":0}
+            # Many Indian/enterprise ATS platforms do not expose a stable,
+            # normalized public API. Use the existing guarded career parser on
+            # the discovered public board URL rather than silently skipping the
+            # entire ATS shard. Final direct-URL and India checks still apply.
+            board_url = clean_text(rec.get("url") or rec.get("board_url") or rec.get("career_url"))
+            if not board_url:
+                return [], {"key":key,"ats":ats,"company":company,"ok":False,"status":"unsupported-no-board-url","jobs_found":0}
+            jobs, _links = crawl_career_url_v11(
+                company or humanize_slug(key), board_url,
+                source=f"{ats}->Direct", max_job_pages=V11_CAREER_PAGE_LIMIT,
+            )
         for j in jobs:
             j["board_key"]=key
             if not j.get("company") or j.get("company") == humanize_slug(key): j["company"]=company or j.get("company")
@@ -7446,7 +7506,7 @@ def run_merge(out_dir,write_sheet=False):
 def main_v11():
     parser=argparse.ArgumentParser(description="Remote4.me V14.6 India-first high coverage crawler")
     parser.add_argument("--discover",action="store_true")
-    parser.add_argument("--ats",choices=["Greenhouse","Lever","Ashby","Workable","SmartRecruiters","Recruitee","Breezy","Teamtailor","BambooHR","Personio","Workday","Nonstandard"],default="")
+    parser.add_argument("--ats",choices=["Greenhouse","Lever","Ashby","Workable","SmartRecruiters","Recruitee","Breezy","Teamtailor","BambooHR","Personio","Workday","Zoho Recruit","Darwinbox","Keka","Zwayam","PeopleStrong","HROne","Freshteam","Oracle Recruiting","iCIMS","Taleo","SuccessFactors","ADP","Nonstandard"],default="")
     parser.add_argument("--careers",action="store_true")
     parser.add_argument("--feeds",action="store_true")
     parser.add_argument("--out",default="out/jobs.jsonl")
