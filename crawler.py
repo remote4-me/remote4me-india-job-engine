@@ -70,6 +70,9 @@ SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID", "")
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS", "")
 STARTUP_JOBS_API_KEY = os.environ.get("STARTUP_JOBS_API_KEY", "").strip()
 JOB_OPPORTUNITIES_API_KEY = os.environ.get("JOB_OPPORTUNITIES_API_KEY", "").strip()
+JOBVETTA_API_KEY = os.environ.get("JOBVETTA_API_KEY", "").strip()
+JOBVETTA_DAILY_QUERIES = max(1, min(8, int(os.environ.get("JOBVETTA_DAILY_QUERIES", "4"))))
+JOBVETTA_DAYS = max(1, min(30, int(os.environ.get("JOBVETTA_DAYS", "14"))))
 # Search/discovery APIs. Keys are supplied only through GitHub Actions Secrets.
 SERPER_API_KEY = os.environ.get("SERPER_API_KEY", "").strip()
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "").strip()
@@ -1073,7 +1076,7 @@ def job_key(job):
 
 AGGREGATOR_HOSTS = {
     # Remote-job aggregators and directories: useful for discovery, never direct apply.
-    "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com",
+    "himalayas.app", "startup.jobs", "jobicy.com", 
     "remotejobs.org", "weworkremotely.com", "remotive.com", "arbeitnow.com",
     "workingnomads.com", "jobopportunitiesapi.org", "wellfound.com", "cutshort.io",
     "linkedin.com", "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com",
@@ -3827,7 +3830,7 @@ def is_company_homepage_url(url):
     blocked = {
         "google.com", "bing.com", "microsoft.com", "facebook.com", "linkedin.com",
         "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com", "wellfound.com",
-        "cutshort.io", "himalayas.app", "startup.jobs", "remoteok.com", "remotejobs.org",
+        "cutshort.io", "himalayas.app", "startup.jobs", "remotejobs.org",
         "weworkremotely.com", "jobicy.com", "reddit.com", "x.com", "twitter.com",
         "youtube.com", "instagram.com", "wikipedia.org", "github.com", "github.io",
     }
@@ -4648,7 +4651,7 @@ def extract_exact_job_url_from_page(source_url, title_hint=""):
         host = urlparse(href).netloc.lower()
         txt = clean_text(a.get_text(" ", strip=True)).lower()
         if any(x in host for x in [
-            "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org",
+            "himalayas.app", "startup.jobs", "jobicy.com", "remotejobs.org",
             "wellfound.com", "cutshort.io", "weworkremotely.com",
         ]):
             continue
@@ -4793,7 +4796,7 @@ def inspect_discovery_job_page(job, try_browser=False, page_url=""):
             node = soup.select_one(selector)
             if node and clean_text(node.get(attr)):
                 candidate = clean_text(node.get(attr))
-                if candidate.lower() not in {"linkedin", "indeed", "wellfound", "himalayas", "jobicy", "remote ok"}:
+                if candidate.lower() not in {"linkedin", "indeed", "wellfound", "himalayas", "jobicy"}:
                     company = candidate; break
     if not description:
         node = soup.select_one("meta[name='description'], meta[property='og:description']")
@@ -5149,7 +5152,7 @@ def v11_crawl_nonstandard_exact(nonstandard, budget=500):
 def v11_clean_direct_jobs(jobs):
     """Ensure every V11 direct job points to employer/ATS rather than an aggregator."""
     blocked = {
-        "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org",
+        "himalayas.app", "startup.jobs", "jobicy.com", "remotejobs.org",
         "wellfound.com", "cutshort.io", "weworkremotely.com",
     }
     out = []
@@ -5954,6 +5957,86 @@ def fetch_workday_board(board, company_hint=""):
     return out
 
 
+
+def fetch_jobvetta():
+    """Fetch a tiny rotating slice of Jobvetta's free India jobs API.
+
+    The API allows 50 requests/day; this crawler uses at most four by default.
+    Results remain discovery candidates until the employer application URL is verified.
+    """
+    jobs = []
+    if not JOBVETTA_API_KEY:
+        print("Jobvetta: JOBVETTA_API_KEY not configured; skipping")
+        return jobs
+    terms = [
+        "customer support", "customer service", "technical support", "product support",
+        "customer success", "customer onboarding", "implementation specialist",
+        "application support", "help desk", "service desk", "customer experience",
+        "support specialist", "customer operations", "technical account manager",
+    ]
+    day = datetime.now(timezone.utc).date().toordinal()
+    start = (day * JOBVETTA_DAILY_QUERIES) % len(terms)
+    selected = [terms[(start + i) % len(terms)] for i in range(JOBVETTA_DAILY_QUERIES)]
+    seen = set()
+    for term in selected:
+        try:
+            r = SESSION.get(
+                "https://api.jobvetta.com/v1/jobs",
+                params={"q": term, "location": "India", "days": JOBVETTA_DAYS, "limit": 10},
+                headers={"Authorization": f"Bearer {JOBVETTA_API_KEY}", "Accept": "application/json"},
+                timeout=20,
+            )
+        except requests.RequestException as exc:
+            print(f"Jobvetta [{term}]: request error: {exc}")
+            continue
+        if r.status_code == 401:
+            print("Jobvetta: HTTP 401; check JOBVETTA_API_KEY")
+            break
+        if r.status_code == 429:
+            print("Jobvetta: daily request limit reached; stopping")
+            break
+        if r.status_code != 200:
+            print(f"Jobvetta [{term}]: HTTP {r.status_code}")
+            continue
+        try:
+            payload = r.json()
+        except ValueError:
+            print("Jobvetta: invalid JSON response")
+            continue
+        for j in payload.get("jobs") or []:
+            if not isinstance(j, dict):
+                continue
+            jid = clean_text(j.get("job_id") or j.get("id") or j.get("url"))
+            if jid and jid in seen:
+                continue
+            if jid:
+                seen.add(jid)
+            title = clean_text(j.get("title"))
+            if not title_relevant(title):
+                continue
+            loc = clean_text(j.get("location") or j.get("city") or "India")
+            model = clean_text(j.get("work_model") or j.get("workplace_type") or j.get("workplace") or j.get("remote_type")).lower()
+            if j.get("is_remote") is True or j.get("remote") is True:
+                model = "remote"
+            if j.get("is_hybrid") is True:
+                model = "hybrid"
+            workplace = "Remote" if "remote" in model else "Hybrid" if "hybrid" in model else ""
+            if not workplace:
+                # Do not infer remote eligibility from an India city alone.
+                continue
+            posted = parse_date(j.get("posted_at") or j.get("published_at") or j.get("created_at") or j.get("posted_date"))
+            if not feed_recent_enough(posted):
+                continue
+            link = clean_text(j.get("url") or j.get("job_url") or j.get("jobvetta_url") or j.get("apply_url") or j.get("source_url"))
+            if not link:
+                continue
+            desc = clean_text(j.get("description") or j.get("summary"))
+            _append_public_job(jobs, title, j.get("company") or j.get("company_name"), loc, workplace,
+                               posted, link, "Jobvetta", desc)
+    print(f"Jobvetta: {len(jobs)} discovery candidates from {len(selected)} request(s); daily cap={JOBVETTA_DAILY_QUERIES}")
+    return jobs
+
+
 def fetch_remotejobs_org():
     """Discovery-only feed. Query the support category with a few India terms.
 
@@ -6129,60 +6212,27 @@ GOOGLE_JOBS_QUERY_BANK = [
     'technical account manager customer success India hybrid',
 ]
 
-# Dedicated public search-index queries for LinkedIn/Indeed job-detail URLs.
-# These are search-engine queries only; the crawler does not log into or bypass
-# LinkedIn/Indeed access controls. Results are leads that must pass normal checks.
+# Dedicated public search-index queries for employer ATS boards and job portals.
+# LinkedIn is intentionally excluded. Results are discovery leads, not proof of eligibility.
 JOB_BOARD_QUERY_BANK = [
-    'site:linkedin.com/jobs/view "customer support" India remote',
-    'site:linkedin.com/jobs/view "customer service" India remote',
-    'site:linkedin.com/jobs/view "technical support" India remote',
-    'site:linkedin.com/jobs/view "product support" India remote',
-    'site:linkedin.com/jobs/view "customer success" India remote',
-    'site:linkedin.com/jobs/view "customer onboarding" India remote',
-    'site:linkedin.com/jobs/view "implementation specialist" India remote',
-    'site:linkedin.com/jobs/view "technical account manager" India remote',
-    'site:linkedin.com/jobs/view "support specialist" "remote India"',
-    'site:linkedin.com/jobs/view "customer experience" "work from home" India',
-    'site:linkedin.com/jobs/view "chat support" India remote',
-    'site:linkedin.com/jobs/view "email support" India remote',
-    'site:linkedin.com/jobs/view "help desk" India remote',
-    'site:linkedin.com/jobs/view "application support" India remote',
-    'site:linkedin.com/jobs/view "service desk" India remote',
-    'site:linkedin.com/jobs/view "customer operations" India remote',
-    'site:linkedin.com/jobs/view "client support" India remote',
-    'site:linkedin.com/jobs/view "customer success associate" India remote',
-    'site:linkedin.com/jobs/view "customer support" "India" hybrid',
-    'site:linkedin.com/jobs/view "technical support" "India" hybrid',
-    'site:indeed.com/viewjob "customer support" India remote',
-    'site:indeed.com/viewjob "customer service" India remote',
-    'site:indeed.com/viewjob "technical support" India remote',
-    'site:indeed.com/viewjob "product support" India remote',
-    'site:indeed.com/viewjob "customer success" India remote',
-    'site:indeed.com/viewjob "customer onboarding" India remote',
-    'site:indeed.com/viewjob "implementation specialist" India remote',
-    'site:indeed.com/viewjob "technical account manager" India remote',
-    'site:indeed.com/viewjob "support specialist" "remote India"',
-    'site:indeed.com/viewjob "customer experience" "work from home" India',
-    'site:indeed.com/viewjob "chat support" India remote',
-    'site:indeed.com/viewjob "email support" India remote',
-    'site:indeed.com/viewjob "help desk" India remote',
-    'site:indeed.com/viewjob "application support" India remote',
-    'site:indeed.com/viewjob "service desk" India remote',
-    'site:indeed.com/viewjob "customer operations" India remote',
-    'site:indeed.com/viewjob "client support" India remote',
-    'site:indeed.com/viewjob "customer success associate" India remote',
-    'site:indeed.com/viewjob "customer support" India hybrid',
-    'site:indeed.com/viewjob "technical support" India hybrid',
-    'site:linkedin.com/jobs/view ("customer support" OR "customer service") ("remote India" OR "India remote" OR "work from home")',
-    'site:linkedin.com/jobs/view ("customer success" OR "client success") (India remote OR "remote India")',
-    'site:linkedin.com/jobs/view ("technical support" OR "product support" OR "application support") India remote',
-    'site:indeed.com/viewjob ("customer support" OR "customer service") ("remote India" OR "India remote" OR "work from home")',
-    'site:indeed.com/viewjob ("customer success" OR "client success") (India remote OR "remote India")',
-    'site:indeed.com/viewjob ("technical support" OR "product support" OR "application support") India remote',
-    'site:linkedin.com/jobs/view (support OR onboarding OR implementation) (India OR Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai) remote',
-    'site:indeed.com/viewjob (support OR onboarding OR implementation) (India OR Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai) remote',
-    'site:linkedin.com/jobs/view ("non voice" OR "voice process") India remote support',
-    'site:indeed.com/viewjob ("non voice" OR "voice process") India remote support',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:myworkdayjobs.com) ("customer support" OR "customer service") ("remote India" OR "India remote")',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:myworkdayjobs.com) ("technical support" OR "product support" OR "application support") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:myworkdayjobs.com) ("customer success" OR onboarding OR implementation) India (remote OR hybrid)',
+    '(site:jobs.smartrecruiters.com OR site:careers.smartrecruiters.com OR site:*.recruitee.com OR site:*.breezy.hr OR site:*.jobs.personio.com OR site:*.teamtailor.com) (support OR success OR onboarding) India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer support" OR "customer care" OR "chat support" OR "email support") India remote -developer -sales -marketing',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("support analyst" OR "support specialist" OR "help desk" OR "service desk") India (remote OR hybrid)',
+    '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com OR site:hirist.tech OR site:apna.co) ("customer support" OR "technical support" OR "customer success") India remote',
+    '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com OR site:hirist.tech OR site:apna.co) ("customer support" OR "customer service" OR "help desk") India hybrid',
+    '(site:jobicy.com OR site:himalayas.app OR site:weworkremotely.com OR site:arbeitnow.com OR site:remotejobs.org) ("customer support" OR "customer success" OR "technical support") India',
+    '(site:jobs.smartrecruiters.com OR site:careers.smartrecruiters.com OR site:*.recruitee.com OR site:*.breezy.hr) ("customer experience" OR "client support" OR "customer operations") India remote',
+    '(site:myworkdayjobs.com OR site:*.wd1.myworkdayjobs.com OR site:*.wd3.myworkdayjobs.com OR site:*.wd5.myworkdayjobs.com) ("customer support" OR "technical support" OR "customer success") India',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer onboarding" OR "implementation specialist" OR "technical account manager") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("non voice" OR "voice process" OR "customer care" OR "contact center") India (remote OR hybrid)',
+    '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com) ("product support" OR "application support" OR "IT support") (Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai OR India)',
+    '"customer support" India remote careers -linkedin -facebook -instagram -twitter',
+    '"technical support" India hybrid careers -linkedin -facebook -instagram -twitter',
+    '"customer success" India remote careers -linkedin -facebook -instagram -twitter',
+    '"implementation specialist" India hybrid careers -linkedin -facebook -instagram -twitter',
 ]
 
 SEARCH_GOOGLE_QUERY_BANK = [
@@ -6352,8 +6402,7 @@ SEARCH_ATS_QUERY_BANK = [
     '"India" "remote" "technical account manager" careers',
 ]
 
-# Social-post discovery is intentionally disabled: posts age poorly and are hard to verify.
-# LinkedIn job-detail searches remain in JOB_BOARD_QUERY_BANK; X/Twitter are not searched.
+# Social-post discovery is intentionally disabled. LinkedIn and X/Twitter are excluded.
 SOCIAL_SEARCH_QUERY_BANK = []
 
 SEARCH_PROVIDER_NAMES = [
@@ -6612,7 +6661,7 @@ def _search_serpapi_google_jobs(query):
         "linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com",
         "monster.com","talent.com","simplyhired.com","dice.com",
         "jooble.org","jobicy.com","himalayas.app","startup.jobs",
-        "remoteok.com","remotejobs.org","weworkremotely.com","arbeitnow.com",
+        "remotejobs.org","weworkremotely.com","arbeitnow.com",
     }
     out=[]
     for j in data.get("jobs_results") or []:
@@ -6885,7 +6934,7 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
     generating jobs after the initial discovery run.
     """
     added_boards=0; added_careers=0; discovery=[]
-    review_only_hosts={"linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com","x.com","twitter.com","reddit.com"}
+    review_only_hosts={"indeed.com","glassdoor.com","ziprecruiter.com","monster.com","x.com","twitter.com","reddit.com"}
     role_re = re.compile(
         r"customer\s+(?:support|service|success|experience|care)|"
         r"technical\s+support|technical\s+account|product\s+support|support\s+engineer|"
@@ -6900,11 +6949,10 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
         full_host=parsed.netloc.lower().split(":",1)[0]
         host=full_host[4:] if full_host.startswith("www.") else full_host
         path_lower = (parsed.path or "").lower()
-        # Explicitly discard X/Twitter results even if a broad search query
-        # happens to return one. Keep LinkedIn job-detail pages, but not posts/feed updates.
-        if host == "x.com" or host.endswith(".x.com") or host == "twitter.com" or host.endswith(".twitter.com"):
+        # Explicitly discard social platforms we do not use as job sources.
+        if host == "linkedin.com" or host.endswith(".linkedin.com"):
             continue
-        if (host == "linkedin.com" or host.endswith(".linkedin.com")) and ("/posts/" in path_lower or "/feed/update/" in path_lower):
+        if host == "x.com" or host.endswith(".x.com") or host == "twitter.com" or host.endswith(".twitter.com"):
             continue
         review_only_host = any(host == root or host.endswith("." + root) for root in review_only_hosts)
         social_host = any(host == root or host.endswith("." + root) for root in {"reddit.com"})
@@ -7890,6 +7938,8 @@ def feed_direct_only():
     """
     feeds = [
         ("Himalayas", fetch_himalayas),
+        ("Remotive", fetch_remotive),
+                ("Jobvetta", fetch_jobvetta),
         ("Arbeitnow", fetch_arbeitnow),
         ("Working Nomads", fetch_working_nomads),
         ("We Work Remotely", fetch_wwr_rss),
@@ -8718,16 +8768,23 @@ def main_v11():
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
-    print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
-    print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
+    if args.discover or args.feeds:
+        print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
+        print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
+        print(f"Jobvetta API: {'configured' if JOBVETTA_API_KEY else 'NOT configured'} (daily request budget={JOBVETTA_DAILY_QUERIES})")
+    else:
+        print("Aggregator API keys: checked only in --feeds stage; ATS workers do not need them")
     if EXTERNAL_FETCH_FALLBACK_ENABLED and EXTERNAL_FETCH_MAX_CALLS > 0:
         print("External fallbacks enabled: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none configured")
     else:
         print("External fallbacks: DISABLED (no external scraping-service calls)")
     print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
     configured_search_names = [x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]
-    print("Search discovery providers: " + ", ".join(configured_search_names or ["none configured"]))
-    print(f"Public no-key search fallback: {'enabled' if PUBLIC_SERP_FALLBACK_ENABLED else 'disabled'} in the --discover prepare step")
+    if args.discover:
+        print("Search discovery providers: " + ", ".join(configured_search_names or ["none configured"]))
+        print(f"Public no-key search fallback: {'enabled' if PUBLIC_SERP_FALLBACK_ENABLED else 'disabled'} (Bing RSS; bounded; no Google HTML scraping)")
+    else:
+        print("Search discovery runs in --discover prepare step; ATS/feed workers do not need search-provider keys")
     print(f"Search API provider budget: {SEARCH_API_PROVIDERS_PER_RUN} per run; homepage crawl budget: {V11_CAREER_HOMEPAGE_BUDGET}; career page depth: {V11_CAREER_PAGE_LIMIT}")
     print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
     if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
