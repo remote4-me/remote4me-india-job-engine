@@ -18,7 +18,7 @@ jobs:
   # ----------------------------------------------------------
   prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -284,8 +284,8 @@ jobs:
   # PUBLISH ONCE
   # ----------------------------------------------------------
   publish:
-    needs: [ats, careers, feeds]
-    if: ${{ !cancelled() }}
+    needs: [prepare, ats, careers, feeds]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' }}
     permissions:
       contents: write
     runs-on: ubuntu-latest

@@ -11,7 +11,7 @@ permissions:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 35
     concurrency:
       group: remote4me-discovery
       cancel-in-progress: false
