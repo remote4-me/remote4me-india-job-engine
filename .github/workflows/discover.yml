@@ -1,4 +1,4 @@
-name: Remote4.me V15.0 Weekly Discovery
+name: Remote4.me V15.1 Weekly Discovery
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 15
     concurrency:
       group: remote4me-discovery
       cancel-in-progress: false
@@ -26,6 +26,7 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          MANUAL_COMPANY_SHEET_NAME: ${{ vars.MANUAL_COMPANY_SHEET_NAME }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -39,9 +40,9 @@ jobs:
           SEARCH_API_PROVIDERS_PER_RUN: "1"
           SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED: "0"
           GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "1"
-          DISCOVERY_VALIDATE_PER_ATS: "1200"
+          DISCOVERY_VALIDATE_PER_ATS: "500"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
-          DISCOVERY_WORKERS: "24"
+          DISCOVERY_WORKERS: "20"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --discover
       - name: Commit refreshed manifests
@@ -50,5 +51,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
           git diff --cached --quiet && echo "No manifest changes." && exit 0
-          git commit -m "Refresh V15.0 company and ATS discovery manifests"
+          git commit -m "Refresh V15.1 company and ATS discovery manifests"
           git push
