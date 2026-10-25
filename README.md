@@ -43,3 +43,38 @@ This release is a conservative stabilization of the uploaded crawler, not a whol
 python -m py_compile crawler.py
 python tests/test_release.py
 ```
+
+
+## Search and source policy (Stable Release)
+
+- LinkedIn is excluded from search queries and search-result promotion. X/Twitter remains disabled.
+- The daily discovery stage uses a small rotating set of ATS-focused queries. If `SERPER_API_KEY` is configured, Google organic results can be queried through Serper; a bounded Bing RSS fallback works without an API key. The crawler does not scrape Google HTML.
+- Google Jobs is a separate SerpApi feature, capped at one query per UTC day by default. Set `GOOGLE_JOBS_ENABLED=0` to disable it completely.
+- Public feeds include Himalayas, Remotive, RemoteOK, Jobvetta (up to four requests/day by default), Arbeitnow, Working Nomads, We Work Remotely RSS, Jobicy, Startup Jobs, Job Opportunities API, Remote Landers, and RemoteJobs.org. Some feeds are global; the crawler keeps only India-eligible remote/hybrid candidates.
+- Aggregator results are discovery candidates until the official employer/ATS application URL is verified. Do not publish an aggregator URL as a direct employer apply link without review.
+- Jobvetta's free allowance is 50 requests per key per UTC day; this crawler defaults to four. Job Opportunities API has its own budget; check its API dashboard/terms before raising limits.
+- Google does not offer a new, general-purpose, free unauthenticated Google Search API. Existing Custom Search JSON API access is being retired; use the bounded Serper integration if available, otherwise the no-key Bing RSS fallback.
+
+## After deployment
+
+Check the `prepare` job logs for `SEARCH DISCOVERY: providers=...` and `fallback_queries=...`. Search-provider configuration is only required in `prepare`; ATS shard logs intentionally do not need those keys. Check `feeds` for the Startup Jobs, Job Opportunities API, and Jobvetta status lines, because those API secrets are only passed to the feed worker.
+
+
+## Merged October 22 + current release
+
+This package keeps the current V15.1-era crawler and its current repository data, restores broader but bounded discovery settings, and removes the RemoteOK feed integration. LinkedIn job URLs are not used as job results. The package does not overwrite GitHub Secrets.
+
+### Discovery budgets
+- Public SERP queries/run: 12
+- Google discovery queries/provider: 6
+- Job-board queries/run: 4
+- Discovery candidates: 6,000
+- ATS board budget: 1,800
+- ATS validation per ATS: 900
+- Career crawl budget: 750; daily career budget: 1,000
+- Career browser calls: 20
+
+These are bounded limits, not a promise of a specific job count. Search-provider billing/quotas depend on configured credentials and provider plans. The `--careers` stage does not report jobs found by separate ATS shards.
+
+### Installation
+Back up the current repository first. Replace `crawler.py`, `.github/workflows/daily.yml`, `.github/workflows/discover.yml`, and `README.md` from this package. Keep your existing `data/` files and GitHub Secrets if they are newer than the included snapshot. Run the daily workflow manually and inspect each ATS shard's summary.

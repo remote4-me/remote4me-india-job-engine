@@ -1076,7 +1076,7 @@ def job_key(job):
 
 AGGREGATOR_HOSTS = {
     # Remote-job aggregators and directories: useful for discovery, never direct apply.
-    "himalayas.app", "startup.jobs", "jobicy.com", 
+    "himalayas.app", "startup.jobs", "jobicy.com",
     "remotejobs.org", "weworkremotely.com", "remotive.com", "arbeitnow.com",
     "workingnomads.com", "jobopportunitiesapi.org", "wellfound.com", "cutshort.io",
     "linkedin.com", "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com",
@@ -4796,7 +4796,7 @@ def inspect_discovery_job_page(job, try_browser=False, page_url=""):
             node = soup.select_one(selector)
             if node and clean_text(node.get(attr)):
                 candidate = clean_text(node.get(attr))
-                if candidate.lower() not in {"linkedin", "indeed", "wellfound", "himalayas", "jobicy"}:
+                if candidate.lower() not in {"linkedin", "indeed", "wellfound", "himalayas", "jobicy", "remote ok"}:
                     company = candidate; break
     if not description:
         node = soup.select_one("meta[name='description'], meta[property='og:description']")
@@ -6223,7 +6223,7 @@ JOB_BOARD_QUERY_BANK = [
     '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("support analyst" OR "support specialist" OR "help desk" OR "service desk") India (remote OR hybrid)',
     '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com OR site:hirist.tech OR site:apna.co) ("customer support" OR "technical support" OR "customer success") India remote',
     '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com OR site:hirist.tech OR site:apna.co) ("customer support" OR "customer service" OR "help desk") India hybrid',
-    '(site:jobicy.com OR site:himalayas.app OR site:weworkremotely.com OR site:arbeitnow.com OR site:remotejobs.org) ("customer support" OR "customer success" OR "technical support") India',
+    '(site:jobicy.com OR site:himalayas.app OR site:remoteok.com OR site:weworkremotely.com OR site:arbeitnow.com OR site:remotejobs.org) ("customer support" OR "customer success" OR "technical support") India',
     '(site:jobs.smartrecruiters.com OR site:careers.smartrecruiters.com OR site:*.recruitee.com OR site:*.breezy.hr) ("customer experience" OR "client support" OR "customer operations") India remote',
     '(site:myworkdayjobs.com OR site:*.wd1.myworkdayjobs.com OR site:*.wd3.myworkdayjobs.com OR site:*.wd5.myworkdayjobs.com) ("customer support" OR "technical support" OR "customer success") India',
     '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer onboarding" OR "implementation specialist" OR "technical account manager") India remote',
@@ -6661,7 +6661,7 @@ def _search_serpapi_google_jobs(query):
         "linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com",
         "monster.com","talent.com","simplyhired.com","dice.com",
         "jooble.org","jobicy.com","himalayas.app","startup.jobs",
-        "remotejobs.org","weworkremotely.com","arbeitnow.com",
+        "remoteok.com","remotejobs.org","weworkremotely.com","arbeitnow.com",
     }
     out=[]
     for j in data.get("jobs_results") or []:
@@ -7939,7 +7939,7 @@ def feed_direct_only():
     feeds = [
         ("Himalayas", fetch_himalayas),
         ("Remotive", fetch_remotive),
-                ("Jobvetta", fetch_jobvetta),
+        ("Jobvetta", fetch_jobvetta),
         ("Arbeitnow", fetch_arbeitnow),
         ("Working Nomads", fetch_working_nomads),
         ("We Work Remotely", fetch_wwr_rss),
