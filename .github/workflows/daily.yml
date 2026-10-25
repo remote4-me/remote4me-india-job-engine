@@ -1,9 +1,9 @@
-name: Remote4.me V15.1 Fast Crawl + Manual Company Sheet + India ATS
+name: Remote4.me V15.3 Final Fast Daily + India Support Roles
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 13 * * *"  # 19:00 IST
+    - cron: "30 11 * * *"  # 17:00 IST
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ jobs:
   # ----------------------------------------------------------
   prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Refresh V15.1 discovery manifests
+      - name: Refresh V15.3 discovery manifests
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -134,12 +134,12 @@ jobs:
           JOB_MAX_AGE_DAYS: "30"
           ATS_DAILY_CAP: "400"
           NONSTANDARD_DAILY_BUDGET: "900"
-          REQUEST_TIMEOUT: "12"
-          HTML_TIMEOUT: "12"
+          REQUEST_TIMEOUT: "8"
+          HTML_TIMEOUT: "8"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_TIMEOUT_MS: "12000"
           PLAYWRIGHT_CONCURRENT_BROWSERS: "2"
-          CAREER_BROWSER_MAX_CALLS: "30"
+          CAREER_BROWSER_MAX_CALLS: "8"
           WORKDAY_MAX_PAGES_PER_KEYWORD: "1"
           WORKDAY_MAX_RESULTS_PER_BOARD: "120"
           WORKDAY_MAX_DETAIL_CALLS_PER_BOARD: "80"
@@ -159,7 +159,7 @@ jobs:
   careers:
     needs: prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 18
     concurrency:
       group: remote4me-v13-careers
       cancel-in-progress: false
@@ -184,16 +184,16 @@ jobs:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           MANUAL_COMPANY_SHEET_NAME: ${{ vars.MANUAL_COMPANY_SHEET_NAME }}
-          CAREER_DAILY_BUDGET: "900"
-          CAREER_CRAWL_BUDGET: "1200"
+          CAREER_DAILY_BUDGET: "300"
+          CAREER_CRAWL_BUDGET: "350"
           ATS_BOARD_BUDGET: "2400"
           DIRECT_DETAIL_BUDGET: "160"
           DISCOVERY_DETAIL_BUDGET: "240"
           AGGREGATOR_RESOLVE_BUDGET: "180"
           AGGREGATOR_SEARCH_FALLBACK_BUDGET: "12"
           CAREER_PAGE_LIMIT: "8"
-          CAREER_HOMEPAGE_BUDGET: "120"
-          HOMEPAGE_WORKERS: "8"
+          CAREER_HOMEPAGE_BUDGET: "35"
+          HOMEPAGE_WORKERS: "10"
           HOMEPAGE_ROUTE_LIMIT: "8"
           CRAWL_WORKERS: "20"
           JOB_MAX_AGE_DAYS: "30"
@@ -201,13 +201,13 @@ jobs:
           PUBLISH_APAC_WORLDWIDE: "0"
           CAREER_PREFLIGHT_ENABLED: "1"
           CAREER_PREFLIGHT_WORKERS: "20"
-          CAREER_BROWSER_MAX_CALLS: "30"
+          CAREER_BROWSER_MAX_CALLS: "8"
           PLAYWRIGHT_CONCURRENT_BROWSERS: "2"
           PLAYWRIGHT_ENABLED: "1"
-          PLAYWRIGHT_MAX_PAGES: "2"
+          PLAYWRIGHT_MAX_PAGES: "1"
           PLAYWRIGHT_TIMEOUT_MS: "12000"
-          REQUEST_TIMEOUT: "12"
-          HTML_TIMEOUT: "12"
+          REQUEST_TIMEOUT: "8"
+          HTML_TIMEOUT: "8"
           EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
           EXTERNAL_FETCH_MAX_CALLS: "0"
           JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
@@ -268,7 +268,7 @@ jobs:
           FEED_MAX_JOB_AGE_DAYS: "14"
           FEED_DISCOVERY_MAX_ROWS: "1500"
           PLAYWRIGHT_CONCURRENT_BROWSERS: "3"
-          FEED_DIRECT_BUDGET: "450"
+          FEED_DIRECT_BUDGET: "350"
           JOB_MAX_AGE_DAYS: "30"
           ALLOW_APAC_WORLDWIDE: "0"
           PUBLISH_APAC_WORLDWIDE: "0"
@@ -325,8 +325,8 @@ jobs:
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-          git diff --cached --quiet || git commit -m "Refresh V15.1 discovery manifests"
+          git diff --cached --quiet || git commit -m "Refresh V15.3 discovery manifests"
           git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me V15.1 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
+        run: echo "Remote4.me V15.3 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
