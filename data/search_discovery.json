@@ -24,18 +24,6 @@
     "detail_status": "Pending original job-page verification"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/samsara/jobs/8281479",
-    "title": "Work at Samsara: Apply to open roles today",
-    "snippet": "Sr Customer Experience Specialist - Finance. Remote - US · Sr Finance Program ... Digital Customer Success Manager, AI & Automation. Remote - US · Digital ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Samsara",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910",
     "title": "Wing Assistant - Technical Support Representative (India)",
     "snippet": "Technical Support Representative (India). New Delhi, India. IND – IND /. Remote. Apply for this job. Please whitelist the domains \"lever.co\" and \"hire.lever.co ...",
@@ -67,18 +55,6 @@
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
     "company": "Godaddy",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Technical-Support-Engineer_JR358037",
-    "title": "Technical Support Engineer - Myworkdayjobs.com",
-    "snippet": "Technical Support Engineer. Apply. remote type: Office - Flexible. locations: India - Hyderabad: India - Bangalore. time type: Full time.",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
-    "score": 100,
-    "company": "Salesforce",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes",
     "detail_status": "Pending original job-page verification"
@@ -131,42 +107,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://jobs.lever.co/Sprinto/9246976f-5d9c-4065-842d-476a093a588a",
-    "title": "Sprinto - Project Manager – Enterprise Customer Onboarding",
-    "snippet": "Customer Experience / ... Lead enterprise customer implementations from post-sales handover through onboarding, go-live and transition to Customer Success.",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Sprinto",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://guggenheiminvestment.wd5.myworkdayjobs.com/en-US/External/job/Service-Desk---Tier-2--India_JR-2025-100865",
-    "title": "Service Desk – Tier 2- India - Myworkdayjobs.com",
-    "snippet": "The Service Desk – Tier 2 Support Specialist provides advanced technical support to employees. This position is for individuals with four to seven or more years ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Guggenheiminvestment",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://porch.wd1.myworkdayjobs.com/en-US/careers/job/IT-Helpdesk-Technician_JR101501",
-    "title": "Senior IT Helpdesk Technician - Myworkdayjobs.com",
-    "snippet": "Bachelor's degree in an IT-related field or 6+ years of progressive experience in corporate IT support roles. Expert-level knowledge of Microsoft Windows and ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Porch",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
     "discovery_url": "https://adobe.wd5.myworkdayjobs.com/external_experienced/job/Remote-India/Technical-Support-Engineer_R171714",
     "title": "Remote India - Workday is currently unavailable.",
     "snippet": "",
@@ -174,18 +114,6 @@
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
     "company": "Adobe",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://alsglobal.wd103.myworkdayjobs.com/en-US/External/job/Remote-Support-Services-Engineer-L3_R7196",
-    "title": "Remote Desktop Support Service L3 - Myworkdayjobs.com",
-    "snippet": "Complex Incident Resolution & Remote IT Support. Own and resolve highly complex incidents escalated from L2 support involving infrastructure, servers, networks, ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Alsglobal",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes",
     "detail_status": "Pending original job-page verification"
@@ -203,18 +131,6 @@
     "detail_status": "Pending original job-page verification"
   },
   {
-    "discovery_url": "https://atsg.wd108.myworkdayjobs.com/xtiumcareers/job/india---remote/manager--enterprise-service-desk_jr100256",
-    "title": "Manager, Enterprise Service Desk - Myworkdayjobs.com",
-    "snippet": "In this dynamic and impactful role, you will lead a large team of technicians, driving their development and fostering a truly exceptional service desk ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Atsg",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
     "discovery_url": "https://job-boards.greenhouse.io/opswat/jobs/4399621005",
     "title": "Joint Professional Services – Technical Support Engineer ...",
     "snippet": "6-7 years of experience, with strong technical support background, including 3-4 years of professional services/delivery experience. Strong knowledge of Windows ...",
@@ -222,18 +138,6 @@
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
     "score": 100,
     "company": "Opswat",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://job-boards.greenhouse.io/zetaglobal/jobs/5968681004",
-    "title": "Jobs at Zeta Global",
-    "snippet": "Director, Customer Success. Atlanta, GA · Group Vice President, UK Customer Growth - CRM. London, UK · Senior Client Success Manager - Programmatic. Remote - ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Zetaglobal",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes",
     "detail_status": "Pending original job-page verification"
@@ -251,26 +155,27 @@
     "detail_status": "Pending original job-page verification"
   },
   {
-    "discovery_url": "https://jobs.lever.co/jobgether?department=Customer+Success",
-    "title": "Jobgether",
-    "snippet": "Full-timeKenya · Apply · Head of Customer Experience. Remote — Full ... VP of Customer Success. Remote — Full-timeUS · Apply · VP of Customer Success.",
-    "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Jobgether",
-    "seed_type": "ATS Board Seed",
-    "crawl_seed": "Yes"
-  },
-  {
     "discovery_url": "https://jobs.lever.co/jobgether",
     "title": "Jobgether",
-    "snippet": "Full-timeIndia · Apply · Bilingual Customer Service Representative. Remote — Full-timeIndia · Apply · Bilingual Customer Service Representative. Remote ...",
+    "snippet": "Bilingual Customer Service Representative. Remote — Full-timeIndia · Apply · Bilingual Customer Service Representative. Remote — Full-timeCanada · Apply ...",
     "source": "Google/serper",
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
     "company": "Jobgether",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://job-boards.greenhouse.io/startree/jobs/6189220004",
+    "title": "Job Application for Technical Support Engineer at StarTree",
+    "snippet": "Technical Support Engineer · 4-6 years of experience in Pre/Post-Sales or Customer-facing roles. · Hands-on experience with open-source data technologies.",
+    "source": "Search/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"technical support\" OR \"product support\" OR \"application support\" OR \"support specialist\") India remote",
+    "score": 100,
+    "company": "Startree",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes",
+    "detail_status": "Pending original job-page verification"
   },
   {
     "discovery_url": "https://job-boards.greenhouse.io/twilio/jobs/7917665",
@@ -297,30 +202,6 @@
     "detail_status": "Pending original job-page verification"
   },
   {
-    "discovery_url": "https://job-boards.greenhouse.io/omccorp/jobs/6230773004",
-    "title": "Job Application for Helpdesk Support at Omnicom",
-    "snippet": "Facilitate and coordinate site-specific activities (e.g., office moves, weekend power downs) as needed. Support “ad-hoc” agency IT support as needed and ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Omccorp",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Customer-Success-Manager--Informatica---ETL-implementation-_JR364032",
-    "title": "Informatica Implementation Experience (CDI / Data Governance",
-    "snippet": "As a Customer Success Manager (CSM) at Salesforce, you will serve as a trusted advisor and primary post-sale partner for a portfolio of ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Salesforce",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
     "discovery_url": "https://mymvw.wd5.myworkdayjobs.com/en-US/MVW/job/MVC-Mexico-Call-Center/Inbound-Customer-Service---Work-From-Home---Mexico-City-area-_JR94183-1?facetcategory=loss+prevention+&+security%7Cadministrative+=&+clerical%7Cengineering+=&+facilities%7Cgolf%2C+fitness%2C+=&+entertainment%7Csales+=&+marketing%7Cactivities%2Frecreation%7Ccall+center=&locationLimit=3&location=&facetemploymenttype=jtft&orderby=date",
     "title": "Inbound Customer Service - Work From Home (Mexico City ...",
     "snippet": "Start Your Application. Inbound Customer Service - Work From Home (Mexico City area). Autofill with Resume · Apply Manually · Use My Last Application ...",
@@ -328,54 +209,6 @@
     "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\") (\"remote India\" OR \"India remote\" OR \"work from home\")",
     "score": 100,
     "company": "Mymvw",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://apply.workable.com/keywords-intl1/j/0542F216E4",
-    "title": "IT Support Engineer - Keywords Studios",
-    "snippet": "Ticket Handling: Log, track, and resolve daily IT support tickets for local and remote employees in a timely manner. Onboarding & Offboarding: Assist with ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Keywords Intl1",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://huron.wd1.myworkdayjobs.com/en-US/huroncareers/job/IT-Support-Analyst_JR-0016194",
-    "title": "IT Support Analyst - Myworkdayjobs.com",
-    "snippet": "Introduce Yourself. IT Support Analyst page is loaded. IT Support Analyst. Apply. remote type: Hybrid. locations: Bangalore India - Outer Ring Road. time type ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Huron",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://quickenloans.wd5.myworkdayjobs.com/rocket_india/job/Helpdesk-Engineer-II_R-084966",
-    "title": "Helpdesk Engineer II - Myworkdayjobs.com",
-    "snippet": "Proven experience in IT Helpdesk, Service Desk, or end-user technical support environments; Strong troubleshooting and problem-solving skills ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Quickenloans",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://kyndryl.wd5.myworkdayjobs.com/kyndrylprofessionalcareers/job/Help-Desk-Analyst---IAM_R-69806",
-    "title": "Help Desk Analyst - IAM - Myworkdayjobs.com",
-    "snippet": "Help Desk Analyst - IAM · Minimum 1.6 - 2-year Service Desk experience · Understanding and implementing ITIL best practices for IT service ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Kyndryl",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes",
     "detail_status": "Pending original job-page verification"
@@ -417,54 +250,6 @@
     "detail_status": "Pending original job-page verification"
   },
   {
-    "discovery_url": "https://jobs.lever.co/Sprinto/640fd9e7-76d3-463a-9c0c-7f31fc3a4c6f",
-    "title": "Customer Success Manager - Sprinto",
-    "snippet": "Customer Success Manager. Remote (India). Customer Experience /. Remote /. Remote. apply for this job. Sprinto is an Autonomous Trust Platform that centralizes ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Sprinto",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Customer-Success-Manager--Marketing-cloud_JR353553",
-    "title": "Customer Success Manager - Marketing Cloud",
-    "snippet": "... Customer Success Manager (CSM) is a versatile expert responsible for ensuring ... customer experience, and renewal and expansion. Signature Lifecycle ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Salesforce",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://jobs.lever.co/firemon/3a778ab3-2771-45fe-ae3d-3a400e48d06d",
-    "title": "Customer Success Manager - FireMon",
-    "snippet": "Customer Success Manager. India, Remote. Customer Experience – Customer Success / ... hybrid environments. We are looking for a Customer Success Manager (CSM) ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Firemon",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "http://job-boards.greenhouse.io/customerio/jobs/8242239",
-    "title": "Customer Success Manager",
-    "snippet": "Customer Success Manager. APAC Remote; EMEA Remote. Apply. About Customer ... Opinionated about customer experience — you should have well-formed views in ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
-    "score": 100,
-    "company": "Customerio",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
     "discovery_url": "https://apply.workable.com/algaecal/j/34E7FA7917",
     "title": "Customer Service Representative (Work from Home)",
     "snippet": "Customer Service Representative (Work from Home). RemoteCustomer SuccessFull ... You've got a solid customer service background. You are passionate ...",
@@ -489,6 +274,17 @@
     "detail_status": "Pending original job-page verification"
   },
   {
+    "discovery_url": "https://workday.wd5.myworkdayjobs.com/Workday",
+    "title": "Careers at Workday - Myworkdayjobs.com",
+    "snippet": "Careers at Workday · Sr Customer Success Manager · Web Designer · Sr Value Manager - Healthcare · Sr Associate Customer Support Analyst - Adaptive ...",
+    "source": "Google/serper",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
+    "score": 100,
+    "company": "Careers at Workday",
+    "seed_type": "ATS Board Seed",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://job-boards.greenhouse.io/securly13",
     "title": "Careers at Securly | Remote-First K-12 EdTech Jobs",
     "snippet": "Browse our current openings and apply to the roles that match your skills and aspirations, or join our talent network for future opportunities. Customer Success.",
@@ -504,7 +300,7 @@
     "title": "Careers at Harness: Open Positions & Job Opportunities",
     "snippet": "Customer Success, Adoption. Senior Customer Architect. U.S. (Remote) ; Customer Success, Customer Experience. Customer Experience Engineer I/II. U.S. (Remote).",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer success\" OR \"client success\" OR \"customer experience\") India (remote OR hybrid)",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
     "company": "Careers at Harness: Open Positions & Job Opportunities",
     "seed_type": "ATS Board Seed",
@@ -513,45 +309,22 @@
   {
     "discovery_url": "https://job-boards.greenhouse.io/classpass",
     "title": "Career Opportunities | Playlist",
-    "snippet": "Remote - India, Remote - Malaysia, Remote - Mexico, Remote - Netherlands, Remote ... Solutions Implementation Specialist, Customer Experience, Playlist ...",
+    "snippet": "Remote - India, Remote - Malaysia, Remote - Mexico, Remote - Netherlands ... Technical Support Specialist I-Romania (French Speaking), Customer Experience ...",
     "source": "Google/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (onboarding OR implementation OR \"customer enablement\") (India OR \"remote India\")",
+    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (\"customer support\" OR \"customer service\" OR \"technical support\" OR \"product support\" OR helpdesk OR \"customer success\") (remote OR anywhere OR \"work from home\") India",
     "score": 100,
     "company": "Career Opportunities | Playlist",
     "seed_type": "ATS Board Seed",
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://ensemblehp.wd5.myworkdayjobs.com/EnsembleIndia/job/Remote---India/Analyst-II--Service-Desk_R052519",
-    "title": "Analyst II, Service Desk - Ensemble Small Logo 2026",
-    "snippet": "The Service Desk Representative provides technical support and assistance to end users, ensuring timely resolution of issues that impact ...",
-    "source": "Search/serper",
-    "query": "(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:apply.workable.com OR site:jobs.ashbyhq.com OR site:myworkdayjobs.com) (helpdesk OR \"help desk\" OR \"service desk\" OR \"IT support\") India remote",
-    "score": 100,
-    "company": "Ensemblehp",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
-    "discovery_url": "https://in.linkedin.com/jobs/view/technical-account-manager-openstack-at-red-hat-4457169317",
-    "title": "Technical Account Manager - OpenStack at Red Hat",
-    "snippet": "The Technical Account Manager (TAM) delivers strategic technical and architectural guidance to key customers, enabling them to optimize their Red Hat ...",
+    "discovery_url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-sony-interactive-entertainment-4319101411",
+    "title": "Sony Interactive Entertainment hiring Technical Account ...",
+    "snippet": "We seek a Technical Account Manager II to ensure that our game development partners have the best possible experience while developing on PlayStation platforms.",
     "source": "Google/serper",
     "query": "site:linkedin.com/jobs/view \"technical account manager\" India remote",
     "score": 95,
-    "company": "Technical Account Manager",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "Yes"
-  },
-  {
-    "discovery_url": "https://in.linkedin.com/jobs/view/technical-account-manager-tam-at-legion-technologies-4459975753",
-    "title": "Technical Account Manager (TAM) - Legion Technologies",
-    "snippet": "As a Technical Account Manager (TAM), you will work closely with our customers, build relationships with them, help them achieve their technical goals, and ...",
-    "source": "Google/serper",
-    "query": "site:linkedin.com/jobs/view \"technical account manager\" India remote",
-    "score": 95,
-    "company": "Technical Account Manager (TAM)",
+    "company": "Sony Interactive Entertainment hiring Technical Account ...",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -563,6 +336,17 @@
     "query": "site:linkedin.com/jobs/view \"implementation specialist\" India remote",
     "score": 95,
     "company": "Implementation Specialist at LeadVenture",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-ddn-4315172464",
+    "title": "DDN hiring Technical Account Manager in South Asia",
+    "snippet": "DDN is looking for a Technical Account Manager - Major Accounts to provide leadership and build a highly effective and customer focused technical account team ...",
+    "source": "Google/serper",
+    "query": "site:linkedin.com/jobs/view \"technical account manager\" India remote",
+    "score": 95,
+    "company": "DDN hiring Technical Account Manager in South Asia",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
@@ -596,6 +380,30 @@
     "query": "site:linkedin.com/jobs/view \"implementation specialist\" India remote",
     "score": 78,
     "company": "crewlia hiring Implementation Specialist in India",
+    "seed_type": "Public Job Board Listing",
+    "crawl_seed": "No",
+    "detail_status": "Pending public post verification"
+  },
+  {
+    "discovery_url": "https://in.linkedin.com/jobs/view/work-from-home-at-vm-organisation-4371520855",
+    "title": "Work from home at Vm organisation — Delhi, Delhi, India",
+    "snippet": "Apply for Work from home at Vm organisation in Delhi, Delhi, India. Full ... Customer Experience Analyst. crewlia. India 8 hours ago. Technical Staff ...",
+    "source": "Public Job Board Search/serper",
+    "query": "site:linkedin.com/jobs/view \"customer experience\" \"work from home\" India",
+    "score": 78,
+    "company": "Work from home at Vm organisation — Delhi, Delhi, India",
+    "seed_type": "Public Job Board Listing",
+    "crawl_seed": "No",
+    "detail_status": "Pending public post verification"
+  },
+  {
+    "discovery_url": "https://in.linkedin.com/jobs/view/%F0%9F%9A%80-we-are-hiring%21-join-our-growing-team-at-digipreneur-marketing-4334988826",
+    "title": "We Are Hiring! Join Our Growing Team",
+    "snippet": "Work From Home Generalist Jobs in India. Rex.zone. India $30 - $50 1 month ago ... Customer Experience Specialist (Remote). Hired. India 1 week ago. Growth ...",
+    "source": "Public Job Board Search/serper",
+    "query": "site:linkedin.com/jobs/view \"customer experience\" \"work from home\" India",
+    "score": 78,
+    "company": "We Are Hiring! Join Our Growing Team",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
@@ -661,18 +469,6 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://in.linkedin.com/jobs/view/technical-account-manager-at-majesco-4470479373",
-    "title": "Technical Account Manager at Majesco — India - Jobs",
-    "snippet": "Apply for Technical Account Manager at Majesco in India. Full-time Mid-Senior level role. See responsibilities, qualifications, and similar ...",
-    "source": "Public Job Board Search/serper",
-    "query": "site:linkedin.com/jobs/view \"technical account manager\" India remote",
-    "score": 78,
-    "company": "Technical Account Manager at Majesco — India",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://www.linkedin.com/jobs/view/technical-account-manager-remote-india-at-edb-4258104063",
     "title": "Technical Account Manager (Remote- India) - EDB",
     "snippet": "Note: It is Remote role for candidates based in India. The Technical Account Manager (TAM) is responsible for building and maintaining post-sales relationships ...",
@@ -733,18 +529,6 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://sg.linkedin.com/jobs/view/sales-representative-india-at-servicesource-2579881972?refId=M4w1V7FDqFDjtjl%2BUBrEfg%3D%3D&trackingId=rExF71UXTt0QZgd1FobABw%3D%3D&position=20&pageNum=0&trk=public_jobs_jserp-result_search-card",
-    "title": "Sales Representative (India) at ServiceSource",
-    "snippet": "... customer experience; Maintain the customer management system (CRM) to ensure ... Permanent position, work from home required. Uninterrupted home-based ...",
-    "source": "Public Job Board Search/serper",
-    "query": "site:linkedin.com/jobs/view \"customer experience\" \"work from home\" India",
-    "score": 78,
-    "company": "Sales Representative (India) at ServiceSource",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://in.linkedin.com/jobs/view/product-support-specialist-at-emitrr-4472129408",
     "title": "Product Support Specialist at Emitrr — India - Jobs",
     "snippet": "Product Support Specialist. Emitrr India. 3 weeks ago Over 200 applicants ... Recruitment Manager at Emitrr || Ex… Location: Remote, India.",
@@ -776,6 +560,18 @@
     "query": "site:linkedin.com/jobs/view \"implementation specialist\" India remote",
     "score": 78,
     "company": "Kyriba Implementation at Syscort Technologies",
+    "seed_type": "Public Job Board Listing",
+    "crawl_seed": "No",
+    "detail_status": "Pending public post verification"
+  },
+  {
+    "discovery_url": "https://qa.linkedin.com/jobs/view/key-account-manager-remote-at-jobgether-4363505733",
+    "title": "Key Account Manager REMOTE - Jobgether",
+    "snippet": "Customer Technical Account Manager – OTT Cloud Streaming. Bitmovin. الدوحة ... Senior Sales Manager – Middle East & India (Remote). SHA. الدوحة قطر قبل ‏‏٦ ...",
+    "source": "Public Job Board Search/serper",
+    "query": "site:linkedin.com/jobs/view \"technical account manager\" India remote",
+    "score": 78,
+    "company": "Key Account Manager REMOTE",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
@@ -865,18 +661,6 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://in.linkedin.com/jobs/view/work-from-home-at-game-changer-23-4038811103",
-    "title": "Game changer 23 hiring Work from home in Ahmedabad ...",
-    "snippet": "Get notified about new Work from home jobs in Ahmedabad, Gujarat, India. ... Customer Experience Analyst. crewlia. India 1 day ago. Trust & Safety Specialist ...",
-    "source": "Public Job Board Search/serper",
-    "query": "site:linkedin.com/jobs/view \"customer experience\" \"work from home\" India",
-    "score": 78,
-    "company": "Game changer 23 hiring Work from home in Ahmedabad ...",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://in.linkedin.com/jobs/view/customer-support-specialist-at-flexiple-4482489576",
     "title": "Flexiple hiring Customer Support Specialist in India",
     "snippet": "Customer Support Specialist. A high-growth, VC-backed SaaS company building its founding India customer support pod. Location: Remote (India).",
@@ -925,18 +709,6 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://www.linkedin.com/jobs/view/customer-support-specialist-at-digmarit-ltd-4440564810",
-    "title": "Customer Support Specialist at Digmarit Ltd — South Asia",
-    "snippet": "Customer Experience Specialist – Voice Support. Triple. India 1 week ago ... Customer Care Specialist - Email, Chat and Voice | Location: Work from home.",
-    "source": "Public Job Board Search/serper",
-    "query": "site:linkedin.com/jobs/view \"customer experience\" \"work from home\" India",
-    "score": 78,
-    "company": "Customer Support Specialist at Digmarit Ltd — South Asia",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://in.linkedin.com/jobs/view/customer-support-associate-email-chat-remote-at-medinex-workforce-4481640879",
     "title": "Customer Support Associate - Email & Chat (Remote)",
     "snippet": "• Work Mode: Remote (India). • Certificate: Internship ... Support Specialist (Retail). Revolut. India 1 week ago. Client Support ...",
@@ -944,6 +716,18 @@
     "query": "site:linkedin.com/jobs/view \"support specialist\" \"remote India\"",
     "score": 78,
     "company": "Customer Support Associate",
+    "seed_type": "Public Job Board Listing",
+    "crawl_seed": "No",
+    "detail_status": "Pending public post verification"
+  },
+  {
+    "discovery_url": "https://www.linkedin.com/jobs/view/customer-experience-specialist-at-clipboard-4251691024",
+    "title": "Customer Experience Specialist at Clipboard — South Asia",
+    "snippet": "Customer Experience Specialist. Clipboard South Asia. 1 year ago Be among the ... Customer Care Specialist - Email, Chat and Voice | Location: Work from home.",
+    "source": "Public Job Board Search/serper",
+    "query": "site:linkedin.com/jobs/view \"customer experience\" \"work from home\" India",
+    "score": 78,
+    "company": "Customer Experience Specialist at Clipboard — South Asia",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
