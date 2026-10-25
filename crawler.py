@@ -29,7 +29,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V15.0
+# REMOTE4.ME JOB CRAWLER V15.1
 # INDIA-FIRST / EXPANDED ATS + CAREER PAGE DISCOVERY
 # ============================================================
 #
@@ -147,18 +147,18 @@ JOBICY_MAX_PAGES = max(1, int(os.environ.get("JOBICY_MAX_PAGES", "2")))
 FEED_MAX_JOB_AGE_DAYS = max(1, int(os.environ.get("FEED_MAX_JOB_AGE_DAYS", "14")))
 FEED_DISCOVERY_MAX_ROWS = max(100, int(os.environ.get("FEED_DISCOVERY_MAX_ROWS", "1200")))
 PLAYWRIGHT_ENABLED = os.environ.get("PLAYWRIGHT_ENABLED", "1").lower() not in {"0","false","no"}
-PLAYWRIGHT_TIMEOUT_MS = int(os.environ.get("PLAYWRIGHT_TIMEOUT_MS", "25000"))
+PLAYWRIGHT_TIMEOUT_MS = max(5000, min(20000, int(os.environ.get("PLAYWRIGHT_TIMEOUT_MS", "12000"))))
 PLAYWRIGHT_MAX_PAGES = int(os.environ.get("PLAYWRIGHT_MAX_PAGES", "3"))
-CAREER_BROWSER_MAX_CALLS = max(0, int(os.environ.get("CAREER_BROWSER_MAX_CALLS", "180")))
-PLAYWRIGHT_CONCURRENT_BROWSERS = max(1, min(6, int(os.environ.get("PLAYWRIGHT_CONCURRENT_BROWSERS", "3"))))
+CAREER_BROWSER_MAX_CALLS = max(0, int(os.environ.get("CAREER_BROWSER_MAX_CALLS", "30")))
+PLAYWRIGHT_CONCURRENT_BROWSERS = max(1, min(3, int(os.environ.get("PLAYWRIGHT_CONCURRENT_BROWSERS", "2"))))
 _PLAYWRIGHT_SEMAPHORE = threading.BoundedSemaphore(PLAYWRIGHT_CONCURRENT_BROWSERS)
 CAREER_PREFLIGHT_ENABLED = os.environ.get("CAREER_PREFLIGHT_ENABLED", "1").lower() not in {"0", "false", "no"}
 CAREER_PREFLIGHT_WORKERS = max(4, int(os.environ.get("CAREER_PREFLIGHT_WORKERS", "36")))
 
 MAX_JOB_AGE_DAYS = int(os.environ.get("JOB_MAX_AGE_DAYS", "30"))
 CONCURRENCY = int(os.environ.get("ATS_WORKERS", "18"))
-REQUEST_TIMEOUT = 18
-HTML_TIMEOUT = 18
+REQUEST_TIMEOUT = max(5, min(20, int(os.environ.get("REQUEST_TIMEOUT", "12"))))
+HTML_TIMEOUT = max(5, min(20, int(os.environ.get("HTML_TIMEOUT", "12"))))
 
 # Archive discovery is deliberately capped. The persistent Companies sheet
 # keeps validated boards between runs, so we don't need to rediscover
@@ -519,6 +519,9 @@ ATS_DOMAINS = {
     ],
     "Keka": [
         "keka.com", "keka.hr",
+    ],
+    "TurboHire": [
+        "turbohire.co",
     ],
     "Zoho": [
         "zohorecruit.com", "zoho.com",
@@ -3069,6 +3072,154 @@ def get_ws(spreadsheet, name, rows=2000, cols=12):
         return spreadsheet.add_worksheet(title=name, rows=rows, cols=cols)
 
 
+def _manual_header_map(headers):
+    def norm(value):
+        return re.sub(r"[^a-z0-9]+", " ", clean_text(value).lower()).strip()
+    raw = {norm(h): i for i, h in enumerate(headers)}
+    aliases = {
+        "company": ("company name", "company", "employer", "company / employer"),
+        "career": ("career page link", "career page", "career url", "careers url", "career link"),
+        "ats": ("ats if any", "ats url", "ats link", "ats", "ats board url", "recruitment platform"),
+        "based": ("based", "company based", "country based", "based in"),
+        "allowed": ("job location allowed", "allowed job locations", "hiring locations", "job locations allowed", "locations allowed"),
+        "last_checked": ("last checked", "last checked date", "last scan"),
+    }
+    result = {}
+    for key, names in aliases.items():
+        for name in names:
+            if name in raw:
+                result[key] = raw[name]
+                break
+    return result
+
+
+def _is_http_url(value):
+    value = clean_text(value)
+    try:
+        parsed = urlparse(value)
+        return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+    except Exception:
+        return False
+
+
+def _manual_company_sheet_candidates(spreadsheet):
+    preferred = clean_text(os.environ.get("MANUAL_COMPANY_SHEET_NAME", ""))
+    worksheets = spreadsheet.worksheets()
+    if preferred:
+        worksheets = [ws for ws in worksheets if ws.title == preferred]
+    candidates = []
+    for ws in worksheets:
+        try:
+            values = ws.get_all_values()
+        except Exception as exc:
+            print(f"MANUAL COMPANY SHEET: could not read {ws.title}: {type(exc).__name__}")
+            continue
+        if not values:
+            continue
+        idx = _manual_header_map(values[0])
+        # Require the custom sheet's identifying headers; this avoids mistaking
+        # JOBS, HYBRID, DISCOVERY, or the company registry for the manual list.
+        if "company" in idx and ("career" in idx or "ats" in idx) and "allowed" in idx:
+            candidates.append((ws, values, idx))
+    return candidates
+
+
+def load_manual_company_seeds_from_sheet():
+    """Read the user's manually maintained company/career list from Google Sheets.
+
+    The tab is auto-detected from its headers. Set MANUAL_COMPANY_SHEET_NAME only
+    if the user wants to pin one exact tab. Plain-text ATS notes are ignored;
+    only actual HTTP(S) URLs are treated as ATS links.
+    """
+    if not SPREADSHEET_ID or not GOOGLE_CREDENTIALS:
+        print("MANUAL COMPANY SHEET: skipped (Google Sheets credentials unavailable in this job)")
+        return []
+    try:
+        spreadsheet = get_spreadsheet()
+        sheets = _manual_company_sheet_candidates(spreadsheet)
+    except Exception as exc:
+        print(f"MANUAL COMPANY SHEET: read failed: {type(exc).__name__}: {exc}")
+        return []
+    seeds = []
+    for ws, values, idx in sheets:
+        last_company = ""
+        last_based = ""
+        last_allowed = ""
+        for rownum, row in enumerate(values[1:], start=2):
+            def cell(key):
+                pos = idx.get(key)
+                return clean_text(row[pos]) if pos is not None and pos < len(row) else ""
+            raw_company = cell("company")
+            career_raw = cell("career")
+            ats_raw = cell("ats")
+            career = normalize_url(career_raw) if _is_http_url(career_raw) else ""
+            ats = normalize_url(ats_raw) if _is_http_url(ats_raw) else ""
+            # Support continuation rows used to list a second ATS board under
+            # the same employer (company cell intentionally left blank).
+            if raw_company:
+                last_company = raw_company
+            company = raw_company or (last_company if (career or ats) else "")
+            raw_based = cell("based")
+            raw_allowed = cell("allowed")
+            if raw_based:
+                last_based = raw_based
+            if raw_allowed:
+                last_allowed = raw_allowed
+            based = raw_based or last_based
+            allowed = raw_allowed or last_allowed
+            if not company or not (career or ats):
+                continue
+            seeds.append({
+                "company": company,
+                "website": "",
+                "career_links": [career] if career else [],
+                "ats_links": [ats] if ats else [],
+                "source": "Manual Company Sheet",
+                "manual_seed": True,
+                "based": based,
+                "location_allowed": allowed,
+                "manual_sheet_name": ws.title,
+                "manual_sheet_row": rownum,
+                "manual_career_url": career,
+                "manual_ats_url": ats,
+            })
+    print(f"MANUAL COMPANY SHEET: matched_tabs={len(sheets)} seeds={len(seeds)}")
+    return seeds
+
+
+def mark_manual_company_rows_checked(records):
+    """Update Last Checked for manual rows attempted by the career crawler."""
+    targets = {}
+    for rec in records or []:
+        name = clean_text(rec.get("manual_sheet_name"))
+        rownum = rec.get("manual_sheet_row")
+        if name and str(rownum).isdigit():
+            targets.setdefault(name, set()).add(int(rownum))
+    if not targets or not SPREADSHEET_ID or not GOOGLE_CREDENTIALS:
+        return
+    try:
+        spreadsheet = get_spreadsheet()
+        today = datetime.now(timezone.utc).date().isoformat()
+        from gspread.utils import rowcol_to_a1
+        for sheet_name, rownums in targets.items():
+            try:
+                ws = spreadsheet.worksheet(sheet_name)
+                headers = ws.row_values(1)
+                idx = _manual_header_map(headers)
+                col = idx.get("last_checked")
+                if col is None:
+                    print(f"MANUAL COMPANY SHEET: {sheet_name} has no Last Checked column; not updating")
+                    continue
+                updates = [{"range": rowcol_to_a1(rownum, col + 1), "values": [[today]]} for rownum in sorted(rownums)]
+                if updates:
+                    ws.batch_update(updates, value_input_option="USER_ENTERED")
+                    print(f"MANUAL COMPANY SHEET: updated Last Checked for {len(updates)} row(s) in {sheet_name}")
+            except Exception as exc:
+                print(f"MANUAL COMPANY SHEET: Last Checked update failed for {sheet_name}: {type(exc).__name__}")
+    except Exception as exc:
+        print(f"MANUAL COMPANY SHEET: Last Checked update skipped: {type(exc).__name__}")
+
+
 def ensure_headers(ws, headers):
     current = ws.row_values(1)
     if current[:len(headers)] != headers:
@@ -3730,14 +3881,26 @@ def is_exact_job_url(url, base_url=""):
     return False
 
 
-def preflight_career_seed(url, timeout=8):
+def preflight_career_seed(url, timeout=8, manual=False):
     """Reject clearly dead/noisy seeds, but retain plausible pages blocked to bots.
 
-    A 403, 429, transient 5xx or request timeout does not prove a career page is
-    dead. Removing these during discovery caused sites that need JS/browser
-    fallback to disappear before the career crawler could try them.
+    A URL explicitly supplied by the user's manual company sheet is trusted as a
+    career seed even when its path is unusual (for example /join-our-team/ or a
+    company homepage). It must still be a public HTTP(S) URL and not a social or
+    job-aggregator host. Automatically discovered seeds keep stricter heuristics.
     """
-    if not is_plausible_career_seed(url):
+    if manual:
+        try:
+            parsed = urlparse(url)
+            host = parsed.netloc.lower().split(":", 1)[0]
+            host = host[4:] if host.startswith("www.") else host
+            if parsed.scheme not in {"http", "https"} or not host or is_aggregator_host(host):
+                return False
+            if any(host == root or host.endswith("." + root) for root in {"linkedin.com", "twitter.com", "x.com", "facebook.com", "instagram.com", "reddit.com"}):
+                return False
+        except Exception:
+            return False
+    elif not is_plausible_career_seed(url):
         return False
     try:
         r=SESSION.get(url, timeout=timeout, allow_redirects=True, stream=False)
@@ -3753,7 +3916,7 @@ def preflight_career_seed(url, timeout=8):
         ctype=(r.headers.get("content-type") or "").lower()
         if ctype and not any(x in ctype for x in ("text/html", "application/xhtml+xml", "text/plain")):
             return False
-        if not is_plausible_career_seed(final):
+        if not manual and not is_plausible_career_seed(final):
             return False
         return True
     except requests.RequestException:
@@ -3767,7 +3930,7 @@ def preflight_career_seeds(records):
         return records
     kept=[]
     with ThreadPoolExecutor(max_workers=CAREER_PREFLIGHT_WORKERS) as ex:
-        futures={ex.submit(preflight_career_seed,r.get("url","")):r for r in records}
+        futures={ex.submit(preflight_career_seed,r.get("url",""), manual=bool(r.get("manual_seed"))):r for r in records}
         for f in as_completed(futures):
             try:
                 if f.result(): kept.append(futures[f])
@@ -5022,7 +5185,7 @@ def should_run_v11_archive():
 # REMOTE4.ME V13.8 — SHARDED HIGH-COVERAGE + STRICT JOB QUALITY
 # ============================================================
 
-V11_VERSION = "14.9-search-first-crawl-graph"
+V11_VERSION = "15.1-manual-sheet-fast-crawl-india-ats"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOARDS_FILE = os.path.join(DATA_DIR, "boards.json")
 COMPANIES_FILE = os.path.join(DATA_DIR, "companies.json")
@@ -5582,6 +5745,19 @@ def parse_workday_board_url(url):
             "url": url, "key": f"{tenant}|{shard}|{site}"}
 
 
+def _workday_text(value):
+    """Normalize text-like values returned by Workday CXS APIs."""
+    if value is None:
+        return ""
+    if isinstance(value, dict):
+        value = value.get("label") or value.get("text") or value.get("descriptor") or value.get("name") or ""
+    elif isinstance(value, (list, tuple, set)):
+        value = ", ".join(filter(None, (_workday_text(x) for x in value)))
+    if not value:
+        return ""
+    return clean_text(BeautifulSoup(str(value), "html.parser").get_text(" ", strip=True))
+
+
 def normalize_workday_board_record(board):
     """Normalize a stored Workday manifest record to tenant/shard/site fields.
 
@@ -6121,6 +6297,15 @@ SEARCH_ATS_QUERY_BANK = [
     'site:*.rippling.com India remote support careers',
     'site:*.darwinbox.in India customer support careers',
     'site:*.darwinbox.com India technical support careers',
+    'site:*.keka.com (jobs OR careers) India customer support',
+    'site:*.zohorecruit.com (jobs OR careers) India support',
+    'site:*.freshteam.com/jobs India customer support OR technical support',
+    'site:*.zwayam.com India careers customer support OR technical support',
+    'site:*.peoplestrong.com India careers support engineer',
+    'site:*.hrone.cloud India careers customer support',
+    'site:*.applytojob.com India customer support OR technical support',
+    'site:*.recruitcrm.io India careers support jobs',
+    'site:*.turbohire.co India careers support jobs',
     'site:*.keka.com India customer support careers',
     'site:*.freshteam.com India customer support',
     'site:*.zohorecruit.com India customer support',
@@ -6167,20 +6352,9 @@ SEARCH_ATS_QUERY_BANK = [
     '"India" "remote" "technical account manager" careers',
 ]
 
-SOCIAL_SEARCH_QUERY_BANK = [
-    'site:linkedin.com/posts ("we are hiring" OR "hiring for" OR "join our team") ("customer support" OR "customer service") India',
-    'site:linkedin.com/posts ("technical support" OR "product support" OR "support engineer") (India OR Bengaluru OR Chennai OR Pune OR Hyderabad) (hiring OR vacancy)',
-    'site:linkedin.com/posts ("customer success" OR "customer onboarding" OR "implementation specialist") (India OR remote) hiring',
-    'site:linkedin.com/feed/update/ ("customer support" OR "technical support" OR "customer success") (India OR Bengaluru OR Chennai) hiring',
-    'site:x.com ("customer support" OR "customer service") (India OR Bengaluru OR Chennai) (hiring OR "we are hiring")',
-    'site:twitter.com ("technical support" OR "product support" OR "customer success") India (hiring OR vacancy)',
-    'site:reddit.com/r/IndiaJobs ("customer support" OR "technical support" OR "customer success") (remote OR hybrid)',
-    'site:reddit.com ("hiring in India" OR "India remote") ("support engineer" OR "customer support" OR "customer success")',
-    'site:linkedin.com/posts ("work from home" OR remote) India ("chat support" OR "email support" OR "non voice") hiring',
-    'site:x.com ("work from home" OR remote India) ("support specialist" OR "support analyst") hiring',
-    'site:linkedin.com/posts ("hybrid" OR Bengaluru OR Hyderabad OR Pune OR Chennai) ("support engineer" OR "application support") hiring',
-    'site:reddit.com ("remote jobs India" OR "hybrid jobs India") support hiring direct apply',
-]
+# Social-post discovery is intentionally disabled: posts age poorly and are hard to verify.
+# LinkedIn job-detail searches remain in JOB_BOARD_QUERY_BANK; X/Twitter are not searched.
+SOCIAL_SEARCH_QUERY_BANK = []
 
 SEARCH_PROVIDER_NAMES = [
     "serper", "you", "exa", "tavily", "searlo", "search1", "serpapi",
@@ -6586,8 +6760,8 @@ def discover_search_engine_urls():
     google_queries=[SEARCH_GOOGLE_QUERY_BANK[(google_rotation+i)%len(SEARCH_GOOGLE_QUERY_BANK)] for i in range(GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER)] if GOOGLE_DISCOVERY_ENABLED else []
     board_start=(day*JOB_BOARD_QUERIES_PER_RUN) % len(JOB_BOARD_QUERY_BANK)
     board_queries=[JOB_BOARD_QUERY_BANK[(board_start+i)%len(JOB_BOARD_QUERY_BANK)] for i in range(JOB_BOARD_QUERIES_PER_RUN)]
-    social_start=(day*PUBLIC_SERP_QUERIES_PER_RUN) % len(SOCIAL_SEARCH_QUERY_BANK)
-    social_queries=[SOCIAL_SEARCH_QUERY_BANK[(social_start+i)%len(SOCIAL_SEARCH_QUERY_BANK)] for i in range(min(PUBLIC_SERP_QUERIES_PER_RUN, len(SOCIAL_SEARCH_QUERY_BANK)))]
+    # No social-post searches: LinkedIn job-detail searches remain separate above.
+    social_queries=[]
     jobs_rotation=(day//GOOGLE_JOBS_ROTATION_DAYS) % len(GOOGLE_JOBS_QUERY_BANK)
     jobs_remaining=max(0,GOOGLE_JOBS_MAX_QUERIES_PER_DAY-_google_jobs_calls_used_today())
     google_jobs_queries=[GOOGLE_JOBS_QUERY_BANK[(jobs_rotation+i)%len(GOOGLE_JOBS_QUERY_BANK)] for i in range(min(GOOGLE_JOBS_MAX_QUERIES_PER_DAY,jobs_remaining))] if google_jobs_configured else []
@@ -6604,27 +6778,20 @@ def discover_search_engine_urls():
     if board_provider:
         for q in board_queries:
             tasks.append((board_provider,q))
-        # Rotate social hiring-post queries through the configured public SERP provider.
-        for q in social_queries[:min(6, len(social_queries))]:
-            tasks.append((board_provider,q))
     for q in google_jobs_queries:
         tasks.append(("serpapi_google_jobs",q))
 
     # Keyless public-search fallback. Always supplement with a small daily slice;
     # use a wider slice when no API-based provider is configured.
     if PUBLIC_SERP_FALLBACK_ENABLED:
-        # Guarantee a social-hiring slice each run. Earlier rotation across one
-        # very large mixed bank often went days without searching public posts.
+        # Use the full fallback budget for employer/ATS/job-detail discovery.
+        # Social posts are excluded because their age and status are unreliable.
         general_bank = list(dict.fromkeys(SEARCH_GOOGLE_QUERY_BANK + SEARCH_ATS_QUERY_BANK + JOB_BOARD_QUERY_BANK))
         fallback_budget = PUBLIC_SERP_QUERIES_PER_RUN if not configured else min(12, PUBLIC_SERP_QUERIES_PER_RUN)
-        social_budget = min(len(SOCIAL_SEARCH_QUERY_BANK), max(2, fallback_budget // 3))
-        general_budget = max(0, fallback_budget - social_budget)
+        general_budget = min(fallback_budget, len(general_bank))
         fallback_start = (day * max(1, general_budget)) % len(general_bank)
         general_queries = [general_bank[(fallback_start+i)%len(general_bank)] for i in range(general_budget)]
-        fallback_social_start = (day * max(1, social_budget)) % len(SOCIAL_SEARCH_QUERY_BANK)
-        social_fallback_queries = [SOCIAL_SEARCH_QUERY_BANK[(fallback_social_start+i)%len(SOCIAL_SEARCH_QUERY_BANK)] for i in range(social_budget)]
-        fallback_queries = list(dict.fromkeys(general_queries + social_fallback_queries))
-        tasks.extend(("bing_rss", q) for q in fallback_queries)
+        tasks.extend(("bing_rss", q) for q in general_queries)
 
     print(
         f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} available_keys={len(configured_all)} api_budget={SEARCH_API_PROVIDERS_PER_RUN} "
@@ -6732,8 +6899,15 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
         parsed=urlparse(u)
         full_host=parsed.netloc.lower().split(":",1)[0]
         host=full_host[4:] if full_host.startswith("www.") else full_host
+        path_lower = (parsed.path or "").lower()
+        # Explicitly discard X/Twitter results even if a broad search query
+        # happens to return one. Keep LinkedIn job-detail pages, but not posts/feed updates.
+        if host == "x.com" or host.endswith(".x.com") or host == "twitter.com" or host.endswith(".twitter.com"):
+            continue
+        if (host == "linkedin.com" or host.endswith(".linkedin.com")) and ("/posts/" in path_lower or "/feed/update/" in path_lower):
+            continue
         review_only_host = any(host == root or host.endswith("." + root) for root in review_only_hosts)
-        social_host = any(host == root or host.endswith("." + root) for root in {"linkedin.com","x.com","twitter.com","reddit.com"})
+        social_host = any(host == root or host.endswith("." + root) for root in {"reddit.com"})
 
         provider=clean_text(item.get("provider"))
         ats=canonical_ats_name(ats_from_url(u))
@@ -7027,7 +7201,7 @@ def canonical_ats_name(ats):
         "zohorecruit":"Zoho Recruit", "zoho recruit":"Zoho Recruit", "darwinbox":"Darwinbox",
         "oracle":"Oracle Recruiting", "oracle recruiting":"Oracle Recruiting", "freshteam":"Freshteam",
         "pinpoint":"Pinpoint", "rippling":"Rippling", "keka":"Keka", "zwayam":"Zwayam",
-        "peoplestrong":"PeopleStrong", "hrone":"HROne", "jobvite":"Jobvite", "jazzhr":"JazzHR",
+        "peoplestrong":"PeopleStrong", "hrone":"HROne", "turbohire":"TurboHire", "jobvite":"Jobvite", "jazzhr":"JazzHR",
         "comeet":"Comeet", "manatal":"Manatal", "paylocity":"Paylocity", "ukg":"UKG",
         "fountain":"Fountain", "phenom":"Phenom", "jobylon":"Jobylon", "talentlyft":"TalentLyft",
         "crelate":"Crelate", "ismartrecruit":"iSmartRecruit", "recruiterflow":"Recruiterflow",
@@ -7049,10 +7223,39 @@ def discover_company_manifest():
     cs_companies=[]  # Cutshort disabled by request; avoid spending discovery requests on it.
     print("CUTSHORT: disabled by configuration")
     existing=_load_json(COMPANIES_FILE,[])
+    manual_seeds = load_manual_company_seeds_from_sheet()
     companies=merge_company_universe(openjobs, careers, wf_companies, cs_companies, existing)
     before_cap = len(companies)
     companies = company_rotation(companies, V11_COMPANY_DISCOVERY_LIMIT, "company-universe")
-    print(f"COMPANY UNIVERSE: unique={before_cap} selected={len(companies)}")
+    # Manually maintained companies are a guaranteed-priority input and are
+    # never dropped by the general company-universe rotation cap.
+    company_by_key = {re.sub(r"[^a-z0-9]+", "", clean_text(x.get("company", "")).lower()): x for x in companies if x.get("company")}
+    for manual in manual_seeds:
+        key = re.sub(r"[^a-z0-9]+", "", clean_text(manual.get("company", "")).lower())
+        if not key:
+            continue
+        target = company_by_key.get(key)
+        if target is None:
+            target = dict(manual)
+            target.setdefault("career_links", [])
+            target.setdefault("ats_links", [])
+            companies.append(target)
+            company_by_key[key] = target
+        else:
+            target["manual_seed"] = True
+            target["manual_sheet_name"] = manual.get("manual_sheet_name", "")
+            target["manual_sheet_row"] = manual.get("manual_sheet_row", "")
+            target["based"] = manual.get("based", "")
+            target["location_allowed"] = manual.get("location_allowed", "")
+            target["source"] = "Manual Company Sheet"
+            for field in ("career_links", "ats_links"):
+                target.setdefault(field, [])
+                for url in manual.get(field, []) or []:
+                    if url not in target[field]:
+                        target[field].append(url)
+            target["manual_career_url"] = manual.get("manual_career_url", "")
+            target["manual_ats_url"] = manual.get("manual_ats_url", "")
+    print(f"COMPANY UNIVERSE: unique={before_cap} selected={len(companies)} manual_sheet_seeds={len(manual_seeds)}")
 
     # Load last-run state before rebuilding today's discovery candidates. Without
     # this merge, an ATS category absent from today's new search results could
@@ -7160,6 +7363,49 @@ def discover_company_manifest():
             else:
                 if u and is_plausible_career_seed(u) and u not in career_map:
                     career_map[u]={"company":company,"url":u,"source":item.get("source","Directory"),"ats":"Company Career"}
+    # Manual sheet URLs are explicit user-curated seeds, so accept their career
+    # URLs even when the path does not contain /careers or /jobs. ATS URLs still
+    # must pass the ATS vendor's route validation before becoming a board.
+    for item in manual_seeds:
+        company = clean_text(item.get("company"))
+        career_url = normalize_url(item.get("manual_career_url") or "")
+        ats_url = normalize_url(item.get("manual_ats_url") or "")
+        metadata = {
+            "company": company, "source": "Manual Company Sheet", "manual_seed": True,
+            "manual_sheet_name": item.get("manual_sheet_name", ""),
+            "manual_sheet_row": item.get("manual_sheet_row", ""),
+            "based": item.get("based", ""), "location_allowed": item.get("location_allowed", ""),
+        }
+        if career_url and _is_http_url(career_url):
+            career_ats = canonical_ats_name(ats_from_url(career_url))
+            if career_ats and career_ats != "Company Career":
+                key = board_key_from_url(career_ats, career_url)
+                if key and is_valid_board_seed(career_ats, career_url):
+                    old_board = board_map[career_ats].get(key, {})
+                    merged_board = {"key": key, "url": career_url, "company": company, "active": True, "last_ok": "", "fail_count": 0, "jobs_found_last": 0, **old_board, **metadata}
+                    merged_board["source"] = "Manual Company Sheet"
+                    board_map[career_ats][key] = merged_board
+            else:
+                old_career = career_map.get(career_url, {})
+                merged_career = {**old_career, "url": career_url, "ats": "Company Career", "crawl_priority": -1, **metadata}
+                merged_career["source"] = "Manual Company Sheet"
+                career_map[career_url] = merged_career
+        if ats_url and _is_http_url(ats_url):
+            ats = canonical_ats_name(ats_from_url(ats_url))
+            if ats:
+                if is_exact_job_url(ats_url):
+                    old_career = career_map.get(ats_url, {})
+                    merged_career = {**old_career, "url": ats_url, "ats": "Company Career", "crawl_priority": 0, **metadata}
+                    merged_career["source"] = "Manual Company Sheet"
+                    career_map[ats_url] = merged_career
+                else:
+                    key = board_key_from_url(ats, ats_url)
+                    if key and is_valid_board_seed(ats, ats_url):
+                        old_board = board_map[ats].get(key, {})
+                        merged_board = {"key": key, "url": ats_url, "company": company, "active": True, "last_ok": "", "fail_count": 0, "jobs_found_last": 0, **old_board, **metadata}
+                        merged_board["source"] = "Manual Company Sheet"
+                        board_map[ats][key] = merged_board
+
     # Exact Workday URLs can also be embedded in any discovered ATS links or website fields.
     for item in companies:
         company=clean_text(item.get("company"))
@@ -7364,7 +7610,7 @@ def rotate_records(records,budget,salt="v11"):
         except Exception: fails=0
         if jobs_last > 0:
             priority=0
-        elif any(tag in source for tag in ("openjobs", "career directory", "company registry", "company career", "search api", "google", "wellfound", "india ats directory")):
+        elif any(tag in source for tag in ("openjobs", "career directory", "company registry", "company career", "manual company sheet", "search api", "google", "wellfound", "india ats directory")):
             priority=1
         elif "wayback" in source or "common crawl" in source or "archive" in source:
             priority=3
@@ -7418,6 +7664,7 @@ def daily_crawl_nonstandard():
                 x["eligibility"]=x.get("eligibility") or v11_india_eligibility(x.get("location",""),"",x.get("location",""),"",x.get("workplace",""))
             out.extend(j); links.extend(found); done+=1
             if done%100==0: print(f"NONSTANDARD PROGRESS: {done}/{len(rows)}")
+    mark_manual_company_rows_checked(rows)
     return out,links
 
 
@@ -7465,10 +7712,16 @@ def daily_crawl_ats(ats):
         futs={ex.submit(fetch_board_record,r):r for r in records}
         done=0
         for f in as_completed(futs):
-            jobs,stat=f.result()
+            try:
+                jobs,stat=f.result()
+            except Exception as exc:
+                rec=futs[f]
+                jobs=[]
+                stat={"key":clean_text(rec.get("key")),"ats":ats,"company":clean_text(rec.get("company")),"ok":False,"status":"error","jobs_found":0,"error":f"{type(exc).__name__}: {exc}"}
             out.extend(jobs); statuses.append(stat)
             done+=1
             if done%100==0: print(f"ATS {ats} PROGRESS: {done}/{len(records)}")
+    mark_manual_company_rows_checked(records)
     return out,statuses
 
 
@@ -7621,7 +7874,9 @@ def daily_crawl_careers():
                 "ats":"Company Homepage", "seed_type":"Company Homepage",
                 "source":clean_text(home.get("source", "Company Homepage Discovery")),
             })
-    print(f"CAREER SUMMARY: pages={len(records)} homepages={len(homepages)} jobs={len(out)} useful_routes={len(discovered)} page_errors={errors} homepage_errors={homepage_errors}")
+    manual_checked = [r for r in records if r.get("manual_sheet_name") and r.get("manual_sheet_row")]
+    mark_manual_company_rows_checked(manual_checked)
+    print(f"CAREER SUMMARY: pages={len(records)} homepages={len(homepages)} jobs={len(out)} useful_routes={len(discovered)} page_errors={errors} homepage_errors={homepage_errors} manual_rows_checked={len(manual_checked)}")
     return out,discovered
 
 def feed_direct_only():
@@ -8449,7 +8704,7 @@ def run_merge(out_dir,write_sheet=False):
 
 
 def main_v11():
-    parser=argparse.ArgumentParser(description="Remote4.me V15.0 India-first high coverage crawler")
+    parser=argparse.ArgumentParser(description="Remote4.me V15.1 fast crawl with manual company sheet and Indian ATS coverage")
     parser.add_argument("--discover",action="store_true")
     parser.add_argument("--ats",choices=["Greenhouse","Lever","Ashby","Workable","SmartRecruiters","Recruitee","Breezy","Teamtailor","BambooHR","Personio","Workday","Zoho Recruit","Darwinbox","Keka","Zwayam","PeopleStrong","HROne","Freshteam","Oracle Recruiting","iCIMS","Taleo","SuccessFactors","ADP","Nonstandard"],default="")
     parser.add_argument("--careers",action="store_true")
@@ -8459,7 +8714,7 @@ def main_v11():
     parser.add_argument("--write-sheet",action="store_true")
     args=parser.parse_args()
     print("================================================")
-    print("REMOTE4.ME JOB CRAWLER V15.0 — ATS FIXES + DAILY ROTATION + SEARCH-FIRST")
+    print("REMOTE4.ME JOB CRAWLER V15.1 — FAST CRAWL + MANUAL SHEET + INDIA ATS")
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
@@ -8477,7 +8732,8 @@ def main_v11():
     print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
     if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
         print(f"Google Jobs daily budget: {GOOGLE_JOBS_MAX_QUERIES_PER_DAY} search call(s) (~{GOOGLE_JOBS_MAX_QUERIES_PER_DAY*30}/30-day month)")
-    print(f"Playwright JS career fallback: {'enabled' if PLAYWRIGHT_ENABLED else 'disabled'}")
+    print(f"Playwright JS career fallback: {'enabled' if PLAYWRIGHT_ENABLED else 'disabled'} (max calls={CAREER_BROWSER_MAX_CALLS}, timeout_ms={PLAYWRIGHT_TIMEOUT_MS})")
+    print("Manual company sheet: auto-detected by Company Name + Career Page Link/ATS + Job Location Allowed headers")
     print(f"Job window: {V11_JOB_MAX_AGE_DAYS} days / open-posting lifecycle")
     print(f"APAC/Worldwide remote tier: {'enabled' if V11_ALLOW_APAC_WORLDWIDE else 'disabled'}")
     if args.discover: return run_discover()
