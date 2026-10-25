@@ -43,6 +43,7 @@ jobs:
           DISCOVERY_VALIDATE_PER_ATS: "500"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
           DISCOVERY_WORKERS: "20"
+          ARCHIVE_DISCOVERY_INTERVAL_DAYS: "1"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --discover
       - name: Commit refreshed manifests
