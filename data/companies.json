@@ -71,7 +71,7 @@
     "ats_links": [
       "https://jobs.lever.co/fanatee"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Lakshya Digital",
@@ -116,7 +116,7 @@
       "https://apply.workable.com/j/76C43A0709",
       "https://apply.workable.com/j/83A5CD52AD"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Kalam labs",
@@ -139,7 +139,7 @@
     "ats_links": [
       "https://lilagames.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Rockstar Games",
@@ -154,7 +154,7 @@
       "https://www.rockstargames.com/careers/openings",
       "https://boards.greenhouse.io/rockstargames"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Sumo Digital",
@@ -174,7 +174,7 @@
       "https://jobs.lever.co/sumo-digital",
       "https://www.sumo-digital.com/careers?page=1#jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Ubisoft",
@@ -289,7 +289,7 @@
       "https://www.zynga.com/jobs/job-openings/",
       "https://www.talentify.io/zynga/jobs"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "Take-Two Interactive",
@@ -302,7 +302,7 @@
       "https://job-boards.greenhouse.io/taketwo",
       "https://careers.take2games.com/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Scopely",
@@ -315,7 +315,7 @@
       "https://jobs.jobvite.com/scopely/",
       "https://www.scopely.com/en/careers?jobviteiframe=search%3Fc%3D%26l%3D%26q%3D&nl=1"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "FarBridge",
@@ -411,7 +411,7 @@
     "ats_links": [
       "https://ea.gr8people.com/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Mlympix",
@@ -438,7 +438,7 @@
       "https://www.plotpix.ai/hiring"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Secernate Games Private Limited",
@@ -464,7 +464,7 @@
     "ats_links": [
       "https://holycowprod.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Immersive Arts Studio LLP",
@@ -545,7 +545,7 @@
       "https://digikorevfx.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Xbillion Skills Lab",
@@ -564,7 +564,7 @@
     "ats_links": [
       "https://www.renderedideas.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Yager",
@@ -702,7 +702,7 @@
       "https://www.wtvision.com/careers/broadcast-deployment-technician"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Octro inc",
@@ -749,7 +749,7 @@
     "ats_links": [
       "https://chillbase.net/vacancies"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "RV Online Gaming Pvt Ltd",
@@ -797,7 +797,7 @@
       "https://brasilsembets.gov.br/hiring"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "CXR.Agency",
@@ -817,7 +817,7 @@
       "http://www.audifytech.com/hiring"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Nolimit City",
@@ -916,7 +916,7 @@
       "https://nvidia.wd5.myworkdayjobs.com",
       "https://nvidia.eightfold.ai/careers"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "Siemens",
@@ -967,12 +967,21 @@
     "website": "https://outscal.com/company/capgemini",
     "career_links": [
       "https://www.capgemini.com/in-en/careers/join-capgemini/job-search/#country_code=in-en&size=90",
-      "https://www.capgemini.com/in-en/careers/"
+      "https://www.capgemini.com/in-en/careers/",
+      "https://www.capgemini.com/in-en/careers"
     ],
     "ats_links": [
-      "https://www.capgemini.com/in-en/careers/join-capgemini/job-search/#country_code=in-en&size=90"
+      "https://www.capgemini.com/in-en/careers/join-capgemini/job-search/#country_code=in-en&size=90",
+      "https://apply.workable.com/capgemini-insurance"
     ],
-    "source": "Company,OpenJobs,Career Directory"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 52,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://www.capgemini.com/in-en/careers",
+    "manual_ats_url": "https://apply.workable.com/capgemini-insurance"
   },
   {
     "company": "Valeo",
@@ -1019,7 +1028,7 @@
       "https://unisys.wd5.myworkdayjobs.com/en-US/External/details/Manager--Emerging-Technologies---Digital-Marketing_REQ572883?q=REQ572883",
       "https://unisys.wd5.myworkdayjobs.com/en-US/External/details/Senior-OCM-Analyst_REQ572035-1?q=REQ572035"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "SuperGaming",
@@ -1090,7 +1099,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://egug.fa.us2.oraclecloud.com"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "Infinity Advertising Services Pvt. Ltd.",
@@ -1182,7 +1191,7 @@
     "ats_links": [
       "https://sglottery.wd5.myworkdayjobs.com/ScientificGamesExternalCareers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Gardens Interactive",
@@ -1230,7 +1239,7 @@
     "ats_links": [
       "https://www.reliancegames.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Tentworks Interactive",
@@ -1278,7 +1287,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Ruby Seven Studios India (ChaYoWo Games)",
@@ -1287,7 +1296,7 @@
       "https://www.rubyseven.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Gamecrio Studios Pvt Ltd",
@@ -1320,7 +1329,7 @@
     "ats_links": [
       "https://www.expertia.ai/flyingcaps"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Nodding Heads Games",
@@ -1331,7 +1340,7 @@
     "ats_links": [
       "https://www.noddingheadsgames.com/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Falconz Eye Digital",
@@ -1386,7 +1395,7 @@
     "ats_links": [
       "https://careers.garena.com/global/careers?category="
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Taj Network for Business",
@@ -1449,7 +1458,7 @@
       "https://www.squareboat.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "ExamRoom.AI",
@@ -1458,7 +1467,7 @@
       "https://examroom.ai/career"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Google",
@@ -1515,7 +1524,7 @@
       "https://lnw.wd5.myworkdayjobs.com/SciPlayExternalCareersSite/",
       "https://www.comeet.com/jobs/sciplay/D5.00A"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Motive Studio",
@@ -1537,7 +1546,7 @@
       "https://apply.workable.com/keywords-intl1/?lng=en#jobs",
       "https://apply.workable.com/keywords-intl1/#jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Tech Mahindra",
@@ -1575,7 +1584,7 @@
       "https://totalitycorp-hr.freshteam.com/jobs",
       "https://totalitycorp.com/careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "LTI Mindtree",
@@ -1606,7 +1615,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://globalstep.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Adobe",
@@ -1640,7 +1649,7 @@
       "https://app.eightfold.ai/careers?pid=446698423274&domain=qualcomm.com&sort_by=relevance&triggerGoButton=false",
       "https://careers.qualcomm.com/careers"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "NetApp",
@@ -1694,7 +1703,7 @@
     "ats_links": [
       "https://synechron.wd1.myworkdayjobs.com/SynechronCareers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Philips",
@@ -1737,7 +1746,7 @@
     "ats_links": [
       "https://illumina.wd1.myworkdayjobs.com/illumina-careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Groupon",
@@ -1757,7 +1766,7 @@
       "https://www.flexera.com/about-us/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Autodesk",
@@ -1819,7 +1828,7 @@
       "https://hp.wd5.myworkdayjobs.com/ExternalCareerSite",
       "https://hp-sandbox.eightfold.ai/careers"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Turbolab Technologies",
@@ -1830,7 +1839,7 @@
     "ats_links": [
       "https://turbolabtech.keka.com/careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "bounteous",
@@ -1868,7 +1877,7 @@
       "https://tnsi.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Agoda",
@@ -1897,7 +1906,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/eventbriteinc"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Baxter International Inc.",
@@ -1913,7 +1922,7 @@
       "https://www.ilm.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Alictus",
@@ -1988,7 +1997,7 @@
     "ats_links": [
       "https://jobs.lever.co/appzen"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Veracity",
@@ -2066,7 +2075,7 @@
       "https://resourcesvalley.in/jobs/quality-assurance-engineer-functional-regression-testing"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "xogar games",
@@ -2175,7 +2184,7 @@
       "https://www.truevision.ai/jobs"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Schbang",
@@ -2211,7 +2220,7 @@
       "https://axycube.com/jobs/react-developers-bulk-hire-wfh"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Crazy pencilz",
@@ -2223,7 +2232,7 @@
     "ats_links": [
       "https://www.expertia.ai/crazypencilz"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Micron Technology",
@@ -2244,7 +2253,7 @@
       "https://micron.eightfold.ai/careers?start=0&location=Virginia&pid=40687598&sort_by=distance&filter_include_remote=1",
       "https://micron.eightfold.ai/careers?start=0&location=Idaho&pid=41155428&sort_by=distance&filter_include_remote=1"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Admin Looks",
@@ -2288,7 +2297,7 @@
       "https://careers.smartrecruiters.com/Xplor",
       "https://ats.rippling.com/clubessential-holdings-cjb/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "hogarth",
@@ -2322,7 +2331,7 @@
     "ats_links": [
       "https://broadcom.wd1.myworkdayjobs.com/External_Career"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Labcorp",
@@ -2331,7 +2340,7 @@
       "https://careers.labcorp.com/global/en"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Infineon Technologies",
@@ -2347,7 +2356,7 @@
       "https://www.infineon.com/careers/teams/powering-ai"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Blue Mandarin",
@@ -2415,7 +2424,7 @@
     "ats_links": [
       "https://ncr.wd1.myworkdayjobs.com/ext_apac/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Wolters Kluwer",
@@ -2463,12 +2472,21 @@
     "company": "Zscaler",
     "website": "https://www.zscaler.com",
     "career_links": [
-      "https://boards.greenhouse.io/zscaler"
+      "https://boards.greenhouse.io/zscaler",
+      "https://www.zscaler.com/careers"
     ],
     "ats_links": [
-      "https://boards.greenhouse.io/zscaler"
+      "https://boards.greenhouse.io/zscaler",
+      "https://job-boards.greenhouse.io/zscaler"
     ],
-    "source": "Company,OpenJobs"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 53,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://www.zscaler.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/zscaler"
   },
   {
     "company": "Cadence Design Systems",
@@ -2483,7 +2501,7 @@
       "https://www.cadence.com/zh_TW/home/company/careers/interns-and-new-grads.html"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "GE Vernova",
@@ -2506,7 +2524,7 @@
       "https://gevernova.wd5.myworkdayjobs.com/Vernova_ExternalSite/job/Remote/Senior-Aeroderivative-Customer-Service-Manager_R5056456-3/apply"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "enduring games",
@@ -2518,7 +2536,7 @@
     "ats_links": [
       "https://enduring.games/jobs/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "giant enemy crab",
@@ -2632,7 +2650,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/inmobi"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Stellar Entertainment Software",
@@ -2650,7 +2668,7 @@
       "https://apply.workable.com/stellar-entertainment/?lng=en",
       "https://apply.workable.com/stellar-entertainment/?lng=en#jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Pattem Digital Technologies",
@@ -2666,7 +2684,7 @@
       "https://www.pattemdigital.com/career/ui-node-js-technical-architect"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Probability Gaming",
@@ -2709,7 +2727,7 @@
       "https://askgalore.com/career"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Rigi",
@@ -2730,7 +2748,7 @@
     "ats_links": [
       "https://jobs.gohire.io/element8-1tqyvzgs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Square Panda India",
@@ -2761,7 +2779,7 @@
       "https://careers.smartrecruiters.com/YggdrasilSandbox",
       "https://jobs.smartrecruiters.com/YggdrasilSandbox/744000144765969-technical-artist-?oga=true"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Atari",
@@ -2892,7 +2910,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/double-negative-visual-effects/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "realworld one",
@@ -2903,7 +2921,7 @@
     "ats_links": [
       "https://jobs.lever.co/rw1"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Gameopedia",
@@ -2950,7 +2968,7 @@
     "ats_links": [
       "https://careers.smartrecruiters.com/KnackStudios"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "VeVe",
@@ -3048,7 +3066,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Applied materials",
@@ -3092,7 +3110,7 @@
       "https://www.dsmaxproperties.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Landor",
@@ -3171,18 +3189,26 @@
       "https://boards.greenhouse.io/landor?t=a496293e1us",
       "https://boards.greenhouse.io/landor"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Netomi",
     "website": "https://www.netomi.com",
     "career_links": [
-      "https://jobs.lever.co/netomi"
+      "https://jobs.lever.co/netomi",
+      "https://www.netomi.com"
     ],
     "ats_links": [
       "https://jobs.lever.co/netomi"
     ],
-    "source": "Company,OpenJobs"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 43,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://www.netomi.com",
+    "manual_ats_url": "https://jobs.lever.co/netomi"
   },
   {
     "company": "IION",
@@ -3196,7 +3222,7 @@
       "https://iion.keka.com/careers/",
       "https://iion.keka.com/careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Gojek",
@@ -3217,7 +3243,7 @@
     "ats_links": [
       "https://vervegroup.recruitee.com"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Intel",
@@ -3231,7 +3257,7 @@
       "https://intel.wd1.myworkdayjobs.com/External/page/6042070b79e01001f04fa9b468070000",
       "https://intel.wd1.myworkdayjobs.com/External/page/6c3f41ef6b4f1000ad687b2597d20000"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "Classic Informatics Private Limited",
@@ -3240,7 +3266,7 @@
       "https://www.classicinformatics.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "LN Webworks",
@@ -3311,7 +3337,7 @@
     "ats_links": [
       "https://jobs.lever.co/paytm"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "HeadSpin",
@@ -3322,7 +3348,7 @@
     "ats_links": [
       "https://headspin.bamboohr.com/jobs/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Micron",
@@ -3370,7 +3396,7 @@
       "https://walkingtree.tech/jobs/data-pre-sales-freelancer"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Arm",
@@ -3416,7 +3442,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "TMI Group",
@@ -3481,7 +3507,7 @@
       "https://jobs.recooty.com/village-talkies",
       "https://villagetalkies.recruitee.com/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "The Digital Group LA",
@@ -3508,7 +3534,7 @@
       "https://job-boards.greenhouse.io/zenoti",
       "https://jobs.ashbyhq.com/trilitech"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "CLO Virtual Fashion Inc.",
@@ -3517,7 +3543,7 @@
     "ats_links": [
       "https://jobs.lever.co/clovirtualfashion"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "WongDoody",
@@ -3568,7 +3594,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://job-boards.greenhouse.io/oliverseapac"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Optiv",
@@ -3581,7 +3607,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://optiv.wd5.myworkdayjobs.com/Optiv_Careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "PwC",
@@ -3611,7 +3637,7 @@
       "https://cae.wd3.myworkdayjobs.com/en-US/career",
       "https://cae.wd3.myworkdayjobs.com/fr-CA/career/page/aff61490d18c1001a0e3017d69d20000"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Cred",
@@ -3641,7 +3667,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Gallagher",
@@ -3653,7 +3679,7 @@
     "ats_links": [
       "https://gallagher.bamboohr.com/jobs/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Enphase Energy",
@@ -3680,7 +3706,7 @@
     "ats_links": [
       "https://tgs.recruitee.com"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "NextHire",
@@ -3729,7 +3755,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://neolytix.applytojob.com/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Two Circles",
@@ -3790,7 +3816,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/phonepe"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Digital Jalebi",
@@ -3837,7 +3863,7 @@
     "ats_links": [
       "https://recruiting2.ultipro.com/SGS1000SGSI/JobBoard/2e113479-4a4e-4531-a2af-518ed0717655/?q=&o=postedDateDesc"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "STAEDEAN",
@@ -3966,7 +3992,7 @@
       "https://job-boards.greenhouse.io/aerospike",
       "https://ats.rippling.com/aerospike-inc/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "zeta",
@@ -4036,7 +4062,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Semtech",
@@ -4060,7 +4086,7 @@
     "ats_links": [
       "https://jobs.lever.co/saviynt/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Balbix",
@@ -4074,7 +4100,7 @@
       "https://jobs.lever.co/balbix",
       "https://jobs.lever.co/safe"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Nium",
@@ -4087,7 +4113,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://jobs.lever.co/nium"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Safe security",
@@ -4110,7 +4136,7 @@
     "ats_links": [
       "https://www.cyberark.com/careers/all-job-openings/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Educational Initiatives",
@@ -4159,7 +4185,7 @@
     "ats_links": [
       "https://jobs.lever.co/aeratechnology"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "SparkCognition",
@@ -4177,7 +4203,7 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/avathon"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "ansira",
@@ -4224,7 +4250,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://plugpower.wd5.myworkdayjobs.com/Plug_Power_Inc"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Western Digital",
@@ -4244,7 +4270,7 @@
       "https://careers.smartrecruiters.com/WesternDigital",
       "https://careers.smartrecruiters.com/WesternDigital/university"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "GoTo Group",
@@ -4256,7 +4282,7 @@
     "ats_links": [
       "https://jobs.lever.co/GoToGroup"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Anthology Inc",
@@ -4269,7 +4295,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/anthology/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "sinch",
@@ -4287,7 +4313,7 @@
     "ats_links": [
       "https://apply.workable.com/sinch/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Sumo logic",
@@ -4300,7 +4326,7 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/sumologic"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Madison Logic",
@@ -4391,7 +4417,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://mmc.wd1.myworkdayjobs.com/MMC"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Workassist",
@@ -4407,7 +4433,7 @@
       "https://www.jbpoindexter.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Barracuda",
@@ -4470,7 +4496,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/barracuda-networks-inc/jobs"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "Trek",
@@ -4482,7 +4508,7 @@
     "ats_links": [
       "https://trekbikes.wd1.myworkdayjobs.com/TREK"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Malabar Gold & Diamonds",
@@ -4534,7 +4560,7 @@
       "https://www.shl.com/careers/jobs?Location=Gurgaon+Office"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Prysmian",
@@ -4594,16 +4620,25 @@
     "ats_links": [
       "https://boards.greenhouse.io/instawork"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Easyship",
     "website": "https://easyship.com",
-    "career_links": [],
+    "career_links": [
+      "https://www.easyship.com/careers"
+    ],
     "ats_links": [
       "https://boards.greenhouse.io/easyship"
     ],
-    "source": "Company,OpenJobs"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 42,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://www.easyship.com/careers",
+    "manual_ats_url": ""
   },
   {
     "company": "Lytx, Inc.",
@@ -4615,20 +4650,28 @@
     "ats_links": [
       "https://lytx.wd1.myworkdayjobs.com/Lytx"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "GoDaddy",
     "website": "https://boards.greenhouse.io",
     "career_links": [
       "https://boards.greenhouse.io/godaddy/",
-      "https://careers.godaddy.com/"
+      "https://careers.godaddy.com/",
+      "https://careers.godaddy/jobs/search"
     ],
     "ats_links": [
       "https://boards.greenhouse.io/godaddy/",
       "https://careers.godaddy/jobs/search"
     ],
-    "source": "Company,OpenJobs,Career Directory"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 41,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://careers.godaddy/jobs/search",
+    "manual_ats_url": ""
   },
   {
     "company": "Rippling",
@@ -4660,7 +4703,7 @@
       "https://circles.co/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Vimeo",
@@ -4733,7 +4776,7 @@
       "https://jobs.smartrecruiters.com/hackerrank",
       "https://boards.greenhouse.io/hackerrank"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Postman",
@@ -4772,7 +4815,7 @@
     "ats_links": [
       "http://sifthub.recruiterbox.com/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Mellow Designs",
@@ -4839,7 +4882,7 @@
     "ats_links": [
       "https://jobs.lever.co/aidash"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "TVH",
@@ -4851,7 +4894,7 @@
     "ats_links": [
       "https://tvh.wd3.myworkdayjobs.com/JobsatTVH"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Antal International",
@@ -4905,7 +4948,7 @@
       "https://stem.wd12.myworkdayjobs.com/steminc",
       "https://ats.rippling.com/stem-inc/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Vendavo",
@@ -5039,7 +5082,7 @@
       "https://sapiens.careers.hibob.com"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Interim Deal | Matchmaker for interim professionals.",
@@ -5051,7 +5094,7 @@
       "https://interimdeal.nl/en/vacancies/manager-hr-transformation-people-analytics-lead"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "GlobalHunt",
@@ -5167,7 +5210,7 @@
       "https://job-boards.greenhouse.io/conga",
       "https://job-boards.greenhouse.io/conga?gh_src=LinkedIn"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "OMP",
@@ -5183,7 +5226,7 @@
       "https://careers.omp.com/jobs/germany-mannheim/sr-integration-consultant-4093145101"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Cubic corporation",
@@ -5202,7 +5245,7 @@
       "https://cubic.wd1.myworkdayjobs.com/cubic_USA_careers/jobs",
       "https://cubic.wd1.myworkdayjobs.com/cubic_global_careers/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Zinnia",
@@ -5258,7 +5301,7 @@
       "https://careers.spectrocloud.com/jobs/8541476-senior-payroll-accountant"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Drivetrain",
@@ -5341,7 +5384,7 @@
     "ats_links": [
       "https://wd3.myworkdaysite.com/en-US/recruiting/havas/GroupExternalCareerSite?source=LinkedIn&utm_source=outscal.com&utm_campaign=outscal_jobs&utm_medium=outscal_job_portal&utm_content=outscal_job_apply&utm_term=outscal_jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "AliveCor",
@@ -5356,7 +5399,7 @@
       "https://jobs.jobvite.com/alivecor/job",
       "https://jobs.jobvite.com/alivecor/jobs"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "Adform",
@@ -5370,7 +5413,7 @@
       "https://careers.adform.com/jobs/8521709-accounts-payable-intern"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Cerebras Systems",
@@ -5381,7 +5424,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/cerebrassystems"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Merqube",
@@ -5508,7 +5551,7 @@
       "https://jobs.jobvite.com/buckman/search?r=&l=&c=&q=",
       "https://jobs.jobvite.com/buckman/search?c=Sales&p=0"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Blenheim Chalcot India",
@@ -5641,7 +5684,7 @@
       "https://careers-granicus.icims.com",
       "https://careers-granicus.icims.com/jobs?hashed=-625856117"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Nasdaq",
@@ -5730,7 +5773,7 @@
     "ats_links": [
       "https://careers.smartrecruiters.com/T-SystemsICTIndiaPvtLtd1"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Career"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Career"
   },
   {
     "company": "Recruitrix",
@@ -5837,7 +5880,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/remotecom"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Reddit",
@@ -6007,7 +6050,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/diligentcorporation"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Ethos Life",
@@ -6080,7 +6123,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/fictiv/jobs/7121003002?gh_src=a0ed43272us&source=LinkedIn&utm_source=outscal.com&utm_campaign=outscal_jobs&utm_medium=outscal_job_portal&utm_content=outscal_job_apply&utm_term=outscal_jobs"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "Globalization Partners",
@@ -6309,7 +6352,7 @@
       "https://jobs.jobvite.com/webmd/jobs",
       "https://jobs.jobvite.com/webmd/job/"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "Ziff Davis",
@@ -6377,7 +6420,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/ziffdavis/job/"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "Pulse Point",
@@ -6400,7 +6443,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/careers/pulsepoint/"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "world resource institute",
@@ -6524,7 +6567,7 @@
     "ats_links": [
       "https://jobs.lever.co/bazaarvoice"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "cyara",
@@ -6566,7 +6609,7 @@
       "https://jobs.lever.co/extremenetworks/",
       "https://jobs.lever.co/extremenetworks"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "JMA",
@@ -6633,7 +6676,7 @@
     "ats_links": [
       "https://jobs.lever.co/matchgroup/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "upstox",
@@ -6746,7 +6789,7 @@
     "ats_links": [
       "https://wd1.myworkdaysite.com/recruiting/ssctech/SSCTechnologies"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Blue Yonder",
@@ -6758,7 +6801,7 @@
     "ats_links": [
       "https://jda.wd5.myworkdayjobs.com/JDA_Careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Morning Star",
@@ -6909,7 +6952,7 @@
       "https://singarajanstudios.zohorecruit.in",
       "https://singarajanstudios.zohorecruit.in/jobs/Careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Phantom FX",
@@ -6935,7 +6978,7 @@
       "https://zazz.zohorecruit.in",
       "https://zazz.zohorecruit.in/jobs/Careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Ajmera Infotech",
@@ -6949,7 +6992,7 @@
       "https://ajmerainfotechus.zohorecruit.in",
       "https://ajmerainfotechus.zohorecruit.in/jobs/Careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Stage",
@@ -6962,7 +7005,7 @@
       "https://stage.zohorecruit.in/jobs/Careers",
       "https://boards.greenhouse.io/stage"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Canva",
@@ -6974,7 +7017,7 @@
     "ats_links": [
       "https://careers.smartrecruiters.com/Canva"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Moving Walls India",
@@ -6986,7 +7029,7 @@
     "ats_links": [
       "https://careers.smartrecruiters.com/MovingWallsIndiaPvtLtd"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Insight Software",
@@ -7864,7 +7907,7 @@
       "https://jobs.ashbyhq.com/openai/f6880901-6527-4b71-9f70-bc8d38989b84/application",
       "https://jobs.ashbyhq.com/openai/8f8e9acf-37e7-4085-9ab4-f794c186331a/application"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Figma",
@@ -7936,7 +7979,7 @@
       "https://job-boards.greenhouse.io/poppulo",
       "https://boards.greenhouse.io/poppulo/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Lightcast",
@@ -7960,7 +8003,7 @@
     "ats_links": [
       "https://flexerasoftware.wd1.myworkdayjobs.com/revenera"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Imanage",
@@ -8036,7 +8079,7 @@
       "https://jobs.jobvite.com/egnyte",
       "https://jobs.jobvite.com/egnyte/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Lead Venture",
@@ -8049,7 +8092,7 @@
       "aaaaaaaaaaaaaaaaaaaaa",
       "https://jobs.jobvite.com/leadventure/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "DMG",
@@ -8074,7 +8117,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://jobs.jobvite.com/power-integrations/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "progress",
@@ -8098,7 +8141,7 @@
       "https://apply.workable.com/vizrt/",
       "https://careers.smartrecruiters.com/Vizrt1"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Zones",
@@ -8203,7 +8246,7 @@
       "https://jobs.jobvite.com/zones/search?c=Professional+Services&p=0",
       "https://jobs.jobvite.com/zones/search?c=Staffing&p=0"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "Varonis",
@@ -8215,7 +8258,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/varonis-internal"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "ness digital",
@@ -8414,7 +8457,7 @@
       "https://boards.greenhouse.io/armada",
       "https://armada.bamboohr.com/jobs/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Stibo Systems",
@@ -8503,9 +8546,17 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa",
       "https://www.nice.com/careers/apply",
-      "https://boards.greenhouse.io/nice"
+      "https://boards.greenhouse.io/nice",
+      "https://job-boards.eu.greenhouse.io/nice"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 45,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://www.nice.com/careers/apply",
+    "manual_ats_url": "https://job-boards.eu.greenhouse.io/nice"
   },
   {
     "company": "Jaspersoft",
@@ -8517,7 +8568,7 @@
       "https://www.actian.com/company/careers/internship"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Bestex Research",
@@ -8529,7 +8580,7 @@
     "ats_links": [
       "https://apply.workable.com/bestex-research"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Nightfall AI",
@@ -8541,7 +8592,7 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/nightfall"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Simcorp",
@@ -8563,7 +8614,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Reliance Industries Limited",
@@ -8581,7 +8632,7 @@
       "https://www.royalcyber.com/company/careers/cloud-engineers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Loyalty Juggernaut",
@@ -8642,7 +8693,7 @@
       "https://jobs.jobvite.com/careers/forescout",
       "https://jobs.jobvite.com/forescout/jobs"
     ],
-    "source": "Company,OpenJobs,Company Career,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career,Company Homepage Discovery"
   },
   {
     "company": "Hapag-Lloyd AG",
@@ -8661,7 +8712,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Jigya",
@@ -8683,7 +8734,7 @@
     "ats_links": [
       "https://impronics.keka.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Good Shepherd School",
@@ -8728,7 +8779,7 @@
       "https://careers.n-ix.com/jobs/",
       "https://careers.n-ix.com/jobs/?keyword="
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Xentrix studios",
@@ -8742,7 +8793,7 @@
     "ats_links": [
       "https://www.xentrixstudios.com/careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Findem",
@@ -8753,7 +8804,7 @@
     "ats_links": [
       "https://jobs.lever.co/findem"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Varaha",
@@ -8769,7 +8820,7 @@
       "https://www.alaan.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Adit",
@@ -8778,7 +8829,7 @@
       "https://adit.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Mobiloitte",
@@ -8804,7 +8855,7 @@
     "ats_links": [
       "aaaaaaaaaaaaaaaaaaaa"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "YUMPYS",
@@ -8836,7 +8887,7 @@
       "https://klearnow.ai/career/sales-job"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Zinrelo",
@@ -8846,7 +8897,7 @@
       "aaaaaaaaaaaaaaaaaaaa",
       "https://apply.workable.com/trueloyal"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "HEAL Software Inc.",
@@ -8866,7 +8917,7 @@
       "https://job-boards.greenhouse.io/ethernovia",
       "https://boards.greenhouse.io/ethernovia"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Wind River",
@@ -8896,7 +8947,7 @@
     "ats_links": [
       "https://www.capspire.com/current-job-openings"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Bito",
@@ -8920,7 +8971,7 @@
       "https://www.hitwicket.com/hiring"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Zapak Digital Entertainment Limited",
@@ -8929,7 +8980,7 @@
       "https://www.zapak.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Side",
@@ -8953,7 +9004,7 @@
     "ats_links": [
       "https://jobs.lever.co/Coda"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "techholding",
@@ -9091,7 +9142,7 @@
       "https://www.cdata.com/company/careers/?region=in",
       "https://ats.rippling.com/cdata-software/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Dynamic next",
@@ -9170,7 +9221,7 @@
       "https://www.techstargroup.com/careers#search",
       "https://jobs.smartrecruiters.com/techstargroup"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "HCL Tech",
@@ -9193,7 +9244,7 @@
     "ats_links": [
       "https://p99soft.com/careers/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "After zvfx studios",
@@ -9211,7 +9262,7 @@
     "ats_links": [
       "https://afterzvfxstudio.com/careers"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Nautilis mobile",
@@ -9259,7 +9310,7 @@
       "https://jobs.jobvite.com/everyday-health-consumer/job",
       "https://jobs.jobvite.com/everyday-health-consumer/jobs"
     ],
-    "source": "Company,OpenJobs,Company Career"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Career"
   },
   {
     "company": "ISS Stoxx",
@@ -9289,7 +9340,7 @@
     "ats_links": [
       "https://jobs.recooty.com/19th-hole-studios-pvt-ltd"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Gametion",
@@ -9348,7 +9399,7 @@
     "ats_links": [
       "https://www.appon.co.in/career"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "HYCU",
@@ -9430,7 +9481,7 @@
     "ats_links": [
       "https://www.gameanax.com/career/"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "luxsoft",
@@ -9496,7 +9547,7 @@
     "ats_links": [
       "https://www.incredimate.com/career"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Mfinity infotech",
@@ -9970,7 +10021,7 @@
       "https://winjit.hire.trakstar.com/#content",
       "http://winjit.recruiterbox.com/jobs"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Survay Monkey",
@@ -10145,7 +10196,7 @@
     "ats_links": [
       "https://www.accenture.com/in-en/careers/jobsearch?jk=&sb=1&vw=0&is_rj=0&pg=1"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Endava",
@@ -10164,7 +10215,7 @@
       "https://www.endava.com/careers/jobs",
       "https://jobs.smartrecruiters.com/endava"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Databricks",
@@ -10183,7 +10234,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/databricks"
     ],
-    "source": "Company,OpenJobs,Career Directory,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Career Directory,Company,OpenJobs,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "ChainGuard",
@@ -10273,7 +10324,7 @@
       "https://boards.greenhouse.io/mixpanel",
       "https://job-boards.greenhouse.io/mixpanel"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Regrello",
@@ -10294,7 +10345,7 @@
       "https://jobs.lever.co/shieldai",
       "https://job-boards.greenhouse.io/aechelontechnology"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "SIFT",
@@ -10305,7 +10356,7 @@
     "ats_links": [
       "https://jobs.ashbyhq.com/sift"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Storylane",
@@ -10343,7 +10394,7 @@
     "ats_links": [
       "https://jobs.lever.co/hive"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Proofpoint",
@@ -10352,7 +10403,7 @@
       "https://www.proofpoint.com/us/company/careers"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Zapier",
@@ -10385,7 +10436,7 @@
       "https://careers.aristocrat.com/en/jobs/r0021894/technical-lead-ai-specialist-automation-engineer"
     ],
     "ats_links": [],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Juego Studio Pt. Ltd.",
@@ -10416,7 +10467,7 @@
       "https://careers.smartrecruiters.com/PitchBlackCreative/folks-%5Bfrench%5D",
       "https://careers.smartrecruiters.com/PitchBlackCreative/folks-%5Bspanish%5D"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Moniepoint",
@@ -10427,7 +10478,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/moniepoint"
     ],
-    "source": "Company,OpenJobs,Company Homepage Discovery"
+    "source": "Company,OpenJobs,Company,OpenJobs,Company Homepage Discovery"
   },
   {
     "company": "Viven",
@@ -10477,7 +10528,7 @@
     "ats_links": [
       "https://1mg.darwinbox.in/jobs"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "314e Corporation",
@@ -10577,7 +10628,7 @@
       "https://agnikul.in/careers"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Airbase",
@@ -10819,7 +10870,7 @@
       "https://www.aramco.com/en/careers/video-testimonials-fahad-rana"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Aryaka networks",
@@ -11010,7 +11061,7 @@
     "ats_links": [
       "https://jobs.ashbyhq.com/better-mortgage"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "BharatPe",
@@ -11112,7 +11163,7 @@
       "https://bnymellon.eightfold.ai/careers",
       "https://bnymellon.eightfold.ai/jobs"
     ],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Boeing",
@@ -11352,7 +11403,7 @@
       "https://jobs.ashbyhq.com/notion/8b82e596-e828-45db-94d5-b76acc89e749"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Byju's",
@@ -11418,7 +11469,7 @@
     "ats_links": [
       "https://cardekho.darwinbox.in/ms/candidate/606876f7e2c79/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "CarWale",
@@ -11528,7 +11579,7 @@
     "ats_links": [
       "https://citi.eightfold.ai/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Citrix",
@@ -11575,7 +11626,7 @@
     "ats_links": [
       "https://clear.darwinbox.in/ms/candidate/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "ClearTrip",
@@ -11775,7 +11826,7 @@
     "ats_links": [
       "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/page/56040874354a1000d20c322b45450000"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "CSS Corp",
@@ -11891,7 +11942,7 @@
     "ats_links": [
       "https://jobs.ashbyhq.com/dave"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "DE Shaw",
@@ -12000,7 +12051,7 @@
       "https://eeug.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/requisitions?mode=location"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Dimension Data",
@@ -12116,7 +12167,7 @@
     "ats_links": [
       "https://duckcreek.wd1.myworkdayjobs.com/en-US/duckcreekcareers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Dukaan",
@@ -12217,7 +12268,7 @@
     "ats_links": [
       "https://fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/jobs?location=India&locationId=300000000467203&locationLevel=country&mode=job-location"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Expedia",
@@ -12232,10 +12283,18 @@
     "company": "Experian",
     "website": "https://www.experian.in/careers",
     "career_links": [
-      "https://www.experian.in/careers"
+      "https://www.experian.in/careers",
+      "https://jobs.experian.com/jobs"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 25,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://jobs.experian.com/jobs",
+    "manual_ats_url": ""
   },
   {
     "company": "EY",
@@ -12525,7 +12584,7 @@
       "https://job-boards.greenhouse.io/flexport/jobs/8210257"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Flipkart",
@@ -12594,7 +12653,7 @@
       "https://careers.smartrecruiters.com/Freshworks/cxg",
       "https://careers.smartrecruiters.com/Freshworks/corporate"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Frontrow",
@@ -12667,7 +12726,7 @@
       "https://www.garudaaerospace.com/company/careers"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "GE Healthcare",
@@ -12885,7 +12944,7 @@
     "ats_links": [
       "https://healthasyst.keka.com/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Healthify me",
@@ -13211,7 +13270,7 @@
     "ats_links": [
       "https://jobs.jobvite.com/ip-infusion/jobs"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "iQuanti",
@@ -13222,7 +13281,7 @@
     "ats_links": [
       "https://iquanti.darwinbox.in/ms/candidate/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "IQVIA",
@@ -13310,7 +13369,7 @@
       "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/tc-join"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Jumbotail",
@@ -13584,7 +13643,7 @@
       "https://koch.avature.net/en_US/careers/JobDetail/United-States-Contracts-Manager-Government-Contracts-DOD/194011",
       "https://koch.avature.net/en_US/careers/SearchJobs?3_120_3=6052&3_120_3_format=6308&jobRecordsPerPage=6&jobOffset=6"
     ],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "KPN",
@@ -13684,7 +13743,7 @@
       "https://www.logic-fruit.com/careers"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Logicmonitor",
@@ -13767,7 +13826,7 @@
     "ats_links": [
       "https://mantech.avature.net/en_US/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Maq",
@@ -14120,7 +14179,7 @@
       "https://careers-inc.nttdata.com/job/Bucuresti-Service-Desk-Agent-with-Dutch-%28remote%29-B/1362236400"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "Nuro",
@@ -14332,7 +14391,7 @@
     "ats_links": [
       "https://myhr.darwinbox.in/ms/candidate/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "PixelCrayons",
@@ -14343,7 +14402,7 @@
       "https://www.vinove.com/careers/open-roles"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Homepage Discovery"
+    "source": "Company,Career Directory,Company,Career Directory,Company Homepage Discovery"
   },
   {
     "company": "PlanView India",
@@ -14404,7 +14463,7 @@
       "https://careersmalaysia-principal.icims.com/jobs",
       "https://careerssingapore-principal.icims.com/jobs"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Privado.ai",
@@ -14541,7 +14600,7 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "RedHat",
@@ -14552,7 +14611,7 @@
     "ats_links": [
       "https://redhat.wd5.myworkdayjobs.com/jobs"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Reelo",
@@ -14681,7 +14740,7 @@
       "https://jobs.lever.co/scality/fed8db11-8e0e-41be-9857-0e75ee6b2c00"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Seamless.Ai",
@@ -14896,7 +14955,7 @@
       "https://salesforce.wd12.myworkdayjobs.com/Slack/job/California---San-Francisco/Slack-VP--Product-Design--Individual-Contributor--Principal-Architect-_JR358869-2"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Slice",
@@ -14956,13 +15015,21 @@
     "company": "Sopra Steria",
     "website": "https://www.soprasteria.com/careers",
     "career_links": [
-      "https://www.soprasteria.com/careers"
+      "https://www.soprasteria.com/careers",
+      "https://careers.soprasteria.com/jobs"
     ],
     "ats_links": [
       "https://careers.smartrecruiters.com/SopraSteria1/ssg_canada_en",
       "https://careers.smartrecruiters.com/SopraSteria1/ssg_us_all-offers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 40,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://careers.soprasteria.com/jobs",
+    "manual_ats_url": ""
   },
   {
     "company": "Spec India",
@@ -15009,7 +15076,7 @@
     "ats_links": [
       "https://sprinklr.wd1.myworkdayjobs.com/careers?_gl=1%2Azwwtok%2A_ga%2AMjE0MDMwOTMyMC4xNzExMjkwMTcz%2A_ga_GD43S3NXZ0%2AMTcxNTg0Njg2Ni4xNTguMC4xNzE1ODQ2ODY4LjU4LjAuMA.."
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "SquadStack",
@@ -15326,7 +15393,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/trellahealth"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Trigent Software",
@@ -15412,7 +15479,7 @@
       "https://job-boards.greenhouse.io/twilio/jobs/8185629"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Twitter",
@@ -15427,7 +15494,7 @@
       "https://job-boards.greenhouse.io/xai/jobs/5225280007"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Uber",
@@ -15474,7 +15541,7 @@
     "ats_links": [
       "https://unacademy.darwinbox.in/ms/candidate/careers"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Unicommerce",
@@ -15566,7 +15633,7 @@
     "ats_links": [
       "https://apply.workable.com/velotio"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Viasat",
@@ -15707,7 +15774,7 @@
       "https://myjobs.adp.com/wwtexternalcareersite/cx/job-listing?FIELD4=Business+Development&FIELD4=Federal+Sales&FIELD4=Sales+Engineering"
     ],
     "ats_links": [],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "WorldQuant",
@@ -15799,7 +15866,7 @@
     "ats_links": [
       "https://boards.greenhouse.io/yugabyte"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Yulu Bikes",
@@ -15834,7 +15901,7 @@
       "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?lastSelectedFacet=LOCATIONS&selectedLocationsFacet=300000000435574",
       "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?lastSelectedFacet=LOCATIONS&selectedLocationsFacet=300000000435067"
     ],
-    "source": "Company,Career Directory,Company Career"
+    "source": "Company,Career Directory,Company,Career Directory,Company Career"
   },
   {
     "company": "Zerodha",
@@ -15928,13 +15995,6 @@
     "source": "Company"
   },
   {
-    "company": "BookLeaf Publishing",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "TruckX",
     "website": "",
     "career_links": [],
@@ -15942,7 +16002,7 @@
     "source": "Company"
   },
   {
-    "company": "Spur",
+    "company": "BookLeaf Publishing",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -15950,6 +16010,13 @@
   },
   {
     "company": "C3 AI",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Spur",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -15977,14 +16044,14 @@
     "source": "Company"
   },
   {
-    "company": "Inboxkit",
+    "company": "Cloverbridge Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "Cloverbridge Technologies",
+    "company": "Inboxkit",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16313,13 +16380,6 @@
     "source": "Company"
   },
   {
-    "company": "MongoDB",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "ClearFeed",
     "website": "",
     "career_links": [],
@@ -16327,21 +16387,7 @@
     "source": "Company"
   },
   {
-    "company": "Nucleous",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Get My Parking",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "AuxoAI",
+    "company": "Hotelzify",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16355,7 +16401,14 @@
     "source": "Company"
   },
   {
-    "company": "Care Infotech",
+    "company": "GoPhygital.work",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Get My Parking",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16369,7 +16422,21 @@
     "source": "Company"
   },
   {
-    "company": "GoPhygital.work",
+    "company": "Nucleous",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "AuxoAI",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Care Infotech",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16383,7 +16450,7 @@
     "source": "Company"
   },
   {
-    "company": "Labra.io",
+    "company": "Recepto.ai",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16397,14 +16464,7 @@
     "source": "Company"
   },
   {
-    "company": "NoScrubs",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "RedBlackTree",
+    "company": "Uservox",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16418,7 +16478,7 @@
     "source": "Company"
   },
   {
-    "company": "Trackier",
+    "company": "NoScrubs",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16432,7 +16492,7 @@
     "source": "Company"
   },
   {
-    "company": "Uservox",
+    "company": "RedBlackTree",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16440,6 +16500,13 @@
   },
   {
     "company": "Kovans Ventures",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Trackier",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16504,7 +16571,7 @@
       "https://job-boards.greenhouse.io/freshprints/jobs/6221051004"
     ],
     "ats_links": [],
-    "source": "Company,Company Career"
+    "source": "Company,Company,Company Career"
   },
   {
     "company": "BlueSapling - Intelligence Served",
@@ -16605,13 +16672,6 @@
     "source": "Company"
   },
   {
-    "company": "Sciative - We Price Right",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "Fibr AI",
     "website": "",
     "career_links": [],
@@ -16640,7 +16700,14 @@
     "source": "Company"
   },
   {
-    "company": "shanchie",
+    "company": "MAVR",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Ind-US Target",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16648,13 +16715,6 @@
   },
   {
     "company": "Keka HR",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Talview",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16675,7 +16735,7 @@
     "source": "Company"
   },
   {
-    "company": "Scratchly",
+    "company": "Talview",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16696,13 +16756,6 @@
     "source": "Company"
   },
   {
-    "company": "TrueFoundry",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
     "company": "NativeMeet",
     "website": "",
     "career_links": [],
@@ -16710,7 +16763,7 @@
     "source": "Company"
   },
   {
-    "company": "tickete",
+    "company": "TrueFoundry",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16724,6 +16777,13 @@
     "source": "Company"
   },
   {
+    "company": "tickete",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Finifi",
     "website": "",
     "career_links": [],
@@ -16731,7 +16791,14 @@
     "source": "Company"
   },
   {
-    "company": "ZenTrades",
+    "company": "Klimb.io",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Velocity",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16815,6 +16882,13 @@
     "source": "Company"
   },
   {
+    "company": "shanchie",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Speechmatics",
     "website": "",
     "career_links": [],
@@ -16892,14 +16966,23 @@
     "source": "Company"
   },
   {
-    "company": "Planys Technologies",
+    "company": "MongoDB",
     "website": "",
-    "career_links": [],
+    "career_links": [
+      "https://www.mongodb.com/company/careers/see-jobs"
+    ],
     "ats_links": [],
-    "source": "Company"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 24,
+    "based": "USA",
+    "location_allowed": "INDIA , USA , Others",
+    "manual_career_url": "https://www.mongodb.com/company/careers/see-jobs",
+    "manual_ats_url": ""
   },
   {
-    "company": "Hotelzify",
+    "company": "Planys Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -16970,13 +17053,6 @@
   },
   {
     "company": "Taxmann",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Ind-US Target",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -17139,9 +17215,20 @@
   {
     "company": "Deepgram",
     "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
+    "career_links": [
+      "https://deepgram.com/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/Deepgram"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 49,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://deepgram.com/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/Deepgram"
   },
   {
     "company": "Noise",
@@ -17186,6 +17273,13 @@
     "source": "Company"
   },
   {
+    "company": "zero4genz.in",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "Veloxio Technologies",
     "website": "",
     "career_links": [],
@@ -17194,6 +17288,13 @@
   },
   {
     "company": "Soven Developer",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "New Street Technologies",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -17214,21 +17315,7 @@
     "source": "Company"
   },
   {
-    "company": "Backdoor",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "New Street Technologies",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "Kutumb",
+    "company": "CROSSK - Creator of Whitebrinjal",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -17256,11 +17343,29 @@
     "source": "Company"
   },
   {
-    "company": "PriceLabs",
+    "company": "ZenTrades",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
+  },
+  {
+    "company": "PriceLabs",
+    "website": "",
+    "career_links": [
+      "https://hello.pricelabs.co/careers"
+    ],
+    "ats_links": [
+      "https://apply.workable.com/pricelabs"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 30,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://hello.pricelabs.co/careers",
+    "manual_ats_url": "https://apply.workable.com/pricelabs"
   },
   {
     "company": "CleverX",
@@ -17432,13 +17537,6 @@
   },
   {
     "company": "Comprinno",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "CROSSK - Creator of Whitebrinjal",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -17620,6 +17718,13 @@
     "source": "Company"
   },
   {
+    "company": "Sciative - We Price Right",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
     "company": "SleekSky Technologies",
     "website": "",
     "career_links": [],
@@ -17732,14 +17837,14 @@
     "source": "Company"
   },
   {
-    "company": "Velocity",
+    "company": "gogrowth",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "gogrowth",
+    "company": "Kutumb",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -17851,14 +17956,21 @@
     "source": "Company"
   },
   {
-    "company": "Klimb.io",
+    "company": "Labra.io",
     "website": "",
     "career_links": [],
     "ats_links": [],
     "source": "Company"
   },
   {
-    "company": "MAVR",
+    "company": "Scratchly",
+    "website": "",
+    "career_links": [],
+    "ats_links": [],
+    "source": "Company"
+  },
+  {
+    "company": "Backdoor",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -17908,13 +18020,6 @@
   },
   {
     "company": "NovoStack",
-    "website": "",
-    "career_links": [],
-    "ats_links": [],
-    "source": "Company"
-  },
-  {
-    "company": "zero4genz.in",
     "website": "",
     "career_links": [],
     "ats_links": [],
@@ -20566,7 +20671,7 @@
     "ats_links": [
       "https://adria-scan.talentlyft.com"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Jobs",
@@ -20580,7 +20685,7 @@
       "https://toolio.talentlyft.com",
       "https://techmagic.talentlyft.com"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "O",
@@ -20589,7 +20694,7 @@
     "ats_links": [
       "https://sellcord.talentlyft.com"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Want to work for FOREO? Check out our open positions!",
@@ -20598,7 +20703,7 @@
     "ats_links": [
       "https://foreo.talentlyft.com"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Customerio",
@@ -20607,7 +20712,7 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/customerio"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Getwingapp",
@@ -20616,7 +20721,7 @@
     "ats_links": [
       "https://jobs.lever.co/getwingapp/2bf610cf-5f9e-4b0d-a3c8-c8411b582910/apply"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Fourkites",
@@ -20640,7 +20745,7 @@
       "https://job-boards.greenhouse.io/fourkites/jobs/7984869"
     ],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Firemon",
@@ -20649,7 +20754,7 @@
     "ats_links": [
       "https://jobs.lever.co/firemon/3a778ab3-2771-45fe-ae3d-3a400e48d06d/apply"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Omccorp",
@@ -20658,16 +20763,25 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/omccorp"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Safebreach",
     "website": "",
-    "career_links": [],
+    "career_links": [
+      "https://www.safebreach.com/careers"
+    ],
     "ats_links": [
       "https://job-boards.greenhouse.io/safebreach"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 26,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_career_url": "https://www.safebreach.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/safebreach"
   },
   {
     "company": "Sprinto",
@@ -20678,7 +20792,7 @@
       "https://jobs.lever.co/Sprinto/9246976f-5d9c-4065-842d-476a093a588a/apply",
       "https://jobs.lever.co/Sprinto/640fd9e7-76d3-463a-9c0c-7f31fc3a4c6f/apply"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Sureify",
@@ -20687,7 +20801,7 @@
     "ats_links": [
       "https://job-boards.greenhouse.io/sureify"
     ],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Zetaglobal",
@@ -20745,7 +20859,7 @@
       "https://job-boards.greenhouse.io/zetaglobal/jobs/6147695004"
     ],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Knowbe4",
@@ -20803,7 +20917,7 @@
       "https://job-boards.greenhouse.io/knowbe4/jobs/8868242002"
     ],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Company Career"
+    "source": "Company,Daily Crawl Registry,Company Career"
   },
   {
     "company": "Home",
@@ -20815,7 +20929,7 @@
       "https://www.ccfinancial.com/about/join-us"
     ],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Company Homepage Discovery,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Company Homepage Discovery,Search/bing_rss"
   },
   {
     "company": "Credit Union in Lockport",
@@ -20826,41 +20940,774 @@
       "https://www.ccfcu.org/jobs-that-come-with-variable-income"
     ],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Company Homepage Discovery,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Company Homepage Discovery,Search/bing_rss"
   },
   {
     "company": "Calculator",
     "website": "https://www.theonlinecalculator.com",
     "career_links": [],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Search/bing_rss"
   },
   {
     "company": "Barcelona Tourism, Official Website",
     "website": "https://thisisbarcelona.com",
     "career_links": [],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Search/bing_rss"
   },
   {
     "company": "Free Online Calculator – Fast, Clean & Accurate",
     "website": "https://clearcalculator.com",
     "career_links": [],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Search/bing_rss"
   },
   {
     "company": "Google Chrome for Google Chrome",
     "website": "https://chrome.en.softonic.com",
     "career_links": [],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Search/bing_rss"
   },
   {
     "company": "Visit Barcelona Spain",
     "website": "https://www.barcelona.com",
     "career_links": [],
     "ats_links": [],
-    "source": "Daily Crawl Registry,Search/bing_rss"
+    "source": "Company,Daily Crawl Registry,Search/bing_rss"
+  },
+  {
+    "company": "Obsidian Security",
+    "website": "",
+    "career_links": [
+      "https://www.obsidiansecurity.com/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/obsidiansecurity"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA ,UK , AUS, TAIWAN, CANADA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 2,
+    "manual_career_url": "https://www.obsidiansecurity.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/obsidiansecurity"
+  },
+  {
+    "company": "Karbon",
+    "website": "",
+    "career_links": [
+      "https://karbonhq.com/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/karbon"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA ,UK , AUS, CANADA , New Zealand , PHILIPPINES",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 3,
+    "manual_career_url": "https://karbonhq.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/karbon"
+  },
+  {
+    "company": "Matic",
+    "website": "",
+    "career_links": [
+      "https://matic.com/careers"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 4,
+    "manual_career_url": "https://matic.com/careers",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Jamf",
+    "website": "",
+    "career_links": [
+      "https://www.jamf.com/about/careers/jobs"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA, Europe, INDIA, and Australia",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 5,
+    "manual_career_url": "https://www.jamf.com/about/careers/jobs",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "MedWatch",
+    "website": "",
+    "career_links": [
+      "https://wp.urmedwatch.com/join-our-team"
+    ],
+    "ats_links": [
+      "https://medwatch.applytojob.com/apply"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 6,
+    "manual_career_url": "https://wp.urmedwatch.com/join-our-team",
+    "manual_ats_url": "https://medwatch.applytojob.com/apply"
+  },
+  {
+    "company": "Lyra Health",
+    "website": "",
+    "career_links": [
+      "https://careers.lyrahealth.com"
+    ],
+    "ats_links": [
+      "https://jobs.lever.co/lyrahealth"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "Over 200 countries and territories",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 7,
+    "manual_career_url": "https://careers.lyrahealth.com",
+    "manual_ats_url": "https://jobs.lever.co/lyrahealth"
+  },
+  {
+    "company": "Creatio",
+    "website": "",
+    "career_links": [
+      "https://www.creatio.com/company/careers/job-openings"
+    ],
+    "ats_links": [
+      "https://jobs.eu.lever.co/creatio"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA ,UK , AUS, Poland, Germany, Cyprus, Ukraine",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 8,
+    "manual_career_url": "https://www.creatio.com/company/careers/job-openings",
+    "manual_ats_url": "https://jobs.eu.lever.co/creatio"
+  },
+  {
+    "company": "Linear",
+    "website": "",
+    "career_links": [
+      "https://linear.app/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/linear"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA ,UK , Europe",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 9,
+    "manual_career_url": "https://linear.app/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/linear"
+  },
+  {
+    "company": "Interra Health",
+    "website": "",
+    "career_links": [
+      "https://interrahealth.com/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/Interrahealth"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 10,
+    "manual_career_url": "https://interrahealth.com/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/Interrahealth"
+  },
+  {
+    "company": "Infinitus",
+    "website": "",
+    "career_links": [
+      "https://www.infinitus.ai/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/infinitus"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 11,
+    "manual_career_url": "https://www.infinitus.ai/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/infinitus"
+  },
+  {
+    "company": "DualEntry",
+    "website": "",
+    "career_links": [
+      "https://www.dualentry.com/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/dualentry"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA ,UK",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 12,
+    "manual_career_url": "https://www.dualentry.com/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/dualentry"
+  },
+  {
+    "company": "Disruptive Advertising",
+    "website": "",
+    "career_links": [
+      "https://disruptiveadvertising.com/careers"
+    ],
+    "ats_links": [
+      "https://disruptive-advertising.breezy.hr"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 13,
+    "manual_career_url": "https://disruptiveadvertising.com/careers",
+    "manual_ats_url": "https://disruptive-advertising.breezy.hr"
+  },
+  {
+    "company": "Float Health",
+    "website": "",
+    "career_links": [
+      "https://floathealth.com"
+    ],
+    "ats_links": [
+      "https://float-health.breezy.hr"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 14,
+    "manual_career_url": "https://floathealth.com",
+    "manual_ats_url": "https://float-health.breezy.hr"
+  },
+  {
+    "company": "SeatGeek",
+    "website": "",
+    "career_links": [
+      "https://seatgeek.com/jobs"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 15,
+    "manual_career_url": "https://seatgeek.com/jobs",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "YipitData",
+    "website": "",
+    "career_links": [
+      "https://www.yipitdata.com/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/yipitdata"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "US, APAC, INDIA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 16,
+    "manual_career_url": "https://www.yipitdata.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/yipitdata"
+  },
+  {
+    "company": "Dataiku",
+    "website": "",
+    "career_links": [
+      "https://www.dataiku.com/company/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/dataiku"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA ,UK , AUS, CANADA , FRANCE, GERMANY, SOUTHE KOREA, Netherlands, SINGAPORE, UAE",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 17,
+    "manual_career_url": "https://www.dataiku.com/company/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/dataiku"
+  },
+  {
+    "company": "Geode Health",
+    "website": "",
+    "career_links": [
+      "https://careers.geodehealth.com"
+    ],
+    "ats_links": [
+      "https://geodehealth.wd1.myworkdayjobs.com/geode"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 18,
+    "manual_career_url": "https://careers.geodehealth.com",
+    "manual_ats_url": "https://geodehealth.wd1.myworkdayjobs.com/geode"
+  },
+  {
+    "company": "Cencora",
+    "website": "",
+    "career_links": [
+      "https://careers.cencora.com/us/en/search-results"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 19,
+    "manual_career_url": "https://careers.cencora.com/us/en/search-results",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Porch Group",
+    "website": "",
+    "career_links": [
+      "https://porchgroup.com/careers"
+    ],
+    "ats_links": [
+      "https://porch.wd1.myworkdayjobs.com/careers"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA, INDIA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 20,
+    "manual_career_url": "https://porchgroup.com/careers",
+    "manual_ats_url": "https://porch.wd1.myworkdayjobs.com/careers"
+  },
+  {
+    "company": "Credo AI",
+    "website": "",
+    "career_links": [
+      "https://www.credo.ai/company/jobs"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/credo.ai"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 21,
+    "manual_career_url": "https://www.credo.ai/company/jobs",
+    "manual_ats_url": "https://jobs.ashbyhq.com/credo.ai"
+  },
+  {
+    "company": "Abnormal",
+    "website": "",
+    "career_links": [
+      "https://abnormal.ai/careers"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 22,
+    "manual_career_url": "https://abnormal.ai/careers",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Cloud Counselage Pvt. Ltd",
+    "website": "",
+    "career_links": [
+      "https://www.cloudcounselage.com/careers"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 23,
+    "manual_career_url": "https://www.cloudcounselage.com/careers",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "NTT DATA",
+    "website": "",
+    "career_links": [
+      "https://careers.nttdata.com/global/en"
+    ],
+    "ats_links": [
+      "https://nttlimited.wd3.myworkdayjobs.com/ntt_careers"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 27,
+    "manual_career_url": "https://careers.nttdata.com/global/en",
+    "manual_ats_url": "https://nttlimited.wd3.myworkdayjobs.com/ntt_careers"
+  },
+  {
+    "company": "Insurity",
+    "website": "",
+    "career_links": [
+      "https://insurity.com/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/insurityindia"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 28,
+    "manual_career_url": "https://insurity.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/insurityindia"
+  },
+  {
+    "company": "Accendra Health",
+    "website": "",
+    "career_links": [
+      "https://www.accendrahealth.com/Careers"
+    ],
+    "ats_links": [
+      "https://accendra.wd504.myworkdayjobs.com/AccendraCareers"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 29,
+    "manual_career_url": "https://www.accendrahealth.com/Careers",
+    "manual_ats_url": "https://accendra.wd504.myworkdayjobs.com/AccendraCareers"
+  },
+  {
+    "company": "Fingerprint",
+    "website": "",
+    "career_links": [
+      "https://fingerprint.com/careers/jobs"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 31,
+    "manual_career_url": "https://fingerprint.com/careers/jobs",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Altera Digital Health",
+    "website": "",
+    "career_links": [
+      "https://www.alterahealth.com/careers"
+    ],
+    "ats_links": [
+      "https://harriscomputer.wd3.myworkdayjobs.com/en-US/1",
+      "https://harriscomputer.wd3.myworkdayjobs.com/Altera"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 33,
+    "manual_career_url": "",
+    "manual_ats_url": "https://harriscomputer.wd3.myworkdayjobs.com/Altera"
+  },
+  {
+    "company": "Twist Bioscience",
+    "website": "",
+    "career_links": [
+      "https://www.twistbioscience.com/company/careers/openings"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/twistbioscience"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 34,
+    "manual_career_url": "https://www.twistbioscience.com/company/careers/openings",
+    "manual_ats_url": "https://job-boards.greenhouse.io/twistbioscience"
+  },
+  {
+    "company": "AlgoSec",
+    "website": "",
+    "career_links": [
+      "https://www.algosec.com/company/careers/find-a-job"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 35,
+    "manual_career_url": "https://www.algosec.com/company/careers/find-a-job",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Snapscale",
+    "website": "",
+    "career_links": [
+      "https://www.snapscale.com/about/careers"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 36,
+    "manual_career_url": "https://www.snapscale.com/about/careers",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Blackboard",
+    "website": "",
+    "career_links": [
+      "https://careers.blackboard.com/jobs/search"
+    ],
+    "ats_links": [
+      "https://jobs.jobvite.com/anthology/job"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 37,
+    "manual_career_url": "https://careers.blackboard.com/jobs/search",
+    "manual_ats_url": "https://jobs.jobvite.com/anthology/job"
+  },
+  {
+    "company": "Poshmark",
+    "website": "",
+    "career_links": [
+      "https://poshmark.com/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/poshmark"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 38,
+    "manual_career_url": "https://poshmark.com/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/poshmark"
+  },
+  {
+    "company": "Base",
+    "website": "",
+    "career_links": [
+      "https://base.com/en-IN/home"
+    ],
+    "ats_links": [
+      "https://apply.workable.com/base-com/j/B2E8CF02C7"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 39,
+    "manual_career_url": "https://base.com/en-IN/home",
+    "manual_ats_url": "https://apply.workable.com/base-com/j/B2E8CF02C7"
+  },
+  {
+    "company": "OneTrust",
+    "website": "",
+    "career_links": [
+      "https://www.onetrust.com/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/onetrust"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 44,
+    "manual_career_url": "https://www.onetrust.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/onetrust"
+  },
+  {
+    "company": "Island",
+    "website": "",
+    "career_links": [
+      "https://www.island.io/careers"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 46,
+    "manual_career_url": "https://www.island.io/careers",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "DBSync",
+    "website": "",
+    "career_links": [
+      "https://www.mydbsync.com/careers"
+    ],
+    "ats_links": [
+      "https://apply.workable.com/mydbsync"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 47,
+    "manual_career_url": "https://www.mydbsync.com/careers",
+    "manual_ats_url": "https://apply.workable.com/mydbsync"
+  },
+  {
+    "company": "AmbaFlex",
+    "website": "",
+    "career_links": [
+      "https://careers.ambaflex.com/careers"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 48,
+    "manual_career_url": "https://careers.ambaflex.com/careers",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Bluevine",
+    "website": "",
+    "career_links": [
+      "https://www.bluevine.com/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/bluevineindia"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 50,
+    "manual_career_url": "https://www.bluevine.com/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/bluevineindia"
+  },
+  {
+    "company": "Protera",
+    "website": "",
+    "career_links": [
+      "https://www.protera.com"
+    ],
+    "ats_links": [
+      "https://apply.workable.com/protera"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 51,
+    "manual_career_url": "https://www.protera.com",
+    "manual_ats_url": "https://apply.workable.com/protera"
+  },
+  {
+    "company": "Samsara",
+    "website": "",
+    "career_links": [
+      "https://www.samsara.com/company/careers/roles"
+    ],
+    "ats_links": [],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 54,
+    "manual_career_url": "https://www.samsara.com/company/careers/roles",
+    "manual_ats_url": ""
+  },
+  {
+    "company": "Worldly",
+    "website": "",
+    "career_links": [
+      "https://worldly.io/careers"
+    ],
+    "ats_links": [
+      "https://jobs.ashbyhq.com/worldly"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 55,
+    "manual_career_url": "https://worldly.io/careers",
+    "manual_ats_url": "https://jobs.ashbyhq.com/worldly"
+  },
+  {
+    "company": "Omnicom",
+    "website": "",
+    "career_links": [
+      "https://www.omc.com/culture/careers"
+    ],
+    "ats_links": [
+      "https://job-boards.greenhouse.io/omccorp"
+    ],
+    "source": "Manual Company Sheet",
+    "manual_seed": true,
+    "based": "USA",
+    "location_allowed": "INDIA, USA, Others",
+    "manual_sheet_name": "Own Companies",
+    "manual_sheet_row": 56,
+    "manual_career_url": "https://www.omc.com/culture/careers",
+    "manual_ats_url": "https://job-boards.greenhouse.io/omccorp"
   }
 ]
