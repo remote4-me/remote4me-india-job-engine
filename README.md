@@ -1,25 +1,45 @@
-# Remote4.me V15.0 — ATS recovery and daily crawl rotation
+# Remote4.me India Support Job Engine — Stable Workflow Pack
 
-This release builds on V14.9 and responds to the October 24 V14.8 run logs.
+This release is a conservative stabilization of the uploaded crawler, not a wholesale rewrite. It preserves the existing `crawler.py`, Google Sheets integration, data manifests, ATS adapters, and manual-review workflow while reducing the discovery/page-scan budgets that previously risked consuming the GitHub Actions time limit.
 
-## High-impact fixes
+## Scope
 
-- **Workday record normalization:** previous manifests typically store `key="tenant|wdN|site"` plus a URL, not separate `tenant`, `shard`, and `site` fields. The prior worker read those missing dictionary fields directly, causing every Workday board in the supplied status summary to fail. V15.0 reconstructs the fields from the key and normalizes the URL to the actual tenant/site landing page before calling Workday's public CXS endpoint.
-- **Strict ATS slugs:** rejects archive artifacts such as `$12.1K`, `100vw`, `100%`, `...`, `.well-known`, and pure numeric tokens as board identifiers. This filters historical Common Crawl/Wayback noise when `data/boards.json` is rebuilt.
-- **Daily coverage rotation:** the old `rotate_records()` used `day // V11_ROTATION_DAYS`, meaning a bounded ATS crawl could select the same slice for 7–10 days. V15.0 uses deterministic chunks that rotate daily, preferring boards with recent positive results and current directory/employer seeds over archive-only candidates.
-- **Search API restraint:** one configured core SERP provider is used per run, with the keyless Bing RSS fallback as the supplement. Less reliable experimental endpoints that returned HTTP 429/TLS errors in your logs are opt-in via `SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED=1`.
-- **Aggregator resolution fallback:** when an aggregator page cannot be fetched, the resolver may use up to 12 keyless Bing RSS queries per run to look for an exact employer/ATS job URL. Every result still goes through destination-page verification; no snippet-only promotion.
-- **ATS status diagnostics:** each ATS shard prints boards attempted, boards yielding target jobs, zero-result boards, and error counts/types.
-- Keeps V14.9 fixes: persists homepage seeds, carries forward valid prior boards, crawls deeper into employer career pages, supports more nonstandard ATS routes, and keeps strict role/India/workplace/direct-apply validation.
+- Target: India-eligible remote roles and India-based hybrid roles.
+- Role families: customer support, customer service, technical/product/application support, IT/helpdesk/service desk, customer success, onboarding, implementation, customer experience, support operations and related leadership/account roles. Actual inclusion depends on the existing crawler's title/description rules.
+- Sources: existing public ATS adapters, configured public feeds, employer career pages, and optional search discovery.
+- LinkedIn: discovery leads only where configured; listings should be verified against the employer/ATS page. X/Twitter is not enabled as a source in this workflow.
+- Publishing: Google Sheets review queue only; this does not publish jobs to WordPress.
+- Schedule: daily workflow at 17:00 India Standard Time (`30 11 * * *` UTC). Weekly discovery runs Sundays at 09:00 IST.
+
+## What changed in this package
+
+1. Bounded daily discovery: reduced search queries, URL cap, candidate cap, validation-per-ATS and discovery concurrency.
+2. Archive/Common Crawl refresh is throttled instead of being scheduled for every run.
+3. Reduced career-page and homepage work so the direct ATS matrix remains the primary daily collection pass.
+4. Preserved parallel per-ATS jobs and the existing remote/hybrid Google Sheets merge.
+5. Added local regression checks for workflow schedules, time budgets, and key safety expectations.
+6. Replaced the old V15.0 README with current setup and limitations.
 
 ## Install
 
-1. Back up `crawler.py`, `.github/workflows/daily.yml`, `.github/workflows/discover.yml`, and the `data/` folder.
-2. Replace those three code/workflow files with the V15.0 versions in this ZIP.
-3. Keep `requirements.txt`, Google Sheets secrets, and existing repository data; the existing `data/boards.json` is cleaned during the next discovery refresh.
-4. Commit and push, then run the **full daily workflow** first. Its prepare step runs discovery before the ATS, career, and feed shards. The separate weekly discovery workflow can remain on its existing schedule.
-5. In the first run, check the `ATS BOARD SUMMARY Workday` line and ensure Workday's error count falls below the previous 136/136. Check that invalid archive slugs disappear from newly generated `data/boards.json`.
+1. Back up your current repository and `data/` folder.
+2. Replace the repository files with the contents of this ZIP, preserving any newer manifest data you have generated since exporting the uploaded project.
+3. Keep GitHub Secrets and Variables in repository Settings; they are not included in this ZIP. Required/optional values are referenced by the workflows, including `GOOGLE_SERVICE_ACCOUNT_JSON`, `GOOGLE_SHEET_ID`, `SERPER_API_KEY`, and optional feed/API keys.
+4. Confirm the manual company sheet name in the `MANUAL_COMPANY_SHEET_NAME` repository variable if you use it.
+5. Commit and run **Actions → Remote4.me India Support Job Engine — Stable Daily → Run workflow**.
+6. Inspect the `prepare`, ATS shards, `careers`, `feeds`, and `publish` jobs. Confirm the output tabs and row classifications before relying on the schedule.
 
 ## Important limitations
 
-This package has been syntax-checked and tested with local/mocked cases; it has not been run against your live GitHub Actions, spreadsheet, or all external sites. The public Bing RSS fallback may throttle or change. It is a discovery fallback, not a guaranteed Google replacement. Jobs still need employer/ATS page verification; more crawled URLs do not automatically mean more valid jobs.
+- This environment cannot run your GitHub Actions against your live Google Sheet or external ATS services. Syntax and local regression checks are not a live end-to-end guarantee.
+- The crawler's core source is large and has legacy functions. This release deliberately avoids a risky full rewrite without live fixture coverage. It does not guarantee a specific number of jobs.
+- “Remote” is not proof of India eligibility. Unknown or contradictory location evidence should be manually checked before posting.
+- Do not add API keys to source files. Store them in GitHub Secrets.
+- If an ATS reports zero jobs, use its per-board status/error summary to distinguish a genuinely empty board from request, parsing, or eligibility-filter failures.
+
+## Run local checks
+
+```bash
+python -m py_compile crawler.py
+python tests/test_release.py
+```
