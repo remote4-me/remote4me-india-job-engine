@@ -1,4 +1,4 @@
-name: Remote4.me India Support Job Engine — Stable Daily
+name: Remote4.me V15.5 Final Fast Daily + India Support Roles
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
   # ----------------------------------------------------------
   prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Refresh bounded discovery manifests
+      - name: Refresh V15.5 discovery manifests
         env:
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -46,21 +46,21 @@ jobs:
           MANUAL_COMPANY_SHEET_NAME: ${{ vars.MANUAL_COMPANY_SHEET_NAME }}
           SEARCH_DISCOVERY_ENABLED: "1"
           PUBLIC_SERP_FALLBACK_ENABLED: "1"
-          PUBLIC_SERP_QUERIES_PER_RUN: "12"
+          PUBLIC_SERP_QUERIES_PER_RUN: "24"
           PUBLIC_SERP_WORKERS: "4"
           SEARCH_QUERIES_PER_PROVIDER: "2"
           SEARCH_API_PROVIDERS_PER_RUN: "1"
           SEARCH_EXPERIMENTAL_PROVIDERS_ENABLED: "0"
           SEARCH_RESULTS_PER_QUERY: "10"
           SEARCH_DISCOVERY_ROTATION_DAYS: "10"
-          SEARCH_DISCOVERY_MAX_URLS: "700"
+          SEARCH_DISCOVERY_MAX_URLS: "2000"
           GOOGLE_DISCOVERY_ENABLED: "1"
           GOOGLE_DISCOVERY_QUERIES_PER_PROVIDER: "6"
           GOOGLE_DISCOVERY_RESULTS_PER_QUERY: "10"
           JOB_BOARD_QUERIES_PER_RUN: "4"
           JOB_BOARD_ROTATION_DAYS: "1"
           GOOGLE_DISCOVERY_ROTATION_DAYS: "1"
-          GOOGLE_DISCOVERY_WORKERS: "8"
+          GOOGLE_DISCOVERY_WORKERS: "12"
           GOOGLE_JOBS_ENABLED: "1"
           GOOGLE_JOBS_MAX_QUERIES_PER_DAY: "1"
           ALLOW_APAC_WORLDWIDE: "0"
@@ -69,11 +69,11 @@ jobs:
           GOOGLE_JOBS_ROTATION_DAYS: "1"
           SERPAPI_ORGANIC_DISCOVERY_ENABLED: "0"
           GOOGLE_JOBS_USAGE_FILE: "data/google_jobs_usage.json"
-          ARCHIVE_DISCOVERY_INTERVAL_DAYS: "30"
-          COMPANY_DISCOVERY_LIMIT: "10000"
+          ARCHIVE_DISCOVERY_INTERVAL_DAYS: "365"
+          COMPANY_DISCOVERY_LIMIT: "15000"
           DISCOVERY_CANDIDATE_LIMIT: "6000"
-          DISCOVERY_VALIDATE_PER_ATS: "900"
-          DISCOVERY_WORKERS: "16"
+          DISCOVERY_VALIDATE_PER_ATS: "500"
+          DISCOVERY_WORKERS: "24"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --discover
       - name: Package same-run discovery manifests
@@ -139,7 +139,7 @@ jobs:
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_TIMEOUT_MS: "12000"
           PLAYWRIGHT_CONCURRENT_BROWSERS: "2"
-          CAREER_BROWSER_MAX_CALLS: "20"
+          CAREER_BROWSER_MAX_CALLS: "8"
           WORKDAY_MAX_PAGES_PER_KEYWORD: "1"
           WORKDAY_MAX_RESULTS_PER_BOARD: "120"
           WORKDAY_MAX_DETAIL_CALLS_PER_BOARD: "80"
@@ -159,7 +159,7 @@ jobs:
   careers:
     needs: prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 18
     concurrency:
       group: remote4me-v13-careers
       cancel-in-progress: false
@@ -184,15 +184,15 @@ jobs:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
           SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           MANUAL_COMPANY_SHEET_NAME: ${{ vars.MANUAL_COMPANY_SHEET_NAME }}
-          CAREER_DAILY_BUDGET: "1000"
-          CAREER_CRAWL_BUDGET: "750"
-          ATS_BOARD_BUDGET: "1800"
-          DIRECT_DETAIL_BUDGET: "100"
-          DISCOVERY_DETAIL_BUDGET: "120"
-          AGGREGATOR_RESOLVE_BUDGET: "100"
+          CAREER_DAILY_BUDGET: "300"
+          CAREER_CRAWL_BUDGET: "350"
+          ATS_BOARD_BUDGET: "2400"
+          DIRECT_DETAIL_BUDGET: "160"
+          DISCOVERY_DETAIL_BUDGET: "240"
+          AGGREGATOR_RESOLVE_BUDGET: "180"
           AGGREGATOR_SEARCH_FALLBACK_BUDGET: "12"
           CAREER_PAGE_LIMIT: "8"
-          CAREER_HOMEPAGE_BUDGET: "25"
+          CAREER_HOMEPAGE_BUDGET: "35"
           HOMEPAGE_WORKERS: "10"
           HOMEPAGE_ROUTE_LIMIT: "8"
           CRAWL_WORKERS: "20"
@@ -200,8 +200,8 @@ jobs:
           ALLOW_APAC_WORLDWIDE: "0"
           PUBLISH_APAC_WORLDWIDE: "0"
           CAREER_PREFLIGHT_ENABLED: "1"
-          CAREER_PREFLIGHT_WORKERS: "16"
-          CAREER_BROWSER_MAX_CALLS: "20"
+          CAREER_PREFLIGHT_WORKERS: "20"
+          CAREER_BROWSER_MAX_CALLS: "8"
           PLAYWRIGHT_CONCURRENT_BROWSERS: "2"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_MAX_PAGES: "1"
@@ -322,30 +322,11 @@ jobs:
       - name: Persist fresh discovery manifests
         if: success()
         run: |
-          set -euo pipefail
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
-
-          # Save the exact manifests created by this run outside the Git worktree.
-          mkdir -p /tmp/remote4me-manifests
-          cp data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json /tmp/remote4me-manifests/
-
-          # Move to the latest remote main, then restore this run's manifest files.
-          git fetch origin main
-          git reset --hard origin/main
-          cp /tmp/remote4me-manifests/boards.json data/boards.json
-          cp /tmp/remote4me-manifests/companies.json data/companies.json
-          cp /tmp/remote4me-manifests/search_discovery.json data/search_discovery.json
-          cp /tmp/remote4me-manifests/google_jobs_usage.json data/google_jobs_usage.json
-
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-
-          if git diff --cached --quiet; then
-            echo "Discovery manifests are unchanged; nothing to commit."
-          else
-            git commit -m "Refresh bounded discovery manifests"
-            git push origin HEAD:main
-          fi
+          git diff --cached --quiet || git commit -m "Refresh V15.5 discovery manifests"
+          git push
       - name: Completion
         if: success()
-        run: echo "Remote4.me daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
+        run: echo "Remote4.me V15.5 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
