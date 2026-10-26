@@ -4325,6 +4325,48 @@ for _term in V11_SUPPORT_CONTEXT_TERMS:
     if _term not in SUPPORT_CONTEXT_TERMS:
         SUPPORT_CONTEXT_TERMS.append(_term)
 
+# Extra discovery/context vocabulary: context terms support ranking, not automatic acceptance.
+EXTRA_SUPPORT_CONTEXT_TERMS = [
+    "customer support", "customer service", "technical support", "support specialist",
+    "customer success", "support engineer", "help desk", "helpdesk", "service desk",
+    "support analyst", "support representative", "support associate", "implementation specialist",
+    "onboarding specialist", "client support", "account support", "support operations",
+    "customer care", "escalation specialist", "success operations", "solutions support",
+    "application support", "L1 support", "L2 support", "L3 support",
+    "product support", "platform support", "IT support", "desktop support", "end user support",
+    "support administrator", "customer success manager", "customer success specialist",
+    "customer success engineer", "customer success operations", "customer success advocate",
+    "implementation consultant", "onboarding consultant", "onboarding manager",
+    "customer onboarding", "account onboarding", "adoption specialist", "client success",
+    "renewal support", "renewals support", "customer onboarding support",
+    "customer experience specialist", "customer health specialist", "software support engineer",
+    "software support specialist", "product support engineer", "application support engineer",
+    "application support analyst", "infrastructure support engineer", "cloud support engineer",
+    "cloud support specialist", "systems support engineer", "systems support analyst",
+    "network support engineer", "field support engineer", "service delivery engineer",
+    "production support engineer", "production support analyst", "incident support",
+    "incident management support", "operations support engineer", "help desk analyst",
+    "help desk engineer", "helpdesk analyst", "helpdesk engineer", "service desk analyst",
+    "service desk engineer", "desktop support analyst", "desktop support engineer",
+    "end user support analyst", "end user support engineer", "IT help desk", "IT service desk",
+    "support technician", "support case manager", "implementation engineer", "onboarding engineer",
+    "enablement specialist", "customer enablement", "customer training specialist",
+    "solutions support specialist", "solutions consultant", "solutions support engineer",
+    "implementation support", "project support specialist", "client onboarding specialist",
+    "account onboarding specialist", "incident specialist", "incident response specialist",
+    "troubleshooting specialist", "problem management support", "root cause analyst",
+    "service quality analyst", "support quality analyst", "support operations analyst",
+    "support operations specialist", "case management specialist", "ticketing specialist",
+    "Jira support specialist", "service management specialist", "customer issues specialist",
+    "customer engineering", "support sales engineer", "support implementation",
+    "client services specialist", "customer operations", "customer advocacy",
+    "service delivery consultant", "service delivery analyst", "support delivery specialist",
+    "SaaS support", "fintech support", "BPO customer support", "CX support",
+]
+for _term in EXTRA_SUPPORT_CONTEXT_TERMS:
+    if _term.casefold() not in {x.casefold() for x in SUPPORT_CONTEXT_TERMS}:
+        SUPPORT_CONTEXT_TERMS.append(_term)
+
 # Title variants not reliably covered by a single phrase in the older list.
 V11_EXTRA_TITLE_PATTERNS = [
     r"\bcustomer\s+(?:support|service|care|success|experience|operations|relations)\b",
@@ -6082,6 +6124,42 @@ V11_EXTRA_TITLE_PATTERNS = [
     r"\bintegration\s+support\b",
     r"\bdeveloper\s+support\b",
     r"\btechnical\s+success\b",
+    # Additional support-role title variants requested for Remote4.me.
+    r"\bsupport\s+representative\b", r"\bsupport\s+associate\b",
+    r"\bsupport\s+advisor\b", r"\bsupport\s+coordinator\b",
+    r"\bsupport\s+consultant\b", r"\bsupport\s+technician\b",
+    r"\bsupport\s+administrator\b", r"\bsupport\s+admin\b",
+    r"\bsupport\s+lead\b", r"\bsupport\s+manager\b",
+    r"\bsupport\s+analyst\s+(?:l1|l2|l3)\b", r"\bl[123]\s*/?\s*l?[123]?\s+support\b",
+    r"\bapplication\s+support\s+(?:analyst|engineer|specialist)\b",
+    r"\bproduct\s+support\s+(?:analyst|engineer|specialist)\b",
+    r"\bplatform\s+support\s+engineer\b", r"\bdesktop\s+support\s+(?:analyst|engineer)\b",
+    r"\bend[- ]user\s+support\s+(?:analyst|engineer)\b",
+    r"\bhelp\s*desk\s+(?:analyst|engineer|specialist)\b",
+    r"\bservice\s+desk\s+(?:analyst|engineer|specialist)\b",
+    r"\bsoftware\s+support\s+(?:engineer|specialist)\b",
+    r"\bcloud\s+support\s+(?:engineer|specialist)\b",
+    r"\bsystems\s+support\s+(?:engineer|analyst)\b",
+    r"\bnetwork\s+support\s+engineer\b", r"\binfrastructure\s+support\s+engineer\b",
+    r"\bfield\s+support\s+engineer\b", r"\bproduction\s+support\s+(?:engineer|analyst)\b",
+    r"\boperations\s+support\s+engineer\b", r"\bsupport\s+operations\s+(?:analyst|specialist|engineer)\b",
+    r"\bescalation\s+(?:specialist|engineer)\b", r"\bincident\s+(?:specialist|response specialist)\b",
+    r"\btroubleshooting\s+specialist\b", r"\broot\s+cause\s+analyst\b",
+    r"\bservice\s+quality\s+analyst\b", r"\bsupport\s+quality\s+analyst\b",
+    r"\bcase\s+management\s+specialist\b", r"\bticketing\s+specialist\b",
+    r"\bjira\s+support\s+specialist\b", r"\bservice\s+management\s+specialist\b",
+    r"\bcustomer\s+success\s+(?:manager|specialist|engineer|advocate|operations)\b",
+    r"\bclient\s+success\s+manager\b", r"\brenewals?\s+support\b",
+    r"\bonboarding\s+(?:specialist|engineer|consultant|manager)\b",
+    r"\bimplementation\s+(?:specialist|engineer|consultant)\b",
+    r"\bclient\s+onboarding\s+specialist\b", r"\baccount\s+onboarding\s+specialist\b",
+    r"\badoption\s+specialist\b", r"\bcustomer\s+health\s+specialist\b",
+    r"\bcustomer\s+training\s+specialist\b", r"\benablement\s+specialist\b",
+    r"\bsolutions\s+support\s+(?:specialist|engineer)\b",
+    r"\bproject\s+support\s+specialist\b", r"\bclient\s+services\s+specialist\b",
+    r"\bcustomer\s+advocacy\b", r"\bsuccess\s+operations\b",
+    r"\baccount\s+support\b", r"\bclient\s+support\b",
+    r"\bcustomer\s+experience\s+support\b", r"\bcustomer\s+issues\s+specialist\b",
 ]
 for _p in V11_EXTRA_TITLE_PATTERNS:
     if _p not in TARGET_TITLE_PATTERNS:
@@ -7231,6 +7309,72 @@ SEARCH_PROVIDER_NAMES = [
 ]
 
 
+# Expanded no-cost search query families. Existing per-run budgets and rotation limits stay unchanged.
+EXTRA_SUPPORT_SEARCH_QUERIES = [
+    '"customer support" remote India careers',
+    '"technical support" remote India careers',
+    '"customer success" remote India careers',
+    '"remote help desk" India jobs',
+    '"service desk" remote India careers',
+    '"support engineer" remote India careers',
+    '"remote customer success" startup India',
+    '"remote customer support" SaaS India',
+    '"hybrid customer support" India careers',
+    '"remote support jobs" India careers',
+    '"customer care" remote India careers',
+    '"support specialist" India (remote OR hybrid) careers',
+    '"support analyst" India (remote OR hybrid) careers',
+    '"support representative" India (remote OR hybrid) careers',
+    '"support associate" India (remote OR hybrid) careers',
+    '"implementation specialist" India (remote OR hybrid) careers',
+    '"onboarding specialist" India (remote OR hybrid) careers',
+    '"client support" India (remote OR hybrid) careers',
+    '"account support" India (remote OR hybrid) careers',
+    '"support operations" India (remote OR hybrid) careers',
+    '"escalation specialist" India remote careers',
+    '"success operations" India remote careers',
+    '"solutions support" India remote careers',
+    '"application support" India (remote OR hybrid) careers',
+    '"L1 support" India remote jobs',
+    '"L2 support" India remote jobs',
+    '"L3 support" India remote jobs',
+    '"customer success manager" India hybrid careers',
+    '"customer onboarding" India remote careers',
+    '"customer enablement" India remote careers',
+    '"product support engineer" India remote careers',
+    '"cloud support engineer" India remote careers',
+    '"production support analyst" India remote careers',
+    '"help desk analyst" India remote careers',
+    '"desktop support engineer" India hybrid careers',
+    '"incident response specialist" India support careers',
+    '"customer issues specialist" India support careers',
+    # Company discovery families: SaaS, CX/BPO, fintech, startups, India tech and remote-first teams.
+    'India SaaS companies careers "customer support" remote',
+    'India SaaS startup careers "technical support"',
+    'customer experience BPO India careers remote support',
+    'CX outsourcing companies India careers customer support',
+    'fintech companies India careers "customer support" remote',
+    'fintech startup India careers "technical support"',
+    'India technology companies careers "product support" remote',
+    'remote-first companies hiring India customer success careers',
+    'startup hiring pages India "support engineer" remote',
+    'SaaS companies India "customer success" careers hybrid',
+    'India payments companies careers support specialist',
+    'India cloud software companies careers support engineer',
+    'India IT services companies careers service desk hybrid',
+    'India customer experience platforms careers support analyst',
+    'India CRM software companies careers customer support',
+    # Common workplace wording variants requested by the user.
+    '"work from home" India customer support careers',
+    '"remote India" customer support jobs careers',
+    '"hybrid India" customer support careers',
+    '"remote-first" India support engineer careers',
+    '"remote" "customer care" India jobs',
+]
+SEARCH_GOOGLE_QUERY_BANK.extend(q for q in EXTRA_SUPPORT_SEARCH_QUERIES if q not in SEARCH_GOOGLE_QUERY_BANK)
+SEARCH_ATS_QUERY_BANK.extend(q for q in EXTRA_SUPPORT_SEARCH_QUERIES if q not in SEARCH_ATS_QUERY_BANK)
+
+
 def _search_result_url(item):
     if not isinstance(item, dict):
         return ""
@@ -7564,6 +7708,71 @@ def _search_bing_rss(query):
         return []
 
 
+def _search_duckduckgo_html(query):
+    """Keyless DuckDuckGo HTML search; parse result links without browser automation."""
+    try:
+        r = SESSION.get(
+            "https://html.duckduckgo.com/html/", params={"q": query},
+            headers={"Accept": "text/html,application/xhtml+xml", "Referer": "https://duckduckgo.com/"},
+            timeout=22,
+        )
+        if r.status_code != 200:
+            print(f"SEARCH duckduckgo_html HTTP {r.status_code}")
+            return []
+        soup = BeautifulSoup(r.text, "html.parser")
+        out = []
+        for node in soup.select(".result"):
+            link = node.select_one("a.result__a")
+            if not link:
+                continue
+            url = clean_text(link.get("href", ""))
+            if url.startswith("//"):
+                url = "https:" + url
+            if not url.startswith(("https://", "http://")):
+                continue
+            snippet_node = node.select_one(".result__snippet")
+            out.append({"url": normalize_url(url), "title": clean_text(link.get_text(" ", strip=True)),
+                        "snippet": clean_text(snippet_node.get_text(" ", strip=True) if snippet_node else "")})
+            if len(out) >= SEARCH_RESULTS_PER_QUERY:
+                break
+        return out
+    except Exception as exc:
+        print(f"SEARCH duckduckgo_html error: {type(exc).__name__}: {exc}")
+        return []
+
+
+def _search_bing_html(query):
+    """Keyless Bing HTML search fallback; only reads public search result pages."""
+    try:
+        with _BING_RSS_SEMAPHORE:
+            r = SESSION.get(
+                "https://www.bing.com/search", params={"q": query, "cc": "IN", "setlang": "en"},
+                headers={"Accept": "text/html,application/xhtml+xml", "Referer": "https://www.bing.com/"},
+                timeout=22,
+            )
+        if r.status_code != 200:
+            print(f"SEARCH bing_html HTTP {r.status_code}")
+            return []
+        soup = BeautifulSoup(r.text, "html.parser")
+        out = []
+        for node in soup.select("li.b_algo"):
+            link = node.select_one("h2 a")
+            if not link:
+                continue
+            url = clean_text(link.get("href", ""))
+            if not url.startswith(("https://", "http://")):
+                continue
+            snippet_node = node.select_one(".b_caption p, p")
+            out.append({"url": normalize_url(url), "title": clean_text(link.get_text(" ", strip=True)),
+                        "snippet": clean_text(snippet_node.get_text(" ", strip=True) if snippet_node else "")})
+            if len(out) >= SEARCH_RESULTS_PER_QUERY:
+                break
+        return out
+    except Exception as exc:
+        print(f"SEARCH bing_html error: {type(exc).__name__}: {exc}")
+        return []
+
+
 def _search_provider(name, query):
     return {
         "serper": _search_serper,
@@ -7579,6 +7788,8 @@ def _search_provider(name, query):
         "serpsearch": _search_serpsearch,
         "freesea": _search_freesea,
         "bing_rss": _search_bing_rss,
+        "bing_html": _search_bing_html,
+        "duckduckgo_html": _search_duckduckgo_html,
         "serpapi_google_jobs": _search_serpapi_google_jobs,
     }.get(name, lambda _q: [])(query)
 
@@ -7586,10 +7797,9 @@ def _search_provider(name, query):
 def discover_search_engine_urls():
     """Discover ATS boards, company career pages, job pages and public social leads.
 
-    Configured search providers are optional. A bounded Bing RSS pass runs as a
-    no-key fallback (and supplement) so a missing API secret does not make search
-    discovery silently return zero results. We do not scrape Google HTML or
-    bypass login/anti-bot controls on social platforms.
+    Configured search providers are optional. Bounded public Bing RSS, Bing HTML,
+    and DuckDuckGo HTML passes run as no-key fallbacks. Existing query/run budgets
+    and the quality pipeline remain unchanged; no login or anti-bot bypass is used.
     """
     if not SEARCH_DISCOVERY_ENABLED:
         print("SEARCH DISCOVERY: disabled by configuration")
@@ -7661,10 +7871,12 @@ def discover_search_engine_urls():
         fallback_start = (day * max(1, general_budget)) % len(general_bank)
         general_queries = [general_bank[(fallback_start+i)%len(general_bank)] for i in range(general_budget)]
         tasks.extend(("bing_rss", q) for q in general_queries)
+        tasks.extend(("bing_html", q) for q in general_queries)
+        tasks.extend(("duckduckgo_html", q) for q in general_queries)
 
     print(
         f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} available_keys={len(configured_all)} api_budget={SEARCH_API_PROVIDERS_PER_RUN} "
-        f"public_fallback={'bing_rss' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
+        f"public_fallback={'bing_rss+bing_html+duckduckgo_html' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
         f"fallback_queries={sum(1 for p,_ in tasks if p == 'bing_rss')} "
         f"social_queries={len(social_queries)} "
         f"google_queries={len(google_queries) if GOOGLE_DISCOVERY_ENABLED else 0} "
