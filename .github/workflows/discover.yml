@@ -48,9 +48,24 @@ jobs:
         run: python crawler.py --discover
       - name: Commit refreshed manifests
         run: |
+          set -euo pipefail
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
+
+          mkdir -p /tmp/remote4me-manifests
+          cp data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json /tmp/remote4me-manifests/
+
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/remote4me-manifests/boards.json data/boards.json
+          cp /tmp/remote4me-manifests/companies.json data/companies.json
+          cp /tmp/remote4me-manifests/search_discovery.json data/search_discovery.json
+          cp /tmp/remote4me-manifests/google_jobs_usage.json data/google_jobs_usage.json
+
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-          git diff --cached --quiet && echo "No manifest changes." && exit 0
-          git commit -m "Refresh company and ATS discovery manifests"
-          git push
+          if git diff --cached --quiet; then
+            echo "No manifest changes."
+          else
+            git commit -m "Refresh company and ATS discovery manifests"
+            git push origin HEAD:main
+          fi
