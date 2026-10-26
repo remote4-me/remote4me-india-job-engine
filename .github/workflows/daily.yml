@@ -326,13 +326,17 @@ jobs:
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
 
-          # Start from the latest remote main to prevent non-fast-forward pushes.
-          git fetch origin main
-          git checkout -B main origin/main
-          git reset --hard origin/main
+          # Save the exact manifests created by this run outside the Git worktree.
+          mkdir -p /tmp/remote4me-manifests
+          cp data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json /tmp/remote4me-manifests/
 
-          # Re-apply the manifests produced by this workflow run.
-          tar -xzf discovery-manifests.tgz
+          # Move to the latest remote main, then restore this run's manifest files.
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/remote4me-manifests/boards.json data/boards.json
+          cp /tmp/remote4me-manifests/companies.json data/companies.json
+          cp /tmp/remote4me-manifests/search_discovery.json data/search_discovery.json
+          cp /tmp/remote4me-manifests/google_jobs_usage.json data/google_jobs_usage.json
 
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
 
