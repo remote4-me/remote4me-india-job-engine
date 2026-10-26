@@ -29,7 +29,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V15.1
+# REMOTE4.ME JOB CRAWLER V15.2
 # INDIA-FIRST / EXPANDED ATS + CAREER PAGE DISCOVERY
 # ============================================================
 #
@@ -438,7 +438,13 @@ REMOTE_RE = re.compile(
 )
 
 HYBRID_RE = re.compile(
-    r"\b(?:hybrid|partially remote|remote hybrid)\b",
+    r"(?:\b(?:hybrid|partially remote|remote hybrid|hybrid remote|"
+    r"flexible workplace|flexible work arrangement|split between home and office|"
+    r"work from home and office|home and office|remote and onsite|remote and on site|"
+    r"onsite and remote|on site and remote|office and remote|remote plus office|"
+    r"partly remote)\b|"
+    r"\b\d+\s+days?\s+(?:in|at)\s+(?:the\s+)?office.{0,100}\b\d+\s+days?\s+(?:remote|from\s+home)\b|"
+    r"\b\d+\s+days?\s+(?:remote|from\s+home).{0,100}\b\d+\s+days?\s+(?:in|at)\s+(?:the\s+)?office\b)",
     re.I,
 )
 
@@ -1012,9 +1018,14 @@ def classify_workplace(location="", workplace_type="", remote=False, structured=
     if REMOTE_RE.search(clean_text(location)):
         return "Remote"
 
-    # Only a strong explicit remote/hybrid sentence may rescue a generic
-    # location such as "India" or "Remote".
+    # Infer workplace only from explicit wording in the job description.
+    # Check hybrid first: a hybrid India role must never be mislabeled Remote.
     text = clean_text(description)[:30000]
+    if HYBRID_RE.search(text) and (
+        INDIA_COUNTRY_RE.search(text) or INDIA_REGEX.search(text) or INDIA_REGEX.search(clean_text(location)) or
+        re.search(r"\b(?:office|onsite|on-site)\b.{0,80}\b(?:remote|home|hybrid)\b|\b(?:remote|home|hybrid)\b.{0,80}\b(?:office|onsite|on-site)\b", text, re.I)
+    ):
+        return "Hybrid"
     if INDIA_REMOTE_CONTEXT_RE.search(text):
         return "Remote"
 
@@ -6199,6 +6210,9 @@ def fetch_jooble():
 # on SerpApi's current 250-search free plan.
 GOOGLE_JOBS_QUERY_BANK = [
     'customer support customer service customer success India remote',
+    'India hybrid customer support technical support customer success careers',
+    'India hybrid product support support engineer application support jobs',
+    'India hybrid customer onboarding implementation success engineer careers',
     'technical support support engineer product support India remote',
     'implementation onboarding customer experience India remote',
     'technical account customer adoption customer enablement India remote',
@@ -6744,6 +6758,57 @@ def _search_bing_rss(query):
         return []
 
 
+_PUBLIC_HTML_SEARCH_SEMAPHORE = threading.BoundedSemaphore(2)
+_DDG_LAST_REQUEST = 0.0
+_DDG_REQUEST_LOCK = threading.Lock()
+
+
+def _search_duckduckgo_html(query):
+    """Small, rate-limited DuckDuckGo HTML discovery fallback; never bypasses blocks."""
+    global _DDG_LAST_REQUEST
+    if not PUBLIC_SERP_FALLBACK_ENABLED:
+        return []
+    try:
+        with _PUBLIC_HTML_SEARCH_SEMAPHORE:
+            with _DDG_REQUEST_LOCK:
+                wait = 1.25 - (time.monotonic() - _DDG_LAST_REQUEST)
+                if wait > 0:
+                    time.sleep(wait)
+                _DDG_LAST_REQUEST = time.monotonic()
+            r = SESSION.get(
+                "https://html.duckduckgo.com/html/",
+                params={"q": query},
+                headers={"Accept": "text/html,application/xhtml+xml",
+                         "Referer": "https://duckduckgo.com/"},
+                timeout=15,
+            )
+        if r.status_code in {403, 429, 503}:
+            print(f"SEARCH duckduckgo_html HTTP {r.status_code}; skipping without retry")
+            return []
+        if r.status_code != 200:
+            print(f"SEARCH duckduckgo_html HTTP {r.status_code}")
+            return []
+        soup = BeautifulSoup(r.text, "html.parser")
+        out = []
+        for node in soup.select("a.result__a, a.result-link"):
+            href = normalize_url(node.get("href", ""))
+            title = clean_text(node.get_text(" ", strip=True))
+            if not href.startswith(("https://", "http://")) or not title:
+                continue
+            parent = node.find_parent(class_=re.compile(r"result", re.I))
+            snippet = clean_text(parent.get_text(" ", strip=True)) if parent else ""
+            host = urlparse(href).netloc.lower()
+            if host.endswith("duckduckgo.com"):
+                continue
+            out.append({"url": href, "title": title, "snippet": snippet})
+            if len(out) >= SEARCH_RESULTS_PER_QUERY:
+                break
+        return out
+    except Exception as exc:
+        print(f"SEARCH duckduckgo_html error: {type(exc).__name__}: {exc}")
+        return []
+
+
 def _search_provider(name, query):
     return {
         "serper": _search_serper,
@@ -6759,6 +6824,7 @@ def _search_provider(name, query):
         "serpsearch": _search_serpsearch,
         "freesea": _search_freesea,
         "bing_rss": _search_bing_rss,
+        "duckduckgo_html": _search_duckduckgo_html,
         "serpapi_google_jobs": _search_serpapi_google_jobs,
     }.get(name, lambda _q: [])(query)
 
@@ -6840,12 +6906,17 @@ def discover_search_engine_urls():
         general_budget = min(fallback_budget, len(general_bank))
         fallback_start = (day * max(1, general_budget)) % len(general_bank)
         general_queries = [general_bank[(fallback_start+i)%len(general_bank)] for i in range(general_budget)]
-        tasks.extend(("bing_rss", q) for q in general_queries)
+        # Split the modest public-search budget between Bing RSS and DuckDuckGo HTML.
+        # If one endpoint blocks requests, the other remains a separate best-effort source.
+        bing_budget = (general_budget + 1) // 2
+        ddg_budget = general_budget // 2
+        tasks.extend(("bing_rss", q) for q in general_queries[:bing_budget])
+        tasks.extend(("duckduckgo_html", q) for q in general_queries[bing_budget:bing_budget + ddg_budget])
 
     print(
         f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} available_keys={len(configured_all)} api_budget={SEARCH_API_PROVIDERS_PER_RUN} "
-        f"public_fallback={'bing_rss' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
-        f"fallback_queries={sum(1 for p,_ in tasks if p == 'bing_rss')} "
+        f"public_fallback={'bing_rss+duckduckgo_html' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
+        f"fallback_queries={sum(1 for p,_ in tasks if p in {'bing_rss','duckduckgo_html'})} "
         f"social_queries={len(social_queries)} "
         f"google_queries={len(google_queries) if GOOGLE_DISCOVERY_ENABLED else 0} "
         f"google_jobs_queries={len(google_jobs_queries)} "
