@@ -29,7 +29,7 @@ except Exception:
 
 
 # ============================================================
-# REMOTE4.ME JOB CRAWLER V15.2
+# REMOTE4.ME JOB CRAWLER V15.1
 # INDIA-FIRST / EXPANDED ATS + CAREER PAGE DISCOVERY
 # ============================================================
 #
@@ -70,9 +70,6 @@ SPREADSHEET_ID = os.environ.get("SPREADSHEET_ID", "")
 GOOGLE_CREDENTIALS = os.environ.get("GOOGLE_CREDENTIALS", "")
 STARTUP_JOBS_API_KEY = os.environ.get("STARTUP_JOBS_API_KEY", "").strip()
 JOB_OPPORTUNITIES_API_KEY = os.environ.get("JOB_OPPORTUNITIES_API_KEY", "").strip()
-JOBVETTA_API_KEY = os.environ.get("JOBVETTA_API_KEY", "").strip()
-JOBVETTA_DAILY_QUERIES = max(1, min(8, int(os.environ.get("JOBVETTA_DAILY_QUERIES", "4"))))
-JOBVETTA_DAYS = max(1, min(30, int(os.environ.get("JOBVETTA_DAYS", "14"))))
 # Search/discovery APIs. Keys are supplied only through GitHub Actions Secrets.
 SERPER_API_KEY = os.environ.get("SERPER_API_KEY", "").strip()
 TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "").strip()
@@ -191,7 +188,445 @@ SESSION.headers.update({
 # ROLE KEYWORDS
 # ============================================================
 
-TARGET_TITLE_PATTERNS = ['\\bcustomer support\\b', '\\bcustomer support specialist\\b', '\\bcustomer support associate\\b', '\\bcustomer support representative\\b', '\\bcustomer support agent\\b', '\\bcustomer support advisor\\b', '\\bcustomer support consultant\\b', '\\bcustomer support coordinator\\b', '\\bcustomer support analyst\\b', '\\bcustomer support executive\\b', '\\bcustomer support manager\\b', '\\bcustomer support lead\\b', '\\bcustomer support supervisor\\b', '\\bcustomer support director\\b', '\\bhead of customer support\\b', '\\bglobal customer support\\b', '\\binternational customer support\\b', '\\bcustomer technical support\\b', '\\bcustomer service\\b', '\\bcustomer service specialist\\b', '\\bcustomer service associate\\b', '\\bcustomer service representative\\b', '\\bcustomer service agent\\b', '\\bcustomer service advisor\\b', '\\bcustomer service consultant\\b', '\\bcustomer service coordinator\\b', '\\bcustomer service analyst\\b', '\\bcustomer service executive\\b', '\\bcustomer service manager\\b', '\\bcustomer service lead\\b', '\\bcustomer service supervisor\\b', '\\bcustomer service director\\b', '\\bhead of customer service\\b', '\\bcustomer care\\b', '\\bcustomer care specialist\\b', '\\bcustomer care associate\\b', '\\bcustomer care representative\\b', '\\bcustomer care agent\\b', '\\bcustomer care advisor\\b', '\\bcustomer care manager\\b', '\\bcustomer care lead\\b', '\\bcustomer experience\\b', '\\bcustomer experience specialist\\b', '\\bcustomer experience associate\\b', '\\bcustomer experience representative\\b', '\\bcustomer experience advisor\\b', '\\bcustomer experience manager\\b', '\\bcustomer experience lead\\b', '\\bcustomer experience analyst\\b', '\\bcustomer experience operations\\b', '\\bhead of customer experience\\b', '\\bcustomer experience director\\b', '\\bclient support\\b', '\\bclient support specialist\\b', '\\bclient support associate\\b', '\\bclient support representative\\b', '\\bclient support agent\\b', '\\bclient support manager\\b', '\\bclient service\\b', '\\bclient services\\b', '\\bclient services specialist\\b', '\\bclient services associate\\b', '\\bclient services representative\\b', '\\bclient services manager\\b', '\\buser support\\b', '\\buser support specialist\\b', '\\buser support associate\\b', '\\buser support representative\\b', '\\buser support agent\\b', '\\buser support manager\\b', '\\buser services\\b', '\\buser services specialist\\b', '\\bmember support\\b', '\\bmember support specialist\\b', '\\bmember support associate\\b', '\\bmember services\\b', '\\bmember services specialist\\b', '\\bcommunity support\\b', '\\bcommunity support specialist\\b', '\\bcommunity support manager\\b', '\\bcommunity operations\\b', '\\bpartner support\\b', '\\bpartner support specialist\\b', '\\bpartner support manager\\b', '\\bpartner services\\b', '\\bmerchant support\\b', '\\bmerchant support specialist\\b', '\\bmerchant support representative\\b', '\\bmerchant success\\b', '\\bseller support\\b', '\\bseller support specialist\\b', '\\bvendor support\\b', '\\bvendor support specialist\\b', '\\bprovider support\\b', '\\bprovider support specialist\\b', '\\bcustomer support engineer\\b', '\\bcustomer support technician\\b', '\\bsupport engineer\\b', '\\bsupport technician\\b', '\\btechnical support technician\\b', '\\bproduct support technician\\b', '\\bapplication support technician\\b', '\\bplatform support technician\\b', '\\bsupport specialist\\b', '\\bsupport associate\\b', '\\bsupport representative\\b', '\\bsupport agent\\b', '\\bsupport advisor\\b', '\\bsupport consultant\\b', '\\bsupport coordinator\\b', '\\bsupport analyst\\b', '\\bsupport executive\\b', '\\bsupport administrator\\b', '\\bsupport lead\\b', '\\bsupport manager\\b', '\\bsupport supervisor\\b', '\\bsupport operations\\b', '\\bsupport operations specialist\\b', '\\bsupport operations associate\\b', '\\bsupport operations analyst\\b', '\\bsupport operations manager\\b', '\\bsupport program manager\\b', '\\bsupport enablement\\b', '\\bsupport quality\\b', '\\bsupport quality analyst\\b', '\\bsupport quality specialist\\b', '\\bsupport trainer\\b', '\\bsupport training specialist\\b', '\\bsupport workforce\\b', '\\bsupport workforce analyst\\b', '\\bsupport workforce manager\\b', '\\bescalation support\\b', '\\bescalations specialist\\b', '\\bescalations manager\\b', '\\bescalation specialist\\b', '\\bescalation manager\\b', '\\btechnical escalation\\b', '\\bincident support\\b', '\\btechnical support\\b', '\\btechnical support specialist\\b', '\\btechnical support associate\\b', '\\btechnical support representative\\b', '\\btechnical support agent\\b', '\\btechnical support advisor\\b', '\\btechnical support consultant\\b', '\\btechnical support coordinator\\b', '\\btechnical support analyst\\b', '\\btechnical support engineer\\b', '\\btechnical support lead\\b', '\\btechnical support manager\\b', '\\btechnical support supervisor\\b', '\\btechnical support director\\b', '\\bhead of technical support\\b', '\\btechnical customer support\\b', '\\btechnical customer service\\b', '\\btechnical assistance specialist\\b', '\\btechnical assistance\\b', '\\btechnical helpdesk\\b', '\\btechnical help desk\\b', '\\btechnical service desk\\b', '\\bproduct support\\b', '\\bproduct support specialist\\b', '\\bproduct support associate\\b', '\\bproduct support representative\\b', '\\bproduct support agent\\b', '\\bproduct support advisor\\b', '\\bproduct support analyst\\b', '\\bproduct support engineer\\b', '\\bproduct support consultant\\b', '\\bproduct support manager\\b', '\\bproduct support lead\\b', '\\bproduct support operations\\b', '\\bsoftware support\\b', '\\bsoftware support specialist\\b', '\\bsoftware support associate\\b', '\\bsoftware support representative\\b', '\\bsoftware support engineer\\b', '\\bsoftware support analyst\\b', '\\bsoftware support manager\\b', '\\bapplication support\\b', '\\bapplication support specialist\\b', '\\bapplication support associate\\b', '\\bapplication support analyst\\b', '\\bapplication support engineer\\b', '\\bapplication support manager\\b', '\\bplatform support\\b', '\\bplatform support specialist\\b', '\\bplatform support associate\\b', '\\bplatform support engineer\\b', '\\bplatform support analyst\\b', '\\bplatform support manager\\b', '\\bapi support\\b', '\\bapi support specialist\\b', '\\bapi support engineer\\b', '\\bintegration support\\b', '\\bintegration support specialist\\b', '\\bintegration support engineer\\b', '\\bdeveloper support\\b', '\\bdeveloper support specialist\\b', '\\bdeveloper support engineer\\b', '\\bdeveloper experience support\\b', '\\bit support\\b', '\\bit support specialist\\b', '\\bit support associate\\b', '\\bit support representative\\b', '\\bit support engineer\\b', '\\bit support analyst\\b', '\\bit support technician\\b', '\\bit support manager\\b', '\\bit help desk\\b', '\\bhelp desk\\b', '\\bhelpdesk\\b', '\\bhelp desk specialist\\b', '\\bhelp desk analyst\\b', '\\bhelp desk technician\\b', '\\bhelp desk engineer\\b', '\\bhelp desk manager\\b', '\\bservice desk\\b', '\\bservice desk specialist\\b', '\\bservice desk analyst\\b', '\\bservice desk technician\\b', '\\bservice desk engineer\\b', '\\bservice desk manager\\b', '\\bit service desk\\b', '\\btechnical account support\\b', '\\btechnical account specialist\\b', '\\btechnical account associate\\b', '\\btechnical account manager\\b', '\\btechnical account executive\\b', '\\btechnical success\\b', '\\btechnical success specialist\\b', '\\btechnical success manager\\b', '\\btechnical customer success\\b', '\\bcustomer technical success\\b', '\\btechnical client success\\b', '\\bcustomer success\\b', '\\bcustomer success specialist\\b', '\\bcustomer success associate\\b', '\\bcustomer success representative\\b', '\\bcustomer success advisor\\b', '\\bcustomer success consultant\\b', '\\bcustomer success analyst\\b', '\\bcustomer success manager\\b', '\\bcustomer success lead\\b', '\\bcustomer success director\\b', '\\bhead of customer success\\b', '\\bvp customer success\\b', '\\bvice president customer success\\b', '\\bcustomer success operations\\b', '\\bcustomer success operations specialist\\b', '\\bcustomer success operations manager\\b', '\\bcustomer success enablement\\b', '\\bcustomer success strategy\\b', '\\bclient success\\b', '\\bclient success specialist\\b', '\\bclient success associate\\b', '\\bclient success representative\\b', '\\bclient success advisor\\b', '\\bclient success consultant\\b', '\\bclient success analyst\\b', '\\bclient success manager\\b', '\\bclient success lead\\b', '\\bclient success director\\b', '\\bhead of client success\\b', '\\bcustomer onboarding\\b', '\\bcustomer onboarding specialist\\b', '\\bcustomer onboarding associate\\b', '\\bcustomer onboarding representative\\b', '\\bcustomer onboarding manager\\b', '\\bcustomer onboarding lead\\b', '\\bclient onboarding\\b', '\\bclient onboarding specialist\\b', '\\bclient onboarding associate\\b', '\\bclient onboarding manager\\b', '\\bonboarding specialist\\b', '\\bonboarding associate\\b', '\\bonboarding representative\\b', '\\bonboarding advisor\\b', '\\bonboarding consultant\\b', '\\bonboarding manager\\b', '\\bonboarding lead\\b', '\\bonboarding operations\\b', '\\bcustomer implementation\\b', '\\bcustomer implementation specialist\\b', '\\bcustomer implementation manager\\b', '\\bclient implementation\\b', '\\bclient implementation specialist\\b', '\\bclient implementation manager\\b', '\\bimplementation specialist\\b', '\\bimplementation associate\\b', '\\bimplementation consultant\\b', '\\bimplementation analyst\\b', '\\bimplementation manager\\b', '\\bimplementation lead\\b', '\\bimplementation director\\b', '\\bimplementation operations\\b', '\\bsolutions implementation\\b', '\\bsolution implementation specialist\\b', '\\bcustomer enablement\\b', '\\bcustomer enablement specialist\\b', '\\bcustomer enablement manager\\b', '\\bclient enablement\\b', '\\bclient enablement specialist\\b', '\\bcustomer education\\b', '\\bcustomer education specialist\\b', '\\bcustomer education manager\\b', '\\bclient education\\b', '\\bclient education specialist\\b', '\\bcustomer adoption\\b', '\\bcustomer adoption specialist\\b', '\\bcustomer adoption manager\\b', '\\bcustomer retention\\b', '\\bcustomer retention specialist\\b', '\\bcustomer retention manager\\b', '\\bcustomer lifecycle\\b', '\\bcustomer lifecycle specialist\\b', '\\bcustomer lifecycle manager\\b', '\\bcustomer engagement\\b', '\\bcustomer engagement specialist\\b', '\\bcustomer engagement manager\\b', '\\bcustomer advocacy\\b', '\\bcustomer advocacy specialist\\b', '\\bcustomer advocacy manager\\b', '\\bcustomer operations\\b', '\\bcustomer operations specialist\\b', '\\bcustomer operations associate\\b', '\\bcustomer operations representative\\b', '\\bcustomer operations analyst\\b', '\\bcustomer operations manager\\b', '\\bclient operations\\b', '\\bclient operations specialist\\b', '\\bclient operations associate\\b', '\\bclient operations analyst\\b', '\\bclient operations manager\\b', '\\buser operations\\b', '\\buser operations specialist\\b', '\\buser operations associate\\b', '\\buser operations manager\\b', '\\bcx specialist\\b', '\\bcx associate\\b', '\\bcx representative\\b', '\\bcx advisor\\b', '\\bcx manager\\b', '\\bcx lead\\b', '\\bcustomer relations specialist\\b', '\\bcustomer relations representative\\b', '\\bclient relations specialist\\b', '\\bclient relations representative\\b', '\\btrust and safety specialist\\b', '\\btrust & safety specialist\\b', '\\btrust and safety operations\\b', '\\btrust & safety operations\\b']
+TARGET_TITLE_PATTERNS = [
+    '\\bcustomer support\\b',
+    '\\bcustomer support specialist\\b',
+    '\\bcustomer support associate\\b',
+    '\\bcustomer support representative\\b',
+    '\\bcustomer support agent\\b',
+    '\\bcustomer support advisor\\b',
+    '\\bcustomer support consultant\\b',
+    '\\bcustomer support coordinator\\b',
+    '\\bcustomer support analyst\\b',
+    '\\bcustomer support executive\\b',
+    '\\bcustomer support manager\\b',
+    '\\bcustomer support lead\\b',
+    '\\bcustomer support supervisor\\b',
+    '\\bcustomer support director\\b',
+    '\\bhead of customer support\\b',
+    '\\bglobal customer support\\b',
+    '\\binternational customer support\\b',
+    '\\bcustomer technical support\\b',
+    '\\bcustomer service\\b',
+    '\\bcustomer service specialist\\b',
+    '\\bcustomer service associate\\b',
+    '\\bcustomer service representative\\b',
+    '\\bcustomer service agent\\b',
+    '\\bcustomer service advisor\\b',
+    '\\bcustomer service consultant\\b',
+    '\\bcustomer service coordinator\\b',
+    '\\bcustomer service analyst\\b',
+    '\\bcustomer service executive\\b',
+    '\\bcustomer service manager\\b',
+    '\\bcustomer service lead\\b',
+    '\\bcustomer service supervisor\\b',
+    '\\bcustomer service director\\b',
+    '\\bhead of customer service\\b',
+    '\\bcustomer care\\b',
+    '\\bcustomer care specialist\\b',
+    '\\bcustomer care associate\\b',
+    '\\bcustomer care representative\\b',
+    '\\bcustomer care agent\\b',
+    '\\bcustomer care advisor\\b',
+    '\\bcustomer care manager\\b',
+    '\\bcustomer care lead\\b',
+    '\\bcustomer experience\\b',
+    '\\bcustomer experience specialist\\b',
+    '\\bcustomer experience associate\\b',
+    '\\bcustomer experience representative\\b',
+    '\\bcustomer experience advisor\\b',
+    '\\bcustomer experience manager\\b',
+    '\\bcustomer experience lead\\b',
+    '\\bcustomer experience analyst\\b',
+    '\\bcustomer experience operations\\b',
+    '\\bhead of customer experience\\b',
+    '\\bcustomer experience director\\b',
+    '\\bclient support\\b',
+    '\\bclient support specialist\\b',
+    '\\bclient support associate\\b',
+    '\\bclient support representative\\b',
+    '\\bclient support agent\\b',
+    '\\bclient support manager\\b',
+    '\\bclient service\\b',
+    '\\bclient services\\b',
+    '\\bclient services specialist\\b',
+    '\\bclient services associate\\b',
+    '\\bclient services representative\\b',
+    '\\bclient services manager\\b',
+    '\\buser support\\b',
+    '\\buser support specialist\\b',
+    '\\buser support associate\\b',
+    '\\buser support representative\\b',
+    '\\buser support agent\\b',
+    '\\buser support manager\\b',
+    '\\buser services\\b',
+    '\\buser services specialist\\b',
+    '\\bmember support\\b',
+    '\\bmember support specialist\\b',
+    '\\bmember support associate\\b',
+    '\\bmember services\\b',
+    '\\bmember services specialist\\b',
+    '\\bcommunity support\\b',
+    '\\bcommunity support specialist\\b',
+    '\\bcommunity support manager\\b',
+    '\\bcommunity operations\\b',
+    '\\bpartner support\\b',
+    '\\bpartner support specialist\\b',
+    '\\bpartner support manager\\b',
+    '\\bpartner services\\b',
+    '\\bmerchant support\\b',
+    '\\bmerchant support specialist\\b',
+    '\\bmerchant support representative\\b',
+    '\\bmerchant success\\b',
+    '\\bseller support\\b',
+    '\\bseller support specialist\\b',
+    '\\bvendor support\\b',
+    '\\bvendor support specialist\\b',
+    '\\bprovider support\\b',
+    '\\bprovider support specialist\\b',
+    '\\bcustomer support engineer\\b',
+    '\\bcustomer support technician\\b',
+    '\\bsupport engineer\\b',
+    '\\bsupport technician\\b',
+    '\\btechnical support technician\\b',
+    '\\bproduct support technician\\b',
+    '\\bapplication support technician\\b',
+    '\\bplatform support technician\\b',
+    '\\bsupport specialist\\b',
+    '\\bsupport associate\\b',
+    '\\bsupport representative\\b',
+    '\\bsupport agent\\b',
+    '\\bsupport advisor\\b',
+    '\\bsupport consultant\\b',
+    '\\bsupport coordinator\\b',
+    '\\bsupport analyst\\b',
+    '\\bsupport executive\\b',
+    '\\bsupport administrator\\b',
+    '\\bsupport lead\\b',
+    '\\bsupport manager\\b',
+    '\\bsupport supervisor\\b',
+    '\\bsupport operations\\b',
+    '\\bsupport operations specialist\\b',
+    '\\bsupport operations associate\\b',
+    '\\bsupport operations analyst\\b',
+    '\\bsupport operations manager\\b',
+    '\\bsupport program manager\\b',
+    '\\bsupport enablement\\b',
+    '\\bsupport quality\\b',
+    '\\bsupport quality analyst\\b',
+    '\\bsupport quality specialist\\b',
+    '\\bsupport trainer\\b',
+    '\\bsupport training specialist\\b',
+    '\\bsupport workforce\\b',
+    '\\bsupport workforce analyst\\b',
+    '\\bsupport workforce manager\\b',
+    '\\bescalation support\\b',
+    '\\bescalations specialist\\b',
+    '\\bescalations manager\\b',
+    '\\bescalation specialist\\b',
+    '\\bescalation manager\\b',
+    '\\btechnical escalation\\b',
+    '\\bincident support\\b',
+    '\\btechnical support\\b',
+    '\\btechnical support specialist\\b',
+    '\\btechnical support associate\\b',
+    '\\btechnical support representative\\b',
+    '\\btechnical support agent\\b',
+    '\\btechnical support advisor\\b',
+    '\\btechnical support consultant\\b',
+    '\\btechnical support coordinator\\b',
+    '\\btechnical support analyst\\b',
+    '\\btechnical support engineer\\b',
+    '\\btechnical support lead\\b',
+    '\\btechnical support manager\\b',
+    '\\btechnical support supervisor\\b',
+    '\\btechnical support director\\b',
+    '\\bhead of technical support\\b',
+    '\\btechnical customer support\\b',
+    '\\btechnical customer service\\b',
+    '\\btechnical assistance specialist\\b',
+    '\\btechnical assistance\\b',
+    '\\btechnical helpdesk\\b',
+    '\\btechnical help desk\\b',
+    '\\btechnical service desk\\b',
+    '\\bproduct support\\b',
+    '\\bproduct support specialist\\b',
+    '\\bproduct support associate\\b',
+    '\\bproduct support representative\\b',
+    '\\bproduct support agent\\b',
+    '\\bproduct support advisor\\b',
+    '\\bproduct support analyst\\b',
+    '\\bproduct support engineer\\b',
+    '\\bproduct support consultant\\b',
+    '\\bproduct support manager\\b',
+    '\\bproduct support lead\\b',
+    '\\bproduct support operations\\b',
+    '\\bsoftware support\\b',
+    '\\bsoftware support specialist\\b',
+    '\\bsoftware support associate\\b',
+    '\\bsoftware support representative\\b',
+    '\\bsoftware support engineer\\b',
+    '\\bsoftware support analyst\\b',
+    '\\bsoftware support manager\\b',
+    '\\bapplication support\\b',
+    '\\bapplication support specialist\\b',
+    '\\bapplication support associate\\b',
+    '\\bapplication support analyst\\b',
+    '\\bapplication support engineer\\b',
+    '\\bapplication support manager\\b',
+    '\\bplatform support\\b',
+    '\\bplatform support specialist\\b',
+    '\\bplatform support associate\\b',
+    '\\bplatform support engineer\\b',
+    '\\bplatform support analyst\\b',
+    '\\bplatform support manager\\b',
+    '\\bapi support\\b',
+    '\\bapi support specialist\\b',
+    '\\bapi support engineer\\b',
+    '\\bintegration support\\b',
+    '\\bintegration support specialist\\b',
+    '\\bintegration support engineer\\b',
+    '\\bdeveloper support\\b',
+    '\\bdeveloper support specialist\\b',
+    '\\bdeveloper support engineer\\b',
+    '\\bdeveloper experience support\\b',
+    '\\bit support\\b',
+    '\\bit support specialist\\b',
+    '\\bit support associate\\b',
+    '\\bit support representative\\b',
+    '\\bit support engineer\\b',
+    '\\bit support analyst\\b',
+    '\\bit support technician\\b',
+    '\\bit support manager\\b',
+    '\\bit help desk\\b',
+    '\\bhelp desk\\b',
+    '\\bhelpdesk\\b',
+    '\\bhelp desk specialist\\b',
+    '\\bhelp desk analyst\\b',
+    '\\bhelp desk technician\\b',
+    '\\bhelp desk engineer\\b',
+    '\\bhelp desk manager\\b',
+    '\\bservice desk\\b',
+    '\\bservice desk specialist\\b',
+    '\\bservice desk analyst\\b',
+    '\\bservice desk technician\\b',
+    '\\bservice desk engineer\\b',
+    '\\bservice desk manager\\b',
+    '\\bit service desk\\b',
+    '\\btechnical account support\\b',
+    '\\btechnical account specialist\\b',
+    '\\btechnical account associate\\b',
+    '\\btechnical account manager\\b',
+    '\\btechnical account executive\\b',
+    '\\btechnical success\\b',
+    '\\btechnical success specialist\\b',
+    '\\btechnical success manager\\b',
+    '\\btechnical customer success\\b',
+    '\\bcustomer technical success\\b',
+    '\\btechnical client success\\b',
+    '\\bcustomer success\\b',
+    '\\bcustomer success specialist\\b',
+    '\\bcustomer success associate\\b',
+    '\\bcustomer success representative\\b',
+    '\\bcustomer success advisor\\b',
+    '\\bcustomer success consultant\\b',
+    '\\bcustomer success analyst\\b',
+    '\\bcustomer success manager\\b',
+    '\\bcustomer success lead\\b',
+    '\\bcustomer success director\\b',
+    '\\bhead of customer success\\b',
+    '\\bvp customer success\\b',
+    '\\bvice president customer success\\b',
+    '\\bcustomer success operations\\b',
+    '\\bcustomer success operations specialist\\b',
+    '\\bcustomer success operations manager\\b',
+    '\\bcustomer success enablement\\b',
+    '\\bcustomer success strategy\\b',
+    '\\bclient success\\b',
+    '\\bclient success specialist\\b',
+    '\\bclient success associate\\b',
+    '\\bclient success representative\\b',
+    '\\bclient success advisor\\b',
+    '\\bclient success consultant\\b',
+    '\\bclient success analyst\\b',
+    '\\bclient success manager\\b',
+    '\\bclient success lead\\b',
+    '\\bclient success director\\b',
+    '\\bhead of client success\\b',
+    '\\bcustomer onboarding\\b',
+    '\\bcustomer onboarding specialist\\b',
+    '\\bcustomer onboarding associate\\b',
+    '\\bcustomer onboarding representative\\b',
+    '\\bcustomer onboarding manager\\b',
+    '\\bcustomer onboarding lead\\b',
+    '\\bclient onboarding\\b',
+    '\\bclient onboarding specialist\\b',
+    '\\bclient onboarding associate\\b',
+    '\\bclient onboarding manager\\b',
+    '\\bonboarding specialist\\b',
+    '\\bonboarding associate\\b',
+    '\\bonboarding representative\\b',
+    '\\bonboarding advisor\\b',
+    '\\bonboarding consultant\\b',
+    '\\bonboarding manager\\b',
+    '\\bonboarding lead\\b',
+    '\\bonboarding operations\\b',
+    '\\bcustomer implementation\\b',
+    '\\bcustomer implementation specialist\\b',
+    '\\bcustomer implementation manager\\b',
+    '\\bclient implementation\\b',
+    '\\bclient implementation specialist\\b',
+    '\\bclient implementation manager\\b',
+    '\\bimplementation specialist\\b',
+    '\\bimplementation associate\\b',
+    '\\bimplementation consultant\\b',
+    '\\bimplementation analyst\\b',
+    '\\bimplementation manager\\b',
+    '\\bimplementation lead\\b',
+    '\\bimplementation director\\b',
+    '\\bimplementation operations\\b',
+    '\\bsolutions implementation\\b',
+    '\\bsolution implementation specialist\\b',
+    '\\bcustomer enablement\\b',
+    '\\bcustomer enablement specialist\\b',
+    '\\bcustomer enablement manager\\b',
+    '\\bclient enablement\\b',
+    '\\bclient enablement specialist\\b',
+    '\\bcustomer education\\b',
+    '\\bcustomer education specialist\\b',
+    '\\bcustomer education manager\\b',
+    '\\bclient education\\b',
+    '\\bclient education specialist\\b',
+    '\\bcustomer adoption\\b',
+    '\\bcustomer adoption specialist\\b',
+    '\\bcustomer adoption manager\\b',
+    '\\bcustomer retention\\b',
+    '\\bcustomer retention specialist\\b',
+    '\\bcustomer retention manager\\b',
+    '\\bcustomer lifecycle\\b',
+    '\\bcustomer lifecycle specialist\\b',
+    '\\bcustomer lifecycle manager\\b',
+    '\\bcustomer engagement\\b',
+    '\\bcustomer engagement specialist\\b',
+    '\\bcustomer engagement manager\\b',
+    '\\bcustomer advocacy\\b',
+    '\\bcustomer advocacy specialist\\b',
+    '\\bcustomer advocacy manager\\b',
+    '\\bcustomer operations\\b',
+    '\\bcustomer operations specialist\\b',
+    '\\bcustomer operations associate\\b',
+    '\\bcustomer operations representative\\b',
+    '\\bcustomer operations analyst\\b',
+    '\\bcustomer operations manager\\b',
+    '\\bclient operations\\b',
+    '\\bclient operations specialist\\b',
+    '\\bclient operations associate\\b',
+    '\\bclient operations analyst\\b',
+    '\\bclient operations manager\\b',
+    '\\buser operations\\b',
+    '\\buser operations specialist\\b',
+    '\\buser operations associate\\b',
+    '\\buser operations manager\\b',
+    '\\bcx specialist\\b',
+    '\\bcx associate\\b',
+    '\\bcx representative\\b',
+    '\\bcx advisor\\b',
+    '\\bcx manager\\b',
+    '\\bcx lead\\b',
+    '\\bcustomer relations specialist\\b',
+    '\\bcustomer relations representative\\b',
+    '\\bclient relations specialist\\b',
+    '\\bclient relations representative\\b',
+    '\\btrust and safety specialist\\b',
+    '\\btrust & safety specialist\\b',
+    '\\btrust and safety operations\\b',
+    '\\btrust & safety operations\\b',
+    '\\bcustomer\\ success\\ manager\\b',
+    '\\bcustomer\\ success\\ specialist\\b',
+    '\\bcustomer\\ success\\ engineer\\b',
+    '\\bcustomer\\ success\\ operations\\b',
+    '\\bcustomer\\ success\\ advocate\\b',
+    '\\brenewal\\ support\\b',
+    '\\brenewals\\ support\\b',
+    '\\bcustomer\\ onboarding\\ support\\b',
+    '\\bcustomer\\ health\\ specialist\\b',
+    '\\bimplementation\\ specialist\\b',
+    '\\bimplementation\\ engineer\\b',
+    '\\bimplementation\\ consultant\\b',
+    '\\bonboarding\\ specialist\\b',
+    '\\bonboarding\\ engineer\\b',
+    '\\bonboarding\\ consultant\\b',
+    '\\bonboarding\\ manager\\b',
+    '\\baccount\\ onboarding\\ specialist\\b',
+    '\\bclient\\ onboarding\\ specialist\\b',
+    '\\badoption\\ specialist\\b',
+    '\\bcustomer\\ enablement\\b',
+    '\\bcustomer\\ training\\ specialist\\b',
+    '\\bsolutions\\ support\\ specialist\\b',
+    '\\bsolutions\\ support\\ engineer\\b',
+    '\\bsupport\\ implementation\\b',
+    '\\bsupport\\ delivery\\ specialist\\b',
+    '\\bservice\\ delivery\\ consultant\\b',
+    '\\bservice\\ delivery\\ analyst\\b',
+    '\\bsupport\\ sales\\ engineer\\b',
+    '\\bcustomer\\ engineering\\b',
+    '\\bcustomer\\ operations\\b',
+    '\\bsupport\\ case\\ manager\\b',
+    '\\bcase\\ management\\ specialist\\b',
+    '\\bticketing\\ specialist\\b',
+    '\\bjira\\ support\\ specialist\\b',
+    '\\bservice\\ management\\ specialist\\b',
+    '\\bcustomer\\ issues\\ specialist\\b',
+    '\\btroubleshooting\\ specialist\\b',
+    '\\bproblem\\ management\\ support\\b',
+    '\\broot\\ cause\\ analyst\\b',
+    '\\bservice\\ quality\\ analyst\\b',
+    '\\bsupport\\ quality\\ analyst\\b',
+    '\\bincident\\ specialist\\b',
+    '\\bincident\\ response\\ specialist\\b',
+    '\\bescalation\\ engineer\\b',
+    '\\bsupport\\ analyst\\ l1\\b',
+    '\\bsupport\\ analyst\\ l2\\b',
+    '\\bsupport\\ analyst\\ l3\\b',
+    '\\bl1\\ support\\b',
+    '\\bl2\\ support\\b',
+    '\\bl3\\ support\\b',
+    '\\bhelp\\ desk\\ analyst\\b',
+    '\\bhelp\\ desk\\ engineer\\b',
+    '\\bhelpdesk\\ analyst\\b',
+    '\\bhelpdesk\\ engineer\\b',
+    '\\bservice\\ desk\\ analyst\\b',
+    '\\bservice\\ desk\\ engineer\\b',
+    '\\bdesktop\\ support\\ analyst\\b',
+    '\\bdesktop\\ support\\ engineer\\b',
+    '\\bend\\ user\\ support\\ analyst\\b',
+    '\\bend\\ user\\ support\\ engineer\\b',
+    '\\bit\\ help\\ desk\\b',
+    '\\bit\\ service\\ desk\\b',
+    '\\bsupport\\ administrator\\b',
+    '\\bapplication\\ support\\ engineer\\b',
+    '\\bplatform\\ support\\ engineer\\b',
+    '\\binfrastructure\\ support\\ engineer\\b',
+    '\\bcloud\\ support\\ engineer\\b',
+    '\\bcloud\\ support\\ specialist\\b',
+    '\\bsystems\\ support\\ engineer\\b',
+    '\\bsystems\\ support\\ analyst\\b',
+    '\\bnetwork\\ support\\ engineer\\b',
+    '\\bfield\\ support\\ engineer\\b',
+    '\\bproduction\\ support\\ engineer\\b',
+    '\\bproduction\\ support\\ analyst\\b',
+    '\\boperations\\ support\\ engineer\\b',
+    '\\bsupport\\ operations\\ engineer\\b',
+    '\\bclient\\ support\\ specialist\\b',
+    '\\baccount\\ support\\b',
+    '\\bsupport\\ operations\\ analyst\\b',
+    '\\bsupport\\ operations\\ specialist\\b',
+    '\\bcustomer\\ advocacy\\b',
+    '\\bcustomer\\ adoption\\b',
+    '\\bsuccess\\ operations\\b',
+    '\\bcustomer\\ retention\\b',
+]
+
 EXCLUDED_TITLE_PATTERNS = ['\\bsales support\\b', '\\bsales development\\b', '\\bsales operations\\b', '\\bmarketing support\\b', '\\bmarketing operations\\b', '\\brecruiting support\\b', '\\brecruitment support\\b', '\\bexecutive assistant\\b', '\\badministrative assistant\\b', '\\bpersonal assistant\\b', '\\btechnical recruiter\\b', '\\bsupporting actor\\b']
 
 TITLE_REGEX = re.compile(
@@ -204,26 +639,141 @@ EXCLUDED_TITLE_REGEX = re.compile(
 # Extra high-signal phrases. These are used for scoring/description matching,
 # not as a replacement for the title filter.
 SUPPORT_CONTEXT_TERMS = [
-    "zendesk", "intercom", "freshdesk", "freshservice", "gorgias",
-    "salesforce service cloud", "servicenow", "customer.io", "helpscout",
-    "kustomer", "dixa", "front app", "hubspot service hub",
-    "ticketing", "support tickets", "support queue", "customer tickets",
-    "customer queries", "customer issues", "customer escalations",
-    "technical troubleshooting", "troubleshooting", "bug reproduction",
-    "incident management", "incident response", "l1 support", "l2 support",
-    "l3 support", "tier 1", "tier 2", "tier 3", "help desk", "service desk",
-    "knowledge base", "help center", "csat", "nps", "customer satisfaction",
-    "customer onboarding", "customer adoption", "customer retention",
-    "customer lifecycle", "customer education", "customer enablement",
-    "customer advocacy", "renewals", "expansion", "churn", "implementation",
-    "go live", "go-live", "product training", "client onboarding",
-    "technical account", "customer success platform", "saas support",
-    "product support", "application support", "platform support",
-    "api support", "developer support", "integration support",
-    "trust and safety", "content moderation", "user operations",
-    "customer operations", "client operations", "member support",
-    "merchant support", "partner support", "seller support",
-    "customer care", "client services", "customer relations",
+    'zendesk',
+    'intercom',
+    'freshdesk',
+    'freshservice',
+    'gorgias',
+    'salesforce service cloud',
+    'servicenow',
+    'customer.io',
+    'helpscout',
+    'kustomer',
+    'dixa',
+    'front app',
+    'hubspot service hub',
+    'ticketing',
+    'support tickets',
+    'support queue',
+    'customer tickets',
+    'customer queries',
+    'customer issues',
+    'customer escalations',
+    'technical troubleshooting',
+    'troubleshooting',
+    'bug reproduction',
+    'incident management',
+    'incident response',
+    'l1 support',
+    'l2 support',
+    'l3 support',
+    'tier 1',
+    'tier 2',
+    'tier 3',
+    'help desk',
+    'service desk',
+    'knowledge base',
+    'help center',
+    'csat',
+    'nps',
+    'customer satisfaction',
+    'customer onboarding',
+    'customer adoption',
+    'customer retention',
+    'customer lifecycle',
+    'customer education',
+    'customer enablement',
+    'customer advocacy',
+    'renewals',
+    'expansion',
+    'churn',
+    'implementation',
+    'go live',
+    'go-live',
+    'product training',
+    'client onboarding',
+    'technical account',
+    'customer success platform',
+    'saas support',
+    'product support',
+    'application support',
+    'platform support',
+    'api support',
+    'developer support',
+    'integration support',
+    'trust and safety',
+    'content moderation',
+    'user operations',
+    'customer operations',
+    'client operations',
+    'member support',
+    'merchant support',
+    'partner support',
+    'seller support',
+    'customer care',
+    'client services',
+    'customer relations',
+    'customer success operations',
+    'customer success engineer',
+    'customer success advocate',
+    'customer health specialist',
+    'renewal support',
+    'renewals support',
+    'implementation specialist',
+    'implementation engineer',
+    'implementation consultant',
+    'onboarding specialist',
+    'onboarding engineer',
+    'onboarding consultant',
+    'onboarding manager',
+    'account onboarding',
+    'client onboarding specialist',
+    'adoption specialist',
+    'customer training specialist',
+    'solutions support specialist',
+    'solutions support engineer',
+    'support implementation',
+    'support delivery',
+    'service delivery consultant',
+    'service delivery analyst',
+    'support case manager',
+    'case management specialist',
+    'ticketing specialist',
+    'jira support specialist',
+    'service management specialist',
+    'customer issues specialist',
+    'troubleshooting specialist',
+    'problem management support',
+    'root cause analyst',
+    'service quality analyst',
+    'support quality analyst',
+    'incident specialist',
+    'incident response specialist',
+    'helpdesk analyst',
+    'helpdesk engineer',
+    'help desk analyst',
+    'help desk engineer',
+    'service desk analyst',
+    'service desk engineer',
+    'desktop support analyst',
+    'desktop support engineer',
+    'end user support analyst',
+    'end user support engineer',
+    'infrastructure support engineer',
+    'cloud support engineer',
+    'cloud support specialist',
+    'systems support engineer',
+    'systems support analyst',
+    'network support engineer',
+    'field support engineer',
+    'production support engineer',
+    'production support analyst',
+    'operations support engineer',
+    'support operations engineer',
+    'support analyst l1',
+    'support analyst l2',
+    'support analyst l3',
+    'success operations',
 ]
 
 # These prevent broad words in descriptions from making unrelated jobs pass.
@@ -438,13 +988,13 @@ REMOTE_RE = re.compile(
 )
 
 HYBRID_RE = re.compile(
-    r"(?:\b(?:hybrid|partially remote|remote hybrid|hybrid remote|"
-    r"flexible workplace|flexible work arrangement|split between home and office|"
-    r"work from home and office|home and office|remote and onsite|remote and on site|"
-    r"onsite and remote|on site and remote|office and remote|remote plus office|"
-    r"partly remote)\b|"
-    r"\b\d+\s+days?\s+(?:in|at)\s+(?:the\s+)?office.{0,100}\b\d+\s+days?\s+(?:remote|from\s+home)\b|"
-    r"\b\d+\s+days?\s+(?:remote|from\s+home).{0,100}\b\d+\s+days?\s+(?:in|at)\s+(?:the\s+)?office\b)",
+    r"\b(?:hybrid|partially remote|remote hybrid|"
+    r"office\s*(?:and|\+)\s*remote|remote\s*(?:and|\+)\s*office|"
+    r"split\s+between\s+(?:home|remote)\s+and\s+office|"
+    r"\d+\s+days?\s+(?:in|at)\s+(?:the\s+)?office|"
+    r"\d+\s+days?\s+(?:remote|from\s+home)|"
+    r"work\s+from\s+home\s+and\s+office|"
+    r"partly\s+remote|flexible\s+workplace)\b",
     re.I,
 )
 
@@ -994,43 +1544,45 @@ def classify_workplace(location="", workplace_type="", remote=False, structured=
     if x:
         return x
 
-    if isinstance(remote, bool) and remote:
-        return "Remote"
-    if isinstance(remote, str) and remote.lower() in {"true", "yes", "1", "remote"}:
-        return "Remote"
-
+    structured_workplace = ""
+    structured_remote = False
     if isinstance(structured, dict):
-        # Explicit workplace/remote keys.
         for key in (
             "workplaceType", "workplace_type", "workplace", "workMode",
             "work_mode", "workArrangement", "work_arrangement",
         ):
             if key in structured:
-                x = norm(structured.get(key))
-                if x:
-                    return x
+                structured_workplace = norm(structured.get(key))
+                if structured_workplace:
+                    break
         for key in ("isRemote", "is_remote", "remote", "telecommuting"):
             if key in structured and structured.get(key) is True:
-                return "Remote"
+                structured_remote = True
 
-    if HYBRID_RE.search(clean_text(location)):
+    text = clean_text(description)[:30000]
+    loc_text = clean_text(location)
+
+    # Check hybrid wording before generic remote flags or a generic "Remote"
+    # location, because some feeds mark hybrid jobs as remote.
+    if HYBRID_RE.search(text) or HYBRID_RE.search(loc_text):
         return "Hybrid"
-    if REMOTE_RE.search(clean_text(location)):
+
+    if structured_workplace:
+        return structured_workplace
+
+    if isinstance(remote, bool) and remote:
+        return "Remote"
+    if isinstance(remote, str) and remote.lower() in {"true", "yes", "1", "remote"}:
+        return "Remote"
+    if structured_remote:
         return "Remote"
 
-    # Infer workplace only from explicit wording in the job description.
-    # Check hybrid first: a hybrid India role must never be mislabeled Remote.
-    text = clean_text(description)[:30000]
-    if HYBRID_RE.search(text) and (
-        INDIA_COUNTRY_RE.search(text) or INDIA_REGEX.search(text) or INDIA_REGEX.search(clean_text(location)) or
-        re.search(r"\b(?:office|onsite|on-site)\b.{0,80}\b(?:remote|home|hybrid)\b|\b(?:remote|home|hybrid)\b.{0,80}\b(?:office|onsite|on-site)\b", text, re.I)
-    ):
-        return "Hybrid"
+    if REMOTE_RE.search(loc_text):
+        return "Remote"
     if INDIA_REMOTE_CONTEXT_RE.search(text):
         return "Remote"
 
     return ""
-
 
 def classify_india(location="", country_code="", address_country="", description="", workplace=""):
     code = clean_text(country_code).lower()
@@ -1087,7 +1639,7 @@ def job_key(job):
 
 AGGREGATOR_HOSTS = {
     # Remote-job aggregators and directories: useful for discovery, never direct apply.
-    "himalayas.app", "startup.jobs", "jobicy.com",
+    "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com",
     "remotejobs.org", "weworkremotely.com", "remotive.com", "arbeitnow.com",
     "workingnomads.com", "jobopportunitiesapi.org", "wellfound.com", "cutshort.io",
     "linkedin.com", "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com",
@@ -1243,32 +1795,44 @@ def fetch_himalayas():
     return jobs
 
 
-def fetch_remotive():
+def fetch_remote1stjobs():
+    """Fetch a small, India-eligible slice from Remote1stJobs public JSON.
+
+    This source is discovery-only: preserve the original source URL and never
+    treat the aggregator listing as an employer application URL.
+    """
     jobs = []
-    data = get_json("https://remotive.com/api/remote-jobs", params={"limit": 100})
-    if not isinstance(data, dict):
-        print("Remotive: no JSON response")
+    try:
+        data = get_json("https://www.remote1stjobs.com/jobs.json")
+    except Exception as exc:
+        print(f"Remote1stJobs: request failed: {exc}")
         return jobs
-    for j in data.get("jobs") or []:
+    if isinstance(data, dict):
+        items = data.get("jobs") or data.get("data") or data.get("results") or []
+    elif isinstance(data, list):
+        items = data
+    else:
+        items = []
+    # Respect the feed's small-sample use guidance; don't mirror its full database.
+    for j in items[:30]:
         if not isinstance(j, dict):
             continue
-        loc = clean_text(j.get("candidate_required_location") or j.get("location"))
-        desc = clean_text(j.get("description") or j.get("job_description"))
-        # Remotive feed is remote by definition; India eligibility must still
-        # be explicit in candidate-required location or description.
-        if not classify_india(loc, "", "", desc, "Remote"):
+        title = clean_text(j.get("title") or j.get("job_title") or j.get("position"))
+        company = clean_text(j.get("company") or j.get("company_name") or j.get("employer"))
+        location = clean_text(j.get("location") or j.get("locations") or j.get("candidate_required_location"))
+        desc = clean_text(j.get("description") or j.get("summary") or j.get("excerpt"))
+        url = clean_text(j.get("url") or j.get("job_url") or j.get("link") or j.get("apply_url"))
+        posted = clean_text(j.get("published_at") or j.get("published") or j.get("date") or j.get("created_at"))
+        if not title or not url:
+            continue
+        # Worldwide/APAC is not automatically India-eligible; require explicit evidence.
+        if not classify_india(location, "", "", desc, "Remote"):
             continue
         _append_public_job(
-            jobs,
-            j.get("title"),
-            j.get("company_name") or j.get("company"),
-            loc or "India / Remote",
-            "Remote",
-            j.get("publication_date") or j.get("date"),
-            j.get("url") or j.get("job_url"),
-            "Remotive",
-            desc,
+            jobs, title, company, location or "Remote (India eligibility to verify)",
+            "Remote", posted, url, "Remote1stJobs", desc,
         )
+    print(f"Remote1stJobs: {len(jobs)} India-eligible discovery candidates (max 30 scanned)")
     return jobs
 
 
@@ -1461,19 +2025,38 @@ def fetch_jobopportunitiesapi():
         return jobs
 
     terms = [
-        "customer support", "customer service", "customer success",
-        "technical support", "support engineer", "support specialist",
-        "product support", "application support", "platform support",
-        "software support", "IT support", "help desk", "service desk",
-        "customer care", "customer experience", "client support",
-        "user support", "member support", "merchant support",
-        "partner support", "seller support", "developer support",
-        "API support", "integration support", "technical account",
-        "customer onboarding", "implementation", "customer operations",
-        "customer retention", "customer adoption", "customer enablement",
-        "escalation support", "payments support", "trust and safety",
-        "chat support", "email support", "contact center", "call center",
-        "customer relations", "customer engagement",
+        "customer support", "customer service", "customer success", "customer care",
+        "customer experience support", "customer experience specialist", "client support",
+        "client success", "account support", "support operations", "support lead",
+        "support manager", "support advisor", "support coordinator", "support consultant",
+        "support technician", "support representative", "support associate",
+        "technical support", "technical support engineer", "technical support specialist",
+        "technical support analyst", "support engineer", "support specialist", "support analyst",
+        "support analyst l1", "support analyst l2", "support analyst l3", "l1 support",
+        "l2 support", "l3 support", "help desk", "helpdesk", "help desk analyst",
+        "help desk engineer", "service desk", "service desk analyst", "service desk engineer",
+        "IT support", "IT support engineer", "desktop support", "end user support",
+        "user support", "application support", "application support analyst",
+        "application support engineer", "product support", "product support analyst",
+        "product support specialist", "platform support", "platform support engineer",
+        "software support", "software support engineer", "cloud support", "cloud support engineer",
+        "systems support", "network support", "production support", "production support engineer",
+        "operations support engineer", "escalation specialist", "escalation engineer",
+        "incident support", "support operations analyst", "support operations specialist",
+        "case management specialist", "ticketing specialist", "jira support specialist",
+        "implementation specialist", "implementation engineer", "implementation consultant",
+        "onboarding specialist", "onboarding engineer", "onboarding consultant",
+        "customer onboarding", "customer enablement", "customer training specialist",
+        "solutions support", "solutions support engineer", "client onboarding specialist",
+        "renewals support", "customer success manager", "customer success specialist",
+        "customer success operations", "customer success engineer", "customer adoption",
+        "customer retention", "technical account manager", "service delivery analyst",
+        "service delivery engineer", "customer advocacy", "customer operations",
+        "customer relations", "customer engagement", "chat support", "email support",
+        "contact center", "call center", "payments support", "trust and safety",
+        "member support", "merchant support", "partner support", "seller support",
+        "developer support", "API support", "integration support", "support implementation",
+        "customer health specialist", "renewal support", "customer issues specialist",
     ]
     day = datetime.now(timezone.utc).date().toordinal()
     start = (day * 3) % len(terms)
@@ -3532,38 +4115,211 @@ for _ats, _domains in V11_ATS_EXTRA_DOMAINS.items():
 
 # Larger contextual vocabulary for scoring and rescue of good support roles.
 V11_SUPPORT_CONTEXT_TERMS = [
-    "customer support", "customer service", "customer care", "client support",
-    "client services", "user support", "member support", "merchant support",
-    "seller support", "partner support", "provider support", "vendor support",
-    "community support", "consumer support", "player support", "driver support",
-    "rider support", "patient support", "student support", "developer support",
-    "technical support", "product support", "application support", "platform support",
-    "software support", "cloud support", "database support", "api support",
-    "integration support", "implementation support", "service desk", "help desk",
-    "helpdesk", "technical account", "technical account manager", "customer success",
-    "client success", "customer experience", "customer operations", "client operations",
-    "user operations", "customer lifecycle", "customer retention", "customer adoption",
-    "customer engagement", "customer advocacy", "customer education", "customer enablement",
-    "customer onboarding", "client onboarding", "implementation", "onboarding",
-    "professional services", "service delivery", "customer relations", "client relations",
-    "post-sales", "after sales", "renewals", "expansion", "churn", "escalation",
-    "escalations", "incident response", "incident management", "case management",
-    "ticketing", "support tickets", "support queue", "customer tickets", "customer cases",
-    "zendesk", "intercom", "freshdesk", "freshservice", "gorgias", "kustomer",
-    "helpscout", "salesforce service cloud", "service cloud", "servicenow",
-    "zoho desk", "hubspot service hub", "front", "gladly", "talkdesk", "genesys",
-    "nice cxone", "dixa", "sprinklr", "jira service management", "confluence",
-    "knowledge base", "help center", "help centre", "csat", "nps", "sla", "contact center",
-    "contact centre", "omnichannel", "live chat", "email support", "phone support",
-    "voice support", "chat support", "case resolution", "bug triage", "bug reproduction",
-    "technical troubleshooting", "troubleshooting", "diagnostics", "root cause analysis",
-    "customer journey", "customer health", "customer portfolio", "book of business",
-    "customer advocacy", "voice of customer", "voc", "service quality", "support quality",
-    "support training", "support enablement", "support workforce", "workforce management",
-    "quality analyst", "quality assurance", "trust and safety", "content moderation",
-    "fraud support", "payments support", "billing support", "order support", "delivery support",
-    "merchant operations", "seller operations", "partner operations", "customer operations",
-    "customer success operations", "cx operations", "customer care operations",
+    'customer support',
+    'customer service',
+    'customer care',
+    'client support',
+    'client services',
+    'user support',
+    'member support',
+    'merchant support',
+    'seller support',
+    'partner support',
+    'provider support',
+    'vendor support',
+    'community support',
+    'consumer support',
+    'player support',
+    'driver support',
+    'rider support',
+    'patient support',
+    'student support',
+    'developer support',
+    'technical support',
+    'product support',
+    'application support',
+    'platform support',
+    'software support',
+    'cloud support',
+    'database support',
+    'api support',
+    'integration support',
+    'implementation support',
+    'service desk',
+    'help desk',
+    'helpdesk',
+    'technical account',
+    'technical account manager',
+    'customer success',
+    'client success',
+    'customer experience',
+    'customer operations',
+    'client operations',
+    'user operations',
+    'customer lifecycle',
+    'customer retention',
+    'customer adoption',
+    'customer engagement',
+    'customer advocacy',
+    'customer education',
+    'customer enablement',
+    'customer onboarding',
+    'client onboarding',
+    'implementation',
+    'onboarding',
+    'professional services',
+    'service delivery',
+    'customer relations',
+    'client relations',
+    'post-sales',
+    'after sales',
+    'renewals',
+    'expansion',
+    'churn',
+    'escalation',
+    'escalations',
+    'incident response',
+    'incident management',
+    'case management',
+    'ticketing',
+    'support tickets',
+    'support queue',
+    'customer tickets',
+    'customer cases',
+    'zendesk',
+    'intercom',
+    'freshdesk',
+    'freshservice',
+    'gorgias',
+    'kustomer',
+    'helpscout',
+    'salesforce service cloud',
+    'service cloud',
+    'servicenow',
+    'zoho desk',
+    'hubspot service hub',
+    'front',
+    'gladly',
+    'talkdesk',
+    'genesys',
+    'nice cxone',
+    'dixa',
+    'sprinklr',
+    'jira service management',
+    'confluence',
+    'knowledge base',
+    'help center',
+    'help centre',
+    'csat',
+    'nps',
+    'sla',
+    'contact center',
+    'contact centre',
+    'omnichannel',
+    'live chat',
+    'email support',
+    'phone support',
+    'voice support',
+    'chat support',
+    'case resolution',
+    'bug triage',
+    'bug reproduction',
+    'technical troubleshooting',
+    'troubleshooting',
+    'diagnostics',
+    'root cause analysis',
+    'customer journey',
+    'customer health',
+    'customer portfolio',
+    'book of business',
+    'customer advocacy',
+    'voice of customer',
+    'voc',
+    'service quality',
+    'support quality',
+    'support training',
+    'support enablement',
+    'support workforce',
+    'workforce management',
+    'quality analyst',
+    'quality assurance',
+    'trust and safety',
+    'content moderation',
+    'fraud support',
+    'payments support',
+    'billing support',
+    'order support',
+    'delivery support',
+    'merchant operations',
+    'seller operations',
+    'partner operations',
+    'customer operations',
+    'customer success operations',
+    'cx operations',
+    'customer care operations',
+    'customer success engineer',
+    'customer success advocate',
+    'customer health specialist',
+    'renewal support',
+    'renewals support',
+    'implementation specialist',
+    'implementation engineer',
+    'implementation consultant',
+    'onboarding specialist',
+    'onboarding engineer',
+    'onboarding consultant',
+    'onboarding manager',
+    'account onboarding',
+    'client onboarding specialist',
+    'adoption specialist',
+    'customer training specialist',
+    'solutions support specialist',
+    'solutions support engineer',
+    'support implementation',
+    'support delivery',
+    'service delivery consultant',
+    'service delivery analyst',
+    'support case manager',
+    'case management specialist',
+    'ticketing specialist',
+    'jira support specialist',
+    'service management specialist',
+    'customer issues specialist',
+    'troubleshooting specialist',
+    'problem management support',
+    'root cause analyst',
+    'service quality analyst',
+    'support quality analyst',
+    'incident specialist',
+    'incident response specialist',
+    'helpdesk analyst',
+    'helpdesk engineer',
+    'help desk analyst',
+    'help desk engineer',
+    'service desk analyst',
+    'service desk engineer',
+    'desktop support analyst',
+    'desktop support engineer',
+    'end user support analyst',
+    'end user support engineer',
+    'infrastructure support engineer',
+    'cloud support engineer',
+    'cloud support specialist',
+    'systems support engineer',
+    'systems support analyst',
+    'network support engineer',
+    'field support engineer',
+    'production support engineer',
+    'production support analyst',
+    'operations support engineer',
+    'support operations engineer',
+    'support analyst l1',
+    'support analyst l2',
+    'support analyst l3',
+    'l1 support',
+    'l2 support',
+    'l3 support',
+    'success operations',
 ]
 for _term in V11_SUPPORT_CONTEXT_TERMS:
     if _term not in SUPPORT_CONTEXT_TERMS:
@@ -3841,7 +4597,7 @@ def is_company_homepage_url(url):
     blocked = {
         "google.com", "bing.com", "microsoft.com", "facebook.com", "linkedin.com",
         "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com", "wellfound.com",
-        "cutshort.io", "himalayas.app", "startup.jobs", "remotejobs.org",
+        "cutshort.io", "himalayas.app", "startup.jobs", "remoteok.com", "remotejobs.org",
         "weworkremotely.com", "jobicy.com", "reddit.com", "x.com", "twitter.com",
         "youtube.com", "instagram.com", "wikipedia.org", "github.com", "github.io",
     }
@@ -4662,7 +5418,7 @@ def extract_exact_job_url_from_page(source_url, title_hint=""):
         host = urlparse(href).netloc.lower()
         txt = clean_text(a.get_text(" ", strip=True)).lower()
         if any(x in host for x in [
-            "himalayas.app", "startup.jobs", "jobicy.com", "remotejobs.org",
+            "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org",
             "wellfound.com", "cutshort.io", "weworkremotely.com",
         ]):
             continue
@@ -5163,7 +5919,7 @@ def v11_crawl_nonstandard_exact(nonstandard, budget=500):
 def v11_clean_direct_jobs(jobs):
     """Ensure every V11 direct job points to employer/ATS rather than an aggregator."""
     blocked = {
-        "himalayas.app", "startup.jobs", "jobicy.com", "remotejobs.org",
+        "himalayas.app", "startup.jobs", "jobicy.com", "remoteok.com", "remotejobs.org",
         "wellfound.com", "cutshort.io", "weworkremotely.com",
     }
     out = []
@@ -5737,9 +6493,31 @@ def get_html(url, timeout=HTML_TIMEOUT):
 # --------------------------
 WD_RE = re.compile(r"https?://([^./?#]+)\.(wd\d+)\.myworkdayjobs\.com/([^?#]+)", re.I)
 WD_KEYWORDS = [
-    "customer support", "customer success", "technical support", "customer service",
-    "service desk", "support engineer", "product support", "application support",
-    "customer care", "client support", "technical account manager", "help desk",
+    "customer support", "customer service", "customer success", "customer care",
+    "customer experience support", "customer experience specialist", "client support",
+    "client success", "account support", "support operations", "support lead",
+    "support manager", "support advisor", "support coordinator", "support consultant",
+    "support technician", "support representative", "support associate",
+    "technical support", "technical support engineer", "technical support specialist",
+    "technical support analyst", "support engineer", "support specialist", "support analyst",
+    "support analyst l1", "support analyst l2", "support analyst l3", "l1 support",
+    "l2 support", "l3 support", "help desk", "helpdesk", "help desk analyst",
+    "help desk engineer", "service desk", "service desk analyst", "service desk engineer",
+    "it support", "it support engineer", "desktop support", "end user support",
+    "user support", "application support", "application support analyst",
+    "application support engineer", "product support", "product support analyst",
+    "product support specialist", "platform support", "platform support engineer",
+    "software support", "software support engineer", "cloud support", "systems support",
+    "network support", "production support", "operations support engineer",
+    "escalation specialist", "escalation engineer", "incident support",
+    "support operations analyst", "support operations specialist", "case management",
+    "ticketing specialist", "implementation specialist", "implementation consultant",
+    "onboarding specialist", "onboarding consultant", "customer onboarding",
+    "customer enablement", "customer training specialist", "solutions support",
+    "solutions support engineer", "client onboarding specialist", "renewals support",
+    "customer success manager", "customer success specialist", "customer success operations",
+    "customer success engineer", "customer adoption", "customer retention",
+    "technical account manager", "service delivery analyst", "service delivery engineer",
 ]
 
 
@@ -5968,86 +6746,6 @@ def fetch_workday_board(board, company_hint=""):
     return out
 
 
-
-def fetch_jobvetta():
-    """Fetch a tiny rotating slice of Jobvetta's free India jobs API.
-
-    The API allows 50 requests/day; this crawler uses at most four by default.
-    Results remain discovery candidates until the employer application URL is verified.
-    """
-    jobs = []
-    if not JOBVETTA_API_KEY:
-        print("Jobvetta: JOBVETTA_API_KEY not configured; skipping")
-        return jobs
-    terms = [
-        "customer support", "customer service", "technical support", "product support",
-        "customer success", "customer onboarding", "implementation specialist",
-        "application support", "help desk", "service desk", "customer experience",
-        "support specialist", "customer operations", "technical account manager",
-    ]
-    day = datetime.now(timezone.utc).date().toordinal()
-    start = (day * JOBVETTA_DAILY_QUERIES) % len(terms)
-    selected = [terms[(start + i) % len(terms)] for i in range(JOBVETTA_DAILY_QUERIES)]
-    seen = set()
-    for term in selected:
-        try:
-            r = SESSION.get(
-                "https://api.jobvetta.com/v1/jobs",
-                params={"q": term, "location": "India", "days": JOBVETTA_DAYS, "limit": 10},
-                headers={"Authorization": f"Bearer {JOBVETTA_API_KEY}", "Accept": "application/json"},
-                timeout=20,
-            )
-        except requests.RequestException as exc:
-            print(f"Jobvetta [{term}]: request error: {exc}")
-            continue
-        if r.status_code == 401:
-            print("Jobvetta: HTTP 401; check JOBVETTA_API_KEY")
-            break
-        if r.status_code == 429:
-            print("Jobvetta: daily request limit reached; stopping")
-            break
-        if r.status_code != 200:
-            print(f"Jobvetta [{term}]: HTTP {r.status_code}")
-            continue
-        try:
-            payload = r.json()
-        except ValueError:
-            print("Jobvetta: invalid JSON response")
-            continue
-        for j in payload.get("jobs") or []:
-            if not isinstance(j, dict):
-                continue
-            jid = clean_text(j.get("job_id") or j.get("id") or j.get("url"))
-            if jid and jid in seen:
-                continue
-            if jid:
-                seen.add(jid)
-            title = clean_text(j.get("title"))
-            if not title_relevant(title):
-                continue
-            loc = clean_text(j.get("location") or j.get("city") or "India")
-            model = clean_text(j.get("work_model") or j.get("workplace_type") or j.get("workplace") or j.get("remote_type")).lower()
-            if j.get("is_remote") is True or j.get("remote") is True:
-                model = "remote"
-            if j.get("is_hybrid") is True:
-                model = "hybrid"
-            workplace = "Remote" if "remote" in model else "Hybrid" if "hybrid" in model else ""
-            if not workplace:
-                # Do not infer remote eligibility from an India city alone.
-                continue
-            posted = parse_date(j.get("posted_at") or j.get("published_at") or j.get("created_at") or j.get("posted_date"))
-            if not feed_recent_enough(posted):
-                continue
-            link = clean_text(j.get("url") or j.get("job_url") or j.get("jobvetta_url") or j.get("apply_url") or j.get("source_url"))
-            if not link:
-                continue
-            desc = clean_text(j.get("description") or j.get("summary"))
-            _append_public_job(jobs, title, j.get("company") or j.get("company_name"), loc, workplace,
-                               posted, link, "Jobvetta", desc)
-    print(f"Jobvetta: {len(jobs)} discovery candidates from {len(selected)} request(s); daily cap={JOBVETTA_DAILY_QUERIES}")
-    return jobs
-
-
 def fetch_remotejobs_org():
     """Discovery-only feed. Query the support category with a few India terms.
 
@@ -6210,9 +6908,6 @@ def fetch_jooble():
 # on SerpApi's current 250-search free plan.
 GOOGLE_JOBS_QUERY_BANK = [
     'customer support customer service customer success India remote',
-    'India hybrid customer support technical support customer success careers',
-    'India hybrid product support support engineer application support jobs',
-    'India hybrid customer onboarding implementation success engineer careers',
     'technical support support engineer product support India remote',
     'implementation onboarding customer experience India remote',
     'technical account customer adoption customer enablement India remote',
@@ -6226,27 +6921,117 @@ GOOGLE_JOBS_QUERY_BANK = [
     'technical account manager customer success India hybrid',
 ]
 
-# Dedicated public search-index queries for employer ATS boards and job portals.
-# LinkedIn is intentionally excluded. Results are discovery leads, not proof of eligibility.
+# Dedicated public search-index queries for LinkedIn/Indeed job-detail URLs.
+# These are search-engine queries only; the crawler does not log into or bypass
+# LinkedIn/Indeed access controls. Results are leads that must pass normal checks.
 JOB_BOARD_QUERY_BANK = [
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:myworkdayjobs.com) ("customer support" OR "customer service") ("remote India" OR "India remote")',
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:myworkdayjobs.com) ("technical support" OR "product support" OR "application support") India (remote OR hybrid)',
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:myworkdayjobs.com) ("customer success" OR onboarding OR implementation) India (remote OR hybrid)',
-    '(site:jobs.smartrecruiters.com OR site:careers.smartrecruiters.com OR site:*.recruitee.com OR site:*.breezy.hr OR site:*.jobs.personio.com OR site:*.teamtailor.com) (support OR success OR onboarding) India remote',
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer support" OR "customer care" OR "chat support" OR "email support") India remote -developer -sales -marketing',
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("support analyst" OR "support specialist" OR "help desk" OR "service desk") India (remote OR hybrid)',
-    '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com OR site:hirist.tech OR site:apna.co) ("customer support" OR "technical support" OR "customer success") India remote',
-    '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com OR site:hirist.tech OR site:apna.co) ("customer support" OR "customer service" OR "help desk") India hybrid',
-    '(site:jobicy.com OR site:himalayas.app OR site:remoteok.com OR site:weworkremotely.com OR site:arbeitnow.com OR site:remotejobs.org) ("customer support" OR "customer success" OR "technical support") India',
-    '(site:jobs.smartrecruiters.com OR site:careers.smartrecruiters.com OR site:*.recruitee.com OR site:*.breezy.hr) ("customer experience" OR "client support" OR "customer operations") India remote',
-    '(site:myworkdayjobs.com OR site:*.wd1.myworkdayjobs.com OR site:*.wd3.myworkdayjobs.com OR site:*.wd5.myworkdayjobs.com) ("customer support" OR "technical support" OR "customer success") India',
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer onboarding" OR "implementation specialist" OR "technical account manager") India remote',
-    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("non voice" OR "voice process" OR "customer care" OR "contact center") India (remote OR hybrid)',
-    '(site:naukri.com OR site:foundit.in OR site:cutshort.io OR site:instahyre.com) ("product support" OR "application support" OR "IT support") (Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai OR India)',
-    '"customer support" India remote careers -linkedin -facebook -instagram -twitter',
-    '"technical support" India hybrid careers -linkedin -facebook -instagram -twitter',
-    '"customer success" India remote careers -linkedin -facebook -instagram -twitter',
-    '"implementation specialist" India hybrid careers -linkedin -facebook -instagram -twitter',
+    'site:jobs.lever.co ("hybrid" OR "2 days in office" OR "3 days in office") India "customer support"',
+    'site:boards.greenhouse.io ("hybrid" OR "partially remote") India "customer support"',
+    'site:jobs.ashbyhq.com ("hybrid" OR "2 days in office" OR "3 days in office") India "technical support"',
+    'site:apply.workable.com ("hybrid" OR "partially remote") India "customer success"',
+    '"customer support" hybrid India jobs',
+    '"technical support engineer" hybrid India jobs',
+    '"product support" hybrid India jobs',
+    '"customer success" hybrid India jobs',
+    '"application support" hybrid India jobs',
+    '"implementation specialist" hybrid India jobs',
+    '"helpdesk" hybrid India jobs',
+
+    'site:indeed.com/viewjob "customer support" India remote',
+    'site:indeed.com/viewjob "customer service" India remote',
+    'site:indeed.com/viewjob "technical support" India remote',
+    'site:indeed.com/viewjob "product support" India remote',
+    'site:indeed.com/viewjob "customer success" India remote',
+    'site:indeed.com/viewjob "customer onboarding" India remote',
+    'site:indeed.com/viewjob "implementation specialist" India remote',
+    'site:indeed.com/viewjob "technical account manager" India remote',
+    'site:indeed.com/viewjob "support specialist" "remote India"',
+    'site:indeed.com/viewjob "customer experience" "work from home" India',
+    'site:indeed.com/viewjob "chat support" India remote',
+    'site:indeed.com/viewjob "email support" India remote',
+    'site:indeed.com/viewjob "help desk" India remote',
+    'site:indeed.com/viewjob "application support" India remote',
+    'site:indeed.com/viewjob "service desk" India remote',
+    'site:indeed.com/viewjob "customer operations" India remote',
+    'site:indeed.com/viewjob "client support" India remote',
+    'site:indeed.com/viewjob "customer success associate" India remote',
+    'site:indeed.com/viewjob "customer support" India hybrid',
+    'site:indeed.com/viewjob "technical support" India hybrid',
+    'site:indeed.com/viewjob ("customer support" OR "customer service") ("remote India" OR "India remote" OR "work from home")',
+    'site:indeed.com/viewjob ("customer success" OR "client success") (India remote OR "remote India")',
+    'site:indeed.com/viewjob ("technical support" OR "product support" OR "application support") India remote',
+    'site:indeed.com/viewjob (support OR onboarding OR implementation) (India OR Bengaluru OR Chennai OR Pune OR Hyderabad OR Mumbai) remote',
+    'site:indeed.com/viewjob ("non voice" OR "voice process") India remote support',
+    # Query families: role × workplace × geography. Results still pass the strict
+    # India-eligibility and Remote/Hybrid quality gates before entering final sheets.
+    '"customer support" remote India jobs',
+    '"customer success" remote India jobs',
+    '"technical support" remote India jobs',
+    '"support engineer" remote India jobs',
+    '"service desk" remote India jobs',
+    '"help desk" remote India jobs',
+    '"application support" remote India jobs',
+    '"support specialist" remote India jobs',
+    '"implementation specialist" remote India jobs',
+    '"onboarding specialist" remote India jobs',
+    '"customer care" remote India jobs',
+    '"customer success manager" remote India jobs',
+    '"support analyst" remote India jobs',
+    '"customer success operations" remote India jobs',
+    '"implementation consultant" remote India jobs',
+    '"customer support" hybrid India jobs',
+    '"customer service" hybrid India jobs',
+    '"technical support" hybrid India jobs',
+    '"support engineer" hybrid India jobs',
+    '"product support" hybrid India jobs',
+    '"application support" hybrid India jobs',
+    '"customer success" hybrid India jobs',
+    '"help desk" hybrid India jobs',
+    '"service desk" hybrid India jobs',
+    '"implementation specialist" hybrid India jobs',
+    '"onboarding specialist" hybrid India jobs',
+    '"support operations" hybrid India jobs',
+    '"customer support" "work from home" India',
+    '"technical support" "work from home" India',
+    '"customer success" "work from home" India',
+    '"helpdesk" "work from home" India',
+    '"client support" "remote India"',
+    '"account support" "remote India"',
+    '"platform support engineer" India remote',
+    '"cloud support engineer" India remote',
+    '"production support engineer" India remote',
+    '"customer onboarding" India remote jobs',
+    '"customer enablement" India remote jobs',
+    '"escalation specialist" India remote jobs',
+    '"customer support SaaS" India remote',
+    '"remote customer support startup India"',
+    '"customer success startup India" remote',
+    '"remote India" "service desk" jobs',
+    '"remote India" helpdesk jobs',
+    '"support specialist India" "work from home"',
+    'site:careers.* customer support India remote',
+    'site:careers.* technical support India hybrid',
+    'site:careers.* customer success India remote',
+    'site:jobs.lever.co customer support India',
+    'site:jobs.lever.co customer success India',
+    'site:jobs.lever.co technical support India',
+    'site:boards.greenhouse.io customer support India',
+    'site:boards.greenhouse.io application support India',
+    'site:jobs.ashbyhq.com customer support India',
+    'site:jobs.ashbyhq.com customer success India',
+    'site:apply.workable.com technical support India',
+    'site:apply.workable.com customer success India',
+    'site:*.breezy.hr customer support India',
+    'site:*.recruitee.com technical support India',
+    'site:*.teamtailor.com customer success India',
+    'site:*.jobs.personio.com support India',
+    'site:*.bamboohr.com customer support India',
+    'site:*.pinpointhq.com support India',
+    'site:*.comeet.com customer success India',
+    'site:jobs.jobvite.com technical support India',
+    'site:*.icims.com service desk India',
+    'site:*.successfactors.com customer support India',
+    'site:*.myworkdayjobs.com customer success India',
 ]
 
 SEARCH_GOOGLE_QUERY_BANK = [
@@ -6330,6 +7115,26 @@ SEARCH_GOOGLE_QUERY_BANK = [
     '"email support" India "remote" careers -linkedin -indeed',
     '"non voice" India remote customer support careers -linkedin -indeed',
     '"voice process" India remote customer support careers -linkedin -indeed',
+    # Broader support-role families across ATS ecosystems and company career pages.
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:job-boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("support analyst" OR "support associate" OR "support representative" OR "support coordinator") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("help desk analyst" OR "helpdesk engineer" OR "service desk engineer" OR "desktop support") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("cloud support engineer" OR "platform support engineer" OR "production support engineer" OR "systems support") India remote',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("implementation specialist" OR "implementation consultant" OR "onboarding specialist" OR "customer enablement") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer success operations" OR "customer adoption" OR "customer retention" OR "renewals support") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("escalation specialist" OR "incident support" OR "support operations analyst" OR "case management specialist") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer care" OR "client support" OR "account support" OR "customer experience specialist") India (remote OR hybrid)',
+    '(site:jobs.lever.co OR site:boards.greenhouse.io OR site:jobs.ashbyhq.com OR site:apply.workable.com) ("customer support" OR "technical support" OR "product support") ("APAC" OR "Asia Pacific") (remote OR hybrid) India',
+    '("remote-first" OR "remote first") ("customer support" OR "technical support" OR "customer success") India jobs',
+    '("globally remote" OR "work from anywhere" OR "worldwide remote") ("customer support" OR "customer success" OR "support engineer") India eligible',
+    '("APAC" OR "Asia Pacific") ("customer support" OR "customer success" OR "technical support") remote India jobs',
+    '("customer support" OR "customer success" OR "technical support") India careers hybrid -sales -recruiter -marketing',
+    '("customer support" OR "customer service") India hybrid jobs -sales -recruiter -marketing',
+    '("application support" OR "IT support" OR "service desk") India remote jobs -developer -sales',
+    '("support engineer" OR "product support engineer" OR "software support engineer") India remote jobs -sales -presales',
+    '(site:*.breezy.hr OR site:*.recruitee.com OR site:*.teamtailor.com OR site:*.pinpointhq.com) ("customer support" OR "technical support" OR "customer success") India',
+    '(site:*.bamboohr.com OR site:*.jobs.personio.com OR site:*.comeet.com OR site:jobs.jobvite.com) ("customer support" OR "application support" OR "service desk") India',
+    '(site:*.icims.com OR site:*.successfactors.com OR site:*.myworkdayjobs.com OR site:*.phenompeople.com) ("customer support" OR "product support" OR "customer success") India',
+
 ]
 
 SEARCH_ATS_QUERY_BANK = [
@@ -6416,7 +7221,8 @@ SEARCH_ATS_QUERY_BANK = [
     '"India" "remote" "technical account manager" careers',
 ]
 
-# Social-post discovery is intentionally disabled. LinkedIn and X/Twitter are excluded.
+# Social-post discovery is intentionally disabled: posts age poorly and are hard to verify.
+# LinkedIn job-detail searches remain in JOB_BOARD_QUERY_BANK; X/Twitter are not searched.
 SOCIAL_SEARCH_QUERY_BANK = []
 
 SEARCH_PROVIDER_NAMES = [
@@ -6758,57 +7564,6 @@ def _search_bing_rss(query):
         return []
 
 
-_PUBLIC_HTML_SEARCH_SEMAPHORE = threading.BoundedSemaphore(2)
-_DDG_LAST_REQUEST = 0.0
-_DDG_REQUEST_LOCK = threading.Lock()
-
-
-def _search_duckduckgo_html(query):
-    """Small, rate-limited DuckDuckGo HTML discovery fallback; never bypasses blocks."""
-    global _DDG_LAST_REQUEST
-    if not PUBLIC_SERP_FALLBACK_ENABLED:
-        return []
-    try:
-        with _PUBLIC_HTML_SEARCH_SEMAPHORE:
-            with _DDG_REQUEST_LOCK:
-                wait = 1.25 - (time.monotonic() - _DDG_LAST_REQUEST)
-                if wait > 0:
-                    time.sleep(wait)
-                _DDG_LAST_REQUEST = time.monotonic()
-            r = SESSION.get(
-                "https://html.duckduckgo.com/html/",
-                params={"q": query},
-                headers={"Accept": "text/html,application/xhtml+xml",
-                         "Referer": "https://duckduckgo.com/"},
-                timeout=15,
-            )
-        if r.status_code in {403, 429, 503}:
-            print(f"SEARCH duckduckgo_html HTTP {r.status_code}; skipping without retry")
-            return []
-        if r.status_code != 200:
-            print(f"SEARCH duckduckgo_html HTTP {r.status_code}")
-            return []
-        soup = BeautifulSoup(r.text, "html.parser")
-        out = []
-        for node in soup.select("a.result__a, a.result-link"):
-            href = normalize_url(node.get("href", ""))
-            title = clean_text(node.get_text(" ", strip=True))
-            if not href.startswith(("https://", "http://")) or not title:
-                continue
-            parent = node.find_parent(class_=re.compile(r"result", re.I))
-            snippet = clean_text(parent.get_text(" ", strip=True)) if parent else ""
-            host = urlparse(href).netloc.lower()
-            if host.endswith("duckduckgo.com"):
-                continue
-            out.append({"url": href, "title": title, "snippet": snippet})
-            if len(out) >= SEARCH_RESULTS_PER_QUERY:
-                break
-        return out
-    except Exception as exc:
-        print(f"SEARCH duckduckgo_html error: {type(exc).__name__}: {exc}")
-        return []
-
-
 def _search_provider(name, query):
     return {
         "serper": _search_serper,
@@ -6824,7 +7579,6 @@ def _search_provider(name, query):
         "serpsearch": _search_serpsearch,
         "freesea": _search_freesea,
         "bing_rss": _search_bing_rss,
-        "duckduckgo_html": _search_duckduckgo_html,
         "serpapi_google_jobs": _search_serpapi_google_jobs,
     }.get(name, lambda _q: [])(query)
 
@@ -6906,17 +7660,12 @@ def discover_search_engine_urls():
         general_budget = min(fallback_budget, len(general_bank))
         fallback_start = (day * max(1, general_budget)) % len(general_bank)
         general_queries = [general_bank[(fallback_start+i)%len(general_bank)] for i in range(general_budget)]
-        # Split the modest public-search budget between Bing RSS and DuckDuckGo HTML.
-        # If one endpoint blocks requests, the other remains a separate best-effort source.
-        bing_budget = (general_budget + 1) // 2
-        ddg_budget = general_budget // 2
-        tasks.extend(("bing_rss", q) for q in general_queries[:bing_budget])
-        tasks.extend(("duckduckgo_html", q) for q in general_queries[bing_budget:bing_budget + ddg_budget])
+        tasks.extend(("bing_rss", q) for q in general_queries)
 
     print(
         f"SEARCH DISCOVERY: providers={','.join(configured) or 'none'} available_keys={len(configured_all)} api_budget={SEARCH_API_PROVIDERS_PER_RUN} "
-        f"public_fallback={'bing_rss+duckduckgo_html' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
-        f"fallback_queries={sum(1 for p,_ in tasks if p in {'bing_rss','duckduckgo_html'})} "
+        f"public_fallback={'bing_rss' if PUBLIC_SERP_FALLBACK_ENABLED else 'off'} "
+        f"fallback_queries={sum(1 for p,_ in tasks if p == 'bing_rss')} "
         f"social_queries={len(social_queries)} "
         f"google_queries={len(google_queries) if GOOGLE_DISCOVERY_ENABLED else 0} "
         f"google_jobs_queries={len(google_jobs_queries)} "
@@ -7005,7 +7754,7 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
     generating jobs after the initial discovery run.
     """
     added_boards=0; added_careers=0; discovery=[]
-    review_only_hosts={"indeed.com","glassdoor.com","ziprecruiter.com","monster.com","x.com","twitter.com","reddit.com"}
+    review_only_hosts={"linkedin.com","indeed.com","glassdoor.com","ziprecruiter.com","monster.com","x.com","twitter.com","reddit.com"}
     role_re = re.compile(
         r"customer\s+(?:support|service|success|experience|care)|"
         r"technical\s+support|technical\s+account|product\s+support|support\s+engineer|"
@@ -7020,10 +7769,11 @@ def add_search_discovery_to_maps(search_results, board_map, career_map):
         full_host=parsed.netloc.lower().split(":",1)[0]
         host=full_host[4:] if full_host.startswith("www.") else full_host
         path_lower = (parsed.path or "").lower()
-        # Explicitly discard social platforms we do not use as job sources.
-        if host == "linkedin.com" or host.endswith(".linkedin.com"):
-            continue
+        # Explicitly discard X/Twitter results even if a broad search query
+        # happens to return one. Keep LinkedIn job-detail pages, but not posts/feed updates.
         if host == "x.com" or host.endswith(".x.com") or host == "twitter.com" or host.endswith(".twitter.com"):
+            continue
+        if (host == "linkedin.com" or host.endswith(".linkedin.com")) and ("/posts/" in path_lower or "/feed/update/" in path_lower):
             continue
         review_only_host = any(host == root or host.endswith("." + root) for root in review_only_hosts)
         social_host = any(host == root or host.endswith("." + root) for root in {"reddit.com"})
@@ -7336,9 +8086,8 @@ def discover_company_manifest():
     openjobs=load_openjobs_india_seeds()
     careers=load_awesome_career_pages()
     india_ats=load_india_ats_directory()
-    # Refresh directory seeds; these pages are cheap compared with ATS crawling.
-    try: wf_companies,_=extract_wellfound_seeds()
-    except Exception: wf_companies=[]
+    # Wellfound directory crawling is disabled by request; discover employer career/ATS pages instead.
+    wf_companies=[]
     cs_companies=[]  # Cutshort disabled by request; avoid spending discovery requests on it.
     print("CUTSHORT: disabled by configuration")
     existing=_load_json(COMPANIES_FILE,[])
@@ -8009,14 +8758,13 @@ def feed_direct_only():
     """
     feeds = [
         ("Himalayas", fetch_himalayas),
-        ("Remotive", fetch_remotive),
-        ("Jobvetta", fetch_jobvetta),
         ("Arbeitnow", fetch_arbeitnow),
         ("Working Nomads", fetch_working_nomads),
         ("We Work Remotely", fetch_wwr_rss),
         ("Jobicy", fetch_jobicy),
         ("Startup Jobs", fetch_startup_jobs),
         ("Job Opportunities API", fetch_jobopportunitiesapi),
+        ("Remote1stJobs", fetch_remote1stjobs),
         ("Remote Landers", fetch_remote_landers),
         ("RemoteJobs.org", fetch_remotejobs_org),
         ("Adzuna", fetch_adzuna),
@@ -8839,23 +9587,16 @@ def main_v11():
     print("================================================")
     print(f"Started UTC: {datetime.now(timezone.utc).isoformat()}")
     print("Public feeds + exact ATS + company career pages + Common Crawl/Wayback")
-    if args.discover or args.feeds:
-        print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
-        print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
-        print(f"Jobvetta API: {'configured' if JOBVETTA_API_KEY else 'NOT configured'} (daily request budget={JOBVETTA_DAILY_QUERIES})")
-    else:
-        print("Aggregator API keys: checked only in --feeds stage; ATS workers do not need them")
+    print(f"Startup Jobs API: {'configured' if STARTUP_JOBS_API_KEY else 'NOT configured'}")
+    print(f"Job Opportunities API: {'configured' if JOB_OPPORTUNITIES_API_KEY else 'NOT configured'} (safe daily budget={JOA_DAILY_RECORD_BUDGET})")
     if EXTERNAL_FETCH_FALLBACK_ENABLED and EXTERNAL_FETCH_MAX_CALLS > 0:
         print("External fallbacks enabled: " + ", ".join([x for x,ok in [("Jina",bool(JINA_API_KEY)), ("ScrapingAnt",bool(SCRAPINGANT_API_KEY)), ("BrightData",bool(BRIGHTDATA_API_KEY)), ("Firecrawl",bool(FIRECRAWL_API_KEY)), ("ScraperAPI",bool(SCRAPERAPI_API_KEY)), ("Diffbot",bool(DIFFBOT_API_KEY))] if ok]) or "none configured")
     else:
         print("External fallbacks: DISABLED (no external scraping-service calls)")
     print(f"External fallback safety cap: {EXTERNAL_FETCH_MAX_CALLS} calls/run")
     configured_search_names = [x for x,ok in [("Serper",bool(SERPER_API_KEY)), ("You",bool(YOU_API_KEY)), ("Exa",bool(EXA_API_KEY)), ("Tavily",bool(TAVILY_API_KEY)), ("Searlo",bool(SEARLO_API_KEY)), ("Search1",bool(SEARCH1_API_KEY)), ("SerpApi",bool(SERPAPI_API_KEY))] if ok]
-    if args.discover:
-        print("Search discovery providers: " + ", ".join(configured_search_names or ["none configured"]))
-        print(f"Public no-key search fallback: {'enabled' if PUBLIC_SERP_FALLBACK_ENABLED else 'disabled'} (Bing RSS; bounded; no Google HTML scraping)")
-    else:
-        print("Search discovery runs in --discover prepare step; ATS/feed workers do not need search-provider keys")
+    print("Search discovery providers: " + ", ".join(configured_search_names or ["none configured"]))
+    print(f"Public no-key search fallback: {'enabled' if PUBLIC_SERP_FALLBACK_ENABLED else 'disabled'} in the --discover prepare step")
     print(f"Search API provider budget: {SEARCH_API_PROVIDERS_PER_RUN} per run; homepage crawl budget: {V11_CAREER_HOMEPAGE_BUDGET}; career page depth: {V11_CAREER_PAGE_LIMIT}")
     print(f"Google Jobs discovery: {'enabled' if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY else 'disabled'} | SerpApi organic Google: {'enabled' if SERPAPI_ORGANIC_DISCOVERY_ENABLED else 'disabled (quota reserved for Google Jobs)'}")
     if GOOGLE_JOBS_ENABLED and SERPAPI_API_KEY:
