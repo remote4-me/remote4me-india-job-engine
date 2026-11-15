@@ -1,5 +1,17 @@
 [
   {
+    "discovery_url": "https://ats.rippling.com/birdeye-inc/jobs/375797b7-009f-4c33-95a8-0958a116bb96",
+    "title": "Search Jobs | All Job Openings at Birdeye | Birdeye",
+    "snippet": "Customer Success Manager, SMBGurugram, India ## Engineering (R&D) AI EngineerGurugram, India Principal Voice Platform Engineer (Conversational AI)Gurugram, India Senior AI EngineerGurugram, India Senior Director, Engineering (Customer Experience)Gurugram, India ## Finance & Legal Procurement ManagerGurugram, India Senior Manager, FP&A, GTMPalo Alto, CA ## Information Technology Senior IT ManagerCoppell, TX ## Managed Services Manager, Managed ServicesRemote (United States) REMOTE [...] Business Development Representative, MynaGurugram, India Implementation Specialist, AI & VoiceGurugram, India Myna Account Executive, Healthcare and DentalRemote (United States) REMOTE Myna Enterprise Account Executive, Healthcare and DentalRemote (United States) REMOTE Sales Manager, MynaGurugram, India Senior Director, Engineering (AI Voice Agents)Gurugram, India Senior Product Manager, Voice AIGurugram, India ## Revenue Operations & Business Intelligence [...] ALL DEPARTMENTS (43) Account Management (2) Business Development Representative (7) Customer Success Management (1) Engineering (R&D) (4) Finance & Legal (2) Information Technology (1) Managed Services (2) Marketing (5) Myna (8) Revenue Operations & Business Intelligence (1) Sales (10) ## Account Management Account Manager, CommercialDallas, TX REMOTE Account Manager, SMB (Upsells)Gurugram, India ## Business Development Representative",
+    "source": "Search/tavily",
+    "query": "site:*.rippling.com India remote support careers",
+    "score": 100,
+    "company": "Search Jobs",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes",
+    "detail_status": "Pending original job-page verification"
+  },
+  {
     "discovery_url": "https://ats.rippling.com/rsa-security/jobs",
     "title": "RSA Career Opportunities | RSA Security",
     "snippet": "RSA Career Opportunities | RSA Security # RSA Career Opportunities ## Customer Support Advisor, Customer Success Engineer, Spanish Speaker Customer Support Mexico, Mexico Consultant, Customer Success Engineer, Spanish Speaker Customer Support Cairo, Egypt Sr Engineer, Technical Support Customer Support Cairo, Egypt Technical Support Engineer Customer Support Bangalore, India Technical Support Engineer 2 Customer Support Cairo, Egypt Technical Support Engineer 2 [...] Customer Support Cairo, Egypt Technical Support Engineer 2 Customer Support Bangalore, India ## Facilities Administrative Assistant 1 Facilities Bangalore, India ## Finance Sr Analyst, Accounting Finance Bangalore, India ## IT Senior Business Analyst, Salesforce IT Cairo, Egypt Senior CRM Developer, Salesforce and HubSpot IT Cairo, Egypt ## Marketing ABM Campaign Specialist Marketing Cairo, Egypt Advisor, Campaign Advertising Specialist Marketing Cairo, Egypt",
@@ -11,18 +23,6 @@
     "crawl_seed": "Yes"
   },
   {
-    "discovery_url": "https://www.rippling.com/careers/life",
-    "title": "Life at Rippling | Meet Our Big Magical Team",
-    "snippet": "A natural problem-solver with a love for world travel, she's sold to clients across Europe, the U.S., Australia, and Singapore — all while based in India. Read to see how her curiosity, adaptability, and global perspective fuel the way she connects with early-stage founders and serves as the front face of the Rippling brand. Read article Purple profile of a person with a line chart and app symbol Jihai Xu Senior Software Engineer, Device Management at Rippling [...] Actually, all over it. We started in San Francisco, but our home is everywhere. With offices in Bengaluru, Beijing, Warsaw, and counting, Rippling can truly call itself a global company. Our team hails from a diverse set of backgrounds, speaking more than 30 languages from all over the world. If we haven't set up shop near you yet, join us and plant the flag. Colorful miniature city with bridges, towers, mountains, and a blimp ## Meet the Ripplers Read more stories Maeve Shannon [...] Read article A smiling man with glasses on a purple background, surrounded by tech UI elements, code snippets, and an app icon. Geovani Montepeque Supervisor, Technical Product Support, R&D Ops at Rippling ## Meet Geovani Montepeque, a Supervisor on Rippling's Technical Product Support team.",
-    "source": "Search/tavily",
-    "query": "site:*.rippling.com India remote support careers",
-    "score": 100,
-    "company": "Life at Rippling",
-    "seed_type": "Google Job Page",
-    "crawl_seed": "Yes",
-    "detail_status": "Pending original job-page verification"
-  },
-  {
     "discovery_url": "https://www.rippling.com/blog/how-to-work-from-india-for-us-company",
     "title": "How to work from India for a US company | Rippling",
     "snippet": "Remote customer support roles have become increasingly popular, offering flexibility for workers and cost savings for companies. With the help of technology, customer service representatives can now often work from anywhere, providing assistance through phone, email, or live chat. ### Software development [...] And if you’re looking to work for a US company with an office in India, Rippling is hiring talented, passionate people. We have open positions in engineering, sales, customer support, and more. Graphic illustration of the Rippling logo on a tile connected to lines that look like circuits Work from anywhere in the world See Rippling Disclaimer [...] Remote work opens up a global marketplace for job seekers. For professionals in India, this means access to opportunities with US companies that were previously out of reach due to geographic constraints. And from startups to large global enterprises, more and more companies hiring remote workers are looking to countries like India, which is uniquely positioned in the global marketplace due to its large population of English-speaking tech talent. ### Better work-life balance",
@@ -30,6 +30,18 @@
     "query": "site:*.rippling.com India remote support careers",
     "score": 100,
     "company": "How to work from India for a US company",
+    "seed_type": "Google Job Page",
+    "crawl_seed": "Yes",
+    "detail_status": "Pending original job-page verification"
+  },
+  {
+    "discovery_url": "https://ats.rippling.com/nutrient/jobs/046b21ae-ed1b-4816-acca-4206b44cb5e6",
+    "title": "Account Manager",
+    "snippet": "2+ years in Account Management or Sales in B2B SaaS or tech, with a proven track record of growing mid-market or enterprise accounts Able to understand and articulate technical products to both business and technical audiences Salesforce (or equivalent CRM) experience; Gong familiarity a plus High energy and execution-focused, comfortable in a fast-paced, fully remote environment without heavy structure [...] We’re a globally distributed company backed by Insight Partners, with a mostly remote team and offices in the US, UK, France, and Austria. We embrace a low-meeting culture and prioritise async communication. We offer competitive salaries and comprehensive benefits. [...] Our platform supports nearly a billion end users globally across 80+ countries, including Fortune 500 firms, governments, and industry pioneers. # Your Role at Nutrient... We’re looking for a driven Account Manager to own and grow a portfolio of mid-market and enterprise customers. This is a genuine ground-floor opportunity; the AM function at Nutrient has only existed since January 2026, and you’ll help shape how we engage with our existing customer base from the start.",
+    "source": "Search/tavily",
+    "query": "site:*.rippling.com India remote support careers",
+    "score": 100,
+    "company": "Account Manager",
     "seed_type": "Google Job Page",
     "crawl_seed": "Yes",
     "detail_status": "Pending original job-page verification"
@@ -46,6 +58,17 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://www.shine.com/jobs/technical-support-engineer-remote-or-hybrid/jobrapido/19562418",
+    "title": "Technical Support Engineer - Remote or Hybrid Job in Jobrapido at Delhi - Shine.com",
+    "snippet": "with incident response processes, threat hunting, and cybersecurity frameworks.Flexible to travel and work from customer sites.Industry certifications such as CEH, CISSP, CCNA/CCNP, GCIA, GCIH, or equivalent desirable. Experience with cloud environments (AWS, Azure) and hybrid network architectures. Prior experience supporting or deploying AI/ML-based security solutions . [...] Posted ByJobrapido # Technical Support Engineer - Remote or Hybrid Jobrapido LocationDelhi Experience4 to 8 Yrs SalaryNot Disclosed TypeFull Time 0 similar jobs foundExplore ## Skills For This Role 10 skills network infrastructureinstallationconfigurationintegrationoptimizationnetwork traffic analysisNetFlowNetwork Detection Response NDRcybersecuritypacket captures PCAP ## Job Description [...] and validate threat detection. Support SOC setup, tuning, and operationalization, leveraging hands-on experience in security monitoring and incident handling. Conduct root cause analysis (RCA) and provide clear, actionable remediation steps to customers. Engage with customers through tickets, calls, email, and remote sessions, ensuring clear communication and professional service delivery. Maintain accurate case documentation, deployment guides, and knowledge base articles. Apply strong",
+    "source": "Google/tavily",
+    "query": "\"technical support engineer\" hybrid India jobs",
+    "score": 95,
+    "company": "Technical Support Engineer",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://www.remoterocketship.com/country/india/jobs/support-engineer",
     "title": "Remote Support Engineer Jobs in India | RemoteRocketship.com",
     "snippet": "AWS Azure Cloud Google Cloud Platform iOS Java Linux Python Scala ### Technical Support Engineer 🕒 October 30 🕒 October 30 #### Nozomi Networks 201 - 500 🏭 Manufacturing 🎖️ Defense 📦 Logistics Technical Support Engineer resolving customer infrastructure and security issues for Nozomi Networks. Supporting OT and IoT cybersecurity deployments through troubleshooting, consulting, and knowledge development. 🇮🇳 India – Remote ⏰ Full Time 🟡 Mid-level 🟠 Senior 📞 Support Engineer [...] 🕒 October 30 🕒 October 30 #### Yugabyte 201 - 500 ☁️ SaaS Technical Support Engineer troubleshooting distributed databases and cloud infrastructure for YugabyteDB, Yugabyte’s open-source PostgreSQL database. Supporting customers across APJ-aligned hours and weekend coverage. 🇮🇳 India – Remote 💰 $188M Series C on 2021-10 ⏰ Full Time 🟡 Mid-level 🟠 Senior 📞 Support Engineer 👻 Ghost score 10% info info [...] Linux Python RabbitMQ ServiceNow SQL ### Senior Technical Support Engineer 🕒 6 days ago 🕒 6 days ago #### Transmit Security 201 - 500 💼 Consulting 🛡️ Insurance 📦 Logistics Senior Technical Support Engineer resolving complex Tier 3 issues for Transmit Security’s identity security and fraud prevention platform. Supporting enterprise customers through root cause analysis, escalations, and product improvements. 🇮🇳 India – Remote 💰 $543M Series A on 2021-06 ⏰ Full Time 🟠 Senior",
@@ -59,7 +82,7 @@
   {
     "discovery_url": "https://www.remoterocketship.com/country/india/jobs/product-support-specialist",
     "title": "Remote Product Support Specialist Jobs in India",
-    "snippet": "Search 14 product support specialist remote jobs in India. Apply to flexible positions. Hybrid jobs Onsite jobs Posted within Any time. No salary listed.",
+    "snippet": "Support Specialist resolving technical issues for Hiver’s AI-driven customer service platform. Supporting customers through email, chat, and calls while improving service processes. 🇮🇳 India – Remote 💰 $22M Series B - Hiver on 2022-01 ⏰ Full Time 🟡 Mid-level 🟠 Senior💝 Customer Support 👻 Ghost score 10% infoinfo [...] We analyzed 6 job listings in the last year and found it takes about 104 days for employers to close a job opening. ## The most in-demand skills for product support specialists in India We reviewed 6 job postings and found the top 10 skills employers are asking for most often are: Customer support33.3% Problem solving33.3% Technical troubleshooting33.3% Ticket management33.3% Account provisioning16.7% Ai16.7% Analysis16.7% Analytical mindset16.7% Application testing16.7% [...] Product Support Engineer troubleshooting APIs, integrations, and configuration issues for Sprinto’s autonomous trust platform. Investigating customer problems and partnering with Product and Engineering through resolution. 🇮🇳 India – Remote⏰ Full Time 🟡 Mid-level 🟠 Senior📞 Support Engineer 👻 Ghost score 29% infoinfo",
     "source": "Google/tavily",
     "query": "\"product support\" hybrid India jobs",
     "score": 95,
@@ -103,7 +126,7 @@
   {
     "discovery_url": "https://jobera.com/jobs/product-support-manager/india",
     "title": "Product Support Manager Jobs in India [Remote, Hybrid, On-site] | Jobera",
-    "snippet": "Role Overview We are seeking a high-energy, strategic Product Support Manager to lead our global, multi-tier support organization (L1, L2, and L3). As the bridge between our customers and our technical teams, you will be responsible for the health of our support ecosystem, the growth of our eng India ### Product Support Manager [...] Role Overview We are seeking a high-energy, strategic Product Support Manager to lead our global, multi-tier support organization (L1, L2, and L3). As the bridge between our customers and our technical teams, you will be responsible for the health of our support ecosystem, the growth of our eng airliquidehr India ### EPC Product Support Manager [...] How will you CONTRIBUTE and GROW? The DDS InnoTech - EPC Product Support Manager oversees the global support ecosystem of EPC products within the Digital Delivery Services (DDS) Innotech. He/She is in charge of leading, planning, directing and controlling all activities related to Product Delivery a airliquidehr India ### EPC Product Support Manager",
+    "snippet": "HomeJobsLocationsIndia # Product Support Manager Jobs in India 1 open positions 1 jobs Create a free account for extra job tools. Log in Showing1 of 1 jobs notionnotion·IndiaIndia·Hybrid ### Product Support Specialist 23 Lowest [...] 23 Lowest Who We Are Notion is the collaborative AI workspace where teams and agents think together. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run Customer SupportOtherProduct Support SpecialistProduct Support ManagerFull-TimeMid See 4 similar> Quick Apply 6 0 0 3mo ago notion notion·IndiaIndia·Hybrid [...] ### Product Support Specialist Customer SupportOtherProduct Support SpecialistProduct Support ManagerFull-TimeMid 23 Lowest 3mo ago 6 views0 saves 0 applied Who We Are Notion is the collaborative AI workspace where teams and agents think together. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run See 4 similar Quick Apply",
     "source": "Google/tavily",
     "query": "\"product support\" hybrid India jobs",
     "score": 95,
@@ -145,6 +168,28 @@
     "crawl_seed": "Yes"
   },
   {
+    "discovery_url": "https://nextraise.ai/jobs/customer-success-manager-jobs-in-india",
+    "title": "Customer Success Manager Jobs in India: 300+ Openings",
+    "snippet": "## Live jobs 390 12 posted this week ## Top hiring companies ## Cities ## Experience asked of 272 that state it ## Work mode of 128 that state it ## Yearly pay, middle half ₹3.2L to ₹13.3L median ₹6L, from 147 listings that publish pay Updated Nov 15, 2026 from live listings on NextRaise. ## Which of these jobs fit you best? Free · takes 30 seconds ## Free tools for Customer Success Manager job seekers ## Customer Success Manager jobs in India: quick answers [...] ## Customer Success Manager – Plum ## Customer Success Manager (India, US Eastern Shift) ## Senior Customer Success Manager ## Customer Success Manager ## Senior Client Success Manager ## Customer Success Partner ## India Customer Success Leader ## India Customer Success Leader ## Client Success Manager ## Associate Client Success Manager - Manufacturing New Customer Success Manager jobs in India, emailed to you We send them as they are posted. Free, and you can stop anytime. [...] # Customer Success Manager Jobs in India (390) More ways to share ## Senior Customer Success Manager Level- II ## Customer Success Specialist ## Customer Success Manager – Software Advisory Services (SAS) ## Customer Success Manager ## Customer Success Manager ## Digital Customer Success Manager ## Customer Success Manager – Software Advisory Services (SAS) - India ## Customer Success Manager – Regular ## Digital Customer Success Manager ## Senior Manager – Customer Success (SA&I)",
+    "source": "Google/tavily",
+    "query": "\"customer success\" hybrid India jobs",
+    "score": 95,
+    "company": "Customer Success Manager Jobs in India: 300+ Openings",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://useastra.in/jobs/category/customer-success",
+    "title": "Customer Success Jobs in India, Direct Apply Links | Astra",
+    "snippet": "HybridCustomer Success · Posted 1 day ago UKG UK UKG logo ₹10–20 LPAMidPune, India HybridCustomer Success · Posted 1 day ago Eurofins Scientific ES Eurofins Scientific logo ₹6–11 LPAEntryBangalore, India HybridCustomer Success · Posted 1 day ago Digitide Solutions DS Digitide Solutions logo ₹6–11 LPAEntryChennai, India On-siteCustomer Success · Posted 2 days ago Zycus ZY Zycus logo ₹10–20 LPAMidMumbai, India HybridCustomer Success · Posted 2 days ago Vontier VO [...] PA Palo Alto Networks logo ₹21–42 LPAStaffBangalore, India On-siteCustomer Success · Posted 1 day ago Zimperium ZI Zimperium logo ₹15–30 LPASeniorIndia RemoteCustomer Success · Posted 1 day ago Perforce Software PS Perforce Software logo ₹10–20 LPAMidPune, India HybridCustomer Success · Posted 1 day ago Netenrich NE Netenrich logo ₹16–32 LPAManagerBangalore, India On-siteCustomer Success · Posted 1 day ago Salesforce SA Salesforce logo ₹16–32 LPAManagerBangalore, India [...] Vontier VO Vontier logo ₹10–20 LPAMidBangalore, India On-siteCustomer Success · Posted 2 days ago Perforce Software PS Perforce Software logo ₹10–20 LPAMidPune, India HybridCustomer Success · Posted 2 days ago Atomicwork AT Atomicwork logo ₹10–20 LPAMidBangalore, India On-siteCustomer Success · Posted 2 days ago Tata Communications TC Tata Communications logo ₹6–11 LPAEntryPune, India On-siteCustomer Success · Posted 2 days ago Ocient OC Ocient logo ₹33 LPASeniorIndia",
+    "source": "Google/tavily",
+    "query": "\"customer success\" hybrid India jobs",
+    "score": 95,
+    "company": "Customer Success Jobs in India, Direct Apply Links | Astra",
+    "seed_type": "Google Career Page",
+    "crawl_seed": "Yes"
+  },
+  {
     "discovery_url": "https://wellfound.com/role/l/client-success-manager/india",
     "title": "Client Success Manager Jobs in India - 2027 | Wellfound",
     "snippet": "4 weeks ago Customer Success - Account ManagerFull-time ₹8L – ₹10L In office • Pune 1 year of exp 4 weeks ago 4 weeks ago ## Explore other job opportunities ### Explore other jobs in India [...] Based on past data, FloMobility usually responds to incoming applications within a few days Growing fast Showed strong hiring growth in the past month Key Account ManagerFull-time In office • Bangalore Urban 5 years of exp today today Recruiterflow company logo ## Recruiterflow Actively Hiring AI-native recruiting software 51-200 Employees B2B Growth Stage Expanding market presence Customer Success ManagerFull-time ₹15L – ₹25L • No equity In office • Bangalore Rural+1 [...] ## Carbon Trail Actively Hiring AI powered sustainability platform for fashion and retail industry11-50 Employees B2B Early Stage Startup in initial stages Customer Success & Technical Project ManagerFull-time ₹25L – ₹35L • 0.2% – 0.5% Remote only • Everywhere 3 years of exp 1 week ago 1 week ago Constructor.io company logo ## Constructor.io Actively Hiring Personalized and highly-relevant search and product discovery501-1000 Employees B2B Growth Stage",
@@ -153,6 +198,17 @@
     "score": 95,
     "company": "Client Success Manager Jobs in India",
     "seed_type": "Google Job Page",
+    "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://cutshort.io/jobs/customer-success-jobs",
+    "title": "297+ Customer Success Jobs in India | Cutshort",
+    "snippet": "Mandatory (Skill 3): Must have strong strategic thinking and excellent communication skills Mandatory (Company): B2B SaaS product companies or Survey platforms Mandatory (Note): This is a hybrid role with one position based in Mumbai and another position in Gurgaon Read more Browse more Customer Success Jobs in Mumbai | Customer Success Job openings in Mumbai → Talent Pro ## Founder's Office (Customer Success, saas IIT college only ### atTalent Pro Mayank choudhary [...] About the Role We are looking for a Customer Success Analyst who can work closely with Agile/Scrum teams and bring customer insights into product development. This role will act as a bridge between customers, product, and engineering teams by leveraging data from customer success platforms like Planhat. Key Responsibilities [...] Required Skills Minimum 2+ years of experience in Customer Support, Client Servicing, or Customer Success. Excellent verbal and written communication skills in English. Strong problem-solving and customer-handling abilities. Ability to manage multiple customer requests simultaneously. Good interpersonal and relationship-building skills. Basic knowledge of CRM and ticketing tools. Positive attitude, patience, and a customer-centric approach. Qualification",
+    "source": "Google/tavily",
+    "query": "\"customer success\" hybrid India jobs",
+    "score": 95,
+    "company": "297+ Customer Success Jobs in India | Cutshort",
+    "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
   },
   {
@@ -165,6 +221,18 @@
     "company": "Customer Service Jobs | Jobs at Amazon",
     "seed_type": "Google Career Page",
     "crawl_seed": "Yes"
+  },
+  {
+    "discovery_url": "https://in.indeed.com/q-technical-support-engineer-work-from-home-jobs.html",
+    "title": "Technical Support Engineer Work From Home jobs",
+    "snippet": "Provide timely technical support and troubleshooting assistance to customers through remote and on-site support. Minimum 3 years of experience in IT technical",
+    "source": "Public Job Board Search/tavily",
+    "query": "\"technical support engineer\" hybrid India jobs",
+    "score": 78,
+    "company": "Technical Support Engineer Work From Home jobs",
+    "seed_type": "Public Job Board Listing",
+    "crawl_seed": "No",
+    "detail_status": "Pending public post verification"
   },
   {
     "discovery_url": "https://www.indeed.com/q-technical-support-engineer-l-boulder,-co-jobs.html",
@@ -239,13 +307,13 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://www.indeed.com/q-customer-success-manager,customer-success-manager-jobs.html",
-    "title": "Now Hiring: 3,000 Customer Success Manager,customer Success Manager Jobs | Indeed",
-    "snippet": "Title: Now Hiring: 3,000 Customer Success Manager,customer Success Manager Jobs | Indeed # customer success manager,customer success manager jobs. | Customer Success Manager Hybrid work in New York, NY + $113,000 - $155,000 a year |. + View all Whatnot jobs in New York, NY - New York jobs. + Salary Search: Customer Success Manager salaries in New York, NY. + See popular questions & answers about Whatnot. | Client Success Manager Slate Magazine Remote + $70,000 - $80,000 a year |. + View all Slate Magazine jobs in Remote - Remote jobs. + Salary Search: Client Success Manager salaries in Remote. | Customer Success Manager, Industries Hybrid work in New York, NY + $200,000 - $265,000 a year |. + View all Anthropic jobs in New York, NY - New York jobs - Customer Success Manager jobs in New York, NY. + Salary Search: Customer Success Manager, Industries salaries in New York, NY. | Enterprise Customer Success Manager United States + $130,000 - $160,000 a year + Full-time |. + 5-7 years experience as a **Customer** **Success** **Manager** **or** Account **Manager** in Financial Services **or** Fraud. + View all SentiLink jobs in United States - United States jobs - Customer Success Manager jobs in United States. + Salary Search: Enterprise Customer Success Manager salaries in United States. | Customer Success Manager Verve Hybrid work in New York, NY Transit information 39 Ave + $90,000 - $105,000 a year |. + View all Verve jobs in New York, NY - New York jobs. | Strategic Customer Success Manager SentiLink United States + $160,000 - $190,000 a year |. + Salary Search: Strategic Customer Success Manager salaries in United States. + You have 4+ years of experience in client-facing roles such as account management, **customer** **success**, consulting, **or** business operations — with a strong track…. + View all EverCommerce jobs in Remote - Remote jobs - Customer Success Manager jobs in Remote. | Customer Success Manager Easily apply The Economist Group Hybrid work in New York, NY + $90,000 - $105,000 a year |. + View all The Economist Group jobs in New York, NY - New York jobs. Customer Success Manager jobs in New York, NY.",
+    "discovery_url": "https://www.indeed.com/q-product-support-specialist-l-florida-jobs.html",
+    "title": "Now Hiring: 300 Product Support Specialist Jobs in Florida | Indeed",
+    "snippet": "Title: Now Hiring: 300 Product Support Specialist Jobs in Florida | Indeed # product support specialist jobs in Florida. | Software Technical Support / Product Support Specialist (Full-time) PMWeb Hybrid work in Miami, FL |. ### Software Technical Support / Product Support Specialist (Full-time). | Product Support Specialist Herc Rentals Bonita Springs, FL 34134 |. ### Product Support Specialist. | Technical Support Analyst - Service Now Support City of Fort Lauderdale, FL Fort Lauderdale, FL 33309 |. ### Technical Support Analyst - Service Now Support. | Technical Support Analyst - Public Safety City of Fort Lauderdale, FL Fort Lauderdale, FL 33309 |. ### Technical Support Analyst - Public Safety. | Product Support Representative I FIS Global Hybrid work in Jacksonville, FL 32202 |. ### Product Support Representative I. | Product Support Specialist Safran Sarasota, FL 34243 |. | Global Product Support Specialist – Rotary Drilling Sandvik Alachua, FL |. ### Global Product Support Specialist – Rotary Drilling. | Technical Support Specialist DialedIn Plantation, FL |. ### Technical Support Specialist. ### Customer Service Manager (CSM). ### Sales Account Executive – Entry Level. ### Client Relations Manager - Entry Level. ### Director, Operations | New Accounts. | eCommerce Specialist - Video Chat, DC, (Tampa, FL) - Bench - Full Time Walt Disney World Resort Tampa, FL |. ### eCommerce Specialist - Video Chat, DC, (Tampa, FL) - Bench - Full Time. ### Technical Support Specialist, Ion Chromatography. ## Technical support roles. ### IT Technician. ### Tier 2 Technical Support Specialist. ### Customer Service Representative. ### Onsite IT Technician. | Tier 1 Software Support Relativistic Engine, LLC Hybrid work in Miami Lakes, FL 33014 |. | Technical Support Advanced Specialist AMETEK, Inc. Hybrid work in Lake Mary, FL 32746 |. ### Technical Support Advanced Specialist. ## Sales support staff. ### Sales Manager (Veterinary Sales) - Sarasota, FL. ### Sales Representative. ### Entry-Level Sales Associate. ### Director, Thought Leader Engagement (H&N) - Southeast. | Technical Support Specialist Rentvine Estero, FL |. | Technical Support Specialist Kidde Global Solutions Bradenton, FL |. ### PRODUCT SUPPORT ENGINEER. ## Resume Resources:. ## Career Resources:. ## Employer Resources:. ## Software Technical Support / Product Support Specialist (Full-time) - job post.",
     "source": "Public Job Board Search/tavily",
-    "query": "\"customer success\" hybrid India jobs",
+    "query": "\"product support\" hybrid India jobs",
     "score": 78,
-    "company": "Now Hiring: 3,000 Customer Success Manager,customer Success Manager Jobs",
+    "company": "Now Hiring: 300 Product Support Specialist Jobs in Florida",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
@@ -258,18 +326,6 @@
     "query": "\"technical support engineer\" hybrid India jobs",
     "score": 78,
     "company": "Now Hiring: 200 Technical Support Engineer Jobs in Denver, CO",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://www.indeed.com/q-%22customer-success%22-%22trainer%22-jobs.html",
-    "title": "Now Hiring: 200 Customer Success Trainer Jobs | Indeed",
-    "snippet": "Title: Now Hiring: 200 Customer Success Trainer Jobs | Indeed Upload your resume - Let employers find you. # customer success trainer jobs. | Customer Success Manager, Industries Anthropic Hybrid work in New York, NY + $200,000 - $265,000 a year |. + Own the **customer** experience across their lifecycle — managing comprehensive account and **success** plans grounded in the customer's business objectives, conducting…. + View all Anthropic jobs in New York, NY - New York jobs - Customer Success Manager jobs in New York, NY. + Salary Search: Customer Success Manager, Industries salaries in New York, NY. + View all EBSCO jobs in Remote - Remote jobs - Customer Success Manager jobs in Remote. + Salary Search: Customer Success Executive-Mid West salaries in Remote. + See popular questions & answers about EBSCO. | Customer Success Manager, Top Accounts Anthropic Hybrid work in San Francisco, CA + $200,000 - $320,000 a year |. + View all Anthropic jobs in San Francisco, CA - San Francisco jobs - Customer Success Manager jobs in San Francisco, CA. + Salary Search: Customer Success Manager, Top Accounts salaries in San Francisco, CA. | Customer Success Manager, Commercial Anthropic Hybrid work in San Francisco, CA + $200,000 - $265,000 a year |. + Salary Search: Customer Success Manager, Commercial salaries in San Francisco, CA. | Customer Success Manager, Enterprise Tech Anthropic Hybrid work in San Francisco, CA + $200,000 - $265,000 a year |. + Salary Search: Customer Success Manager, Enterprise Tech salaries in San Francisco, CA. | Customer Success Manager, Beneficial Deployments - Life Sciences Anthropic Hybrid work in San Francisco, CA + $200,000 - $265,000 a year |. + Experience driving **success** across both consumption-based and seat-based business models, with an understanding of the expansion levers and **success** metrics for…. + Salary Search: Customer Success Manager, Beneficial Deployments - Life Sciences salaries in San Francisco, CA. | Customer Education Trainer Clarivate Hybrid work in Philadelphia, PA 19130 + $68,000 - $85,000 a year + Full-time |. | Customer Success Manager, Public Sector (National Security) Anthropic Hybrid work in Washington, DC + $265,000 - $350,000 a year |. + Salary Search: Customer Success Manager salaries in Gainesville, VA. Customer Success Manager jobs in New York, NY.",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"customer success\" hybrid India jobs",
-    "score": 78,
-    "company": "Now Hiring: 200 Customer Success Trainer Jobs",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
@@ -311,18 +367,6 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://www.indeed.com/q-product-support-l-marin-county,-ca-jobs.html",
-    "title": "Now Hiring: 12,000 Product Support Jobs in Marin County, CA | Indeed",
-    "snippet": "Title: Now Hiring: 12,000 Product Support Jobs in Marin County, CA | Indeed # product support jobs in Marin County, CA. | Customer Support Specialist Parafin Hybrid work in San Francisco, CA |. ### Customer Support Specialist. | Technical Support Specialist Anrok Hybrid work in San Francisco, CA |. ### Technical Support Specialist. | Customer Support Associate Padlet San Francisco, CA |. ### Customer Support Associate. | Product Operations Analyst Instawork Internal San Francisco, CA |. ### Product Operations Analyst. | Customer Support Specialist Rogo San Francisco, CA |. | Product Design, Entry-Level (2027 start) DoorDash USA San Francisco, CA |. ### Product Design, Entry-Level (2027 start). | Strategy & Operations Programs, Support OpenAI San Francisco, CA (Mission area) |. ### Strategy & Operations Programs, Support. | Support Engineer Anthropic Hybrid work in San Francisco, CA |. ### Support Engineer. ## Sales support roles. ### Sales Associate (Santa Rosa, CA) – Johnson & Johnson MedTech, Orthopaedics. ### Sales Consultant, Foot & Ankle (East - San Francisco, CA)– Johnson & Johnson MedTech, Orthopaedics. ### Entry Level Sales Associate. ### Product Support. | Product Operations Specialist, Servicing Parafin Hybrid work in San Francisco, CA |. ### Product Operations Specialist, Servicing. | Product Strategy and Operations Analyst, Google Education Google San Francisco, CA |. ### Product Strategy and Operations Analyst, Google Education. | Product Support Engineer Pylon San Francisco, CA |. ### Product Support Engineer. ### Regional Manager - San Francisco. | Senior Support Specialist, Ads OpenAI San Francisco, CA (Mission area) |. ### Senior Support Specialist, Ads. | Product Support Engineer Cartesia San Francisco, CA |. | Product Manager, Claude Tag Anthropic Hybrid work in San Francisco, CA |. ## Resume Resources:. ## Career Resources:. ## Employer Resources:. ## Customer Support Specialist - job post. We are looking for a Customer Support Specialist who can delight customers at every interaction with our platform, while best representing the Partner brands we service. This is a full-time exempt position and reports to the Customer Experience Manager. You will act alongside the CXM as the voice of the customer internally at Parafin, to help us build a world class product support offering. Are you a support professional who is excited to work with leading brands and help small businesses grow?",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"product support\" hybrid India jobs",
-    "score": 78,
-    "company": "Now Hiring: 12,000 Product Support Jobs in Marin County, CA",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://www.indeed.com/q-technical-support-engineer-l-tampa,-fl-jobs.html",
     "title": "Now Hiring: 100 Technical Support Engineer Jobs in Tampa, FL | Indeed",
     "snippet": "Title: Now Hiring: 100 Technical Support Engineer Jobs in Tampa, FL | Indeed # technical support engineer jobs in Tampa, FL. | Technical Field Support Specialist Hillsborough County Sheriff's Office Tampa, FL + $22.84 - $34.26 an hour |. + Provide entry-level **technical** **support** to ensure effective use of computer systems, software…. + View all Hillsborough County Sheriff's Office jobs in Tampa, FL - Tampa jobs - Field Support Specialist jobs in Tampa, FL. + Salary Search: Technical Field Support Specialist salaries in Tampa, FL. + See popular questions & answers about Hillsborough County Sheriff's Office. | Applications Support Sr Analyst - C12 - TAMPA Hybrid work in Tampa, FL + $87,280 - $130,920 a year |. + View all Citi jobs in Tampa, FL - Tampa jobs - Application Support Analyst jobs in Tampa, FL. + Salary Search: Applications Support Sr Analyst - C12 - TAMPA salaries in Tampa, FL. | Applications Support Sr Analyst - C12 - TAMPA Citi Hybrid work in Tampa, FL + $87,280 - $130,920 a year + Full-time |. | Technical Support Engineer II - Hybrid (Tampa) Easily apply Hybrid work in Tampa, FL + $62,400 - $72,800 a year |. + View all FusionTek jobs in Tampa, FL - Tampa jobs - Senior Technical Support jobs in Tampa, FL. + Salary Search: Technical Support Engineer II - Hybrid (Tampa) salaries in Tampa, FL. + Salary Search: Desktop Support/ Endpoint Support salaries in Lutz, FL. + As an IT **Support** **Engineer** I, you will use your knowledge and specialized skills to implement **technical** solutions and provide high quality **support** for computer…. + View all Citi jobs in Tampa, FL - Tampa jobs - Technology Analyst jobs in Tampa, FL. + Salary Search: Technology, Production Support, Full Time Analyst, Tampa - USA, 2027 salaries in Tampa, FL. + View all Leidos jobs in Tampa, FL - Tampa jobs. + Salary Search: Service Desk Technician salaries in Tampa, FL. + View all General Dynamics Information Technology jobs in Tampa, FL - Tampa jobs. jobs in Tampa, FL - Tampa jobs - Senior Technical Support Engineer jobs in Tampa, FL. + View all Viasat, Inc. jobs in Tampa, FL - Tampa jobs - Field Application Engineer jobs in Tampa, FL.",
@@ -359,18 +403,6 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://in.indeed.com/q-it-support-hybrid-l-bengaluru,-karnataka-jobs.html",
-    "title": "It support hybrid jobs in Bengaluru, Karnataka",
-    "snippet": "It support hybrid jobs in Bengaluru, Karnataka · Engineer - Application Support N 4A. Genpact India Pvt. Ltd. · IT Support Engineer- L2. SoftTech Services.Read more",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"technical support engineer\" hybrid India jobs",
-    "score": 78,
-    "company": "It support hybrid jobs in Bengaluru, Karnataka",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://www.indeed.com/q-remote-hybrid-customer-support-l-austin,-tx-jobs.html",
     "title": "Flexible Remote Hybrid Customer Support Jobs – Apply Today to Work From Home in Austin, TX (October 11, 2026) | Indeed",
     "snippet": "Title: Flexible Remote Hybrid Customer Support Jobs – Apply Today to Work From Home in Austin, TX (October 11, 2026) | Indeed # remote hybrid customer support jobs in Austin, TX. | Help Desk Specialist Booz Allen Hamilton Austin, TX |. View similar jobs with this employer. + View all Booz Allen Hamilton jobs in Austin, TX - Austin jobs - Helpdesk Specialist jobs in Austin, TX. + Salary Search: Help Desk Specialist salaries in Austin, TX. + See popular questions & answers about Booz Allen Hamilton. | Customer Learning Solutions Specialist - Americas Cytiva Remote in Austin, TX |. + 3+ years experience in **customer** education, **customer** training, technical training, **customer** success, or a related customer-facing role. + View all Cytiva jobs in Austin, TX - Austin jobs - Customer Solutions Specialist jobs in Austin, TX. + Salary Search: Customer Learning Solutions Specialist - Americas salaries in Austin, TX. | Senior Customer Success Manager Litera Hybrid work in Austin, TX |. + View all Litera jobs in Austin, TX - Austin jobs - Customer Success Manager jobs in Austin, TX. + Salary Search: Senior Customer Success Manager salaries in Austin, TX. + View all Grüns jobs in Austin, TX - Austin jobs - Operations Manager jobs in Austin, TX. + View all Sharebite jobs in Austin, TX - Austin jobs - Senior Customer Support Representative jobs in Austin, TX. + View all Roka jobs in Austin, TX - Austin jobs. + Salary Search: Customer Experience Specialist salaries in Austin, TX. + View all Connecteam jobs in Austin, TX - Austin jobs. + View all Atlassian jobs in Austin, TX - Austin jobs - Customer Success Manager jobs in Austin, TX. + View all Callaway jobs in Austin, TX - Austin jobs - Customer Service Representative jobs in Austin, TX. + Salary Search: Customer Service Representative (Austin, TX) salaries in Austin, TX. + View all Natera jobs in Austin, TX - Austin jobs - Customer Specialist jobs in Austin, TX. + View all TogetherWork jobs in Austin, TX - Austin jobs - Onboarding Manager jobs in Austin, TX. + View all LogicMonitor jobs in Austin, TX - Austin jobs - Director of Customer Success jobs in Austin, TX. + View all Allergan Aesthetics jobs in Austin, TX - Austin jobs.",
@@ -383,112 +415,28 @@
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://in.indeed.com/q-customer-support-hybrid-jobs.html",
-    "title": "Customer support hybrid jobs",
-    "snippet": "1318 Customer Support Hybrid jobs available on Indeed.com. Zendesk, Freshdesk, or Intercom. Pay: From ₹20,000.00 per month",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"product support\" hybrid India jobs",
-    "score": 78,
-    "company": "Customer support hybrid jobs",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://www.indeed.com/q-customer-support-specialist-zendesk-jobs.html",
-    "title": "Customer Support Specialist Zendesk Jobs, Employment | Indeed",
-    "snippet": "Title: Customer Support Specialist Zendesk Jobs, Employment | Indeed Upload your resume - Let employers find you. # customer support specialist zendesk jobs. | Principal AI Success Strategist, Customer Success Zendesk Hybrid work in Austin, TX |. + Demonstrated experience designing and executing success plans or roadmaps that…. + View all Zendesk jobs in Austin, TX - Austin jobs - Customer Success Manager jobs in Austin, TX. + Salary Search: Principal AI Success Strategist, Customer Success salaries in Austin, TX. | Vice President, Global AI-Powered Support Zendesk Hybrid work in San Francisco, CA 94103 |. + Global Technical **Support** & **Customer** Escalations. + View all Zendesk jobs in San Francisco, CA - San Francisco jobs - Vice President jobs in San Francisco, CA. + Salary Search: Vice President, Global AI-Powered Support salaries in San Francisco, CA. | AI Success Strategist Zendesk Hybrid work in Texas |. View similar jobs with this employer. + View all Zendesk jobs in Texas - Texas jobs - AI Product Strategist jobs in Texas. + Salary Search: AI Success Strategist salaries in Texas. ##### Principal AI Success Strategist, Customer Success. Hybrid work in Austin, TX. As visionary architects of our AI-powered Resolution Platform, AI Success Strategists shape and deliver long-term AI success for our customers. You will own end-to-end delivery of customers’ AI roadmaps: translating product capabilities into clear business strategies, defining a long-term AI vision, aligning internal and external teams, and driving execution from initial adoption through sustained expansion. Your success is measured by high customer satisfaction, increased automated resolution usage, and improved retention—while orchestrating the right mix of product, services, and partner resources. * **Full Ownership of AI Roadmap Delivery:** Lead the design, planning, and execution of comprehensive AI adoption and expansion roadmaps for key customers, ensuring alignment to their broader business goals and customer success vision. * Demonstrated experience designing and executing success plans or roadmaps that drive measurable customer outcomes. While this range reflects the minimum and maximum value for new hire salaries for the position across all US locations, the offer for the successful candidate for this position will be based on job related capabilities, applicable experience, and other factors such as work location.",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"customer support\" hybrid India jobs",
-    "score": 78,
-    "company": "Customer Support Specialist Zendesk Jobs, Employment",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://www.indeed.com/q-customer-success-manager-l-california-jobs.html",
-    "title": "Customer Success Manager Jobs, Employment in California",
-    "snippet": "Customer Success Manager Jobs, Employment in California | Indeed. * Salary Search: Customer Success Manager salaries in Newport Beach, CA. * Salary Search: Customer Success Manager salaries in Santa Clara, CA. * Salary Search: Customer Success Manager salaries in Sacramento, CA. Customer Success Manager (SFO CA - Hybrid). * View all GTreasury jobs in San Francisco, CA - San Francisco jobs - Customer Success Manager jobs in San Francisco, CA. * Salary Search: Customer Success Manager (SFO CA - Hybrid) salaries in San Francisco, CA. * View all Tech Holding jobs in Los Angeles, CA - Los Angeles jobs - Customer Success Manager jobs in Los Angeles, CA. * Salary Search: Customer Success & Account Manager - Hybrid salaries in Los Angeles, CA. * Salary Search: Customer Success & Account Manager - Hybrid salaries in Los Angeles, CA. * View all Nightfall AI jobs in Palo Alto, CA - Palo Alto jobs - Customer Success Manager jobs in Palo Alto, CA. * Salary Search: Senior Customer Success Manager salaries in Palo Alto, CA. * Salary Search: Director, Customer Success salaries in San Francisco, CA. * View all Zifo jobs in San Francisco, CA - San Francisco jobs - Customer Success Manager jobs in San Francisco, CA. * Salary Search: Scientific Customer Success Manager salaries in San Francisco, CA. * Salary Search: Customer Success Manager (Portuguese Speaking) salaries in Mountain View, CA. * Salary Search: Customer Success Manager salaries in San Ramon, CA. * View all Netradyne jobs in San Diego, CA - San Diego jobs - Customer Success Manager jobs in San Diego, CA. * Salary Search: Senior Customer Success Manager salaries in San Diego, CA. * View all Social Native Inc jobs in Los Angeles, CA - Los Angeles jobs - Customer Success Manager jobs in Los Angeles, CA. * Salary Search: Senior Customer Success Manager salaries in Los Angeles, CA. * View all Merge API jobs in San Francisco, CA - San Francisco jobs - Customer Success Manager jobs in San Francisco, CA. * Salary Search: Enterprise Customer Success Manager salaries in San Francisco, CA. * Salary Search: Customer Success Manager salaries in San Francisco, CA.",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"customer success\" hybrid India jobs",
-    "score": 78,
-    "company": "Customer Success Manager Jobs, Employment in California",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://in.linkedin.com/jobs/customer-success-manager-jobs",
-    "title": "Customer Success Manager Jobs in India (5,000+ Open Roles) | LinkedIn",
-    "snippet": "#### Xoxoday Bengaluru East, Karnataka, India Actively Hiring Customer Success Manager ### Customer Success Manager #### CognitiveBotics Hyderabad, Telangana, India Customer Success Manager (US Market) ### Customer Success Manager (US Market) #### ITILITE Greater Bengaluru Area Actively Hiring Customer Success Manager ### Customer Success Manager #### EB1A Experts Hyderabad, Telangana, India Customer Success Manager [...] India Actively Hiring Key Accounts Manager ### Key Accounts Manager #### Flick2Know Gurugram, Haryana, India Customer Success Manager- Mulesoft exp mandatory ### Customer Success Manager- Mulesoft exp mandatory #### Salesforce Hyderabad, Telangana, India Actively Hiring Customer Success Manager ### Customer Success Manager #### ClickPost Bengaluru, Karnataka, India Customer Success Manager - Senior [...] Actively Hiring Customer Success Manager ### Customer Success Manager #### Kadel Labs Udaipur, Rajasthan, India Actively Hiring Manager - Customer Success ### Manager - Customer Success #### Sirion Gurugram, Haryana, India Actively Hiring Customer Success Manager ### Customer Success Manager #### ServiceChannel Bengaluru East, Karnataka, India CSM ### CSM #### AI CERTs® - India",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"customer success\" hybrid India jobs",
-    "score": 78,
-    "company": "Customer Success Manager Jobs in India (5,000+ Open Roles)",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://in.linkedin.com/jobs/customer-service-remote-jobs",
-    "title": "Customer Service Remote Jobs in India (7,000+ Open Roles) | LinkedIn",
-    "snippet": "You're now using AI-powered job search We're working to bring back all filters, but in the meantime, you can type them directly into your search to refine your results. Learn more Get notified about new Customer Service Remote jobs in India. Sign in to create job alert # 7,000+ Customer Service Remote Jobs in India Chat Support Associate ### Chat Support Associate #### Voy Delhi, Delhi, India Customer Support Representative ### Customer Support Representative [...] ### Concierge Specialist #### First Advantage India Customer Support Executive ### Customer Support Executive #### Wap Solution Bikaner, Rajasthan, India Concierge Specialist ### Concierge Specialist #### Jobgether India Customer Support Engineer ### Customer Support Engineer #### Entrust Greater Kolkata Area Actively Hiring ### Game Support Representative with Portuguese and English #### Kaderabotim.bg [...] ### Customer Assistance Specialist with Slovenian (Remote) #### Kaderabotim.bg Bora Pochampalli, Telangana, India Customer Service Representative ### Customer Service Representative #### TP Bengaluru, Karnataka, India Actively Hiring Bilingual Customer Care Specialist - English and Spanish | Location: Permanent Work from Home | India based candidates only",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"customer support\" hybrid India jobs",
-    "score": 78,
-    "company": "Customer Service Remote Jobs in India (7,000+ Open Roles)",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
     "discovery_url": "https://in.linkedin.com/jobs/customer-service-hybrid-jobs",
-    "title": "Customer Service Hybrid Jobs in India (7000+ Open Roles)",
-    "snippet": "Customer Support Executive - WFO/ WFH / Hybrid - Walkin 10th & 11th Nov,2026. TechGlora Integrated IT Services. Chennai, Tamil Nadu, India 1 day ago.Read more",
+    "title": "Customer Service Hybrid Jobs in India (7,000+ Open Roles) | LinkedIn",
+    "snippet": "### Customer Service Support Advisor #### BT Group Greater Kolkata Area Customer Service Specialist ### Customer Service Specialist #### JuteLabs Greater Delhi Area CCSS Representative ### CCSS Representative #### HSBC Bengaluru, Karnataka, India Customer Support Executive - WFO/ WFH / Hybrid - Walkin 10th & 11th Nov,2026 ### Customer Support Executive - WFO/ WFH / Hybrid - Walkin 10th & 11th Nov,2026 #### TechGlora Integrated IT Services [...] Chennai, Tamil Nadu, India Customer Service ( Voice Process) ### Customer Service ( Voice Process) #### Allstate India Pune Division, Maharashtra, India CUSTOMER SERVICE ASSOCIATE IV ### CUSTOMER SERVICE ASSOCIATE IV #### TE Connectivity Bengaluru, Karnataka, India CUSTOMER SERVICE SPECIALIST I ### CUSTOMER SERVICE SPECIALIST I #### TE Connectivity Bengaluru, Karnataka, India Customer Support II (Voice Process) [...] ### Customer Support II (Voice Process) #### Experian Hyderabad, Telangana, India TCPS Analyst I ### TCPS Analyst I #### American Express Gurugram, Haryana, India Customer Service Specialist ### Customer Service Specialist #### Greenlight Bengaluru, Karnataka, India Customer Service Associate III ( Voice) ### Customer Service Associate III ( Voice) #### Allstate India",
     "source": "Public Job Board Search/tavily",
-    "query": "\"product support\" hybrid India jobs",
+    "query": "\"customer support\" hybrid India jobs",
     "score": 78,
-    "company": "Customer Service Hybrid Jobs in India (7000+ Open Roles)",
+    "company": "Customer Service Hybrid Jobs in India (7,000+ Open Roles)",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
   },
   {
-    "discovery_url": "https://in.linkedin.com/jobs/technical-support-engineer-core-jobs-bengaluru",
-    "title": "8000+ Technical Support Engineer Core Jobs in Bengaluru",
-    "snippet": "8,000+ Technical Support Engineer Core Jobs in Bengaluru · Senior Technical Support Engineer · AWS Cloud Engineer (L1/L2 Support & Operations) · Support Specialist.Read more",
+    "discovery_url": "https://www.indeed.com/q-citi-bank-customer-support-jobs.html",
+    "title": "Citi Bank Customer Support Jobs, Employment | Indeed",
+    "snippet": "Title: Citi Bank Customer Support Jobs, Employment | Indeed # citi bank customer support jobs. | Customer Service Intermediate Analyst Citi Hybrid work in San Antonio, TX |. + View all Citi jobs in San Antonio, TX - San Antonio jobs - Customer Service Analyst jobs in San Antonio, TX. + Salary Search: Customer Service Intermediate Analyst salaries in San Antonio, TX. | Customer Service Advocate - Train On-Site Home Office Program - Salary up to $21.05/hour Citi Tucson, AZ 85747 |. + At **Citi**, our **Customer** Service Advocates are the voice of the **bank** — resolving client inquiries across multiple platforms, protecting client relationships, and…. + View all Citi jobs in Tucson, AZ - Tucson jobs - Customer Advocate jobs in Tucson, AZ. + Salary Search: Customer Service Advocate - Train On-Site Home Office Program - Salary up to $21.05/hour salaries in Tucson, AZ. | Customer Service Specialist - Train On-Site Home Office Program - Salary up to $21/hour Citi Hybrid work in Florence, KY 41042 |. + View all Citi jobs in Florence, KY - Florence jobs - Customer Service Representative jobs in Florence, KY. + Salary Search: Customer Service Specialist - Train On-Site Home Office Program - Salary up to $21/hour salaries in Florence, KY. | Senior Client Onboarding Specialist Citi Hybrid work in Tampa, FL |. + View all Citi jobs in Tampa, FL - Tampa jobs - Senior Client Specialist jobs in Tampa, FL. + Salary Search: Senior Client Onboarding Specialist salaries in Tampa, FL. + Salary Search: Client Onboarding Associate Analyst salaries. | Client Onboarding Lead Analyst Citi Hybrid work in Tampa, FL |. + View all Citi jobs in Tampa, FL - Tampa jobs - Lead Analyst jobs in Tampa, FL. + Salary Search: Client Onboarding Lead Analyst salaries in Tampa, FL. | Wealth Team Client Service Associate Citi Hybrid work in San Antonio, TX |. + View all Citi jobs in San Antonio, TX - San Antonio jobs - Client Services Associate jobs in San Antonio, TX. + Salary Search: Wealth Team Client Service Associate salaries in San Antonio, TX. + Salary Search: Custody Service Lead Analyst salaries in Tampa, FL. Salaries for Customer Service Analyst at Citi. Salaries for Customer Service Analyst.",
     "source": "Public Job Board Search/tavily",
-    "query": "\"technical support engineer\" hybrid India jobs",
+    "query": "\"customer support\" hybrid India jobs",
     "score": 78,
-    "company": "8000+ Technical Support Engineer Core Jobs in Bengaluru",
+    "company": "Citi Bank Customer Support Jobs, Employment",
     "seed_type": "Public Job Board Listing",
     "crawl_seed": "No",
     "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://in.indeed.com/q-customer-success-manager-jobs.html",
-    "title": "500 Customer Success Manager Job Vacancies",
-    "snippet": "Customer Success Manager. Scrut Automation. Hybrid remote in India. Analyst-Customer Success , you will guide and mentor our customer success team,develop",
-    "source": "Public Job Board Search/tavily",
-    "query": "\"customer success\" hybrid India jobs",
-    "score": 78,
-    "company": "500 Customer Success Manager Job Vacancies",
-    "seed_type": "Public Job Board Listing",
-    "crawl_seed": "No",
-    "detail_status": "Pending public post verification"
-  },
-  {
-    "discovery_url": "https://ats.rippling.com/nutrient/jobs/0fe83dde-40e5-4987-80f1-7f6cc6b8e379",
-    "title": "Join the Nutrient team: Innovate in document solutions",
-    "snippet": "At Nutrient, we foster a globally distributed, forward-thinking culture where innovation thrives through flexibility, creativity, and effective collaboration. ### Remote by design We embrace asynchronous communication and a low-meeting culture for focus and flexibility. ### Built on trust Radical transparency and empathetic feedback form the foundation of our collaboration. ### A culture of experimentation We continuously improve, innovate, and push boundaries. ### Optimized for impact [...] We prioritize meaningful results over busyness. ### Ecosystem mindset Stability, scalability, and collaboration drive our growth and innovation. ## Ready to build with us? Nutrient isn’t for everyone, and that’s OK. But if you’re someone who craves challenges, thrives on self-initiative, and wants to be part of shaping the future of digital documents, we’d love to hear from you. All Teams All Locations Loading roles... ## Interested in working with us? [...] When you work here, you’re empowering companies to transform static documents into dynamic, intelligent, and secure workflows. With nearly one billion end users relying on our tools, Nutrient enables greater efficiency across industries worldwide. Whether optimizing APIs or reimagining user experiences, your work shapes a digital ecosystem that accelerates time to market, reduces costs, and redefines documents. who we are ## We’re problem-solvers, builders, and innovators",
-    "source": "Search/tavily",
-    "query": "site:*.rippling.com India remote support careers",
-    "score": 60,
-    "company": "Join the Nutrient team: Innovate in document solutions",
-    "seed_type": "Search Result",
-    "crawl_seed": "No",
-    "detail_status": "Review; target role not confirmed in search result"
   },
   {
     "discovery_url": "https://www.rippling.com/careers/engineering-india",
@@ -515,6 +463,30 @@
     "detail_status": "Review; target role not confirmed in search result"
   },
   {
+    "discovery_url": "https://ats.rippling.com/thoughtspot/jobs/0f14926e-b806-44b9-97fb-73c354b5efca",
+    "title": "Careers | ThoughtSpot",
+    "snippet": "## See what real Spotters around the world are saying about life at ThoughtSpot. “I love working at ThoughtSpot because we’re more than just colleagues—we’re a family. Together, we embrace every challenge with passion and unity, always driven by the same shared goals. It’s this incredible team spirit that makes every day inspiring and rewarding.” Toral Patel VP, Corporate Controller ## Join The Team Become a Spotter Don't see the role you're looking for? LET’S KEEP IN TOUCH [...] Retirement ### BangaloreBenefits Insurance Programs Time Off Best-in-Class Advantage Perks Wellbeing Benefits Learning & Career Development Retirement ### AustraliaBenefits Insurance Programs Time Off Best-in-Class Advantage Perks Wellbeing Learning & Career Development Retirement ### JapanBenefits Insurance Programs Time Off Best-in-Class Advantage Perks Wellbeing Learning & Career Development Retirement ## Open Roles No results found ## ThoughtSpot Codex [...] At ThoughtSpot, we know that people do their best work when they feel supported both personally and professionally. That’s why we’ve built a benefits program that helps our employees — “Spotters” — and their families thrive. Our benefits are designed around six global pillars, customized for each country where we operate: Employee Insurance Programs Employee Perks Wellbeing Benefits Learning & Career Development Time Off Policies Pension & Retirement Plans",
+    "source": "Search/tavily",
+    "query": "site:*.rippling.com India remote support careers",
+    "score": 60,
+    "company": "Careers",
+    "seed_type": "Search Result",
+    "crawl_seed": "No",
+    "detail_status": "Review; target role not confirmed in search result"
+  },
+  {
+    "discovery_url": "https://ats.rippling.com/icp-careers/jobs/10f163e2-0cd1-4479-9821-0c3b88b16791",
+    "title": "Careers and Vacancies - ICP",
+    "snippet": "### Senior Software Engineer open-in-new Department: Technology & Innovation Services Location: Mumbai, India ### Digital Asset Manager open-in-new Department: Managed Content Services Location: Atlanta, GA ### Consultant open-in-new Department: Strategy & Consulting Services Location: Atlanta, GA ### Solutions Specialist open-in-new Department: Solutions Location: London, United Kingdom ### Senior Print & Packaging Project Manager open-in-new Department: Global Content Studios [...] Location: Atlanta, GA ### Senior Demand Generation Manager open-in-new Department: Marketing & Growth Location: London, United Kingdom ### Digital Asset Coordinator open-in-new Department: Managed Content Services Location: Ciudad de México, Mexico ### Consultant open-in-new Department: Strategy & Consulting Services Location: Mumbai, India ## ICP help global brands optimize the way they make, manage & deliver content Our work arrow_forward_black [...] If this resonates with your passion and expertise, we invite you to connect with us. We're eager to learn more about how your skills can contribute to our dynamic team. members-of-the-icp-mumbai-team ## Diversity, equality & inclusion and ICP members-of-the-icp-uk-team",
+    "source": "Search/tavily",
+    "query": "site:*.rippling.com India remote support careers",
+    "score": 60,
+    "company": "Careers and Vacancies",
+    "seed_type": "Search Result",
+    "crawl_seed": "No",
+    "detail_status": "Review; target role not confirmed in search result"
+  },
+  {
     "discovery_url": "https://www.rippling.com/careers",
     "title": "Rippling Careers | Work Will Never Be the Same",
     "snippet": "We open a couple offices. One is in San Francisco, near our founders. The other is in Bengaluru, where products are being built. Collage of an early webpage, presentation video, building, and office selfie ## 2018 We go live with customers Our first product is launched, getting into the hands of curious customers. Like magic, busy work starts to disappear. Product-market fit finds us [...] “Rippling provides me the opportunity to work at the intersection of HR & Technology, and the best part is that I get to do this with a group of really talented and driven individuals. That's what drives me at work everyday!” Tiny circular portrait of a person against a dark background Kriti Jain HR Business Partner at Rippling [...] “Rippling provides me the opportunity to work at the intersection of HR & Technology, and the best part is that I get to do this with a group of really talented and driven individuals. That's what drives me at work everyday!” Tiny circular portrait of a person against a dark background Kriti Jain HR Business Partner at Rippling",
@@ -526,17 +498,6 @@
     "crawl_seed": "No"
   },
   {
-    "discovery_url": "https://ats.rippling.com/q4_careers/jobs",
-    "title": "Q4 Inc. - Careers",
-    "snippet": "## A hybrid work model that offers flexibility. Q4orce is made up of winning mindsets, unconventional thinkers, bold innovators, and change makers from various locations. Join us in disrupting an industry, wherever you are. ## Bold innovators welcome here. Use the filters to narrow your search and find exactly what you’re looking for. Job title Location ## Stay inspired. Q4 is made up of talented individuals from across the globe. These are their stories. Q4 Logo Footer [...] next slide arrow ## Be yourself, experience belonging. Pushing boundaries, shattering norms, and daring to disrupt the status quo is part of our DNA. Our commitment to Diversity, Equity, Inclusion, and Belonging (DEIB) comes to life through various initiatives—from prioritizing people-first leadership to fostering collaboration and providing unwavering support in unique, personalized ways. We believe true innovation cannot thrive without such a foundation.",
-    "source": "Google/tavily",
-    "query": "site:*.rippling.com India remote support careers",
-    "score": 55,
-    "company": "Q4 Inc.",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "No"
-  },
-  {
     "discovery_url": "https://dcgn-fe.rippling.com/careers",
     "title": "Careers | Decagon",
     "snippet": "Our core identity must always be rooted in building for our customers; this has been the foundation of our success. Winner's mindset Fiercely competitive nature and fighting spirit are foundational. The polymath principle The best team members understand other functions deeply and promote cross functional collaboration. ## We’re hiring globally 🌁 San Francisco 🗽 New York City 🚇 London 🤿 Sydney 🍁 Toronto 🍑 Atlanta 🎒 Remote 🥖️ France 🪗 Germany Benefits [...] The first episode of the The Agent Room debuts 11/18. Register today Sign in Get a demo We’re hiring # Build the concierge for every customer, everywhere. Join the world-class team building the future of AI agents. See open roles What is Decagon? Decagon is the conversational AI platform enabling every brand to deliver concierge experiences to their customers. [...] ‍ Our technology helps the world's leading companies power personalized, always-on interactions across voice, chat, email, and more. About us Our values ## How we win, on repeat Exceptional outcomes aren't accidental. They're the result of talented people, strong principles, and consistent execution. These values define how we work and how we win. Just get it done We value decisive action and speed over prolonged deliberation and planning. Invent what customers want",
@@ -544,17 +505,6 @@
     "query": "site:*.rippling.com India remote support careers",
     "score": 55,
     "company": "Careers | Decagon",
-    "seed_type": "Google Career Page",
-    "crawl_seed": "No"
-  },
-  {
-    "discovery_url": "https://ats.rippling.com/desri-careers/jobs",
-    "title": "Careers at DESRI",
-    "snippet": "Development Minneapolis, MN Development Coordinator Development Greenwood Village, CO ### EPC Support Services Analyst or Senior Analyst – Detailed Design (Civil) Engineering EPC Support Services Hyderabad, India Manager or Senior Manager, Design Engineering, Energy Storage EPC Support Services Houston, TX ###### 1 ###### 2 ###### 3 ###### ... ###### 5 Terms of servicePrivacyCookiesPowered by Rippling",
-    "source": "Google/tavily",
-    "query": "site:*.rippling.com India remote support careers",
-    "score": 55,
-    "company": "Careers at DESRI",
     "seed_type": "Google Career Page",
     "crawl_seed": "No"
   }
