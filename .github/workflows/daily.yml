@@ -18,7 +18,7 @@ jobs:
   # ----------------------------------------------------------
   prepare:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -129,12 +129,12 @@ jobs:
           MANUAL_COMPANY_SHEET_NAME: ${{ vars.MANUAL_COMPANY_SHEET_NAME }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           PYTHONUNBUFFERED: "1"
-          CRAWL_WORKERS: "12"
-          HOST_CONCURRENCY: "2"
+          CRAWL_WORKERS: ${{ matrix.ats == 'Workday' && '4' || '12' }}
+          HOST_CONCURRENCY: ${{ matrix.ats == 'Workday' && '1' || '2' }}
           JOB_MAX_AGE_DAYS: "30"
           ATS_DAILY_CAP: "400"
           NONSTANDARD_DAILY_BUDGET: "900"
-          REQUEST_TIMEOUT: "8"
+          REQUEST_TIMEOUT: ${{ matrix.ats == 'Workday' && '12' || '8' }}
           HTML_TIMEOUT: "8"
           PLAYWRIGHT_ENABLED: "1"
           PLAYWRIGHT_TIMEOUT_MS: "12000"
@@ -147,11 +147,14 @@ jobs:
           PUBLISH_APAC_WORLDWIDE: "0"
           EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
         run: python crawler.py --ats "${{ matrix.ats }}" --out "out/${{ matrix.ats }}.jsonl"
-      - uses: actions/upload-artifact@v4
+      - name: Save ATS results, including partial results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: jobs-${{ matrix.ats }}
           path: out/
-          if-no-files-found: error
+          if-no-files-found: warn
+          retention-days: 7
 
   # ----------------------------------------------------------
   # CUSTOM CAREER / JS CRAWLER
@@ -159,7 +162,7 @@ jobs:
   careers:
     needs: prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 45
     concurrency:
       group: remote4me-v13-careers
       cancel-in-progress: false
@@ -219,19 +222,21 @@ jobs:
           DIFFBOT_API_KEY: ${{ secrets.DIFFBOT_API_KEY }}
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --careers --out out/careers.jsonl
-      - uses: actions/upload-artifact@v4
+      - name: Save Careers results, including partial results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: jobs-careers
           path: out/
-          if-no-files-found: error
-
+          if-no-files-found: warn
+          retention-days: 7
   # ----------------------------------------------------------
   # PUBLIC JOB FEEDS / DISCOVERY SOURCES
   # ----------------------------------------------------------
   feeds:
     needs: prepare
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -274,11 +279,14 @@ jobs:
           PUBLISH_APAC_WORLDWIDE: "0"
           PYTHONUNBUFFERED: "1"
         run: python crawler.py --feeds --out out/feeds.jsonl
-      - uses: actions/upload-artifact@v4
+      - name: Save Feeds results, including partial results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: jobs-feeds
           path: out/
-          if-no-files-found: error
+          if-no-files-found: warn
+          retention-days: 7
 
   # ----------------------------------------------------------
   # PUBLISH ONCE
@@ -289,7 +297,7 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -303,7 +311,9 @@ jobs:
           path: .
       - name: Extract same-run discovery manifests
         run: tar -xzf discovery-manifests.tgz
-      - uses: actions/download-artifact@v4
+      - name: Download all available crawler results
+        uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           path: out
           pattern: jobs-*
