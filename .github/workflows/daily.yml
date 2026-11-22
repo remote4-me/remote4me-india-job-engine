@@ -104,7 +104,7 @@ jobs:
       matrix:
         ats: [Greenhouse, Lever, Ashby, Workable, SmartRecruiters, Recruitee, Breezy, Teamtailor, BambooHR, Personio, Workday, Nonstandard]
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
     concurrency:
       group: remote4me-v151-${{ matrix.ats }}
       cancel-in-progress: false
@@ -129,8 +129,8 @@ jobs:
           MANUAL_COMPANY_SHEET_NAME: ${{ vars.MANUAL_COMPANY_SHEET_NAME }}
           STARTUP_JOBS_API_KEY: ${{ secrets.STARTUP_JOBS_API_KEY }}
           PYTHONUNBUFFERED: "1"
-          CRAWL_WORKERS: "20"
-          HOST_CONCURRENCY: "4"
+          CRAWL_WORKERS: "12"
+          HOST_CONCURRENCY: "2"
           JOB_MAX_AGE_DAYS: "30"
           ATS_DAILY_CAP: "400"
           NONSTANDARD_DAILY_BUDGET: "900"
@@ -141,8 +141,8 @@ jobs:
           PLAYWRIGHT_CONCURRENT_BROWSERS: "2"
           CAREER_BROWSER_MAX_CALLS: "8"
           WORKDAY_MAX_PAGES_PER_KEYWORD: "1"
-          WORKDAY_MAX_RESULTS_PER_BOARD: "120"
-          WORKDAY_MAX_DETAIL_CALLS_PER_BOARD: "80"
+          WORKDAY_MAX_RESULTS_PER_BOARD: "80"
+          WORKDAY_MAX_DETAIL_CALLS_PER_BOARD: "30"
           ALLOW_APAC_WORLDWIDE: "0"
           PUBLISH_APAC_WORLDWIDE: "0"
           EXTERNAL_FETCH_FALLBACK_ENABLED: "0"
