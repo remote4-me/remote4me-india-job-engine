@@ -6482,7 +6482,7 @@ def _host_semaphore(url):
     return None
 
 
-def get_json_status(url, params=None, method="GET", json_body=None, timeout=REQUEST_TIMEOUT, headers=None):
+def get_json_status(url, params=None, method="GET", json_body=None, timeout=REQUEST_TIMEOUT, headers=None, retry_429=True):
     """Status-aware JSON request used by board discovery/liveness and Workday."""
     last_status = "error"
     extra_headers = headers or {}
@@ -6505,8 +6505,10 @@ def get_json_status(url, params=None, method="GET", json_body=None, timeout=REQU
             if status in {401, 403}:
                 return None, "forbidden", status
             if status == 429:
-                wait = min(12, float(r.headers.get("Retry-After", "2") or 2))
                 last_status = "rate_limited"
+                if not retry_429:
+                    return None, last_status, status
+                wait = min(12, float(r.headers.get("Retry-After", "2") or 2))
                 if attempt < 3:
                     time.sleep(wait)
                     continue
@@ -6708,17 +6710,22 @@ def fetch_workday_board(board, company_hint=""):
     api_ok = False
     detail_calls = 0
     max_detail_calls = max(20, int(os.environ.get("WORKDAY_MAX_DETAIL_CALLS_PER_BOARD", "80")))
+    rate_limited = False
 
     for kw in WD_KEYWORDS:
         offset = 0
         for _ in range(max(1, V11_WORKDAY_MAX_PAGES_PER_KEYWORD)):
             data, status, _code = get_json_status(
-                api, method="POST", timeout=25, headers=headers,
+                api, method="POST", timeout=REQUEST_TIMEOUT, headers=headers,
                 json_body={"appliedFacets": {}, "limit": 20, "offset": offset, "searchText": kw},
+                retry_429=False,
             )
             status_counts[status] += 1
             if status == "ok":
                 api_ok = True
+            if status == "rate_limited":
+                rate_limited = True
+                break
             if not isinstance(data, dict):
                 break
 
@@ -6753,9 +6760,14 @@ def fetch_workday_board(board, company_hint=""):
                     detail_calls += 1
                     detail_url = f"{api[:-5]}{path}"
                     d, ds, _ = get_json_status(
-                        detail_url, timeout=25,
+                        detail_url, timeout=REQUEST_TIMEOUT,
                         headers={"Accept": "application/json, text/plain, */*", "Referer": referer},
+                        retry_429=False,
                     )
+                    if ds == "rate_limited":
+                        rate_limited = True
+                        detail_failures += 1
+                        break
                     if isinstance(d, dict):
                         detail = d.get("jobPostingInfo") or d
                         loc = _workday_text(detail.get("location") or detail.get("locationsText") or detail.get("locations") or loc)
@@ -6801,14 +6813,16 @@ def fetch_workday_board(board, company_hint=""):
                     "board_key": info.get("key", ""),
                 }))
                 if len(out) >= V11_WORKDAY_MAX_RESULTS_PER_BOARD:
-                    print(f"WORKDAY BOARD {info['key']}: accepted={len(out)} api_ok={api_ok} statuses={dict(status_counts)} detail_failures={detail_failures}")
+                    print(f"WORKDAY BOARD {info['key']}: accepted={len(out)} api_ok={api_ok} rate_limited={rate_limited} statuses={dict(status_counts)} detail_failures={detail_failures}")
                     return out
 
             offset += 20
+        if rate_limited:
+            break
 
     # Some Workday tenants reject CXS while the public page still exposes jobs.
-    # Fall back to the existing public career parser without spending paid credits.
-    if not out:
+    # Avoid immediately hitting the same tenant again when CXS has rate-limited.
+    if not out and not rate_limited:
         try:
             fallback_jobs, _links = crawl_career_url_v10(
                 company_hint or humanize_slug(info["tenant"]),
@@ -6820,7 +6834,7 @@ def fetch_workday_board(board, company_hint=""):
         except Exception as exc:
             print(f"WORKDAY HTML FALLBACK {info['key']}: {type(exc).__name__}: {exc}")
 
-    print(f"WORKDAY BOARD {info['key']}: accepted={len(out)} api_ok={api_ok} statuses={dict(status_counts)} detail_failures={detail_failures}")
+    print(f"WORKDAY BOARD {info['key']}: accepted={len(out)} api_ok={api_ok} rate_limited={rate_limited} statuses={dict(status_counts)} detail_failures={detail_failures}")
     return out
 
 
