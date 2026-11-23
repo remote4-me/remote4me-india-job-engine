@@ -335,8 +335,18 @@ jobs:
           git config user.name "Remote4.me Bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/boards.json data/companies.json data/search_discovery.json data/google_jobs_usage.json
-          git diff --cached --quiet || git commit -m "Refresh V15.5 discovery manifests"
-          git push
+          if git diff --cached --quiet; then
+            echo "No discovery manifest changes to commit."
+            exit 0
+          fi
+          git commit -m "Refresh V15.5 discovery manifests"
+
+          # Another workflow or maintainer may have updated main while this
+          # long crawl was running. Rebase onto the latest branch; never force-push.
+          BRANCH="${GITHUB_REF_NAME:-main}"
+          git fetch origin "$BRANCH"
+          git rebase "origin/$BRANCH"
+          git push origin "HEAD:$BRANCH"
       - name: Completion
         if: success()
         run: echo "Remote4.me V15.5 daily crawl completed; remote jobs to JOBS/DISCOVERY and India-only hybrid jobs to HYBRID/HYBRID_DISCOVERY."
