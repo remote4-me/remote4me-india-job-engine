@@ -8781,7 +8781,11 @@ def fetch_board_record(rec):
         return [], {"key":key,"ats":ats,"company":company,"ok":False,"status":"error","jobs_found":0,"error":f"{type(exc).__name__}: {exc}"}
 
 
-def daily_crawl_ats(ats):
+def daily_crawl_ats(ats, checkpoint_path=None):
+    """Crawl ATS boards and checkpoint each completed board to disk.
+
+    Results are appended by the coordinator thread, never by worker threads.
+    """
     manifest=load_manifest()
     records=[dict(r,ats=ats) for r in (manifest.get("boards",{}).get(ats,[]) or []) if r.get("active",True)]
     if V11_ATS_DAILY_CAP and len(records)>V11_ATS_DAILY_CAP:
@@ -8799,8 +8803,32 @@ def daily_crawl_ats(ats):
                 jobs=[]
                 stat={"key":clean_text(rec.get("key")),"ats":ats,"company":clean_text(rec.get("company")),"ok":False,"status":"error","jobs_found":0,"error":f"{type(exc).__name__}: {exc}"}
             out.extend(jobs); statuses.append(stat)
+
+            # Persist this board immediately; only the coordinator thread writes.
+            if checkpoint_path and jobs:
+                with open(checkpoint_path, "a", encoding="utf-8") as checkpoint:
+                    for job in jobs:
+                        checkpoint.write(json.dumps(job, ensure_ascii=False) + "\\n")
+                    checkpoint.flush()
+                    os.fsync(checkpoint.fileno())
+
+            # Keep partial board statuses valid and readable if the run stops.
+            if checkpoint_path:
+                status_path = os.path.splitext(checkpoint_path)[0] + ".status.json"
+                status_tmp = status_path + ".tmp"
+                with open(status_tmp, "w", encoding="utf-8") as status_file:
+                    json.dump(
+                        {"ats": ats, "statuses": statuses,
+                         "generated_at": datetime.now(timezone.utc).isoformat()},
+                        status_file, ensure_ascii=False, indent=2
+                    )
+                    status_file.flush()
+                    os.fsync(status_file.fileno())
+                os.replace(status_tmp, status_path)
+
             done+=1
-            if done%100==0: print(f"ATS {ats} PROGRESS: {done}/{len(records)}")
+            if done%25==0 or done==len(records):
+                print(f"ATS {ats} PROGRESS: {done}/{len(records)}")
     mark_manual_company_rows_checked(records)
     return out,statuses
 
@@ -9566,18 +9594,26 @@ def run_discover():
 
 
 def run_ats_cli(ats,out_path):
+    out_dir = os.path.dirname(out_path) or "."
+    os.makedirs(out_dir, exist_ok=True)
+    status_path=os.path.splitext(out_path)[0]+".status.json"
+
     if ats == "Nonstandard":
         jobs,links=daily_crawl_nonstandard()
+        jobs=merge_direct_jobs(jobs)
+        with open(out_path,"w",encoding="utf-8") as f:
+            for j in jobs: f.write(json.dumps(j,ensure_ascii=False)+"\\n")
         statuses=[{"ats":"Nonstandard","ok":True,"jobs_found":len(jobs),"key":"nonstandard","company":"routes"}]
+        write_board_status_artifact(ats,statuses,status_path)
     else:
-        jobs,statuses=daily_crawl_ats(ats)
+        # Start a fresh shard; completed boards append durable JSONL records.
+        with open(out_path,"w",encoding="utf-8"):
+            pass
+        jobs,statuses=daily_crawl_ats(ats, checkpoint_path=out_path)
+        jobs=merge_direct_jobs(jobs)
+        # Do not rewrite JSONL: it already contains per-board checkpoints.
+        write_board_status_artifact(ats,statuses,status_path)
         links=[]
-    jobs=merge_direct_jobs(jobs)
-    os.makedirs(os.path.dirname(out_path),exist_ok=True)
-    with open(out_path,"w",encoding="utf-8") as f:
-        for j in jobs: f.write(json.dumps(j,ensure_ascii=False)+"\n")
-    status_path=os.path.splitext(out_path)[0]+".status.json"
-    write_board_status_artifact(ats,statuses,status_path)
     if ats != "Nonstandard":
         positive=sum(1 for x in statuses if int(x.get("jobs_found",0) or 0)>0)
         errors=[x for x in statuses if not x.get("ok",False)]
